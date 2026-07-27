@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>智慧政府與數位服務｜簡報深讀筆記</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --bg:#f5f4f0; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66;
+    --accent:#2b8a8a; --line:#e5e2da; --side-w:270px;
+    --c1:#2b8a8a; --c2:#2f7a4f; --c3:#2f6b95; --c4:#7a8a2b; --c5:#5a3b95; --c6:#8a6a1f; --c7:#1f8a6a; --c8:#8a2b5a;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);display:flex;}
+  #sidebar{width:var(--side-w);flex-shrink:0;height:100vh;position:sticky;top:0;overflow-y:auto;background:#fbfaf7;border-right:1px solid var(--line);padding:20px 14px;}
+  #sidebar h3{font-size:.78rem;color:var(--sub);text-transform:uppercase;letter-spacing:.06em;margin:18px 6px 6px;}
+  #sidebar h3:first-child{margin-top:4px;}
+  #search{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:.85rem;margin-bottom:8px;font-family:inherit;}
+  .backlink{display:block;font-size:.8rem;color:var(--sub);text-decoration:none;margin:0 6px 10px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+  #sidebar a.nav{display:block;padding:5px 8px;font-size:.84rem;color:var(--ink);text-decoration:none;border-radius:6px;line-height:1.4;}
+  #sidebar a.nav:hover{background:var(--line);}
+  #sidebar a.nav.sub{padding-left:18px;font-size:.79rem;color:var(--sub);}
+  main{flex:1;max-width:940px;margin:0 auto;padding:44px 32px 100px;min-width:0;}
+  h1.title{font-size:1.7rem;margin:0 0 4px;}
+  .subtitle{color:var(--sub);margin-bottom:8px;}
+  .toolbar{margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--line);font-size:.82rem;color:#a09d95;}
+  .notice{background:#eaf5f5;border:1px solid #bfe0e0;border-radius:10px;padding:12px 16px;margin-bottom:36px;font-size:.86rem;color:#1f5f5f;line-height:1.8;}
+  section.chapter{margin-bottom:56px;scroll-margin-top:20px;}
+  .chapter-head{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+  .chapter-num{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.95rem;flex-shrink:0;}
+  .chapter-head h2{margin:0;font-size:1.28rem;}
+  h3.sec{scroll-margin-top:20px;font-size:1.03rem;margin:28px 0 10px;padding-left:12px;border-left:4px solid var(--line);}
+  h4.sub{font-size:.95rem;margin:16px 0 6px;color:#4a473f;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;}
+  .card p{margin:.5em 0;line-height:1.9;font-size:.94rem;text-align:justify;}
+  ul.pts{margin:.4em 0;padding-left:1.3em;line-height:1.85;font-size:.94rem;}
+  ul.pts li{margin-bottom:4px;}
+  .kw{background:#e7f3f3;color:var(--accent);padding:1px 7px;border-radius:5px;font-weight:600;font-size:.88em;}
+  table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.83rem;}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top;}
+  th{background:#f1efe9;}
+  .cite{font-size:.82rem;color:#a09d95;margin-top:4px;}
+  .case-box{background:#fbf9f5;border:1px solid #e8dfd0;border-radius:12px;padding:18px 20px;margin:14px 0;}
+  .case-box h4{margin-top:0;color:var(--accent);}
+  .data{background:#eef4f8;border-radius:8px;padding:10px 14px;font-size:.86rem;margin:8px 0;}
+  .footnote{font-size:.78rem;color:#a09d95;border-top:1px dashed var(--line);padding-top:6px;margin-top:10px;}
+  .qa{background:#eef6f0;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.9rem;}
+  .mnemonic{background:#fbf6ea;border:1px dashed #d8c896;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.9rem;color:#6b5a2a;}
+  .refs{font-size:.8rem;line-height:1.9;color:#55524c;column-count:1;}
+  mark{background:#ffe9a8;padding:0 2px;border-radius:3px;}
+  .hidden{display:none !important;}
+  details{margin:8px 0;}
+  summary{cursor:pointer;font-weight:600;font-size:.9rem;color:var(--accent);}
+</style>
+</head>
+<body>
+
+<nav id="sidebar">
+  <input id="search" type="text" placeholder="搜尋關鍵字...">
+  <a class="backlink" href="index.html">← 回筆記入口</a>
+
+  <h3>壹 數位治理背景</h3>
+  <a class="nav" href="#ch1">壹、緒論：數位治理發展的背景</a>
+  <a class="nav sub" href="#s1-1">數位治理的崛起</a>
+  <a class="nav sub" href="#s1-2">物聯網（IoT）的崛起</a>
+  <a class="nav sub" href="#s1-3">大數據的出現與應用</a>
+
+  <h3>貳 數位轉型</h3>
+  <a class="nav" href="#ch2">貳、數位轉型</a>
+  <a class="nav sub" href="#s2-1">數位轉型的意涵（SMACIT）</a>
+  <a class="nav sub" href="#s2-2">政府數位轉型的範圍與案例</a>
+
+  <h3>參 智慧政府與AI</h3>
+  <a class="nav" href="#ch3">參、智慧政府與人工智慧</a>
+  <a class="nav sub" href="#s3-1">電子化政府到智慧政府</a>
+  <a class="nav sub" href="#s3-2">智慧政府行動方案2.0</a>
+  <a class="nav sub" href="#s3-3">AI定義與判別式演算法</a>
+  <a class="nav sub" href="#s3-4">生成式AI特徵與基本原理</a>
+  <a class="nav sub" href="#s3-5">生成式AI公務運用與風險</a>
+  <a class="nav sub" href="#s3-6">生成式AI參考指引十要點</a>
+  <a class="nav sub" href="#s3-7">AI運用六大案例</a>
+
+  <h3>肆 價值主張圖</h3>
+  <a class="nav" href="#ch4">肆、數位應用設計：價值主張圖</a>
+  <a class="nav sub" href="#s4-1">顧客素描：任務／痛點／獲益</a>
+  <a class="nav sub" href="#s4-2">價值地圖：服務／解方／引擎</a>
+  <a class="nav sub" href="#s4-3">價值適配與三階段</a>
+
+  <h3>伍 量子科技</h3>
+  <a class="nav" href="#ch5">伍、量子科技</a>
+  <a class="nav sub" href="#s5-1">量子運算核心能力與挑戰</a>
+  <a class="nav sub" href="#s5-2">臺灣量子運算國家戰略</a>
+
+  <h3>陸 結語</h3>
+  <a class="nav" href="#ch6">陸、結語</a>
+
+  <h3>柒 案例演練</h3>
+  <a class="nav" href="#ch7">柒、案例情境演練</a>
+  <a class="nav sub" href="#s7-1">案例一：交通事故報告難題</a>
+  <a class="nav sub" href="#s7-2">案例二：火災預防宣導</a>
+  <a class="nav sub" href="#s7-3">案例三：違規漁作防治</a>
+</nav>
+
+<main>
+  <h1 class="title">智慧政府與數位服務｜簡報深讀筆記</h1>
+  <div class="subtitle">115年度警佐警察人員晉升警正官等訓練・依課程簡報（71頁）整理</div>
+  <div class="toolbar">用途：考前複習重點、理解概念脈絡、練習案例情境題。</div>
+  <div class="notice">本科目僅有簡報教材（共71頁），並無搭配之教材PDF可供深讀對照。本筆記已將簡報中原本條列式的關鍵詞，展開還原為完整通順的說明段落，並保留原簡報所引用的學者定義、案例、數據與圖片來源網址，同時整理成表格與速記口訣方便記憶。閱讀時可視需求，快速瀏覽卡片重點，或逐段細讀理解脈絡。</div>
+
+  <section class="chapter" id="ch1">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c1)">壹</div><h2>緒論：數位治理發展的背景</h2></div>
+
+    <h3 class="sec" id="s1-1">一、數位治理的崛起</h3>
+    <div class="card">
+      <p><span class="kw">數位治理 digital governance</span>之所以能夠崛起，根本的驅動力量主要來自於資通訊科技（<span class="kw">ICTs, information and communication technologies</span>）領域的快速發展，包括社群媒體（social media）、智慧型手機與載具（smart phone and devices）、物聯網（internet of things, IoT）、大數據以及人工智慧等相關技術與應用日新月異的演進。身處在這樣一個數位治理不斷發展的環境當中，民眾與政府不論是在連結性、使用者參與性、可移動性、可運用性，或是可運算性等各個面向，都正在見證著一種前所未有的發展程度。</p>
+      <p>換言之，民眾透過各類型數位化管道與政府互動的需求大幅提升；另一方面，政府也不斷努力創新，嘗試提供以民眾為中心的線上服務。因此，作為現代公共管理者，關鍵的核心思考在於：應該如何透過數位治理有關的策略性創新，並運用各式先驅性的數位科技，來達成公共價值實踐的最大化，這正是眼前公部門所面臨最大的挑戰。</p>
+    </div>
+
+    <h3 class="sec" id="s1-2">二、物聯網（IoT）的崛起</h3>
+    <div class="card">
+      <p><span class="kw">物聯網 IoT, internet of things</span>是連結各式各樣裝置的網路，其中還包含了協助所有裝置與雲端之間相互通訊的技術。如此一來，便可以使這些裝置能夠收集和交換資料，並藉由通訊技術產生自動化或智慧化的可能性。由於電腦晶片的平價普及與高頻寬通信技術的出現，現在每天都有數以萬計的裝置與網路進行連結，這也意味著日常生活中的各種裝置，都可以使用感測器收集資料，並且智慧化地回應使用者的需求。</p>
+      <p>物聯網的應用範圍除了延伸到電腦和智慧型手機以外，更涵蓋了許多不同的日常用品，例如洗衣機、汽車、手錶、眼鏡、鞋子等，也因而造就了智慧家庭、智慧醫療到智慧運輸等各個不同領域的創新運用。</p>
+    </div>
+
+    <h3 class="sec" id="s1-3">三、大數據的出現與應用</h3>
+    <div class="card">
+      <h4 class="sub">（一）Web 3.0 與大數據時代的到來</h4>
+      <p><span class="kw">Web 3.0</span>與陸續出現的資通訊科技，將會持續推出更多可能性，其中一項重要特徵是對於無線網路存取點與無線網路的大量使用。相較於第四代無線網路技術最高每秒可提供1 gigabyte的傳輸，第五代無線網路技術則提升到每秒10 gigabyte的可能性。結合智慧型手機使用的蓬勃成長，第五代無線網路技術將創造出一種從「行動化第一（mobile-first）」轉換到「行動化唯一（mobile-only）」的環境。</p>
+      <p>在Web 3.0的情境之下，網路本身就是一個資料庫。透過複雜的演算法針對更多機器可讀取的資料進行運算，使得網路成為了資料庫，進而衍生出透過大數據運用來挖掘管理知識，甚至透過資料視覺化的方式來引導決策，更進一步可能引導出人工智慧來加強個人化服務與管理的轉型。</p>
+      <div class="data">
+        全球資料量規模（依簡報引用數據）：<br>
+        ・每天產生約2.5 Quintillion（百萬兆）位元組的資料<br>
+        ・全球目前已累積約64 Zettabytes（十億兆位元組）的資料<br>
+        ・預計到2025年，全球將產生高達181 Zettabytes的資料<br>
+        ・其中約70%的資料來自使用者產生的內容（User-generated content）
+      </div>
+      <p class="cite">資料來源：https://www.demandsage.com/big-data-statistics/</p>
+
+      <h4 class="sub">（二）大數據廣泛應用的案例</h4>
+      <p><b>Netflix的推薦演算法</b>：Netflix試圖運用更多用戶行為資料（包括用戶觀看的內容、使用設備、觀看時間、觀看頻率、觀看地點），開始以機器學習（Machine Learning）來建立影片推薦演算法，藉此挖掘更多傳統rule-based演算法可能遺漏、但對預測顧客收視偏好相當有幫助的重要資訊，例如觀看影片的順序、不同因素之間的交互作用。此外，Netflix還會根據不同使用者的行為態樣，以客製化的方式為同一部影片製作不同的海報，來迎合不同使用者的偏好。</p>
+      <p><b>日本東北大地震的災後大數據分析</b>：透過分析地震後一週內約一億八千萬條推特推文、事發當天該地區140萬輛汽車的導航紀錄，以及災民手機定位等行動資料，研究人員發現許多民眾在地震發生後，都開車立即掉頭趕回家、希望去接家人，但最後卻卡在車陣裡，直到無情的海嘯來臨。此案例說明大數據分析除了商業應用外，也能協助理解災害中的人類行為模式，作為未來防災應變的參考。</p>
+      <p class="cite">資料來源：https://www.storm.mg/lifestyle/85435</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch2">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c2)">貳</div><h2>數位轉型</h2></div>
+
+    <h3 class="sec" id="s2-1">一、數位轉型的意涵（SMACIT）</h3>
+    <div class="card">
+      <p>學者Vial（2019）針對過去許多不同數位轉型定義進行歸納，認為<span class="kw">數位轉型 digital transformation</span>像是一個連續的過程，在這個過程中，透過資訊（information）、運算（computation）、通訊（communication）與連結（connectivity）技術的整合，來觸發實體本質上的顯著改變，達成實體的改善與提升。這個定義主要包含兩個重要的關鍵概念：「數位科技」與「顯著的改變」。</p>
+      <p><b>（一）數位科技</b>：這裡所謂的數位科技，主要係指社群科技（social network technologies）、行動科技（mobile technologies）、大數據分析（big data analysis）、雲端運算（cloud computing）和物聯網（the Internet of Things, IoT），並統稱為<span class="kw">SMACIT</span>。這些科技整合性的具體體現，主要像是人工智慧（artificial intelligence）、區塊鏈（blockchain）、機器人（robotics）和虛擬實境（virtual reality）。因此，數位轉型與過去單純透過資訊系統導入所產生的變遷，被明顯區分開來。</p>
+      <div class="mnemonic">SMACIT口訣：Social（社群）＋Mobile（行動）＋Analytics（大數據分析）＋Cloud（雲端）＋IoT（物聯網）＝SMACIT，是數位轉型所整合運用的核心科技組合。</div>
+      <p><b>（二）顯著的改變</b>：數位轉型所觸發的改變，主要涉及基礎設施、產品、服務、業務流程、業務模式、組織策略、組織內部關係，以及組織與組織之間的網絡關係。對於政府部門的數位轉型而言，並不僅僅是引進前述這些科技性能而已，還需要一個基本的公共部門組織結構、流程和文化的改變。這些可能涉及機關組織結構的調整、公民使用公共服務時與提供服務機關在行政關係上的轉變、機關之間與外部網絡關係的改變，甚至官僚文化本身的質變。</p>
+    </div>
+
+    <h3 class="sec" id="s2-2">二、政府數位轉型的範圍與案例</h3>
+    <div class="card">
+      <h4 class="sub">（一）運用數位科技改善服務的遞送</h4>
+      <p>數位轉型的結果是服務模式的澈底改變，產生與客戶嶄新互動的方式。在公共部門相關研究文獻中，數位轉型的重點並不在於創造新的業務模式，而是在於努力使服務提供更有效率，並增加市民的可及性（Meijer &amp; Bekkers, 2015）。</p>
+      <div class="case-box">
+        <h4>案例：高雄市農業局大數據整合</h4>
+        <p>高雄市農業局串聯農業部、氣象署、國家災防中心、民生公共物聯網、國家高速網路與計算中心，以及環境部公開資訊等大數據，並數位化年代久遠、人為干擾的農情資訊，產生即時、精準、視覺化的成果，作為作物產銷分析、防災告警的基礎。並透過整理農試所資料，建立作物預警條件，如可能的影響、防範建議及復耕參考，再以圖台化呈現，協助農民減災防災。</p>
+        <p class="cite">資料來源：第七屆政府服務獎－得獎機關彙編</p>
+      </div>
+
+      <h4 class="sub">（二）政府數位服務的廣義／狹義定義</h4>
+      <p>政府透過數位方式提供服務，其定義可區分為廣義與狹義（Rooks, Matzat &amp; Sadowski, 2017）：<b>廣義的定義</b>集中在運用網際網路和資通訊技術，為公民提供政府資訊；<b>狹義的定義</b>則著重在運用資通訊技術為公民提供服務。另外還有其他定義強調運用資通訊科技與公民進行互動（Ma &amp; Zheng, 2017）。整體而言，過去研究政府運用數位科技改善服務遞送時，主要將焦點放在政府內部的改變，也就是將服務的遞送改為線上化，但這種改變與服務的重新設計或重新評估其實無關；同時通常側重於技術創新的使用方式，最主要是透過網際網路提供服務。Meijer與Bekkers（2015）批評，過往有關政府運用數位科技的研究都側重於解釋技術和創新所產生的漸進式變遷，而未觸及更深層的組織變革。</p>
+
+      <h4 class="sub">（三）運用數位科技改變組織文化與公民關係</h4>
+      <p>公共部門以外的創新技術發展，正在改變公民對政府提供更高品質數位服務的期望。即使期望很高，數位轉型通常仍被視為必須產生組織文化的變革；同時公部門也應該意識到有必要改善服務遞送，並透過增加透明度、廉潔度及公民參與度來改善公共服務（Luna-Reyes &amp; Gil-Garcia, 2014；Nograsek &amp; Vintar, 2014）。Meijer（2015）認為，透過政府運用數位科技，公民的角色變得更加活躍，公民和其他外部利害關係人被視為協作的角色，而不只是政府服務的顧客。</p>
+      <div class="case-box">
+        <h4>案例：農地違章工廠回報系統（Disfactory）</h4>
+        <p>提供民眾線上匿名陳情檢舉，並鼓勵民眾一起上線協助比對判斷空拍圖的途徑，來協助找出違法農地工廠佔據農地的情形。此案例展現了公民從單純的服務接受者，轉變為與政府協作、共同生產治理成果的角色。</p>
+        <p class="cite">資料來源：https://about.disfactory.tw/</p>
+      </div>
+
+      <h4 class="sub">（四）運用數位科技帶來價值改變</h4>
+      <p>Berman（2012）指出，數位轉型將導致典範的轉換，政府與公民之間將會出現高度的連接與協作，其中包含許多活動：共同設計、共同創造、共同生產、共同營銷、共同籌資。Cordella與Paletti（2018）也認為，資通訊技術具有實現聯合生產的潛力，並為公民和利害關係人提供了一種新的參與方式來創造社會的價值。</p>
+      <div class="case-box">
+        <h4>案例：2023年總統盃黑客松「虎口拔牙計畫」</h4>
+        <p>透過交通事故資料數位化、大數據事故指標分析、實景3D改善建議系統，以及全民警示系統等四個步驟，落實公民參與，降低路口危險事故。參與團隊十分多元，包括內政部國土管理署都市基礎工程組、臺中市政府交通局、嘉義市政府警察局、鼎漢國際工程顧問股份有限公司、中華民國脊髓損傷者聯合會，以及國立臺灣科技大學資訊工程學系。</p>
+        <p class="cite">資料來源：https://presidential-hackathon.taiwan.gov.tw/teams.html</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch3">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c3)">參</div><h2>智慧政府與人工智慧</h2></div>
+
+    <h3 class="sec" id="s3-1">一、電子化政府到智慧政府的推動歷程</h3>
+    <div class="card">
+      <p>我國自1980年代起，歷經電子化政府共5個階段的推動，至2021年正式邁入數位政府階段，第六階段的目標即是打造民眾信賴的智慧政府。負責的主管機關為<b>國家發展委員會資訊管理處</b>，主要業務為推動全國性的資訊管理政策規劃、資通訊應用系統推動，以及資訊人力發展。</p>
+      <p class="cite">資料來源：https://reurl.cc/dVlKZ2</p>
+    </div>
+
+    <h3 class="sec" id="s3-2">二、智慧政府行動方案（服務型智慧政府2.0）</h3>
+    <div class="card">
+      <p>第六階段電子化政府計畫即為「<span class="kw">服務型智慧政府2.0推動計畫</span>」（2021－2025年），核心精神在於運用開放資料強化智慧政府的治理能量，並開放民間多元應用，創造資料經濟；同時各級政府應落實資料治理，建構需求導向之一站式智慧雲端政府服務，實踐「民眾有感之開放政府智慧治理」的願景。</p>
+      <p>「智慧政府行動方案」制訂了3大目標：</p>
+      <ol>
+        <li>開放資料透明、極大化加值應用</li>
+        <li>鏈結治理網絡、優化決策品質</li>
+        <li>整合服務功能，創新智慧服務</li>
+      </ol>
+      <p>並在3大目標之下，明訂7項推動策略，具體落實開放資料、跨機關治理網絡串聯，以及智慧服務創新等面向的政策方向。</p>
+      <p class="cite">資料來源：https://reurl.cc/DvEyaR</p>
+    </div>
+
+    <h3 class="sec" id="s3-3">三、人工智慧的定義與判別式演算法</h3>
+    <div class="card">
+      <h4 class="sub">（一）人工智慧的定義</h4>
+      <p>關於AI，目前並沒有普遍接受的統一定義（Wirtz et al., 2019）。<span class="kw">人工智慧 AI, artificial intelligence</span>可以被理解為能夠進行人類思考和行動的機器或資訊系統，可以執行通常需要人類智慧的任務（例如決策和學習），或是能夠進行類似人類的理性思考和行動，甚至像人類一樣考慮並分析所有的選擇，藉此找到問題的最佳解決方案。簡而言之，AI是電腦科學其中的一個分支，專注於開發能夠執行傳統上需要人類智慧任務的智慧機器或資訊系統，這些相關的任務包括理解自然語言、辨識、解決問題、經驗中學習並做出決策等（Russell &amp; Norvig, 2021）。</p>
+
+      <h4 class="sub">（二）分辨式AI與生成式AI的區別</h4>
+      <p><span class="kw">分辨式 AI</span>主要用於辨別資料的不同，並進行分群或分類；<span class="kw">生成式 AI</span>則是利用資料，理解資料並學習生成資料。舉例來說：假設有一群沒有犯罪紀錄民眾的資料集，以及一群有犯罪紀錄民眾的資料集，將資料匯進分辨式AI模型後，模型可以辨別新的資料屬於沒犯罪還是有犯罪；而在生成式AI模型裡，則可以進一步生成可能的犯罪案例情境。</p>
+      <div class="mnemonic">分辨式AI＝「辨別＋分類」（找出資料屬於哪一類）；生成式AI＝「理解＋創造」（產生全新的內容）。</div>
+
+      <h4 class="sub">（三）常見判別式演算法、舉例與運用領域</h4>
+      <table>
+        <tr><th>演算法</th><th>舉例說明</th><th>運用領域</th></tr>
+        <tr><td><b>線性迴歸</b></td><td>根據各村里的人口特徵、社會經濟特質和其他空間特徵，預測打119的機會</td><td>風險預測、醫學、社會科學</td></tr>
+        <tr><td><b>類神經網路</b></td><td>車牌辨識或罪犯人臉辨識問題</td><td>圖像識別、語音識別、自然語言處理、遊戲AI</td></tr>
+        <tr><td><b>K-近鄰演算法</b></td><td>假設轄區內大多數周遭社區都有火災發生，那麼鄰近的社區也很可能有火災風險，即依據這種鄰近概念進行分類</td><td>推薦系統、模式識別、文本分類</td></tr>
+        <tr><td><b>K-均值聚類</b></td><td>業務主管手上有一批更生保護對象的個人特徵及工作生活紀錄資料，可用K-均值聚類將對象分成多個群組，針對不同類型對象制定服務規劃，實現差異化服務</td><td>客戶分群、市場分析</td></tr>
+        <tr><td><b>單純貝氏分類器</b></td><td>判斷一封郵件是垃圾郵件還是正常郵件；根據郵件中出現的詞語特徵計算機率，例如出現「免費」、「投資」等詞語時，極可能被判斷為垃圾郵件</td><td>垃圾郵件檢測、文字內容分類、情緒分析</td></tr>
+        <tr><td><b>邏輯迴歸</b></td><td>海巡同仁根據漁船的船齡、註冊、出發時間等資料，分析預測是否從事走私行為</td><td>醫療診斷、廉政風險評估、行銷分析</td></tr>
+        <tr><td><b>決策樹</b></td><td>警政部門分析師根據房屋年齡、屋主、環境等資料，透過決策樹逐步分類，了解最有可能發生火災的房屋特徵，規劃未來預防精進方向</td><td>市場分析、風險管理、醫療診斷</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="s3-4">四、生成式AI特徵、應用與基本原理</h3>
+    <div class="card">
+      <h4 class="sub">（一）生成式AI的定義與傳統AI的差異</h4>
+      <p><span class="kw">生成式 AI, Generative AI</span>是一種新興的人工智慧類型，它能夠創造新的內容，例如文字、圖像、音樂和影片；而傳統AI主要用於分析和預測資料。這是兩者最核心的差異：傳統AI偏向「判斷」，生成式AI偏向「創造」。</p>
+      <p class="cite">資料來源：CB-Insights_Generative-AI-Bible</p>
+
+      <h4 class="sub">（二）生成式AI的四大主要特徵</h4>
+      <table>
+        <tr><th>特徵</th><th>說明</th></tr>
+        <tr><td><b>創造力</b></td><td>能夠產生獨特且原創的內容</td></tr>
+        <tr><td><b>多模態</b></td><td>能夠產生各種格式的內容，如文字、圖像、音樂和影片</td></tr>
+        <tr><td><b>自迴歸</b></td><td>根據先前的輸出，產生連貫且有意義的後續內容</td></tr>
+        <tr><td><b>情緒分析</b></td><td>根據情緒分析給予相對應的回應，使內容更人性化與客製化</td></tr>
+      </table>
+
+      <h4 class="sub">（三）生成式AI的五大主要應用</h4>
+      <table>
+        <tr><th>應用領域</th><th>說明</th></tr>
+        <tr><td><b>內容創作</b></td><td>自動產生文章、故事、詩歌和其他形式的文字內容</td></tr>
+        <tr><td><b>藝術生成</b></td><td>產生逼真的圖像、繪畫和雕塑</td></tr>
+        <tr><td><b>軟體開發</b></td><td>自動產生程式碼和演算法</td></tr>
+        <tr><td><b>音樂創作</b></td><td>產生原創的音樂作品</td></tr>
+        <tr><td><b>政府服務</b></td><td>改善公共服務的提供，例如自動化文件處理和提供個性化建議</td></tr>
+      </table>
+      <p>簡報中也列出目前常用的生成式人工智慧五大類型，依產出內容形式區分為：文本生成、圖片生成、音樂生成、語音生成，以及簡報生成。</p>
+
+      <h4 class="sub">（四）生成式AI的基本運作原理</h4>
+      <p>生成式AI就像一個很會玩文字接龍的軟體，文字生成AI其實只是預測下一個字的AI機器人，其訓練目標就是要把它訓練成「很會接話」的模型。在使用上，可以透過<span class="kw">提示工程 Prompt</span>，用類似催眠術的方式讓ChatGPT扮演特定角色，讓功能發揮得更加精準，常見手法包括：設定專業人物身分、要求換句話說、模擬特定風格，甚至以情緒勒索的語氣提問。而ChatGPT之所以「身段更軟、道德更高、胡說八道的機率更低」，是因為它透過AI老師的方式來訓練自己，也就是經過對話品質的持續調校與把關。</p>
+
+      <h4 class="sub">（五）開源與閉源大語言模型</h4>
+      <table>
+        <tr><th>類型</th><th>特性</th></tr>
+        <tr><td><b>開源式大語言模型</b></td><td>支持免費分享和調整AI模型參數</td></tr>
+        <tr><td><b>閉源式大語言模型</b></td><td>屬於專有的基礎模型，通常由大型科技公司擁有</td></tr>
+      </table>
+      <p class="footnote">補充說明：簡報另以圖表方式比較不同語言模型的訓練語料規模（單位：億字），原始圖表數字擷取為約4990億字、10億字、3億字，以及2至2.5億字等不同量級的比較，惟簡報未逐一標註對應的模型名稱，此處僅忠實記錄圖表所呈現的規模級距供參考。</p>
+    </div>
+
+    <h3 class="sec" id="s3-5">五、生成式AI公務運用與風險</h3>
+    <div class="card">
+      <h4 class="sub">（一）生成式AI在公務上的運用</h4>
+      <ul class="pts">
+        <li><b>撰寫信件、公文與文宣內容</b>：例如提供AI相關詐騙資訊，利用AI來產出相關反詐宣傳內容</li>
+        <li><b>會議報告與紀錄聽抄</b>：若會議報告內容太過繁瑣，可由AI代勞朗讀，並協助聽抄所有討論內容</li>
+        <li><b>行政國際化的文書及表格翻譯</b>：例如警政國際化業務，可運用生成式AI協助各類資訊及表格多語化</li>
+        <li><b>智慧客服機器人</b>：協助值班同仁進行例行且大量的各項民眾請求回覆</li>
+      </ul>
+
+      <h4 class="sub">（二）生成式AI運用的公務風險</h4>
+      <ul class="pts">
+        <li>將公務文件整篇放到生成式AI進行翻譯（涉及資安與機敏資料外洩風險）</li>
+        <li>在與生成式AI問答的過程中透漏個資與機敏資料</li>
+        <li>完全相信生成式AI的回復內容</li>
+        <li>機關或承商（非公益性質）直接使用生成式AI產生的圖片、影音（涉及著作權疑慮）</li>
+        <li>政策研析都仰賴生成式AI，卻不自知地被其牽著走</li>
+        <li>無法判斷他人提供的素材是否由生成式AI產生，導致自己不慎侵權</li>
+      </ul>
+      <div class="mnemonic">六大風險口訣：翻譯外洩、問答洩密、盡信回復、逕用產出（圖影）、被牽著走、誤觸侵權——牢記「不能全篇丟、不能講機密、不能照單全收、不能亂拿圖」。</div>
+    </div>
+
+    <h3 class="sec" id="s3-6">六、行政院及所屬機關（構）使用生成式AI參考指引十要點</h3>
+    <div class="card">
+      <p>為使行政院及所屬機關（構）（以下簡稱各機關）使用生成式AI以提升行政效率，並避免其可能帶來之國家安全、資訊安全、人權、隱私、倫理及法律等風險，特就各機關使用生成式AI應注意之事項，訂定本參考指引，共計10項要點：</p>
+      <table>
+        <tr><th>#</th><th>要點內容</th></tr>
+        <tr><td>1</td><td>生成式AI產出之資訊，須由業務承辦人就其風險進行客觀且專業之最終判斷，不得取代業務承辦人之自主思維、創造力及人際互動</td></tr>
+        <tr><td>2</td><td>製作機密文書應由業務承辦人親自撰寫，禁止使用生成式AI。前項所稱機密文書，指行政院《文書處理手冊》所定之國家機密文書及一般公務機密文書</td></tr>
+        <tr><td>3</td><td>各機關人員使用生成式AI時，應秉持負責任及可信賴之態度，掌握自主權與控制權，並秉持安全性、隱私性與資料治理、問責等原則，不得恣意揭露未經公開之公務資訊、不得分享個人隱私資訊，及不可完全信任生成資訊</td></tr>
+        <tr><td>4</td><td>業務承辦人不得向生成式AI提供涉及公務應保密、個人及未經機關（構）同意公開之資訊，亦不得詢問可能涉及機密業務或個人資料之問題。但封閉式地端部署之生成式AI模型，於確認系統環境安全性後，得依文書或資訊機密等級分級使用</td></tr>
+        <tr><td>5</td><td>數位發展部參酌國際間AI相關指引，訂定「公部門人工智慧應用參考手冊」供各機關參考運用；各機關不可完全信任生成式AI產出之資訊，亦不得以未經確認之產出內容直接作成行政行為或作為公務決策之唯一依據</td></tr>
+        <tr><td>6</td><td>各機關使用生成式AI作為執行業務或提供服務輔助工具時，應適當揭露</td></tr>
+        <tr><td>7</td><td>使用生成式AI應遵守資通安全、個人資料保護、著作權及相關資訊使用規定，並注意其侵害智慧財產權與人格權之可能性。各機關得依使用生成式AI之設備及業務性質，訂定使用生成式AI之規範或內控管理措施</td></tr>
+        <tr><td>8</td><td>各機關應就所辦採購事項，要求得標之法人、團體或個人注意本參考指引，並遵守各機關依前點所訂定之規範或內控管理措施</td></tr>
+        <tr><td>9</td><td>公營事業機構、公立學校、行政法人及政府捐助之財團法人使用生成式AI，得準用本參考指引</td></tr>
+        <tr><td>10</td><td>行政院及所屬機關（構）以外之機關，得參照本參考指引，訂定使用生成式AI之規範</td></tr>
+      </table>
+      <div class="qa"><b>Q：業務承辦人可以完全依賴生成式AI的產出結果做成行政決定嗎？</b><br>A：不可以。依第1點與第5點要點，生成式AI產出之資訊仍須由業務承辦人進行客觀專業之最終判斷，不得以未經確認之產出內容直接作成行政行為，或作為公務決策的唯一依據。</div>
+    </div>
+
+    <h3 class="sec" id="s3-7">七、人工智慧的運用與思考（六大案例）</h3>
+    <div class="card">
+      <h4 class="sub">（一）數位民主：輿情蒐集</h4>
+      <p>政府運用資通訊科技蒐集網路輿情，善用民意創造多元且公平的價值，並透過開放資料鼓勵民眾協作參與，藉此產生新的管理知識或運用方式。所謂<span class="kw">輿情</span>，是指一定時期、一定範圍的民眾對社會現實的主觀反映，政府可透過資訊技術與資訊管理，瞭解社會現況及輿論焦點，供警方在治安決策上作為參考依據。</p>
+
+      <h4 class="sub">（二）智慧安檢</h4>
+      <p>TPOC台灣議題研究中心在2024年，曾針對六都進行消防與公共安全的情緒分析，發現在相關議題上，桃園市獲得最高的好感度，正面討論文章共2,699則，負面文章1,775則，好感度達1.52。從文章內容可以發現，市府決心拆除違規鐵皮屋、運用AI進行「智慧安檢」等作為，讓民眾相當有感。</p>
+      <p class="cite">資料與圖片來源：https://www.tpoc.com.tw/ArticlePage/80ee6ecb-64e6-11ef-861a-06eea1170bbf</p>
+
+      <h4 class="sub">（三）數位服務：防災預警案例</h4>
+      <p><b>案例情境</b>：在地狹人稠且交通繁忙的狀況下，爭取搶救時間尤為重要。以往在離峰時段（深夜、清晨）或偏遠地區，若沒有民眾協助報案，容易造成災情擴大或延誤就醫的情形。</p>
+      <p><b>案例解析</b>：消防局運用AI監控影像防災辨識系統，可透過各鄉鎮的路口監視器，自動辨識出火災、水災及車禍交通事故等現場影像資訊，進而將影像資訊回傳119勤務指揮中心並提供預先示警，讓執勤員即早發現災情、了解現況及掌握精確事發地點，爭取每分每秒的派遣時效，並精準調度人力、車輛，讓消防員快速抵達現場，降低民眾生命財產損失。</p>
+
+      <h4 class="sub">（四）數位行政：道路交通安全改善案例</h4>
+      <p><b>案例情境</b>：過去道路主管機關需蒐集並分析多年交通事故資料後，才能發現路口的安全問題，並加以改善以防止事故繼續發生。</p>
+      <p><b>案例解析</b>：為防範事故於未然，可結合無人機空拍攝影及AI影像辨識，運用於解決路口交通衝突問題。無人機以俯視角度清楚拍攝路口人、車流動情形，再運用AI影像辨識技術將影像轉換成人、車流動的軌跡，最後透過軟體分析軌跡資料，找出路口易發生交通衝突之點位及型態，也就是最容易發生車禍的地方，藉以協助道路主管機關診斷路口可能的危險熱區，並預先進行改善，同時可評估改善成效。</p>
+
+      <h4 class="sub">（五）數位建設：火災風險預測案例</h4>
+      <p><b>案例情境</b>：重大火災及一般住宅老舊公寓等火災時常發生。</p>
+      <p><b>案例解析</b>：地方政府消防局為考慮將有限資源精準投入高風險趨勢，可整合大數據，例如安全檢查資料，並整合工務局、民政局、警察局、社會局、衛生局等資料庫，確認建築物屋齡、避難弱勢族群、消防設備違規資料等，訓練、測試人工智慧技術，藉此建立「<span class="kw">火災風險預測模型</span>」，用以預測火災風險值，研判出建築物及場所納管優先順序、消防安全檢查強度，以及住宅用火災警報器安裝區域等重要建議。</p>
+
+      <h4 class="sub">（六）數位社會：智慧辨識與假訊息防治</h4>
+      <p>政府需要建立個人資料保護的議題，避免開放資料或個人資料運用可能產生的風險。而社群媒體中假訊息的充斥，也讓政府如何處置並提升閱聽人的識讀能力變得更為重要。警察可與Facebook、事實查核中心跨域合作，建立假消息的防護網，創造植基於言論自由的有效打假模式，並多利用AI來進行智慧辨識。若警察同仁宣傳的重擔相對較重，也可以考慮運用生成式AI協助製作反詐騙的宣傳內容。</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch4">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c4)">肆</div><h2>數位應用設計：價值主張圖的討論</h2></div>
+
+    <div class="card">
+      <p>「價值主張年代」（Value proposition design: How to create products and services customers want）一書主要著重於深入分析價值主張與目標族群這兩個範疇，透過對使用對象的深入瞭解，讓企業的價值主張可以更快速地產出商品或服務，來回應使用者的需求（Osterwalder, 2014）。具體而言，<span class="kw">價值主張圖 Value Proposition</span>的主要目的是為顧客創造價值，在建立商業模式之前，透過價值主張圖來瞭解顧客的輪廓與樣貌，並確認組織所提供的服務或產品是否能滿足顧客。價值主張圖主要由「顧客素描」與「價值地圖」兩部分組成。簡報中以受訓人員作為顧客素描與價值地圖所討論的顧客範例。</p>
+    </div>
+
+    <h3 class="sec" id="s4-1">一、顧客素描：任務、痛點、獲益</h3>
+    <div class="card">
+      <h4 class="sub">（一）顧客的任務（Jobs）</h4>
+      <p>顧客素描的第一步，是用顧客自己的想法，描繪其所想要完成的任務，主要是顧客想要完成的工作、想要解決的問題。例如：「除暴安良」是結果而不是任務，真正的任務應該是「如何更有效地除暴安良」。顧客的任務可依照類型分為以下三種：</p>
+      <table>
+        <tr><th>任務類型</th><th>說明</th><th>舉例</th></tr>
+        <tr><td><b>功能性任務</b></td><td>指顧客需要完成的工作或是要解決的問題</td><td>處理車禍紀錄</td></tr>
+        <tr><td><b>社交性任務</b></td><td>指顧客想要在他人眼中所呈現的形象</td><td>想要營造專業感、建立民眾對警察的信任感</td></tr>
+        <tr><td><b>個人／情緒性任務</b></td><td>指顧客想要的情緒狀態</td><td>警察執行任務時需要之安全的情緒滿足</td></tr>
+      </table>
+
+      <h4 class="sub">（二）顧客的痛點（Pains）</h4>
+      <p>確認完顧客的任務之後，接下來是描述顧客在執行任務的過程中，可能遇到的困難、風險以及負面的結果，這些都稱為顧客的痛點。痛點對照前述的三種任務類型，也可分為對應的三種：</p>
+      <ul class="pts">
+        <li><b>功能性痛點</b>：造成顧客在執行任務的過程中所發生的阻礙、限制</li>
+        <li><b>社交性痛點</b>：顧客在執行任務時，無法營造出自己所希望的形象</li>
+        <li><b>情緒性痛點</b>：顧客在執行任務時體驗很差、執行起來感受上很糟</li>
+      </ul>
+      <p>痛點要區分出嚴重程度，從「非常痛」到「普通」，並針對每項痛點進行評估與排序；列出痛點時要具體且量化，例如民眾覺得救護車等待時間太久，就要精確描述民眾等待了幾分鐘會覺得太久，而不能只是模糊地說「等太久」。</p>
+
+      <h4 class="sub">（三）顧客的獲益（Gains）</h4>
+      <p>描述顧客想要的結果，或是顧客企圖尋求的具體利益，主要類型如下：</p>
+      <table>
+        <tr><th>獲益類型</th><th>說明</th></tr>
+        <tr><td><b>必要獲益</b></td><td>一定要有的</td></tr>
+        <tr><td><b>預期獲益</b></td><td>顧客想得到的、希望有的話會更好</td></tr>
+        <tr><td><b>渴望獲益</b></td><td>顧客想得到的、覺得有的話就太完美了</td></tr>
+        <tr><td><b>意料外獲益</b></td><td>超出顧客的預期，讓他們覺得驚喜</td></tr>
+      </table>
+      <p>獲益同樣需要進行排序，從一定要有到可有可無；在描述獲益的同時也要具體化，用比較級的方式來確認顧客的獲益（例如「更省時」而非單純的「省時」）。</p>
+
+      <div class="case-box">
+        <h4>顧客素描圖案例：交通警察取締超速</h4>
+        <p><b>顧客任務</b>：交通警察在取締超速車輛時，希望能夠更有效率、更全面性地取締超速者。</p>
+        <p><b>顧客痛點</b>：時常面對不知道民眾何時會產生超速，以及人力與設備數量上有限制等功能性痛點。</p>
+        <p><b>顧客獲益</b>：希望能夠更省時省力地取締超速，甚至能夠真正確實減少超速的現象。</p>
+        <table>
+          <tr><th>顧客任務</th><th>顧客痛點</th><th>顧客獲益</th></tr>
+          <tr><td>更有效率抓超速</td><td>民眾何時超速（不確定）</td><td>更省時省力抓超速</td></tr>
+          <tr><td>更全面性抓超速</td><td>人力與設備有限</td><td>確實減少超速</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <h3 class="sec" id="s4-2">二、價值地圖：產品服務、痛點解方、獲益引擎</h3>
+    <div class="card">
+      <p>完成顧客素描之後，接下來要針對顧客素描的內容，建構出對應的「價值地圖」，主要包含三個部分：</p>
+      <ul class="pts">
+        <li><b>產品與服務</b>：依據價值主張所設計出的產品與服務，可分為商品、面對面服務、數位的服務。在列出產品與服務時，要能具體指出這些服務對客戶的必要性程度，從不可或缺到可有可無</li>
+        <li><b>痛點解方</b>：描述你的產品與服務如何減輕顧客的困擾、痛苦，可以專注在其中一個痛點，不需要為顧客所提出的每個痛點都提供解方</li>
+        <li><b>獲益引擎</b>：描述你的產品與服務如何為顧客創造利益，與痛點解方一樣，專注在最能有效提升的產品即可</li>
+      </ul>
+      <div class="case-box">
+        <h4>價值地圖案例：延續超速取締案例</h4>
+        <p><b>產品與服務</b>：透過超速資料進行大數據分析，進而產生減少超速的效果。</p>
+        <p><b>痛點解方</b>：ETC區間測速，以及超速資料熱點分析，共兩個策略。</p>
+        <p><b>獲益引擎</b>：可以節省取締超速之人力，甚至可以透過熱點分析，針對超速取締產生更有對應性的策略。</p>
+        <table>
+          <tr><th>產品與服務</th><th>痛點解方</th><th>獲益引擎</th></tr>
+          <tr><td>超速資料大數據分析應用</td><td>ETC區間測速</td><td>節省取締超速之人力</td></tr>
+          <tr><td></td><td>超速資料熱點分析</td><td>更有策略性取締超速</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <h3 class="sec" id="s4-3">三、價值適配與三階段驗證</h3>
+    <div class="card">
+      <p>當「價值地圖」與「顧客素描」互相吻合的時候，即達到所謂<span class="kw">價值適配</span>的狀態。但要能找到適配的價值來對應顧客的痛點是相當困難的，就算找到了，也非常需要不斷持續維持，透過不斷的努力與更新來滿足顧客新產生的痛點。具體做法是對應價值地圖與顧客素描中的每一個項目，符合適配的就打勾，沒有符合適配也沒關係，重點是要能找到解決特定問題的解方。</p>
+      <p>一般而言，價值適配會經歷三種不同的階段：</p>
+      <table>
+        <tr><th>階段</th><th>說明</th></tr>
+        <tr><td><b>紙上談兵階段</b></td><td>透過產出的「顧客素描」結果，經過實驗證明配適後假設的解方是正確的，設計出相對應顧客素描中的價值主張</td></tr>
+        <tr><td><b>市場驗證階段</b></td><td>當組織能證明價值主張是能幫目標顧客創造價值的，顧客便願意嘗試組織所提出的解決方案</td></tr>
+        <tr><td><b>獲利潛力階段</b></td><td>證明價值主張是可以發展出營運模式的，可以開始進行營業擴展</td></tr>
+      </table>
+      <div class="mnemonic">價值適配三階段口訣：先「說得通」（紙上談兵）→ 再「有人信」（市場驗證）→ 最後「賺得到」（獲利潛力）。</div>
+      <div class="case-box">
+        <h4>完整價值適配圖案例：超速取締</h4>
+        <table>
+          <tr><th>顧客素描</th><th>對應內容</th><th>價值地圖</th><th>對應內容</th></tr>
+          <tr><td>顧客任務</td><td>更有效率抓超速／更全面抓超速</td><td>產品與服務</td><td>超速資料大數據分析應用</td></tr>
+          <tr><td>顧客痛點</td><td>民眾何時超速／人力與設備有限</td><td>痛點解方</td><td>ETC區間測速／超速資料熱點分析</td></tr>
+          <tr><td>顧客獲益</td><td>省時省力抓超速／確實減少超速</td><td>獲益引擎</td><td>節省取締超速之人力／更有策略性取締超速</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch5">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c5)">伍</div><h2>量子科技</h2></div>
+
+    <div class="card">
+      <p>本章圍繞四個核心提問展開：量子科技是什麼？量子科技可應用在哪？臺灣量子科技發展重點與現況如何？以及量子科技應用面臨哪些挑戰？</p>
+    </div>
+
+    <h3 class="sec" id="s5-1">一、量子運算核心能力與挑戰</h3>
+    <div class="card">
+      <p><span class="kw">量子運算</span>的核心潛力，源自其無與倫比的並行運算能力，能夠以指數級速度解決傳統電腦難以處理的複雜問題。</p>
+      <p><b>在AI領域的應用</b>：量子運算顯著提升了AI模型的訓練速度。相比傳統電腦，量子電腦能夠同時處理大量數據，使得深度學習模型的訓練過程大大加快，特別是在醫療影像分析、自動駕駛等高科技應用中發揮重要作用。</p>
+      <p><b>在醫藥研發的應用</b>：由於量子運算出色的分子模擬能力，量子電腦可加速藥物研發過程，縮短新藥開發週期，並提升其精確度。</p>
+      <p><b>技術挑戰：溫度要求</b>：量子運算對溫度的要求也是一大技術挑戰。大多數現代量子電腦需要在接近絕對零度的極低溫環境下運行，例如超導量子電腦通常運行於接近絕對零度的1%左右的環境中，這對冷卻技術提出了極高的要求。而臺灣在半導體製造和ICT產業的強項，特別是在高效能散熱和精密製造領域，為解決這些技術挑戰提供了堅實的基礎。</p>
+      <p class="cite">資料來源：https://reurl.cc/3kyO28</p>
+    </div>
+
+    <h3 class="sec" id="s5-2">二、臺灣量子運算國家戰略</h3>
+    <div class="card">
+      <p>行政院自2021年起啟動<span class="kw">國家量子運算戰略</span>，由國科會、中研院、經濟部等跨部會及大學共同組成量子國家隊。後續推動的「AI新十大建設」中，高速量子運算也是其中的關鍵建設之一，布局AI與量子運算關係到國防安全、資安及產業轉型，對臺灣的未來發展相當重要。</p>
+      <p><b>第一期（2022－2026年）</b>：集中國內產學界力量，專注在研究自主技術及培養相關人才。第一期的成果中，中研院已完成20個量子位元的量子電腦，清大也研究出新的超導體位元，以及臺灣自製的量子通訊網路。</p>
+      <p><b>第二期</b>：「AI新十大建設－高速量子運算國家戰略」提出四大戰略：啟動北部驗證平台、建置南部HPQC算力中心、發展產業供應鏈，並邀請國際合作共同開發軟體與系統。</p>
+      <p class="cite">資料來源：https://www.quantumtaiwan.org/tw/modules/news/article.php?storyid=25</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch6">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c6)">陸</div><h2>結語</h2></div>
+    <div class="card">
+      <p>Web 3.0的推展加上大數據與人工智慧的推波助瀾，社會不斷地在面對日新月異的數位發展與應用。私部門為了競爭生存，面對如此劇烈的數位轉型浪潮，需不斷進行應用上的創新及組織的變革。社會大眾除了接受私部門的服務外，也因為自身數位能力的提升，而對政府部門服務的數位化與國家數位發展充滿更高的期待。</p>
+      <p>相較於擁有彈性的私部門，政府部門受限於組織的結構、運作的模式，甚至是法令的限制，面對數位轉型的應變上顯得綁手綁腳。因此，在依法行政、重視課責的架構中，設計出可以嘗試創新與容許實驗失敗的可能空間，成為公部門必須思考的重要方向。</p>
+      <p>公部門除了不斷思考運用數位科技的同時，更重要的是需要將應用轉化成公共價值實踐的助力，使得政府的服務充滿效率、回應性、公平性、公開透明，甚至更具創新性。因此，作為公共價值捍衛者的政府，在追逐數位科技發展風潮的同時，應先回歸到公共服務的最初衷，再來思考數位轉型的方向與作法。</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch7">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c7)">柒</div><h2>案例情境演練（3則）</h2></div>
+    <div class="card">
+      <p>本章以三則實務案例情境，示範如何運用「顧客素描」與「價值地圖」的方法，分析基層執法或行政現場的問題，並提出可行的數位科技或AI應用解方，可作為申論題作答時援引的推理架構範本。</p>
+    </div>
+
+    <h3 class="sec" id="s7-1">案例一：交通警員處理車禍事故報告難題</h3>
+    <div class="case-box">
+      <h4>情境內容</h4>
+      <p>22歲的阿勇結訓分派至東部某縣市擔任交通警員，平日在尖峰時間最常面對許多突如其來的車禍意外，為了處理這些車禍意外，已經疲於奔命，回到辦公室後還須依規定於期限內完成車禍報告，令阿勇萌生離職的念頭。該縣縣長發現交通警員工作壓力太大，因此找了局長來討論，看看是否可以從數位科技或AI工具應用的角度，再邀集其他同仁討論，以協助降低工作負擔。</p>
+
+      <h4>案例問題解析</h4>
+      <p>若承辦人要處理本案，可先利用顧客素描的方法，針對交通警察在處理車禍事故時所要完成的任務、痛點與獲益具體列出。警員的任務主要是完成車禍現場紀錄：</p>
+      <table>
+        <tr><th>顧客任務</th><th>顧客痛點</th><th>顧客獲益</th></tr>
+        <tr><td>正確完成車禍現場紀錄</td><td>車禍現場手繪困難、無法詳細紀錄整個空間狀態</td><td>節省時間、避免錯誤與疏漏</td></tr>
+      </table>
+
+      <h4>價值地圖構思</h4>
+      <p>針對前述顧客素描圖建構出對應的價值地圖：</p>
+      <table>
+        <tr><th>產品與服務</th><th>痛點解方</th><th>獲益引擎</th></tr>
+        <tr><td>車禍實境紀錄系統</td><td>提供可以依現場實境進行繪製的服務</td><td>節省紀錄時間，甚至可以提高警員紀錄的正確性</td></tr>
+      </table>
+      <p class="cite">資料來源：廖興中繪製</p>
+    </div>
+
+    <h3 class="sec" id="s7-2">案例二：如何運用生成式AI導入火災預防宣導</h3>
+    <div class="case-box">
+      <h4>情境內容</h4>
+      <p>某消防局陳局長所服務的地區是個老舊房舍密度相當高的城市，常常在特定季節或不定時地發生許多大大小小的火災，該地區的火災風險便相當大，間接導致許多同仁還需要額外肩負宣導的責任。陳局長因此把負責教育訓練的科長找來討論，如何在平常能夠更有效地強化同仁的文宣能力，因此考慮透過數位科技或AI工具的運用來產生相關的應用可能。</p>
+
+      <h4>案例問題解析</h4>
+      <p>若承辦人要處理本案，可先利用顧客素描的方法，針對消防員在進行火災預防宣導時所要完成的任務、痛點與獲益具體列出。消防員的任務是針對不同對象進行宣導：</p>
+      <table>
+        <tr><th>顧客任務</th><th>顧客痛點</th><th>顧客獲益</th></tr>
+        <tr><td>創造更多不同受眾的宣導內容</td><td>若採委外可能導致成本過高，且不同對象可接受的風格也有不同</td><td>可以較低成本地創造多樣且不同風格的宣導內容（產製成本與時間大幅下降且內容具多元性）</td></tr>
+      </table>
+
+      <h4>價值地圖構思</h4>
+      <p>針對前述顧客素描圖建構出對應的價值地圖：</p>
+      <table>
+        <tr><th>產品與服務</th><th>痛點解方</th><th>獲益引擎</th></tr>
+        <tr><td>消防宣導生成式AI</td><td>運用生成式AI產製宣導文字或圖片</td><td>節省產製成本，甚至可以增加更多元性的客製化宣導內容</td></tr>
+      </table>
+      <p class="cite">資料來源：廖興中繪製</p>
+    </div>
+
+    <h3 class="sec" id="s7-3">案例三：如何運用數據熱點分析提升違規漁作防治</h3>
+    <div class="case-box">
+      <h4>情境內容</h4>
+      <p>現今捕魚技術相當發達，漁獲量大幅提升，導致臺灣漁業資源逐漸匱乏，也因此產生濫捕的行為，一旦這些漁業資源枯竭並遭到破壞之後，往往會造成不可逆轉的後果。於是臺灣或大陸漁船逐漸開始鋌而走險，轉往原本禁止捕魚的區域進行作業，近年這樣的情況越來越嚴重。海巡署廖署長於是把負責巡防業務的科長與資訊同仁一起找來討論，如何在平常能夠更有效地預防或預測可能發生非法捕魚作業的地點，藉以數位科技或AI工具，更有策略性或針對性打擊可能的違規事件，並降低這些事件的產生。</p>
+
+      <h4>案例問題解析</h4>
+      <p>若承辦人要處理本案，可先利用顧客素描的方法，針對海巡人員在管理或預防非法捕魚事件時所要完成的任務、痛點與獲益具體列出。海巡人員希望有效打擊非法漁作，減少出勤的頻率或是取締的成本：</p>
+      <table>
+        <tr><th>顧客任務</th><th>顧客痛點</th><th>顧客獲益</th></tr>
+        <tr><td>正確掌握可能非法漁作漁船或區域</td><td>定期或不定期巡邏，產生人力與設備的成本，而且常常沒有太多功效（無法掌握重點區域）</td><td>可以掌握到可能非法漁作的熱點，或是降低巡邏的成本</td></tr>
+      </table>
+
+      <h4>價值地圖構思</h4>
+      <p>針對前述顧客素描圖建構出對應的價值地圖：</p>
+      <table>
+        <tr><th>產品與服務</th><th>痛點解方</th><th>獲益引擎</th></tr>
+        <tr><td>非法漁作熱點及漁船分析</td><td>定期製作違規漁作之熱點圖；建立非法漁船辨識模型</td><td>更有效預測非法漁作位置及可能非法漁船，減少取締的成本</td></tr>
+      </table>
+      <p>此案例的解方說明：透過資料熱點分析的導入，可以根據非法漁作的熱點有策略性地安排巡防計畫，同時可以省去大量且密集巡防下所產生的成本；並利用過往非法漁船資料，訓練準確的預測模型，協助同仁即時識別可能的非法漁船。</p>
+      <p class="cite">資料來源：廖興中繪製</p>
+    </div>
+
+    <div class="qa"><b>案例演練共同解題框架小結</b><br>三則案例皆遵循同一套推理步驟：①先用「顧客素描」列出第一線人員的任務、痛點、獲益 → ②再用「價值地圖」構思產品服務、痛點解方、獲益引擎 → ③檢視兩者是否適配，找出能真正解決痛點、創造獲益的數位科技或AI應用方案。作答申論題時，可套用此三步驟架構，並具體連結案例情境中的關鍵限制（人力、設備、成本、對象差異等）來設計解方。</div>
+  </section>
+
+</main>
+
+<script>
+const search = document.getElementById('search');
+search.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  document.querySelectorAll('main .card, main .case-box, main .qa').forEach(el => {
+    const match = !q || el.textContent.toLowerCase().includes(q);
+    el.classList.toggle('hidden', !match);
+    if(match && q){
+      const details = el.closest('details');
+      if(details) details.open = true;
+    }
+  });
+});
+</script>
+</body>
+</html>

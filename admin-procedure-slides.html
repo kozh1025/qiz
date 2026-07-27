@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>行政程序法｜簡報速記筆記</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --bg:#f6f5f1; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66;
+    --accent:#6a4a8a; --line:#e5e2da; --side-w:260px;
+    --c1:#6a4a8a; --c2:#8a5a3b; --c3:#5a7d3b; --c4:#3b6e8a; --c5:#8a3b6e; --c6:#3b5a8a; --c7:#8a3b3b; --c8:#3b8a7d;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);display:flex;}
+  #sidebar{width:var(--side-w);flex-shrink:0;height:100vh;position:sticky;top:0;overflow-y:auto;background:#fbfaf7;border-right:1px solid var(--line);padding:20px 14px;}
+  #sidebar h3{font-size:.78rem;color:var(--sub);text-transform:uppercase;letter-spacing:.06em;margin:18px 6px 6px;}
+  #sidebar h3:first-child{margin-top:4px;}
+  #search{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:.85rem;margin-bottom:8px;font-family:inherit;}
+  .backlink{display:block;font-size:.8rem;color:var(--sub);text-decoration:none;margin:0 6px 10px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+  #sidebar a.nav{display:block;padding:5px 8px;font-size:.84rem;color:var(--ink);text-decoration:none;border-radius:6px;line-height:1.4;}
+  #sidebar a.nav:hover{background:var(--line);}
+  #sidebar a.nav.sub{padding-left:18px;font-size:.79rem;color:var(--sub);}
+  main{flex:1;max-width:900px;margin:0 auto;padding:44px 32px 100px;min-width:0;}
+  h1.title{font-size:1.7rem;margin:0 0 4px;}
+  .subtitle{color:var(--sub);margin-bottom:8px;}
+  .toolbar{margin-bottom:36px;padding-bottom:16px;border-bottom:1px solid var(--line);font-size:.82rem;color:#a09d95;}
+  section.chapter{margin-bottom:52px;scroll-margin-top:20px;}
+  .chapter-head{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+  .chapter-num{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.95rem;flex-shrink:0;}
+  .chapter-head h2{margin:0;font-size:1.28rem;}
+  h3.sec{scroll-margin-top:20px;font-size:1.03rem;margin:26px 0 10px;padding-left:12px;border-left:4px solid var(--line);}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;}
+  .card p{margin:.3em 0;line-height:1.85;font-size:.94rem;}
+  ul.pts{margin:.4em 0;padding-left:1.3em;line-height:1.85;font-size:.94rem;}
+  ul.pts li{margin-bottom:3px;}
+  .kw{background:#f2ecf7;color:var(--accent);padding:1px 7px;border-radius:5px;font-weight:600;font-size:.88em;}
+  .art{background:#eef4f8;color:#3b6e8a;padding:1px 6px;border-radius:5px;font-weight:600;font-size:.85em;}
+  .exam-tag{background:#f2ecf7;color:var(--accent);padding:2px 8px;border-radius:6px;font-size:.75em;font-weight:600;white-space:nowrap;}
+  .gap-note{background:#fbf6ea;border:1px dashed #d8c896;border-radius:10px;padding:10px 16px;margin:10px 0;font-size:.86rem;color:#b2551f;}
+  table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.85rem;}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top;}
+  th{background:#f1efe9;}
+  .mnemonic{background:#fbf6ea;border:1px dashed #d8c896;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.9rem;color:#6b5a2a;}
+  .case-step{border-left:3px solid var(--accent);padding:8px 0 8px 14px;margin:10px 0;}
+  .case-box{background:#f8f5fb;border:1px solid #e2d6ef;border-radius:12px;padding:16px 18px;margin:10px 0;}
+  .case-box h4{margin-top:0;color:var(--accent);}
+  mark{background:#ffe9a8;padding:0 2px;border-radius:3px;}
+  .hidden{display:none !important;}
+</style>
+</head>
+<body>
+
+<nav id="sidebar">
+  <input id="search" type="text" placeholder="搜尋關鍵字...">
+  <a class="backlink" href="index.html">← 回筆記入口</a>
+
+  <h3>總則</h3>
+  <a class="nav" href="#ch1">第1章 總則（§1-91）</a>
+  <a class="nav sub" href="#s1-1">立法目的／適用範圍</a>
+  <a class="nav sub" href="#s1-2">一般法律原則（6項）</a>
+  <a class="nav sub" href="#s1-3">管轄權與行政協助</a>
+  <a class="nav sub" href="#s1-4">行政程序之主體</a>
+  <a class="nav sub" href="#s1-5">行政程序之進行</a>
+  <a class="nav sub" href="#s1-6">參與行政程序之權利</a>
+  <a class="nav sub" href="#s1-7">期間</a>
+  <a class="nav sub" href="#s1-8">送達</a>
+
+  <h3>行政處分</h3>
+  <a class="nav" href="#ch2">第2章 行政處分（§92-134）</a>
+  <a class="nav sub" href="#s2-1">定義</a>
+  <a class="nav sub" href="#s2-2">方式／記載事項／教示</a>
+  <a class="nav sub" href="#s2-3">告知及效力</a>
+  <a class="nav sub" href="#s2-4">附款</a>
+  <a class="nav sub" href="#s2-5">瑕疵（更正/補正/撤銷/無效）</a>
+  <a class="nav sub" href="#s2-6">廢止／不當得利／重開／時效</a>
+
+  <h3>行政契約</h3>
+  <a class="nav" href="#ch3">第3章 行政契約（§135-149）</a>
+
+  <h3>命令與規則</h3>
+  <a class="nav" href="#ch4">第4章 法規命令與行政規則（§150-162）</a>
+
+  <h3>計畫／指導／陳情</h3>
+  <a class="nav" href="#ch5">第5-7章 行政計畫／行政指導／陳情</a>
+
+  <h3>案例解析</h3>
+  <a class="nav" href="#ch6">四則案例速記</a>
+</nav>
+
+<main>
+  <h1 class="title">行政程序法｜課程簡報速記筆記</h1>
+  <div class="subtitle">115年度佐升正訓練・依教學簡報（63頁）整理</div>
+  <div class="toolbar">用途：考前快速複習、抓記憶點。完整條文解析與案例推理過程請見 <a href="admin-procedure-textbook.html">教材版筆記</a>。</div>
+
+  <div class="case-box" id="exam-pattern-overview">
+    <h4>📊 歷屆考古題速記（108-114年，僅7年資料）</h4>
+    <table>
+      <tr><th>年度</th><th>分數</th><th>考點</th></tr>
+      <tr><td>110年</td><td>20分</td><td>陳述意見 <span class="art">§102、§103</span></td></tr>
+      <tr><td>111年</td><td>20分</td><td>處分撤銷 <span class="art">§117</span>＋不當得利返還 <span class="art">§127</span></td></tr>
+      <tr><td>113年</td><td>20分</td><td>行政委託／行政助手／行政協助區辨</td></tr>
+      <tr><td>114年</td><td>20分</td><td>閱覽卷宗 <span class="art">§46</span>＋法規命令定義 <span class="art">§150</span></td></tr>
+    </table>
+    <div class="mnemonic">行政程序法幾乎每年必考，20分簡答實務題。4大常考點：閱覽卷宗§46／處分撤銷§117＋不當得利返還§127／委託助手協助區辨／法規命令定義§150。112、111年另考「政府資訊公開法」（不在本筆記範圍，缺口提醒詳見教材版筆記最前面的警示框）。</div>
+    <p>完整申論題解析：<a href="../佐升正考試/110年_消防_申論題解析.html">110年</a>｜<a href="../佐升正考試/111年_消防_申論題解析.html">111年</a>｜<a href="../佐升正考試/112年_消防_申論題解析.html">112年</a>｜<a href="../佐升正考試/113年_消防_申論題解析.html">113年</a>｜<a href="../佐升正考試/114年_消防_申論題解析.html">114年</a></p>
+  </div>
+
+  <section class="chapter" id="ch1">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c1)">1</div><h2>總則（<span class="art">§1-§91</span>）</h2></div>
+
+    <h3 class="sec" id="s1-1">立法目的與適用範圍</h3>
+    <div class="card">
+      <p><b>立法目的</b>（<span class="art">§1</span>）：行政行為遵循公正、公開、民主之程序，確保依法行政，保障人民權益、提高行政效能、增進人民信賴。</p>
+      <p><b>適用範圍</b>（<span class="art">§2Ⅰ、§3Ⅰ</span>）：行政機關作成行政處分、締結行政契約、訂定法規命令與行政規則、確定行政計畫、實施行政指導、處理陳情等程序 → 本法為<mark>普通法</mark>，其他法律特別規定優先適用</p>
+      <p><b>除外規定</b>：機關除外（<span class="art">§3Ⅱ</span>：民意機關/司法機關/監察機關）、事項除外（<span class="art">§3Ⅲ</span>：外交軍事國安、外國人入出境、刑事偵查、收容機關內部、私權爭執裁決、教育內部程序、公務員人事行政、考選命題評分）</p>
+      <div class="mnemonic">除外規定只排除「程序」規定，「實體」規定仍要適用！</div>
+    </div>
+
+    <h3 class="sec" id="s1-2">一般法律原則（依法行政原則＋§5~§10共6項）</h3>
+    <div class="card">
+      <table>
+        <tr><th>原則</th><th>條文</th><th>要點</th></tr>
+        <tr><td>依法行政原則</td><td>-</td><td>法律優位原則(消極)：不得牴觸法律／法律保留原則(積極)：憲法保留給立法機關規定（釋字443層級化法律保留）</td></tr>
+        <tr><td>明確性原則</td><td>§5</td><td>行政行為內容應明確</td></tr>
+        <tr><td>平等原則</td><td>§6</td><td>非有正當理由不得差別待遇</td></tr>
+        <tr><td>比例原則</td><td>§7</td><td>適合性→必要性(最小侵害)→狹義比例(損益衡平)</td></tr>
+        <tr><td>誠實信用／信賴保護</td><td>§8</td><td>前段誠信、後段信賴保護（要件：信賴基礎+信賴表現+信賴值得保護）</td></tr>
+        <tr><td>有利不利一體注意</td><td>§9</td><td>有利不利情形一律注意</td></tr>
+        <tr><td>合法裁量原則</td><td>§10</td><td>不逾越裁量範圍＋符合授權目的（裁量瑕疵：逾越/濫用/怠惰）</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="s1-3">機關管轄權及行政協助 <span class="exam-tag">📌 113年考過</span></h3>
+    <div class="card">
+      <p><b>管轄恆定原則</b>（<span class="art">§11</span>）：管轄權依組織法規定，非依法規不得設定或變更</p>
+      <p><b>例外－權限移轉3類型</b>：</p>
+      <table>
+        <tr><th>類型</th><th>條文</th><th>說明</th></tr>
+        <tr><td>權限委任</td><td>§15Ⅰ</td><td>委任所屬下級機關執行</td></tr>
+        <tr><td>權限委託</td><td>§15Ⅱ</td><td>委託不相隸屬機關執行</td></tr>
+        <tr><td>行政委託</td><td>§16</td><td>委託民間團體或個人辦理</td></tr>
+      </table>
+      <p>概念區辨：<b>委辦</b>＝地方受上級指揮監督執行交辦事務／<b>行政助手</b>＝非以自己名義行使公權力，僅協助</p>
+      <p><b>行政協助</b>（<span class="art">§19</span>）：機關間互相協助，不涉及權限移轉</p>
+    </div>
+
+    <h3 class="sec" id="s1-4">行政程序之主體</h3>
+    <div class="card">
+      <p><b>行政機關</b>（<span class="art">§2Ⅱ、Ⅲ</span>）：代表國家/地方自治團體表示意思之組織；受託行使公權力者於委託範圍內視為行政機關</p>
+      <p><b>當事人</b>（<span class="art">§20</span>）：申請人、處分相對人、契約相對人、行政指導相對人、陳情人等</p>
+      <p><b>當事人能力</b>（<span class="art">§21</span>）＝得參與程序的法定資格／<b>行為能力</b>（<span class="art">§22</span>）＝得有效從事程序行為的資格</p>
+    </div>
+
+    <h3 class="sec" id="s1-5">行政程序之進行</h3>
+    <div class="card">
+      <p><b>程序之開始</b>（<span class="art">§34、§35</span>）：職權進行原則（不採不告不理），例外：法定義務或人民依法申請</p>
+      <p><b>公正程序之維持</b>：迴避制度（<span class="art">§32、§33</span>：自行/申請/命令迴避）＋程序外接觸之禁止（<span class="art">§47</span>）</p>
+      <div class="mnemonic">迴避申請被駁回 → 只能在對實體決定聲明不服時「一併」表示不服，不能單獨提訴願/訴訟（§174）</div>
+      <p><b>行政調查</b>（<span class="art">§36~§43</span>）：職權調查原則，不受當事人陳述拘束</p>
+    </div>
+
+    <h3 class="sec" id="s1-6">參與行政程序之權利</h3>
+    <div class="card">
+      <table>
+        <tr><th>權利</th><th>條文</th><th>要點</th></tr>
+        <tr><td>閱覽卷宗 <span class="exam-tag">📌114年</span></td><td>§46</td><td>主張/維護法律上利益必要者可申請；5款得拒絕情形</td></tr>
+        <tr><td>聽證</td><td>§54~66,§107~109,§155</td><td>正式言詞辯論程序；效果：免除訴願及先行程序（§109）</td></tr>
+        <tr><td>陳述意見 <span class="exam-tag">📌110年</span></td><td>§39,§102~106</td><td>限制/剝奪權益處分前應給機會；§103定8款得不給予情形</td></tr>
+      </table>
+      <div class="mnemonic">逾期不陳述 → 視為放棄（§105Ⅲ）；瑕疵可於訴願終結前補正（§114）</div>
+    </div>
+
+    <h3 class="sec" id="s1-7">期間</h3>
+    <div class="card">
+      <p><b>期間計算</b>（<span class="art">§48</span>）：始日不計算在內；末日遇假日順延；<b>涉及處罰</b>則始日不計時刻以1日論，末日遇假日不順延</p>
+      <p><b>在郵期間扣除</b>（<span class="art">§49</span>）：掛號郵寄以交郵當日郵戳為準（發信主義）；非掛號採到達主義</p>
+      <p><b>處理期間</b>（<span class="art">§51</span>）：未規定者為<mark>2個月</mark></p>
+    </div>
+
+    <h3 class="sec" id="s1-8">送達</h3>
+    <div class="card">
+      <p><b>送達原則</b>（<span class="art">§67</span>）：職權送達為原則。實施機關：自行送達／郵務送達／囑託送達</p>
+      <p><b>應受送達人</b>：原則為處分相對人本人；例外：法定代理人／意定代理人／代表人或管理人／指定代收人</p>
+      <p><b>送達方法</b>：本人送達（原則）→ 補充送達（同居人/受雇人/接收郵件人員代收）→ 留置送達（拒收）→ 寄存送達（皆不能時，寄存地方自治/警察機關，保存3個月）→ 公示送達（處所不明等，公告20或60日生效）</p>
+      <div class="mnemonic">補充送達重點：代收人需有「辨別事理能力」，不以成年為必要；同居人不以親屬/永久同居為必要</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch2">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c2)">2</div><h2>行政處分（<span class="art">§92-§134</span>）</h2></div>
+
+    <h3 class="sec" id="s2-1">定義</h3>
+    <div class="card">
+      <p><b>典型行政處分</b>（<span class="art">§92Ⅰ</span>）：行政機關就公法上具體事件所為之決定或其他公權力措施，<mark>對外直接發生法律效果</mark>之單方行政行為</p>
+      <p><b>一般處分</b>（<span class="art">§92Ⅱ</span>）：相對人非特定但依一般性特徵可得確定範圍者（對人）；公物之設定變更廢止（對物）</p>
+      <p>⚠ 區辨<b>觀念通知</b>：單純事實敘述、進度告知、法令釋示 → 不直接發生法律效果，非行政處分</p>
+    </div>
+
+    <h3 class="sec" id="s2-2">方式、記載事項及教示制度</h3>
+    <div class="card">
+      <p><b>方式自由原則</b>（<span class="art">§95</span>）：書面/言詞/其他方式皆可</p>
+      <p><b>書面應記載事項</b>（<span class="art">§96</span>）：相對人資料、主旨事實理由法令依據、附款內容、機關首長署名蓋章、發文字號年月日、<b>教示（救濟方法期間受理機關）</b></p>
+      <p><b>教示制度</b>（<span class="art">§98、§99</span>）：告知錯誤→機關通知更正；告知期間較長→信賴原告知期間仍算數；未告知或未更正→送達後<mark>1年內</mark>聲明不服視為法定期間內</p>
+    </div>
+
+    <h3 class="sec" id="s2-3">告知及效力</h3>
+    <div class="card">
+      <p><b>生效</b>（<span class="art">§110</span>）：書面自送達生效；一般處分自公告/最後登載日生效</p>
+      <table>
+        <tr><th>效力種類</th><th>說明</th></tr>
+        <tr><td>存續力</td><td>形式存續力(不能再用通常救濟途徑變更)／實質存續力(對相對人關係人機關發生拘束)</td></tr>
+        <tr><td>構成要件效力／確認效力</td><td>對其他機關/法院/第三人的拘束效果</td></tr>
+        <tr><td>執行力</td><td>下命處分可作執行名義；形成/確認處分無執行力問題</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="s2-4">附款</h3>
+    <div class="card">
+      <p>（<span class="art">§93、§94</span>）裁量處分才能附附款；羈束處分須法律明文或確保法定要件履行才可</p>
+      <p><b>種類</b>：期限／條件／負擔／保留廢止權／保留負擔事後附加或變更</p>
+      <p>限制：不得違背處分目的，應有正當合理關聯</p>
+    </div>
+
+    <h3 class="sec" id="s2-5">瑕疵（4種處理方式）</h3>
+    <div class="card">
+      <table>
+        <tr><th>類型</th><th>條文</th><th>瑕疵程度</th><th>效果</th></tr>
+        <tr><td>更正</td><td>§101</td><td>顯然錯誤(誤寫誤算)</td><td>隨時可更正，不影響效力</td></tr>
+        <tr><td>補正</td><td>§114</td><td>程序/方式瑕疵</td><td>5款情形可補正，僅程序瑕疵可補（訴願終結前為之）</td></tr>
+        <tr><td>撤銷 <span class="exam-tag">📌111年</span></td><td>§117</td><td>違法但未達重大明顯</td><td>原處分機關/上級機關得撤銷，2年除斥期間（§121）；溯及既往失效（§118），但可能需損失補償（§120）</td></tr>
+        <tr><td>無效</td><td>§111</td><td>重大明顯瑕疵</td><td>自始、當然、確定不生效力</td></tr>
+      </table>
+      <div class="mnemonic">行政處分有效存續原則（§110Ⅲ）：未撤銷廢止前，瑕疵處分效力仍繼續存在（無效除外）</div>
+    </div>
+
+    <h3 class="sec" id="s2-6">廢止／不當得利／重開／時效</h3>
+    <div class="card">
+      <p><b>廢止</b>：非授予利益(§122，機關裁量)／授予利益(§123，5款事由)；廢止期間2年(§124)；原則向後失效，未履行負擔可溯及既往(§125)；因公益廢止授益處分需補償(§126)</p>
+      <p><b>不當得利返還</b>（<span class="art">§127</span>） <span class="exam-tag">📌 111年考過</span>：撤廢/無效致溯及失效 → 應以書面處分確認範圍限期返還；未確定不得移送行政執行</p>
+      <p><b>申請程序重開</b>（<span class="art">§128</span>）：法定救濟期間經過後，事實變更/新證據/相當於再審事由 → 3個月內申請（最長不逾5年）</p>
+      <p><b>公法上請求權時效</b>（<span class="art">§131</span>）：機關對人民<mark>5年</mark>／人民對機關<mark>10年</mark>，時效完成當然消滅</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch3">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c3)">3</div><h2>行政契約（<span class="art">§135-§149</span>）</h2></div>
+    <div class="card">
+      <p><b>定義</b>：行政機關與行政機關或私人，以行政法上法律關係為契約標的之書面合意</p>
+      <p><b>區別私法契約</b>：契約標的說（優先）＋契約目的說（輔助）</p>
+      <p><b>類型</b>：和解契約（§136，事實不能確定時代替處分）／雙務契約（§137，互負對待給付）</p>
+      <p>行政契約與行政處分<b>併用之禁止</b>；強制執行需經行政訴訟，但可約定<b>自願接受執行</b>（§148）；未規定者準用民法（§149）</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch4">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c4)">4</div><h2>法規命令與行政規則（<span class="art">§150-§162</span>）</h2><span class="exam-tag">📌 114年考過（§150定義）</span></div>
+    <div class="card">
+      <table>
+        <tr><th>比較點</th><th>法規命令</th><th>行政規則</th></tr>
+        <tr><td>法律授權</td><td>須經法律授權</td><td>無須法律授權</td></tr>
+        <tr><td>規範對象</td><td>對外，任何人</td><td>原則機關內部；例外(裁量基準/解釋函釋)間接對外</td></tr>
+        <tr><td>程序</td><td>須對外發布(§157)＋預告(§154，實務≥60日)</td><td>下達下級機關即可(§160)</td></tr>
+        <tr><td>送立法院</td><td>發布生效後送查照，得交付審查</td><td>毋庸送查照</td></tr>
+      </table>
+      <p>法規命令3類型：概括授權／具體授權／實質意義法規命令。<b>轉委任之禁止</b>（釋字524）：法律授權訂法規命令，不得改用行政規則替代</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch5">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c5)">5-7</div><h2>行政計畫／行政指導／陳情</h2></div>
+    <div class="card">
+      <p><b>行政計畫</b>（§163-164）：為將來一定期限達成目的所為之設計規劃。涉及土地利用或重大公共設施者應經公開聽證。※本章目前無適用（授權命令未訂）</p>
+      <p><b>行政指導</b>（§165-167）：輔導協助勸告建議等不具強制力方法；相對人拒絕應即停止；性質為事實行為，不得訴願/訴訟，但可能構成國家賠償</p>
+      <p><b>陳情</b>（§168-173）：行政興革建議、法令查詢、違失舉發、權益維護；書面或言詞皆可；得不予處理3款情形（無具體內容或匿名／同一事由已答覆仍陳情／非主管機關收到分陳）</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch6">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c6)">§</div><h2>四則案例速記</h2></div>
+
+    <div class="case-box">
+      <h4>案例一：不服迴避申請決定</h4>
+      <p>甲申請丙迴避但未舉證，乙機關駁回。救濟：<mark>5日內</mark>提請上級機關覆決；若仍駁回，只能在對實體決定不服時<b>一併</b>聲明不服，不得單獨提訴願/訴訟（§174）。</p>
+    </div>
+
+    <div class="case-box">
+      <h4>案例二：行政處分 vs 觀念通知＋陳述意見未到場</h4>
+      <p>檢舉人無申請權 → 機關「查無實證」的函復是<b>觀念通知</b>，非行政處分。被通知人無正當理由未到場陳述意見 → 視為放棄（§105Ⅲ）→ 機關可逕行裁罰。</p>
+    </div>
+
+    <div class="case-box">
+      <h4>案例三：舉牌警告／命令解散＋比例原則</h4>
+      <p>舉牌警告/命令解散對不特定但可得確定範圍的人 → <b>一般處分</b>（§92Ⅱ）。本案警察局的裁罰程序符合比例原則（適合性+必要性+衡平性），裁處法定最低額3萬元適法。</p>
+    </div>
+
+    <div class="case-box">
+      <h4>案例四：補充送達的適用</h4>
+      <p>17歲表妹代收裁處書 → 只要有「辨別事理能力」（不以成年為必要）且屬「同居人」（不以親屬/永久同居為必要）即為<b>合法送達</b>，事後未轉交不影響送達效力。甲主張送達不合法，無理由。</p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+const search = document.getElementById('search');
+search.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  document.querySelectorAll('main .card, main .case-box').forEach(el => {
+    const match = !q || el.textContent.toLowerCase().includes(q);
+    el.classList.toggle('hidden', !match);
+  });
+});
+</script>
+</body>
+</html>

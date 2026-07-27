@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>用AI魔法翻轉公務英語｜完整筆記</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --bg:#f5f4f0; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66;
+    --accent:#6a7a2b; --line:#e5e2da; --side-w:270px;
+    --c1:#6a7a2b; --c2:#8a5a3b; --c3:#3b6e8a; --c4:#8a3b6e; --c5:#3b5a8a; --c6:#8a3b3b; --c7:#3b8a7d; --c8:#8a7a3b;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);display:flex;}
+  #sidebar{width:var(--side-w);flex-shrink:0;height:100vh;position:sticky;top:0;overflow-y:auto;background:#fbfaf7;border-right:1px solid var(--line);padding:20px 14px;}
+  #sidebar h3{font-size:.78rem;color:var(--sub);text-transform:uppercase;letter-spacing:.06em;margin:18px 6px 6px;}
+  #sidebar h3:first-child{margin-top:4px;}
+  #search{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:.85rem;margin-bottom:8px;font-family:inherit;}
+  .backlink{display:block;font-size:.8rem;color:var(--sub);text-decoration:none;margin:0 6px 10px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+  #sidebar a.nav{display:block;padding:5px 8px;font-size:.84rem;color:var(--ink);text-decoration:none;border-radius:6px;line-height:1.4;}
+  #sidebar a.nav:hover{background:var(--line);}
+  #sidebar a.nav.sub{padding-left:18px;font-size:.79rem;color:var(--sub);}
+  main{flex:1;max-width:940px;margin:0 auto;padding:44px 32px 100px;min-width:0;}
+  h1.title{font-size:1.7rem;margin:0 0 4px;}
+  .subtitle{color:var(--sub);margin-bottom:8px;}
+  .toolbar{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--line);font-size:.82rem;color:#a09d95;}
+  .notice{background:#f4f6ea;border:1px solid #dde3c0;border-radius:10px;padding:12px 16px;margin-bottom:36px;font-size:.85rem;color:#556021;}
+  section.chapter{margin-bottom:56px;scroll-margin-top:20px;}
+  .chapter-head{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+  .chapter-num{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.95rem;flex-shrink:0;}
+  .chapter-head h2{margin:0;font-size:1.28rem;}
+  h3.sec{scroll-margin-top:20px;font-size:1.03rem;margin:28px 0 10px;padding-left:12px;border-left:4px solid var(--line);}
+  h4.sub{font-size:.95rem;margin:16px 0 6px;color:#4a473f;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;}
+  .card p{margin:.5em 0;line-height:1.9;font-size:.94rem;text-align:justify;}
+  ul.pts{margin:.4em 0;padding-left:1.3em;line-height:1.85;font-size:.94rem;}
+  ul.pts li{margin-bottom:4px;}
+  .kw{background:#eef2e0;color:var(--accent);padding:1px 7px;border-radius:5px;font-weight:600;font-size:.88em;}
+  table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.85rem;}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top;}
+  th{background:#f1efe9;}
+  .cite{font-size:.82rem;color:#a09d95;margin-top:4px;}
+  .case-box{background:#fbf9f5;border:1px solid #e8dfd0;border-radius:12px;padding:18px 20px;margin:14px 0;}
+  .case-box h4{margin-top:0;color:var(--accent);}
+  .dialog p{margin:.5em 0;line-height:1.85;font-size:.92rem;}
+  .dialog b{color:#556021;}
+  .prompt{background:#eef4f8;border-left:3px solid #3b6e8a;border-radius:8px;padding:10px 14px;font-size:.86rem;margin:8px 0;line-height:1.8;}
+  .steps{background:#faf9f6;border-radius:8px;padding:10px 14px;font-size:.86rem;margin:8px 0;line-height:1.9;}
+  .footnote{font-size:.78rem;color:#a09d95;border-top:1px dashed var(--line);padding-top:6px;margin-top:10px;}
+  .qa{background:#eef6f0;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.9rem;}
+  .qa b{color:#2b6a48;}
+  .refs{font-size:.8rem;line-height:1.9;color:#55524c;}
+  mark{background:#ffe9a8;padding:0 2px;border-radius:3px;}
+  .hidden{display:none !important;}
+  details{margin:8px 0;}
+  summary{cursor:pointer;font-weight:600;font-size:.9rem;color:var(--accent);}
+</style>
+</head>
+<body>
+
+<nav id="sidebar">
+  <input id="search" type="text" placeholder="搜尋關鍵字...">
+  <a class="backlink" href="index.html">← 回筆記入口</a>
+
+  <h3>壹 緣起</h3>
+  <a class="nav" href="#ch1">壹、小組英語角色扮演的挑戰</a>
+
+  <h3>貳 五招妙計</h3>
+  <a class="nav" href="#ch2">貳、Roger的5招妙計</a>
+
+  <h3>參 學習地圖</h3>
+  <a class="nav" href="#ch3">參、AI輔助學習地圖總覽</a>
+
+  <h3>肆 原則與限制</h3>
+  <a class="nav" href="#ch4">肆、使用AI前的原則與限制</a>
+
+  <h3>伍 基礎篇</h3>
+  <a class="nav" href="#ch5">伍、基礎篇：ChatGPT寫劇本</a>
+  <a class="nav sub" href="#s5-0">預備事項</a>
+  <a class="nav sub" href="#s5-1">#A 訂主題</a>
+  <a class="nav sub" href="#s5-2">#B 生劇情</a>
+  <a class="nav sub" href="#s5-3">#C 寫對話</a>
+  <a class="nav sub" href="#s5-4">#D 翻英語</a>
+  <a class="nav sub" href="#s5-5">反思與討論</a>
+
+  <h3>陸 進階篇</h3>
+  <a class="nav" href="#ch6">陸、進階篇：文字轉語音練發音</a>
+  <a class="nav sub" href="#s6-1">#E 聽發音</a>
+
+  <h3>柒 高階篇</h3>
+  <a class="nav" href="#ch7">柒、高階篇：AI主播做道具影音</a>
+  <a class="nav sub" href="#s7-1">#F 做道具</a>
+
+  <h3>捌 結語</h3>
+  <a class="nav" href="#ch8">捌、結語：AI是加分神器，不是取代</a>
+</nav>
+
+<main>
+  <h1 class="title">用AI魔法翻轉公務英語｜完整筆記</h1>
+  <div class="subtitle">115年佐升正訓練・依《用AI魔法翻轉公務英語：讓你從害怕到自信的英語角色扮演》（112.08.23）整理</div>
+  <div class="toolbar">本科目僅有單一份文件（無配對簡報），本筆記已整理為完整說明，同時兼顧「速記重點」與「完整理解」，並保留具體操作步驟、參考指令與功能介面說明。</div>
+  <div class="notice">本教材與「警察人員實用英語」主題不同：警察人員實用英語是教「英語內容本身」（句型、對話、單字），本書則是教「方法論／工具應用」——如何運用ChatGPT、文字轉語音、AI主播等工具，協助小組準備公務情境英語角色扮演，因此獨立成篇，不與警察人員實用英語筆記合併。</div>
+
+  <section class="chapter" id="ch1">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c1)">壹</div><h2>小組英語角色扮演的挑戰</h2></div>
+    <div class="case-box">
+      <p><b>情境</b>：JENNY 所屬小組共8人，須進行8至10分鐘的角色扮演，每人都要開口說英語，演出情境須與公務相關。</p>
+      <p><b>困境</b>：小組已經很久沒有開口講英語，10分鐘的任務卻只能記住6分鐘的臺詞——「這句話要怎麼用英語講啊？想到要開口說英語就很害怕哪！」</p>
+      <p>JENNY 向 ROGER 求助，ROGER 分享了以下5招妙計，最後一招正是本書的核心：善用人工智慧，讓 AI 成為小組的「第9名組員」。</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch2">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c2)">貳</div><h2>Roger的5招妙計</h2></div>
+    <div class="card">
+      <table>
+        <tr><th>招數</th><th>做法</th></tr>
+        <tr><td><b>第1招—精簡臺詞內容</b></td><td>好記，也容易說。臺詞越精簡，開口的心理負擔越小。</td></tr>
+        <tr><td><b>第2招—加入角色扮演</b></td><td>增加互動可以讓表演豐富生動，還能拉長演出時間。</td></tr>
+        <tr><td><b>第3招—活用肢體語言</b></td><td>良好的溝通是整體呈現，除了口說，適當的肢體表情有助於理解。</td></tr>
+        <tr><td><b>第4招—善用視覺輔助</b></td><td>可製作圖片、海報或多媒體影音等視聽輔助，使觀眾更容易沉浸在劇情氛圍中。</td></tr>
+        <tr><td><b>第5招—人工智慧輔助</b></td><td>能大幅度地節省時間並提升效能，讓事情變容易；讓 AI 成為小組的第9名組員。</td></tr>
+      </table>
+      <p class="cite">趣味小彩蛋：ROGER 分享的前4招妙計，其實也是他去問 ChatGPT 得到的答案——示範了「向AI提問」本身就是一種實用技巧。</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch3">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c3)">參</div><h2>AI輔助學習地圖總覽</h2></div>
+    <div class="card">
+      <p>善用 ChatGPT 的關鍵，是要有<b>好品質的提問</b>；而要產生有品質的提問，關鍵就是：<span class="kw">化整為零，逐步驟拆解任務</span>。全書將準備英語角色扮演拆解為以下步驟：</p>
+      <table>
+        <tr><th>階段</th><th>步驟</th><th>秘密武器</th><th>產出</th></tr>
+        <tr><td rowspan="4"><b>基礎篇</b></td><td>02 訂主題</td><td>ChatGPT</td><td rowspan="4">英語劇本</td></tr>
+        <tr><td>03 生劇情</td><td>ChatGPT</td></tr>
+        <tr><td>04 寫對話</td><td>ChatGPT</td></tr>
+        <tr><td>05 翻英語</td><td>ChatGPT</td></tr>
+        <tr><td><b>進階篇</b></td><td>09 聽發音</td><td>文字轉語音（Vanilla Voice）</td><td>英語發音</td></tr>
+        <tr><td><b>高階篇</b></td><td>11 做道具</td><td>AI 主播（Heygen）</td><td>酷炫影音</td></tr>
+      </table>
+      <p class="cite">小組在準備英語角色扮演時會規劃哪些步驟？參考答案：訂主題 → 生劇情 → 寫對話 → 翻英語 → 做道具。</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch4">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c4)">肆</div><h2>使用AI前的原則與限制</h2></div>
+    <div class="card">
+      <p>在使用 ChatGPT 前，有幾項使用原則與限制：</p>
+      <ol>
+        <li>人工智慧僅為輔助，不是取代。</li>
+        <li>一次不行就……再試一次！</li>
+        <li>每步驟結果產出後，與小組討論以決定下一步。</li>
+        <li>請勿輸入機敏資料與個人資料。</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch5">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c5)">伍</div><h2>基礎篇：用ChatGPT完成英語劇本</h2></div>
+
+    <h3 class="sec" id="s5-0">預備事項</h3>
+    <div class="card">
+      <div class="steps">
+        1. 進入 ChatGPT（https://chat.openai.com/）<br>
+        2. 點選 Sign up 註冊，之後直接以 Log in 登入。<br>
+        3. 免費版有字數限制，可按 continue generating 繼續產出。<br>
+        4. 括弧 <b>{ }</b> 裡的內容，小組可發揮創意發想替換。<br>
+        5. 小組可逐步操作，或於特定步驟尋求 AI 協助。<br>
+        6. 點選「連結完整對話」，亦可複製及修改指令。<br>
+        7. 操作後，小組或個人可依提問進行反思討論。
+      </div>
+    </div>
+
+    <h3 class="sec" id="s5-1">#A 訂主題</h3>
+    <div class="card">
+      <p><b>任務目標</b>：協助發揮創意發想，訂出公務情境主題。</p>
+      <p><b>參考指令</b>：</p>
+      <div class="prompt">你是一位{中英文雙語學習專家}。現在有{8}位公務人員要進行小組角色扮演。有{3}個角色是公務人員，場景與{臺灣在地觀光行銷}有關。請發想{10}個富有創意且劇情生動活潑的主題。TEMPERATURE = 1。</div>
+      <p><b>反思討論</b>：小組選擇的主題是什麼？選擇時考量哪些因素？</p>
+    </div>
+
+    <h3 class="sec" id="s5-2">#B 生劇情</h3>
+    <div class="card">
+      <p><b>任務目標</b>：協助將選定的主題，轉換為有轉折起伏的劇情。</p>
+      <p><b>參考指令</b>（於同一對話串下接續提問）：</p>
+      <div class="prompt">以{異國美食文化交流}為主題，描述{籌辦一個文化交流活動，邀請來自不同國家的貴賓展示當地特色美食，並鼓勵在地居民分享臺灣美食}。字數為{500}字。風格是{有趣生動}、{發生緊急狀況但有驚無險}。</div>
+      <p><b>反思討論</b>：小組設計的劇情主軸是什麼？有哪些元素可以讓劇情生動吸引人？</p>
+    </div>
+
+    <h3 class="sec" id="s5-3">#C 寫對話</h3>
+    <div class="card">
+      <p><b>任務目標</b>：將設計好的劇情，具體轉換為每個角色的演出臺詞。</p>
+      <p><b>參考指令</b>：</p>
+      <div class="prompt">請將劇情展開細節，轉成{4}幕的劇本及角色臺詞，演出時間是{10}分鐘。地點設為{臺中市市民廣場}。角色有：{市府國際觀傳科陳科長}、{林專員}、{吳科員}、{市民}、{義大利人安娜}、{墨西哥人胡安}、{日本人雅子}、{印度人阿默}。請依照幕次撰寫臺詞，包括幕次主題、幕次時間、角色、角色臺詞及非語言動作註記。</div>
+    </div>
+
+    <h3 class="sec" id="s5-4">#D 翻英語</h3>
+    <div class="card">
+      <p><b>任務目標</b>：協助將劇情的中文臺詞，翻譯成口說英語。</p>
+      <p><b>參考指令</b>：</p>
+      <div class="prompt">你是一個英語翻譯者。這是要準備進行英語成果的各個角色的臺詞，請判斷情境與角色的適當性，翻譯成適合非母語英語者的英語臺詞。</div>
+      <p><b>參考結果片段</b>（範例劇本開場）：</p>
+      <div class="dialog">
+        <p class="cite">Scene One: Preparing for the Event — Time: Morning／Location: Taitung Dulan Village Office／Characters: Chief Chen, Commissioner Lin, Officer Wu, Dulan Village Chief</p>
+        <p><b>Chief Chen：</b>Hello, everyone! How is the progress for today's event preparation?</p>
+      </div>
+    </div>
+
+    <h3 class="sec" id="s5-5">反思與討論（基礎篇完成後）</h3>
+    <div class="qa">
+      <p><b>活動目的</b>：恭喜完成英語劇本！現在，試與小組交流討論：如何運用ChatGPT借力使力，輔助我完成工作與學習任務？</p>
+      <ul class="pts">
+        <li>你還記得自己做了哪些嘗試或動作？使用了哪些指令？</li>
+        <li>在這次的操作經驗中，什麼感受特別強烈？</li>
+        <li>跟傳統的作法相比，使用ChatGPT協助生成劇本，有哪些地方相同？有哪些差異？</li>
+        <li>以這次操作經驗來說，如何下指令可使我們獲得較有品質的劇本內容？</li>
+        <li>未來在公務上或日常生活中，你可能會在哪些方面應用ChatGPT呢？運用時你會給自己的提醒是？</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch6">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c6)">陸</div><h2>進階篇：用文字轉語音練發音</h2></div>
+    <div class="case-box">
+      <p>拿到臺詞後，DAVID／JENNY 遇到新的困擾：「雖然我拿到了扮演角色的臺詞……可是，有些英文臺詞，有些單詞我不知道英文怎麼說耶？」——沒問題！請人工智慧協助，將文字轉語音！</p>
+    </div>
+
+    <h3 class="sec" id="s6-1">#E 聽發音</h3>
+    <div class="card">
+      <p><b>秘密武器</b>：Vanilla Voice 或其他文字轉語音軟體</p>
+      <p><b>任務目標</b>：將英語詞句，轉換成英語發音的播放及音檔下載。</p>
+      <div class="steps">
+        進入 Vanilla Voice｜https://www.vanillavoice.com/<br>
+        點選頭像｜可選擇多國語言及人聲角色的性別或年齡<br>
+        輸入文字｜於方框中，輸入欲聽發音的詞句<br>
+        點選 Speak｜可播放音頻<br>
+        點選 Download｜可下載音檔<br>
+        亦可搜尋其他「文字轉語音」軟體
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch7">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c7)">柒</div><h2>高階篇：用AI主播做道具影音</h2></div>
+    <div class="case-box">
+      <p>DAVID：「雖然我們現在有劇本也會說……可是，如果我們可以快速做一些道具，那不是大大地加分？」——沒問題！請人工智慧協助，來做AI主播！</p>
+    </div>
+
+    <h3 class="sec" id="s7-1">#F 做道具</h3>
+    <div class="card">
+      <p><b>秘密武器</b>：Heygen 或其他 AI 主播軟體</p>
+      <p><b>Heygen 預備事項</b>：</p>
+      <div class="steps">
+        1. 進入 Heygen（https://app.heygen.com/）<br>
+        2. 點選 Sign up 註冊，之後直接以 Log in 登入。<br>
+        3. 免費版有時間限制。<br>
+        4. 可合成靜態照片及語音，轉換為動態影片。<br>
+        5. 人像可選擇自己拍攝，或使用內建的頭像。<br>
+        6. 語音可輸入多國語言文字合成，或自己錄製。
+      </div>
+      <p><b>任務目標</b>：使用文字或錄音合成圖片，製作模擬場景的生動影音。</p>
+      <div class="steps">
+        進入 Heygen｜https://app.heygen.com/<br>
+        點選 Template｜選擇喜歡的內建場景模板<br>
+        輸入 Avatar｜選擇喜歡的頭像，或 upload 上傳照片<br>
+        點選 Text Script｜採「文字」轉語音，可調整語言及音調<br>
+        點選 Audio Script｜上傳自己的音檔<br>
+        按下 Submit｜靜待合成後，可下載檔案
+      </div>
+      <div class="qa">
+        <p><b>反思與討論（活動目的）</b>：恭喜完成酷炫影片！現在，試與小組交流討論：如何運用AI主播借力使力，輔助我完成工作與學習任務？</p>
+        <ul class="pts">
+          <li>你還記得自己做了哪些嘗試或動作？在這次的操作經驗中，什麼感受特別強烈？</li>
+          <li>跟傳統的作法相比，使用Heygen協助完成影音創作，有哪些地方相同？有哪些差異？</li>
+          <li>「公務英語成果發表」未來在公務上或日常生活中，你可能會在哪些方面應用Heygen？運用時你會給自己的提醒是？</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch8">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c8)">捌</div><h2>結語：AI是加分神器，不是取代</h2></div>
+    <div class="card">
+      <p>如果運用得宜，人工智慧就可以成為我們生活及工作中的好幫手，提升工作效率及更有創意！而且人工智慧讓英語能力不佳的組員，都可以跟上大家的腳步，共創小組發表的成果！——正如書中結尾所說：「明天小組的英語成果發表一定精采可期！」</p>
+      <p><b>核心提醒</b>：呼應「肆、使用AI前的原則與限制」第1點——人工智慧僅為輔助，不是取代。真正上臺開口說英語、與小組討論決定每一步的內容，仍是人的任務；AI負責節省時間、降低開口門檻，讓「不敢開口」的人也能順利完成公務英語角色扮演。</p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+const search = document.getElementById('search');
+search.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  document.querySelectorAll('main .card, main .case-box, main .qa').forEach(el => {
+    const match = !q || el.textContent.toLowerCase().includes(q);
+    el.classList.toggle('hidden', !match);
+    if(match && q){
+      const details = el.closest('details');
+      if(details) details.open = true;
+    }
+  });
+});
+</script>
+</body>
+</html>

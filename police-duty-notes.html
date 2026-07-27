@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>警察執勤實務(消防人員用)｜教材筆記</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --bg:#f5f6f8; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66;
+    --accent:#2b4a8a; --line:#e2e4ea; --side-w:270px;
+    --c1:#2b4a8a; --c2:#1f6b4a; --c3:#8a6a1f; --c4:#4a2f7a; --c5:#1f5c80; --c6:#6b2f3d; --c7:#3d5a2f; --c8:#4a4a4a;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);display:flex;}
+  #sidebar{width:var(--side-w);flex-shrink:0;height:100vh;position:sticky;top:0;overflow-y:auto;background:#f9fafb;border-right:1px solid var(--line);padding:20px 14px;}
+  #sidebar h3{font-size:.78rem;color:var(--sub);text-transform:uppercase;letter-spacing:.06em;margin:18px 6px 6px;}
+  #sidebar h3:first-child{margin-top:4px;}
+  #search{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:.85rem;margin-bottom:8px;font-family:inherit;}
+  .backlink{display:block;font-size:.8rem;color:var(--sub);text-decoration:none;margin:0 6px 10px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+  #sidebar a.nav{display:block;padding:5px 8px;font-size:.84rem;color:var(--ink);text-decoration:none;border-radius:6px;line-height:1.4;}
+  #sidebar a.nav:hover{background:var(--line);}
+  #sidebar a.nav.sub{padding-left:18px;font-size:.79rem;color:var(--sub);}
+  main{flex:1;max-width:940px;margin:0 auto;padding:44px 32px 100px;min-width:0;}
+  h1.title{font-size:1.7rem;margin:0 0 4px;}
+  .subtitle{color:var(--sub);margin-bottom:8px;}
+  .toolbar{margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--line);font-size:.82rem;color:#9a9a9a;}
+  .notice{background:#eaf0fb;border:1px solid #cfdcf2;border-radius:10px;padding:12px 16px;font-size:.85rem;color:#2b4a8a;margin-bottom:32px;line-height:1.8;}
+  section.chapter{margin-bottom:56px;scroll-margin-top:20px;}
+  .chapter-head{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+  .chapter-num{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.95rem;flex-shrink:0;}
+  .chapter-head h2{margin:0;font-size:1.28rem;}
+  h3.sec{scroll-margin-top:20px;font-size:1.03rem;margin:28px 0 10px;padding-left:12px;border-left:4px solid var(--line);}
+  h4.sub{font-size:.95rem;margin:16px 0 6px;color:#4a473f;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;}
+  .card p{margin:.5em 0;line-height:1.9;font-size:.94rem;text-align:justify;}
+  ul.pts{margin:.4em 0;padding-left:1.3em;line-height:1.85;font-size:.94rem;}
+  ul.pts li{margin-bottom:4px;}
+  .kw{background:#eaf0fb;color:var(--accent);padding:1px 7px;border-radius:5px;font-weight:600;font-size:.88em;}
+  .art{background:#eaf3ec;color:#1f6b4a;padding:1px 6px;border-radius:5px;font-weight:600;font-size:.85em;}
+  table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.83rem;}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top;}
+  th{background:#eef0f4;}
+  .cite{font-size:.82rem;color:#9a9a9a;margin-top:4px;}
+  .case-box{background:#f7f9fc;border:1px solid #dde3ee;border-radius:12px;padding:18px 20px;margin:14px 0;}
+  .case-box h4{margin-top:0;color:var(--accent);}
+  .data{background:#eaf0fb;border-radius:8px;padding:10px 14px;font-size:.86rem;margin:8px 0;}
+  .footnote{font-size:.78rem;color:#9a9a9a;border-top:1px dashed var(--line);padding-top:6px;margin-top:10px;}
+  .qa{background:#eaf3ec;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.9rem;}
+  .mnemonic{background:#fbf6ea;border:1px dashed #d8c896;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.9rem;color:#6b5a2a;}
+  .org{background:#f7f9fc;border:1px solid var(--line);border-radius:10px;padding:12px 16px;font-size:.86rem;line-height:1.9;}
+  mark{background:#ffe0a8;padding:0 2px;border-radius:3px;}
+  .hidden{display:none !important;}
+  details{margin:8px 0;}
+  summary{cursor:pointer;font-weight:600;font-size:.9rem;color:var(--accent);}
+</style>
+</head>
+<body>
+
+<nav id="sidebar">
+  <input id="search" type="text" placeholder="搜尋關鍵字...">
+  <a class="backlink" href="index.html">← 回筆記入口</a>
+
+  <h3>壹 指揮中心與派遣</h3>
+  <a class="nav" href="#ch1">壹、救災救護指揮中心設置法令與派遣實務</a>
+  <a class="nav sub" href="#s1-1">作業規定之目的</a>
+  <a class="nav sub" href="#s1-2">任務介紹（消防署／縣市局指揮中心）</a>
+  <a class="nav sub" href="#s1-3">編組與職掌</a>
+  <a class="nav sub" href="#s1-4">指揮中心組織架構</a>
+  <a class="nav sub" href="#s1-5">受理報案原則（5W1H2S）</a>
+  <a class="nav sub" href="#s1-6">災情通報標準（16類）</a>
+  <a class="nav sub" href="#s1-7">航空器支援申請流程</a>
+  <a class="nav sub" href="#s1-8">災害緊急通報作業規定</a>
+
+  <h3>貳 災害搶救法令與實務</h3>
+  <a class="nav" href="#ch2">貳、災害搶救相關法令與實務</a>
+  <a class="nav sub" href="#s2-1">消防水源</a>
+  <a class="nav sub" href="#s2-2">火災搶救－消防法各項規定</a>
+  <a class="nav sub" href="#s2-3">火災搶救－消防法施行細則</a>
+  <a class="nav sub" href="#s2-4">火場指揮及搶救作業要點－任務說明</a>
+  <a class="nav sub" href="#s2-5">受理報案／出動派遣／出動途中</a>
+  <a class="nav sub" href="#s2-6">抵達火場處置（專有名詞）</a>
+  <a class="nav sub" href="#s2-7">配合危害性化學品災害搶救</a>
+  <a class="nav sub" href="#s2-8">災害搶救實務案例</a>
+</nav>
+
+<main>
+  <h1 class="title">警察執勤實務（消防人員用）｜教材筆記</h1>
+  <div class="subtitle">115年佐升正訓練・依課程簡報（42頁）整理</div>
+  <div class="toolbar">用途：理解救災救護指揮中心之派遣機制與災害搶救之法令依據，並熟悉火場指揮及危害性化學品搶救之標準作業程序。</div>
+  <div class="notice">
+    本科目僅有簡報教材，沒有另外配發教材PDF。本筆記已將簡報條列式重點展開為完整說明；簡報中部分內容原以組織架構圖、流程圖等圖片方式呈現（無法擷取為文字），本筆記依消防勤務實務通用原則補充說明為完整段落並標明依據，複習時建議仍以官方最新版作業規定與消防法規為準。「災害搶救實務案例」三則為簡報所附之開放式思考題（原簡報未附詳解），本筆記依實務原則提供分析框架供演練參考。
+  </div>
+
+  <section class="chapter" id="ch1">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c1)">壹</div><h2>救災救護指揮中心之設置法令與派遣實務</h2></div>
+
+    <h3 class="sec" id="s1-1">一、各級消防機關救災救護指揮中心作業規定之目的</h3>
+    <div class="card">
+      <p>依該作業規定第1點，為統一各級消防機關救災救護指揮中心（以下簡稱指揮中心）之執勤及作業要領，以提昇<span class="kw">指揮、調度、管制、聯繫</span>之功能，發揮整體救災救護之力量，達到減少人命傷亡及災害損失之目的，特訂定本作業規定。</p>
+      <p>換言之，指揮中心是整個救災救護體系的「神經中樞」：無論是119報案受理、人車派遣、現場情資彙整或跨機關聯繫，都必須透過指揮中心統一調度，才能在最短時間內集結最適當的資源投入搶救。</p>
+    </div>
+
+    <h3 class="sec" id="s1-2">二、任務介紹（分級分工）</h3>
+    <div class="card">
+      <p>指揮中心依層級分為<b>內政部消防署指揮中心</b>與<b>直轄市、縣（市）消防局及港務消防大隊指揮中心（科）</b>兩級，任務分工如下：</p>
+      <table>
+        <tr><th>層級</th><th>任務</th></tr>
+        <tr><td>內政部消防署指揮中心</td><td>①全國災害搶救之指揮、調度　②有關全國重大災害災情之彙整、陳報及通報</td></tr>
+        <tr><td>直轄市、縣（市）消防局及港務消防大隊指揮中心（科）</td><td>①轄區災害搶救之指揮、調度　②有關轄區重大災害災情之彙整、陳報及通報　③119報案受理與勤務出勤之派遣與管制</td></tr>
+      </table>
+      <p class="cite">資料來源：105年警佐警察人員晉升警正官等訓練〈警察執勤專業法令與實務（消防人員用）〉教材。</p>
+      <div class="data">記憶要點：消防署指揮中心「只管全國層級的指揮調度與重大災情彙報」；縣市局指揮中心（科）多了一項全國沒有的任務——「119報案受理與出勤派遣」，這是轄區第一線指揮中心的核心日常工作。</div>
+    </div>
+
+    <h3 class="sec" id="s1-3">三、編組與職掌</h3>
+    <div class="card">
+      <p>指揮中心（科）視勤務需要設<b>總值日官、執勤官、執勤員</b>及緊急醫療救護人員（以下簡稱救護人員），各職掌如下：</p>
+      <h4 class="sub">（一）總值日官</h4>
+      <ul class="pts">
+        <li>消防安全全般狀況之掌握、處理及聯繫事項</li>
+        <li>督導執勤官、執勤員及救護人員執勤當日之必要作業事項</li>
+        <li>機關之安全維護</li>
+      </ul>
+      <h4 class="sub">（二）執勤官</h4>
+      <ul class="pts">
+        <li>受命救災救護之指揮、調度及聯繫</li>
+        <li>全般災情狀況之分級陳報</li>
+        <li>執勤當日各種紀錄、表報之初審</li>
+        <li>重大災害搶救處理報告之撰寫及陳報</li>
+        <li>執勤人員勤務之分配</li>
+        <li>其他長官交辦事項</li>
+      </ul>
+      <h4 class="sub">（三）執勤員</h4>
+      <ul class="pts">
+        <li>襄助執勤官掌握、處置全般狀況</li>
+        <li>受理報案與受理災情報告及查詢</li>
+        <li>各項狀況之紀錄、報表之填寫及協調、聯繫事項</li>
+        <li>各類傳真資料之處理，包括登記、陳閱、轉交、轉傳真等</li>
+        <li>臺閩地區火災搶救暨緊急救護日報表之統計</li>
+        <li>其他長官交辦事項</li>
+      </ul>
+      <div class="mnemonic">口訣：「總值日管全局＋督導安全，執勤官管指揮＋陳報＋撰寫，執勤員管受理＋紀錄＋統計」——職級愈高，職掌愈偏向「指揮判斷」；職級愈基層，職掌愈偏向「受理與紀錄」的第一線作業。</div>
+    </div>
+
+    <h3 class="sec" id="s1-4">四、指揮中心組織架構</h3>
+    <div class="card">
+      <p><b>內政部消防署指揮中心架構</b>：由主任統籌，下設執勤官A、B、C三班，各班配置執勤員1至3名，採三班制輪值，全年無休運作，確保24小時皆有值班人力因應全國災害通報與調度需求。</p>
+      <div class="org">主任<br>└ 執勤官A（執勤員1、2、3）<br>└ 執勤官B（執勤員1、2、3）<br>└ 執勤官C（執勤員1、2、3）　　※全年無休、三班輪值</div>
+      <p><b>各縣市消防局救災救護指揮中心（科）架構</b>：由主任統籌，下設執勤官、執勤員、救護員及總值日官，共同組成轄區24小時運作的救災救護派遣體系。</p>
+      <div class="org">主任<br>├ 執勤官<br>├ 執勤員<br>├ 救護員<br>└ 總值日官</div>
+      <p class="cite">資料來源：105年警佐警察人員晉升警正官等訓練〈警察執勤專業法令與實務（消防人員用）〉教材。</p>
+    </div>
+
+    <h3 class="sec" id="s1-5">五、受理報案原則（5W1H2S）</h3>
+    <div class="card">
+      <p>指揮中心受理報案時，採<span class="kw">5W1H2S</span>原則確認案情，缺一不可：</p>
+      <table>
+        <tr><th>項目</th><th>內容</th></tr>
+        <tr><td>Who 何人</td><td>有無人員受災？</td></tr>
+        <tr><td>Which 何物</td><td>災害本體為何？</td></tr>
+        <tr><td>When 何時</td><td>災害何時發生？</td></tr>
+        <tr><td>Where 何地</td><td>災害在哪裡發生？</td></tr>
+        <tr><td>What 何事</td><td>災害為何（性質、規模）？</td></tr>
+        <tr><td>How 如何</td><td>事故現場該如何應變處置？</td></tr>
+        <tr><td>Support 支援</td><td>需要哪些支援事項？</td></tr>
+        <tr><td>Suggestion 建議</td><td>有無任何建議事項？</td></tr>
+      </table>
+      <p>資訊的可信度和價值，會依其來源不同而有所差異；為了給上級長官更正確且完整的訊息，受理人員均應持續主動向相關人員查證清楚後，再向長官報告，避免以未經查證的片段訊息誤導後續指揮判斷。</p>
+    </div>
+
+    <h3 class="sec" id="s1-6">六、災情通報標準（16類）</h3>
+    <div class="card">
+      <p>當災害規模達到一定程度時，須由各救災救護指揮中心通報內政部消防署，俾便及時搶救因應，並橫向通報各災害主管機關及相關部門做後續處置。各類災害通報標準略述如下：</p>
+      <table>
+        <tr><th>類別</th><th>通報門檻</th></tr>
+        <tr><td>1. 火災、爆炸</td><td>造成死亡／無生命徵象／失蹤者；受傷送醫達3人以上；燒燬或炸燬建物樓地板面積達30平方公尺以上，或燃燒逾1小時仍未控制；山林火災燒燬面積達5公頃以上或燃燒逾2小時仍未控制；大眾運輸工具或最大載客10人以上之交通工具發生火災、爆炸；高壓氣體設施、槽車等發生火災、爆炸或危險物質洩漏致災；重要場所（軍公教辦公廳舍、政府首長公館、古蹟歷史建築）或重要公共設施（港口、航空站、車站）發生火災、爆炸</td></tr>
+        <tr><td>2. 地震</td><td>造成死亡、無生命徵象、失蹤、受傷、受困或其他重大災害（道路隆起、橋樑中斷、水庫潰壩、核子事故）</td></tr>
+        <tr><td>3. 一氧化碳中毒</td><td>造成死亡、無生命徵象或受傷者</td></tr>
+        <tr><td>4. 降雨災情</td><td>淹水、河水暴漲、土石流、道路坍方等嚴重災情造成人員傷亡、受困或道路無法通行</td></tr>
+        <tr><td>5. 溺水</td><td>造成死亡、無生命徵象、失蹤，或個案2人以上之救援案</td></tr>
+        <tr><td>6. 海難</td><td>臺灣海域船舶故障、沉沒、擱淺、碰撞、洩漏、火災、爆炸，造成死亡、無生命徵象、失蹤或受傷者</td></tr>
+        <tr><td>7. 職業災害</td><td>死亡（含無生命徵象）2人以上，或死傷及失蹤合計3人以上</td></tr>
+        <tr><td>8. 陸上交通事故</td><td>死亡（含無生命徵象）3人以上，或死傷合計5人以上</td></tr>
+        <tr><td>9. 山域事故</td><td>發生山域事故（未再細分門檻）</td></tr>
+        <tr><td>10. 空難</td><td>發生空難事故</td></tr>
+        <tr><td>11. 核子事故</td><td>發生核子事故</td></tr>
+        <tr><td>12. 化學災害</td><td>危害性化學品洩漏、火災、爆炸之災害，或造成死亡、無生命徵象、失蹤，或受傷送醫人數達3人以上</td></tr>
+        <tr><td>13. 區域性停電</td><td>造成人員傷亡、受困救援案件</td></tr>
+        <tr><td>14. 消防機關公務車輛交通事故</td><td>造成人員死亡、無生命徵象或受傷者</td></tr>
+        <tr><td>15. 相關人員因公傷亡</td><td>消防、義勇消防、災害防救團體、災害防救志願組織人員執行勤務造成死亡、受傷送醫或住院者</td></tr>
+        <tr><td>16. 其他敏感案件</td><td>具新聞性、政治性及敏感性之案件，經該轄消防機關首長或內政部消防署執勤官以上人員認有必要提報者，或經媒體大肆報導，應於獲知後<mark>5分鐘內</mark>通報內政部消防署</td></tr>
+      </table>
+      <div class="data">通報依據：各縣市消防局應依消防署97年9月19日消署指字第0971000089號函規定即時通報。凡達通報消防署標準者（火災、地震、爆炸、豪雨災情、溺水、海難〈岸際〉、重大職業災害、陸上交通事故、山難、空難、核子事故、化學災害、大規模停電等），均應立即向上通報。</div>
+      <p class="cite">資料來源：105年警佐警察人員晉升警正官等訓練〈警察執勤專業法令與實務（消防人員用）〉教材。</p>
+    </div>
+
+    <h3 class="sec" id="s1-7">七、航空器支援申請流程</h3>
+    <div class="card">
+      <p>當地面搶救量能不足、需要空中支援（如高山搜救、離島後送）時，申請流程如下：</p>
+      <div class="org">各縣市消防局 → 傳真「航空器申請表」予消防署<br>消防署審核通過後 → 轉空勤總隊執行<br>（若空勤總隊能量不足）→ 轉請國搜中心支援<br>（國搜中心仍無法支援時）→ 轉請國防部調派國防部搜救機執行</div>
+      <p>整體流程呈現「地方消防局 → 消防署 → 空勤總隊 → 國搜中心 → 國防部」逐層升級的支援機制，當前一層級量能不足時，才會逐層向上請求支援，確保空中資源運用具有優先順序與效率。</p>
+      <p class="cite">資料來源：105年警佐警察人員晉升警正官等訓練〈警察執勤專業法令與實務（消防人員用）〉教材。</p>
+    </div>
+
+    <h3 class="sec" id="s1-8">八、災害緊急通報作業規定</h3>
+    <div class="card">
+      <p>依《行政院災害緊急通報作業規定》，災害緊急通報體系可分為<span class="kw">消防通報體系</span>及<span class="kw">災害權責機關通報體系</span>兩大類，各縣市消防局或縣市災害權責機關接獲報案後，除採取應變作為外，應視實際災害規模通報給內政部、災害防救主管機關及行政院。</p>
+      <h4 class="sub">（一）消防通報體系</h4>
+      <div class="org">各縣市消防局接獲報案 → 出動救災，橫向通報轄內相關機關及消防署<br>消防署 → 視災害規模，通報將災情與應變措施陳報「內政部、行政院及災害防救主管機關」</div>
+      <h4 class="sub">（二）災害權責機關通報體系</h4>
+      <div class="org">各縣市災害權責機關接獲報案 → 視災害規模通報將災情與應變措施陳報「地方行政首長、消防局及災害防救主管機關」</div>
+      <p>兩套體系的差異在於<b>通報起點不同</b>：前者從消防局出發、橫向通報再向上陳報；後者從個別災害權責機關（如環保、衛生、經濟等主管機關）出發，同樣需橫向通報地方行政首長及消防局，確保訊息在跨機關間對稱流通，不會出現「消防知道、其他機關不知道」的落差。</p>
+      <p class="cite">資料來源：105年警佐警察人員晉升警正官等訓練〈警察執勤專業法令與實務（消防人員用）〉教材。</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch2">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c2)">貳</div><h2>災害搶救相關法令與實務</h2></div>
+
+    <h3 class="sec" id="s2-1">一、消防水源</h3>
+    <div class="card">
+      <p>消防水源是火災搶救能否成功的先決條件，涵蓋範圍包括公設消防栓、蓄水池、天然水源（河川、湖泊、埤塘）、游泳池、水庫等一切可供消防車輛及人員取水滅火之水源。實務重點如下：</p>
+      <ul class="pts">
+        <li><b>定義</b>：泛指消防搶救所需之各類供水設施與天然水體，並不限於自來水系統之公設消防栓。</li>
+        <li><b>設置依據</b>：依消防法規及相關設置規範，由自來水事業機構或地方政府配合消防機關需求設置，並考量轄區地形、建築密度與搶救動線。</li>
+        <li><b>保養維護</b>：消防栓多由自來水事業機構負責定期保養、檢查通水狀況；消防機關則應定期會同勘察、普查轄區消防水源是否堪用，並將堪用情形建檔列管，作為出動搶救部署之依據。</li>
+        <li><b>消防栓設置規範</b>：依都市發展密度、道路狀況等因素規劃消防栓間距與型式（地上式／地下式），確保搶救車輛能在合理距離內取水。</li>
+        <li><b>用水權、毀損或妨礙罰則</b>：消防搶救用水具有優先權，任何人不得毀損、佔用消防栓或蓄水池等消防水源，亦不得以停車、堆置雜物等方式妨礙消防車輛接近及使用水源，違者依消防法相關規定處以罰鍰。</li>
+      </ul>
+      <div class="qa"><b>Q：消防栓平常沒水或無法出水，誰的責任？</b><br>A：消防栓多由自來水事業機構設置及維護供水功能，但消防機關負有平時普查、會勘之責，發現堪用性有疑慮應主動反映並要求改善，兩者是共同把關的關係，而非單一機關獨立負責。</div>
+    </div>
+
+    <h3 class="sec" id="s2-2">二、火災搶救——消防法各項規定</h3>
+    <div class="card">
+      <p>消防法就搶救災害賦予消防人員一系列強制作為的法定職權，是火場指揮官行使各項強制處分的法律依據：</p>
+      <table>
+        <tr><th>條文</th><th>規範內容</th></tr>
+        <tr><td>§19</td><td>為達搶救目的之使用、損壞物品：搶救灾害時得使用、損壞或限制使用有關土地、建築物、車輛及其他物件</td></tr>
+        <tr><td>§19-1</td><td>管理權人通報義務；不得規避、妨礙或拒絕救災：場所管理權人於災害發生時應即通報消防機關，並配合搶救不得規避妨礙</td></tr>
+        <tr><td>§20-1</td><td>搶救人員退避權：搶救人員認有安全疑慮時得退避，確保自身安全</td></tr>
+        <tr><td>§20、§23</td><td>警戒區：得劃定警戒區，限制人車進入或命其離開</td></tr>
+        <tr><td>§21-1</td><td>救災資訊權：得要求關係人提供與災害有關之資訊，不得拒絕、規避或虛偽陳述</td></tr>
+        <tr><td>§22</td><td>截斷電源、瓦斯：認有必要時得截斷電源、瓦斯或其他水電氣源，以避免災害擴大</td></tr>
+        <tr><td>§25</td><td>直轄市、縣市消防機關配合搶救災害：得請求其他機關（警察、衛生、電力、自來水、瓦斯等）協助配合</td></tr>
+        <tr><td>§27-1</td><td>消防救災調查權：為調查、鑑定災害原因及了解發生經過，得要求關係人提供相關資料或到場說明</td></tr>
+        <tr><td>§31</td><td>消防、救災、救護人員、裝備等之調度運用：得統一調度運用各項人力與裝備資源</td></tr>
+        <tr><td>§35-1、§36</td><td>罰則：對違反前述通報義務、拒絕配合搶救、規避調查等行為，處以罰鍰</td></tr>
+      </table>
+      <div class="mnemonic">記憶架構：§19系列（使用損壞物品／管理權人通報義務）管「進場前」；§20系列＋§22（警戒區／退避權／截斷電源瓦斯）管「搶救中」的安全與秩序；§21-1＋§27-1管「資訊與調查」；§25＋§31管「跨機關協調與資源調度」；§35-1、§36是「不配合就罰」的罰則收尾。</div>
+    </div>
+
+    <h3 class="sec" id="s2-3">三、火災搶救——消防法施行細則</h3>
+    <div class="card">
+      <p>施行細則進一步將母法的搶救職權予以具體化、程序化：</p>
+      <table>
+        <tr><th>條文</th><th>規範內容</th></tr>
+        <tr><td>§11</td><td>集中供水或截斷電源、瓦斯：具體規範母法§22執行截斷電源瓦斯時之協調程序</td></tr>
+        <tr><td>§12</td><td>通知當地警察分局或分駐（派出）所協同警戒：執行母法§20、§23劃定警戒區時，應通知轄區警察機關協同維持秩序</td></tr>
+        <tr><td>§16</td><td>舉辦訓練及演習：規範消防機關應定期辦理搶救相關訓練及演習，以強化實戰能力</td></tr>
+      </table>
+      <p>由此可見，施行細則§12「通知警察分駐（派出）所協同警戒」，正是消防與警察機關在火場第一線合作最直接的法律連結，也呼應本科目「警察執勤實務」的課程定位——消防人員在搶救過程中，經常需要警察協力維持警戒區秩序、疏導交通、管制人車進出。</p>
+    </div>
+
+    <h3 class="sec" id="s2-4">四、消防機關火場指揮及搶救作業要點——任務說明</h3>
+    <div class="card">
+      <h4 class="sub">（一）目的</h4>
+      <p>提升消防機關火場指揮能力，強化火災搶救效率，發揮整體消防戰力，以確保人民生命財產安全。</p>
+      <h4 class="sub">（二）指揮體系與職掌</h4>
+      <table>
+        <tr><th>角色</th><th>職掌</th></tr>
+        <tr><td>火場總指揮官</td><td>成立指揮所、統一指揮火場勤務、調度運用人員裝備、協調有關單位協助</td></tr>
+        <tr><td>救火指揮官</td><td>人命救助及火災搶救指揮、劃定警戒區、建立管制站、指揮電力自來水瓦斯單位協助、指揮救護工作、災情回報</td></tr>
+        <tr><td>火場指揮所</td><td>由指揮官統一指揮各項救災事宜之運作據點</td></tr>
+        <tr><td>人員裝備管制站</td><td>專人負責人員管制及裝備補給，並作為救災人員待命處所</td></tr>
+        <tr><td>幕僚群</td><td>安全幕僚、情報幕僚、水源幕僚、傳令幕僚，分工協助指揮官掌握現場各面向資訊</td></tr>
+      </table>
+      <div class="mnemonic">口訣：「總指揮管全局，救火指揮官管現場」——火場總指揮官偏向「統籌調度＋跨單位協調」，救火指揮官則直接負責「人命搜救＋警戒管制＋現場指揮」，兩者分工明確、缺一不可。</div>
+    </div>
+
+    <h3 class="sec" id="s2-5">五、整備搶救資料／受理報案／出動派遣／出動途中處置</h3>
+    <div class="card">
+      <h4 class="sub">（一）整備各式搶救資料</h4>
+      <ul class="pts">
+        <li>當日人員、車輛救災任務派遣編組表</li>
+        <li>甲、乙種搶救圖</li>
+        <li>安全資料表（SDS）、緊急應變指南等相關危害性化學品搶救資料</li>
+        <li>建置轄內備有重機械場所清冊</li>
+      </ul>
+      <h4 class="sub">（二）受理報案</h4>
+      <p>救災、救護指揮中心受理火警報案後，應持續蒐集火場情資，並立即派遣救災人、車出動，同時通報義消、友軍（警察、環保、衛生、電力、自來水、瓦斯等單位）支援配合救災；並調閱甲、乙種搶救圖、搶救部署計畫圖或相關搶救應變指南。</p>
+      <div class="data">出動時間標準：白天80秒內，夜間120秒內為原則。</div>
+      <h4 class="sub">（三）出動派遣</h4>
+      <ul class="pts">
+        <li><b>車輛派遣</b>：應以「車組」作戰為原則，忌用「車海」戰術——強調有組織、分工明確的整體部署，而非盲目集中大量車輛缺乏調度。</li>
+        <li><b>人員派遣</b>：每一攻擊車應至少能出二線水線為人力考量原則。</li>
+        <li>初期救火指揮官應攜火警地址登錄資料、甲、乙種搶救圖、搶救部署計畫圖及其他相關搶救應變指南等資料出動。</li>
+      </ul>
+      <h4 class="sub">（四）出動途中處置</h4>
+      <p>出動途中應隨時與指揮中心保持聯繫，將所觀察之火、煙狀況立即回報指揮中心，並進一步了解指揮中心蒐集之現場情資。初期救火指揮官應就派遣之人車預作搶救部署腹案，並以無線電或資通訊系統告知所屬及支援人員，以便抵達火場時能立即展開搶救作業。</p>
+    </div>
+
+    <h3 class="sec" id="s2-6">六、抵達火場處置（專有名詞整理）</h3>
+    <div class="card">
+      <p>抵達火場後，指揮官與搶救人員須依序完成一系列標準作業項目，簡報原文以下列專有名詞條列呈現，整理說明如下：</p>
+      <table>
+        <tr><th>項目</th><th>說明</th></tr>
+        <tr><td>災情回報</td><td>抵達現場後立即向指揮中心回報現場狀況（火勢、人員受困情形等）</td></tr>
+        <tr><td>請求支援</td><td>視災情規模評估是否需增援人車裝備</td></tr>
+        <tr><td>指揮權轉移</td><td>後到之較高階指揮官到場時，依規定辦理指揮權轉移程序，確保指揮不中斷</td></tr>
+        <tr><td>任務指派</td><td>指揮官依人車到場順序，分配各項搶救任務</td></tr>
+        <tr><td>車輛部署</td><td>依水源、地形、風向等因素部署消防車輛位置</td></tr>
+        <tr><td>水源運用</td><td>確認並運用消防栓、蓄水池等可用水源</td></tr>
+        <tr><td>水線部署</td><td>鋪設水線，決定攻擊線與防護線之配置</td></tr>
+        <tr><td>人命搜救</td><td>優先執行人命搜索與救助</td></tr>
+        <tr><td>侷限火勢</td><td>防止火勢擴大延燒至鄰近區域或樓層</td></tr>
+        <tr><td>周界防護</td><td>對鄰近建築物或重要設施進行防護，防止延燒</td></tr>
+        <tr><td>滅火攻擊</td><td>針對火點進行直接滅火攻擊</td></tr>
+        <tr><td>破壞作業</td><td>視需要進行開口、破壞作業，以利搜救通路或通風排煙</td></tr>
+        <tr><td>通風排煙作業</td><td>排除濃煙以利搜救進行，並降低閃燃、轟燃風險</td></tr>
+        <tr><td>個人責任回報（PAR, Personnel Accountability Report）</td><td>定時清點搶救人員位置及安危狀況，確保人員動態可控、不失聯</td></tr>
+        <tr><td>建置緊急求救訊號（Mayday）</td><td>搶救人員發生迷失、受困、裝備故障等緊急狀況時，透過特定訊號呼叫救援</td></tr>
+        <tr><td>成立緊急救援小組</td><td>編組專責待命人力，一旦火場人員發出Mayday或PAR異常，立即投入救援</td></tr>
+        <tr><td>飛火警戒</td><td>注意火場周邊因風勢造成飛火，導致其他地點延燒</td></tr>
+        <tr><td>殘火處理</td><td>確認火勢完全撲滅，處理陰燃、殘火，避免復燃</td></tr>
+        <tr><td>人員裝備清點</td><td>撤離前清點搶救人員及裝備數量，避免遺漏</td></tr>
+        <tr><td>人員裝備除污</td><td>搶救後對人員及裝備進行除污，避免化學品或有害物質殘留危害健康</td></tr>
+      </table>
+      <div class="mnemonic">口訣：「回報→部署→攻擊→回報」——整個抵達火場處置流程，本質上是「掌握狀況（災情回報／請求支援）→分工部署（任務指派／車輛水線部署）→執行搶救（人命搜救／侷限火勢／滅火攻擊）→人員安全機制（PAR／Mayday／緊急救援小組）→善後（殘火處理／清點除污）」的完整閉環，PAR與Mayday是近年火場安全管理最重要的兩項機制，務必牢記其英文全稱與功能。</div>
+    </div>
+
+    <h3 class="sec" id="s2-7">七、配合危害性化學品災害搶救</h3>
+    <div class="card">
+      <h4 class="sub">（一）受理報案</h4>
+      <p>詢問事故發生時間、地點、範圍、風向、存放危害性化學品種類、數量、洩漏或燃燒情形、傷病患人數、傷情程度、鄰近公共設施及請求支援事項。詢問係何種危害性化學品致災，包括標示告示板上資料（標示圖、聯合國編號、中文名稱、緊急連絡電話等）、設施（容器、管線、閥門、裝卸設備等）、構造（面積、高度、結構等）或破損情形等，並通報相關主管機關派員到場。</p>
+      <h4 class="sub">（二）出動時及出動途中</h4>
+      <p>聯繫環境事故諮詢監控中心、化災教官及專家學者等相關單位提供諮詢，並協助查詢相關圖資，提供現場指揮官預作處置。透過「跨部會化學物質資訊平台（簡稱化學雲）」、化學品全球調和制度（Global Harmonized System, GHS）危害數據資料查詢系統、安全資料表（SDS）、緊急應變指南等查詢致災物搶救相關資料，並通報搶救人員作為搶救參考。</p>
+      <h4 class="sub">（三）災害現場搶救原則（H.A.Z.M.A.T.）</h4>
+      <p>原簡報僅以「H.A.Z.M.A.T.」作為災害現場搶救原則之架構標題呈現，未附各字母之文字定義（原內容應為圖示）。HAZMAT為「Hazardous Materials（危害性物質）」之通稱，實務上危害性化學品災害搶救的核心原則不脫離：<b>辨識物質（透過標示牌、運送文件、偵檢儀器確認）→ 保持安全距離並佔上風位置 → 淨空警戒區、疏散人車 → 依物質特性選擇適當處理方式（而非一律以水滅火）→ 專業人員著適當防護裝備處置 → 除污後始得解除警戒</b>。建議複習時對照消防署危險物品搶救相關SOP，確認官方版本各字母之正式定義。</p>
+    </div>
+
+    <h3 class="sec" id="s2-8">八、災害搶救實務案例（開放式思考題）</h3>
+    <div class="case-box">
+      <h4>案例一：地下空間火災搶救發生爆燃</h4>
+      <p><b>情境</b>：消防人員執行地下空間火災搶救勤務，於現場進行搜救任務時，發生爆燃現象，造成消防人員傷亡。</p>
+      <p><b>思考重點</b>：</p>
+      <ul class="pts">
+        <li>地下空間（如地下室、地下停車場、地下街）通風不良、熱煙無法有效排出，容易累積可燃氣體，一旦氧氣重新大量進入，即可能發生<b>爆燃（deflagration）／閃燃／轟燃</b>等急遽延燒現象，是密閉空間搶救最大的風險。</li>
+        <li>因應對策應包含：進入前先以熱顯像儀評估內部溫度與煙層狀況、採取<b>控制通風</b>而非貿然開口造成氧氣瞬間大量進入、隨時透過個人責任回報（PAR）掌握人員位置、建立明確撤退路線與退避時機判斷（若溫度、煙況持續惡化應立即下令撤離）。</li>
+        <li>本案亦凸顯「搜救任務」與「人員自身安全」之間的權衡：搶救人命固然是核心任務，但指揮官須具備即時判斷風險、必要時下令暫停搜救轉為防禦姿態的能力。</li>
+      </ul>
+    </div>
+
+    <div class="case-box">
+      <h4>案例二：工廠火災搶救人員受困殉職</h4>
+      <p><b>情境</b>：消防人員執行工廠火災搶救案件，入室尋找受困民眾時，逢火勢沿管道間迅速往下方樓層蔓延，人員沿水線撤退途中遭阻而受困於火場，搶救送醫後，仍造成1名消防人員重傷、6名不治身亡。</p>
+      <p>（此情境與傷亡人數，與國內曾發生之工廠廠房重大殉職火警高度相似，是消防機關內部檢討火場安全管理的重要教材案例，複習時可留意其安全管理啟示，勿糾結於特定事件細節。）</p>
+      <p><b>思考重點</b>：</p>
+      <ul class="pts">
+        <li>工廠建築物構造複雜、管道間貫通樓層，火勢容易沿管道間迅速向上或向下竄燒，形成「煙囪效應」，大幅壓縮搶救人員的安全撤退時間。</li>
+        <li>水線鋪設本身即是搶救人員的退路依據，但若火勢延燒方向與退路重疊，水線退路亦可能遭切斷，凸顯事前應規劃<b>多重退路</b>、避免僅依賴單一水線作為撤退路線。</li>
+        <li>對於構造不明、延燒條件不利（可燃物多、管道貫通）的工廠類場所，指揮官應提高警覺，適時採取「不貿然深入不明區域」的保守搶救策略，並落實PAR人員清點機制，一旦通聯中斷應立即發動搜救。</li>
+      </ul>
+    </div>
+
+    <div class="case-box">
+      <h4>案例三：物質未確認前之危害性化學品搶救</h4>
+      <p><b>情境</b>：消防人員抵達現場執行危害性化學品災害搶救時，在尚未確認為何物質時，應如何進行，以確保民眾及消防人員安全？</p>
+      <p><b>思考重點</b>：</p>
+      <ul class="pts">
+        <li>應嚴守「先辨識、後搶救」原則：在物質未確認前，一律以最高防護等級處理，保持安全距離並站於上風處待命，避免貿然接觸或進入洩漏範圍。</li>
+        <li>優先透過現場標示牌（標示圖、聯合國編號）、運送文件、容器外觀、偵檢儀器等多元管道辨識物質，並聯繫環境事故諮詢監控中心、化災教官或專家學者提供遠端諮詢。</li>
+        <li>在物質確認前，應先行疏散、警戒淨空，並避免使用可能與該物質產生劇烈反應的滅火方式（如對某些化學品貿然射水可能引發劇烈反應或擴大污染）；待物質辨識確認、查閱安全資料表（SDS）或緊急應變指南後，才依物質特性擬定正式搶救戰術。</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<script>
+const search = document.getElementById('search');
+search.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  document.querySelectorAll('main .card, main .case-box, main .qa').forEach(el => {
+    const match = !q || el.textContent.toLowerCase().includes(q);
+    el.classList.toggle('hidden', !match);
+    if(match && q){
+      const details = el.closest('details');
+      if(details) details.open = true;
+    }
+  });
+});
+</script>
+</body>
+</html>

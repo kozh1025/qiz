@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>警政溝通與行銷｜簡報整理筆記</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --bg:#f5f4f0; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66;
+    --accent:#8a2b6e; --line:#e5e2da; --side-w:270px;
+    --c1:#8a2b6e; --c2:#2c6b3f; --c3:#8a6a1f; --c4:#4a2c7a; --c5:#7a2c3f; --c6:#1f6a7a; --c7:#6e2c8a; --c8:#2c4a6e;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);display:flex;}
+  #sidebar{width:var(--side-w);flex-shrink:0;height:100vh;position:sticky;top:0;overflow-y:auto;background:#fbfaf7;border-right:1px solid var(--line);padding:20px 14px;}
+  #sidebar h3{font-size:.78rem;color:var(--sub);text-transform:uppercase;letter-spacing:.06em;margin:18px 6px 6px;}
+  #sidebar h3:first-child{margin-top:4px;}
+  #search{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:.85rem;margin-bottom:8px;font-family:inherit;}
+  .backlink{display:block;font-size:.8rem;color:var(--sub);text-decoration:none;margin:0 6px 10px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+  #sidebar a.nav{display:block;padding:5px 8px;font-size:.84rem;color:var(--ink);text-decoration:none;border-radius:6px;line-height:1.4;}
+  #sidebar a.nav:hover{background:var(--line);}
+  #sidebar a.nav.sub{padding-left:18px;font-size:.79rem;color:var(--sub);}
+  main{flex:1;max-width:960px;margin:0 auto;padding:44px 32px 100px;min-width:0;}
+  h1.title{font-size:1.7rem;margin:0 0 4px;}
+  .subtitle{color:var(--sub);margin-bottom:8px;}
+  .toolbar{margin-bottom:36px;padding-bottom:16px;border-bottom:1px solid var(--line);font-size:.86rem;color:#7a776d;line-height:1.8;}
+  section.chapter{margin-bottom:56px;scroll-margin-top:20px;}
+  .chapter-head{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+  .chapter-num{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.95rem;flex-shrink:0;}
+  .chapter-head h2{margin:0;font-size:1.28rem;}
+  h3.sec{scroll-margin-top:20px;font-size:1.03rem;margin:28px 0 10px;padding-left:12px;border-left:4px solid var(--line);}
+  h4.sub{font-size:.95rem;margin:16px 0 6px;color:#4a473f;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;}
+  .card p{margin:.5em 0;line-height:1.9;font-size:.94rem;text-align:justify;}
+  ul.pts{margin:.4em 0;padding-left:1.3em;line-height:1.85;font-size:.94rem;}
+  ul.pts li{margin-bottom:4px;}
+  ol{margin:.4em 0;padding-left:1.3em;line-height:1.85;font-size:.94rem;}
+  ol li{margin-bottom:4px;}
+  .kw{background:#f7ecf3;color:var(--accent);padding:1px 7px;border-radius:5px;font-weight:600;font-size:.88em;}
+  .en{color:var(--accent);font-weight:600;}
+  table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.85rem;}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top;}
+  th{background:#f1efe9;}
+  .cite{font-size:.82rem;color:#a09d95;margin-top:4px;}
+  .case-box{background:#fbf6f9;border:1px solid #ecd6e3;border-radius:12px;padding:18px 20px;margin:14px 0;}
+  .case-box h4{margin-top:0;color:var(--accent);}
+  .data{background:#f3eef7;border-radius:8px;padding:10px 14px;font-size:.86rem;margin:8px 0;}
+  .footnote{font-size:.78rem;color:#a09d95;border-top:1px dashed var(--line);padding-top:6px;margin-top:10px;}
+  .qa{background:#eef6f0;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.9rem;}
+  .mnemonic{background:#fbf6ea;border:1px dashed #d8c896;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.9rem;color:#6b5a2a;}
+  .examtag{display:inline-block;background:#f7ecf3;color:var(--accent);padding:2px 8px;border-radius:6px;font-size:.72em;font-weight:600;margin-left:8px;vertical-align:middle;white-space:nowrap;}
+  .examnote{background:#fbf6f9;border:1px solid #ecd6e3;border-radius:10px;padding:16px 20px;margin:14px 0 24px;font-size:.9rem;color:#5a2e46;line-height:1.8;}
+  .examnote h3,.examnote h4{margin-top:0;color:var(--accent);}
+  .examnote table{font-size:.83rem;}
+  .examnote a{color:var(--accent);font-weight:600;text-decoration:none;}
+  .examnote a:hover{text-decoration:underline;}
+  .refs{font-size:.8rem;line-height:1.9;color:#55524c;column-count:1;}
+  mark{background:#f6d9ea;padding:0 2px;border-radius:3px;}
+  .hidden{display:none !important;}
+  details{margin:8px 0;}
+  summary{cursor:pointer;font-weight:600;font-size:.9rem;color:var(--accent);}
+</style>
+</head>
+<body>
+
+<nav id="sidebar">
+  <input id="search" type="text" placeholder="搜尋關鍵字...">
+  <a class="backlink" href="index.html">← 回筆記入口</a>
+
+  <h3>壹 前言</h3>
+  <a class="nav" href="#ch1">壹、前言：警政溝通的基本概念</a>
+  <a class="nav sub" href="#s1-0">核心名詞解釋／課程目標</a>
+  <a class="nav sub" href="#s1-1">一、好警察是懂得溝通的警察</a>
+  <a class="nav sub" href="#s1-2">二、民主警政與媒體公共溝通</a>
+  <a class="nav sub" href="#s1-3">三、警政溝通的四個範疇</a>
+  <a class="nav sub" href="#s1-4">四、服務型警政的行銷與溝通</a>
+  <a class="nav sub" href="#s1-5">五、政策溝通與政令宣導</a>
+
+  <h3>貳 警政溝通</h3>
+  <a class="nav" href="#ch2">貳、警政溝通</a>
+  <a class="nav sub" href="#s2-1">一、溝通對象：利害關係人</a>
+  <a class="nav sub" href="#s2-2">二、與社會大眾溝通技巧</a>
+  <a class="nav sub" href="#s2-3">三、與民意代表溝通技巧</a>
+  <a class="nav sub" href="#s2-4">四、與媒體記者溝通技巧</a>
+  <a class="nav sub" href="#s2-5">五、溝通說服的五項技巧</a>
+
+  <h3>參 警政行銷</h3>
+  <a class="nav" href="#ch3">參、警政行銷</a>
+  <a class="nav sub" href="#s3-1">一、警政行銷6P</a>
+  <a class="nav sub" href="#s3-2">二、警政行銷產品</a>
+  <a class="nav sub" href="#s3-3">三、警政行銷媒體通路</a>
+  <a class="nav sub" href="#s3-4">四、警政社群媒體應用</a>
+  <a class="nav sub" href="#s3-5">五、常用社群媒體例舉</a>
+
+  <h3>肆 社群行銷原理</h3>
+  <a class="nav" href="#ch4">肆、社群媒體行銷原理與應用</a>
+  <a class="nav sub" href="#s4-1">一、社群行銷概念</a>
+  <a class="nav sub" href="#s4-2">二、社群粉絲團與操作</a>
+  <a class="nav sub" href="#s4-3">三、警政社群媒體行銷應用原則</a>
+  <a class="nav sub" href="#s4-4">四、警政社群行銷與經營建議</a>
+
+  <h3>伍 經營案例</h3>
+  <a class="nav" href="#ch5">伍、社群行銷與經營案例</a>
+  <a class="nav sub" href="#s5-1">一、NPA署長室臉書案例</a>
+  <a class="nav sub" href="#s5-2">二、形象行銷案例</a>
+  <a class="nav sub" href="#s5-3">三、微電影行銷案例</a>
+  <a class="nav sub" href="#s5-4">四、危機公關行銷案例</a>
+
+  <h3>陸 結論與實作</h3>
+  <a class="nav" href="#ch6">陸、結論與實作研習</a>
+  <a class="nav sub" href="#s6-1">一、結論</a>
+  <a class="nav sub" href="#s6-2">二、實作研習：AI生成模式應用</a>
+
+  <h3>柒 重點速記</h3>
+  <a class="nav" href="#ch7">柒、重點速記與口訣總表</a>
+  <a class="nav sub" href="#s7-1">數字口訣總表</a>
+  <a class="nav sub" href="#s7-2">易混淆概念辨析</a>
+
+  <h3>參考書目</h3>
+  <a class="nav" href="#ref">參考書目</a>
+</nav>
+
+<main>
+  <h1 class="title">警政溝通與行銷｜簡報整理筆記</h1>
+  <div class="subtitle">115年佐升正訓練・依課程簡報（40頁）整理</div>
+  <div class="toolbar">本科目僅有課程簡報，沒有另外可對照的深讀版教材。本筆記已將簡報中條列式的關鍵詞，展開還原為完整通順的說明段落，並將簡報中以圖片（心智圖）呈現的「溝通說服五項技巧」還原為文字表格，同時兼顧「考前速記」與「概念完整理解」兩種需求。內文所附頁碼為原簡報頁數，方便對照投影片。</div>
+
+  <div class="examnote" id="examoverview">
+    <h3>📌 歷屆考古題對照｜警政溝通與行銷命題規律（108～114年）</h3>
+    <p>整理自108～114年（共7年）歷屆申論題解析可發現：<b>本科目（社群媒體行銷）在108、109年舊制考試中出現過，但110年新制考試改為固定4題架構後，就沒有再單獨命題</b>。以下如實整理其命題軌跡，備考時應據此判斷投入本科目的優先順序，而非照單全收地平均分配複習時間。</p>
+    <table>
+      <tr><th>年度</th><th>題號／分數</th><th>主題</th><th>情境摘要</th></tr>
+      <tr><td>108年</td><td>Q2（50分）</td><td><b>社群媒體行銷之優勢與限制</b></td><td>消防機關運用社群媒體（FB、IG、YouTube、LINE等）行銷之主要優勢，並分析應注意之限制與風險</td></tr>
+      <tr><td>109年</td><td>Q4（25分）</td><td><b>社群媒體行銷在消防宣導之應用</b></td><td>消防機關善用社群媒體進行防火宣導及危機溝通時，有哪些優勢與應注意之限制</td></tr>
+      <tr><td>110年</td><td>—</td><td>（本科目未命題；新制轉為方案管理／危機處理／行政程序法／貪污治罪條例4題固定架構）</td><td>—</td></tr>
+      <tr><td>111年</td><td>—</td><td>（本科目未命題；「危機處理」科目改考記者說明會原則）</td><td>—</td></tr>
+      <tr><td>112年</td><td>—</td><td>（本科目未命題；「危機處理」科目再考記者說明會原則）</td><td>—</td></tr>
+      <tr><td>113年</td><td>—</td><td>（本科目未命題）</td><td>—</td></tr>
+      <tr><td>114年</td><td>—</td><td>（本科目未命題）</td><td>—</td></tr>
+    </table>
+    <p><b>關鍵洞察</b>：</p>
+    <ol>
+      <li>警政溝通與行銷（社群媒體行銷）在108、109年舊制考試中出現過2次，且分數不低（50分、25分），並非冷門考點。</li>
+      <li>但自110年新制考試格式穩定為「方案管理／危機處理／行政程序法／貪污治罪條例」4題固定架構後，<b>社群媒體行銷本身沒有再單獨出現過</b>；其「與媒體溝通」相關的精神，轉化為「危機處理」科目中「記者說明會應注意原則」的考法（111、112年皆考過），可視為警政溝通的部分內涵被整合進危機處理科目中。</li>
+      <li><b>結論</b>：這科不是完全不會考，但近5年考試趨勢顯示，其優先順序低於方案管理／危機處理／行政程序法／貪污治罪條例這4科；建議仍要瀏覽過本筆記的核心概念（尤其是媒體溝通、社群平台特性部分），但不需要像其他4科一樣列為最優先複習對象。如果題型改回舊制或混合考法，本科知識仍可能派上用場，尤其「與媒體記者溝通技巧」的部分（見貳、四）跟危機處理的「記者說明會原則」高度相關，可以互相對照複習。</li>
+    </ol>
+    <p>
+      <a href="../佐升正考試/108年_消防_申論題解析.html">查看108年完整申論題解析 →</a>
+      <a href="../佐升正考試/109年_消防_申論題解析.html">查看109年完整申論題解析 →</a>
+      <a href="crisis-management-textbook.html#s5-2">對照『危機處理』筆記：舉行記者會應注意原則 →</a>
+    </p>
+  </div>
+
+  <section class="chapter" id="ch1">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c1)">壹</div><h2>前言：警政溝通的基本概念</h2></div>
+
+    <h3 class="sec" id="s1-0">核心名詞解釋與課程目標（簡報頁2）</h3>
+    <div class="card">
+      <p>本科目一開始就先界定幾組容易混淆的專有名詞，這些名詞在後續章節會反覆出現，務必先分辨清楚：</p>
+      <table>
+        <tr><th>名詞</th><th>英文</th><th>定義</th></tr>
+        <tr><td><b>警政</b></td><td class="en">Policing</td><td>參考《警察職權行使法》第2條「本法所稱警察，係指警察機關與警察人員之總稱」，本課程所稱警政係指警察機關與警察人員在政策、具體任務作為之總稱，亦可分別指警察人員或警察機關。</td></tr>
+        <tr><td><b>民主警政</b></td><td class="en">Democratic Policing</td><td>民主的警政；追求進步與更有公共效益的警政。</td></tr>
+        <tr><td><b>警政媒體行動</b></td><td class="en">Policing Media Agent／Act</td><td>警政機關、警察個人運用媒體<b>溝通與行銷的具體行為與過程</b>。</td></tr>
+        <tr><td><b>媒體再現警政</b></td><td class="en">Media Representation of the Policing</td><td>媒體<b>內容（文本）出現</b>警政機關、警察個人相關的符號，例如與警察有關的電視新聞、報紙新聞、社群媒體圖文影音、敘事電影、微電影等。</td></tr>
+        <tr><td><b>警政媒體能動性</b></td><td class="en">Policing Media Agency</td><td>警政機關、警察個人一切<b>可能運用媒體的方法、手段、技巧</b>。</td></tr>
+      </table>
+      <div class="mnemonic">四者的區辨：「警政媒體行動」是警察自己主動做了什麼（行為與過程）；「媒體再現警政」是媒體內容裡出現了警察的影子（結果、文本）；「警政媒體能動性」則是警察有能力／有哪些方法可以運用媒體（潛在能力、工具箱）。三者合起來，構成警政與媒體互動的完整圖像。</div>
+      <p>簡報也特別點出一個重要的擴大化趨勢：<b>警政媒體再現觀念的擴大化</b>，意指警政公共關係觀念的擴大化，也是警政行銷觀念的擴大化——媒體不只是塑造形象的工具而已，而是透過媒體再現成為警政溝通的有利武器。</p>
+      <h4 class="sub">課程目標</h4>
+      <ul class="pts">
+        <li>瞭解民主警政與AI時代傳播科技趨勢，具備警政溝通與行銷知能，主動與民眾溝通，爭取對國家警政的瞭解及支持。</li>
+        <li>瞭解採用適當的方法，增進對於警政溝通與行銷利害關係者的理解，提升共識降低溝通阻礙。</li>
+        <li>瞭解如何運用社群媒體進行溝通與行銷，使學員具備執行警政溝通與行銷的理念與基本操作能力。</li>
+      </ul>
+      <h4 class="sub">學習指標</h4>
+      <ul class="pts">
+        <li>掌握警政行銷的原理與原則，善用社群媒體，規劃並執行警政公共關係與行銷工作，以提升警政形象、預防犯罪以及處理社會秩序。</li>
+        <li>面對不同利害關係人，能適當運用溝通技巧，進行有效的警政溝通。</li>
+        <li>具備能蒐集到警政溝通與行銷的知識，或運用AI生成警政公關新聞稿、警政行銷企劃。</li>
+      </ul>
+    </div>
+
+    <h3 class="sec" id="s1-1">一、好警察是懂得『好好溝通』的警察（簡報頁4）</h3>
+    <div class="card">
+      <p>本節開宗明義提出一句貫穿全課程的核心命題：<b>「警察最重要的武器是溝通，而不是槍。」</b>這句話說明了本科目為何要把「溝通」提升到與執法能力同等重要的位階，理由可從三個層面理解：</p>
+      <ul class="pts">
+        <li><b>民主正當性的角度</b>：民主體制的政府須以人民的「同意」得以存續，政府施政需要獲得人民的「信任」，警察作為政府公權力的第一線代表，其言行舉止直接關係到人民對整個政府的信任程度。</li>
+        <li><b>新專業主義警政的角度</b>：<span class="kw">新專業主義警政</span>（<span class="en">New Professionalism in Policing</span>）核心觀點認為「警察與社區間的溝通，已躍居為警察最重要的日常工作」，這是「以社區為場景、致力警民合作為工作要領的新思維」。唯有透過有效溝通，才能取得民眾認同，進而開展警民合作，最終才能維護治安、預防犯罪、遏制犯罪（Stone &amp; Travis, 2011）。</li>
+        <li><b>倫理學的角度</b>：好警察需要靠個人「良知」來實現，但「良知」太過抽象，無法直接寫入警察政策當中作為可操作的規範。學者Manning藉由Rawls的正義論加以闡明，將這個抽象的良知具體轉化為一句可操作的行動準則：「好警察是懂得『好好溝通』的警察」。</li>
+      </ul>
+      <p class="cite">資料來源：Stone, C., &amp; Travis, J.（2011）.“Toward a New Professionalism in Policing”in Harvard Kennedy School；轉引自汪子錫著，2015，《臺灣民主警政的媒體再現研究》，台北：獨立作家。Manning, P.K.（2011）. Democratic Policing in a Changing World. Colorado: Paradigm Publishers.</p>
+    </div>
+
+    <h3 class="sec" id="s1-2">二、民主警政與媒體公共溝通（簡報頁5）</h3>
+    <div class="card">
+      <p>承接上一節「警政媒體再現觀念的擴大化」，本節進一步強調：媒體對警政而言，早已不只是被動的形象塑造工具，而是主動的溝通武器。也就是說，過去警察機關看待媒體的態度，多半停留在「怎麼把自己拍得好看、報得正面」的公關思維；但在民主警政的脈絡下，媒體再現的意涵已經擴大為「警政公共關係」與「警政行銷」兩個觀念的擴大化——警察機關必須主動、有策略地運用媒體，才能真正達到與民眾溝通、爭取民眾信任的效果，而不是被動等待媒體報導。</p>
+    </div>
+
+    <h3 class="sec" id="s1-3">三、警政溝通的四個範疇（簡報頁6）</h3>
+    <div class="card">
+      <p>警察人員及警政機關日常溝通的對象，可依「內部／外部」與「公領域／私領域」兩個構面交叉，區分為四類範疇；不同對象有不同的利害關係，溝通的策略與技巧也不盡相同。</p>
+      <table>
+        <tr><th></th><th>內部</th><th>外部</th></tr>
+        <tr><td><b>公領域</b></td><td>組織同仁（上司、部屬）</td><td>民意代表、媒體記者、民眾、利益團體、夥伴關係協力單位</td></tr>
+        <tr><td><b>私領域</b></td><td>家庭成員</td><td>同儕、社交團體</td></tr>
+      </table>
+      <p>警政溝通（<span class="en">policing communication</span>）的基本形式可分為兩類：一是運用大眾傳播媒體工具溝通，二是面對面溝通。其定義為：<b>警政人員或機關與政策利害相關者的資訊流通及交流過程</b>；警政溝通為<b>雙向</b>訊息交換（傳播）過程；警政溝通旨在<b>消弭警政阻力，形成警政解決方案的共識</b>。</p>
+      <p class="cite">資料來源：轉引自汪子錫著，2019，《警察人際溝通與對話》三版，台北：臺灣警察專科學校。</p>
+    </div>
+
+    <h3 class="sec" id="s1-4">四、服務型警政的行銷與溝通（簡報頁7）</h3>
+    <div class="card">
+      <p>服務型警政「溝通至上」，因此「警政溝通與行銷」的作為至為重要。這裡有一個角色轉換的關鍵觀察：在傳統社會新聞中，警察只是被報導、被產製內容的<b>元素</b>，記者才是真正的行動者（產製者）；但在警政行銷的媒體產製過程中，警察本身有機會反過來成為<b>行動者（產製者）</b>——例如警察機關可以自己利用FB官網、LINE官方帳號、Threads（脆）官方網頁，主動發布並傳遞內容，不必再完全仰賴媒體記者的報導與詮釋。</p>
+      <p>警察透過警政公共關係、警政行銷來滿足民眾對於警察社會功能的期待，這個過程也會形塑警察形象、警政滿意度，最終也會影響警政以及全體政府的觀感。而在AI時代，如何運用Google AI、ChatGPT AI或者AI圖片生成器，也成為警政溝通與行銷的新課題。</p>
+      <p>簡報特別區辨了「警政行銷」與「警政公共關係」兩者的關係：<span class="kw">警政行銷</span>（<span class="en">policing marketing</span>）與<span class="kw">警政公共關係</span>是警政媒體行動的兩個結構面，但警政行銷<b>包含了公共關係策略在內</b>，且行銷的目標是有針對性的（例如針對特定標的人口、特定政策目標）。</p>
+      <div class="data">整體因果鏈：服務型警政 → 數位匯流、傳播動力、媒體行動 → 政府公共關係與行銷（含警政公共關係、警政宣導行銷）→ 影響政府形象、施政滿意度、媒體再現 → 最終展現在犯罪預防、交通安全、警察形象、服務滿意等具體成果上。</div>
+      <p class="cite">資料來源：參考汪子錫，2022，〈媒體數位匯流對警政公共溝通行動的影響研究〉，《警學叢刊》第52卷第5期，pp.1-24。桃園：中央警察大學。</p>
+    </div>
+
+    <h3 class="sec" id="s1-5">五、政策溝通與政令宣導（簡報頁8）</h3>
+    <div class="card">
+      <h4 class="sub">（一）宣導規劃五步驟</h4>
+      <p>推動任何一項政令宣導之前，必須先完成一套完整的宣導規劃流程：</p>
+      <ol>
+        <li><b>宣導的目標與需求</b>：必須清楚釐清與掌握政策法令目標與任務、政策內涵，及對標的（Target）群體的訴求與影響。</li>
+        <li><b>相關資料的蒐集與整理</b>。</li>
+        <li><b>標的對象的分類與設定</b>。</li>
+        <li><b>宣導策略的研擬與調控</b>。</li>
+        <li><b>宣導工具的選擇</b>。</li>
+      </ol>
+      <h4 class="sub">（二）警政宣導四類型</h4>
+      <table>
+        <tr><th>類型</th><th>說明／例子</th></tr>
+        <tr><td>提供實用資訊</td><td>例如校園反毒、辨識詐騙、突發事件避難、防治酒駕</td></tr>
+        <tr><td>政策遊說</td><td>爭取民意支持認同政策</td></tr>
+        <tr><td>公共服務行銷</td><td>例如便民服務</td></tr>
+        <tr><td>理念行為的宣導</td><td>例如廉政防貪宣導</td></tr>
+      </table>
+      <p>基層工作人員是政策溝通的重要參與者，是民眾與機關主管／首長之間、以及跨部門之間的溝通橋梁；業務承辦人員、新聞聯絡人在整個政策溝通鏈中，扮演著相當重要的角色與職能。</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch2">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c2)">貳</div><h2>警政溝通</h2></div>
+
+    <h3 class="sec" id="s2-1">一、政策溝通對象：利害關係人（簡報頁9）</h3>
+    <div class="card">
+      <p>要有效溝通，第一步是先辨識誰是「利害關係人」。凡是符合以下任一特點的人或團體，都應被視為政策利害關係人：</p>
+      <ul class="pts">
+        <li>能影響該政策的預算或資源。</li>
+        <li>實際參與政策的相關活動（決策、執行和評估）。</li>
+        <li>位於該政策「責任鏈」中的一環。</li>
+        <li>該政策的實施會直接或間接影響其利益（得或失）。</li>
+        <li>關心該政策內容的民眾或團體。</li>
+      </ul>
+      <p>政策溝通對象可再依內外部區分：</p>
+      <table>
+        <tr><th>範疇</th><th>對象</th></tr>
+        <tr><td><b>外部</b></td><td>民眾及利益團體：政策標的人口、新聞媒體、企業或非營利組織（政策協力者）、民意代表、其他政府機關或單位同仁</td></tr>
+        <tr><td><b>內部</b></td><td>本機關長官和同仁</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="s2-2">二、與社會大眾溝通技巧（簡報頁10）</h3>
+    <div class="card">
+      <p>面對一般社會大眾，警政機關與人員應把握以下五項溝通技巧：</p>
+      <ol>
+        <li><b>簡明白話</b>：不能僅訴諸法律條文，更要避免使用大量的專業術語，應多以淺白易懂的語言進行說明。</li>
+        <li><b>儘速回應</b>：對民眾的投訴應快速回應處理，避免以冷處理方式回應。</li>
+        <li><b>先聽後說</b>：民眾情緒性抱怨時，先紓緩其情緒，用聆聽的方式處理；再慢慢進行說明，並提供解決問題的建議。</li>
+        <li><b>敘明作法</b>：遇到權限限制而不能馬上處理時，應向民眾說明往後的處理程序，使民眾感到安心。</li>
+        <li><b>協助聯繫</b>：遇到非本職管轄業務，應提供正確聯絡資訊給民眾或其他協助資料，因為民眾會把眼前這位警察，視為整個機關的代表。</li>
+      </ol>
+    </div>
+
+    <h3 class="sec" id="s2-3">三、與民意代表溝通技巧（簡報頁11）</h3>
+    <div class="card">
+      <ol>
+        <li><b>關鍵對話</b>：辨識議會運作中各類關鍵人物及其角色（如有影響力的議員、議員助理），平時培養良好且互相信任的關係，並在不同情況下應用不同人脈進行政策協商。</li>
+        <li><b>尋找台階</b>：推動政策時須深究民意代表在該政策議題中的利害關係及當中的矛盾，嘗試替其尋找可行的出路。</li>
+        <li><b>合法補償</b>：政策可能損害民代或利益團體之利益時，可嘗試合理合法的補償，或構思減輕損失、降低抗拒程度的配套措施，使民意代表能對其選民有所交代。</li>
+        <li><b>聯絡情誼</b>：和機關的府會聯絡人或國會聯絡人保持良好關係，並透過聯絡人做為溝通的橋樑、訊息取得的管道，以及溝通的潤滑劑。</li>
+      </ol>
+    </div>
+
+    <h3 class="sec" id="s2-4">四、與媒體記者溝通技巧（簡報頁12）</h3>
+    <div class="card">
+      <ol>
+        <li><b>服務媒體</b>：提供記者新聞室，門禁或停車位配合，定期發布施政新聞稿、提供資料與協助。</li>
+        <li><b>召開記者會</b>：機關首長或指定發言人親自參與，回答媒體問題，並準備新聞資料，提高傳播效能。</li>
+        <li><b>提供資訊</b>：舉辦具有新聞價值的活動，或邀訪記者參觀新設施，並協助提供新聞資訊。</li>
+        <li><b>開誠布公</b>：提供資訊或新聞稿之陳述應避免引起爭議或誤解的價值判斷，以免被媒體放大解讀。</li>
+        <li><b>一視同仁</b>：不論媒體品牌大小，在訊息的提供上皆一視同仁。</li>
+        <li><b>加深情誼</b>：舉辦記者聯誼活動、餐敘等，加深情誼，惟仍應謹守彼此份際和嚴守機密資訊。</li>
+        <li><b>澄清虛假消息</b>：發現有危害民眾權益的虛假消息散布，應儘可能利用可及的管道對外澄清。</li>
+      </ol>
+      <p class="cite">本節「與媒體記者溝通技巧」的精神，與「危機處理」科目中「舉行記者會應注意原則」（111、112年考過）高度相關，可互相對照複習，詳見本篇伍、四「危機公關行銷案例」段落的考古題連結。</p>
+    </div>
+
+    <h3 class="sec" id="s2-5">五、溝通說服的五項技巧（簡報頁13）</h3>
+    <div class="card">
+      <p>本節原文以一張心智圖呈現「人際溝通、魅力與說服的技巧」，圍繞核心概念展開五個支系的技巧，內容摘錄自臺灣警察專科學校出版《警察人際溝通與對話》2019年版，是本科目理論含量最高的一節，以下逐一還原說明。</p>
+
+      <h4 class="sub">（一）藝術三論證（亞里斯多德修辭學三訴求）</h4>
+      <table>
+        <tr><th>論證</th><th>英文</th><th>說明</th></tr>
+        <tr><td><b>倫理的論證</b></td><td class="en">ethical proof, ethos</td><td>說話要符合倫理標準，藉此建立自己站在道德高度，建立聽者對言者的信賴感。</td></tr>
+        <tr><td><b>情感的論證</b></td><td class="en">pathetical proof, pathos</td><td>運用善與惡、卑鄙與高尚的落差，將聽者帶入憐憫或同情的感情狀態，激發感傷。</td></tr>
+        <tr><td><b>邏輯的論證</b></td><td class="en">logical proof, logos</td><td>以因果關係舉出個案的事實，歸納出理性論證，包括明確的數字、時、地等論證。</td></tr>
+      </table>
+
+      <h4 class="sub">（二）正向心理學三要領</h4>
+      <p><b>傾聽</b>、<b>同理心</b>、<b>換位思考</b>——三者環環相扣：先透過傾聽掌握對方真正的處境與情緒，再運用同理心去感受對方的立場，最後才能真正做到換位思考，站在對方的角度理解整件事。</p>
+
+      <h4 class="sub">（三）卡內基訓練九要點</h4>
+      <p>源自卡內基（Dale Carnegie）人際溝通訓練的經典九要點，強調從肯定與尊重他人出發來建立關係：</p>
+      <ul class="pts">
+        <li>不批評、不責備、不抱怨</li>
+        <li>給予真誠的讚賞和感謝</li>
+        <li>引發他人心中的渴望</li>
+        <li>真誠地關心他人</li>
+        <li>經常微笑</li>
+        <li>記得他人的名字</li>
+        <li>聆聽，鼓勵他人多談自己的事</li>
+        <li>談論他人感興趣的話題</li>
+        <li>衷心讓別人覺得他很重要</li>
+      </ul>
+
+      <h4 class="sub">（四）戲劇五因論</h4>
+      <p>源自Kenneth Burke的戲劇論（<span class="en">Dramatism</span>），把每一次語言溝通都當作一場戲劇來分析，共有五個變項，說話者應注意這五個變項的組合是否恰當：</p>
+      <table>
+        <tr><th>因素</th><th>英文</th><th>說明</th></tr>
+        <tr><td><b>場景</b></td><td class="en">scene</td><td>語言行動發生的場地、情境、背景、原因。</td></tr>
+        <tr><td><b>行動者</b></td><td class="en">agent</td><td>參與戲劇角色的語言行動人物。</td></tr>
+        <tr><td><b>行動</b></td><td class="en">act</td><td>行動者具有意識的語言符號行為。</td></tr>
+        <tr><td><b>能動</b></td><td class="en">agency</td><td>行動者採取語言行動的手段、工具、技巧與方法。</td></tr>
+        <tr><td><b>目的</b></td><td class="en">purpose</td><td>語言行動者自覺的目標或意圖——想要說服別人，說話就要注意以上五個變項的搭配。</td></tr>
+      </table>
+
+      <h4 class="sub">（五）符號互動論的戲劇框架溝通</h4>
+      <p>這一支系來自符號互動論（<span class="en">Symbolic Interactionism</span>）的戲劇框架，也就是社會學家Erving Goffman式的「戲劇框架溝通」觀點：社會是個大舞台，每個人說話表達，要先定位在他人期待中自己「應該是什麼角色」；也要定位自己「想要成為什麼角色」。與人溝通，其實就是在選擇恰當的角色定位後所做的一場演出（<span class="en">Performance</span>）。</p>
+
+      <div class="mnemonic">五項技巧速記：<b>論證（藝術三論證）→ 態度（正向心理三要領）→ 待人（卡內基九要點）→ 結構（戲劇五因論）→ 定位（符號互動戲劇框架）</b>，由「怎麼說得有道理」一路推展到「怎麼演好自己的角色」。</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch3">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c3)">參</div><h2>警政行銷</h2></div>
+
+    <h3 class="sec" id="s3-1">一、警政行銷6P（簡報頁14）</h3>
+    <div class="card">
+      <p>參照Kotler政策行銷擴大化的概念，警政行銷也發展出屬於自己的6P策略組合：</p>
+      <table>
+        <tr><th>P</th><th>策略</th><th>說明</th></tr>
+        <tr><td><b>產品</b></td><td class="en">product</td><td>把抽象的產品具象化來看，第一類指警政（policing）本身可以透過包裝來展現形象的產品，例如警察形象；第二類是指各種警政措施，例如犯罪預防政策的宣導、反毒、反詐騙等。</td></tr>
+        <tr><td><b>價格</b></td><td class="en">price</td><td>目標群體願意採取新行為所付出的成本或代價，亦稱「接受成本」。做法上一是提供加值型服務，二是設計讓民眾享有極低時間成本、經濟成本的警察服務。</td></tr>
+        <tr><td><b>通路</b></td><td class="en">place</td><td>政策傳遞的方式，包括社群媒體及其他大眾傳播行銷通路、人際傳播行銷通路。警察機關所在位置本身即是place，它既是服務的場地，也是行銷通路。</td></tr>
+        <tr><td><b>促銷</b></td><td class="en">promotion</td><td>亦稱「促進策略」，提供免費贈品、附加價值以促進民眾參與支持。例如有獎徵答活動、春節前免費發送犯罪預防紅包袋、加印防盜防搶警語的春聯等。</td></tr>
+        <tr><td><b>公關</b></td><td class="en">public relation</td><td>推動各項公關措施，例如警察機關識別CIS、警局ISO認證，藉此改變民眾對警察的印象；也包括舉行記者會、發布新聞稿，以及與媒體記者、民代、利益團體、機關內部等的公共關係。</td></tr>
+        <tr><td><b>公權力</b></td><td class="en">power</td><td>展現科技偵查、武器裝備打擊犯罪的能力，讓民眾安心、讓歹徒收斂。例如春安警力展示、銀行防搶演練、快速打擊戰力展示、提高見警率（highly-visible police）。</td></tr>
+      </table>
+      <p class="cite">資料來源：汪子錫，2018，〈社群媒體時期的警政行銷理論與實例探析〉，《警政論叢》第18期，pp.1-23。</p>
+    </div>
+
+    <h3 class="sec" id="s3-2">二、警政行銷產品（簡報頁15）</h3>
+    <div class="card">
+      <p>警政行銷產品可以按照抽象程度分為四個層次，越往下層，產品越具體、越貼近行動，民眾接觸的機會也越多；越往上層，產品越抽象、越接近價值觀層次，民眾實際接觸較少，但一旦建立就影響深遠。</p>
+      <table>
+        <tr><th>層次</th><th>產品類型</th><th>例子</th></tr>
+        <tr><td>人性層次（最抽象）</td><td>抽象價值觀產品</td><td>信任</td></tr>
+        <tr><td>國家層次</td><td>職務角色產品</td><td>社會秩序、國家安全、保護人民</td></tr>
+        <tr><td>全國行政層次</td><td>全國性政策</td><td>治安風水師、青春專案、家暴防治、查緝走私毒品</td></tr>
+        <tr><td>單位層次（最具體）</td><td>具體事件產品</td><td>參訪本單位、地震避難演練、認識毒品、戰技操演</td></tr>
+      </table>
+      <div class="data">由上而下：抽象 → 行動的；由上而下：民眾接觸較少 → 接觸較多。也就是說，越具體的單位層次活動，民眾越容易親身接觸到；越抽象的人性層次（信任），則是所有具體行銷活動最終要累積出來的成果。</div>
+      <p class="cite">資料來源：參考汪子錫，2018，〈社群媒體時期的警政行銷理論與實例探析〉，《警政論叢》第18期，pp.1-23。桃園：中央警察大學。</p>
+    </div>
+
+    <h3 class="sec" id="s3-3">三、警政行銷媒體通路（簡報頁16-17）</h3>
+    <div class="card">
+      <p>社群媒體之所以能夠崛起，關鍵在於數位化（Digitalization）、Web2.0、寬頻傳輸（Broad Band Communication）三者形成「匯流」（Convergence），把傳統媒體與社群媒體都匯流到行動載具之上。</p>
+      <table>
+        <tr><th></th><th>傳統媒體通路</th><th>社群媒體通路</th></tr>
+        <tr><td>組成</td><td>雜誌、報紙、廣播電視</td><td>FB、IG、LINE、YouTube等</td></tr>
+        <tr><td>傳播方向</td><td>單向傳播，傳播者與受播者有明確區別</td><td>雙向或多向傳播，「傳播者也是受播者」，「使用者同時擔任讀者與寫者角色」</td></tr>
+        <tr><td>社群特性</td><td>無</td><td>兼有「虛擬社群」的特性，社群媒體虛擬社群內的成員沒有明確的階層，是由不特定人形成的自由鬆散組織，且多為匿名</td></tr>
+      </table>
+      <div class="mnemonic">重點記憶：社群媒體是人類史上首次實現<b>多對多（from many to many）</b>的傳播行為。以往所有的傳播活動，都只是一對一、或一對多的傳播。</div>
+    </div>
+
+    <h3 class="sec" id="s3-4">四、警政社群媒體應用（簡報頁18-21）<span class="examtag">📌 108,109年考過</span></h3>
+    <div class="card">
+      <h4 class="sub">（一）社群媒體成為執法者的溝通利器：三利一弊</h4>
+      <ul class="pts">
+        <li><b>可以協助執法</b>：社群媒體提供了一個全新的、但仍有某些尚待確認的使用價值，執法者和一般人都可以運用這些優勢。</li>
+        <li><b>可以協助接觸更多的人</b>：居住在世界各地、各行各業的人們形成了規模、型態不一的社群，執法機關可以有效且經濟地接觸到更多人。</li>
+        <li><b>可以協助行銷</b>：可以幫助並且提升執法機關溝通和宣傳活動的成效。</li>
+        <li><b>可能會有負面作用</b>：執法者可以用「普通公民」身分在社群表達意見，但如果發布不當內容，包括逾越程度的勤務描述或者不恰當的言論，可能會侵犯他人隱私，也可能損及自身及機關的信譽、形象。</li>
+      </ul>
+
+      <h4 class="sub">（二）社群媒體在警政內外部的裝置及作用</h4>
+      <p>依「平臺類型（外部平臺／內部裝置）」與「使用方向（對外／對內）」交叉，可分為四類：</p>
+      <table>
+        <tr><th></th><th>對外</th><th>對內</th></tr>
+        <tr><td><b>外部平臺</b></td><td>外部外用：臉書粉絲專頁、LINE官方帳號、YouTube等</td><td>外部內用：LINE公務群組等</td></tr>
+        <tr><td><b>內部裝置</b></td><td>內部外用：各式警政APP等</td><td>內部內用：M-Police行動警察、警政知識聯網、內部網站等</td></tr>
+      </table>
+      <p class="cite">資料來源：蘇志文、呂佳修、邱逸樵、趙炳堯、張晏瑞（2022）。中央警察大學警正班第31期專題研究報告〈社群媒體運用於宗教活動暴力犯罪防治研究〉，未出版。</p>
+
+      <h4 class="sub">（三）案例：警政雲APP</h4>
+      <p>警政署為符合行政院響應式網站政策，精進App服務，將犯罪偵防及警政服務互相結合，提供即時警政雲服務，內容包括：</p>
+      <ul class="pts">
+        <li><b>臉書專區</b>：連結「NPA署長室」、「警光新聞雲」等FB粉絲團專區資訊；提供110報案專線、113保護專線、165反詐騙專線；並可電話報案、視訊報案、推播訊息、收聽警廣。</li>
+        <li><b>治安專區</b>：守護安全、查捕逃犯、失竊車輛查詢、失蹤人口查詢、受理案件查詢、刑案線索平臺。</li>
+        <li><b>交通專區</b>：交通事故資料申請、違規拖吊查詢、即時路況查詢、即時路況通報、測速執法點查詢。</li>
+        <li><b>165專區</b>：入山申請、多國日常問候語、拾得遺失物查詢、執法機關、警廣協尋失車、失蹤人口、警察刑事紀錄證明書。</li>
+        <li><b>服務專區、酒駕防制</b>：其他相關服務項目。</li>
+      </ul>
+      <p>此外，各縣市也有自己的警政APP，例如：北市警政、新北市iPolice、桃園警政等。</p>
+
+      <h4 class="sub">（四）案例：臺中市政府警察局LINE@經營實例</h4>
+      <p>臺中市政府警察局推動「LINE@官方帳號」，系統區分為兩區：</p>
+      <ul class="pts">
+        <li><b>民眾區</b>：以「防詐騙」、「查贓車」及「找警察」為主軸進行系統發展，並整合民眾常用相關功能，讓民眾不須再安裝其他APP，直接使用LINE加入本局官方帳號，即能使用相關設置。</li>
+        <li><b>員警專區</b>：建立員警偵辦刑案、業務查詢等相關功能。</li>
+      </ul>
+    </div>
+
+    <h3 class="sec" id="s3-5">五、常用社群媒體例舉（簡報頁22-24）</h3>
+    <div class="card">
+      <p>使用者進行工作、交易、意見表達、娛樂、交友，或者搜尋知識與資訊，以及經營特定群組朋友圈，可選擇使用某個社群平台。原則上社群媒體不受地域限制，但常用社群媒體各地未必相同。以下依原簡報順序整理：</p>
+      <table>
+        <tr><th>平台</th><th>來源／開發</th><th>特色</th></tr>
+        <tr><td>Facebook（FB）</td><td>美國Meta公司</td><td>使用者除了文字訊息之外，還可傳送圖片、影片、文件、貼圖和聲音媒體訊息，並可透過整合的地圖功能分享所在位置；2023年臉書在台灣共有2151萬用戶。</td></tr>
+        <tr><td>FB Messenger</td><td>Meta</td><td>提供文字和語音服務的即時通訊軟體應用程式，可傳送文字、圖片、動畫、語音和短片等多媒體訊息。</td></tr>
+        <tr><td>Instagram（IG）</td><td>Meta</td><td>免費提供線上圖片及影片分享的社群應用軟體；在年輕族群中具有影響力，青少年絕大多數的社群互動多發生在IG（GWI調查2023）。</td></tr>
+        <tr><td>Threads（脆）</td><td>Meta</td><td>與IG連通，透過IG帳戶即可使用，在平台上發表相片及文字貼文。</td></tr>
+        <tr><td>YouTube</td><td>美國</td><td>源自美國的影片分享網站，讓使用者上傳、觀看、分享及評論影片；中文俗稱油管、水管，也被稱為當今世界「最大規模的電視台」。</td></tr>
+        <tr><td>Podcast（播客）</td><td>蘋果iPod + broadcast混成詞</td><td>可接收傳播系列音訊、影片、數位廣播或文字。</td></tr>
+        <tr><td>LINE</td><td>源自日本</td><td>盛行於台灣，每個使用者都有大大小小的群組對話、訊息，已高度滲透日常生活；另有LINE@以滿足需大量傳播者使用。</td></tr>
+        <tr><td>X（Twitter）</td><td>原名Twitter</td><td>可讓使用者發布不超過280個字元的訊息（中文、日文和韓文為140個），這些訊息被稱作「貼文」。</td></tr>
+        <tr><td>Dcard</td><td>台灣本土</td><td>開放給台灣與國外部分大學生註冊使用，是超過百萬會員的大型論壇，成為台灣校園間極為盛行的社群工具。</td></tr>
+        <tr><td>PTT（批踢踢實業坊）</td><td>台灣本土</td><td>臺灣電子佈告欄（BBS），以學術性質為原始目的，提供線上言論空間。</td></tr>
+        <tr><td>TikTok（抖音）</td><td>中國字節跳動公司</td><td>可在智慧手機上瀏覽的短片社群應用程式；國際版雖在西方諸國流行，但其個資管理的安全性，與中國政府對TikTok的掌控受到多國質疑。</td></tr>
+        <tr><td>Discord</td><td>美國Discord公司</td><td>社群免費網路即時通話軟體與數位發行平台，主要針對遊戲玩家，使用者可在聊天區傳送訊息、圖片、影片和音訊。</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch4">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c4)">肆</div><h2>社群媒體行銷原理與應用<span class="examtag">📌 108,109年考過</span></h2></div>
+
+    <h3 class="sec" id="s4-1">一、社群行銷概念（簡報頁25）</h3>
+    <div class="card">
+      <p>今日所熟悉的社群行銷成功模式，是逐步累積經驗開創出來的，這是因為社群發展之初，普遍缺乏經驗。目前公認的基本概念之一，是<span class="kw">用戶生成內容</span>（<span class="en">User-Generated Content, UGC</span>）的過程管理，其管理流程可分為三個階段：</p>
+      <ol>
+        <li><b>創作內容</b>：從創作內容開始，包括精彩的圖片、吸引人的內文、值得傳頌的故事等。</li>
+        <li><b>上傳並經營參與</b>：上傳網路之後，持續重視並處理參與的信息。</li>
+        <li><b>擴大口碑</b>：讓故事自然發展，從而建立一個虛擬的社群共同體（Community）。</li>
+      </ol>
+    </div>
+
+    <h3 class="sec" id="s4-2">二、社群粉絲團與操作（簡報頁26）</h3>
+    <div class="card">
+      <p>在社群經營案例中，有瞬間爆紅的個人、有秒殺出清的商品，但極少瞬間成功的社群媒體。社群媒體經營需要花時間，經營粉絲團是臉書行銷最重要的經營操作。</p>
+      <h4 class="sub">（一）粉絲的心理特徵</h4>
+      <p>社群媒體所稱的「粉絲」，是移用英文fans的發音，具有追隨者、愛好者或是狂熱追隨者的意思。粉絲的心理特徵包括：自我認知的正義感、喜歡正直的人、鼓勵做好事的人、支持言行一致的人、同情勇於認錯的人。</p>
+      <p>特別重要的一點是：粉絲對於議題、事件好或壞的評價，<b>不一定從法律觀點或者利益觀點出發，而是從人性出發</b>。凡是被粉絲認為人性「好」的元素，都是激發並促成社群凝聚的因素。這也是後面「經營內容的建議」一節中，強調「先說情論理、必要時再提法律」的理論基礎。</p>
+      <h4 class="sub">（二）操作手法</h4>
+      <ul class="pts">
+        <li><b>社群行銷的群眾心理操作</b>：好奇心理、從眾心理。</li>
+        <li><b>置入性行銷操作</b>：吸睛的標題、隱藏在故事中的行銷。</li>
+      </ul>
+    </div>
+
+    <h3 class="sec" id="s4-3">三、警政社群媒體行銷應用原則（簡報頁27-29）<span class="examtag">📌 108,109年考過</span></h3>
+    <div class="card">
+      <h4 class="sub">（一）整合資源應用原則</h4>
+      <ol>
+        <li>將執法行政、意見回應匯流並融入、導入社群行銷。</li>
+        <li>整合行銷資源。</li>
+      </ol>
+      <h4 class="sub">（二）融媒體行銷應用原則</h4>
+      <p>「融媒體」（<span class="en">Convergence Media</span>）是透過整合網路、傳統媒體及社群媒體，大量散布內容的散播訊息手法：將新聞文字、圖像、事件影音的同一內容，或稍加修飾後的同一內容，投放在網路、社群媒體（FB、Youtube、LINE等），以及雜誌、報紙、廣播電視上，讓相同內容融入各類媒體。</p>
+      <h4 class="sub">（三）2-2-2原則與梗圖迷因工程</h4>
+      <p>「2-2-2原則」，即在<b>2小時之內</b>，使用<b>200字以內</b>以及<b>2張圖片</b>，製作梗圖傳出去。運用<span class="kw">迷因工程</span>（<span class="en">Memes Engineering</span>），「設法把訊息包裝成忍不住想要分享的樣子」，讓「有趣」的內容，將正確訊息以超越假訊息的傳播速度傳出去。搭配<span class="en">3Fs</span>（Fast, Fair and Fun，即快速、公平和有趣）的手法，透過簡單有趣的圖卡（梗圖），先捕捉公民的注意力，然後再對大眾說明事實。</p>
+      <div class="mnemonic">2-2-2原則口訣：<b>2小時、200字、2張圖</b>；再搭配3Fs——快、公平、有趣。</div>
+      <h4 class="sub">（四）警政社群行銷的限制</h4>
+      <ul class="pts">
+        <li><b>法令規定的限制</b>：《公務員服務法》、《警察職權行使法》；針對性的法規有《刑法》、《刑事訴訟法》偵查不公開及《個人資料保護法》等。</li>
+        <li><b>角色期待的限制</b>：執法者被期待為知法及守法者，紀律森嚴，不宜由個人過度揭露內部事件（例如未經同意，自行發布常年訓練照片或內部會議照片等）。</li>
+      </ul>
+    </div>
+
+    <h3 class="sec" id="s4-4">四、警政社群行銷與經營建議（簡報頁30-32）</h3>
+    <div class="card">
+      <h4 class="sub">（一）經營社群的基本觀念建議</h4>
+      <ul class="pts">
+        <li><b>基本配置與要求</b>：網路管理人員、即時回應、合適的內容。</li>
+        <li><b>引導粉絲主動加入互動</b>：重視UGC（User-Generated Content）的發展，適當使用創意行銷，有趣分享，引導實體社群（例如協勤警力、警友社人員等）進入虛擬社群。</li>
+        <li><b>關注討論，長期經營</b>。</li>
+      </ul>
+      <h4 class="sub">（二）趁勢運勢的經營建議</h4>
+      <ul class="pts">
+        <li>把好的、有趣的事件（內容）透過粉絲分享、再分享。</li>
+        <li><b>因地制宜</b>：善用地方人文、物產及風光搭配警政行銷。</li>
+        <li><b>因人制宜</b>：發揮個人的人脈，善用支持者的影響力。</li>
+        <li><b>因時制宜</b>：注意各種節令，創造季節、時令相關的行銷題材。</li>
+      </ul>
+      <h4 class="sub">（三）經營內容的建議</h4>
+      <p>好的行銷內容不限於為民服務內容，專業執法與打擊犯罪的影片、文字，自我解嘲的梗圖，只要適當運用，都是社群行銷的好素材。但要注意兩個「避免」：</p>
+      <ul class="pts">
+        <li><b>避免惡意搞笑</b>或者Kuso，避免炫耀，不要針對宗教信仰、性別、種族、身心障礙人士及弱勢人口等議題開玩笑。</li>
+        <li><b>避免失言</b>，最恰當的方法首先是依法行政，並冷靜研判該表達什麼。</li>
+      </ul>
+      <p>和民眾溝通時（人際溝通），<b>先說情論理，必要時再提法律</b>；接受媒體採訪（公共發言），則可考慮<b>先敘述法律規定，再說明案件處理過程</b>——兩種場合的表達順序剛好相反，值得特別留意。</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch5">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c5)">伍</div><h2>社群行銷與經營案例</h2></div>
+
+    <h3 class="sec" id="s5-1">一、警政臉書經營案例：NPA署長室（簡報頁33）</h3>
+    <div class="case-box">
+      <h4>案例重點</h4>
+      <p>「NPA署長室」臉書經營發展的特色，是<b>從內部溝通有了成效之後，逐步擴大為對外行銷的平臺</b>，成為署長、官警、警眷、媒體記者、一般人共同關注點閱的社群媒體。</p>
+      <p>此案例展現出經營社群媒體能收到的具體效益：積極處理粉絲提問、提供有效溝通平臺、即時解決問題並展現凝聚力、符合人性「追求善」的心理特徵、經營警政聲望。</p>
+      <p class="cite">資料來源：https://www.facebook.com/NPA4U/?locale=zh_TW。</p>
+    </div>
+
+    <h3 class="sec" id="s5-2">二、形象行銷案例（簡報頁34）</h3>
+    <div class="case-box">
+      <h4>案例重點</h4>
+      <p>YouTube和電視新聞的內容交流，成為主動或被動的警政形象行銷：任何一位穿著制服警員的言行舉止，都有被民眾拍攝影片、上傳再轉變為電視新聞的可能。值得注意的是，<b>被動的形象行銷有時比警察主動行銷更容易獲得民眾共鳴</b>，電視新聞也會在社群網站上累積擴散效果。</p>
+      <p>簡報舉出兩則對比案例：警察執法態度溫柔，網友按讚；警察依法取締、不怕嗆警、以從警為榮，網友力挺。兩種截然不同的執法情境，都因為被拍下並流傳，而成為正面的形象行銷素材，說明形象行銷未必要刻意設計，日常執法中恰如其分的表現本身就具備行銷價值。</p>
+    </div>
+
+    <h3 class="sec" id="s5-3">三、微電影行銷案例（簡報頁35）</h3>
+    <div class="case-box">
+      <h4>案例重點</h4>
+      <p>微電影的「微」具備三個特色：<b>微時播映、微期製作、微資投入</b>。自製微電影可以引發話題，並且被傳統媒體注意報導，增加了「媒體露出」的機會。</p>
+      <p>例如「交通安全，執法先鋒」微電影，警局除了將其放在YouTube供人點閱之外，影片也吸引電視記者興趣，採訪報導參與製作微電影的警察，新聞播出後，產生<b>媒體匯流的行銷效果</b>——也就是同一內容先在自有平台露出，再被傳統媒體轉載報導，兩者疊加擴大了整體傳播效果。另外也有由夥伴關係產出的警政行銷微電影實例（例如「NOW電視＿警察寶可夢【Now夠了沒】」）。</p>
+    </div>
+
+    <h3 class="sec" id="s5-4">四、危機公關行銷案例（簡報頁36-37）</h3>
+    <div class="case-box">
+      <h4>案例重點</h4>
+      <p>危機公關行銷，是指在媒體公開後形成負面議題（或經過討論形成議題）：議題的相關文字、圖像、影像等訊息會在社群媒體蔓延，等到有相當的人注意，或者基於記者的判斷，就可能成為社會新聞。危機公關的引爆點，有些是因為執法爭議、警民互動不良，有些案例則是警察人員誤用社群媒體而發生。此外，<span class="kw">深偽技術</span>（<span class="en">Deepfake</span>）也可能造成警政信任危機，例如AI偽造警方記者會畫面。</p>
+      <p>簡報特別提醒一個容易被忽略的觀點：<b>負面事件不一定是做錯事</b>，有時只是民眾缺乏實證的「僅憑想像的批判」，或者民眾自我表現（握有第一手資料影音發布在網路上）而無端被波及。</p>
+      <p>面對處理原則：當社群媒體出現負面內容後，負責公共關係業務的同仁，一旦在網路上發現，<b>即使還沒有察覺到輿論導向，就要介入處理，並且向上級反應</b>；如果議題在社群媒體討論的熱度不退，就要開始準備記者查詢或者採訪的應對策略。</p>
+      <div class="examnote">
+        <b>考古題連結</b>：本段「開始準備記者查詢或者採訪的應對策略」，正是「危機處理」科目中「舉行記者會應注意原則」（111、112年考過）銜接之處——111年溪流救援、112年煙火意外，兩年皆要求考生「說明召開現場記者說明會應注意原則」。本科目與危機處理的媒體溝通內涵一脈相承，建議兩份筆記互相對照複習。
+        <p style="margin-bottom:0;"><a href="crisis-management-textbook.html#s5-2">查看『危機處理』筆記：舉行記者會應注意原則 →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch6">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c6)">陸</div><h2>結論與實作研習</h2></div>
+
+    <h3 class="sec" id="s6-1">一、結論（簡報頁38）</h3>
+    <div class="card">
+      <p>本課程最後以四個層面收攏全課程的核心觀念：</p>
+      <table>
+        <tr><th>層面</th><th>內容</th></tr>
+        <tr><td><b>認知</b></td><td>在社群媒體及AI人工智能時代，警察工作過程遭遇到媒體報導再現的機會更多，警察需要瞭解更多關於傳播新工具的應用。網路媒體不只是溝通工具，也是行銷工具；社群媒體能和特定人溝通，也能和不特定人溝通，大幅增加了警政公共關係與警政行銷的能量。</td></tr>
+        <tr><td><b>目標</b></td><td>具備好的溝通能力，需要學習與改變自己。爭取民眾的最大「信任」，是民主警政溝通與行銷的終極目標。</td></tr>
+        <tr><td><b>思維</b></td><td>警政在傳統「指導、服務、強制」三項職能之外，建議加上「溝通」，成為第四項核心職能。</td></tr>
+        <tr><td><b>行動</b></td><td>社群媒體工具或AI生成科技「變化無止境」，要「做中學」。</td></tr>
+      </table>
+      <div class="mnemonic">結論四層面口訣：<b>認知（多媒體再現）→ 目標（爭取信任）→ 思維（指導服務強制＋溝通）→ 行動（做中學）</b>。</div>
+    </div>
+
+    <h3 class="sec" id="s6-2">二、實作研習：AI生成模式應用（簡報頁39-40）</h3>
+    <div class="card">
+      <p>本課程最後安排「實作研習」，示範如何運用Google AI生成模式（或ChatGPT等類似AI工具）協助撰寫警政溝通與行銷的實務文件，操作程序如下：</p>
+      <ol>
+        <li>輸入文字敘述問題，包括人、時、事、地、物各種已知的訊息，並提出具體疑問請AI給予答覆。可以提出關於溝通與行銷的問題，也可以請AI代勞撰寫公關新聞稿，或者請AI提出特定年度的犯罪預防宣導企劃書（如青春專案犯罪預防宣導企劃、春安宣導企劃）。提問範圍原則上無限制。</li>
+        <li>點選AI模式（手機載具操作／電腦載具操作皆可），極短時間螢幕會呈現AI回覆。</li>
+      </ol>
+      <div class="data">警語：AI可能會出錯，請自行查證回覆內容。</div>
+
+      <h4 class="sub">提問範例（可作為實作練習題參考）</h4>
+      <div class="qa"><b>範例一（企劃大綱）</b><br>我是警政公關業務承辦人，民國115年7月份將要開始青春專案。請幫我依照警政行銷6P，撰寫一份加強宣導反詐片的犯罪預防警政行銷宣導企劃大綱。全文大約1至2千字。</div>
+      <div class="qa"><b>範例二（新聞稿撰寫）</b><br>我是警政公關人員，請協助我把以下情境，寫出大約500至600字的新聞稿，以便宣傳警察服務週到。情境描述：文山區街頭日前驚見一名約40歲女子獨坐烈日之下，神情迷惘、身旁無人陪同，疑似智能障礙，情況令人擔憂。民眾見狀趕緊報警，文山第二分局景美派出所警員余易展、劉建丞獲報後立即趕赴現場，於其隨身物品中發現一本筆記本，憑藉筆記本中的資訊，成功確認該女子為新北市板橋區日前通報的失蹤人口。</div>
+      <div class="qa"><b>範例三（危機公關預防）</b><br>民國116年大甲媽祖繞境活動，為預防爭奪媽祖鑾轎、發生衝突事件，並維護繞境秩序，使宗教活動能平安落幕，請問警方要發布相關犯罪預防通告，給參加活動的各界。我是警方公共關係業務承辦人，請問對於警政個別利害關係人，我應該如何未雨綢繆？</div>
+      <div class="qa"><b>範例四（宣導對象設計）</b><br>我是警察公關業務承辦人，近期因轄區發生多起65歲以上老人，出任詐騙案中的車手或收簿手而遭逮捕移送，這些人都沒有前科，也多是被騙來打工的。上級要我們加強向老人宣導，避免犯罪。請問要怎麼做？</div>
+      <p class="footnote">以上四則提問範例可作為考前練習「以警政溝通與行銷理論撰寫實務文件」的素材，練習時可嘗試套用本筆記中的6P、四類型宣導、溝通說服五項技巧等架構來作答，而非僅憑直覺書寫。</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch7">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c7)">柒</div><h2>重點速記與口訣總表</h2></div>
+
+    <h3 class="sec" id="s7-1">數字口訣總表</h3>
+    <div class="card">
+      <p>本科目大量使用數字化的架構與口訣，是選擇題最常出現的命題點，整理如下表方便總複習時快速掃描：</p>
+      <table>
+        <tr><th>數字</th><th>名稱</th><th>內容</th></tr>
+        <tr><td>4</td><td>警政溝通的四個範疇</td><td>公領域內部（組織同仁）／公領域外部（民代、媒體、民眾、協力單位）／私領域內部（家庭成員）／私領域外部（同儕、社交團體）</td></tr>
+        <tr><td>4</td><td>警政宣導四類型</td><td>提供實用資訊／政策遊說／公共服務行銷／理念行為的宣導</td></tr>
+        <tr><td>5</td><td>與社會大眾溝通技巧</td><td>簡明白話／儘速回應／先聽後說／敘明作法／協助聯繫</td></tr>
+        <tr><td>4</td><td>與民意代表溝通技巧</td><td>關鍵對話／尋找台階／合法補償／聯絡情誼</td></tr>
+        <tr><td>7</td><td>與媒體記者溝通技巧</td><td>服務媒體／召開記者會／提供資訊／開誠布公／一視同仁／加深情誼／澄清虛假消息</td></tr>
+        <tr><td>5</td><td>溝通說服的五項技巧</td><td>藝術三論證／正向心理學三要領／卡內基九要點／戲劇五因論／符號互動論戲劇框架</td></tr>
+        <tr><td>6</td><td>警政行銷6P</td><td>產品／價格／通路／促銷／公關／公權力</td></tr>
+        <tr><td>2-2-2</td><td>梗圖傳播原則</td><td>2小時內／200字以內／2張圖片</td></tr>
+        <tr><td>3</td><td>3Fs</td><td>Fast快速／Fair公平／Fun有趣</td></tr>
+        <tr><td>9</td><td>卡內基訓練九要點</td><td>不批評不責備不抱怨／真誠讚賞感謝／引發渴望／真誠關心／常微笑／記得名字／鼓勵他人多談自己／談論他人感興趣話題／讓別人覺得重要</td></tr>
+        <tr><td>5</td><td>戲劇五因論</td><td>場景scene／行動者agent／行動act／能動agency／目的purpose</td></tr>
+        <tr><td>3</td><td>微電影三微特色</td><td>微時播映／微期製作／微資投入</td></tr>
+        <tr><td>3</td><td>藝術三論證</td><td>倫理論證ethos／情感論證pathos／邏輯論證logos</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="s7-2">易混淆概念辨析</h3>
+    <div class="card">
+      <table>
+        <tr><th>易混淆概念</th><th>辨析</th></tr>
+        <tr><td>警政行銷 vs 警政公共關係</td><td>兩者都是警政媒體行動的結構面，但警政行銷「包含」了公共關係策略在內，且行銷目標具有針對性；公共關係則較偏重形象與關係經營，範圍相對廣泛而不一定針對特定目標。</td></tr>
+        <tr><td>警政媒體行動 vs 媒體再現警政 vs 警政媒體能動性</td><td>警政媒體行動＝警察主動做了什麼（行為與過程）；媒體再現警政＝媒體內容中出現警察的符號（結果、文本）；警政媒體能動性＝警察擁有哪些可能運用媒體的方法與能力（工具箱、潛在能力）。</td></tr>
+        <tr><td>傳統媒體通路 vs 社群媒體通路</td><td>傳統媒體是單向傳播，傳播者與受播者有明確區別；社群媒體是雙向或多向傳播，使用者同時是讀者也是寫者，且是人類史上首次實現多對多傳播。</td></tr>
+        <tr><td>決策矩陣 vs UGC（本科目脈絡）</td><td>本科目強調的是用戶生成內容（UGC）管理流程：創作內容→經營參與→擴大口碑→建立虛擬社群，這是社群行銷的核心方法論，而非其他科目常見的方案分析工具。</td></tr>
+        <tr><td>人際溝通「先說情論理」 vs 公共發言「先敘述法律規定」</td><td>兩種場合表達順序相反：面對民眾（人際溝通）先說情論理，必要時再提法律；面對媒體採訪（公共發言）則先敘述法律規定，再說明案件處理過程。</td></tr>
+        <tr><td>主動形象行銷 vs 被動形象行銷</td><td>主動形象行銷是警方自行策劃發布的內容；被動形象行銷則是民眾自行拍攝執法過程後上傳，經媒體轉載而形成，簡報特別指出被動形象行銷有時比主動行銷更容易獲得民眾共鳴。</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="chapter" id="ref">
+    <div class="chapter-head"><div class="chapter-num" style="background:#999">§</div><h2>參考書目</h2></div>
+    <div class="card refs">
+      <p>汪子錫（2015）。《臺灣民主警政的媒體再現研究》。台北：獨立作家。<br>
+      汪子錫（2017）。自媒體時期關於公共治理夥伴關係的新創理論探討。收於第13屆兩岸四地公共管理學術研討會。<br>
+      汪子錫（2018）。〈社群媒體時期的警政行銷理論與實例探析〉。《警政論叢》第18期，pp.1-23。桃園：中央警察大學。<br>
+      汪子錫（2019）。《警察人際溝通與對話》（三版）。台北：臺灣警察專科學校。<br>
+      汪子錫（2022）。〈媒體數位匯流對警政公共溝通行動的影響研究〉。《警學叢刊》第52卷第5期，pp.1-24。桃園：中央警察大學。<br>
+      蘇志文、呂佳修、邱逸樵、趙炳堯、張晏瑞（2022）。〈社群媒體運用於宗教活動暴力犯罪防治研究〉。中央警察大學警正班第31期專題研究報告，未出版。</p>
+      <p style="margin-top:14px">Manning, P.K.（2011）. Democratic Policing in a Changing World. Colorado: Paradigm Publishers.<br>
+      Stone, C., &amp; Travis, J.（2011）.“Toward a New Professionalism in Policing”in Harvard Kennedy School. Retrieved from: http://www.hks.harvard.edu/criminaljustice/executive_sessions/policing.htm</p>
+      <p style="margin-top:14px">警政雲APP。https://play.google.com/store/apps/details?id=tw.gov.npa.callservice&amp;hl=zh_TW（下載日期2024年3月15日）。<br>
+      NPA署長室臉書粉絲頁。https://www.facebook.com/NPA4U/?locale=zh_TW。<br>
+      社群媒體使用調查（GWI, 2023）。https://zh.oosga.com/social-media/twn/。</p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+const search = document.getElementById('search');
+search.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  document.querySelectorAll('main .card, main .case-box, main .qa').forEach(el => {
+    const match = !q || el.textContent.toLowerCase().includes(q);
+    el.classList.toggle('hidden', !match);
+    if(match && q){
+      const details = el.closest('details');
+      if(details) details.open = true;
+    }
+  });
+});
+</script>
+</body>
+</html>

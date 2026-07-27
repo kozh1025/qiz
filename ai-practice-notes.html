@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>人工智慧實作｜教材筆記</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --bg:#f5f4f0; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66;
+    --accent:#5a3b8a; --line:#e5e2da; --side-w:270px;
+    --c1:#5a3b8a; --c2:#7c3fa0; --c3:#3f5fa0; --c4:#a05a3f; --c5:#2f8a72; --c6:#8a3f7c; --c7:#5a7d3b; --c8:#3f7a9e;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);display:flex;}
+  #sidebar{width:var(--side-w);flex-shrink:0;height:100vh;position:sticky;top:0;overflow-y:auto;background:#fbfaf7;border-right:1px solid var(--line);padding:20px 14px;}
+  #sidebar h3{font-size:.78rem;color:var(--sub);text-transform:uppercase;letter-spacing:.06em;margin:18px 6px 6px;}
+  #sidebar h3:first-child{margin-top:4px;}
+  #search{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:.85rem;margin-bottom:8px;font-family:inherit;}
+  .backlink{display:block;font-size:.8rem;color:var(--sub);text-decoration:none;margin:0 6px 10px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+  #sidebar a.nav{display:block;padding:5px 8px;font-size:.84rem;color:var(--ink);text-decoration:none;border-radius:6px;line-height:1.4;}
+  #sidebar a.nav:hover{background:var(--line);}
+  #sidebar a.nav.sub{padding-left:18px;font-size:.79rem;color:var(--sub);}
+  main{flex:1;max-width:940px;margin:0 auto;padding:44px 32px 100px;min-width:0;}
+  h1.title{font-size:1.7rem;margin:0 0 4px;}
+  .subtitle{color:var(--sub);margin-bottom:8px;}
+  .toolbar{margin-bottom:36px;padding-bottom:16px;border-bottom:1px solid var(--line);font-size:.86rem;color:#6b6a66;line-height:1.8;background:#f3eef9;border:1px solid #e2d6ef;border-radius:10px;padding:12px 16px;}
+  section.chapter{margin-bottom:56px;scroll-margin-top:20px;}
+  .chapter-head{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+  .chapter-num{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.95rem;flex-shrink:0;}
+  .chapter-head h2{margin:0;font-size:1.28rem;}
+  h3.sec{scroll-margin-top:20px;font-size:1.03rem;margin:28px 0 10px;padding-left:12px;border-left:4px solid var(--line);}
+  h4.sub{font-size:.95rem;margin:16px 0 6px;color:#4a473f;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;}
+  .card p{margin:.5em 0;line-height:1.9;font-size:.94rem;text-align:justify;}
+  ul.pts{margin:.4em 0;padding-left:1.3em;line-height:1.85;font-size:.94rem;}
+  ul.pts li{margin-bottom:4px;}
+  .kw{background:#f0e9f9;color:var(--accent);padding:1px 7px;border-radius:5px;font-weight:600;font-size:.88em;}
+  table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.83rem;}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top;}
+  th{background:#f1efe9;}
+  .cite{font-size:.82rem;color:#a09d95;margin-top:4px;}
+  .case-box{background:#f8f5fb;border:1px solid #e2d6ef;border-radius:12px;padding:18px 20px;margin:14px 0;}
+  .case-box h4{margin-top:0;color:var(--accent);}
+  .data{background:#eef4f8;border-radius:8px;padding:10px 14px;font-size:.86rem;margin:8px 0;}
+  .footnote{font-size:.78rem;color:#a09d95;border-top:1px dashed var(--line);padding-top:6px;margin-top:10px;}
+  .qa{background:#eef6f0;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.9rem;}
+  .mnemonic{background:#fbf6ea;border:1px dashed #d8c896;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.9rem;color:#6b5a2a;}
+  .refs{font-size:.8rem;line-height:1.9;color:#55524c;column-count:1;}
+  mark{background:#ffe9a8;padding:0 2px;border-radius:3px;}
+  .hidden{display:none !important;}
+  details{margin:8px 0;}
+  summary{cursor:pointer;font-weight:600;font-size:.9rem;color:var(--accent);}
+</style>
+</head>
+<body>
+
+<nav id="sidebar">
+  <input id="search" type="text" placeholder="搜尋關鍵字...">
+  <a class="backlink" href="index.html">← 回筆記入口</a>
+
+  <h3>行前準備</h3>
+  <a class="nav" href="#ch1">壹、課程說明與行前準備</a>
+  <a class="nav sub" href="#s1-1">三大學習目標</a>
+  <a class="nav sub" href="#s1-2">課前裝備準備</a>
+  <a class="nav sub" href="#s1-3">使用AI的五大心法</a>
+  <a class="nav sub" href="#s1-4">課程學習地圖（四大站）</a>
+
+  <h3>提示語工程理論</h3>
+  <a class="nav" href="#ch2">貳、普朗姆特煉星術：STAR與五星級框架</a>
+  <a class="nav sub" href="#s2-1">提示語溝通的比喻</a>
+  <a class="nav sub" href="#s2-2">三星級提示語：STAR四要素</a>
+  <a class="nav sub" href="#s2-3">五星級提示語：對齊背景知識</a>
+
+  <h3>打詐案例實戰</h3>
+  <a class="nav" href="#ch3">參、AI偵查官的打詐筆記本</a>
+  <a class="nav sub" href="#s3-1">案例背景：臺灣詐騙有多嚴重</a>
+  <a class="nav sub" href="#s3-2">演練一：陽春提示語（#101）</a>
+  <a class="nav sub" href="#s3-3">演練二：STAR結構化（#102）</a>
+  <a class="nav sub" href="#s3-4">演練三：五星級進階（#103）</a>
+  <a class="nav sub" href="#s3-5">小結：提示語品質決定分析品質</a>
+
+  <h3>政策宣導實作①</h3>
+  <a class="nav" href="#ch4">肆、NotebookLM政策宣導Podcast</a>
+  <a class="nav sub" href="#s4-1">案例情境：湖濱分局防詐任務</a>
+  <a class="nav sub" href="#s4-2">拆解Podcast腳本的三大特色</a>
+  <a class="nav sub" href="#s4-3">NotebookLM功能導覽</a>
+  <a class="nav sub" href="#s4-4">手機版操作五步驟</a>
+  <a class="nav sub" href="#s4-5">製作宣導Podcast的四個小秘訣</a>
+
+  <h3>政策宣導實作②</h3>
+  <a class="nav" href="#ch5">伍、AI生圖與LINE貼圖行銷</a>
+  <a class="nav sub" href="#s5-1">角色一致性原理</a>
+  <a class="nav sub" href="#s5-2">實作任務：六種生圖風格</a>
+
+  <h3>反思交流</h3>
+  <a class="nav" href="#ch6">陸、學習反思與交流</a>
+</nav>
+
+<main>
+  <h1 class="title">人工智慧實作｜教材筆記</h1>
+  <div class="subtitle">115年度佐升正訓練・依教學簡報（55頁）整理</div>
+  <div class="toolbar">本科目僅有簡報教材（PowerPoint，約77MB），並無搭配之教材PDF。本筆記已將簡報上條列式的關鍵詞與操作步驟，展開還原為通順完整的說明段落，並適度以表格與提示框整理重點，同時兼顧「考前速記」與「完整理解」兩種需求。凡簡報中出現的操作步驟、案例數據、對話範例，皆盡量完整保留，方便對照複習。</div>
+
+  <section class="chapter" id="ch1">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c1)">壹</div><h2>課程說明與行前準備</h2></div>
+
+    <div class="card">
+      <p>本課程全名為「警佐警察人員晉升警正官等訓練」中的「人工智慧實作」科目，主題聚焦於<span class="kw">生成式人工智慧</span>（Generative AI）在警察公務情境中的實際應用。整份簡報以「探險」作為貫穿全程的比喻：學員被稱為「學習探險家」，正式進入課程內容前，會先進行「行前說明」與「裝備檢核」，確保每個人都具備參與後續實作的基本條件。</p>
+      <p>課程名稱中反覆出現的「<span class="kw">普朗姆特煉星術</span>」一詞，是「Prompt」（提示語）的諧音轉譯，「煉星術」則呼應後面會教的 <span class="kw">STAR</span> 提示語框架，意指把普通的提示語「鍊」成能讓AI給出精準回應的「五星級」提示語。這個命名貫穿整堂課，包含後面會用到的線上資源平台「普朗姆特煉星術HUB」，都是同一個比喻系統下的產物。</p>
+    </div>
+
+    <h3 class="sec" id="s1-1">一、三大學習目標</h3>
+    <div class="card">
+      <p>課程開宗明義說明，這趟學習探險旅程結束後，學員應該能挖掘到以下三項寶藏（原簡報以 A／B／C 呈現）：</p>
+      <ul class="pts">
+        <li><b>A．精準溝通能力</b>：能撰寫與AI精準溝通的提示語，且符合 <span class="kw">STAR</span> 要點（即後面會教的場景、任務、目標、格式四大要素）。</li>
+        <li><b>B．公務協作能力</b>：能於公務情境中設計提示語，與AI協作進行政策溝通及宣導工作（例如撰寫防詐宣導文案、製作政令宣導素材等）。</li>
+        <li><b>C．反思應用能力</b>：藉由課程中的反思及討論活動，能將本次學習體驗連結、應用於未來實際的公務工作場景中。</li>
+      </ul>
+    </div>
+
+    <h3 class="sec" id="s1-2">二、課前裝備準備</h3>
+    <div class="card">
+      <p>正式進入實作前，簡報以「探險裝備檢視」的方式，提醒學員必須先備妥以下三項（同樣以 A／B／C 呈現）：</p>
+      <ul class="pts">
+        <li><b>A．帳號登入</b>：<span class="kw">ChatGPT</span> 及 <span class="kw">NotebookLM</span> 皆須成功登入，兩者的免費版本即可滿足課程需求，不需要付費訂閱。</li>
+        <li><b>B．裝置準備</b>：建議攜帶筆記型電腦（強力推薦，因操作介面較完整），若無筆電也可使用智慧型手機完成後續實作。</li>
+        <li><b>C．資源平台加入</b>：須成功加入本課程專屬的線上資源站「<span class="kw">普朗姆特煉星術HUB</span>」（連結：<span class="kw">https://pse.is/7sc4ar</span>），課程中所有「提示語」練習範例（如提示語#101、#102、#103）都必須從這個平台複製取得。</li>
+      </ul>
+      <div class="mnemonic">簡報教材的閱讀方式提示：文字有「底線」代表有超連結、可直接點擊；文字旁有「三角形」圖示代表內容可折疊展開，點擊三角形即可看到完整內文。這個提示同樣適用於「普朗姆特煉星術HUB」網頁本身的操作。</div>
+    </div>
+
+    <h3 class="sec" id="s1-3">三、使用AI的五大心法</h3>
+    <div class="card">
+      <p>在開始動手操作之前，課程特別強調使用生成式AI時應具備的風險意識，以 A 至 E 五項心法呈現：</p>
+      <table>
+        <tr><th>心法</th><th>內容</th><th>意涵</th></tr>
+        <tr><td><b>A</b></td><td>不要完全相信AI給的答案</td><td>AI生成內容可能出現「幻覺」（hallucination），使用者仍須自行查證與判斷正確性</td></tr>
+        <tr><td><b>B</b></td><td>機密文件不能用AI撰寫</td><td>涉及機密等級的公文或資料，不應交由AI工具處理或撰寫</td></tr>
+        <tr><td><b>C</b></td><td>切勿把機密或個資告訴AI</td><td>對話輸入的內容可能被記錄或用於模型訓練，機密與個人資料不應輸入</td></tr>
+        <tr><td><b>D</b></td><td>AI不能取代人的專業判斷</td><td>AI僅為輔助工具，最終決策仍須仰賴承辦人員的專業判斷</td></tr>
+        <tr><td><b>E</b></td><td>使用AI時要遵守相關規範</td><td>機關內部或上級對AI使用可能訂有規範與限制，須配合遵守</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="s1-4">四、課程學習地圖（四大站）</h3>
+    <div class="card">
+      <p>整堂課程以「學習探險家的偵查檔案夾」為地圖架構，貫穿全程共有四大學習站，每經過一個小節，簡報就會重新出現這張地圖，提示學員目前進度：</p>
+      <ol>
+        <li><b>普朗姆特煉星術</b>：學習有效提示語的核心理論（STAR四要素、五星級進階），這部分理論實際上是搭配下一站的詐騙案例一起教學。</li>
+        <li><b>AI偵查官的打詐筆記本</b>：以真實的詐騙報案統計資料為題材，實際動手練習從陽春提示語逐步進化到結構化、五星級提示語，體驗提示語品質如何直接影響分析結果的深度。</li>
+        <li><b>AI宣傳官的祕密武器</b>：學習運用 NotebookLM 製作政策宣導 Podcast，以及運用AI生圖工具製作LINE貼圖等行銷素材，將分析結果轉化為對外溝通的宣導內容。</li>
+        <li><b>慶祝豐收</b>：課程尾聲的學習反思與交流活動，回顧整趟學習旅程的收穫。</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch2">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c2)">貳</div><h2>普朗姆特煉星術：STAR與五星級提示語框架</h2></div>
+
+    <h3 class="sec" id="s2-1">一、提示語為何重要：溝通的比喻</h3>
+    <div class="card">
+      <p>課程用兩個生活化比喻說明「對AI下提示語」這件事的本質：第一，對AI下提示語，就像<b>主管交辦部屬任務</b>——交辦內容越模糊，部屬（AI）做出來的成果就越不符合期待；交辦內容越清楚具體，成果就越貼近主管腦中的想像。第二，AI就像一台<b>配有導航系統的車</b>，只要清楚地把「你腦中的路線」轉換成「對方（AI）手中的地圖」，AI就能沿著正確路徑抵達目的地、不會迷路；反之若只給模糊的方向，AI也只能憑猜測前進。</p>
+      <p>更進一步的觀念是：一則真正有效的提示語，其實是<span class="kw">人腦、AI、與世界</span>三方的同步對齊。使用者腦中知道自己要什麼、AI具備語言生成的能力，但AI並不知道「你的世界」實際上長什麼樣子——因此提示語的任務，就是提供真實世界的背景知識與脈絡，讓AI能夠在使用者的世界裡，找到正確的定位點，據此生成真正貼合情境的回應，而不是通用、空泛的內容。</p>
+    </div>
+
+    <h3 class="sec" id="s2-2">二、三星級提示語：STAR四要素</h3>
+    <div class="card">
+      <p>課程提出的第一層提示語框架，稱為「三星級提示語」，能讓AI的對話回應具備清楚的邏輯結構，其核心是 <span class="kw">STAR</span> 四個英文字母所代表的四項要素：</p>
+      <table>
+        <tr><th>要素</th><th>英文</th><th>意涵</th></tr>
+        <tr><td><b>S．場景脈絡化</b></td><td>Situation</td><td>說明你所處的背景情境——你是誰、面對什麼樣的狀況，讓AI理解對話發生的前提脈絡</td></tr>
+        <tr><td><b>T．任務結構化</b></td><td>Task</td><td>明確列出希望AI完成的具體任務項目，常以「#標題」的方式分段呈現，讓任務一目瞭然</td></tr>
+        <tr><td><b>A．目標具體化</b></td><td>Aim</td><td>清楚說明希望達成的目標，以及希望AI採取的思考方式（例如要求「請你一步一步來」）</td></tr>
+        <tr><td><b>R．輸出格式化</b></td><td>Report</td><td>指定希望AI輸出的呈現格式，例如「標題＋段落」的文章格式，而非條列式或其他格式</td></tr>
+      </table>
+      <div class="mnemonic">「請你一步一步來」是課程中特別點出的「神秘咒語」：這句話能誘導AI採用類似「思維鏈」（chain of thought）的方式逐步推理，而不是直接跳到結論，對於較複雜的分析任務，能明顯提升輸出內容的邏輯性與完整度。</div>
+      <p>課程以「打詐筆記本」案例中的提示語為例，示範STAR四要素如何對應到一則實際的提示語內容：</p>
+      <table>
+        <tr><th>STAR要素</th><th>對應的提示語內容</th></tr>
+        <tr><td>S 場景脈絡化</td><td>「我是派出所的員警，這是派出所2025年2月份來我們派出所報案，遇到網路詐騙的統計資料。」</td></tr>
+        <tr><td>T 任務結構化</td><td>「#基本資料統計　#關聯性分析　#未來打詐建議」三項任務標題</td></tr>
+        <tr><td>A 目標具體化</td><td>「請你一步一步來，完成以下分析，用『標題＋段落』的格式輸出分析內容」</td></tr>
+        <tr><td>R 輸出格式化</td><td>「標題＋段落」格式</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="s2-3">三、五星級提示語：對齊背景知識</h3>
+    <div class="card">
+      <p>STAR四要素只是「三星級」的基本門檻，課程進一步指出：若能在提示語中額外補充「背景知識」，讓AI真正理解使用者所處的專業世界，產出內容就能更貼近實際需求，達到「五星級」的水準。這裡所謂的背景知識對齊，具體包含四類資訊：</p>
+      <ul class="pts">
+        <li><b>專有名詞</b>：資料中出現的代碼、術語各自代表什麼意義</li>
+        <li><b>概念知識</b>：與任務相關的專業概念與知識背景</li>
+        <li><b>環境中的機會與風險</b>：所處環境（如轄區、業務範圍）存在哪些特殊的機會或風險因素</li>
+        <li><b>重要事件與政策趨勢</b>：近期相關的重大事件或政策方向</li>
+      </ul>
+      <p>以打詐案例延續示範：原本的資料表格中只有「類型1」「類型2」「區域A」「區域B」等代碼，AI並不知道這些代碼實際代表什麼。當提示語補充「報案類型中，1代表『網路購物詐騙』、2代表『假買家騙賣家詐騙』；區域中，A代表『商辦區』、B代表『住商混合區』」等專有名詞定義後，AI才能真正理解資料的實際意涵，進而給出真正符合當地治安脈絡的具體建議，而不是空泛的通用建議。</p>
+      <div class="data">觀念總結：好的提示語，能讓AI協助我們把原始的「<b>資料</b>」，透過分析轉化為可以據以決策的「<b>資訊</b>」——這正是「資料 → 分析 → 資訊」的轉換過程，也是提示語工程（prompt engineering）最終希望達成的實務價值。</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch3">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c3)">參</div><h2>AI偵查官的打詐筆記本：數據分析實戰演練</h2></div>
+
+    <h3 class="sec" id="s3-1">一、案例背景：臺灣詐騙問題有多嚴重</h3>
+    <div class="case-box">
+      <p>課程以真實媒體報導作為案例引入的背景素材：《今周刊》分別於2025年1月15日、1月22日刊出兩篇報導——「每天騙走4億元！為什麼臺灣變成詐騙天堂？」，凸顯臺灣詐騙案件財損之嚴重程度。搭配刑事警察局建置的「<span class="kw">165打詐儀錶板</span>」——一個公開邀請民眾一起參與防詐的即時數據看板，作為後續案例演練引用的資料來源基礎。</p>
+    </div>
+
+    <h3 class="sec" id="s3-2">二、演練一：陽春提示語與初步結果（提示語#101）</h3>
+    <div class="card">
+      <p>第一次操作練習，刻意示範一則「陽春」、缺乏結構的提示語，讓學員親身體會提示語品質不足時，AI能提供的分析深度也相對有限。操作情境給定一份實際的派出所詐騙報案統計表格（欄位：日期、時間、類型、對方LINE ID、區域，共10筆紀錄），搭配以下提示語：</p>
+      <div class="data">提示語#101（原文）：「我有一個數據表，請幫我分析這個資料。」（附上完整資料表格）</div>
+      <p><b>操作步驟</b>：①於ChatGPT（或Gemini、Claude等類似軟體）開啟一個新交談 ②至「普朗姆特煉星術HUB」找到「提示語#101」並複製 ③貼上並檢視AI生成的成果（課程設定計時3分鐘讓學員操作）。</p>
+      <p><b>實際結果</b>：AI僅回傳了陽春的基礎描述性統計圖表——依類型統計（類型1、2各5筆）、依區域統計（區域A共4筆、區域B共6筆）、依時間統計（早上2筆、下午3筆、晚上5筆），並簡單指出「類型1活動主要在區域A、類型2活動主要在區域B」。這些結果雖非錯誤，但停留在表層的次數統計，看不出更深入的關聯洞察，也沒有任何具體的後續行動建議。</p>
+    </div>
+
+    <h3 class="sec" id="s3-3">三、演練二：STAR結構化提示語（提示語#102）</h3>
+    <div class="card">
+      <p>第二次操作在同一則對話中延續進行，換上一則套用了STAR四要素的結構化提示語（對應貳章節的STAR對照表），內容如下：</p>
+      <div class="data">提示語#102（原文）：「我是派出所的員警，這是派出所2025年2月份來我們派出所報案，遇到網路詐騙的統計資料。欄位名稱分別是報案日期、時間、詐騙案件類型、對方的LINE ID、受害者所在區域。請你一步一步來，完成以下分析，用『標題＋段落』的格式輸出分析內容：<br>#基本資料統計　統計不同案件類型、各區域、各星期、報案時間（早上、下午、晚上）的統計。<br>#關聯性分析　分析不同案件類型有沒有偏好的發生區域、報案時間、星期、LINE ID型態。<br>#未來打詐建議　依據分析資訊歸納，請提供我3點未來關於轄區內的詐騙的犯罪預防處理建議。」（附完整資料表格）</div>
+      <p><b>實際結果——基本資料統計</b>：案件類型統計（類型1共5件、類型2共5件）、受害者區域統計（區域A共4件、區域B共6件）、報案時間統計（早上2件、下午3件、晚上5件）、報案星期統計（週五3件、週六4件、週日3件）。</p>
+      <p><b>實際結果——關聯性分析（三項發現）</b>：</p>
+      <ul class="pts">
+        <li>類型1詐騙的受害者較多集中在區域A；類型2詐騙的受害者較多集中在區域B</li>
+        <li>類型1詐騙的報案時間主要集中在白天（早上及下午）；類型2詐騙的報案時間則全部集中在晚上</li>
+        <li>類型1詐騙的LINE ID全部以「a09」開頭並接續數字，長度較短（6～7位），呈現高度一致的模式；類型2詐騙的LINE ID則較為多樣，但其中一部分也呈現「h12」開頭的模式</li>
+      </ul>
+      <p><b>實際結果——未來打詐建議（三點）</b>：</p>
+      <ol>
+        <li><b>實施差異化區域防詐策略</b>：針對B區詐騙案件較多的現況，加強防詐宣導力度，特別針對類型2詐騙手法，並分析B區居民特徵，設計符合該區特性的防詐教育宣導</li>
+        <li><b>加強週末及晚間時段防詐宣導</b>：詐騙案件集中在週末及晚間時段，可在這些時段加強網路防詐宣導，包括在社群媒體投放廣告、播放防詐短片或廣播，並建議值班員警熟悉LINE詐騙案件處理流程</li>
+        <li><b>建立LINE ID黑名單預警系統</b>：鼓勵民眾與親友LINE通訊時，養成核對對方ID是否為異常長度或含大量數字的習慣，提升個人防詐意識</li>
+      </ol>
+      <p class="cite">對照演練一可明顯發現：同樣的原始資料，僅因提示語從一句話升級為套用STAR四要素的結構化描述，AI輸出的內容深度就從單純次數統計，進化到具備關聯分析與具體行動建議的完整報告。</p>
+    </div>
+
+    <h3 class="sec" id="s3-4">四、演練三：五星級進階提示語（提示語#103）</h3>
+    <div class="card">
+      <p>第三次操作延續同一則對話，加入貳章節提到的「背景知識對齊」，把原本AI不理解的代碼補上專有名詞定義，同時追加一項比對任務：</p>
+      <div class="data">提示語#103（原文）：「進一步提供資訊：『報案類型』中，1代表『網路購物詐騙』；2代表『假買家騙賣家詐騙』。『區域』中，A代表商辦區；B代表『住商混合區』。請提供給我更具體明確的3點轄區內打詐建議。另外這是『165全民防騙網』公布網購詐騙LINE ID。請幫我找看看以上資料有沒有重複的LINE ID。」<br>（附上165全民防騙網公布的LINE ID黑名單：h124105222、lai659）</div>
+      <p>這則提示語示範了「五星級提示語」的實際威力：光是額外補充「報案類型」與「區域」代碼所代表的真實意涵這兩項專有名詞定義，AI給出的打詐建議就能更加具體、更貼近實際治安脈絡，而不再是通用性的防詐口號。同時，提示語也一併要求AI執行一項具體的資料比對任務——檢查現有報案資料中的LINE ID，是否與「165全民防騙網」公布的詐騙黑名單（本例為h124105222、lai659）有重複，示範AI可同時勝任「分析歸納」與「資料比對查核」兩種不同性質的任務。</p>
+    </div>
+
+    <h3 class="sec" id="s3-5">五、小結：提示語品質決定分析品質</h3>
+    <div class="card">
+      <table>
+        <tr><th>版本</th><th>提示語特徵</th><th>AI輸出成果</th></tr>
+        <tr><td>#101　陽春版</td><td>僅一句話：「請幫我分析這個資料」，無任何結構</td><td>陽春的基礎次數統計圖表，無深入洞察</td></tr>
+        <tr><td>#102　STAR結構化</td><td>套用場景、任務、目標、輸出格式四要素</td><td>完整的基本統計＋關聯性分析＋3點具體建議</td></tr>
+        <tr><td>#103　五星級進階</td><td>額外補充專有名詞定義＋背景資料比對任務</td><td>更貼近實務脈絡的具體建議＋資料查核比對結果</td></tr>
+      </table>
+      <div class="qa"><b>核心觀念</b>：整個案例演練最重要的收穫，並非資料分析本身的技巧，而是親身體會「提示語的結構與資訊完整度」如何直接決定AI輸出成果的深度與實用性。同一份原始資料，透過提示語的逐步優化，就能從空泛的次數統計，進化為可直接採取行動的治安決策建議。</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch4">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c4)">肆</div><h2>AI宣傳官的祕密武器①：NotebookLM政策宣導Podcast</h2></div>
+
+    <h3 class="sec" id="s4-1">一、案例情境：湖濱分局防詐宣導任務</h3>
+    <div class="case-box">
+      <p>湖濱分局的李警員近期運用AI，針對轄區內的詐騙報案資料進行分析，發現「住商混合區」中「假買家騙賣家」的詐騙案件數量顯著偏高。李警員推測，這可能與該區生活圈密集、鄰里互動頻繁有關——民眾經常利用社區社團、二手交易平台或LINE群組進行商品交易，而這類交易管道正是「假買家騙賣家」詐騙手法可乘之機。分局長對此十分重視，指示李警員應針對此類詐騙手法，進行重點防治與宣導。</p>
+    </div>
+
+    <div class="card">
+      <p>李警員先查閱「165打詐儀表板」的公開數據佐證問題嚴重性：依統計，114年（2025年）4月份，「假買家騙賣家」詐騙全國受理案件數為1,580件，雖排名第3，卻造成高達1億7,241.2萬元的財產損失，已超越排名第2的「網路購物詐騙」（財損1億815.3萬元）。這組數據顯示，「假買家騙賣家」雖非案件數最多的詐騙類型，但其造成的財產損失嚴重性不容小覷，值得優先投入宣導資源。</p>
+      <p>而AI輔助分析後也提出了具體的宣導策略建議：可運用LINE社群、里長LINE群組等高觸達通訊管道，推送「假買家騙賣家」常見詐騙手法與打詐重點；並同步於超商、社區布告欄等高互動場域，張貼「取貨即詐騙」等提醒圖卡，或製作通俗易懂的政策宣導素材，協助民眾提高警覺、提升識詐意識。</p>
+      <p>因此，李警員先整理了轄區內同一類型的報案紀錄（受害者個資已完成去識別化處理），並蒐集「假買家騙賣家」犯罪的相關防治策略資料，接著運用 <span class="kw">NotebookLM</span> 這項工具，將這些素材轉化製作成了一則防詐宣導 Podcast。</p>
+    </div>
+
+    <h3 class="sec" id="s4-2">二、拆解Podcast腳本的三大特色</h3>
+    <div class="card">
+      <p>課程接著引導學員聆聽這則由AI生成的防詐 Podcast，並透過三個提問角度，帶領學員拆解分析AI生成腳本的結構與特色。聆聽時建議留意的兩個思考重點：其一是哪些片段讓人印象深刻（哪些聽起來很「口語聊天」、哪些很「台式用語」、哪些又能明顯感覺到是「AI生成」的痕跡）；其二是判斷這則Podcast的目標群眾與適用場景（例如適合播給一般民眾、青年族群、特定利害關係人如家長或老年人與店家、或是專業人員及公部門同仁收聽，播放地點又可能會是哪裡）。</p>
+    </div>
+
+    <details open><summary>（一）呈現形式：雙人對談、交錯補述、起承轉合</summary>
+    <div class="card">
+      <p>這則Podcast的內容呈現，並非單向的個人陳述，而是採用「雙人對談」形式，節奏上是「甲方鋪梗＋乙方補充＋來回接話」，讓原本生硬的知識轉譯過程變得生動流暢。例如腳本中的一段對話範例：「他會給你一個客服連結」→「像那個A0977這種LINE ID」→「啊！對，我有看到！」——這種一來一往的補述節奏，模擬真實對談的自然感。</p>
+      <p>在整體架構上，節目開頭快速定調「今天要看的是一種詐騙手法」，中段則詳細拆解該詐騙套路的運作方式，結尾提供具體的防範策略與反思提問，整體結構完整、不鬆散，符合「起承轉合」的敘事節奏。</p>
+    </div>
+    </details>
+
+    <details><summary>（二）口語表達：聊天式口吻、生活化轉場、情感節奏</summary>
+    <div class="card">
+      <p>在口語表達層面，腳本大量使用聊天式的口吻，例如「你有沒有想過就是說……」「結果竟然是你掏錢出來！」，並搭配生活化的連接語與轉場用詞，讓對話聽起來更貼近真實日常交談，而非制式的新聞稿或公告用語。</p>
+      <p>節奏安排上也有快慢、有鋪陳與收尾：例如「那個損失都不小誒……從三萬多到十萬的都有」呈現出沉重的節奏感；「而且那個被耍的感覺……更讓人難受」則展現出強烈的情感沉浸感，讓聽眾能對受害者的處境產生共鳴。</p>
+      <p>之所以能呈現出這種真實感，是因為NotebookLM採用的是「改寫」模式而非憑空杜撰——腳本內容忠實保留了真實商家、真實平台名稱與台灣在地生活用語，並緊密貼近刑事局既有的防詐策略內容，因此整體內容兼具「真實性」與「可行性」，而非空泛的宣導口號。</p>
+    </div>
+    </details>
+
+    <details><summary>（三）腳本鋪陳：從案例歸納手法公式與心理操控機制</summary>
+    <div class="card">
+      <p>這則Podcast歸納出此類「假買家騙賣家」詐騙案件共通的作案流程，可簡化為三步驟：<b>【跳出平台】→【引導LINE】→【金流認證】</b>。腳本並沒有逐字逐句地重述個別報案案例的細節，而是提煉出案例背後共通的關鍵手法與心理操控機制，特別強調犯嫌如何利用被害人的心理弱點，例如腳本中直接點出「利用你的恐懼感」「讓你覺得趕快處理比較安全」等心理操控描述，讓聽眾理解詐騙手法之所以能得逞，關鍵在於利用了人性中的恐懼與急迫感。</p>
+      <p>值得注意的是，腳本也巧妙地將刑事局原本較為生硬、常見的宣導口號（例如「不點不明連結」「不加陌生LINE」等老生常談），轉化包裝成「雖然聽起來老套，但真的很有用」這樣的說法，藉此提升聽眾對宣導內容的接受度，而不是簡單複誦官方口號。</p>
+      <p>在腳本撰寫邏輯上，可觀察到清楚的四段式脈絡：先【拋出問題】、透過具體案例連結聽眾經驗 → 從個案中【分析歸納】出詐騙的共通邏輯 → 將發現【收斂】成明確結論 → 最後【引導反思】，鼓勵聽眾思考如何應用於自身生活。此外，腳本中大量使用「第一點是……」「第二點是……」「第三點是……」這類數字標記語句，藉此強化聽眾對內容的記憶點與邏輯秩序感，整體腳本撰寫可說是採用了「體驗學習」的設計模式。</p>
+    </div>
+    </details>
+
+    <h3 class="sec" id="s4-3">三、NotebookLM功能導覽（電腦版三大區塊）</h3>
+    <div class="card">
+      <p><span class="kw">NotebookLM</span> 是Google推出的AI筆記與資料整理工具，電腦版介面主要分為「來源」「對話」「Studio工作室」三大區塊，分別對應資料輸入、互動問答、成果產出三個階段。</p>
+
+      <h4 class="sub">（一）來源：從既有資料新增</h4>
+      <ul class="pts">
+        <li>點擊「＋新增」可上傳參考來源：可從電腦或雲端硬碟上傳檔案，或貼上YouTube影片連結，或直接貼上文字內容</li>
+        <li>NotebookLM會「在特定範圍中學習知識」——也就是只根據使用者上傳的來源範圍回答問題，若問題超出範圍，AI會誠實告知不知道，這項機制可將AI「幻覺」問題大幅降至趨近於零，是NotebookLM相較一般聊天型AI工具的重要優勢</li>
+        <li>上傳音檔可自動轉換成逐字稿，但單一音檔時限為1小時</li>
+        <li>圖片目前無法直接上傳，須先轉為PDF格式才能作為來源</li>
+        <li>免費版容量限制：最多可建立100個筆記本，每個筆記本的來源上限為50個</li>
+      </ul>
+
+      <h4 class="sub">（二）來源：或上網探索搜尋</h4>
+      <p>除了自行上傳資料，「來源」區塊也提供「探索」功能，相當於一個更聰明的Google搜尋引擎，可依主題搜尋相關資料並直接加入筆記本。課程並提供四項善用搜尋技巧的具體範例：</p>
+      <table>
+        <tr><th>搜尋技巧</th><th>範例</th></tr>
+        <tr><td>限定官方網站或網域</td><td>gov.tw</td></tr>
+        <tr><td>限定檔案類型</td><td>PDF檔案</td></tr>
+        <tr><td>邏輯運算</td><td>OR（或）／ -網路交友（用減號排除關鍵字）／「假買家」（用引號做完全比對）</td></tr>
+        <tr><td>指定時間範圍</td><td>2021..2025</td></tr>
+      </table>
+
+      <h4 class="sub">（三）對話及主要工作區</h4>
+      <p>「對話」區塊是與資料互動問答的主要工作區，可將AI的回答儲存為記事，避免離開網頁後對話內容消失；也可以生成互動式心智圖，協助梳理資料脈絡；此外可善用系統提供的預設問題，進行短期的主題探索。</p>
+
+      <h4 class="sub">（四）成果區：Studio工作室的五種預設場景</h4>
+      <table>
+        <tr><th>預設場景</th><th>功能說明</th></tr>
+        <tr><td>研讀指南</td><td>依筆記內容性質提供關鍵指引，並自動儲存為記事</td></tr>
+        <tr><td>簡介文件</td><td>依筆記內容性質提供簡要介紹，並自動儲存為記事</td></tr>
+        <tr><td>常見問題</td><td>可轉換成FAQ形式，或形成測驗、問答，方便複習</td></tr>
+        <tr><td>時間軸</td><td>可整理出時間軸以掌握脈絡，但部分性質的知識內容不一定能順利生成</td></tr>
+        <tr><td>語音摘要</td><td>由兩位虛擬主持人以輕鬆對談的方式介紹主題內容，有助於理解——本堂課實作的Podcast即是運用此項功能生成</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="s4-4">四、手機版操作五步驟（實作任務）</h3>
+    <div class="card">
+      <p>課程安排學員實際動手操作，以自身業務相關的宣導主題作為練習範例（例如警察業務可選交通安全、婦幼宣導、防止酒駕等；消防業務可選地震避難；海巡業務可選邊境防疫應變）。任務要求：使用「探索來源」蒐集素材，並製作出一則「語音摘要」，完成後將成果上傳至講座指定的位址。手機版具體操作步驟如下：</p>
+      <ol>
+        <li><b>步驟一</b>：手機連接網路，點擊瀏覽器（例如Google瀏覽器）</li>
+        <li><b>步驟二</b>：於瀏覽器中搜尋「NotebookLM」並登入帳號</li>
+        <li><b>步驟三</b>：點選「＋建立新筆記本」，選擇「探索來源」並輸入練習主題</li>
+        <li><b>步驟四</b>：點選「語音摘要」，並點擊「生成」按鈕</li>
+        <li><b>步驟五</b>：將生成好的語音摘要連結匯出，或直接下載音檔</li>
+      </ol>
+      <div class="mnemonic">操作提醒：務必「從瀏覽器」而非手機APP的方式進入NotebookLM，這是手機版操作能否順利完成任務的關鍵細節。</div>
+    </div>
+
+    <h3 class="sec" id="s4-5">五、製作宣導Podcast的四個小秘訣</h3>
+    <div class="card">
+      <p>上傳完成的語音摘要後，課程引導學員思考幾個問題：這則Podcast的宣導主題是什麼？宣導對象是哪些人？利用這則Podcast進行政策宣導，可能發生在哪些場景或場域？又有哪些特點讓你覺得這是合宜的宣導管道？課程也特別提醒：Podcast形式特別適合需要建立情境感、降低理解門檻、增進信任感的宣導主題。</p>
+      <p>根據前述案例的實作經驗，課程歸納出製作政策宣導Podcast的四個實用小秘訣：</p>
+      <ol>
+        <li><b>輸入內容要帶有「情境」的沉浸感</b>：例如提供具體案件敘述、生活化的對話範例，AI才有辦法生成「有劇情、有節奏」的對話內容，而非乾巴巴的條列複誦</li>
+        <li><b>精準整理成「三大重點」或「五個對策」</b>：輸入資料時可以只用列點方式呈現，這樣AI較容易在Podcast結尾自動歸納出類似「請記得這三點防詐守則」或「今天總結重點是……」這樣的收束語句</li>
+        <li><b>原始資料應避免過於跳躍，並統一主題方向</b>：若輸入資料主題發散、缺乏統一性，AI將難以歸納，可能產生斷裂、混淆的語音敘述，導致內容無法聚焦在特定主題上</li>
+        <li><b>輸入資料時就開始設想「我在與誰對話？」</b>：例如預先設定情境為「一位新手媽媽關於疫苗的疑問解答」或「超商聽到廣播聊到詐騙防詐」，這樣的角色設定能讓AI更有機會生成具有角色感、貼近特定聽眾的內容</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch5">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c5)">伍</div><h2>AI宣傳官的祕密武器②：AI生圖與LINE貼圖行銷應用</h2></div>
+
+    <h3 class="sec" id="s5-1">一、角色一致性原理與LINE貼圖製作</h3>
+    <div class="card">
+      <p>除了製作Podcast，課程也介紹了另一項政策宣導的應用武器：運用AI生圖工具（搭配ChatGPT協作）製作 <span class="kw">LINE貼圖</span>。這項應用的技術核心，是AI生圖工具的「<span class="kw">角色一致性</span>」（character consistency）功能——這項功能讓AI在多次生成圖像時，能夠保持同一個角色的外觀、性格或風格維持不變，不會每張圖都變成不同的長相。</p>
+      <p>利用這項特性製作LINE貼圖的具體流程為：</p>
+      <ol>
+        <li>先用AI描述好角色設定，包括造型、服裝、神情等外觀特徵</li>
+        <li>設定啟用 character consistency（角色一致性）功能</li>
+        <li>接著依照不同的貼圖情境（例如開心、生氣、打招呼等各種表情或動作）持續生成多張圖片</li>
+        <li>由於角色一致性設定的作用，這些不同情境下生成的圖片，角色形象會維持一致，整體看起來就像是一整套風格統一的LINE貼圖組合</li>
+      </ol>
+      <div class="mnemonic">課程特別註明：LINE貼圖這項應用，課堂上僅作為應用範例展示，並不會實際帶著學員操作實作，主要目的是讓學員知道AI生圖除了製作宣導圖卡，也能延伸應用於角色一致的貼圖或吉祥物設計等行銷素材。</div>
+    </div>
+
+    <h3 class="sec" id="s5-2">二、實作任務：六種生圖風格</h3>
+    <div class="card">
+      <p>課程安排的實際動手任務，是運用AI生圖工具協助製作政策宣導用的圖像素材，操作步驟如下：</p>
+      <ol>
+        <li><b>步驟一</b>：在「普朗姆特煉星術HUB」中選擇1種圖片風格</li>
+        <li><b>步驟二</b>：依照該風格提示語及所選圖片性質，實際進行生圖操作</li>
+        <li><b>步驟三</b>：與小組成員分享自己的生圖結果</li>
+      </ol>
+      <p>簡報中依序展示了六種可供選擇的圖片風格範例，供學員在實作時選用：</p>
+      <table>
+        <tr><th>風格編號</th><th>風格名稱</th></tr>
+        <tr><td>1</td><td>熱血動漫風</td></tr>
+        <tr><td>2</td><td>史詩電影風</td></tr>
+        <tr><td>3</td><td>Q版可愛風</td></tr>
+        <tr><td>4</td><td>玻璃擬態風</td></tr>
+        <tr><td>5</td><td>街頭塗鴉風</td></tr>
+        <tr><td>6</td><td>質感精品風</td></tr>
+      </table>
+      <p class="cite">六種風格皆搭配相同的生圖任務步驟（選風格→生圖實作→小組分享），實際範例圖像與對應的提示語內容，收錄於「普朗姆特煉星術HUB」平台中，供學員實作時直接取用參考。</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch6">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c6)">陸</div><h2>學習反思與交流</h2></div>
+
+    <h3 class="sec" id="s6-1">四階段反思提問</h3>
+    <div class="card">
+      <p>課程尾聲安排「慶祝豐收」的學習反思與交流活動，請學員依講座指定的形式（例如小組討論、口頭分享或書面填寫），選擇以下問題進行反思與交流。整體設計呼應體驗式學習常見的反思架構，依序引導學員從「回顧體驗」到「展望應用」：</p>
+      <div class="qa">
+        <b>【回顧】</b>課程中哪個任務——STAR提示語練習、NotebookLM製作Podcast、AI生圖公仔、或勤務助理——讓你印象最深刻？為什麼？<br><br>
+        <b>【感受】</b>透過本次學習體驗，你對AI有什麼新的認識？<br><br>
+        <b>【發現與未來】</b>回到單位後，你打算在哪些地方開始運用AI？
+      </div>
+      <div class="footnote">附註：反思提問中列舉的「勤務助理」一詞，出現在本堂簡報的反思提問選項中，但簡報本身並未展開介紹其具體操作內容，推測可能是課程口頭補充說明或另有延伸教材涵蓋之應用情境，複習時如手邊有其他補充講義可一併對照。</div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+const search = document.getElementById('search');
+search.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  document.querySelectorAll('main .card, main .case-box, main .qa').forEach(el => {
+    const match = !q || el.textContent.toLowerCase().includes(q);
+    el.classList.toggle('hidden', !match);
+    if(match && q){
+      const details = el.closest('details');
+      if(details) details.open = true;
+    }
+  });
+});
+</script>
+</body>
+</html>

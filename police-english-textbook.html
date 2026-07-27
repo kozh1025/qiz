@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>警察人員實用英語｜教材深讀筆記</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --bg:#f5f4f0; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66;
+    --accent:#2b8a5a; --line:#e5e2da; --side-w:270px;
+    --c1:#2b8a5a; --c2:#8a3b2b; --c3:#2b5a8a; --c4:#8a7a2b;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);display:flex;}
+  #sidebar{width:var(--side-w);flex-shrink:0;height:100vh;position:sticky;top:0;overflow-y:auto;background:#fbfaf7;border-right:1px solid var(--line);padding:20px 14px;}
+  #sidebar h3{font-size:.78rem;color:var(--sub);text-transform:uppercase;letter-spacing:.06em;margin:18px 6px 6px;}
+  #sidebar h3:first-child{margin-top:4px;}
+  #search{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:.85rem;margin-bottom:8px;font-family:inherit;}
+  .backlink{display:block;font-size:.8rem;color:var(--sub);text-decoration:none;margin:0 6px 10px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+  #sidebar a.nav{display:block;padding:5px 8px;font-size:.84rem;color:var(--ink);text-decoration:none;border-radius:6px;line-height:1.4;}
+  #sidebar a.nav:hover{background:var(--line);}
+  #sidebar a.nav.sub{padding-left:18px;font-size:.79rem;color:var(--sub);}
+  #sidebar a.nav.switch{color:var(--accent);font-weight:600;margin-top:2px;}
+  main{flex:1;max-width:940px;margin:0 auto;padding:44px 32px 100px;min-width:0;}
+  h1.title{font-size:1.7rem;margin:0 0 4px;}
+  .subtitle{color:var(--sub);margin-bottom:8px;}
+  .toolbar{margin-bottom:36px;padding-bottom:16px;border-bottom:1px solid var(--line);font-size:.82rem;color:#a09d95;}
+  section.chapter{margin-bottom:56px;scroll-margin-top:20px;}
+  .chapter-head{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+  .chapter-num{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.95rem;flex-shrink:0;}
+  .chapter-head h2{margin:0;font-size:1.28rem;}
+  h3.sec{scroll-margin-top:20px;font-size:1.03rem;margin:28px 0 10px;padding-left:12px;border-left:4px solid var(--line);}
+  h4.sub{font-size:.95rem;margin:16px 0 6px;color:#4a473f;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;}
+  .card p{margin:.5em 0;line-height:1.9;font-size:.94rem;text-align:justify;}
+  ul.pts{margin:.4em 0;padding-left:1.3em;line-height:1.85;font-size:.94rem;}
+  ul.pts li{margin-bottom:4px;}
+  .kw{background:#eaf4ee;color:var(--accent);padding:1px 7px;border-radius:5px;font-weight:600;font-size:.88em;}
+  table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.83rem;}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top;}
+  th{background:#f1efe9;}
+  .cite{font-size:.82rem;color:#a09d95;margin-top:4px;}
+  .case-box{background:#fbf9f5;border:1px solid #e8dfd0;border-radius:12px;padding:18px 20px;margin:14px 0;}
+  .case-box h4{margin-top:0;color:var(--accent);}
+  .dialog p{margin:.55em 0;line-height:1.85;font-size:.92rem;}
+  .dialog b{color:#2b6a48;}
+  .data{background:#eef4f8;border-radius:8px;padding:10px 14px;font-size:.86rem;margin:8px 0;}
+  .footnote{font-size:.78rem;color:#a09d95;border-top:1px dashed var(--line);padding-top:6px;margin-top:10px;}
+  .qa{background:#eef6f0;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.9rem;}
+  .refs{font-size:.8rem;line-height:1.9;color:#55524c;}
+  mark{background:#ffe9a8;padding:0 2px;border-radius:3px;}
+  .hidden{display:none !important;}
+</style>
+</head>
+<body>
+
+<nav id="sidebar">
+  <input id="search" type="text" placeholder="搜尋關鍵字...">
+  <a class="backlink" href="index.html">← 回筆記入口</a>
+
+  <h3>課程說明</h3>
+  <a class="nav" href="#overview">課程目標與學習指標</a>
+
+  <h3>壹 警察人員篇</h3>
+  <a class="nav" href="#ch1">壹、警察人員篇 POLICE OFFICERS</a>
+  <a class="nav sub" href="#s1-1">一、遺失物協尋：手機不見了</a>
+  <a class="nav sub" href="#s1-2">二、酒駕攔檢：請靠邊停車</a>
+  <a class="nav sub" href="#s1-3">三、機關／職務工作介紹</a>
+
+  <h3>貳 消防人員篇</h3>
+  <a class="nav" href="#ch2">貳、消防人員篇 FIRE FIGHTERS</a>
+  <a class="nav sub" href="#s2-1">一、緊急救護：別驚慌！發生什麼事？</a>
+  <a class="nav sub" href="#s2-2">二、災防宣導：防災無國界</a>
+  <a class="nav sub" href="#s2-3">三、機關／職務工作介紹</a>
+
+  <h3>參 海巡人員篇</h3>
+  <a class="nav" href="#ch3">參、海巡人員篇 COAST GUARDS</a>
+  <a class="nav sub" href="#s3-1">一、查緝私菸：立即停船！配合檢查！</a>
+  <a class="nav sub" href="#s3-2">二、機關／職務工作介紹</a>
+
+  <h3>其他版本</h3>
+  <a class="nav switch" href="police-english-slides.html">→ 前往簡報速記筆記</a>
+</nav>
+
+<main>
+  <h1 class="title">警察人員實用英語｜教材深讀筆記</h1>
+  <div class="subtitle">115年佐升正訓練・依《警察人員實用英語》電子書教材（國家文官學院，約72頁）整理</div>
+  <div class="toolbar">用途：完整保留句型、對話情境與單字表，供深入理解與練習。想快速複習消防單元重點請見 <a href="police-english-slides.html">簡報版筆記</a>（該簡報僅涵蓋消防人員英語單元）。</div>
+
+  <section class="chapter" id="overview">
+    <div class="chapter-head"><div class="chapter-num" style="background:#999">§</div><h2>課程說明</h2></div>
+    <div class="card">
+      <h4 class="sub">課程目標 Course Aims</h4>
+      <p>本課程目標係為使警察人員（含消防人員、海巡人員）均能具備基本英語溝通能力，並能應用英語進行機關與工作職務介紹及為民服務等，以符合未來職務發展需求，並增進警察人員與國際接軌之能力。</p>
+      <p>This course aims to equip police officers with practical English communication skills. By the end of the course, course participants should be able to introduce their agencies and provide service in English so as to fulfill requirement of their official duties and increase their capability to connect to the international society.</p>
+      <h4 class="sub">學習指標 Learning Objectives</h4>
+      <ul class="pts">
+        <li>警察人員（含消防人員、海巡人員）學習於執行勤務時之實用句型與場景對話，並能於公務情境中熟練運用。</li>
+        <li>警察人員（含消防人員、海巡人員）學習於電話諮詢服務時之實用句型與場景對話，並能於公務情境中熟練運用。</li>
+      </ul>
+      <p>全書分為三大篇：<span class="kw">警察人員篇</span>（遺失物協尋、酒駕攔檢、機關職務介紹）、<span class="kw">消防人員篇</span>（緊急救護、災防宣導、機關職務介紹）、<span class="kw">海巡人員篇</span>（查緝私菸、機關職務介紹），各單元均包含「實用句型」「情境對話」「重要詞彙」，職務介紹單元另附「重點解析 Tips in Use」慣用語專節。</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch1">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c1)">壹</div><h2>警察人員篇 POLICE OFFICERS</h2></div>
+
+    <h3 class="sec" id="s1-1">一、遺失物協尋：我的手機不見了！I Lost My Mobile Phone!</h3>
+    <div class="card">
+      <p><b>學習目標</b>：學習服務台一般業務問答與說明公務事項之詞彙及句型（Lost and Found Service Counter）。</p>
+      <h4 class="sub">實用句型 Practical Sentence Patterns</h4>
+      <table>
+        <tr><th>English</th><th>中文</th></tr>
+        <tr><td>How are you? What can I do for you?</td><td>您好，請問有什麼需要協助的地方？</td></tr>
+        <tr><td>Calm down, please! We shall try our best to assist you.</td><td>請保持冷靜！我們會盡力協助您。</td></tr>
+        <tr><td>Can you recall when you last used your mobile phone?</td><td>您最後一次使用手機是什麼時候？</td></tr>
+        <tr><td>Today's technology is really advanced and we can try to use it to find your mobile phone back.</td><td>現在科技已經很發達。也許我們可以試著用科技辦案的方式找回您的手機。</td></tr>
+        <tr><td>Take your time! We will do our best to help you.</td><td>別緊張！我們會盡力協助您。</td></tr>
+        <tr><td>What does your wallet look like? Can you describe it? What is the color? Any special features and contents?</td><td>您的皮夾長什麼樣子？可以請您描述一下嗎？像是顏色、特徵，以及裡頭有哪些物品嗎？</td></tr>
+        <tr><td>We need to fill out your personal information.</td><td>我們需要填寫您的基本資料。</td></tr>
+        <tr><td>Here is your Police Incident Report. If you don't have any questions about it, please sign here.</td><td>這是您的「受（處）理案件證明單」。如果沒有任何問題，請在這裡簽名。</td></tr>
+        <tr><td>We will inform you if and when we found it.</td><td>如果我們尋獲您遺失的物品，將會通知您前來認領。</td></tr>
+        <tr><td>This is your copy. Once we input the information to the computer system, it will be posted on the Lost and Found bulletin immediately. We hope to have some good news for you very soon.</td><td>這是給您的副本。我們會將資料輸入電腦，並公告在「拾得遺失物管理系統」，希望很快就會有好消息。</td></tr>
+      </table>
+
+      <h4 class="sub">情境對話 Dialogue：I Lost My Mobile Phone!</h4>
+      <p class="cite">場景：李警員在翠湖縣政府警察局湖濱分局白砂派出所值勤。這天早上，約翰(John)慌張地跑進派出所。（L＝李警員 Police Officer Lee／J＝約翰 John／C＝凱薩琳 Catherine）</p>
+      <div class="dialog">
+        <p><b>L：</b>How are you? What can I do for you?</p>
+        <p><b>J：</b>I lost my mobile phone!</p>
+        <p><b>L：</b>Calm down, please! We shall try our best to assist you. Can you recall when you last used your mobile phone?</p>
+        <p><b>J：</b>I don't recall….. I just bought it not so long ago and it cost me over NTD 20,000.</p>
+        <p><b>L：</b>Don't worry! Do you have a google account? Today's technology is really advanced and we can try to use it to find your mobile phone back.</p>
+        <p class="cite">（李警員登入約翰的 google 帳號，啟動手機定位追蹤功能）</p>
+        <p><b>L：</b>You are very lucky, John! According to the map, your mobile phone seems to be in the vicinity of the bus terminal.</p>
+        <p><b>J：</b>Oh, that's great! I was about to tour the Fisherman's Lighthouse and stopped there to check the route on my mobile phone. I appreciate your assistance. I am going to fetch my mobile phone right now!</p>
+        <p class="cite">（過了一會兒，凱薩琳慌張地跑進派出所）</p>
+        <p><b>L：</b>Good afternoon! How may I help you?</p>
+        <p><b>C：</b>My wallet is gone!</p>
+        <p><b>L：</b>Take your time! We will do our best to help you. Do you remember the last time you saw your wallet?</p>
+        <p><b>C：</b>I think I may have lost it on the bus…… Or maybe in the restaurant? Oh! I can't remember……</p>
+        <p><b>L：</b>Fine! Let's take it slowly. What does your wallet look like? Can you describe it? What is the color? Any special features and contents?</p>
+        <p><b>C：</b>It's rectangular and black. There are credit cards, ID card, about NTD 5,000 in cash, and, most precious of all, a photo of my mother and me. I didn't lose a wallet, but rather a basket full of happy memories.</p>
+        <p><b>L：</b>I got it! Do you have your passport with you? We need to fill out your personal information.</p>
+        <p><b>C：</b>Yes! Here it is!</p>
+        <p><b>L：</b>Do you have a mobile phone number? We will inform you if and when we found it.</p>
+        <p><b>C：</b>Yes, I do. My mobile phone number is 0912-345678.</p>
+        <p><b>L：</b>Let me repeat it: 0912-345678.</p>
+        <p><b>C：</b>That's correct.</p>
+        <p><b>L：</b>Okay then. Here is your Police Incident Report. If you don't have any questions about it, please sign here.</p>
+        <p><b>C：</b>Ok, I see.</p>
+        <p><b>L：</b>This is your copy. Once we input the information to the computer system, it will be posted on the Lost and Found bulletin immediately. We hope to have some good news for you very soon.</p>
+        <p><b>C：</b>Thank you for your help.</p>
+        <p><b>L：</b>You are welcome.</p>
+      </div>
+
+      <h4 class="sub">重要詞彙 Words &amp; Phrases</h4>
+      <table>
+        <tr><th>English</th><th>中文</th></tr>
+        <tr><td>lost (V.)</td><td>遺失（過去式）</td></tr>
+        <tr><td>calm (V.)</td><td>使冷靜、使鎮定</td></tr>
+        <tr><td>recall (V.)</td><td>回憶、記起</td></tr>
+        <tr><td>mobile phone tracking function (N.)</td><td>手機定位追蹤功能</td></tr>
+        <tr><td>vicinity (N.)</td><td>鄰近、附近</td></tr>
+        <tr><td>in a fluster (Phr.)</td><td>匆忙、慌亂、緊張</td></tr>
+        <tr><td>describe (V.)</td><td>描述</td></tr>
+        <tr><td>Police Incident Report (N.)</td><td>受（處）理案件證明單</td></tr>
+        <tr><td>Lost and Found bulletin (N.)</td><td>拾得遺失物管理系統</td></tr>
+        <tr><td>police department (N.)</td><td>警察局</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="s1-2">二、酒駕攔檢：請靠邊停車！Pull Over, Please!</h3>
+    <div class="card">
+      <p><b>學習目標</b>：學習一般服務問答及公務說明之詞彙及句型（DUI Checkpoints）。</p>
+      <h4 class="sub">實用句型 Practical Sentence Patterns</h4>
+      <table>
+        <tr><th>English</th><th>中文</th></tr>
+        <tr><td>Ma'am, please pull over.</td><td>這位女士，請靠邊停車。</td></tr>
+        <tr><td>I stopped you because you just made an illegal right turn on a red light.</td><td>我將您攔下來是因為您剛才違規紅燈右轉。</td></tr>
+        <tr><td>Please show me your driver's license, vehicle registration, and Alien Resident Certificate (ARC).</td><td>請出示您的駕照、行照以及居留證。</td></tr>
+        <tr><td>I am issuing you a ticket for violating Article 53 of the "Road Traffic Management and Penalty Act".</td><td>依據《道路交通管理處罰條例》第53條，我將舉發您的違規行為，給您舉發通知單。</td></tr>
+        <tr><td>If you dispute the ticket, you may bring this ticket and your statement to the charging authority by the deadline listed on the ticket.</td><td>如不服舉發者，得於通知單所載期限內向處罰機關陳述意見。</td></tr>
+        <tr><td>I can smell alcohol on your breath, so you are required to take a breathalyzer test.</td><td>我們聞到您身上有酒味，請您配合實施酒測。</td></tr>
+        <tr><td>According to the latest regulations, riding a bicycle while intoxicated is subject to a fine from NTD 600 to NTD 1,200.</td><td>依據最新的法規規定，騎腳踏車酒駕將會被處以新臺幣600至1,200元罰鍰。</td></tr>
+        <tr><td>If you refuse to take a breathalyzer test, then you will be fined NTD 2,400.</td><td>如果您拒絕配合我們的檢測，將處以新臺幣2,400元罰鍰。</td></tr>
+        <tr><td>You are allowed to rinse your mouth before the breathalyzer test.</td><td>您可以酒測前先漱口。</td></tr>
+        <tr><td>Please blow into the breathalyzer until the number shows.</td><td>請對著酒測器吹氣，直到有數字顯示為止。</td></tr>
+        <tr><td>The test shows that your alcohol level is 0.23 mg/l, which exceeds the legal limit 0.15mg/l.</td><td>您的吐氣測試結果，所含酒精濃度已達每公升0.23毫克，已經超過每公升0.15毫克之標準。</td></tr>
+      </table>
+
+      <h4 class="sub">情境對話 Dialogue：Pull Over, Please!</h4>
+      <p class="cite">場景：吳小隊長與鄭警員（翠湖縣政府警察局湖濱分局）執行路檢勤務。外籍居民珍妮(Jenny)騎機車違規紅燈右轉，遭吳小隊長攔停。（W＝吳小隊長／C＝鄭警員／J＝珍妮 Jenny／G＝喬治 George）</p>
+      <div class="dialog">
+        <p><b>W：</b>Ma'am, please pull over.</p>
+        <p><b>J：</b>Why did you stop me?</p>
+        <p><b>W：</b>Madam, I stopped you because you just made an illegal right turn on a red light. Please show me your driver's license, vehicle registration, and Alien Resident Certificate.</p>
+        <p class="cite">（珍妮出示居留證與駕照，吳小隊長查核文件）</p>
+        <p><b>W：</b>Ma'am, I am issuing you a ticket for violating Article 53 of the "Road Traffic Management and Penalty Act". The fine is NTD 600. Ma'am, please sign the traffic ticket. If you dispute the ticket, you may bring this ticket and your statement to the charging authority by the deadline listed on the ticket. You are free to go now.</p>
+        <p class="cite">（鄭警員處理完珍妮的案件後，聽到一聲撞擊聲，前往查看。外籍居民喬治(George)騎 YouBike 失控摔車）</p>
+        <p><b>C：</b>Are you OK, Sir? How can I help you?</p>
+        <p class="cite">（喬治並無外傷，鄭警員察覺他身上有酒味，準備進行酒測）</p>
+        <p><b>C：</b>I can smell alcohol on your breath, so you are required to take a breathalyzer test. Thank you for your cooperation.</p>
+        <p><b>G：</b>Why should I take a breathalyzer test? Look! I am riding a bicycle. I'm not on a motor scooter or driving a car. It can't be drunk driving if I'm not "driving".</p>
+        <p><b>C：</b>Sir, according to the latest regulations, riding a bicycle while intoxicated is subject to a fine from NTD 600 to NTD 1,200. If you refuse to take a breathalyzer test, then you will be fined NTD 2,400. Sir, please show me your Alien Resident Certificate (ARC) or any photo ID.</p>
+        <p><b>G：</b>Okay! But I didn't drink. I just consumed some litchi at a gathering. I was told that eating litchi can cause higher alcohol reaction to the breathalyzer test.</p>
+        <p><b>C：</b>You are allowed to rinse your mouth before the breathalyzer test. Please step over here now. You just said that there was a gathering. How long ago did you leave the gathering? Have you been drinking?</p>
+        <p><b>G：</b>Half an hour ago. I didn't drink. We just had some stuff to eat.</p>
+        <p><b>C：</b>Please blow into the breathalyzer until the number shows.</p>
+        <p class="cite">（幾分鐘後……）</p>
+        <p><b>C：</b>Sir, the test shows that your alcohol level is 0.23 mg/l, which exceeds the legal limit 0.15mg/l.</p>
+        <p><b>G：</b>That's impossible! We didn't drink. We just had a hotpot. You must be kidding me! This was my first time to try it. There are ginger, vegetables and duck in the hotpot.</p>
+        <p><b>C：</b>Got it! You probably had ginger duck stew! It is cooked with rice wine. Eating too much ginger duck stew will make your alcohol level above the legal limit.</p>
+        <p><b>G：</b>What am I going to do now?</p>
+        <p><b>C：</b>Since you have been riding under the influence of alcohol, I have to write you a ticket. Riding a bicycle right after drinking is very dangerous. For your safety, please return the bicycle at the YouBike station right there. I suggest you take a taxi or call a friend to pick you up. Remember to pay the fine before its due date.</p>
+        <p><b>G：</b>Okay, I understand. Thank you!</p>
+      </div>
+      <div class="qa"><b>Q：騎腳踏車喝酒算酒駕嗎？</b><br>A：算。依最新法規，騎腳踏車（非機動車）於酒後騎乘同樣違法，處新臺幣600至1,200元罰鍰；拒絕酒測則處2,400元罰鍰。薑鴨（薑母鴨）等以米酒烹煮的食物也可能使吐氣酒精濃度超標，執勤時須留意此類申辯情形。</div>
+
+      <h4 class="sub">重要詞彙 Words &amp; Phrases</h4>
+      <table>
+        <tr><th>English</th><th>中文</th></tr>
+        <tr><td>DUI (driving under the influence)</td><td>酒駕路檢點</td></tr>
+        <tr><td>Checkpoint (N.)</td><td>臨檢點</td></tr>
+        <tr><td>pull over (Phr.)</td><td>靠邊停車</td></tr>
+        <tr><td>article (N.)</td><td>（法律）條文</td></tr>
+        <tr><td>penalty (N.)</td><td>處罰</td></tr>
+        <tr><td>fine (N.)</td><td>罰鍰</td></tr>
+        <tr><td>breathalyzer test (N.)</td><td>呼氣（酒精）測試</td></tr>
+        <tr><td>intoxicated (Adj.)</td><td>喝醉的</td></tr>
+        <tr><td>legal limit (N.)</td><td>臨界值、閾值</td></tr>
+        <tr><td>rinse mouth (Phr.)</td><td>漱口</td></tr>
+        <tr><td>breath alcohol level (N.)</td><td>呼氣酒精測值</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="s1-3">三、機關／職務工作介紹 How to Introduce Your Agency and Make a Job Description</h3>
+    <div class="card">
+      <p><b>學習目標</b>：學習如何以英語介紹所屬機關及說明職務內容（Introducing Agency and Making Job Description）。</p>
+      <h4 class="sub">實用句型 Practical Sentence Patterns</h4>
+      <table>
+        <tr><th>English</th><th>中文</th></tr>
+        <tr><td>I am Officer Bond, Sunny Police Station of Justice Precinct of the Central City Police Department.</td><td>我是中央市警察局正義分局陽光派出所的警員龐德。</td></tr>
+        <tr><td>Today, I have the great pleasure to introduce the daily routine for a police station officer.</td><td>今天我要為大家介紹派出所警員日常執行的勤務工作。</td></tr>
+        <tr><td>I usually patrol my beat by riding a motorcycle and make random stops for environmental observation so as to maintain social order and security.</td><td>執勤的時候，通常會騎著公務機車在轄區巡邏，不定時在各個巡邏點執行重點守望並留意周圍狀況，維護轄區社會治安。</td></tr>
+        <tr><td>If I found traffic violation cases, I shall crack down immediately so as to maintain traffic order.</td><td>如果發現交通違規情形，就會逕行取締，以維持交通秩序。</td></tr>
+        <tr><td>Certainly, cracking down on burglary, i.e., catching thefts, is one of police's main duties.</td><td>檢肅竊盜，也就是抓小偷，當然是我們的重要工作之一。</td></tr>
+        <tr><td>With a view to preventing citizen from severe harm of drugs, we take antidrug action as one of our important responsibilities.</td><td>為了保護人民不被毒品危害，查緝毒品也是我們重點工作之一。</td></tr>
+        <tr><td>In line with planning and instructions of superior agencies, we set up DUI checkpoints for breath alcohol level testing so as to crack down on drunk driving to maintain public security and traffic order.</td><td>為了維護公共安全與交通秩序，我們有時候會配合上級規劃，在指定的路段設置臨檢點，進行酒測稽查，遏阻酒後駕車行為。</td></tr>
+        <tr><td>Whenever there are traffic accidents or disputes, people usually file reports with the police for necessary management and assistance.</td><td>民眾發生交通事故或行車糾紛時，通常會報警請我們協助處理。</td></tr>
+        <tr><td>During rush hours of weekdays or large-scale events, the police have to not only ensure order and safety, but also regulate heavy traffic.</td><td>平日上下班尖峰時段及有大型活動時，執行活動安全及交通管制疏導，也是我們的工作項目之一。</td></tr>
+        <tr><td>In response to street brawls, the police quick-response squads rush to the scene and crack down on street violence in time.</td><td>發生街頭械鬥時，我們會組成快打部隊，即時到場快速打擊街頭暴力行為。</td></tr>
+        <tr><td>Moreover, the police provide various warmhearted services, such as searching for missing persons, which enable them to reunion with their families.</td><td>不只是這樣，我們還提供很多暖心的服務呢！例如，協尋失蹤人口，讓走失的民眾能夠返家團聚。</td></tr>
+        <tr><td>We also encounter with emergencies, such as suicide cases, which need the police to handle with effective and patient exhortations.</td><td>我們也常常遇到一些突發的狀況，例如：協助勸導輕生民眾，避免自戕行為的發生。</td></tr>
+        <tr><td>In conclusion, it is the police's job to combat with crimes, maintain social order, and solve troublesome problems for citizens. As the "guardian of citizens", we deem the maintenance of social security and order to be our mission.</td><td>總而言之，打擊犯罪、維護社會秩序、解決民眾的各種疑難雜症等都是我們的工作。身為人民保母，維護社會安全是我們的使命！</td></tr>
+      </table>
+
+      <h4 class="sub">重要詞彙 Words &amp; Phrases</h4>
+      <table>
+        <tr><th>English</th><th>中文</th></tr>
+        <tr><td>officer (N.)</td><td>軍警人員</td></tr>
+        <tr><td>police station (N.)</td><td>派出所</td></tr>
+        <tr><td>precinct (N.)</td><td>分局</td></tr>
+        <tr><td>introduce (V.)</td><td>介紹</td></tr>
+        <tr><td>daily routine (N.)</td><td>例行公事；日常勤務</td></tr>
+        <tr><td>patrol (N.)(V.)</td><td>巡邏</td></tr>
+        <tr><td>beat (N.)</td><td>（警察等的）巡邏路線；警勤區</td></tr>
+        <tr><td>maintain (V.)</td><td>維護；維持</td></tr>
+        <tr><td>social order and security (N.)</td><td>社會治安</td></tr>
+        <tr><td>violation (N.)</td><td>違反</td></tr>
+        <tr><td>burglary (N.)</td><td>進入建築物內竊盜</td></tr>
+        <tr><td>theft (N.)</td><td>竊盜案；竊盜罪</td></tr>
+        <tr><td>DUI</td><td>酒後駕車（driving under the influence 縮寫）</td></tr>
+        <tr><td>checkpoint (N.)</td><td>臨檢點</td></tr>
+        <tr><td>accident (N.)</td><td>事故；意外</td></tr>
+        <tr><td>dispute (N.)</td><td>糾紛；爭執；爭端</td></tr>
+        <tr><td>regulate (V.)</td><td>管理；控制；調節</td></tr>
+        <tr><td>brawl (N.)</td><td>毆鬥；鬧事</td></tr>
+        <tr><td>violence (N.)</td><td>暴力；暴力行為</td></tr>
+        <tr><td>crime (N.)</td><td>犯罪</td></tr>
+      </table>
+
+      <h4 class="sub">重點解析 Tips in Use（慣用語）</h4>
+      <table>
+        <tr><th>慣用語</th><th>中文意思</th><th>例句</th></tr>
+        <tr><td><b>so as to</b>（後接原形動詞，表目的）</td><td>為了……；以便……</td><td>He gets up early so as to catch an early bus.（他早起是為了趕搭早班公車。）<br>We should learn from past mistakes so as to avoid falling into the same old trap again.（我們要從過去的錯誤中汲取教訓，以免重蹈覆轍。）</td></tr>
+        <tr><td><b>crack down on</b></td><td>打擊；制裁；鎮壓</td><td>Police are cracking down on drug dealers.（警方對毒販嚴懲不貸。）<br>The customs officers cracked down on smugglers.（海關人員制裁走私犯。）</td></tr>
+        <tr><td><b>with a view to</b>（後接動名詞）</td><td>為了……目的；以……為目的</td><td>With a view to developing our fishing industry, a scientific team came to the fish farm to conduct a survey.（為了發展我們的漁業，科學小組來到漁場進行調查。）</td></tr>
+        <tr><td><b>in line with</b></td><td>與……一致；與……相符</td><td>Our price is in line with the current market prices.（我們的價格與現行市場價格相一致。）<br>This proposal is in line with the corporate strategy, which our company announced last month.（這項提案與上個月公司宣佈的策略相符。）</td></tr>
+        <tr><td><b>pay tribute to</b>（後接人或事物）</td><td>讚揚；致敬；悼念；朝貢</td><td>People paid tribute to his achievements.（人們對他的成就表示讚揚。）<br>Each year, thousands of people descend on Normandy in France to pay tribute to those who fought to liberate Europe from Nazi Germany's control.（每年都會有好幾千人湧入法國諾曼第，向曾對抗納粹解放歐洲的軍人及死者們致敬。）</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch2">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c2)">貳</div><h2>消防人員篇 FIRE FIGHTERS</h2></div>
+
+    <h3 class="sec" id="s2-1">一、緊急救護：別驚慌！發生什麼事？Don't Panic! What's Happened?</h3>
+    <div class="card">
+      <p><b>學習目標</b>：學習119報案電話諮詢服務與案件基本問答之詞彙及句型（Hotline Service and Application Inquiries）。</p>
+      <h4 class="sub">實用句型 Practical Sentence Patterns</h4>
+      <table>
+        <tr><th>English</th><th>中文</th></tr>
+        <tr><td>Hello, this is 119 of the Greenlake County Fire Department. How can I help you?</td><td>您好。這裡是翠湖縣政府消防局。如何協助您？</td></tr>
+        <tr><td>Don't panic! What's happened?</td><td>別驚慌！發生什麼事？</td></tr>
+        <tr><td>Calm down. I am here to help you.</td><td>請冷靜。讓我來協助您。</td></tr>
+        <tr><td>Please tell me your name and the location of the emergency.</td><td>請告訴我您的姓名及緊急事故所在位址。</td></tr>
+        <tr><td>Are there any landmarks around you?</td><td>附近有什麼顯著的地標嗎？</td></tr>
+        <tr><td>We will dispatch a firefighting team immediately.</td><td>好！我們馬上派人過去。</td></tr>
+        <tr><td>Please evacuate the scene instantly.</td><td>請即刻遠離火災現場。</td></tr>
+        <tr><td>Leave your passports and things where they are. Don't go back to get them.</td><td>請不要再返回火場去拿取您們的護照及財物。</td></tr>
+        <tr><td>The fire trucks and firefighters will be arriving any moment now.</td><td>消防車及消防人員很快便會抵達現場。</td></tr>
+        <tr><td>Let me perform an initial assessment of your injuries. Please relax and stay calm.</td><td>我現在會先幫您的身體做一次初步創傷評估。請放輕鬆並保持鎮定。</td></tr>
+        <tr><td>We'll place you on a stretcher and put you in the ambulance. After that we will check your breathing, pulse and blood pressure.</td><td>我們現在要將您移至擔架上，並搬運至救護車內。待會我們將量測您的呼吸、脈搏及血壓。</td></tr>
+      </table>
+
+      <h4 class="sub">情境對話 Dialogue：Don't Panic! What's Happened?</h4>
+      <p class="cite">場景：李隊員在翠湖縣政府消防局值勤，119緊急報案電話響起。（L＝李隊員 Firefighter Lee／W＝吳救護技術員 EMT Wu／J＝約翰 John／C＝凱薩琳 Catherine）</p>
+      <div class="dialog">
+        <p><b>L：</b>Hello, this is the 119 of the Greenlake County Fire Department. How can I help you?</p>
+        <p><b>J：</b>$#%%&amp;*&amp;#……</p>
+        <p><b>L：</b>Don't panic! What's happened?</p>
+        <p><b>J：</b>$#%%&amp;*&amp;#……</p>
+        <p><b>L：</b>Take your time and tell me what's happened?</p>
+        <p><b>J：</b>Fire! Fire! There is a fire!</p>
+        <p><b>L：</b>Calm down. I am here to help you. Where are you and what is on fire? Please tell me your name and the location of the emergency.</p>
+        <p><b>J：</b>I am John Schmidt. I do not exactly know where we are. We are staying in a bed and breakfast. Smoke is coming from the kitchen; something must have caught fire.</p>
+        <p><b>L：</b>Do you know the name of the bed and breakfast? Are there any landmarks around you?</p>
+        <p><b>J：</b>Yes, the name of this bed and breakfast is "Cozy Green Guesthouse". It is located next to the Greenlake Bus Terminal by a roundabout. Hurry up! Hurry up! Please!</p>
+        <p><b>L：</b>OK. We will dispatch a firefighting team immediately. Please evacuate the scene instantly.</p>
+        <p><b>J：</b>My wife and I have already run out of the guesthouse.</p>
+        <p><b>L：</b>Are there other people still inside the guesthouse?</p>
+        <p><b>J：</b>I am not sure. It happened so fast that we didn't even have time to take our passports and things.</p>
+        <p><b>L：</b>Leave them where they are, don't go back to get them. The fire trucks and firefighters will be arriving any moment now.</p>
+        <p class="cite">（五分鐘後，消防車及消防人員抵達民宿。吳救護技術員發現一名傷者上前查看）</p>
+        <p><b>W：</b>I am EMT Wu from the Greenlake Country Fire Department. Can you tell me what's happened to you, madam?</p>
+        <p><b>C：</b>I fell down the stairs and hit my head on the ground when running from the fire. It knocked me out for a minute and now I feel dizzy.</p>
+        <p><b>W：</b>Do you feel pain anywhere else on your body?</p>
+        <p><b>C：</b>No, just feel dizzy with a little bit of a headache.</p>
+        <p><b>W：</b>Can you stand up by yourself?</p>
+        <p><b>C：</b>No. I also hurt my knees when I fell and can't stand up right now.</p>
+        <p><b>W：</b>Let me perform an initial assessment of your injuries. Please relax and stay calm.</p>
+        <p><b>C：</b>Thank you.</p>
+        <p><b>W：</b>We'll place you on a stretcher and put you in the ambulance. After that we will check your breathing, pulse and blood pressure. Please sign this medical slip. Do not worry! We will take you in the ambulance to the nearest hospital.</p>
+      </div>
+
+      <h4 class="sub">重要詞彙 Words &amp; Phrases</h4>
+      <table>
+        <tr><th>English</th><th>中文</th></tr>
+        <tr><td>panic (V.)</td><td>使恐慌</td></tr>
+        <tr><td>roundabout (N.)</td><td>圓環</td></tr>
+        <tr><td>dispatch (V.)</td><td>派遣、調度</td></tr>
+        <tr><td>evacuate (V.)</td><td>疏散</td></tr>
+        <tr><td>scene (N.)</td><td>現場</td></tr>
+        <tr><td>instantly (Adv.)</td><td>即刻地、立即地</td></tr>
+        <tr><td>fire truck (N.)</td><td>消防車</td></tr>
+        <tr><td>knock out (Phr.)</td><td>使（某人）昏迷、不省人事</td></tr>
+        <tr><td>dizzy (Adj.)</td><td>頭暈的、暈眩的</td></tr>
+        <tr><td>injury (N.)</td><td>受傷、傷口</td></tr>
+        <tr><td>stretcher (N.)</td><td>擔架</td></tr>
+        <tr><td>ambulance (N.)</td><td>救護車</td></tr>
+        <tr><td>breathing (N.)</td><td>呼吸</td></tr>
+        <tr><td>pulse (N.)</td><td>脈搏</td></tr>
+        <tr><td>blood pressure (N.)</td><td>血壓</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="s2-2">二、災防宣導：防災無國界 Disaster Preparedness Without Borders</h3>
+    <div class="card">
+      <p><b>學習目標</b>：學習防災宣導一般服務問答及公務說明之詞彙及句型（Public Awareness and Public Education for Disaster Risk Reduction）。</p>
+      <h4 class="sub">實用句型 Practical Sentence Patterns</h4>
+      <table>
+        <tr><th>English</th><th>中文</th></tr>
+        <tr><td>Don't panic! Being in Taiwan, you have to get used to earthquakes and typhoons.</td><td>別驚慌！在臺灣生活要能夠適應，時常出現颱風及地震的環境。</td></tr>
+        <tr><td>I would like to lead everyone in a disaster preparedness drill on taking refuge during an earthquake.</td><td>我希望今天能帶領大家進行，當地震發生時，我們要如何避難的防災演練。</td></tr>
+        <tr><td>Keep in mind these three words when you feel a quake: Drop, Cover, and Hold.</td><td>當地震發生時，請記得避難的三個步驟：「趴下」、「掩護」及「穩住」。</td></tr>
+        <tr><td>If there are not any sturdy tables nearby, then you can take refuge under some other strong furniture, or solid structural beams like in a doorway or a corner, with your hands over your neck and head for protection.</td><td>如果身邊沒有堅固的桌子，可以躲在相對堅固的傢俱、樑柱或牆壁角落，以手保護頸部跟頭部。</td></tr>
+        <tr><td>Since we tend to get injured by falling objects during earthquakes, the first step is to squat down, then find a protective shield, and hold on to something to steady yourself.</td><td>當地震搖晃時，高處掉落的物體可能使我們受傷，所以第一步便是「蹲下」；接下來則是找「掩護」，最後是握住堅固物體來「穩住」自己！</td></tr>
+        <tr><td>The correct action is not to crouch down but to kneel down and hold on the table's legs instead of covering your head with your hands.</td><td>正確的動作是採雙膝跪姿將頭部壓低而不是蹲下。雙手則是要緊握桌腳而非用手去保護頭部。</td></tr>
+        <tr><td>When assisting people in wheelchairs during earthquakes, you need to first lock the wheels, then protect the person's head or neck with some object or his/her own hands, and maintain a sitting posture until the quaking stops.</td><td>如果有乘坐輪椅之行動不便者，當地震發生時，第一件事是要鎖住車輪；再來是拿物品或以手臂保護頭部或頸部，並且保持坐姿直至震動停止。</td></tr>
+        <tr><td>Learning proper methods for taking refuge is the best way to protect yourself and your family.</td><td>學會正確的避難方法，是保護自己及守護家人之最佳方式。</td></tr>
+        <tr><td>Food and water are the most basic supplies, and you will need a minimum of three days' worth.</td><td>緊急糧食以乾糧跟水為必要。準備的份量大約是3日份。</td></tr>
+        <tr><td>Other necessary items in the emergency kit are thermal blankets, raincoats, and towels, for keeping your body warm.</td><td>保溫輕便毛毯、雨衣及毛巾，也是應放置在避難包裡的必要物品，可在避難時禦寒保暖。</td></tr>
+        <tr><td>Medical and hygiene supplies are also necessary items to be included in the emergency kit. In addition to the first-aid kit, you may want to carry disinfectant, sanitizer, face masks, toilet paper and personal medications.</td><td>醫療用品及清潔消毒用品也是避難包的重要一環。除應放置急救包外，還可以放入殺菌劑、除菌劑、口罩、衛生紙及個人藥物。</td></tr>
+        <tr><td>I would also like to remind you to check and replace all perishable or expired items in the emergency kit every six months.</td><td>要提醒大家的是：緊急避難包裡頭的物品，每半年便要定期檢查一次，並更新淘汰那些過期物品。</td></tr>
+        <tr><td>Keep the kit in a handy spot for easy fetching. With the kit in hand, plus a helmet and shoes, you are all set.</td><td>平時便要將避難包放置在便利拿取的地方，並另放置安全帽及鞋子，這樣您便做了最好的準備！</td></tr>
+      </table>
+
+      <h4 class="sub">情境對話 Dialogue：Disaster Preparedness Without Borders</h4>
+      <p class="cite">場景：翠湖縣政府消防局為提升新住民與移工的防災認知，辦理挑戰闖關式的災防教育宣導。王小隊長帶領第一階段地震避難演練。（W＝王小隊長／C＝陳隊員／A＝安琪拉 Angela／S＝莎曼莎 Samantha）</p>
+      <div class="dialog">
+        <p><b>W：</b>Hello! I am Sergeant Wang, from the Greenlake County Fire Department. Did you feel something strange like the earth-shaking around six o'clock this morning?</p>
+        <p><b>A：</b>There was a constant trembling this morning. I thought I must be dizzy. We don't have earthquakes in my hometown, Ho Chi Minh City. I was scared to death!</p>
+        <p><b>W：</b>Don't panic! Being in Taiwan, you have to get used to earthquakes and typhoons. So, I would like to lead everyone in a disaster preparedness drill on taking refuge during an earthquake.</p>
+        <p><b>S：</b>That's great! When the earthquake happened this morning, all the books fell off the shelves in our home.</p>
+        <p><b>W：</b>Exactly, that's what happens! Keep in mind these three words when you feel a quake: Drop（趴下）, Cover（掩護）, and Hold（穩住）. Since we tend to get injured by falling objects during earthquakes, the first step is to squat down, then find a protective shield, and hold on to something to steady yourself. Please follow what I do right now.</p>
+        <p class="cite">（安琪拉與莎曼莎依指示蹲在桌邊，並以雙手護頭）</p>
+        <p><b>W：</b>I would like to remind you that earthquakes also cause tables shaking. So, the correct action is not to crouch down but to kneel down and hold on the table's legs instead of covering your head with your hands.</p>
+        <p><b>A：</b>But today's earthquake happened early in the morning and woke me up. There are not any tables in the bedroom so how should I take refuge?</p>
+        <p><b>W：</b>If there are not any sturdy tables nearby, then you can take refuge under some other strong furniture, or solid structural beams like in a doorway or a corner, with your hands over your neck and head for protection.</p>
+        <p><b>A：</b>How about if we huddle up next to a large piece of furniture? Wouldn't be even safer?</p>
+        <p><b>S：</b>No, that is actually dangerous since you may get injured by falling objects from cabinets or shelves, such as thick books, vases, and knick-knacks.</p>
+        <p><b>W：</b>That is right! She is spot-on! In Taiwan, loss of life or bodily injuries in earthquakes is very common due to collapsed furniture rather than buildings themselves. Broken furniture, sliding objects, and chunks of falling ceilings mostly bring about head and neck injuries.</p>
+        <p><b>S：</b>I take care of an elderly person, who is immobile and spends most of the time in a wheelchair. How can I assist him to crouch down in an earthquake?</p>
+        <p><b>W：</b>That is a good question. As the figure illustrates, when assisting people in wheelchairs during earthquakes, you need to first lock the wheels, then protect the person's head or neck with some object or his/her own hands, and maintain a sitting posture until the quaking stops.</p>
+        <p><b>A：</b>That's great! I won't be scared in the next earthquake.</p>
+        <p><b>W：</b>Learning proper methods for taking refuge is the best way to protect yourself and your family. Congratulations on completing the phase one! Please proceed to the next phase.</p>
+        <p class="cite">資料來源：Earthquake Country Alliance (ECA). https://www.earthquakecountry.org</p>
+        <p class="cite">（第二階段：陳隊員說明如何準備緊急避難包）</p>
+        <p><b>C：</b>Hello, everybody! I am Firefighter Chen. You have just completed phase one on taking refuge during earthquakes. In this phase, I would like to explain how to set up an emergency kit for coping with earthquakes.</p>
+        <p class="cite">（陳隊員打開背包）</p>
+        <p><b>C：</b>This is an emergency kit（緊急避難包）. Now the question is what are the necessary emergency supplies in the kit. Does anyone know?</p>
+        <p><b>A：</b>At the least, it must include food bars and drinking water.</p>
+        <p><b>C：</b>That's correct! Food and water are the most basic supplies, and you will need a minimum of three days' worth.</p>
+        <p><b>S：</b>Angela, you look so calm and self-assured. I'd probably just run out immediately with only my cellphone and a handful of money!</p>
+        <p><b>C：</b>Essential personal effects（重要個人物品）, such as important certificates, contact information, and cash should be included in every emergency kit.</p>
+        <p><b>A：</b>The weather has turned cold recently. Would some warm clothing also be necessary when seeking refuge?</p>
+        <p><b>C：</b>That's right. Other necessary items in the emergency kit are thermal blankets, raincoats, and towels, for keeping your body warm.</p>
+        <p><b>S：</b>I just thought about how to do if we get injured while seeking refuge. In this case, should first aid supplies should be included in the emergency kit, such as band aids, gauzes, and prescription medicines for the elderly or chronically ill.</p>
+        <p><b>C：</b>Yes, medical and hygiene supplies are also necessary items to be included in the emergency kit. In addition to the first-aid kit（急救包）, you may want to carry disinfectant（殺菌劑）, sanitizer（除菌劑）, face masks（口罩）, toilet paper（衛生紙）and personal medications（個人藥物）.</p>
+        <p><b>S：</b>Aside from emergency food, medications, disinfectants, warm clothing and blankets, and personal certificates, are there any other necessities?</p>
+        <p><b>C：</b>I suggest include flashlights with extra batteries or portable power packs. In addition, the kit must include survival whistles, Swiss knives, gloves, paper pads and pens. I would also like to remind you to check and replace all perishable or expired items in the emergency kit every six months. And keep the kit in a handy spot for easy fetching. With the kit in hand, plus a helmet and shoes, you are all set.</p>
+        <p><b>A：</b>That's wonderful! Today's drill is extremely helpful.</p>
+      </div>
+
+      <div class="data">
+        <b>緊急避難包七大類物品</b>：食物與水 Food &amp; Water／急救 First Aid／個人衛生 Personal Hygiene／保暖用品 Shelter &amp; Warmth／工具 Tools／重要個人物品 Essential Personal Effects，各類常見物品：雨衣 raincoat、衛生紙 toilet paper、手電筒 flash lights、保暖毛毯 thermal blanket、口罩 face mask、瑞士刀 Swiss knives、食物 food、急救包 first-aid kit、手套 gloves、水 water、殺菌劑 disinfectant、求生哨 survival whistle、毛巾 towel、除菌劑 sanitizer、現金 cash、通訊錄 contact info、筆記紙 paper pads。
+      </div>
+
+      <h4 class="sub">重要詞彙 Words &amp; Phrases</h4>
+      <table>
+        <tr><th>English</th><th>中文</th></tr>
+        <tr><td>trembling (N.)</td><td>發抖、戰慄</td></tr>
+        <tr><td>drill (N.)</td><td>演練</td></tr>
+        <tr><td>refuge (V.)</td><td>避難</td></tr>
+        <tr><td>squat (V.)</td><td>蹲下</td></tr>
+        <tr><td>shield (N.)</td><td>庇護、遮蔽</td></tr>
+        <tr><td>crouch down (V.)</td><td>蹲下、蜷伏</td></tr>
+        <tr><td>kneel down (V.)</td><td>跪下</td></tr>
+        <tr><td>sturdy (Adj.)</td><td>堅固的</td></tr>
+        <tr><td>huddle (V.)</td><td>蜷縮、擠成一團</td></tr>
+        <tr><td>knick-knacks (N.)</td><td>（房間裡）小裝飾物，小擺設</td></tr>
+        <tr><td>spot on (Adj.)</td><td>一點也沒錯、精準的</td></tr>
+        <tr><td>collapsed (Adj.)</td><td>倒塌的</td></tr>
+        <tr><td>sliding (Adj.)</td><td>滑動的、崩塌的</td></tr>
+        <tr><td>immobile (Adj.)</td><td>行動不便的</td></tr>
+        <tr><td>emergency kit (N.)</td><td>緊急避難包</td></tr>
+        <tr><td>essential personal effects (N.)</td><td>重要的個人物品</td></tr>
+        <tr><td>thermal (Adj.)</td><td>保暖的、溫熱的</td></tr>
+        <tr><td>hygiene (N.)</td><td>衛生</td></tr>
+        <tr><td>disinfectant (N.)</td><td>消毒劑、殺菌劑</td></tr>
+        <tr><td>sanitizer (N.)</td><td>清潔除菌劑</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="s2-3">三、機關／職務工作介紹 How to Introduce Your Agency and Make a Job Description</h3>
+    <div class="card">
+      <p><b>學習目標</b>：學習如何以英語介紹所屬機關及說明職務內容。</p>
+      <h4 class="sub">實用句型 Practical Sentence Patterns</h4>
+      <table>
+        <tr><th>English</th><th>中文</th></tr>
+        <tr><td>I am Firefighter Clark, First Rescue Brigade of the Fire Department of the Metropolitan City.</td><td>我是大都會市消防局第一救災救護大隊的消防員克拉克。</td></tr>
+        <tr><td>Today, I have the pleasure to introduce the daily tasks as a firefighter.</td><td>今天很榮幸為大家介紹消防員日常執行勤務的工作項目。</td></tr>
+        <tr><td>In terms of firefighting, the most terrible situation is fire of chemical factories or flammable objects.</td><td>就消防工作而言，火災現場搶救，最可怕的就是遇到化學工廠或是易燃物品。</td></tr>
+        <tr><td>As for traffic accident rescue, large machines are imperative in the case of deformed vehicles.</td><td>關於車禍事故現場救護，在車輛變形情況下，甚至還要出動大型機具。</td></tr>
+        <tr><td>With regard to gas leak fire rescue, to avoid explosion and to disperse residents are essential.</td><td>瓦斯外洩事故現場搶救，避免發生爆炸，還要協助疏散民眾。</td></tr>
+        <tr><td>For searching and rescuing drowning people, firefighters usually soak in water all the time just for saving lives.</td><td>搜救溺水民眾，為了搶救生命，常常泡在水裡不知多久呢！</td></tr>
+        <tr><td>Firefighters have to maintain physical fitness so as to execute rescue missions.</td><td>為了執行各項勤務，我們必須要鍛鍊強健的體魄。</td></tr>
+        <tr><td>Firefighting brothers perform their duties through the water and fire for safeguarding lives and property of the people.</td><td>打火兄弟，水裡來火裡去，為維護民眾生命財產盡心盡力。</td></tr>
+      </table>
+
+      <h4 class="sub">重要詞彙 Words &amp; Phrases</h4>
+      <table>
+        <tr><th>English</th><th>中文</th></tr>
+        <tr><td>firefighter (N.)</td><td>消防員</td></tr>
+        <tr><td>brigade (N.)</td><td>（為某個目的而成立的）隊；團</td></tr>
+        <tr><td>fire department (N.)</td><td>消防局</td></tr>
+        <tr><td>situation (N.)</td><td>形勢；情況；局面</td></tr>
+        <tr><td>chemical (Adj.)</td><td>化學的；化學用的</td></tr>
+        <tr><td>flammable (Adj.)</td><td>易燃的；可燃的；速燃的</td></tr>
+        <tr><td>imperative (Adj.)</td><td>必要的；緊急的；極重要的</td></tr>
+        <tr><td>vehicle (N.)</td><td>運載工具；車輛</td></tr>
+        <tr><td>leak (N.)(V.)</td><td>（水，瓦斯等的）漏出</td></tr>
+        <tr><td>rescue (N.)(V.)</td><td>營救；救援</td></tr>
+        <tr><td>explosion (N.)</td><td>爆炸；爆破</td></tr>
+        <tr><td>disperse (V.)</td><td>驅散；解散；疏散</td></tr>
+        <tr><td>soak (V.)</td><td>浸濕；濕透；浸泡</td></tr>
+        <tr><td>execute (V.)</td><td>執行；實行；完成</td></tr>
+        <tr><td>safeguard (V.)</td><td>保護；防衛</td></tr>
+        <tr><td>property (N.)</td><td>財產；資產</td></tr>
+      </table>
+
+      <h4 class="sub">重點解析 Tips in Use（慣用語）</h4>
+      <table>
+        <tr><th>慣用語</th><th>中文意思</th><th>例句</th></tr>
+        <tr><td><b>自我介紹句型</b></td><td>介紹姓名、職稱、機關</td><td>Today, I have the pleasure to introduce the daily tasks as a firefighter.（今天很榮幸為大家介紹消防員日常執行勤務的工作項目。）<br>It's my pleasure to introduce my company and make a job description for you.（很榮幸藉此機會跟大家介紹我的公司與職務。）<br>It is a great honor to have this opportunity to introduce myself.（我很榮幸有這個機會在這裡進行自我介紹。）</td></tr>
+        <tr><td><b>in terms of</b></td><td>就……而言；在……方面</td><td>In terms of its location, the property is incredible.（就地點而言，這間房產的位置極好。）<br>In terms of money, he's quite rich, but not in terms of happiness.（在金錢方面，他很富有，但就幸福來說就不然了。）</td></tr>
+        <tr><td><b>As for／When it comes to</b></td><td>至於……；關於……；提到……</td><td>As for my past, I'm not telling you anything.（關於我的過去，我甚麼都不會告訴你。）<br>When it comes to learning something new, he is the best of all.（說到學習新事物，他是箇中翹楚。）</td></tr>
+        <tr><td><b>in the case of</b></td><td>就……而言；在……情況下</td><td>In the case of a highly intelligent animal, elementary training is easy.（就高度聰穎的動物而言，初級訓練並不難。）<br>In the case of his health, it is fortunate for him to have recovered from his illness like this.（就他的健康狀況來說，能恢復到這樣算是幸運的了。）</td></tr>
+        <tr><td><b>with regard to</b></td><td>關於……；至於……</td><td>With regard to his suggestions, we will discuss them fully.（關於他的建議，我們會充分討論。）<br>With regard to your grades for the year, I will post them one week after the final exam.（關於你們的年度成績，我會在期末考一週後公布。）</td></tr>
+        <tr><td><b>perform duties</b></td><td>履行職責；負擔義務</td><td>We will equip our field staff with these little gadgets in the very near future to perform duties on site.（我們很快便會配發這些輕便的設備給外勤人員，協助他們執行職務。）</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch3">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c3)">參</div><h2>海巡人員篇 COAST GUARDS</h2></div>
+
+    <h3 class="sec" id="s3-1">一、查緝私菸：立即停船！配合檢查！Stop the Ship Immediately and Cooperate With the Inspection!</h3>
+    <div class="card">
+      <p><b>學習目標</b>：學習海上登臨檢查一般服務問答及公務說明之詞彙及句型（Cooperate With the Inspection）。</p>
+      <h4 class="sub">實用句型 Practical Sentence Patterns</h4>
+      <table>
+        <tr><th>English</th><th>中文</th></tr>
+        <tr><td>You are suspected of carrying contraband goods.</td><td>有人檢舉貴船隻涉嫌載運違禁品。</td></tr>
+        <tr><td>We have legitimate grounds to conduct the right of visit as you are violating laws.</td><td>我們有正當理由，認有違反法令之虞，將實施登船臨檢。</td></tr>
+        <tr><td>Please cooperate with us for the inspection.</td><td>請配合接受檢查。</td></tr>
+        <tr><td>Stop the ship immediately and cooperate with the inspection.</td><td>立即停船，配合檢查。</td></tr>
+        <tr><td>The whole process will be videotaped to safeguard your rights, please cooperate with us.</td><td>過程中我們全程錄影，以保障您的權益。請大家配合檢查。</td></tr>
+        <tr><td>We would like to check the crew manifest.</td><td>我們要核對船員名單。</td></tr>
+        <tr><td>Under which country is this ship registered?</td><td>您的船籍隸屬於哪一個國家？</td></tr>
+        <tr><td>Where was your last port of call?</td><td>這艘船上一次是停靠哪裡？</td></tr>
+        <tr><td>It is against the laws to smuggle cigarettes to our country according to the "Customs Anti-smuggling Act" and the "Tobacco and Alcohol Administration Act".</td><td>依據《海關緝私條例》及《菸酒管理法》，未經許可私運香菸進入我國是違法行為。</td></tr>
+        <tr><td>We shall escort the ship ashore for further investigation and other procedures.</td><td>我們依法將船帶回我國進行進一步調查及後續程序。</td></tr>
+        <tr><td>All crew members will be taken to a designated location for 14 days' quarantine.</td><td>船上全體人員均需遵守防疫規定，先在指定處所進行14天之隔離。</td></tr>
+      </table>
+
+      <h4 class="sub">情境對話 Dialogue：Stop the Ship Immediately and Cooperate With the Inspection</h4>
+      <p class="cite">場景：劉大榮分隊長（艇長）於海上執勤時，接獲情報指出外籍船隻「寰宇5號」（Whole World No. 5）涉嫌走私香菸並駛向臺灣。劉艇長於距海岸基線12海浬之領海範圍內追蹤該船，研判其有違法之虞，遂下令準備登船臨檢。（L＝劉大榮分隊長／W＝王小隊長／H＝何小隊長／N＝吳船長 Duc Ngo）</p>
+      <div class="dialog">
+        <p><b>L（廣播）：</b>"Whole World No. 5", this is the Coast Guard Administration, Ocean Affairs Council of the Republic of China. I am Squad Leader Da-Rong Liu, On-scene Commander (OSC) of the Fleet Branch. This area belongs to the territorial waters of the Republic of China. You are suspected of carrying contraband goods. We have legitimate grounds to conduct the right of visit as you are violating laws. Please cooperate with us for the inspection. Stop the ship immediately and cooperate with the inspection.</p>
+        <p><b>L（重複廣播）：</b>Stop the ship immediately and cooperate with the inspection. If you refuse to stop and instead take flight, we will pursue according to the law of the sea.</p>
+        <p class="cite">（歷經十至二十分鐘的視覺與聲音警告廣播，並輔以壓制性射擊，配備救生衣、無線電、手電筒與輕型彈藥的臨檢小組終於登船，船上人員逃入艙內，最終海巡人員控制現場）</p>
+        <p><b>L：</b>I am the captain of Boat PP10018, Coast Guard Administration, Ocean Affairs Council of the Republic of China. We are conducting a legitimate security inspection. The whole process will be videotaped to safeguard your rights, please cooperate with us.</p>
+        <p><b>W：</b>Who is the shipmaster? What's your name and nationality?</p>
+        <p><b>N：</b>It's me. I am the shipmaster. My name is Duc Ngo, and I'm a Vietnamese.</p>
+        <p><b>W：</b>We would like to check the crew manifest.</p>
+        <p class="cite">（船長交出船員名單）</p>
+        <p><b>W：</b>How many crew members?</p>
+        <p><b>N：</b>Two Vietnamese and ten Burmese.</p>
+        <p><b>W：</b>Under which country is this ship registered?</p>
+        <p><b>N：</b>Togolese Republic（多哥共和國）.</p>
+        <p><b>W：</b>Where was your last port of call?</p>
+        <p><b>N：</b>Cambodia.</p>
+        <p><b>W：</b>Where is the ship bound for?</p>
+        <p><b>N：</b>Taiwan.</p>
+        <p><b>W：</b>What is your next port of call?</p>
+        <p><b>N：</b>The Port of Keelung.</p>
+        <p><b>W：</b>What are the commodities on the ship?</p>
+        <p><b>N：</b>Just a few cigarettes……</p>
+        <p><b>W：</b>What is the destination for those cigarettes?</p>
+        <p><b>N：</b>Taiwan.</p>
+        <p><b>W：</b>We will proceed with a ship inspection. Please show us the ship's register. We would like to examine it.</p>
+        <p class="cite">（何小隊長與隊員檢查船艙，發現大量各品牌香菸包裹。依《海關緝私條例》及《菸酒管理法》，私運香菸進入我國屬違法行為，且該批香菸經查為仿冒品，將危害國人健康。何小隊長立即以無線電同步向劉艇長及海巡隊部勤務指揮中心回報查緝結果，後續由關務、警政單位及地方政府財政局共同調查）</p>
+        <p><b>L：</b>We have just found contraband cigarettes in the hold of your ship. It is against the laws to smuggle cigarettes to our country according to the "Customs Anti-smuggling Act" and the "Tobacco and Alcohol Administration Act".</p>
+        <p><b>N：</b>We were entrusted by someone to transport the packed cargo, and unaware of the contents.</p>
+        <p><b>L：</b>We will continue to check crew quarters, and all areas of the ship, to confirm whether there are more cigarettes or other contraband goods. And the whole process will be videotaped.</p>
+        <p class="cite">（全面搜索後，海巡隊員又查獲200餘箱走私香菸，何小隊長並在船艙隱密處另查獲200箱走私香菸）</p>
+        <p><b>L：</b>We shall escort the ship ashore for further investigation and other procedures. All crew members will be taken to a designated location for 14 days' quarantine. Immigration and other related authorities will oversee this process. Team Leader Wu and his team will check all the crew members and perform cursory interrogations. Please cooperate at this time with our investigations.</p>
+      </div>
+
+      <h4 class="sub">重要詞彙 Words &amp; Phrases</h4>
+      <table>
+        <tr><th>English</th><th>中文</th></tr>
+        <tr><td>vessel (N.)</td><td>輪船、船艦</td></tr>
+        <tr><td>contraband (N.)</td><td>違禁品、走私貨</td></tr>
+        <tr><td>nautical mile (N.)</td><td>海浬</td></tr>
+        <tr><td>scrupulous (Adj.)</td><td>審慎的、嚴謹認真的</td></tr>
+        <tr><td>legitimate (Adj.)</td><td>合法的、正當的</td></tr>
+        <tr><td>inspection (N.)</td><td>檢查</td></tr>
+        <tr><td>ammunition (N.)</td><td>彈藥、軍火</td></tr>
+        <tr><td>crew manifest (N.)</td><td>船員名單</td></tr>
+        <tr><td>counterfeit (Adj.)</td><td>偽造的、仿冒的</td></tr>
+        <tr><td>detrimental (Adj.)</td><td>危害的、不利的</td></tr>
+        <tr><td>entrust (V.)</td><td>委託、託付</td></tr>
+        <tr><td>escort (V.)</td><td>押送、護送</td></tr>
+        <tr><td>ashore (Adv.)</td><td>朝向岸上、往陸地</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="s3-2">二、機關／職務工作介紹 How to Introduce Your Agency and Make a Job Description</h3>
+    <div class="card">
+      <p><b>學習目標</b>：學習如何以英語介紹海巡機關及說明職務內容。</p>
+      <h4 class="sub">實用句型 Practical Sentence Patterns</h4>
+      <table>
+        <tr><th>English</th><th>中文</th></tr>
+        <tr><td>Hi, everybody. I am Officer Allen Chang and currently working in the 6th Offshore Flotilla of the Fleet Branch of the Coast Guard Administration.</td><td>大家好，我是張艾倫，目前是海巡署艦隊分署第六海巡隊的隊員。</td></tr>
+        <tr><td>Today, I would like to introduce how an offshore flotilla officer performs his daily routine.</td><td>今天要為大家介紹海巡隊隊員如何執行日常工作。</td></tr>
+        <tr><td>Boarding the patrolling ships and riding the wind and waves, we are in charge of protecting fishing rights by patrolling on the exclusive economic zones. For instance, we crack down on illegal transboundary foreign-flagged fishing vessels and patrol on the high sea.</td><td>搭乘艦艇，乘風破浪，我們負責維護漁權，專屬經濟海域巡護，取締越界國外漁船，公海巡護。</td></tr>
+        <tr><td>Whenever there are suspected fishing vessels engaging illegal immigration, we carry out interception and onboard inspection for stowaway so as to combat human smuggling syndicates.</td><td>發現非法偷渡的可疑漁船，進行海上攔查及登船檢查，打擊人蛇集團，查獲偷渡客。</td></tr>
+        <tr><td>We spare no efforts in cracking down on crimes of illegal smuggling of tobacco, alcohol, and drugs from the sea so as to maintain the market order and safeguard people's health.</td><td>我們查緝海上走私菸、酒、毒品等不法情事，維持市場秩序穩定，維護國民健康，杜絕走私不遺餘力。</td></tr>
+        <tr><td>Massive cargo ships tend to run aground because of mechanic failures or ebb and flow of tides. The Coast Guards conduct maritime rescue operations for and retreat crew members from wreck vessels.</td><td>當大型貨輪機件故障，又受到漲退潮影響貨輪擱淺，等待救援，解救受困船員。</td></tr>
+        <tr><td>After receiving reports of incidents such as vessels are on fire on open waters, the Coast Guards board patrolling vessels immediately for rescue operations.</td><td>外海發生火燒船事故，接獲通報後搭乘巡防艇前往協助救援。</td></tr>
+        <tr><td>Furthermore, we also rescue swimmers who are exhausted and tided away from the seashore.</td><td>戲水泳客疑似因體力不支，並遭浪帶著離岸越漂越遠，前往救援。</td></tr>
+        <tr><td>Neglecting the tidal time, anglers are stuck on breakwater and about to be swallowed by rogue waves. The coast guard dispatches a lifeboat for rescue operations.</td><td>釣魚客未注意到漲潮時間，受困於離岸堤上，眼見因潮汐關係即將被海水吞噬，獲報後即派遣救生艇前往救援。</td></tr>
+        <tr><td>When workers embark on a lighthouse service operation, huge waves may capsize the rubber raft. We instantly rescue workers at stake.</td><td>當工人出海維修燈塔，大浪來襲膠筏翻覆，危在旦夕，海巡隊即刻搶救落水工人。</td></tr>
+        <tr><td>By and large, the Coast Guard Administration is responsible for the executions of maritime rescue operations. We engage in all kinds of incidents related to passengers or vessels on the sea, such as wrecking, collision, firing, grounding, explosion among others.</td><td>總而言之，救生救難，船舶發生故障，沉沒擱淺、碰撞、失火、爆炸或其他有關船舶、貨載、船員或旅客之非常事故者，都是我們海巡署的職責。</td></tr>
+        <tr><td>Upholding the spirit of saving lives as a top priority, the Coast Guard Administration will spare no efforts in conducting all kinds of rescue operations so as to safeguard life and property of our nationals.</td><td>秉持「救人為第一優先」之精神，積極投入救難與救援，我們海巡署會以最快的速度全力協助或救援，以維護國人的生命財產安全。</td></tr>
+      </table>
+
+      <h4 class="sub">重要詞彙 Words &amp; Phrases</h4>
+      <table>
+        <tr><th>English</th><th>中文</th></tr>
+        <tr><td>Offshore Flotilla (N.)</td><td>海巡隊</td></tr>
+        <tr><td>Fleet Branch (N.)</td><td>艦隊分署</td></tr>
+        <tr><td>Coast Guard Administration (N.)</td><td>海巡署</td></tr>
+        <tr><td>board (V.)</td><td>登上（船、火車或飛機）</td></tr>
+        <tr><td>fishing rights (N.)</td><td>漁權</td></tr>
+        <tr><td>protection (N.)</td><td>保護；防護</td></tr>
+        <tr><td>exclusive economic zones (N.)</td><td>專屬經濟海域</td></tr>
+        <tr><td>transboundary (Adj.)</td><td>跨越國界；越界</td></tr>
+        <tr><td>illegal (Adj.)</td><td>非法的；違法的</td></tr>
+        <tr><td>interception (N.)</td><td>攔截</td></tr>
+        <tr><td>inspection (N.)</td><td>檢查；視察</td></tr>
+        <tr><td>stowaway (N.)</td><td>偷渡者</td></tr>
+        <tr><td>syndicate (N.)</td><td>犯罪集團；黑社會組織</td></tr>
+        <tr><td>smuggling (N.)</td><td>走私</td></tr>
+        <tr><td>safeguard (V.)</td><td>保護；防衛</td></tr>
+        <tr><td>ebb and flow (N.)</td><td>潮起潮落；起起伏伏</td></tr>
+        <tr><td>conduct (V.)</td><td>執行；實施</td></tr>
+        <tr><td>maritime (Adj.)</td><td>海運的；航海的；海上的</td></tr>
+        <tr><td>wreck (N.)</td><td>失事；沉船</td></tr>
+        <tr><td>angler (N.)</td><td>垂釣客</td></tr>
+        <tr><td>breakwater (N.)</td><td>防波堤</td></tr>
+        <tr><td>lighthouse (N.)</td><td>燈塔</td></tr>
+        <tr><td>at stake (Phr.)</td><td>危在旦夕；危急關頭</td></tr>
+        <tr><td>passenger (N.)</td><td>乘客；旅客</td></tr>
+        <tr><td>collision (N.)</td><td>碰撞；相撞</td></tr>
+      </table>
+
+      <h4 class="sub">重點解析 Tips in Use（慣用語）</h4>
+      <table>
+        <tr><th>慣用語</th><th>中文意思</th><th>例句</th></tr>
+        <tr><td><b>自我介紹姓名／職稱／機關</b></td><td>三種常見句型</td><td>I am Officer Allen Chang and currently working in the 6th Offshore Flotilla of the Fleet Branch of the Coast Guard Administration.<br>I am Officer Allen Chang of the 6th Offshore Flotilla of the Fleet Branch of the Coast Guard Administration.<br>I am Allen Chang. I currently work as an Officer of the 6th Offshore Flotilla of the Fleet Branch of the Coast Guard Administration.</td></tr>
+        <tr><td><b>be in charge of / be responsible for / be someone's primary duty</b></td><td>業務職掌</td><td>We are in charge of fishing rights protection by patrolling on exclusive economic zones.<br>We are responsible for fishing rights protection by patrolling on exclusive economic zones.<br>Fishing rights protection by patrolling on exclusive economic zones is our primary duty.（我們負責維護漁權，專屬經濟海域巡護。）</td></tr>
+        <tr><td><b>carry out</b></td><td>實施；施行；落實</td><td>The police are now carrying out inspections of all cars crossing the border.（警方正在針對所有穿越邊境的車輛實施檢查。）<br>They are carrying out scientific research.（他們正在進行科學研究。）</td></tr>
+        <tr><td><b>embark on</b></td><td>上船（或飛機等）；從事；著手</td><td>We embarked on a cruiser.（我們登上一艘遊艇。）<br>We embarked on a new project last week.（我們上週已開始執行新企劃。）</td></tr>
+        <tr><td><b>By and large</b></td><td>整體而言；大體上來說</td><td>By and large, your plan is a feasible one.（整體而言，你的計畫是可行的。）<br>By and large, the conditions of employment are good.（就大體上來說，就業條件是不錯的。）</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="chapter" id="ref">
+    <div class="chapter-head"><div class="chapter-num" style="background:#999">§</div><h2>教材來源</h2></div>
+    <div class="card refs">
+      <p>書名：警察人員實用英語（佐升正訓練）Practical English for Police Officers — Promotion Training for Police Officers<br>
+      出版者：國家文官學院｜發行者：郝培芝｜出版日期：中華民國112年5月<br>
+      本教材僅供國家文官學院訓練課程使用，智慧財產權屬國家文官學院。</p>
+      <p style="margin-top:10px">誌謝：特別感謝內政部警政署、內政部消防署、海洋委員會海巡署前資深顧問吳榮泉大使（Ambassador Rong-Chuan Wu）對本教材完成之寶貴貢獻與協助。</p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+const search = document.getElementById('search');
+search.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  document.querySelectorAll('main .card, main .qa, main .data').forEach(el => {
+    const match = !q || el.textContent.toLowerCase().includes(q);
+    el.classList.toggle('hidden', !match);
+  });
+});
+</script>
+</body>
+</html>

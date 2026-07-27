@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>危機處理｜簡報速記筆記</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --bg:#f6f4f0; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66;
+    --accent:#b2551f; --line:#e6e0d6; --side-w:260px;
+    --c1:#b2551f; --c2:#9c7a1f; --c3:#a8432e; --c4:#3b7a5e; --c5:#8a4a1f; --c6:#b2841f; --c7:#7a3b52; --c8:#6b5a3b; --c9:#7a2f1f;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);display:flex;}
+  #sidebar{width:var(--side-w);flex-shrink:0;height:100vh;position:sticky;top:0;overflow-y:auto;background:#fbf9f5;border-right:1px solid var(--line);padding:20px 14px;}
+  #sidebar h3{font-size:.78rem;color:var(--sub);text-transform:uppercase;letter-spacing:.06em;margin:18px 6px 6px;}
+  #sidebar h3:first-child{margin-top:4px;}
+  #search{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:.85rem;margin-bottom:8px;font-family:inherit;}
+  .backlink{display:block;font-size:.8rem;color:var(--sub);text-decoration:none;margin:0 6px 10px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+  #sidebar a.nav{display:block;padding:5px 8px;font-size:.84rem;color:var(--ink);text-decoration:none;border-radius:6px;line-height:1.4;}
+  #sidebar a.nav:hover{background:var(--line);}
+  #sidebar a.nav.sub{padding-left:18px;font-size:.79rem;color:var(--sub);}
+  main{flex:1;max-width:900px;margin:0 auto;padding:44px 32px 100px;min-width:0;}
+  h1.title{font-size:1.7rem;margin:0 0 4px;}
+  .subtitle{color:var(--sub);margin-bottom:8px;}
+  .toolbar{margin-bottom:36px;padding-bottom:16px;border-bottom:1px solid var(--line);font-size:.82rem;color:#a89f8f;}
+  section.chapter{margin-bottom:52px;scroll-margin-top:20px;}
+  .chapter-head{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+  .chapter-num{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.95rem;flex-shrink:0;}
+  .chapter-head h2{margin:0;font-size:1.28rem;}
+  h3.sec{scroll-margin-top:20px;font-size:1.03rem;margin:26px 0 10px;padding-left:12px;border-left:4px solid var(--line);}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;}
+  .card p{margin:.3em 0;line-height:1.85;font-size:.94rem;}
+  ul.pts{margin:.4em 0;padding-left:1.3em;line-height:1.85;font-size:.94rem;}
+  ul.pts li{margin-bottom:3px;}
+  .kw{background:#faf0e4;color:var(--accent);padding:1px 7px;border-radius:5px;font-weight:600;font-size:.88em;}
+  .ref{background:#eaf3f0;color:#2f6b5e;padding:1px 6px;border-radius:5px;font-weight:600;font-size:.85em;}
+  table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.85rem;}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top;}
+  th{background:#f1ede4;}
+  .mnemonic{background:#fbf6ea;border:1px dashed #d8be96;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.9rem;color:#6b4a2a;}
+  .examnote{background:#faf1ea;border:1px solid #e8c9a8;border-radius:10px;padding:14px 18px;margin:10px 0 24px;font-size:.88rem;color:#4a3220;line-height:1.75;}
+  .examnote h3{margin-top:0;color:var(--accent);font-size:1rem;}
+  .examnote table{font-size:.8rem;}
+  .examnote a{color:var(--accent);font-weight:600;text-decoration:none;}
+  .examnote a:hover{text-decoration:underline;}
+  .examtag{display:inline-block;background:#faf1ea;color:var(--accent);padding:2px 8px;border-radius:6px;font-size:.72em;font-weight:600;margin-left:8px;vertical-align:middle;white-space:nowrap;}
+  .case-box{background:#faf4ef;border:1px solid #ecd9c8;border-radius:12px;padding:16px 18px;margin:10px 0;}
+  .case-box h4{margin-top:0;color:var(--accent);}
+  mark{background:#ffe2a8;padding:0 2px;border-radius:3px;}
+  .hidden{display:none !important;}
+</style>
+</head>
+<body>
+
+<nav id="sidebar">
+  <input id="search" type="text" placeholder="搜尋關鍵字...">
+  <a class="backlink" href="index.html">← 回筆記入口</a>
+
+  <h3>考古題規律</h3>
+  <a class="nav" href="#examoverview">📌 歷屆考古題對照（108-114）</a>
+
+  <h3>前言</h3>
+  <a class="nav" href="#ch1">壹　需要高度危機意識的警察工作</a>
+
+  <h3>風險管理</h3>
+  <a class="nav" href="#ch2">貳　風險管理的意涵、步驟與對策</a>
+  <a class="nav sub" href="#s2-1">風險／風險管理定義</a>
+  <a class="nav sub" href="#s2-2">趨勢轉變</a>
+  <a class="nav sub" href="#s2-3">風險管理步驟</a>
+  <a class="nav sub" href="#s2-4">風險管理策略</a>
+
+  <h3>危機管理</h3>
+  <a class="nav" href="#ch3">參　危機管理的意涵、特性與階段</a>
+  <a class="nav sub" href="#s3-1">危機的意涵</a>
+  <a class="nav sub" href="#s3-2">危機的特性</a>
+  <a class="nav sub" href="#s3-3">危機管理作業階段</a>
+
+  <h3>必備條件</h3>
+  <a class="nav" href="#ch4">肆　有效危機處理的必備條件</a>
+
+  <h3>公共關係</h3>
+  <a class="nav" href="#ch5">伍　危機處理與公共關係</a>
+  <a class="nav sub" href="#s5-1">危機中的媒體互動</a>
+  <a class="nav sub" href="#s5-2">記者會應注意原則</a>
+
+  <h3>警察勤務風險</h3>
+  <a class="nav" href="#ch6">陸　警察勤務風險與危機處理</a>
+  <a class="nav sub" href="#s6-1">警察勤務之風險</a>
+  <a class="nav sub" href="#s6-2">CDM危機決策模式</a>
+  <a class="nav sub" href="#s6-3">OODA危機決策模式</a>
+  <a class="nav sub" href="#s6-4">CDM模式五步驟</a>
+  <a class="nav sub" href="#s6-5">孟菲斯模式與降階策略</a>
+  <a class="nav sub" href="#s6-6">精神健康危機緊急照護</a>
+
+  <h3>危機談判</h3>
+  <a class="nav" href="#ch7">柒　警察危機談判</a>
+  <a class="nav sub" href="#s7-1">談判前的準備</a>
+  <a class="nav sub" href="#s7-2">談判的基本原則</a>
+  <a class="nav sub" href="#s7-3">談判的禁忌條件</a>
+  <a class="nav sub" href="#s7-4">談判目標與技巧</a>
+
+  <h3>聚眾活動應用</h3>
+  <a class="nav" href="#ch8">捌　處理聚眾活動之應用</a>
+
+  <h3>個案速記</h3>
+  <a class="nav" href="#ch9">玖　八則個案速記</a>
+  <a class="nav sub" href="#case1">案例一 便衣偵防車遭圍</a>
+  <a class="nav sub" href="#case2">案例二 就業博覽會抗議</a>
+  <a class="nav sub" href="#case3">案例三 執法裁量爭議</a>
+  <a class="nav sub" href="#case4">案例四 官網過載暨資安</a>
+  <a class="nav sub" href="#case5">案例五 陸船人員棄船</a>
+  <a class="nav sub" href="#case6">案例六 公寓火災衝突</a>
+  <a class="nav sub" href="#case7">案例七 山難搜救爭議</a>
+  <a class="nav sub" href="#case8">案例八 國外大樓火警</a>
+</nav>
+
+<main>
+  <h1 class="title">危機處理｜課程簡報速記筆記</h1>
+  <div class="subtitle">115年度警佐警察人員晉升警正官等訓練・依教學簡報（96頁）整理</div>
+  <div class="toolbar">用途：考前快速複習、抓記憶點。完整理論脈絡與八則案例推理過程請見 <a href="crisis-management-textbook.html">教材版筆記</a>。</div>
+
+  <div class="examnote" id="examoverview">
+    <h3>📌 歷屆考古題對照｜危機處理命題規律（108～114年）</h3>
+    <p><b>危機處理自109年起幾乎年年必考</b>，通常是第二題、30分（僅109年25分），命題「模式／主題」在4種工具間輪替：</p>
+    <table>
+      <tr><th>年度</th><th>題號／分數</th><th>主題</th></tr>
+      <tr><td>108</td><td>—</td><td>未考</td></tr>
+      <tr><td>109</td><td>Q2・25分</td><td>談判</td></tr>
+      <tr><td>110</td><td>Q3・30分</td><td>CDM危機決策模式</td></tr>
+      <tr><td>111</td><td>Q2・30分</td><td>記者說明會原則（溪流救援）</td></tr>
+      <tr><td>112</td><td>Q2・30分</td><td>記者說明會原則（煙火意外）</td></tr>
+      <tr><td>113</td><td>Q2・30分</td><td>CDM五步驟（地震12小時）</td></tr>
+      <tr><td>114</td><td>Q2・30分</td><td>公共安全管理三階段（工廠火災）</td></tr>
+    </table>
+    <div class="mnemonic" style="margin:10px 0 0;">
+      <b>4點關鍵洞察</b>：①近6年僅108未考，幾乎年年必考且集中在第二題30分　②CDM考過2次(110,113)、記者說明會考過2次(111,112)為最高頻，談判(109)、三階段(114)各1次　③情境偏好：天災配CDM／記者會，工廠公安配三階段，媒體現場配記者會　④<b>CDM、記者說明會、三階段、談判四項都要熟</b>，CDM與記者說明會優先度最高
+    </div>
+    <p style="margin-top:10px;">
+      <a href="../佐升正考試/109年_消防_申論題解析.html">109年 →</a>
+      <a href="../佐升正考試/110年_消防_申論題解析.html">110年 →</a>
+      <a href="../佐升正考試/111年_消防_申論題解析.html">111年 →</a>
+      <a href="../佐升正考試/112年_消防_申論題解析.html">112年 →</a>
+      <a href="../佐升正考試/113年_消防_申論題解析.html">113年 →</a>
+      <a href="../佐升正考試/114年_消防_申論題解析.html">114年 →</a>
+    </p>
+  </div>
+
+  <section class="chapter" id="ch1">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c1)">壹</div><h2>需要高度危機意識的警察工作</h2></div>
+    <div class="card">
+      <p><b>警察角色</b>：面對社會多元期待，警察人員需透過強制、指導及服務等手段，保護人民生命、身體和財產安全，並維持公共秩序與偵查、預防犯罪。警察扮演<mark>執法者、秩序維護者及為民服務者</mark>等多重角色，並以命令強制為手段之國家行政主體。</p>
+      <p><b>我國警察工作經常處於的危機情境（6項）</b>：</p>
+      <table>
+        <tr><th>情境</th><th>內容</th></tr>
+        <tr><td>危險性</td><td>多變的工作內容與嚴謹的法律規定</td></tr>
+        <tr><td>工作自主性</td><td>一線人員使用警械時的課責壓力</td></tr>
+        <tr><td>角色衝突性</td><td>與同事、家庭與工作相抵觸、矛盾影響</td></tr>
+        <tr><td>工作時間過長</td><td>工時長、固定性及輪值（深）夜勤</td></tr>
+        <tr><td>工作量</td><td>我國警察工作任務沈重、業務繁多，較美國猶有過之</td></tr>
+        <tr><td>緊急性</td><td>救災、事故處理或緝捕盜匪，皆與人民危害之緊急排除有關，影響人民權益至鉅</td></tr>
+      </table>
+      <div class="mnemonic">口訣：危、自、角、時、量、急 — 六大危機情境一次記</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch2">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c2)">貳</div><h2>風險管理的意涵、步驟與對策</h2></div>
+
+    <h3 class="sec" id="s2-1">一、何謂風險？何謂風險管理？</h3>
+    <div class="card">
+      <p><b>「風險」三組核心意義</b>：不確定性（<span class="ref">uncertainty</span>）／發生的機率（<span class="ref">probability</span>）／事件的影響（<span class="ref">impact</span>）</p>
+      <p><b>「風險管理」</b>：廣義上係指為了建構風險管理機制與回應風險，所採用的各類監控方法與過程的統稱。</p>
+    </div>
+
+    <h3 class="sec" id="s2-2">二、風險管理的趨勢轉變</h3>
+    <div class="card">
+      <p>「從工業化社會走向風險社會」之趨勢轉變（3點）：</p>
+      <ul class="pts">
+        <li>增加了風險與複雜性的擴散，且兩者緊密結合</li>
+        <li>風險社會的公開化</li>
+        <li>風險管理的政治化</li>
+      </ul>
+    </div>
+
+    <h3 class="sec" id="s2-3">三、風險管理的步驟</h3>
+    <div class="card">
+      <p>風險衡量（<span class="ref">risk measurement</span>）→ 技術選擇（<span class="ref">selection of techniques</span>）→ 決策執行（<span class="ref">implementation of decisions</span>）→ 風險溝通（<span class="ref">risk communication</span>）→ 績效監控與回饋（<span class="ref">monitoring and feedback</span>）</p>
+      <p>※ 此步驟為原簡報流程圖之架構，因原教材PDF為影像式檔案、中文內文多無法擷取，僅能以殘存英文技術用語還原步驟名稱，供備考參考。</p>
+    </div>
+
+    <h3 class="sec" id="s2-4">四、風險管理的策略（5項對策）</h3>
+    <div class="card">
+      <ul class="pts">
+        <li>規避風險</li>
+        <li>降低特定損失發生的機率</li>
+        <li>減低特定損失招致之影響與衝擊</li>
+        <li>風險轉嫁</li>
+        <li>保有風險</li>
+      </ul>
+      <div class="mnemonic">口訣：避、降、減、轉、保 — 風險管理五對策</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch3">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c3)">參</div><h2>危機管理的意涵、特性與階段</h2></div>
+
+    <h3 class="sec" id="s3-1">一、危機的意涵</h3>
+    <div class="card">
+      <p>「危機」一詞常見的多重意涵：分歧（<span class="ref">divide</span>）／緊要的（<span class="ref">crucial</span>）／關鍵性（<span class="ref">critical</span>）／決定性（<span class="ref">decisive</span>）</p>
+    </div>
+
+    <h3 class="sec" id="s3-2">二、危機的特性（4項）</h3>
+    <div class="card">
+      <table>
+        <tr><th>特性</th><th>說明</th></tr>
+        <tr><td>威脅性</td><td>危機的發生威脅到組織的基本價值或目標，進而影響到決策者的決定行為</td></tr>
+        <tr><td>不確定性</td><td>外在環境的變動迅速，人類的理性有限，無法精確地評量每項事物</td></tr>
+        <tr><td>時間的有限性</td><td>決策者對於威脅情境的處理，在決策上只有有限的反應時間</td></tr>
+        <tr><td>雙面效果性</td><td>危機是有「危險」，也有「轉機或契機」</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="s3-3">三、危機管理的作業階段<span class="examtag">📌 114年考過（三階段應用）</span></h3>
+    <div class="card">
+      <p><b>三階段論</b>：<mark>危機預防</mark> → <mark>危機處理</mark> → <mark>危機復原</mark>。「危機處理」只是「危機管理」三階段中的一個環節，須從危機管理的全觀視野進行考量及前後連結，比較能夠兼顧「防患於未然」的積極作法。</p>
+      <div class="mnemonic">補充理論（學者間看法不同，速記備用）：四階段論＝舒緩(mitigation)／準備(preparedness)／回應(response)／回復(recovery)，我國各部會災害防救基本計畫即以此架構；五階段論(Blackley,1994)＝評估／預防／準備／回應／恢復；三階段論為較基本入門概念。</div>
+      <div class="examnote">
+        <b>考古題連結</b>：114年Q2（30分）以工廠及倉儲火災為情境，要求以「公共安全管理的倡議」為對策，運用<b>事前預防－事中應變－事後復原</b>三階段架構提出改善建議——即本節三階段論的實戰應用，答題須把每階段拆成具體對策，而非只寫名詞。
+        <p style="margin-bottom:0;"><a href="../佐升正考試/114年_消防_申論題解析.html">查看114年完整申論題解析 →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch4">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c4)">肆</div><h2>有效危機處理的必備條件</h2></div>
+    <div class="card">
+      <ul class="pts">
+        <li>需有常設的危機處理單位</li>
+        <li>暸解並分析危機發生原因</li>
+        <li>設定危機管理的總策略</li>
+        <li>建立通暢的溝通管道</li>
+        <li>紓減危機的擴散</li>
+        <li>迅速有效的立即反應</li>
+      </ul>
+      <div class="mnemonic">口訣：常設單位、瞭解原因、設定策略、暢通溝通、紓減擴散、立即反應 — 六字訣「常瞭設暢紓即」</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch5">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c5)">伍</div><h2>危機處理與公共關係</h2></div>
+
+    <h3 class="sec" id="s5-1">一、危機中的媒體互動</h3>
+    <div class="card">
+      <p><b>報導事件的新聞性取決於5項標準</b>：衝擊性（受影響人數及嚴重程度）／關聯性（是否與讀者觀眾息息相關）／顯眼性（牽涉人物愈重要愈多愈有新聞價值）／新奇性（愈超乎常情愈有新聞價值）／衝突性（潛藏危險或暴力性愈高愈有新聞價值）</p>
+      <p><b>與媒體互動應注意（7點）</b>：</p>
+      <ul class="pts">
+        <li>指派新聞發言人</li>
+        <li>平常心面對記者</li>
+        <li>發布經確認新聞</li>
+        <li>保密待偵查資訊</li>
+        <li>避免臆測性發言</li>
+        <li>避免讓特殊人物曝光</li>
+        <li>謹慎面對鏡頭或麥克風</li>
+      </ul>
+    </div>
+
+    <h3 class="sec" id="s5-2">二、舉行記者會應注意原則（10項）<span class="examtag">📌 111,112年考過（記者說明會）</span></h3>
+    <div class="card">
+      <table>
+        <tr><th>#</th><th>原則</th></tr>
+        <tr><td>1</td><td>不要逃避媒體</td></tr>
+        <tr><td>2</td><td>公平對待媒體</td></tr>
+        <tr><td>3</td><td>誠實發布新聞</td></tr>
+        <tr><td>4</td><td>避免個人意見</td></tr>
+        <tr><td>5</td><td>簡要發布內容</td></tr>
+        <tr><td>6</td><td>提供具體描述</td></tr>
+        <tr><td>7</td><td>考慮媒體需求</td></tr>
+        <tr><td>8</td><td>確定媒體問題</td></tr>
+        <tr><td>9</td><td>保留新聞內容</td></tr>
+        <tr><td>10</td><td>勿與媒體辯論</td></tr>
+      </table>
+      <div class="examnote">
+        <b>考古題連結</b>：本科目最高頻主題之一。111年溪流救援情境、112年煙火意外情境（8名孩童重傷等），兩次都直接要求「說明召開現場記者說明會應注意原則」，答題請完整列出本表10項並逐項對應情境。
+        <p style="margin-bottom:0;">
+          <a href="../佐升正考試/111年_消防_申論題解析.html">查看111年完整申論題解析 →</a>
+          <a href="../佐升正考試/112年_消防_申論題解析.html">查看112年完整申論題解析 →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch6">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c6)">陸</div><h2>警察勤務風險與危機處理</h2></div>
+
+    <h3 class="sec" id="s6-1">一、警察勤務之風險</h3>
+    <div class="card">
+      <p>近來經常發生員警執勤安全問題，造成員警與民眾傷亡事件，受到新聞媒體與社會高度關注！透過有效風險管理與危機處理，以維護警察執勤與民眾安全，符合社會所期待之專業理性與有尊嚴的警察執法能力。</p>
+    </div>
+
+    <h3 class="sec" id="s6-2">二、三、CDM警察勤務安全危機決策模式<span class="examtag">📌 110,113年考過（CDM）</span></h3>
+    <div class="card">
+      <p>由美國<span class="ref">警政首長研究論壇（PERF）</span>於2015年10月編輯發表「整合溝通評估與戰術／化解危機事件之訓練指導（<span class="ref">ICAT</span>）」一書所提供之「警察勤務安全危機決策模式」，簡稱「<mark>CDM模式</mark>」。</p>
+      <p><b>目的</b>：促進維護警察與民眾之安全，提供警察人員更多的工具與技術選項，能夠以安全有效步驟與手段，處理所面臨之各項不同的勤務危機狀況。</p>
+    </div>
+
+    <h3 class="sec" id="s6-3">四、反恐特警隊之「OODA」危機決策模式</h3>
+    <div class="card">
+      <p>觀察（<span class="ref">Observation</span>）→ 引導（<span class="ref">Orient</span>）→ 決策（<span class="ref">Decision</span>）→ 行動（<span class="ref">Action</span>），循環進行。</p>
+      <div class="mnemonic">口訣：OODA＝觀、引、決、行</div>
+    </div>
+
+    <h3 class="sec" id="s6-4">五、CDM模式內涵、程序及步驟（5步驟）<span class="examtag">📌 110,113年考過（CDM）</span></h3>
+    <div class="card">
+      <table>
+        <tr><th>步驟</th><th>重點</th></tr>
+        <tr><td>① 蒐集與分析情資</td><td>勤務起點，也是持續性流程，從接受任務到完成任務皆須進行，並將經驗教訓回饋應用於未來</td></tr>
+        <tr><td>② 評估風險威脅狀況</td><td>評估分析所蒐集之相關訊息與現場狀況，特別是涉及員警或民眾安全之威脅狀況</td></tr>
+        <tr><td>③ 考量警察政策規範與職權限制</td><td>7項自問：是否職權該管／有何法律權限責任／可否依法立即行動／政策規範如何要求／如何處理符合規範／應否採取強制力或降級策略／有無管轄權或通報他機構問題</td></tr>
+        <tr><td>④ 確定選項並決定最佳行動方案</td><td>6項自問：任務目標與選擇方案／各選項配套措施／是否須即時行動／是否已擁有所需情資裝具／必要時調整戰術取得安全位置／選擇符合比例原則之最佳方案</td></tr>
+        <tr><td>⑤ 採取行動／持續審視狀況與再評估</td><td>3項自問：還有什麼需再考慮／學到什麼教訓／若未解決應重回蒐集情資步驟再評估</td></tr>
+      </table>
+      <div class="mnemonic">此5步驟為循環過程而非線性流程，稱為「旋轉車輪模式」（spinning the wheel），可依狀況機動彈性調整、相互替換。</div>
+      <div class="examnote">
+        <b>考古題連結</b>：CDM與記者說明會並列本科目最高頻主題（各考過2次）。110年考「運用CDM模式進行危機決策」（概括運用），113年考「地震後12小時內，依CDM模式5步驟分別說明應變程序及重點」（逐步驟具體應用）——備考務必練習把5步驟套進不同天災意外情境逐一展開，而非只背步驟名稱。
+        <p style="margin-bottom:0;">
+          <a href="../佐升正考試/110年_消防_申論題解析.html">查看110年完整申論題解析 →</a>
+          <a href="../佐升正考試/113年_消防_申論題解析.html">查看113年完整申論題解析 →</a>
+        </p>
+      </div>
+    </div>
+
+    <h3 class="sec" id="s6-5">六、孟菲斯模式與降階策略</h3>
+    <div class="card">
+      <p><b>（一）孟菲斯模式</b>：即<span class="ref">危機干預小組模式（Crisis Intervention Teams, CIT）</span>，1980年代末期發展出來，處理精神健康危機的應變模式，已成為執法機構應對精神健康危機的一個全方位策略。針對處理面臨困境或挫折的心理疾患者，採取緊急應對方法，以解除蓄意自傷、自殺或意外傷害，或對家庭、婚姻等之危機情況，主要目的在於避免自傷或傷及他人，並恢復其心理平衡與動力。</p>
+      <p>內涵3項：①成立危機干預小組　②培訓對精障者之辨識能力的臨床知識　③降低衝突的語言技巧及轉介治療程序</p>
+      <p><b>（二）降階策略模式</b>：衝突管理的危機處理模式之一，特別運用於專業執法人員化解衝突（<span class="ref">Conflict Resolution</span>）的戰術性溝通技巧，使員警能策略性地減緩事件變化速度，與控制危機情境的動態變化，掌握更多時間、距離、空間與戰術靈活性，是降低或安全解決危機情境的關鍵策略。</p>
+      <table>
+        <tr><th>關鍵技巧</th><th>內容（各5項）</th></tr>
+        <tr><td>① 同理心傾聽</td><td>專心與關注的傾聽／不先入為主與主觀判斷／專注於對象的感受／允許暫時性沉默／澄清問題與訊息</td></tr>
+        <tr><td>② 控制情勢</td><td>預擬處理計畫腹案／運用團隊合作方式／運用積極的自我對話／認知個人能力的限制／討論與建議</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="s6-6">七、精神健康危機之緊急照護模擬情境</h3>
+    <div class="card">
+      <p><b>法源</b>：<span class="ref">精神衛生法第32條</span> — 警消機關發現病人或有精神疾病之人「有傷害他人或自己或有傷害之虞者」，應通知當地主管機關並視需要要求協助或共同處理；除法律另有規定外應即護送前往就近適當醫療機構就醫；民眾發現時應即通知當地警察或消防機關；醫療機構適當處置後應轉送主管機關指定之精神醫療機構繼續治療；查明為病人時，當地主管機關應立即通知家屬並協助就醫。</p>
+      <p><b>臺灣現況問題</b>：社區心理衛生中心功能不彰／衛生機關危機處置權責不明／衛生機關積極主動性仍不足／醫護無法主動到場負責處理／醫護僅提供警消確認或諮詢／警消執行送醫之合法性不足／過度依賴警察現場危機處理／易導致激烈衝突與傷亡悲劇。</p>
+      <p><b>慘痛案例</b>：警察辨識不足與強制手段，激化或刺激病人，導致激烈衝突或重大傷亡悲劇，例如<mark>2019年鐵路殺警案</mark>／2020年○○市警方遭襲擊案。</p>
+      <p><b>臺灣共同模式流程</b>：①警消發現→通知衛生機關→護送就醫（衛生機關協助或共同處理）　②民眾發現→通知警消　③醫療機構處置→轉送精神醫療機構治療　④衛生機關查明病人→通知家屬→協助就醫</p>
+      <p><b>現行分工（權責不明確）</b>：警察機關（評估傷害風險，協助勸導／管束／護送就醫及維護現場安全，<mark>無強制送醫權限</mark>）／消防機關（協助醫療救護、護送、簡易評估）／衛生機關（查詢是否精神疾病個案、簡易精神狀況評估，視需要聯絡責任醫療機構）。合作原則：行政機關應於權限範圍內互相協助（<span class="ref">行政程序法§19</span>）。</p>
+      <p><b>關鍵問題：警察應否介入？</b>公部門立場（基於公共安全與行政一體，警察自應協助）／警察立場（應有安全需要始介入以減少機率，介入程度應講究比例原則，應受CIT專業訓練，無暴力行為與安全風險則勿介入）／醫護立場（人力資源不足，仍應以病人健康權益為最高原則，醫護專業無法被警消取代）／病人家屬立場（強制手段致病情加劇，無暴力行為應避免警察到場介入）。</p>
+      <p><b>PMHC警察與精神健康服務合作方案（4種模式）</b>：</p>
+      <table>
+        <tr><th>模式</th><th>全稱</th><th>特色</th></tr>
+        <tr><td>CIT</td><td>Crisis Intervention Teams</td><td>以警察為主，警察獨力應對</td></tr>
+        <tr><td>CRM</td><td>Co-responder Model</td><td>以警察為主，醫警共同應對</td></tr>
+        <tr><td>MCT</td><td>Mobile Crisis Teams</td><td>以衛生為主，醫護專業應對</td></tr>
+        <tr><td>PMHC</td><td>Police-Mental Health Collaboration</td><td>警／衛／社區合作，綜合應對</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch7">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c7)">柒</div><h2>警察危機談判</h2><span class="examtag">📌 109年考過（談判）</span></div>
+
+    <h3 class="sec" id="s7-1">一、談判前的準備（7要素）</h3>
+    <div class="card">
+      <ul class="pts">
+        <li>可能達成的協議（Options）</li>
+        <li>最佳退路（Alternative）</li>
+        <li>利益（Interests）</li>
+        <li>關係（Relationship）</li>
+        <li>公平合理性（Legitimacy）</li>
+        <li>溝通（Communication）</li>
+        <li>承諾（Commitment）</li>
+      </ul>
+      <div class="mnemonic">口訣：協（Options）、退（Alternative）、利（Interests）、係（Relationship）、理（Legitimacy）、溝（Communication）、諾（Commitment）</div>
+      <div class="examnote">
+        <b>考古題連結</b>：109年Q2（25分）直接要求「研擬談判準備要素與策略」，答題核心即本節7要素＋下一小節「談判的基本原則（8項）」中重利益不重立場、客觀標準、把人與問題分開等哈佛談判術核心觀念。談判近6年僅考過1次，仍是CDM／記者說明會／三階段之外第4種必練主題。
+        <p style="margin-bottom:0;"><a href="../佐升正考試/109年_消防_申論題解析.html">查看109年完整申論題解析 →</a></p>
+      </div>
+    </div>
+
+    <h3 class="sec" id="s7-2">二、談判的基本原則（8項）</h3>
+    <div class="card">
+      <ul class="pts">
+        <li>應儘量擴大總體利益</li>
+        <li>應善於營造公開、公平、公正的競爭局面</li>
+        <li>應明確目標、並善於妥協</li>
+        <li>注重平等互利原則</li>
+        <li>重利益不重立場原則</li>
+        <li>堅持使用客觀標準原則</li>
+        <li>堅持把人與問題分開原則</li>
+        <li>提出對彼此有利的解決方案</li>
+      </ul>
+    </div>
+
+    <h3 class="sec" id="s7-3">三、談判的禁忌條件（8項）</h3>
+    <div class="card">
+      <p>武器彈藥爆裂物／交換人質／酒或含酒精飲料／鎖匙或密碼／毒品／釋放囚犯／交通工具／其他</p>
+      <div class="mnemonic">這8項屬談判過程中絕不可交換或退讓的底線條件，務必牢記。</div>
+    </div>
+
+    <h3 class="sec" id="s7-4">四、危機處理的談判目標與技巧</h3>
+    <div class="card">
+      <table>
+        <tr><th>階段</th><th>目標</th><th>技巧</th></tr>
+        <tr><td>危機初階段（爆發期）</td><td>建立關係、互信、安全、發洩情緒、評估問題</td><td>積極傾聽技巧、情緒歸類、簡述語意、情報蒐集技巧、溝通技巧</td></tr>
+        <tr><td>談判階段（擴散期）</td><td>商討問題、預判結果、達成協議、規劃替代行動方案</td><td>積極傾聽技巧、開放式提問、問題導向提問、表達技巧、說服技巧、談判技巧</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch8">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c8)">捌</div><h2>警察危機處理之應用：以處理聚眾活動為例</h2></div>
+    <div class="card">
+      <p><b>警察處理聚眾活動的策略類型（2×2矩陣）</b>：</p>
+      <table>
+        <tr><th>活動性質 ＼ 警方手段</th><th>和平／柔性</th><th>強制力／強勢作為</th></tr>
+        <tr><td>和平示威遊行</td><td>類型A：和平示威遊行</td><td>類型B：無法容忍的示威遊行</td></tr>
+        <tr><td>暴力示威遊行</td><td>類型C：柔性處理的示威遊行</td><td>類型D：危機處理的示威遊行</td></tr>
+      </table>
+      <p><b>處理流程</b>：以情報蒐集及風險評估為最先之作為，接著針對高度危險風險之聚眾活動加以疏處與約制，防範於未然。在聚眾活動的醞釀或申請階段，警察應主動與申請人或帶領人熱線接觸，進行協助調處、溝通疏導，以及警告約制等前置作業。</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch9">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c9)">玖</div><h2>八則個案速記</h2></div>
+
+    <div class="case-box" id="case1">
+      <h4>案例一：便衣偵防車遭飆車族圍困</h4>
+      <p>警員著便衣執行拍照蒐證勤務，遭10名機車騎士持棍棒圍堵。<b>關鍵處置</b>：保持高度警戒→通報勤務指揮中心→表明身分大聲斥責→合理使用警械（必要時對空鳴槍喝令趴下）。</p>
+    </div>
+
+    <div class="case-box" id="case2">
+      <h4>案例二：就業博覽會抗議民眾衝向舞台</h4>
+      <p>失業婦人情緒激動衝向院長致詞舞台。<b>關鍵處置</b>：依情緒發展6階段（抱怨→未被重視→欲發表意見→拒絕離開→存證信函→其他預置因應）分別對應「先降噪聆聽」「虛心就教邀請發言」「安排即席受訪」等疏處方案。</p>
+    </div>
+
+    <div class="case-box" id="case3">
+      <h4>案例三：執法裁量爭議（老婦擺攤／高中生無照）</h4>
+      <p>取締老婦占用道路擺攤與高中生無照駕駛求情，涉及<span class="ref">裁量權</span>行使妥適性；如遭媒體渲染執法不公，須另行啟動危機新聞處理。法規依據：《道路交通管理處罰條例》§82、§21／《行政罰法》§19／《違反道路交通管理事件統一裁罰基準及處理細則》§12。</p>
+    </div>
+
+    <div class="case-box" id="case4">
+      <h4>案例四：海巡官網因查詢流量過載暨資安攻擊</h4>
+      <p>漁民衝突致大量民眾查詢網站案件進度造成過載，需區辨<mark>DoS／DDoS／MitM攻擊</mark>等資安風險，並落實個資保護法規與應變政策。</p>
+    </div>
+
+    <div class="case-box" id="case5">
+      <h4>案例五：陸船人員棄船逃脫</h4>
+      <p>海巡登檢過程因疏忽讓船長破壞船舶棄船。<b>關鍵處置</b>：落實通報聯繫機制／強化登檢教育訓練／事先律定任務分工／優勢警力攔截圍捕。</p>
+    </div>
+
+    <div class="case-box" id="case6">
+      <h4>案例六：公寓火災老父衝入火場與消防衝突</h4>
+      <p>老父欲衝入火場救女兒與消防同仁發生衝突。<b>關鍵處置</b>：先確認是否為可預期危機（有無標準作業程序）、再考量危機溝通及新聞發布作為；可交叉運用談判技巧安撫情緒。</p>
+    </div>
+
+    <div class="case-box" id="case7">
+      <h4>案例七：山難搜救爭議</h4>
+      <p>山友二度求援，家屬與義消對「是否拔營」各執一詞。<b>關鍵處置</b>：確認有無標準作業程序並依程序辦理→快速蒐集出勤紀錄自我檢視有無疏失→理直氣平準備資料回應→妥善危機新聞處理。</p>
+    </div>
+
+    <div class="case-box" id="case8">
+      <h4>案例八：國外大樓火警救援質疑</h4>
+      <p>媒體指責消防員未即時打破玻璃、雲梯車到位過慢。<b>關鍵處置</b>：確認是否為可預期危機並檢視是否符合標準作業程序→若確有疏失應虛心認錯、找出錯誤環節明確說明→妥善危機新聞處理。</p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+const search = document.getElementById('search');
+search.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  document.querySelectorAll('main .card, main .case-box').forEach(el => {
+    const match = !q || el.textContent.toLowerCase().includes(q);
+    el.classList.toggle('hidden', !match);
+  });
+});
+</script>
+</body>
+</html>

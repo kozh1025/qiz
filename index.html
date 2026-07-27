@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>佐升正訓練｜學習筆記總覽</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --bg:#f6f5f1; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66;
+    --accent:#8a5a3b; --accent2:#3b6e8a; --line:#e5e2da;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);}
+  .wrap{max-width:960px;margin:0 auto;padding:56px 24px 80px;}
+  h1{font-size:1.9rem;margin:0 0 6px;letter-spacing:.02em;}
+  .subtitle{color:var(--sub);margin-bottom:24px;font-size:1rem;}
+
+  .jumpnav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px;padding:16px 18px;background:#fbfaf7;border:1px solid var(--line);border-radius:12px;}
+  .jumpnav a{font-size:.8rem;color:var(--ink);text-decoration:none;padding:5px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);display:inline-flex;align-items:center;gap:6px;transition:background .15s;}
+  .jumpnav a:hover{background:var(--line);}
+  .jumpnav .dot{width:7px;height:7px;border-radius:50%;display:inline-block;}
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media(max-width:720px){.cards{grid-template-columns:1fr;}}
+  a.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 24px;text-decoration:none;color:inherit;transition:transform .15s, box-shadow .15s;box-shadow:0 1px 2px rgba(0,0,0,.03);}
+  a.card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.08);}
+  .cards .card.wide{grid-column:1 / -1;}
+  .tag{display:inline-block;font-size:.72rem;padding:3px 10px;border-radius:999px;margin-bottom:12px;font-weight:600;letter-spacing:.03em;}
+  .tag.deck{background:#eef4f8;color:#3b6e8a;}
+  .tag.book{background:#f6efe8;color:#8a5a3b;}
+  .tag.single{background:#f1efe9;color:#6b6a66;}
+  .card h2{margin:0 0 8px;font-size:1.2rem;}
+  .card p{margin:0;color:var(--sub);font-size:.92rem;line-height:1.7;}
+  .meta{margin-top:14px;font-size:.8rem;color:#a09d95;}
+  .note{margin-top:40px;padding:18px 20px;background:#fbf9f5;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;font-size:.9rem;color:#55524c;line-height:1.8;}
+  footer{margin-top:50px;text-align:center;color:#b3b0a8;font-size:.78rem;}
+
+  .subject-group{margin-bottom:44px;scroll-margin-top:20px;}
+  .subject-group h2.subject-title{font-size:1.1rem;margin:0 0 14px;padding-bottom:8px;border-bottom:2px solid var(--line);display:flex;align-items:center;gap:10px;}
+  .status-dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex-shrink:0;}
+
+  a.featured{display:flex;align-items:center;gap:18px;background:linear-gradient(135deg,#fdfaf1,#fbf6ea);border:1px solid #e8dba8;border-radius:16px;padding:22px 26px;text-decoration:none;color:inherit;margin-bottom:44px;transition:transform .15s, box-shadow .15s;}
+  a.featured:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(138,109,31,.15);}
+  a.featured .icon{font-size:2.2rem;flex-shrink:0;}
+  a.featured .tag{background:#8a6d1f;color:#fff;}
+  a.featured h2{margin:0 0 6px;font-size:1.25rem;color:#6b5416;}
+  a.featured p{margin:0;color:#7a6a45;font-size:.92rem;line-height:1.7;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>佐升正訓練｜學習筆記總覽</h1>
+  <div class="subtitle">依各科教材架構整理，每科筆記各自獨立、互不合併</div>
+
+  <a class="featured" href="exam-forecast.html">
+    <div class="icon">🎯</div>
+    <div>
+      <span class="tag">考前衝刺・新</span>
+      <h2>考前衝刺總覽｜歷屆考題統計與115年方向預測</h2>
+      <p>108-114年共7年考古題完整統計、各科命中率、工具/考點輪替規律，以及基於規律的115年預測與讀書優先順序建議。</p>
+    </div>
+  </a>
+
+  <nav class="jumpnav">
+    <a href="#pg-exam"><span class="dot" style="background:#8a6d1f"></span>歷屆考題</a>
+    <a href="#pg-mgmt"><span class="dot" style="background:#3b6e8a"></span>方案管理</a>
+    <a href="#pg-admin"><span class="dot" style="background:#6a4a8a"></span>行政程序法</a>
+    <a href="#pg-crisis"><span class="dot" style="background:#b2551f"></span>危機處理</a>
+    <a href="#pg-corruption"><span class="dot" style="background:#8a3b3b"></span>刑法瀆職與貪污治罪</a>
+    <a href="#pg-smartgov"><span class="dot" style="background:#2b8a8a"></span>智慧政府與數位服務</a>
+    <a href="#pg-fire"><span class="dot" style="background:#a8471f"></span>消防與火災調查</a>
+    <a href="#pg-policeduty"><span class="dot" style="background:#2b4a8a"></span>警察執勤實務</a>
+    <a href="#pg-comm"><span class="dot" style="background:#8a2b6e"></span>警政溝通與行銷</a>
+    <a href="#pg-ai"><span class="dot" style="background:#5a3b8a"></span>人工智慧實作</a>
+    <a href="#pg-english"><span class="dot" style="background:#2b8a5a"></span>警察人員實用英語</a>
+    <a href="#pg-aienglish"><span class="dot" style="background:#6a7a2b"></span>AI魔法公務英語</a>
+  </nav>
+
+  <div class="subject-group" id="pg-exam">
+    <h2 class="subject-title"><span class="status-dot" style="background:#8a6d1f"></span>歷屆考題</h2>
+    <div class="cards">
+      <a class="card" href="exam-forecast.html#ch1">
+        <span class="tag single">考古題總表</span>
+        <h2>歷屆考題完整總表</h2>
+        <p>108-114年共7年、各科考古題逐題列表，方便依科目、年度快速查找原題。</p>
+        <div class="meta">來源：exam-forecast.html</div>
+      </a>
+      <a class="card" href="exam-forecast.html#ch2">
+        <span class="tag single">命中率統計</span>
+        <h2>各科命中率統計與輪替規律</h2>
+        <p>各科考古題命中率、工具/考點輪替時間軸，以及115年方向預測與讀書優先順序建議。</p>
+        <div class="meta">來源：exam-forecast.html</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="subject-group" id="pg-mgmt">
+    <h2 class="subject-title"><span class="status-dot" style="background:#3b6e8a"></span>方案管理</h2>
+    <div class="cards">
+      <a class="card" href="slides-notes.html">
+        <span class="tag deck">簡報版・速記</span>
+        <h2>課程簡報筆記</h2>
+        <p>依 59 頁上課簡報整理，重點濃縮、口訣化，適合考前快速複習與記憶點掃描。含長照案例演練的精華步驟。</p>
+        <div class="meta">來源：115三項教材-1方案管理.pptx</div>
+      </a>
+      <a class="card" href="textbook-notes.html">
+        <span class="tag book">教材版・深讀</span>
+        <h2>方案管理教材筆記</h2>
+        <p>依 88 頁完整教材整理，保留學理定義、學者引用、完整案例分析數據與三則延伸學習案例，適合深入理解與申論題準備。</p>
+        <div class="meta">來源：115佐升正教材1-方案管理.pdf</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="subject-group" id="pg-admin">
+    <h2 class="subject-title"><span class="status-dot" style="background:#6a4a8a"></span>行政程序法與案例解析</h2>
+    <div class="cards">
+      <a class="card" href="admin-procedure-slides.html">
+        <span class="tag deck">簡報版・速記</span>
+        <h2>課程簡報筆記</h2>
+        <p>依 63 頁上課簡報整理，按條號濃縮成表格與口訣，適合條文架構速記與考前掃描。含四則案例的判斷重點。</p>
+        <div class="meta">來源：115三項(佐)教材2-行政程序法與案例解析.pptx</div>
+      </a>
+      <a class="card" href="admin-procedure-textbook.html">
+        <span class="tag book">教材版・深讀</span>
+        <h2>行政程序法教材筆記</h2>
+        <p>依 114 頁完整教材整理，保留條文原文、學說見解、大法官解釋、實務判決，以及四則案例的完整法律推理過程。</p>
+        <div class="meta">來源：115佐升正教材2-行政程序法與案例解析docx.pdf</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="subject-group" id="pg-crisis">
+    <h2 class="subject-title"><span class="status-dot" style="background:#b2551f"></span>危機處理</h2>
+    <div class="cards">
+      <a class="card" href="crisis-management-slides.html">
+        <span class="tag deck">簡報版・速記</span>
+        <h2>課程簡報筆記</h2>
+        <p>96 頁課程簡報濃縮為 9 章表格化重點、口訣與速記案例，供考前快速複習。</p>
+        <div class="meta">來源：115三項(佐)教材1-2危機處理.pptx</div>
+      </a>
+      <a class="card" href="crisis-management-textbook.html">
+        <span class="tag book">教材版・深讀</span>
+        <h2>危機處理教材筆記</h2>
+        <p>完整理論脈絡＋CDM／OODA／PMHC模式詳解＋八則案例情境與解題推理全還原。教材PDF為圖片式排版無法正常抽字，內容主要依96頁簡報整理，已加註說明。</p>
+        <div class="meta">來源：115佐升正教材1-危機處理.pdf（輔以pptx）</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="subject-group" id="pg-corruption">
+    <h2 class="subject-title"><span class="status-dot" style="background:#8a3b3b"></span>刑法瀆職罪與貪污治罪條例及案例解析</h2>
+    <div class="cards">
+      <a class="card" href="corruption-crime-slides.html">
+        <span class="tag deck">簡報版・速記</span>
+        <h2>課程簡報筆記</h2>
+        <p>貪污治罪條例三級刑度＋濫用職權8罪一次記牢，快速衝刺考前記憶點。</p>
+        <div class="meta">來源：115三項教材2-刑法瀆職罪與貪污治罪條例及案例解析.pptx</div>
+      </a>
+      <a class="card" href="corruption-crime-textbook.html">
+        <span class="tag book">教材版・深讀</span>
+        <h2>刑法瀆職罪教材筆記</h2>
+        <p>逐條法條原文＋10則實務案例完整解析，深入理解貪瀆罪構成要件與推理脈絡。</p>
+        <div class="meta">來源：115佐升正教材2-刑法瀆職罪與貪污治罪條例及案例解析.pdf</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="subject-group" id="pg-smartgov">
+    <h2 class="subject-title"><span class="status-dot" style="background:#2b8a8a"></span>智慧政府與數位服務</h2>
+    <div class="cards">
+      <a class="card wide" href="smart-government-notes.html">
+        <span class="tag single">完整筆記・僅有簡報教材</span>
+        <h2>智慧政府與數位服務筆記</h2>
+        <p>從物聯網大數據到智慧政府AI應用與量子科技，用價值主張圖拆解基層數位轉型案例。本科僅有簡報無配套教材，已將條列重點展開為完整說明。</p>
+        <div class="meta">來源：115佐升正_智慧政府與數位服務.pptx</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="subject-group" id="pg-fire">
+    <h2 class="subject-title"><span class="status-dot" style="background:#a8471f"></span>消防與火災調查實務</h2>
+    <div class="cards">
+      <a class="card wide" href="fire-investigation-notes.html">
+        <span class="tag single">完整筆記・僅有簡報教材</span>
+        <h2>消防與火災調查實務筆記</h2>
+        <p>整理火災調查法令依據與SOP規範，並完整拆解兩則自製延長線起火案例的燃燒研判邏輯。</p>
+        <div class="meta">來源：115佐升正_消防與火災調查實務（消防）.pptx</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="subject-group" id="pg-policeduty">
+    <h2 class="subject-title"><span class="status-dot" style="background:#2b4a8a"></span>警察執勤實務（消防人員用）</h2>
+    <div class="cards">
+      <a class="card wide" href="police-duty-notes.html">
+        <span class="tag single">完整筆記・僅有簡報教材</span>
+        <h2>警察執勤實務筆記</h2>
+        <p>整理救災救護指揮中心派遣體系、5W1H2S受理報案、災情通報標準與火場指揮搶救SOP全流程。</p>
+        <div class="meta">來源：115佐升正_警察執勤實務(消防人員用).pptx</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="subject-group" id="pg-comm">
+    <h2 class="subject-title"><span class="status-dot" style="background:#8a2b6e"></span>警政溝通與行銷</h2>
+    <div class="cards">
+      <a class="card wide" href="police-communication-notes.html">
+        <span class="tag single">完整筆記・僅有簡報教材</span>
+        <h2>警政溝通與行銷筆記</h2>
+        <p>把條列重點展開成完整說明，含溝通說服五技巧心智圖還原（藝術三論證／正向心理學三要領／卡內基九要點等）。</p>
+        <div class="meta">來源：115年佐升正-警政溝通與行銷.pptx</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="subject-group" id="pg-ai">
+    <h2 class="subject-title"><span class="status-dot" style="background:#5a3b8a"></span>人工智慧實作</h2>
+    <div class="cards">
+      <a class="card wide" href="ai-practice-notes.html">
+        <span class="tag single">完整筆記・僅有簡報教材</span>
+        <h2>人工智慧實作筆記</h2>
+        <p>以打詐案例學STAR提示語框架，再用NotebookLM與AI生圖實作政策宣導Podcast與貼圖行銷。</p>
+        <div class="meta">來源：115佐升正警察_人工智慧實作_教學簡報(20260521).pptx</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="subject-group" id="pg-english">
+    <h2 class="subject-title"><span class="status-dot" style="background:#2b8a5a"></span>警察人員實用英語</h2>
+    <div class="cards">
+      <a class="card" href="police-english-slides.html">
+        <span class="tag deck">簡報版・速記</span>
+        <h2>課程簡報筆記</h2>
+        <p>消防人員英語課程簡報速記，聚焦119報案、地震避難口訣與為民服務8句通用句型。（此場次簡報僅涵蓋消防單元）</p>
+        <div class="meta">來源：警察人員實用英語簡報素材_佐升正(消防).pptx</div>
+      </a>
+      <a class="card" href="police-english-textbook.html">
+        <span class="tag book">教材版・深讀</span>
+        <h2>實用英語教材筆記</h2>
+        <p>完整收錄警察／消防／海巡三類人員的實用英語句型、對話與單字，供深入理解與練習。</p>
+        <div class="meta">來源：警察人員實用英語電子書教材_佐升正訓練.pdf</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="subject-group" id="pg-aienglish">
+    <h2 class="subject-title"><span class="status-dot" style="background:#6a7a2b"></span>用AI魔法翻轉公務英語</h2>
+    <div class="cards">
+      <a class="card wide" href="ai-english-guide-notes.html">
+        <span class="tag single">完整筆記・單一文件</span>
+        <h2>用AI魔法翻轉公務英語筆記</h2>
+        <p>圖文故事教你用ChatGPT／文字轉語音／AI主播三步驟做出公務英語角色扮演成果，含完整參考指令(prompt)。</p>
+        <div class="meta">來源：用AI魔法翻轉公務英語.pdf</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="note">
+    有 pptx＋pdf 成對教材的科目，都整理成同樣的兩份筆記，詳略不同：<br>
+    ・想「先抓重點、快速複習」→ 看<b>簡報版</b><br>
+    ・想「弄懂理論脈絡、練申論、查完整條文與案例」→ 看<b>教材版</b><br>
+    只有簡報、沒有配套教材的科目，則整理成一份「完整筆記」，把條列重點展開成完整說明，兼顧速記與理解。
+  </div>
+
+  <footer>整理自 F:\CLAUDE\佐升正訓練\tis教材\ 原始檔案</footer>
+</div>
+</body>
+</html>

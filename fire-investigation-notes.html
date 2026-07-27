@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>消防與火災調查實務｜教材筆記</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --bg:#f5f4f0; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66;
+    --accent:#a8471f; --line:#e5e2da; --side-w:270px;
+    --c1:#a8471f; --c2:#4a6b2f; --c3:#b8860b; --c4:#7a3350; --c5:#2e4a5e; --c6:#8a5a2f; --c7:#5c2f1f; --c8:#3f6b4a;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);display:flex;}
+  #sidebar{width:var(--side-w);flex-shrink:0;height:100vh;position:sticky;top:0;overflow-y:auto;background:#fbfaf7;border-right:1px solid var(--line);padding:20px 14px;}
+  #sidebar h3{font-size:.78rem;color:var(--sub);text-transform:uppercase;letter-spacing:.06em;margin:18px 6px 6px;}
+  #sidebar h3:first-child{margin-top:4px;}
+  #search{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:.85rem;margin-bottom:8px;font-family:inherit;}
+  .backlink{display:block;font-size:.8rem;color:var(--sub);text-decoration:none;margin:0 6px 10px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+  #sidebar a.nav{display:block;padding:5px 8px;font-size:.84rem;color:var(--ink);text-decoration:none;border-radius:6px;line-height:1.4;}
+  #sidebar a.nav:hover{background:var(--line);}
+  #sidebar a.nav.sub{padding-left:18px;font-size:.79rem;color:var(--sub);}
+  main{flex:1;max-width:940px;margin:0 auto;padding:44px 32px 100px;min-width:0;}
+  h1.title{font-size:1.7rem;margin:0 0 4px;}
+  .subtitle{color:var(--sub);margin-bottom:8px;}
+  .toolbar{margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--line);font-size:.82rem;color:#a09d95;}
+  .notice{background:#fbf1ea;border:1px solid #ecd6c4;border-radius:10px;padding:12px 16px;font-size:.85rem;color:#7a4a2a;margin-bottom:32px;line-height:1.8;}
+  section.chapter{margin-bottom:56px;scroll-margin-top:20px;}
+  .chapter-head{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+  .chapter-num{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.95rem;flex-shrink:0;}
+  .chapter-head h2{margin:0;font-size:1.28rem;}
+  h3.sec{scroll-margin-top:20px;font-size:1.03rem;margin:28px 0 10px;padding-left:12px;border-left:4px solid var(--line);}
+  h4.sub{font-size:.95rem;margin:16px 0 6px;color:#4a473f;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;}
+  .card p{margin:.5em 0;line-height:1.9;font-size:.94rem;text-align:justify;}
+  ul.pts{margin:.4em 0;padding-left:1.3em;line-height:1.85;font-size:.94rem;}
+  ul.pts li{margin-bottom:4px;}
+  .kw{background:#f7ece2;color:var(--accent);padding:1px 7px;border-radius:5px;font-weight:600;font-size:.88em;}
+  .art{background:#eef3ea;color:#4a6b2f;padding:1px 6px;border-radius:5px;font-weight:600;font-size:.85em;}
+  table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.83rem;}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top;}
+  th{background:#f1efe9;}
+  .cite{font-size:.82rem;color:#a09d95;margin-top:4px;}
+  .case-box{background:#fbf9f5;border:1px solid #e8dfd0;border-radius:12px;padding:18px 20px;margin:14px 0;}
+  .case-box h4{margin-top:0;color:var(--accent);}
+  .data{background:#f3ece3;border-radius:8px;padding:10px 14px;font-size:.86rem;margin:8px 0;}
+  .footnote{font-size:.78rem;color:#a09d95;border-top:1px dashed var(--line);padding-top:6px;margin-top:10px;}
+  .qa{background:#eef2ea;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.9rem;}
+  .mnemonic{background:#fbf6ea;border:1px dashed #d8c896;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.9rem;color:#6b5a2a;}
+  mark{background:#ffe0a8;padding:0 2px;border-radius:3px;}
+  .hidden{display:none !important;}
+  details{margin:8px 0;}
+  summary{cursor:pointer;font-weight:600;font-size:.9rem;color:var(--accent);}
+</style>
+</head>
+<body>
+
+<nav id="sidebar">
+  <input id="search" type="text" placeholder="搜尋關鍵字...">
+  <a class="backlink" href="index.html">← 回筆記入口</a>
+
+  <h3>壹 法令與實務基礎</h3>
+  <a class="nav" href="#ch1">壹、火災調查相關法令與實務</a>
+  <a class="nav sub" href="#s1-1">火災原因調查之目的</a>
+  <a class="nav sub" href="#s1-2">火災原因調查之工作範圍</a>
+  <a class="nav sub" href="#s1-3">刑法相關法令（放火罪／失火罪）</a>
+  <a class="nav sub" href="#s1-4">消防法及施行細則相關法令</a>
+  <a class="nav sub" href="#s1-5">消防署標準作業程序及規範一覽</a>
+  <a class="nav sub" href="#s1-6">鑑定結果不符之申訴</a>
+  <a class="nav sub" href="#s1-7">火災現場調查流程</a>
+  <a class="nav sub" href="#s1-8">燃燒強弱之研判</a>
+  <a class="nav sub" href="#s1-9">起火原因之認定</a>
+
+  <h3>貳 案例解析</h3>
+  <a class="nav" href="#ch2">貳、案例解析</a>
+  <a class="nav sub" href="#s2-1">案例一：自製延長線起火（電流過載）</a>
+  <a class="nav sub" href="#s2-2">案例二：手機充電器電源線短路</a>
+  <a class="nav sub" href="#s2-3">兩案例比較與防火安全對策彙整</a>
+</nav>
+
+<main>
+  <h1 class="title">消防與火災調查實務｜教材筆記</h1>
+  <div class="subtitle">115年佐升正訓練・依課程簡報（34頁）整理</div>
+  <div class="toolbar">用途：理解火災調查之法令依據、標準作業流程，並透過兩則完整案例演練起火處與起火原因之研判邏輯。</div>
+  <div class="notice">
+    本科目僅有簡報教材，沒有另外配發教材PDF。本筆記已將簡報條列式重點展開為完整說明；其中「壹、火災調查相關法令與實務」部分章節（目的、工作範圍、SOP規範、現場調查流程、燃燒強弱研判、起火原因認定等）在原簡報中僅以標題與圖表呈現、正文多為圖片而未附文字說明，本筆記依消防機關火災調查實務通用原則及簡報明確載明之法規名稱補充說明為完整段落，複習時建議仍以官方SOP條文與現行法規為準。「貳、案例解析」兩則案例則完整依簡報原文整理，內容詳實可直接作為申論題參考素材。
+  </div>
+
+  <section class="chapter" id="ch1">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c1)">壹</div><h2>火災調查相關法令與實務</h2></div>
+
+    <h3 class="sec" id="s1-1">一、火災原因調查之目的</h3>
+    <div class="card">
+      <p>消防機關進行火災原因調查，並非只是為了「查明起火點」這麼單純，而是同時肩負<span class="kw">預防再犯</span>與<span class="kw">釐清責任</span>兩大功能：</p>
+      <ul class="pts">
+        <li><b>（一）預防再犯、精進消防安全政策</b>：透過每一件火災的原因分析，累積火災統計資料，找出常見致災因素（如電氣設備老化、延長線超載、用火用電習慣不良等），作為修正建築法規、消防安全設備標準、產品安全檢驗規範及擬訂防火宣導重點的依據，避免同類型火災一再發生。</li>
+        <li><b>（二）釐清法律責任</b>：火災原因調查鑑定書是後續民事求償（如房屋毀損理賠、鄰損賠償）、保險理賠核定，以及刑事偵查（故意縱火或過失失火）最重要的客觀證據依據。</li>
+      </ul>
+      <p>需特別留意：消防機關的火災原因調查屬於<b>行政調查</b>性質，目的在客觀、科學地認定起火處與起火原因；若火災涉及刑事責任（如涉嫌縱火、業務過失致死等），則由檢察官與司法警察機關主導刑事偵查程序，消防機關的調查鑑定報告可作為刑事偵查與審判的重要佐證，兩者職權不同但須密切協作。</p>
+    </div>
+
+    <h3 class="sec" id="s1-2">二、火災原因調查之工作範圍</h3>
+    <div class="card">
+      <p>消防人員執行火災原因調查，實務工作範圍大致包含以下幾項：</p>
+      <ol>
+        <li><b>起火處（point of origin）之認定</b>：透過現場燃燒型態、延燒方向比對，縮小並確認火勢最初發生的位置。</li>
+        <li><b>起火原因之認定</b>：依現場跡證、訪談內容及送驗結果，判斷是電氣因素、機械因素、化學因素、人為因素（縱火／用火不慎）或自然因素（如雷擊）所致。</li>
+        <li><b>燃燒與搶救過程之紀錄</b>：包含消防人員到場時間、觀察到的燃燒狀況、使用之滅火藥劑與搶救方式，供後續鑑定及檢討參考。</li>
+        <li><b>死傷情形之調查</b>：死傷人數、原因（燒灼傷、嗆傷、吸入性嗆傷等）之紀錄與統計。</li>
+        <li><b>財物損失估算</b>：依統一基準估算建築物及物品之損失金額。</li>
+        <li><b>後續處置與改善建議</b>：對於因違反消防或電氣法規（如自行接駁不合格延長線）致災之情形，得提出改善建議或移送相關主管機關處理。</li>
+      </ol>
+    </div>
+
+    <h3 class="sec" id="s1-3">三、刑法相關法令（放火罪與失火罪之區辨）</h3>
+    <div class="card">
+      <p>火災是否出於「故意」或「過失」，直接牽動刑法上的責任認定，這也是火災原因調查報告最常被引用的關鍵環節。我國刑法將放火與失火行為規定於分則<span class="kw">公共危險罪章</span>：</p>
+      <table>
+        <tr><th>條文</th><th>行為態樣</th><th>規範對象</th></tr>
+        <tr><td>刑法§173</td><td>放火（故意）</td><td>燒燬現供人使用之住宅或現有人所在之建築物、礦坑、火車、電車、船艦或航空機等，處刑最重（第2項為未遂／預備犯處罰較輕）</td></tr>
+        <tr><td>刑法§174</td><td>放火（故意）</td><td>燒燬現非供人使用之他人所有住宅，或現未有人所在之他人所有建築物等</td></tr>
+        <tr><td>刑法§175</td><td>放火（故意）</td><td>燒燬前兩條以外之物（如自己所有、非供人居住之建築物、動產等），致生公共危險</td></tr>
+        <tr><td>刑法§176</td><td>準放火罪</td><td>以爆裂物或其他媒介犯放火罪者，以放火罪論處</td></tr>
+        <tr><td>§173Ⅱ、§174Ⅱ、§175Ⅱ</td><td>失火（過失）</td><td>因過失犯前述各條之罪，處刑遠較故意犯為輕，是消防與司法實務區分「意外」與「縱火」最核心的法律依據</td></tr>
+      </table>
+      <p>消防人員的調查鑑定結果，若研判起火原因為電氣短路、用火不慎等意外因素，通常朝過失（失火）方向處理；若現場出現多處不相關起火點、可疑促燃劑反應、門窗遭破壞侵入痕跡等異常跡證，則應會同警方朝故意縱火（放火罪）方向深入偵辦，此時消防與檢警之協作（如檢警消縱火聯防機制）格外重要。</p>
+    </div>
+
+    <h3 class="sec" id="s1-4">四、消防法及施行細則相關法令</h3>
+    <div class="card">
+      <p>消防法本身賦予消防機關就其權責進行火災原因調查、鑑定之法定職權，相關人員負有配合調查、不得規避或妨礙之義務。實務上最常被引用的細部規定為：</p>
+      <p><b>消防法施行細則§27</b>：規範<span class="art">火災鑑定會</span>之設置，以及民眾或利害關係人申請核發<span class="art">火災證明</span>或<span class="art">火災調查資料</span>之相關事項。當火災原因認定發生爭議、或民眾（如屋主、保險公司、訴訟當事人）須取得官方文件作為理賠或訴訟佐證時，即依此規定申請核發或提請鑑定會處理。</p>
+      <div class="data">記憶要點：施行細則§27 = 鑑定會 + 火災證明／調查資料之申請核發，是連結「行政調查結果」與「民眾後續求償、保險理賠」的關鍵條文。</div>
+    </div>
+
+    <h3 class="sec" id="s1-5">五、消防署所訂各項標準作業程序及規範一覽</h3>
+    <div class="card">
+      <p>為使全國火災調查作業有一致標準，內政部消防署訂定多項作業要領、規範及要點，構成火災調查實務的完整規範體系：</p>
+      <table>
+        <tr><th>規範名稱</th><th>規範重點</th></tr>
+        <tr><td>火災調查鑑定作業要領</td><td>火災調查最核心的操作規範，統一現場調查、燃燒型態研判與原因認定之標準流程與判斷基準</td></tr>
+        <tr><td>火災現場照相及攝影作業要領</td><td>規範蒐證影像之拍攝角度、順序（由遠而近、由外而內）、編號標示方式，確保影像具備完整證據能力</td></tr>
+        <tr><td>火災案件調查訪談作業要領</td><td>規範對報案人、屋主、目擊者、搶救人員之訪談技巧與筆錄製作方式，避免誘導性提問並確保陳述完整可信</td></tr>
+        <tr><td>火災案件證物採驗規範</td><td>規範現場證物之採集、保存、送驗流程，確保證物監管鏈（chain of custody）完整不受污染</td></tr>
+        <tr><td>火災原因調查鑑定書及火災原因紀錄製作規定</td><td>規範鑑定書應記載事項（起火處、起火原因、燃燒路徑、證據分析）與標準格式</td></tr>
+        <tr><td>火災原因調查鑑定書及火災原因紀錄分級列管實施規定</td><td>依火災規模、死傷人數及社會關注度，將鑑定書分級列管，重大案件層級列管以確保品質與時效</td></tr>
+        <tr><td>內政部消防署支援各級消防機關火災原因調查鑑定規定</td><td>地方消防機關調查能量不足或案情複雜（重大死傷、疑似縱火）時，得申請消防署派員支援調查鑑定</td></tr>
+        <tr><td>消防機關辦理火災後建築物及物品損失估算暫行基準</td><td>提供財物損失估算之統一基準與方法，作為火災統計及理賠佐證依據</td></tr>
+        <tr><td>直轄市縣市政府火災鑑定會設置基準及指導要點</td><td>規範地方政府設置火災鑑定會之組成（應納入相關領域學者專家）、職權及運作方式</td></tr>
+        <tr><td>火災證明及火災調查資料申請辦法</td><td>規範民眾或利害關係人申請火災證明文件、調閱調查資料之程序、應備文件及核發時限</td></tr>
+        <tr><td>檢警消縱火聯防作業要點</td><td>規範消防、警察、檢察機關三方在縱火案件偵辦上的協調聯防機制，包括現場會勘、證物會同採驗、資訊共享等</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="s1-6">六、火災調查鑑定結果不符之申訴</h3>
+    <div class="card">
+      <p>當事人或利害關係人（如屋主、保險公司）對消防機關的火災原因調查鑑定結果有異議時，得依相關規定提出申訴或申請覆議、重新鑑定。消防機關通常會組成或委託<span class="kw">火災鑑定會</span>（納入相關領域學者專家、代表）進行複核，必要時得重為鑑定，或申請內政部消防署派員協助鑑定，藉此確保鑑定結果之客觀公正性，同時保障當事人程序上的救濟權利。</p>
+      <div class="qa"><b>Q：申訴後鑑定結果仍不服怎麼辦？</b><br>A：火災原因鑑定屬行政調查性質之事實認定，若當事人對後續衍生的行政處分（如損失估算、行政裁罰）不服，仍可依訴願、行政訴訟等一般行政救濟途徑處理；若涉及刑事責任判斷，則屬檢察官及法院之職權，鑑定書僅為證據之一。</div>
+    </div>
+
+    <h3 class="sec" id="s1-7">七、火災現場調查流程</h3>
+    <div class="card">
+      <p>火災現場調查大致依循以下步驟進行，且各步驟前後具連貫性：</p>
+      <ol>
+        <li><b>獲報出動與初步控制</b>：搶救滅火為第一優先，同時應注意保全現場，避免不必要的破壞。</li>
+        <li><b>現場保全與警戒</b>：劃定範圍、限制無關人員進出，避免證物遭破壞或污染。</li>
+        <li><b>現場勘察與紀錄</b>：全面拍照、錄影，繪製現場圖，標示重要跡證位置。</li>
+        <li><b>燃燒型態觀察與研判</b>：依燃燒強弱分布判斷延燒方向，逐步縮小起火處範圍。</li>
+        <li><b>訪談相關人員</b>：報案人、屋主、目擊者、搶救人員等，交叉比對陳述內容與現場跡證是否吻合。</li>
+        <li><b>證物採驗與送驗</b>：對疑似起火原因之物品或殘跡採樣送驗（如電線熔痕鑑定）。</li>
+        <li><b>綜合研判起火處與起火原因</b>：依現場跡證、訪談內容及送驗結果，以排除法逐一排除不可能之原因，認定最可能的起火處與起火原因。</li>
+        <li><b>製作火災原因調查鑑定書</b>：完整記載分析過程與結論，並依規定分級列管。</li>
+      </ol>
+    </div>
+
+    <h3 class="sec" id="s1-8">八、燃燒強弱之研判</h3>
+    <div class="card">
+      <p>研判燃燒強弱是縮小起火處範圍最重要的技術核心，主要透過觀察建築物結構、家具、電器用品等物件的受燒情形來比對判斷：</p>
+      <ul class="pts">
+        <li><b>碳化深度</b>：木材碳化層愈深，通常代表該處燃燒時間愈長或熱釋放率愈高。</li>
+        <li><b>燃燒變色</b>：金屬受熱變色、玻璃破裂或熔融、油漆起泡剝落等現象，可反映當地曾達到的高溫程度。</li>
+        <li><b>V字型燒痕</b>：牆面或家具垂直面上，因火焰熱氣流上升擴散而形成的V字或倒圓錐形燒痕分布，V字頂點通常指向起火處。</li>
+        <li><b>低位燃燒與高位燃燒</b>：起火處附近通常呈現「低位燃燒重、往上往外漸輕」的型態；若已發生閃燃或轟燃，整層猛烈延燒，各處受燒程度可能趨於一致，須更仔細比對局部差異才能還原起火處。</li>
+      </ul>
+      <div class="data">案例對照：案例一由「東側床鋪與牆壁間有明顯燻黑變色痕跡」判斷起火處在床鋪與牆面之間；案例二由「沙發上方物品受燒毀情形較嚴重、下方較輕」確認火流方向與目擊者陳述吻合，兩案皆是燃燒強弱研判的實例應用。</div>
+    </div>
+
+    <h3 class="sec" id="s1-9">九、起火原因之認定</h3>
+    <div class="card">
+      <p>起火原因認定的核心方法是<span class="kw">排除法</span>：依序檢視並排除各類可能的致火原因——電氣因素（短路、漏電、過載）、機械因素（摩擦生熱、高溫機具）、化學因素（自燃、化學反應）、人為因素（用火不慎、故意縱火）、自然因素（雷擊等），逐一比對現場跡證、訪談內容與送驗結果，將不符合的原因排除，最終認定最符合客觀證據的起火原因。</p>
+      <p>認定時須嚴守「以證據為依據」的原則，避免先入為主、先射箭再畫靶，而應完全根據現場採證與鑑定結果進行邏輯推論。</p>
+      <p>本簡報所附兩則案例皆屬電氣因素起火之典型範例：透過現場電線熔痕（短路痕、熔珠）判斷為電氣起火，並以門窗未遭破壞、無外力入侵痕跡排除人為縱火之可能，以屋主陳述當天未抽菸排除用火不慎之可能，展現排除法在實務上的完整運用。</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch2">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c2)">貳</div><h2>案例解析</h2></div>
+
+    <h3 class="sec" id="s2-1">案例一：自製延長線起火案例——電線電流過載</h3>
+    <div class="case-box">
+      <h4>一、概要說明</h4>
+      <p>發生時間：下午1時。發生地點：○○縣○○鄉。起火原因：電線電流過載。燃燒物件：床鋪及寢具。</p>
+
+      <h4>二、火災發生概況</h4>
+      <p>火災現場為2樓RC建築，報案者表示起火戶2樓氣窗冒煙。消防隊到達時發現2樓後方氣窗冒煙、抽風機未起火，窗口冒出白煙，有燃燒木頭家具的味道，沒有爆炸異聲。消防人員進入2樓確認北側房間門關閉，破門後大量濃煙竄出，床、電器用品著火，火勢最猛烈處為房內東側床鋪。</p>
+      <p>屋主表示當天下午1時左右全家出門，無人在現場。出門前有聞到一點塑膠燒焦味，但不是很在意就出門離開；屋主有抽菸的習慣，但當天出門前未抽菸。</p>
+
+      <h4>三、燃燒情形</h4>
+      <p>起火戶僅2樓房間起火燃燒，並未延燒至其他樓層或房間，研判起火戶為2樓房間。房間以東側床鋪受燒嚴重，其他位置物品上方燒熔，且由牆面受燒變色情形可知床鋪受燒較嚴重，而床鋪與牆壁間有明顯燻黑變色痕跡，明顯可知東側床舖與牆面之間為起火處。</p>
+
+      <h4>四、火災原因探討</h4>
+      <p>屋主表示起火建築物人員皆外出，門窗關閉上鎖且無破壞痕跡，研判起火處在2樓房間內，且起火原因非人為縱火或爐火不慎等因素造成。起火處有一條電源延長線經過，且於熔斷處有細小短路熔珠，該延長線從床頭西側插電、經由床頭東側沿東側牆面延伸至南側牆面，專供南側大型冰溫熱飲水機使用。</p>
+      <p>經查該延長線是數年前裝潢工人所留下的一節電線，因房內南側牆面無插座，屋主便自行將該電線製成延長線，供南側飲水機使用。進一步調查發現該電線起火處為電線相接處，由於電線長度不夠，屋主將4米及2米相接串聯，並纏繞絕緣膠帶；而起火電線規格為0.5mm²（20×0.19mm²×2C）VFF聚氯乙烯絕緣花線。</p>
+
+      <h4>五、防範對策</h4>
+      <p>由本案例來看，屋主自行以花線設置延長線已違反電工法規：</p>
+      <ol>
+        <li><b>延長線安全係數不足</b>：屋主所使用花線截面積為0.5mm²，小於0.75mm²，安全負載電流值僅4安培，絕不可作為延長線使用。</li>
+        <li><b>延長線設置未符標準</b>：花線不得有接續，其使用長度亦不可超過3公尺，且發熱電器容量達50瓦以上時應使用耐熱花線。</li>
+      </ol>
+      <div class="mnemonic">口訣：「花線細、不可接、限3米、怕高熱」——花線截面積過小、中途相接、超過3公尺、供高耗電電器使用，是自製延長線最常見的4大違規態樣。</div>
+    </div>
+
+    <h3 class="sec" id="s2-2">案例二：自製延長線起火案例——手機充電器電源線短路</h3>
+    <div class="case-box">
+      <h4>一、概要說明</h4>
+      <p>發生時間：晚間8時36分。發生地點：○○縣○○鎮住宅1樓客廳。起火原因：手機充電器電源線短路。燃燒物件：客廳內沙發及書報燒毀，住家內部燻黑。</p>
+
+      <h4>二、火災發生概況</h4>
+      <p>火災是由隔壁鄰居許小姐發現該起火戶客廳有黑煙及火光後，立即打119電話報警。火災發生當時屋主劉先生、妻子林小姐及其小兒子3人均外出至附近親友住家，住宅內僅有屋主2名女兒在3樓書房內使用電腦，住宅內部經勘查後確認未遭外力侵入破壞。</p>
+      <p>轄區消防分隊人、車到達現場時，現場火勢已被隔壁鄰居及趕回來的屋主使用水管、滅火器自行搶救撲滅。屋主2名女兒在避難逃生時，因吸入濃煙而造成輕微嗆傷，當時已由消防人員送醫處置且無大礙。</p>
+      <p>據住戶劉先生指稱，火災發生當日晚上約6時，將手機電池裝於充電器並接上電源充電，而充電器放置於1樓客廳東側靠牆面三人座沙發坐墊上後，即與妻子及兒子外出至附近親友家中。</p>
+
+      <h4>三、燃燒情形</h4>
+      <p>勘查住宅1樓客廳，僅內部東側沙發椅上方處受火勢燒損、碳化情形較為嚴重；西側沙發椅及南側電視機則未受火勢波及燒損，且電視機前方小沙發及地面上均遺留著搶救後乾粉滅火器藥劑痕跡。勘查客廳東側牆面電源插座連接1只手機充電器正在充電使用中，而手機充電器組遺留於沙發坐墊上。</p>
+
+      <h4>四、火災原因探討</h4>
+      <p>據屋主妻子林小姐指稱，火災發生時進入客廳內看見火勢由沙發上方處起火燃燒並往四周方向延燒。經現場勘查發現，沙發上方物品受火勢燒燬情形較為嚴重，而沙發背面下方物品則受燒較為輕微，現場物品燒燬情形與發現者所指火流燃燒路徑吻合。</p>
+      <p>火災現場僅1樓客廳東側沙發椅後側及牆面有受火勢燒損，且東側牆面電源插座上方連接1只手機充電器正在充電使用中，手機充電器插頭外部塑膠受火勢燒燬熔化情形最為嚴重，惟內部電子零件未受燒，而下方電源線則呈現半斷線短路情形。案經現場勘查分析及綜合上述原因，未發現有其他可疑發火源（物），且手機充電器之電源線有半斷線燃燒短路痕跡，發現其起火原因係手機充電器於充電使用中，因電源線半斷線導致過載短路而引燃附近可燃性沙發坐墊造成燃燒，因未及時發現搶救以致引發擴大延燒。</p>
+
+      <h4>五、防範對策（十二項）</h4>
+      <table>
+        <tr><th>項次</th><th>防範對策內容</th></tr>
+        <tr><td>（一）</td><td>手機充電應依製造商說明指示將插頭插入規定電壓插座中，不可插入一半或鬆脫，以免造成接觸不良、電源線短路起火</td></tr>
+        <tr><td>（二）</td><td>手機充電時周遭應避免高溫及火源，以免造成電源線外被覆塑膠熔解，導致日後使用時易造成短路</td></tr>
+        <tr><td>（三）</td><td>購買手機時應謹慎選擇有完整產品標示（製造商／代理商、額定電壓、額定容量、使用說明書）或印有經濟部標準檢驗局核發自願性產品驗證（VPC）證書之商品，使用時應避免過熱環境、不當擠壓撞擊，也不能長時間充電</td></tr>
+        <tr><td>（四）</td><td>使用旅充（非原廠配件）時，因品質良莠不齊較沒有保障，建議使用原廠配件並遵照使用說明書指示</td></tr>
+        <tr><td>（五）</td><td>使用老舊、破損之手機充電器容易造成短路、漏電或觸電，應立即汰換更新</td></tr>
+        <tr><td>（六）</td><td>拔下電源線插頭時應手握插頭取下，若僅拉電線扯下，會造成電線內部銅線斷裂，較易造成通電短路</td></tr>
+        <tr><td>（七）</td><td>勿將電線及延長線置於地毯下方或壓在重物下面，容易造成內部銅線斷裂產生半斷線，通電使用時易過負載短路</td></tr>
+        <tr><td>（八）</td><td>使用延長線、電線時不可綑綁，以免通電時溫度升高熔解外被覆塑膠，導致電線過熱起火</td></tr>
+        <tr><td>（九）</td><td>應經常檢視配線並清理插頭及插座間灰塵，避免結合水分產生積污導電，導致插頭兩極產生電流、火花而致火災</td></tr>
+        <tr><td>（十）</td><td>避免輸出超載，1個插座最好只使用1個電壓較高的電器用品</td></tr>
+        <tr><td>（十一）</td><td>假如電源輸出口或插座摸起來燙燙的，應關閉電路並請專業電氣技師前來檢查</td></tr>
+        <tr><td>（十二）</td><td>電器用品不需使用時應將電源線插座拔除，避免因電器故障產生短路引發火災</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="s2-3">兩案例比較與防火安全對策彙整</h3>
+    <div class="card">
+      <p>兩則案例雖然都以「電氣因素」為起火原因，但問題核心不同：案例一是<b>電線本身規格不符與違規接續</b>（安全係數不足、超長接續），案例二則是<b>電源線耗損半斷線</b>（使用不當造成的漸進性劣化）。兩者共同凸顯出「自製或克難式」電源配置最容易埋下火災風險。</p>
+      <table>
+        <tr><th></th><th>案例一</th><th>案例二</th></tr>
+        <tr><td>起火物品</td><td>自行接製之延長線（花線）</td><td>手機充電器電源線</td></tr>
+        <tr><td>直接原因</td><td>花線截面積過小＋中途相接＋供高耗電飲水機使用，安全係數不足</td><td>電源線因使用不當（拉扯／擠壓）產生半斷線，充電時過載短路</td></tr>
+        <tr><td>關鍵跡證</td><td>電線熔斷處有細小短路熔珠</td><td>充電器插頭外部塑膠熔化嚴重、電源線呈半斷線短路情形</td></tr>
+        <tr><td>燃燒型態研判</td><td>東側床鋪與牆面間燻黑變色最嚴重，判定為起火處</td><td>沙發上方燒燬較嚴重、下方較輕，與目擊者所述火流路徑吻合</td></tr>
+        <tr><td>排除的可能原因</td><td>人為縱火（門窗未遭破壞）、用火不慎（屋主未抽菸）</td><td>外力入侵（住宅未遭破壞）、其他可疑發火源（現場勘查未發現）</td></tr>
+      </table>
+      <div class="mnemonic">考前速記口訣：「線細、線舊、線纏繞、插座燙」——凡是延長線／電源線過細（安全係數不足）、老舊破損、遭綑綁擠壓、或插座使用時發燙，都是電氣火災的高風險警訊，也是申論題常考的防範對策切入角度。</div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+const search = document.getElementById('search');
+search.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  document.querySelectorAll('main .card, main .case-box, main .qa').forEach(el => {
+    const match = !q || el.textContent.toLowerCase().includes(q);
+    el.classList.toggle('hidden', !match);
+    if(match && q){
+      const details = el.closest('details');
+      if(details) details.open = true;
+    }
+  });
+});
+</script>
+</body>
+</html>

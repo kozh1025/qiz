@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>方案管理｜簡報速記筆記</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --bg:#f6f5f1; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66;
+    --accent:#3b6e8a; --line:#e5e2da; --side-w:260px;
+    --c1:#3b6e8a; --c2:#8a5a3b; --c3:#5a7d3b; --c4:#8a3b6e; --c5:#8a7a3b; --c6:#3b5a8a; --c7:#8a3b3b; --c8:#3b8a7d;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);display:flex;}
+  #sidebar{width:var(--side-w);flex-shrink:0;height:100vh;position:sticky;top:0;overflow-y:auto;background:#fbfaf7;border-right:1px solid var(--line);padding:20px 14px;}
+  #sidebar h3{font-size:.78rem;color:var(--sub);text-transform:uppercase;letter-spacing:.06em;margin:18px 6px 6px;}
+  #sidebar h3:first-child{margin-top:4px;}
+  #search{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:.85rem;margin-bottom:8px;font-family:inherit;}
+  .backlink{display:block;font-size:.8rem;color:var(--sub);text-decoration:none;margin:0 6px 10px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+  #sidebar a.nav{display:block;padding:5px 8px;font-size:.84rem;color:var(--ink);text-decoration:none;border-radius:6px;line-height:1.4;}
+  #sidebar a.nav:hover{background:var(--line);}
+  #sidebar a.nav.sub{padding-left:18px;font-size:.79rem;color:var(--sub);}
+  main{flex:1;max-width:900px;margin:0 auto;padding:44px 32px 100px;min-width:0;}
+  h1.title{font-size:1.7rem;margin:0 0 4px;}
+  .subtitle{color:var(--sub);margin-bottom:8px;}
+  .toolbar{margin-bottom:36px;padding-bottom:16px;border-bottom:1px solid var(--line);font-size:.82rem;color:#a09d95;}
+  section.chapter{margin-bottom:52px;scroll-margin-top:20px;}
+  .chapter-head{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+  .chapter-num{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.95rem;flex-shrink:0;}
+  .chapter-head h2{margin:0;font-size:1.28rem;}
+  h3.sec{scroll-margin-top:20px;font-size:1.03rem;margin:26px 0 10px;padding-left:12px;border-left:4px solid var(--line);}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;}
+  .card p{margin:.3em 0;line-height:1.85;font-size:.94rem;}
+  ul.pts{margin:.4em 0;padding-left:1.3em;line-height:1.85;font-size:.94rem;}
+  ul.pts li{margin-bottom:3px;}
+  .kw{background:#eef4f8;color:var(--accent);padding:1px 7px;border-radius:5px;font-weight:600;font-size:.88em;}
+  table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.85rem;}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top;}
+  th{background:#f1efe9;}
+  .mnemonic{background:#fbf6ea;border:1px dashed #d8c896;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.9rem;color:#6b5a2a;}
+  .examtrend{background:#faf6ea;border-left:4px solid #c9a227;border-radius:10px;padding:16px 20px;margin:0 0 24px;}
+  .examtrend h4{margin:0 0 10px;color:#8a5a3b;font-size:1rem;}
+  .examtrend table{margin:8px 0;font-size:.82rem;}
+  .examtrend .insight{margin-top:10px;padding-top:10px;border-top:1px dashed #d8c896;font-size:.86rem;line-height:1.8;}
+  .examtrend .linkline{margin-top:10px;font-size:.82rem;line-height:2;}
+  .examtrend a{color:#8a5a3b;font-weight:600;text-decoration:none;}
+  .examtrend a:hover{text-decoration:underline;}
+  .examtag{display:inline-block;background:#fbf6ea;color:#8a5a3b;padding:2px 8px;border-radius:6px;font-size:.72em;font-weight:600;margin-left:6px;white-space:nowrap;vertical-align:middle;}
+  .examtag.low{background:#f2f0ea;color:#a09d95;font-weight:500;}
+  .qa{background:#eef6f0;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.9rem;}
+  .qa b{color:#3b6e5a;}
+  .case-step{border-left:3px solid var(--accent);padding:8px 0 8px 14px;margin:10px 0;}
+  mark{background:#ffe9a8;padding:0 2px;border-radius:3px;}
+  .hidden{display:none !important;}
+</style>
+</head>
+<body>
+
+<nav id="sidebar">
+  <input id="search" type="text" placeholder="搜尋關鍵字...">
+  <a class="backlink" href="index.html">← 回筆記入口</a>
+
+  <h3>壹 公共政策概念</h3>
+  <a class="nav" href="#ch1">壹、公共政策的概念</a>
+  <a class="nav sub" href="#s1-1">政策循環（5階段）</a>
+  <a class="nav sub" href="#s1-2">政策類型（4種）</a>
+  <a class="nav sub" href="#s1-3">方案管理意義與6步驟</a>
+
+  <h3>貳 方案問題分析</h3>
+  <a class="nav" href="#ch2">貳、方案問題分析</a>
+  <a class="nav sub" href="#s2-1">問題認定原則</a>
+  <a class="nav sub" href="#s2-2">標的人口／利害關係人</a>
+  <a class="nav sub" href="#s2-3">利害關係人分析法</a>
+  <a class="nav sub" href="#s2-4">循證決策與需求分析</a>
+
+  <h3>參 方案分析工具</h3>
+  <a class="nav" href="#ch3">參、方案分析工具</a>
+  <a class="nav sub" href="#s3-1">向右魚骨圖</a>
+  <a class="nav sub" href="#s3-2">向左魚骨圖</a>
+  <a class="nav sub" href="#s3-3">決策矩陣分析</a>
+  <a class="nav sub" href="#s3-4">可行性分析</a>
+  <a class="nav sub" href="#s3-5">SWOT分析</a>
+  <a class="nav sub" href="#s3-6">TOWS分析</a>
+  <a class="nav sub" href="#s3-7">成本效益／效果分析</a>
+  <a class="nav sub" href="#s3-8">決策樹法</a>
+  <a class="nav sub" href="#s3-9">甘特圖與查核點</a>
+
+  <h3>肆 目標訂定</h3>
+  <a class="nav" href="#ch4">肆、方案目標訂定與達成</a>
+  <a class="nav sub" href="#s4-1">SMART原則</a>
+  <a class="nav sub" href="#s4-2">標竿學習</a>
+  <a class="nav sub" href="#s4-3">方案工具（5類型）</a>
+
+  <h3>伍 計畫書撰寫</h3>
+  <a class="nav" href="#ch5">伍、方案計畫書之撰寫</a>
+  <a class="nav sub" href="#s5-1">6W2H1E</a>
+  <a class="nav sub" href="#s5-2">KPI vs CPI</a>
+
+  <h3>陸 案例解析</h3>
+  <a class="nav" href="#ch6">陸、案例解析：長照2.0照管人力</a>
+
+  <h3>柒 結語</h3>
+  <a class="nav" href="#ch7">柒、結語</a>
+</nav>
+
+<main>
+  <h1 class="title">方案管理｜課程簡報速記筆記</h1>
+  <div class="subtitle">115年度佐升正訓練・依教學簡報（59頁）整理</div>
+  <div class="toolbar">用途：考前快速複習、抓記憶點。理論細節與完整案例數據請見 <a href="textbook-notes.html">教材版筆記</a>。</div>
+
+  <section class="chapter" id="ch1">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c1)">壹</div><h2>公共政策的概念</h2></div>
+
+    <h3 class="sec" id="s1-1">一、公共政策循環的概念（5階段）</h3>
+    <div class="card">
+      <p>公共政策循環：<span class="kw">問題認定</span> → <span class="kw">政策規劃</span> → <span class="kw">政策採用</span> → <span class="kw">政策執行</span> → <span class="kw">政策評估</span></p>
+      <ul class="pts">
+        <li><b>問題認定</b>：釐清真正問題及根本原因</li>
+        <li><b>政策規劃</b>：規劃可行行動方案</li>
+        <li><b>政策採用</b>：經法定機關審議核定，取得合法地位</li>
+        <li><b>政策執行</b>：組織資源、動員人力推動</li>
+        <li><b>政策評估</b>：系統性蒐集資料分析成效，作為持續/修正/終結依據</li>
+      </ul>
+    </div>
+
+    <h3 class="sec" id="s1-2">二、公共政策的類型（4種，依「對社會的影響」分）</h3>
+    <div class="card">
+      <table>
+        <tr><th>類型</th><th>定義</th><th>例子</th></tr>
+        <tr><td><b>管制性政策</b></td><td>設定一致性管制規則，指導機關/標的團體採取行動</td><td>交通管制、碳排放管制</td></tr>
+        <tr><td><b>自我管制政策</b></td><td>僅設原則性規範，由機關/團體自行決定，干涉低</td><td>社區自治、大學自治</td></tr>
+        <tr><td><b>重分配政策</b></td><td>把某標的團體利益/義務轉嫁給另一團體</td><td>所得稅累進稅率</td></tr>
+        <tr><td><b>分配性政策</b></td><td>將利益/義務分配給不同機關或團體</td><td>財政補助</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="s1-3">三、方案管理的意義與步驟</h3>
+    <div class="card">
+      <p><b>層級關係</b>：政策(Policy) → 計畫(Plan) → 方案(Program) → 行動(Action)　※方案＝與「專案(project)」同層次</p>
+      <p><b>方案管理6步驟</b>（前後連貫）：</p>
+      <div class="mnemonic">確認問題 → 瞭解需求 → 設定目標 → 發展方案 → 執行方案 → 評估方案</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch2">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c2)">貳</div><h2>方案問題分析</h2></div>
+
+    <h3 class="sec" id="s2-1">一、方案問題認定</h3>
+    <div class="card">
+      <p>杜威（J. Dewey）：「界定出一個好的問題，等於解決了一半的問題。」</p>
+      <p><b>問題三要素</b>：<span class="kw">問題 problem</span>、<span class="kw">機會 opportunity</span>、<span class="kw">趨勢 trend</span></p>
+      <ul class="pts">
+        <li>問題：事件對個人/社會之威脅或影響的深度與廣度</li>
+        <li>機會：問題是否有改善可能（並非所有問題都有機會）</li>
+        <li>趨勢：問題未來演變走向與波動幅度</li>
+      </ul>
+    </div>
+
+    <h3 class="sec" id="s2-2">二、「標的人口」與「利害關係人」</h3>
+    <div class="card">
+      <p><b>標的人口</b>：因方案執行而<mark>直接</mark>受影響的個人/團體（例：長照政策中的照管人員）</p>
+      <p><b>利害關係人</b>：所有能影響方案或受方案影響的人（直接/間接、有形/無形、正/負面皆算）</p>
+      <p>⇒ 標的人口是利害關係人之一，但利害關係人範圍更廣</p>
+    </div>
+
+    <h3 class="sec" id="s2-3">三、利害關係人分析方法</h3>
+    <div class="card">
+      <p><b>(一) Dunn（2012）三分類</b>：政策制定者／政策受益者／政策犧牲者</p>
+      <p><b>(二) 權力與利益矩陣（Eden & Ackermann, 1998）</b> — 2x2矩陣，依「權力大小」×「利害相關性高低」分4類：</p>
+      <table>
+        <tr><th>類別</th><th>權力</th><th>利害相關性</th></tr>
+        <tr><td>Players 主要利害關係人</td><td>大</td><td>高</td></tr>
+        <tr><td>Subjects 次要利害關係人</td><td>小</td><td>高</td></tr>
+        <tr><td>Context-setters 系絡制定者</td><td>大</td><td>低</td></tr>
+        <tr><td>Crowd 一般大眾</td><td>小</td><td>低</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="s2-4">四、循證決策與需求分析</h3>
+    <div class="card">
+      <p><b>循證決策（evidence-based）</b>：以嚴謹系統性方法獲取證據做決策，而非個人主觀經驗</p>
+      <p><b>需求分析4方法</b>：</p>
+      <ul class="pts">
+        <li>民意調查或訪談</li>
+        <li>運用實驗性方案檢視需求</li>
+        <li>民意機關提案反映需求</li>
+        <li>運用實證研究及調查結果分析需求</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch3">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c3)">參</div><h2>方案分析工具（9種核心工具）</h2></div>
+
+    <div class="examtrend">
+      <h4>📌 歷屆考古題對照（108～114年，7年全中）</h4>
+      <p><b>方案管理是7年來唯一「每年必考」的科目，且永遠是申論題第一題、分數最高（25～50分不等，通常30分）。</b></p>
+      <table>
+        <tr><th>年度</th><th>題號／配分</th><th>使用工具</th><th>情境</th></tr>
+        <tr><td>108</td><td>Q1・50分</td><td><b>6W2H1E</b></td><td>甲市「夏夜歡樂派對」安全維護計畫</td></tr>
+        <tr><td>109</td><td>Q1・25分</td><td><b>向左魚骨圖</b></td><td>山域搜救困難分析，研擬降低救援困境對策</td></tr>
+        <tr><td>110</td><td>Q2・30分</td><td><b>6W2H1E</b></td><td>擬具專案計畫</td></tr>
+        <tr><td>111</td><td>Q1・30分</td><td><b>SWOT＋策略配對</b></td><td>甲機關廳舍活化案，SWOT分析內外部環境並進行策略配對</td></tr>
+        <tr><td>112</td><td>Q1・30分</td><td><b>6W2H1E</b></td><td>燃氣熱水器一氧化碳中毒防範執行計畫</td></tr>
+        <tr><td>113</td><td>Q1・30分</td><td><b>向右魚骨圖＋向左魚骨圖</b></td><td>山域事故救援困難特性要因分析(向右)＋降低救援困境對策(向左)</td></tr>
+        <tr><td>114</td><td>Q1・30分</td><td><b>SWOT＋TOWS</b></td><td>消防救災機器人方案，SWOT分析後接續TOWS策略建議</td></tr>
+      </table>
+      <div class="insight">
+        <b>關鍵洞察：</b>
+        <ul class="pts">
+          <li>方案管理7年來<b>每年必考</b>，且永遠是第一題、分數最高</li>
+          <li>考的「工具」會輪替，不會每年重複同一種：<b>6W2H1E</b>考過4次(108,109,110,112)、<b>SWOT</b>考過2次(111,114)、<b>TOWS</b>考過1次(114，接續SWOT一起考)、<b>魚骨圖</b>考過2次(109只考向左；113年向右+向左都考)</li>
+          <li>情境題材偏好：新設備/新方案是否推動(SWOT/TOWS類)、活動安全管理計畫(6W2H1E類)、找原因+找對策(魚骨圖類)</li>
+          <li><b>結論：四種工具（6W2H1E、SWOT、TOWS、魚骨圖）都必須熟練到能直接上手默寫，不能只準備其中一種</b></li>
+        </ul>
+      </div>
+      <div class="linkline">完整申論題解析：
+        <a href="../佐升正考試/108年_消防_申論題解析.html">108年→</a>　<a href="../佐升正考試/109年_消防_申論題解析.html">109年→</a>　<a href="../佐升正考試/110年_消防_申論題解析.html">110年→</a>　<a href="../佐升正考試/111年_消防_申論題解析.html">111年→</a>　<a href="../佐升正考試/112年_消防_申論題解析.html">112年→</a>　<a href="../佐升正考試/113年_消防_申論題解析.html">113年→</a>　<a href="../佐升正考試/114年_消防_申論題解析.html">114年→</a>
+      </div>
+    </div>
+
+    <h3 class="sec" id="s3-1">一、向右魚骨圖：確認問題並盤點原因 <span class="examtag">📌113年考過</span></h3>
+    <div class="card">
+      <p>石川馨博士「特性要因分析圖」→ 外型似魚骨</p>
+      <p>結構：<span class="kw">問題癥結</span>（右端，用肯定句非疑問句）← <span class="kw">大要因</span> ← <span class="kw">小要因</span>（腦力激盪列舉）</p>
+      <div class="mnemonic">描述用「<b>形容詞語句</b>」：如「程序繁瑣」「人力不足」「工時過長」</div>
+    </div>
+
+    <h3 class="sec" id="s3-2">二、向左魚骨圖：設定目標並發展替選方案 <span class="examtag">📌109,113年考過</span></h3>
+    <div class="card">
+      <p>對應向右魚骨圖的問題癥結，提出可能解決方案</p>
+      <p>結構：<span class="kw">設定目標</span> → <span class="kw">方案產出</span> → <span class="kw">對策擬定</span></p>
+      <div class="mnemonic">描述用「<b>動詞語句</b>」：如「簡化程序」「增加人力」「降低工時」</div>
+      <p>※右圖找原因(形容詞)，左圖找對策(動詞)，兩者配套使用</p>
+    </div>
+
+    <h3 class="sec" id="s3-3">三、決策矩陣分析：篩選最終替選方案 <span class="examtag low">尚未單獨出題，仍為完整流程一環</span></h3>
+    <div class="card">
+      <p>步驟：羅列對策 → 訂衡量指標與權重 → 對策評分(1~3或1~5分) → 計算加權總分 → 排序</p>
+      <table>
+        <tr><th>對策方案</th><th>指標1(0.1)</th><th>指標2(0.2)</th><th>指標3(0.3)</th><th>指標4(0.4)</th><th>得分/排序</th></tr>
+        <tr><td>方案甲</td><td colspan="4">…</td><td>…</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="s3-4">四、可行性分析：評估替選方案 <span class="examtag low">尚未單獨出題，仍為完整流程一環</span></h3>
+    <div class="card">
+      <p><b>四大面向</b>：政治可行性／經濟(技術)可行性／行政(法律)可行性／社會(環境)可行性</p>
+      <p><b>不可行時5因應措施</b>：</p>
+      <ul class="pts">
+        <li>調整現行方案</li><li>提出替代方案</li><li>利益協商</li><li>逐步實施</li><li>訂定日出(落)條款</li>
+      </ul>
+    </div>
+
+    <h3 class="sec" id="s3-5">五、SWOT分析：診斷替選方案內容 <span class="examtag">📌111,114年考過</span></h3>
+    <div class="card">
+      <p>Weihrich（80年代）提出。<span class="kw">S優勢</span> <span class="kw">W劣勢</span>（內部）／<span class="kw">O機會</span> <span class="kw">T威脅</span>（外部）</p>
+      <p>外部環境可用 <b>TEMPLES</b> 檢視：科技/經濟/媒體/政治/法律/環境/社會</p>
+      <p>步驟：盤點內部優劣勢 → 確認外部環境 → 盤點外部機會威脅</p>
+    </div>
+
+    <h3 class="sec" id="s3-6">六、TOWS分析：研擬可行策略（接續SWOT） <span class="examtag">📌114年考過(接續SWOT)</span></h3>
+    <div class="card">
+      <table>
+        <tr><th></th><th>優勢 S</th><th>劣勢 W</th></tr>
+        <tr><td>機會 O</td><td><b>SO 進攻策略</b>：優勢+機會最大化</td><td><b>WO 轉型策略</b>：把握機會轉變劣勢</td></tr>
+        <tr><td>威脅 T</td><td><b>ST 補強策略</b>：用優勢排除外部威脅</td><td><b>WT 防禦策略</b>：降至最低、不惡化</td></tr>
+      </table>
+      <div class="mnemonic">SWOT用「形容詞」描述狀態，TOWS用「動詞」描述可做的行動</div>
+    </div>
+
+    <h3 class="sec" id="s3-7">七、成本效益分析與成本效果分析 <span class="examtag low">尚未單獨出題，仍為完整流程一環</span></h3>
+    <div class="card">
+      <p><b>成本效益分析 CBA</b>：成本與利益都換算成貨幣。益本比(利益淨值/成本淨值)>1 或 淨現值(利益-成本)>0 → 值得採行</p>
+      <p><b>成本效果分析 CEA</b>：效益無法轉貨幣時，以「效果/目標」取代，最終仍需「價值判斷」決策</p>
+    </div>
+
+    <h3 class="sec" id="s3-8">八、決策樹法：判斷方案期望值 <span class="examtag low">尚未單獨出題，仍為完整流程一環</span></h3>
+    <div class="card">
+      <p>用於面臨<span class="kw">風險risk</span>或<span class="kw">不確定性uncertainty</span>時</p>
+      <p>步驟：繪製樹狀圖(決策點,左至右) → 列出機率與報酬 → 計算期望值(機率×報酬) → 比較期望值選最高者</p>
+    </div>
+
+    <h3 class="sec" id="s3-9">九、甘特圖與查核點 <span class="examtag low">尚未單獨出題，仍為完整流程一環</span></h3>
+    <div class="card">
+      <p><b>甘特圖</b>：橫軸=時間，縱軸=工作項目，條狀圖呈現期程，下方顯示完成百分比</p>
+      <p><b>查核點</b>：依甘特圖時程建立，標示「符合進度／進度超前／進度落後」</p>
+    </div>
+
+    <div class="qa"><b>Q：政策工具全部要用嗎？</b><br>A：不必全用，依議題與分析目的挑選最能釐清問題、篩選方案的工具，避免流於形式堆砌。</div>
+  </section>
+
+  <section class="chapter" id="ch4">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c4)">肆</div><h2>方案目標訂定與達成</h2></div>
+
+    <h3 class="sec" id="s4-1">一、目標設定原則－SMART</h3>
+    <div class="card">
+      <p>目標(goal)＝價值性陳述；目的(objective)＝具體可操作化描述（實務常混用）</p>
+      <table>
+        <tr><th>字母</th><th>原則</th><th>說明</th></tr>
+        <tr><td>S</td><td>Simple &amp; specific 簡單明確</td><td>簡單、明確、易懂、有彈性</td></tr>
+        <tr><td>M</td><td>Measurable 可衡量性</td><td>可具體衡量</td></tr>
+        <tr><td>A</td><td>Achievable 可達成性</td><td>有挑戰但可達成範圍內</td></tr>
+        <tr><td>R</td><td>Result-orient/relevant 與結果有關</td><td>結果導向、與績效關聯</td></tr>
+        <tr><td>T</td><td>Timely 時限性</td><td>明確完成期限</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="s4-2">二、標竿學習 benchmarking</h3>
+    <div class="card">
+      <p>原意：固定對象標記（如石柱標示海平面高度），尋找學習對象、以其成就為基準</p>
+      <p>提醒：設定的標竿需符合方案需求，避免太理想、不切實際</p>
+    </div>
+
+    <h3 class="sec" id="s4-3">三、方案工具（Schneider &amp; Ingram, 1990｜5大類）</h3>
+    <div class="card">
+      <table>
+        <tr><th>類型</th><th>說明</th><th>例子</th></tr>
+        <tr><td>權威式 authority</td><td>合法權威強制/管制</td><td>闖紅燈開罰單、累進稅率</td></tr>
+        <tr><td>誘因式 incentive</td><td>正負經濟誘因</td><td>發放消費券</td></tr>
+        <tr><td>能力建立型 capacity</td><td>提供資訊/訓練</td><td>舉辦公聽會</td></tr>
+        <tr><td>符號勸戒型 symbolic and hortatory</td><td>形象/符號改變偏好認知</td><td>食品GMP微笑標章</td></tr>
+        <tr><td>學習型 learning</td><td>問題不確定時採用</td><td>教導正確戴口罩</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch5">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c5)">伍</div><h2>方案計畫書之撰寫</h2></div>
+
+    <h3 class="sec" id="s5-1">一、6W2H1E（9個要項） <span class="examtag">📌108,109,110,112年考過・考古最大宗</span></h3>
+    <div class="card">
+      <table>
+        <tr><th>構面</th><th>說明</th></tr>
+        <tr><td><b>Why</b> 為什麼</td><td>方案緣由與現況情境分析</td></tr>
+        <tr><td><b>What</b> 什麼</td><td>方案目標、重要規劃內容</td></tr>
+        <tr><td><b>How</b> 如何</td><td>推動與實施方式</td></tr>
+        <tr><td><b>Who</b> 誰</td><td>規劃與推動者，主/協辦單位</td></tr>
+        <tr><td><b>Whom</b> 對誰</td><td>方案實施對象</td></tr>
+        <tr><td><b>Where</b> 何處</td><td>影響空間範圍/執行地點</td></tr>
+        <tr><td><b>When</b> 何時</td><td>執行期程（年度/中長程）</td></tr>
+        <tr><td><b>How much</b> 多少</td><td>預算規劃及財務計畫</td></tr>
+        <tr><td><b>Effect</b> 效果</td><td>預期績效及可能負面效果</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="s5-2">二、績效指標訂定：KPI vs CPI</h3>
+    <div class="card">
+      <p><b>KPI 關鍵績效指標</b>（Key Performance Indicator）：與方案最直接相關的目標/效益，用SMART原則訂定<br>例：觀光客每年增加10%；曝光觸及數達3,000次</p>
+      <p><b>CPI 共同績效指標</b>（Common Performance Indicator）：各計畫都可能出現的共通評比項目，如進度、預算執行率、資料處理即時性</p>
+      <p><b>執行成效評估</b>：未達成 → 回原因分析；對策無效 → 檢討是否執行不力；達成 → 標準化以防問題再現</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch6">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c6)">陸</div><h2>案例解析：長照2.0照管人力不足</h2></div>
+    <div class="card">
+      <p><b>情境</b>：衛福部長照司承辦人，面對長照2.0「照管人力不足」問題，須運用前述工具規劃方案。</p>
+    </div>
+
+    <div class="case-step"><b>(1) 向右魚骨圖</b>：找出照管人力不足原因</div>
+    <div class="case-step"><b>(2) SMART設定目標</b>：降低服務案量、提升人力配置達標率、降低離職率、提升滿意度（2年內達成）</div>
+    <div class="case-step"><b>(3) 向左魚骨圖</b>：4項對策方向 — 適度調整資格／減輕工作負荷／提升薪資競爭力／擴大工作保障</div>
+    <div class="case-step"><b>(4) 決策矩陣分析</b>：3替選方案 — <b>方案甲</b>照管人才扎根計畫、<b>方案乙</b>照管安薪方案、<b>方案丙</b>照管減負三策　⇒ 方案乙勝出（分數最高）</div>
+    <div class="case-step"><b>(5) SWOT分析</b>：對「方案乙」盤點內外部環境</div>
+    <div class="case-step"><b>(6) TOWS分析</b>：SO建立職級晉升機制／ST績效獎金公開透明／WO社福倡議加速協商／WT分階段推動＋長期財源規劃</div>
+    <div class="case-step"><b>(7) 決策樹法</b>：外籍看護工是否增聘 — 「提高」期望值80億 vs「不提高」期望值-125億 → 選擇提高</div>
+    <div class="case-step"><b>(8) 甘特圖</b>：需求評估→跨機關協商→法規修正→編列預算→立法院審核→公告實施→成效評估（2年8季）</div>
+    <div class="case-step"><b>(9) 6W2H1E</b>整合成最終方案計畫書「照管安薪方案－加薪攬才，穩定人力」</div>
+  </section>
+
+  <section class="chapter" id="ch7">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c7)">柒</div><h2>結語</h2></div>
+    <div class="card">
+      <p>方案管理課程核心：建立<span class="kw">系統思考</span>能力，依規劃步驟解決特定問題。</p>
+      <p>定義問題 → 向右魚骨圖找原因 → 訂目標 → 向左魚骨圖找對策 → 正確運用各分析工具 → 6W2H1E完整呈現計畫書</p>
+      <p>屬於高度「應用性知識（applied knowledge）」，配合公務生涯從「政策執行」升遷至「政策規劃」層次時應用。</p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+const search = document.getElementById('search');
+search.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  document.querySelectorAll('main .card, main .case-step, main .qa, main .examtrend').forEach(el => {
+    const match = !q || el.textContent.toLowerCase().includes(q);
+    el.classList.toggle('hidden', !match);
+  });
+});
+</script>
+</body>
+</html>

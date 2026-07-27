@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>警察人員實用英語｜簡報速記筆記</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --bg:#f6f5f1; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66;
+    --accent:#2b8a5a; --line:#e5e2da; --side-w:260px;
+    --c1:#2b8a5a; --c2:#8a3b2b; --c3:#2b5a8a;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);display:flex;}
+  #sidebar{width:var(--side-w);flex-shrink:0;height:100vh;position:sticky;top:0;overflow-y:auto;background:#fbfaf7;border-right:1px solid var(--line);padding:20px 14px;}
+  #sidebar h3{font-size:.78rem;color:var(--sub);text-transform:uppercase;letter-spacing:.06em;margin:18px 6px 6px;}
+  #sidebar h3:first-child{margin-top:4px;}
+  #search{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:.85rem;margin-bottom:8px;font-family:inherit;}
+  .backlink{display:block;font-size:.8rem;color:var(--sub);text-decoration:none;margin:0 6px 10px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+  #sidebar a.nav{display:block;padding:5px 8px;font-size:.84rem;color:var(--ink);text-decoration:none;border-radius:6px;line-height:1.4;}
+  #sidebar a.nav:hover{background:var(--line);}
+  #sidebar a.nav.sub{padding-left:18px;font-size:.79rem;color:var(--sub);}
+  #sidebar a.nav.switch{color:var(--accent);font-weight:600;margin-top:2px;}
+  main{flex:1;max-width:900px;margin:0 auto;padding:44px 32px 100px;min-width:0;}
+  h1.title{font-size:1.7rem;margin:0 0 4px;}
+  .subtitle{color:var(--sub);margin-bottom:8px;}
+  .toolbar{margin-bottom:36px;padding-bottom:16px;border-bottom:1px solid var(--line);font-size:.82rem;color:#a09d95;}
+  section.chapter{margin-bottom:52px;scroll-margin-top:20px;}
+  .chapter-head{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+  .chapter-num{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.95rem;flex-shrink:0;}
+  .chapter-head h2{margin:0;font-size:1.28rem;}
+  h3.sec{scroll-margin-top:20px;font-size:1.03rem;margin:26px 0 10px;padding-left:12px;border-left:4px solid var(--line);}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;}
+  .card p{margin:.3em 0;line-height:1.85;font-size:.94rem;}
+  ul.pts{margin:.4em 0;padding-left:1.3em;line-height:1.85;font-size:.94rem;}
+  ul.pts li{margin-bottom:3px;}
+  .kw{background:#eaf4ee;color:var(--accent);padding:1px 7px;border-radius:5px;font-weight:600;font-size:.88em;}
+  table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.85rem;}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top;}
+  th{background:#f1efe9;}
+  .mnemonic{background:#fbf6ea;border:1px dashed #d8c896;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.9rem;color:#6b5a2a;}
+  .qa{background:#eef6f0;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.9rem;}
+  .qa b{color:#2b6a48;}
+  .dialog p{margin:.4em 0;line-height:1.8;font-size:.9rem;}
+  .dialog b{color:#2b6a48;}
+  .case-step{border-left:3px solid var(--accent);padding:8px 0 8px 14px;margin:10px 0;}
+  mark{background:#ffe9a8;padding:0 2px;border-radius:3px;}
+  .hidden{display:none !important;}
+</style>
+</head>
+<body>
+
+<nav id="sidebar">
+  <input id="search" type="text" placeholder="搜尋關鍵字...">
+  <a class="backlink" href="index.html">← 回筆記入口</a>
+
+  <h3>壹 緊急救護</h3>
+  <a class="nav" href="#ch1">壹、別驚慌！發生什麼事？</a>
+  <a class="nav sub" href="#s1-1">句型01-11：報案與初步應對</a>
+  <a class="nav sub" href="#s1-2">情境模擬：Practice and Play</a>
+  <a class="nav sub" href="#s1-3">詞彙速記</a>
+
+  <h3>貳 防災宣導</h3>
+  <a class="nav" href="#ch2">貳、防災無國界</a>
+  <a class="nav sub" href="#s2-1">句型01-13：地震避難三步驟</a>
+  <a class="nav sub" href="#s2-2">緊急避難包七大類</a>
+  <a class="nav sub" href="#s2-3">詞彙速記</a>
+
+  <h3>參 為民服務</h3>
+  <a class="nav" href="#ch3">參、結語：為民服務必備八句話</a>
+
+  <h3>其他版本</h3>
+  <a class="nav switch" href="police-english-textbook.html">→ 前往教材深讀筆記</a>
+</nav>
+
+<main>
+  <h1 class="title">警察人員實用英語｜課程簡報速記筆記</h1>
+  <div class="subtitle">115年佐升正訓練（消防人員場次）・依課程簡報素材（76張投影片）整理</div>
+  <div class="toolbar">用途：考前快速複習、抓記憶點。本簡報實際採用之教材僅涵蓋<b>消防人員</b>兩單元（緊急救護、防災宣導）及通用「為民服務必備八句話」；完整涵蓋警察／消防／海巡三類人員之句型、對話與單字表，請見 <a href="police-english-textbook.html">教材版筆記</a>。</div>
+
+  <section class="chapter" id="ch1">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c1)">壹</div><h2>別驚慌！發生什麼事？Don't Panic! What's Happened?</h2></div>
+
+    <h3 class="sec" id="s1-1">句型01-11：報案與初步應對</h3>
+    <div class="card">
+      <p>情境：<span class="kw">Hotline Service</span>（119報案電話服務）</p>
+      <table>
+        <tr><th>#</th><th>English</th><th>中文</th></tr>
+        <tr><td>01</td><td>Hello, this is 119 of the Greenlake County Fire Department. How can I help you?</td><td>您好。這裡是翠湖縣政府消防局。如何協助您？</td></tr>
+        <tr><td>02</td><td>Don't panic! What's happened?</td><td>別驚慌！發生什麼事？</td></tr>
+        <tr><td>03</td><td>Calm down. I am here to help you.</td><td>請冷靜。讓我來協助您。</td></tr>
+        <tr><td>04</td><td>Please tell me your name and the location of the emergency.</td><td>請告訴我您的姓名及緊急事故所在位址。</td></tr>
+        <tr><td>05</td><td>Are there any landmarks around you?</td><td>附近有什麼顯著的地標嗎？</td></tr>
+        <tr><td>06</td><td>We will dispatch a firefighting team immediately.</td><td>好！我們馬上派人過去！</td></tr>
+        <tr><td>07</td><td>Please evacuate the scene instantly.</td><td>請即刻遠離火災現場。</td></tr>
+        <tr><td>08</td><td>Leave your passports and things where they are. Don't go back to get them.</td><td>請不要再返回火場去拿取您們的護照及財物。</td></tr>
+        <tr><td>09</td><td>The fire trucks and firefighters will be arriving any moment now.</td><td>消防車及消防人員很快便會抵達現場。</td></tr>
+        <tr><td>10</td><td>Let me perform an initial assessment of your injuries. Please relax and stay calm.</td><td>我現在會先幫您的身體做一次初步創傷評估。請放輕鬆並保持鎮定。</td></tr>
+        <tr><td>11</td><td>We'll place you on a stretcher and put you in the ambulance. After that we will check your breathing, pulse and blood pressure.</td><td>我們現在要將您移至擔架上，並搬運至救護車內。待會我們將量測您的呼吸、脈搏及血壓。</td></tr>
+      </table>
+      <div class="mnemonic">記憶順序：<b>接電話問候</b>（01）→ <b>安撫別慌</b>（02-03）→ <b>問姓名地點</b>（04-05）→ <b>派遣＋撤離</b>（06-08）→ <b>抵達＋救護</b>（09-11）</div>
+    </div>
+
+    <h3 class="sec" id="s1-2">情境模擬：Practice and Play（119報案 → 到場救護）</h3>
+    <div class="card">
+      <p class="cite">John 在民宿發現火災報案，消防隊到場後 EMT 為受傷的 Catherine 進行初步救護。</p>
+      <div class="dialog">
+        <p><b>You：</b>Hello, this is the 119 of the Greenlake County Fire Department. How can I help you?</p>
+        <p><b>John：</b>$#%%&amp;*&amp;#……（慌亂中無法清楚表達）</p>
+        <p><b>You：</b>Don't panic! What's happened?</p>
+        <p><b>John：</b>Fire! Fire! There is a fire!</p>
+        <p><b>You：</b>Calm down. I am here to help you. Where are you and what is on fire? Please tell me your name and the location of the emergency.</p>
+        <p><b>John：</b>Cozy Green Guesthouse. （地標：近圓環公車總站）</p>
+        <p><b>You：</b>Do you know the name of the bed and breakfast? Are there any landmarks around you? OK. We will dispatch a firefighting team immediately. Please evacuate the scene instantly. Leave them where they are, don't go back to get them. The fire trucks and firefighters will be arriving soon.</p>
+        <p><b>John：</b>We didn't have time to take our passports and things!</p>
+      </div>
+      <p class="cite">→ 完整對話含 EMT 到場後之創傷評估與擔架搬運橋段，詳見教材版。</p>
+    </div>
+
+    <h3 class="sec" id="s1-3">詞彙速記 Vocabulary（Poking Game）</h3>
+    <div class="card">
+      <table>
+        <tr><th>English</th><th>中文</th></tr>
+        <tr><td>roundabout</td><td>圓環</td></tr>
+        <tr><td>dispatch</td><td>派遣、調度</td></tr>
+        <tr><td>evacuate</td><td>疏散</td></tr>
+        <tr><td>dizzy</td><td>頭暈的、暈眩的</td></tr>
+        <tr><td>breathing</td><td>呼吸</td></tr>
+        <tr><td>stretcher</td><td>擔架</td></tr>
+        <tr><td>knock out</td><td>不省人事的</td></tr>
+        <tr><td>pulse</td><td>脈搏</td></tr>
+        <tr><td>blood pressure</td><td>血壓</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch2">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c2)">貳</div><h2>防災無國界 Disaster Preparedness Without Borders</h2></div>
+
+    <h3 class="sec" id="s2-1">句型01-13：地震避難三步驟＋避難包</h3>
+    <div class="card">
+      <p>情境：<span class="kw">Public Awareness &amp; Public Education for Disaster Risk Reduction</span>（新住民／移工防災宣導）</p>
+      <table>
+        <tr><th>#</th><th>English</th><th>中文</th></tr>
+        <tr><td>01</td><td>Don't panic! Being in Taiwan, you have to get used to earthquakes and typhoons.</td><td>別驚慌！在臺灣生活要能夠適應，時常出現颱風及地震的環境。</td></tr>
+        <tr><td>02</td><td>I would like to lead everyone in a disaster preparedness drill on taking refuge during an earthquake.</td><td>我希望今天能帶領大家進行地震避難的防災演練。</td></tr>
+        <tr><td>03</td><td>Keep in mind these three words when you feel a quake: Drop, Cover, and Hold.</td><td>請記得地震發生時避難的三步驟：趴下、掩護及穩住。</td></tr>
+        <tr><td>04</td><td>If there are not any sturdy tables nearby, then you can take refuge under some other strong furniture, or solid structural beams, with your hands over your neck and head for protection.</td><td>如果身邊沒有堅固的桌子，可以躲在相對堅固的傢俱、樑柱或牆壁角落，以手保護頸部跟頭部。</td></tr>
+        <tr><td>05</td><td>Since we tend to get injured by falling objects during earthquakes, the first step is to squat down, then find a protective shield, and hold on to something to steady yourself.</td><td>高處掉落的物體可能使我們受傷，第一步「蹲下」，接下來找「掩護」，最後握住堅固物體「穩住」自己！</td></tr>
+        <tr><td>06</td><td>The correct action is not to crouch down but to kneel down and hold on the table's legs instead of covering your head with your hands.</td><td>正確動作是採雙膝跪姿並緊握桌腳，而不是蹲下用手護頭。</td></tr>
+        <tr><td>07</td><td>When assisting people in wheelchairs during earthquakes, you need to first lock the wheels, then protect the person's head or neck, and maintain a sitting posture until the quaking stops.</td><td>輪椅行動不便者：先鎖車輪，再護頭頸，並保持坐姿直至震動停止。</td></tr>
+        <tr><td>08</td><td>Learning proper methods for taking refuge is the best way to protect yourself and your family.</td><td>學會正確的避難方法，是保護自己及守護家人之最佳方式。</td></tr>
+        <tr><td>09</td><td>Food and water are the most basic supplies, and you will need a minimum of three days' worth.</td><td>緊急糧食以乾糧跟水為必要，準備約3日份。</td></tr>
+        <tr><td>10</td><td>Other necessary items in the emergency kit are thermal blankets, raincoats, and towels, for keeping your body warm.</td><td>保溫毛毯、雨衣及毛巾，可在避難時禦寒保暖。</td></tr>
+        <tr><td>11</td><td>Medical and hygiene supplies are also necessary items to be included in the emergency kit — disinfectant, sanitizer, face masks, toilet paper and personal medications.</td><td>醫療及清潔消毒用品：殺菌劑、除菌劑、口罩、衛生紙及個人藥物。</td></tr>
+        <tr><td>12</td><td>I would also like to remind you to check and replace all perishable or expired items in the emergency kit every six months.</td><td>緊急避難包裡的物品，每半年要定期檢查並更新淘汰過期物品。</td></tr>
+        <tr><td>13</td><td>Keep the kit in a handy spot for easy fetching. With the kit in hand, plus a helmet and shoes, you are all set.</td><td>將避難包放置在便利拿取的地方，另放置安全帽及鞋子，即完成最好的準備。</td></tr>
+      </table>
+      <div class="mnemonic">地震避難口訣：<b>Drop, Cover, Hold</b>（趴下、掩護、穩住）；桌邊正確動作是<b>跪</b>不是蹲；輪椅者先<b>鎖輪</b>再護頭頸。</div>
+    </div>
+
+    <h3 class="sec" id="s2-2">緊急避難包七大類</h3>
+    <div class="card">
+      <p><span class="kw">THE EMERGENCY KITS</span>：食物與水 Food &amp; Water／急救 First Aid／個人衛生 Personal Hygiene／保暖 Shelter &amp; Warmth／工具 Tools／重要個人物品 Essential Personal Effects</p>
+      <table>
+        <tr><th>English</th><th>中文</th></tr>
+        <tr><td>raincoat</td><td>雨衣</td></tr>
+        <tr><td>toilet paper</td><td>衛生紙</td></tr>
+        <tr><td>flash lights</td><td>手電筒</td></tr>
+        <tr><td>thermal blanket</td><td>保暖毛毯</td></tr>
+        <tr><td>face mask</td><td>口罩</td></tr>
+        <tr><td>Swiss knives</td><td>瑞士刀</td></tr>
+        <tr><td>food / water</td><td>食物／水</td></tr>
+        <tr><td>first-aid kit</td><td>急救包</td></tr>
+        <tr><td>gloves</td><td>手套</td></tr>
+        <tr><td>disinfectant / sanitizer</td><td>殺菌劑／除菌劑</td></tr>
+        <tr><td>survival whistle</td><td>求生哨</td></tr>
+        <tr><td>towel</td><td>毛巾</td></tr>
+        <tr><td>essential personal effects（現金／通訊錄／筆記紙）</td><td>重要個人物品</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="s2-3">詞彙速記 Vocabulary（Poking Game）</h3>
+    <div class="card">
+      <table>
+        <tr><th>English</th><th>中文</th></tr>
+        <tr><td>drill</td><td>演練</td></tr>
+        <tr><td>refuge</td><td>避難</td></tr>
+        <tr><td>collapsed</td><td>倒塌的</td></tr>
+        <tr><td>shield</td><td>庇護</td></tr>
+        <tr><td>solid</td><td>堅固的</td></tr>
+        <tr><td>immobile</td><td>行動不便的</td></tr>
+        <tr><td>crouch down</td><td>蹲下</td></tr>
+        <tr><td>kneel down</td><td>跪下</td></tr>
+        <tr><td>squat</td><td>蹲下</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch3">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c3)">參</div><h2>結語：為民服務必備八句話</h2></div>
+    <div class="card">
+      <p><span class="kw">Do You Think in English or Chinese?</span> — 服務台常用8句通用句型（At the Service Counter），不限警察／消防／海巡，各機關為民服務櫃檯皆可套用。</p>
+    </div>
+    <div class="case-step"><b>(1) 問需求</b>：Anything I can do for you? / How may I help you? / What can I do for you?　請問今天要辦理什麼業務？</div>
+    <div class="case-step"><b>(2) 請取號</b>：Please take a number and wait for the number to be called.　請先抽號碼牌等待叫號。</div>
+    <div class="case-step"><b>(3) 致歉久候</b>：Thank you for your patience.　不好意思，讓您久等了。</div>
+    <div class="case-step"><b>(4) 指引表單</b>：Please request the registration form from the service desk.　您可以至服務臺索取登記表。</div>
+    <div class="case-step"><b>(5) 說明文件要求</b>：I need three one-inch color ID photos taken within the past two years.　我需要本人最近2年內拍攝之1吋脫帽五官清晰正面半身彩色照片3張。</div>
+    <div class="case-step"><b>(6) 確認還有無其他需求</b>：Is there anything else I can do for you? Anything else?　請問還有其他需要服務的地方嗎？</div>
+    <div class="case-step"><b>(7) 說明時程</b>：The application process will take up three working days.　證件申辦需要3個工作天。</div>
+    <div class="case-step"><b>(8) 留下聯繫方式</b>：Please feel free to contact me if you have any further questions. I can be reached by this direct line. I am at your service.　有任何問題可以打這個專線給我，我很樂意為您服務。</div>
+    <div class="qa"><b>Q：這8句話跟前兩單元的差別？</b><br>A：前兩單元（緊急救護／防災宣導）是特定情境（119報案、地震避難）的專業對話；這8句話則是任何為民服務櫃檯都通用的萬用句型，考試時可作為「服務台情境」題型的共同基礎。</div>
+  </section>
+
+</main>
+
+<script>
+const search = document.getElementById('search');
+search.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  document.querySelectorAll('main .card, main .case-step, main .qa').forEach(el => {
+    const match = !q || el.textContent.toLowerCase().includes(q);
+    el.classList.toggle('hidden', !match);
+  });
+});
+</script>
+</body>
+</html>
