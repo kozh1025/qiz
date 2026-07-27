@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>113年_消防_申論題解析</title>
+<style>
+  :root{
+    --bg:#f6f5f1; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66; --line:#e5e2da;
+    --plan:#3b6e8a;    --plan-tint:#eaf2f6;   /* 方案規劃 */
+    --crisis:#b2551f;  --crisis-tint:#fbeee0; /* 危機處理 */
+    --admin:#6a4a8a;   --admin-tint:#f2ecf7;  /* 行政程序法 */
+    --info:#4a7a6a;    --info-tint:#eaf3ef;   /* 政府資訊公開法 */
+    --crime:#8a3b3b;   --crime-tint:#f8ecec;  /* 刑法/貪污治罪條例 */
+    --media:#8a2b6e;   --media-tint:#f7ecf3;  /* 警政溝通與行銷 */
+    --overview:#8a5a3b;--overview-tint:#faf6ee;/* 總覽性質區塊 */
+  }
+  *{box-sizing:border-box;}
+  body { font-family: 'Microsoft JhengHei','Noto Sans TC',Arial,sans-serif; background: var(--bg); color: var(--ink); margin: 0; padding: 20px; font-size: 15px; line-height: 1.9; --subj:var(--overview); --subj-tint:var(--overview-tint); }
+
+  .header { background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--overview); padding: 22px 28px; border-radius: 10px; margin-bottom: 20px; box-shadow:0 1px 3px rgba(0,0,0,.05); }
+  .header h1 { margin: 0 0 6px 0; font-size: 1.35em; color: var(--ink); font-weight:700; }
+  .header .sub { font-size: 0.88em; color: var(--sub); }
+  .header .tag { display: inline-block; background: var(--overview); color: #fff; border-radius: 4px; padding: 2px 10px; font-size: 0.78em; margin-left: 8px; }
+
+  .subj-plan{--subj:var(--plan);--subj-tint:var(--plan-tint);}
+  .subj-crisis{--subj:var(--crisis);--subj-tint:var(--crisis-tint);}
+  .subj-admin{--subj:var(--admin);--subj-tint:var(--admin-tint);}
+  .subj-info{--subj:var(--info);--subj-tint:var(--info-tint);}
+  .subj-crime{--subj:var(--crime);--subj-tint:var(--crime-tint);}
+  .subj-media{--subj:var(--media);--subj-tint:var(--media-tint);}
+  .subj-overview{--subj:var(--overview);--subj-tint:var(--overview-tint);}
+
+  .q-block { background: var(--card); border: 1px solid var(--line); border-radius: 8px; margin-bottom: 20px; overflow: hidden; box-shadow:0 1px 2px rgba(0,0,0,.03); }
+  .q-header { background: var(--subj-tint); color: var(--subj); font-weight: bold; padding: 8px 16px; font-size: 0.95em; border-bottom:1px solid var(--line); }
+  .q-score { font-weight: normal; font-size: 0.85em; margin-left: 8px; opacity: 0.85; color:var(--sub); }
+  .q-text { padding: 14px 18px 10px 18px; color: var(--ink); font-size: 0.93em; line-height: 1.85; border-bottom: 1px solid var(--line); background: #fbfaf7; }
+  .q-text .situation { color: var(--sub); font-size: 0.91em; border-left: 3px solid var(--subj); padding-left: 12px; margin-bottom: 8px; }
+  .q-text .question { color: var(--ink); font-weight: bold; margin-top: 10px; }
+
+  .non-official { padding: 7px 18px; background: #fff8ea; color: #9a6a1f; font-size: 0.82em; border-bottom: 1px solid #f0e3c0; }
+
+  .ans-block { padding: 14px 18px; }
+  .ans-section { margin-bottom: 18px; }
+  .ans-title { font-weight: bold; color: var(--subj); margin-bottom: 8px; font-size: 0.95em; padding: 5px 0; border-bottom: 1px dashed var(--line); }
+  .sub-pts { font-size: 0.8em; color: var(--sub); margin-left: 6px; font-weight: normal; }
+
+  .law-ref { background: var(--subj-tint); border-left: 3px solid var(--subj); padding: 5px 12px; font-size: 0.82em; color: var(--ink); margin-bottom: 10px; border-radius: 0 3px 3px 0; }
+
+  /* 魚骨圖容器 */
+  .fishbone-wrap { background: #fbfaf7; border: 1px solid var(--line); border-radius: 6px; padding: 14px; margin: 10px 0; }
+  .fishbone-title { font-weight: bold; color: var(--subj); margin-bottom: 10px; font-size: 0.93em; }
+  .fishbone-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 8px 0; }
+  .bone { background: var(--subj-tint); border: 1px solid var(--subj); border-radius: 5px; padding: 10px 12px; }
+  .bone-label { font-weight: bold; color: var(--subj); font-size: 0.88em; margin-bottom: 6px; }
+  .bone ul { margin: 0; padding-left: 18px; }
+  .bone li { font-size: 0.86em; margin-bottom: 3px; color: var(--ink); }
+
+  .fishbone-effect { background: var(--subj-tint); border: 2px solid var(--subj); border-radius: 5px; padding: 10px 16px; text-align: center; margin: 8px 0; color: var(--subj); font-weight: bold; font-size: 0.93em; }
+  .fishbone-goal { background: var(--subj-tint); border: 2px solid var(--subj); border-radius: 5px; padding: 10px 16px; text-align: center; margin: 8px 0; color: var(--subj); font-weight: bold; font-size: 0.93em; }
+
+  /* CDM 步驟 */
+  .cdm-step { background: #fbfaf7; border-left: 4px solid var(--subj); border-radius: 0 5px 5px 0; padding: 12px 16px; margin-bottom: 12px; }
+  .cdm-num { display: inline-block; background: var(--subj); color: #fff; border-radius: 3px; padding: 1px 8px; font-size: 0.82em; font-weight: bold; margin-right: 8px; }
+  .cdm-title { font-weight: bold; color: var(--subj); margin-bottom: 8px; font-size: 0.93em; }
+
+  ul, ol { padding-left: 22px; margin: 6px 0; }
+  li { margin-bottom: 5px; font-size: 0.91em; }
+  li strong { color: var(--subj); }
+
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.87em; }
+  th { background: var(--subj-tint); color: var(--subj); padding: 7px 10px; text-align: left; border-bottom:2px solid var(--subj); }
+  td { padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:nth-child(even) td { background: #faf9f6; }
+
+  .warn { color: #9a6a1f; font-size: 0.85em; }
+
+  .analysis-box { background: var(--subj-tint); border: 1px solid var(--subj); border-radius: 8px; padding: 14px 18px; margin-bottom: 20px; }
+  .analysis-box h3 { color: var(--subj); margin: 0 0 10px 0; font-size: 1em; }
+
+  .core-box { background: var(--subj-tint); border: 2px solid var(--subj); border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+  .core-box h2 { color: var(--subj); margin: 0 0 12px 0; font-size: 1.05em; }
+  .core-box h3 { color: var(--subj); margin: 12px 0 6px 0; font-size: 0.95em; }
+  .core-template { background: #ffffff; border:1px solid var(--line); border-left: 4px solid var(--subj); padding: 10px 14px; font-size: 0.88em; color: var(--ink); border-radius: 0 4px 4px 0; margin-bottom: 8px; white-space: pre-wrap; line-height: 1.9; }
+
+  .section-title { background: var(--subj-tint); border-left: 4px solid var(--subj); color: var(--subj); padding: 8px 16px; margin: 28px 0 14px 0; font-size: 1em; font-weight: bold; border-radius: 0 6px 6px 0; }
+
+  .footer { text-align: center; font-size: 0.78em; color: var(--sub); margin-top: 30px; padding-top: 14px; border-top: 1px solid var(--line); }
+
+  .law-tag { display: inline-block; background: var(--subj-tint); border: 1px solid var(--subj); color: var(--subj); border-radius: 3px; padding: 1px 6px; font-size: 0.78em; margin-left: 4px; }
+</style>
+</head>
+<body>
+<div style="position:fixed;top:8px;right:12px;z-index:9999;font-size:12px;color:#9a978d;background:rgba(255,255,255,.85);padding:2px 10px;border-radius:999px;pointer-events:none;">柯醒翰製作</div>
+
+<div class="header">
+  <h1>113年警佐警察人員晉升警正官等訓練<span class="tag">消防人員</span><span class="tag" style="background:#6b5842">第2梯次</span></h1>
+  <div class="sub">實務寫作題解析・共4題（第1、2題各30分；第3、4題各20分）・非官方參考解析，以評分標準為準</div>
+</div>
+
+<!-- ═══ 第一題 ═══ -->
+<div class="section-title subj-plan">第一題（30分）— 方案規劃：向右魚骨圖（要因）＋ 向左魚骨圖（對策）</div>
+
+<div class="q-block subj-plan">
+  <div class="q-header">第一題 <span class="q-score">（30分）｜課程：方案規劃｜工具：魚骨圖</span></div>
+  <div class="q-text">
+    <div class="situation">【情境】山林解禁後，112年山域事故死亡及失蹤人數增加；搜索超過24小時案件占20%。原因：各縣市量能不同、失聯民眾資訊不明，造成「難找」「難到」「難救」。消防署擬整合國家公園、林區機關、民間救難組織及登山團體研擬對策。</div>
+    <div class="question">【問題】以「向右魚骨圖」進行山域事故救援困難特性要因分析；再以「向左魚骨圖」擬具降低消防機關面臨山域事故救援困境之對策。</div>
+  </div>
+  <div class="non-official">⚠ 非官方參考解析（申論題無官方答案）</div>
+  <div class="ans-block">
+
+    <div class="ans-section">
+      <div class="ans-title">【壹、前言】</div>
+      <p>身為消防署本案業務承辦人，運用方案規劃課程所學魚骨圖（石川圖）分析工具，以<strong>「向右魚骨圖」</strong>系統分析山域事故救援困難之要因，再以<strong>「向左魚骨圖」</strong>逆向提出對應對策，以期有效降低救援困境。</p>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【貳、向右魚骨圖 — 要因分析】</div>
+      <p style="font-size:0.87em;color:var(--sub);">→ 魚頭（效果/問題）在右方：「山域事故救援困難（難找・難到・難救）」</p>
+
+      <div class="fishbone-wrap">
+        <div class="fishbone-title">▶ 魚頭（問題核心）</div>
+        <div class="fishbone-effect">山域事故救援困難：難找 ・ 難到 ・ 難救</div>
+        <div class="fishbone-title" style="margin-top:12px;">▶ 要因骨（六大面向）</div>
+        <div class="fishbone-grid">
+          <div class="bone">
+            <div class="bone-label">🧍 人員面（山友行為）</div>
+            <ul>
+              <li>自主管理意識不足，未填報登山計畫書</li>
+              <li>未攜帶衛星定位器或緊急通訊設備</li>
+              <li>獨自登山，無同伴知悉行蹤</li>
+              <li>高估自身體能，超越能力範圍攀登</li>
+            </ul>
+          </div>
+          <div class="bone">
+            <div class="bone-label">🌏 環境面（地理條件）</div>
+            <ul>
+              <li>山域幅員廣大，搜索範圍難以縮小</li>
+              <li>地形複雜、植被茂密，能見度低</li>
+              <li>天候多變（雲霧、雷雨），影響搜索效率</li>
+              <li>各縣市山域特性難易度差異懸殊</li>
+            </ul>
+          </div>
+          <div class="bone">
+            <div class="bone-label">📡 資訊面（情資不足）</div>
+            <ul>
+              <li>迷路失聯民眾案件資訊不明確</li>
+              <li>報案時間延遲（失蹤超過24小時才報案）</li>
+              <li>缺乏即時位置回報系統</li>
+              <li>事故點座標難以精確定位</li>
+            </ul>
+          </div>
+          <div class="bone">
+            <div class="bone-label">🚒 量能面（搜救資源）</div>
+            <ul>
+              <li>各縣市搜救量能不均（人力、裝備差異大）</li>
+              <li>專業山岳搜救認證人員不足</li>
+              <li>科技救災工具（無人機、熱感應儀）配置不足</li>
+              <li>高山醫療救護能力不足</li>
+            </ul>
+          </div>
+          <div class="bone">
+            <div class="bone-label">🤝 整合面（跨機關協作）</div>
+            <ul>
+              <li>國家公園、林區、民間資源缺乏整合機制</li>
+              <li>各單位搜救SOP不一致，協作摩擦高</li>
+              <li>跨縣市搜救調度指揮體系不完整</li>
+            </ul>
+          </div>
+          <div class="bone">
+            <div class="bone-label">📋 制度面（法規管制）</div>
+            <ul>
+              <li>山林開放後管制機制尚未完備</li>
+              <li>高風險山域缺乏差異化管制機制</li>
+              <li>救難費用由公費全額負擔，缺乏責任承擔誘因</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【參、向左魚骨圖 — 對策擬具】</div>
+      <p style="font-size:0.87em;color:var(--sub);">→ 魚頭（目標）在左方：「降低消防機關山域事故救援困境」；骨刺向右延伸為各項對策</p>
+
+      <div class="fishbone-wrap">
+        <div class="fishbone-title">▶ 魚頭（目標）</div>
+        <div class="fishbone-goal">目標：降低消防機關山域事故救援困境（難找→易找・難到→易到・難救→易救）</div>
+        <div class="fishbone-title" style="margin-top:12px;">▶ 對策骨（六大對策方向）</div>
+        <div class="fishbone-grid">
+          <div class="bone">
+            <div class="bone-label">🛡️ 對策一：強化預防，落實山友自主管理</div>
+            <ul>
+              <li>推廣線上登山計畫書申報，強化入山資訊留存</li>
+              <li>鼓勵（或強制特定山域）攜帶衛星定位器</li>
+              <li>辦理山域安全教育訓練及宣傳，提升風險意識</li>
+              <li>建立山友分級認證，高難度山域限制入山資格</li>
+            </ul>
+          </div>
+          <div class="bone">
+            <div class="bone-label">📱 對策二：科技救災，建置智慧搜救系統</div>
+            <ul>
+              <li>建置山域即時定位及監控平台（衛星/GPS資料整合）</li>
+              <li>導入無人機（UAV）快速搜索，縮短難找時間</li>
+              <li>建置山域數位3D地圖資料庫，提供搜索路線規劃</li>
+              <li>推廣SOS衛星求救設備之使用教育</li>
+            </ul>
+          </div>
+          <div class="bone">
+            <div class="bone-label">👨‍🚒 對策三：提升量能，強化專業搜救人員</div>
+            <ul>
+              <li>建立山岳搜救認證制度，培訓各縣市專業人員</li>
+              <li>充實繩索救援、高山醫療（低溫症處置）等裝備</li>
+              <li>訂定各縣市搜救量能分級標準及補強計畫</li>
+              <li>建立直升機吊掛及山地後送標準程序</li>
+            </ul>
+          </div>
+          <div class="bone">
+            <div class="bone-label">🔗 對策四：整合資源，建立跨機關協作機制</div>
+            <ul>
+              <li>建立消防署統一指揮之「山域事故跨機關協調平台」</li>
+              <li>整合國家公園、林區管理機關及民間救難組織資源</li>
+              <li>訂定統一搜救SOP，消除跨單位協作障礙</li>
+              <li>建置跨縣市搜救資源調度機制</li>
+            </ul>
+          </div>
+          <div class="bone">
+            <div class="bone-label">📚 對策五：資訊共享，建立事故資料庫</div>
+            <ul>
+              <li>建立山域事故案例資料庫，分析高風險區域及事故類型</li>
+              <li>分享搜索情資至各協作單位（即時通報系統）</li>
+              <li>透過大數據分析預測事故高發時段及地點</li>
+            </ul>
+          </div>
+          <div class="bone">
+            <div class="bone-label">⚖️ 對策六：制度完善，建立責任承擔機制</div>
+            <ul>
+              <li>研議重大過失山難案件收取搜救費用（責任承擔）</li>
+              <li>針對高風險山域實施分級管制（季節性、天候性限制）</li>
+              <li>修訂相關法規，明確各機關在山域事故之權責分工</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【肆、結語】</div>
+      <p>透過向右魚骨圖確認要因後，以向左魚骨圖對應提出六大方向對策，從「預防→科技→量能→整合→資訊→制度」全面著手，可有效降低山域救援「難找、難到、難救」之困境，實現打造友善登山環境之目標。</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══ 第二題 ═══ -->
+<div class="section-title subj-crisis">第二題（30分）— 危機處理：地震後12小時 CDM 五步驟應變</div>
+
+<div class="q-block subj-crisis">
+  <div class="q-header">第二題 <span class="q-score">（30分）｜課程：危機處理（含風險管理）｜工具：CDM</span></div>
+  <div class="q-text">
+    <div class="situation">【情境】平日上午9:30發生大地震，分隊辦公廳舍劇烈搖晃，公文櫃傾倒砸傷1名隊員。轄區多處房屋倒塌、人員受困。當班僅5人（含1名傷員），無外援，需於震後12小時內評估災情、決定救災重點。</div>
+    <div class="question">【問題】以「警察勤務安全危機決策模式（CDM）」及下列5步驟，說明最初12小時內各步驟之應變程序及重點。</div>
+  </div>
+  <div class="non-official">⚠ 非官方參考解析（申論題無官方答案）</div>
+  <div class="ans-block">
+
+    <div class="ans-section">
+      <div class="ans-title">【壹、前言】</div>
+      <p>身為甲消防分隊在隊分隊長，依據危機處理課程所學「警察勤務安全危機決策模式（CDM）」，於<strong>資訊不完整、資源高度匱乏</strong>之情境下，仍須在震後12小時內完成決策與部署。以下依五步驟逐一說明應變程序與重點。</p>
+    </div>
+
+    <div class="cdm-step">
+      <div class="cdm-title"><span class="cdm-num">步驟一</span>蒐集轄區可能的災情</div>
+      <div class="law-ref">CDM核心：情境評估（Situational Awareness）→ 在不完整情資下快速建立初步圖像</div>
+      <ul>
+        <li><strong>立即通報上級：</strong>搖晃停止後第一時間通報縣市消防局，回報分隊狀況（受傷人員、辦公廳舍損況），並請求啟動災害應變機制。</li>
+        <li><strong>多管道收集報案：</strong>指定1名人員專責接聽手機及分隊電話，系統記錄每筆報案之地點、建物類型、受困人數及傷亡初估，以GIS地圖標記位置。</li>
+        <li><strong>監聽廣播及消防指揮中心：</strong>收聽警察無線電、縣市消防指揮中心通報，補充未主動報案之災情。</li>
+        <li><strong>派員目視偵查：</strong>在確保安全前提下，指派1名人員快速巡查轄區主幹道，目視確認明顯倒塌建物及受困情形，建立初步災情概況圖。</li>
+        <li><strong>建立災情記錄表：</strong>以地點、類型、傷亡概況、優先等級逐筆列管，作為後續決策依據。</li>
+      </ul>
+    </div>
+
+    <div class="cdm-step">
+      <div class="cdm-title"><span class="cdm-num">步驟二</span>動員轄區可支援的救災人力及資源</div>
+      <div class="law-ref">CDM核心：資源整合（Resource Management）→ 最大化可用資源，填補人力缺口</div>
+      <ul>
+        <li><strong>召回休假人員：</strong>立即電話通知所有分隊休假人員返隊，平日上午9:30其他班別人員多數可召回，預估30~60分鐘內可增援3~5人。</li>
+        <li><strong>向上急請支援：</strong>向縣市消防局報告人力嚴重不足，請求調度鄰近分隊或特種救援大隊支援。</li>
+        <li><strong>啟動義勇消防隊：</strong>聯繫轄區義勇消防隊員（依消防法§29），請求立即集結協助救災及交通管制。</li>
+        <li><strong>請求民間救難組織：</strong>聯繫轄區救難協會、搜救犬隊等，請求人力及搜救犬支援。</li>
+        <li><strong>請求軍方支援：</strong>透過縣市政府協調附近駐軍（陸軍工兵、後備部隊），請求大型機具及人力協助。</li>
+        <li><strong>盤點現有裝備：</strong>清點分隊內油壓救援工具、繩索、急救包等可用救災資源，依需求分配至各救援小組。</li>
+      </ul>
+    </div>
+
+    <div class="cdm-step">
+      <div class="cdm-title"><span class="cdm-num">步驟三</span>缺乏大型救災機具的搜救方法</div>
+      <div class="law-ref">CDM核心：行動決策（Action Implementation）→ 因地制宜，以有限工具最大化搜救效能</div>
+      <ul>
+        <li><strong>聲響法及呼叫法：</strong>搜救人員定時靜止並以敲擊方式（敲打水管、鋼構）聆聽受困者求救聲響，確認位置再集中挖掘，避免盲目挖掘浪費人力。</li>
+        <li><strong>徒手搬移輕型障礙：</strong>對磚塊、輕型隔間牆等可搬移之障礙，以人力接力方式清除，優先解除受困者頭部及胸腔之壓迫，而非移除整塊結構體。</li>
+        <li><strong>槓桿原理應用：</strong>利用現場木料、鐵管作為槓桿，配合石塊或磚塊作為支點，撬起壓覆物，協助受困者脫困。</li>
+        <li><strong>支撐防止二次倒塌：</strong>進入不穩定建物前，先以木料或千斤頂支撐，防止餘震造成二次倒塌，確保搜救人員安全。</li>
+        <li><strong>維持與受困者通話：</strong>持續透過狹縫與受困者對話，穩定其情緒，同時確認受傷情形及最佳脫困方向，避免受困者因恐慌造成自身二次傷害。</li>
+        <li><strong>緊急醫療處置：</strong>若無法立即救出，先透過開口遞送水分及提供初步傷口處置，維持受困者生命體徵。</li>
+      </ul>
+    </div>
+
+    <div class="cdm-step">
+      <div class="cdm-title"><span class="cdm-num">步驟四</span>有限人力作最大化人命救災優先順序</div>
+      <div class="law-ref">CDM核心：風險評估與優先排序（Risk Assessment）→ START傷患分類＋地點優先原則</div>
+      <ul>
+        <li><strong>採 START 簡易傷患分類：</strong>對各災點受困傷者以「呼吸、循環、意識」三項快速分類：<br>
+          <strong>紅（立即）</strong>：有生命跡象但危急，優先救援；<br>
+          <strong>黃（延遲）</strong>：暫時穩定，次優先；<br>
+          <strong>綠（輕傷）</strong>：可自行脫困或由義消協助；<br>
+          <strong>黑（死亡/無望）</strong>：有限資源不投入。</li>
+        <li><strong>地點優先原則：</strong>①人口密集倒塌建物（如集合住宅）優先；②已確認有生還者聲響者優先；③公共聚集場所（學校、市場）優先；④單棟獨立住宅次之。</li>
+        <li><strong>避免「單一案件陷阱」：</strong>不因單一難度高的受困案件投入全部人力，應持續監控全轄區，確保各災點均有人員照管。</li>
+        <li><strong>受傷隊員安置：</strong>受傷的1名隊員交由義消或醫療人員照護，使其脫離作戰序列，避免影響整體救援效能。</li>
+      </ul>
+    </div>
+
+    <div class="cdm-step">
+      <div class="cdm-title"><span class="cdm-num">步驟五</span>與警察等當地公務機關的合作</div>
+      <div class="law-ref">法規依據：災害防救法第14條（縣市災害應變中心）；警察法；緊急醫療救護法</div>
+      <ul>
+        <li><strong>建立聯合現場指揮所（ICP）：</strong>與警察在交通便利、安全地點設立聯合指揮所，統一協調警消雙方任務分工，避免指揮混亂。</li>
+        <li><strong>警察負責：</strong>①交通管制（清出救援動線）；②現場秩序維護（防止民眾圍觀妨礙救援）；③配合轄區住戶資料提供受困人數確認。</li>
+        <li><strong>消防負責：</strong>①搜救受困人員；②現場危險物評估（瓦斯洩漏、火災）；③傷患初期急救及後送。</li>
+        <li><strong>聯繫衛生醫療單位：</strong>協調縣市衛生局及鄰近醫院，規劃傷患後送路線及醫院分流，避免單一醫院負荷過重。</li>
+        <li><strong>聯繫工務部門：</strong>請工務（建管）人員評估建物結構安全，確認是否可安全進行搜救，避免搜救人員遭餘震二次傷亡。</li>
+        <li><strong>啟動縣市災害應變中心（EOC）：</strong>確認縣市消防局已啟動EOC統一協調，分隊持續通報即時災情，請求資源調度支援。</li>
+      </ul>
+    </div>
+
+    <div class="ans-section" style="margin-top:16px;">
+      <div class="ans-title">【結語】</div>
+      <p>CDM模式強調在資訊不完整情境下仍須快速決策，五步驟環環相扣：蒐集情資→整合資源→現場搜救→優先排序→跨機關協作，以「救最多人命」為核心原則，確保震後12小時黃金救援期發揮最大效能。</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══ 第三題 ═══ -->
+<div class="section-title subj-crime">第三題（20分）— 貪污治罪條例：收賄罪名＋減免規定</div>
+
+<div class="q-block subj-crime">
+  <div class="q-header">第三題 <span class="q-score">（20分）｜簡答型｜科目：貪污治罪條例</span></div>
+  <div class="q-text">
+    <div class="situation">【情境】消防機關小隊長甲帶隊複查建築物，管理權人乙（甲舊識）請甲不要吹毛求疵並私下贈予甲紅包3萬6千元，甲欣然同意並收受。甲事後遭檢舉，於偵查時自白並繳交3萬6千元。</div>
+    <div class="question">【問題一】甲觸犯何罪？<br>【問題二】甲得否適用減免罪責之規定？</div>
+  </div>
+  <div class="non-official">⚠ 非官方參考解析（簡答型無官方範本）</div>
+  <div class="ans-block">
+
+    <div class="ans-section">
+      <div class="ans-title">【一、甲觸犯之罪名】</div>
+      <div class="law-ref">法規依據：貪污治罪條例第4條第1項第5款；第5條第1項第3款（擇一論罪）；刑法第10條第2項（公務員定義）</div>
+
+      <p><strong>（一）罪名爭點：違背職務或職務上行為收賄？</strong></p>
+      <p>本案關鍵在於判斷乙之請求（不吹毛求疵）係要求甲<strong>違背職務</strong>，還是僅係職務上裁量範圍內之便利：</p>
+      <ul>
+        <li>本案為<strong>複查</strong>業務，係在前次查核缺失後進行追蹤確認，甲依法有嚴格查核之義務。</li>
+        <li>乙請求甲「不要吹毛求疵」，實質係要求甲放鬆查核標準、對潛在缺失不予追究，已逾越正常職務裁量範圍。</li>
+        <li>甲「欣然同意」並確實收受紅包，主觀上有違背職務之認識。</li>
+      </ul>
+
+      <p><strong>（二）成立貪污治罪條例第4條第1項第5款 — 違背職務收受賄賂罪</strong></p>
+      <p>貪污治罪條例第4條第1項第5款規定：「對於違背職務之行為，要求、期約或收受賄賂或其他不正利益者。」</p>
+      <ul>
+        <li><strong>公務員身份：</strong>甲為消防機關小隊長，依刑法第10條第2項屬<strong>公務員</strong>。</li>
+        <li><strong>違背職務之行為：</strong>甲依法應嚴格複查，卻同意對缺失「不吹毛求疵」，屬<strong>違背職務</strong>。</li>
+        <li><strong>收受賄賂：</strong>紅包3萬6千元為有價財物，屬「賄賂」，甲欣然收受，行為完整。</li>
+        <li><strong>法定刑：</strong>無期徒刑或10年以上有期徒刑，得併科新臺幣1億元以下罰金。</li>
+      </ul>
+
+      <p style="color:#9a6a1f;font-size:0.88em;">⚠ 備考說明：若認定乙僅係請求甲提升行政效率（職務裁量內），則改依<strong>貪污治罪條例第5條第1項第3款</strong>（對職務上行為收受賄賂罪，法定刑7年以上）論處。惟複查情境下，主流見解傾向以§4Ⅰ⑤較為妥適。</p>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【二、甲得否適用減免罪責規定】</div>
+      <div class="law-ref">法規依據：貪污治罪條例第8條（偵查中自白減刑）；第12條第1項（所得未達5萬元減刑）</div>
+
+      <p><strong>（一）貪污治罪條例第8條第1項 — 偵查中自白且繳回所得：得減輕其刑</strong></p>
+      <p>第8條第1項規定：「犯第4條至第6條之罪，在偵查中自白，如有所得並自動繳交全部所得財物者，減輕其刑；因而查獲其他正犯或共犯者，減輕或免除其刑。」</p>
+      <ul>
+        <li><strong>偵查中自白：</strong>甲於接受偵查時承認收受紅包一事 ✓</li>
+        <li><strong>自動繳交全部所得：</strong>甲繳交3萬6千元，為全部收受之金額 ✓</li>
+        <li><strong>結論：</strong>甲<strong>符合第8條第1項</strong>，<span class="law-tag">貪污§8Ⅰ</span>得<strong>減輕其刑</strong>（非免除）。</li>
+        <li>若甲之自白同時查獲其他共犯，則得進一步<strong>減輕或免除其刑</strong>（但本案無此情形）。</li>
+      </ul>
+
+      <p><strong>（二）貪污治罪條例第12條第1項 — 情節輕微且所得未達5萬元：得再減輕</strong></p>
+      <p>第12條第1項規定：「犯第4條至第6條之罪，情節輕微，犯罪所得財物在新臺幣5萬元以下者，減輕其刑。」</p>
+      <ul>
+        <li><strong>犯罪所得3萬6千元：</strong>未達5萬元門檻 ✓</li>
+        <li><strong>情節是否輕微：</strong>甲僅單次、被動受贈，案情相對單純，法院有認定情節輕微之空間。</li>
+        <li><strong>結論：</strong>若法院認定情節輕微，甲<strong>亦得依第12條減輕其刑</strong>。</li>
+      </ul>
+
+      <p><strong>（三）兩項減輕規定得否並用</strong></p>
+      <p>依刑法第70條：「有二種以上刑之加重或減輕者，遞加或遞減之。」§8與§12均係得減輕事由，<strong>得併用遞減</strong>，甲之刑度可因此大幅降低，但仍不得低於法定最低刑度（除非另有免刑規定）。</p>
+
+      <table>
+        <tr><th>適用條文</th><th>要件</th><th>效果</th><th>本案是否符合</th></tr>
+        <tr><td>貪污§8Ⅰ</td><td>偵查中自白＋繳回全部所得</td><td>減輕其刑</td><td>✅ 符合</td></tr>
+        <tr><td>貪污§12Ⅰ</td><td>情節輕微＋所得未達5萬元</td><td>減輕其刑</td><td>✅ 可能符合（待法院認定）</td></tr>
+        <tr><td>兩者並用</td><td>同時符合上述要件</td><td>遞次減輕</td><td>✅ 得並用</td></tr>
+      </table>
+
+      <p><strong>小結：</strong>甲雖成立貪污治罪條例第4條第1項第5款之違背職務收受賄賂罪，然可依<strong>§8第1項</strong>（偵查中自白＋繳回所得）及<strong>§12第1項</strong>（情節輕微＋所得未達5萬元）分別主張減輕其刑，兩者得並用遞減，以降低實際刑度。</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══ 第四題 ═══ -->
+<div class="section-title subj-admin">第四題（20分）— 行政程序法：行政委託 vs 行政助手 vs 行政協助</div>
+
+<div class="q-block subj-admin">
+  <div class="q-header">第四題 <span class="q-score">（20分）｜簡答型｜科目：行政法、行政程序法</span></div>
+  <div class="q-text">
+    <div class="situation">【情境】消防署訂定「各級消防機關協助救護勤務之義勇消防人員與志工派遣及管理指導原則」，協助各級消防機關運用民力執行勤務。</div>
+    <div class="question">【問題】義勇消防人員按指導原則協助執行勤務時，與消防機關之間係「行政委託」、「行政助手」或「行政協助」？</div>
+  </div>
+  <div class="non-official">⚠ 非官方參考解析（簡答型無官方範本）</div>
+  <div class="ans-block">
+
+    <div class="ans-section">
+      <div class="ans-title">【一、三種行政法概念之定義與區分】</div>
+      <div class="law-ref">法規依據：行政程序法第2條第3項（行政委託）；行政程序法第19條（行政協助）；行政助手係學理概念（無明文但實務承認）</div>
+
+      <table>
+        <tr><th>概念</th><th>定義</th><th>對外關係</th><th>公權力歸屬</th><th>法律責任</th></tr>
+        <tr>
+          <td><strong>行政委託</strong><br>（公權力委託）</td>
+          <td>行政機關依法律授權，將公權力之行使委託私人或團體行使（行政程序法§2Ⅲ）</td>
+          <td>受委託人<strong>以自己名義</strong>對外行使公權力</td>
+          <td>受委託人在委託範圍內視為行政機關</td>
+          <td>受委託人自行負責</td>
+        </tr>
+        <tr>
+          <td><strong>行政助手</strong><br>（Verwaltungshelfer）</td>
+          <td>私人受行政機關指揮命令，以機關之工具角色輔助執行勤務，無獨立公權力</td>
+          <td>以<strong>行政機關名義</strong>為之，無自主判斷空間</td>
+          <td>無，仍屬行政機關</td>
+          <td>由行政機關承擔</td>
+        </tr>
+        <tr>
+          <td><strong>行政協助</strong><br>（行政程序法§19）</td>
+          <td>行政機關間基於業務需要相互請求協助（<strong>機關對機關</strong>）</td>
+          <td>被請求機關以自己名義協助</td>
+          <td>各依其職權</td>
+          <td>各自依法負責</td></tr>
+      </table>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【二、義勇消防人員之定性分析】</div>
+      <p><strong>（一）非「行政委託」之理由：</strong></p>
+      <ul>
+        <li>行政委託須有<strong>法律明確授權</strong>（授權明確性），且受委託人須<strong>以自己名義</strong>獨立行使公權力，對相對人產生法律效果。</li>
+        <li>義勇消防人員係依「指導原則」執行勤務，屬<strong>內部指導規範</strong>，而非個別法律之公權力委託授權，且其執行救護勤務係在消防機關指揮監督下進行，<strong>不具獨立公權力地位</strong>，故非行政委託。</li>
+      </ul>
+
+      <p><strong>（二）非「行政協助」之理由：</strong></p>
+      <ul>
+        <li>行政程序法第19條之行政協助，適用主體為<strong>行政機關與行政機關之間</strong>，強調機關互助關係。</li>
+        <li>義勇消防人員為<strong>自然人或私人團體</strong>，非行政機關，故不適用行政協助之概念。</li>
+      </ul>
+
+      <p><strong>（三）應屬「行政助手」：</strong></p>
+      <p>義勇消防人員符合行政助手之核心特徵：</p>
+      <ul>
+        <li><strong>完全受消防機關指揮派遣：</strong>依「指導原則」明定由各級消防機關統一派遣管理，無自主裁量空間。</li>
+        <li><strong>以消防機關名義執行：</strong>救護勤務之執行係代消防機關為之，非以個人或義勇組織名義對外發生效力。</li>
+        <li><strong>無獨立公權力：</strong>義勇消防人員無強制命令相對人之公權力，僅為輔助性質之事實行為（搬運、引導、初步救護）。</li>
+        <li><strong>法律責任由機關承擔：</strong>義勇消防人員執行勤務致人損害時，由消防機關依國家賠償法負責，而非義勇消防人員個人（除故意重大過失外）。</li>
+      </ul>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【三、結論】</div>
+      <p>義勇消防人員按指導原則協助執行救護勤務時，與消防機關之間係屬<strong>行政助手</strong>關係，而非行政委託或行政協助。其法律地位為消防機關之執行輔助工具，不具獨立公法地位，一切以消防機關名義為之，法律責任由消防機關承擔。此一定性對於義勇消防人員之責任歸屬、國家賠償適用及管理權限均有重要影響。</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══ 考向分析 ═══ -->
+<div class="section-title subj-overview">★ 113年考試方向分析</div>
+
+<div class="analysis-box subj-overview">
+  <h3>各題核心考點對照</h3>
+  <table>
+    <tr><th>題號</th><th>課程/科目</th><th>核心工具/概念</th><th>出題重點與評分關鍵</th></tr>
+    <tr>
+      <td>第一題（30分）</td>
+      <td>方案規劃</td>
+      <td>向右／向左魚骨圖</td>
+      <td>①能否清楚區分向右（要因）與向左（對策）方向 ②骨刺分類是否涵蓋多面向（人員/環境/資訊/量能/整合/制度）③對策與要因是否對應</td>
+    </tr>
+    <tr>
+      <td>第二題（30分）</td>
+      <td>危機處理、風險管理</td>
+      <td>CDM危機決策模式</td>
+      <td>①能否點名「CDM」並說明在不完整情資下決策 ②五步驟是否均有實質內容 ③是否強調「12小時黃金期」限制與優先排序</td>
+    </tr>
+    <tr>
+      <td>第三題（20分）</td>
+      <td>貪污治罪條例</td>
+      <td>§4Ⅰ⑤或§5Ⅰ③；§8；§12</td>
+      <td>①違背職務 vs 職務上行為之辨析 ②§8自白繳回要件是否正確引用 ③§12所得未達5萬元門檻 ④兩者可否並用</td>
+    </tr>
+    <tr>
+      <td>第四題（20分）</td>
+      <td>行政法（行政程序法）</td>
+      <td>行政助手、行政委託、行政協助</td>
+      <td>①三概念定義是否精確 ②逐一排除法（非委託、非協助）③行政助手之核心特徵（受指揮、以機關名義、無獨立公權力）</td>
+    </tr>
+  </table>
+
+  <h3 style="margin-top:14px;">113年 vs 114年出題趨勢比較</h3>
+  <table>
+    <tr><th>面向</th><th>113年</th><th>114年</th></tr>
+    <tr><td>管理工具</td><td>魚骨圖（較難畫，視覺化）</td><td>SWOT＋TOWS（框架較固定）</td></tr>
+    <tr><td>危機處理</td><td>CDM五步驟（地震實戰）</td><td>三階段框架（倡議型）</td></tr>
+    <tr><td>法律題型</td><td>貪污（§4 or §5）＋行政助手</td><td>行政程序法§46閱覽＋刑法§213＋貪污§6Ⅰ④</td></tr>
+    <tr><td>共同特徵</td><td colspan="2">✓ 情境導向 ✓ 明確指定課程框架 ✓ 法條精確引用 ✓ 公務員職業倫理隱形考點</td></tr>
+  </table>
+</div>
+
+
+<!-- ═══ 113 核心萬用補充 ═══ -->
+<div class="section-title subj-overview">★ 113年補充：魚骨圖 ＋ CDM 萬用框架</div>
+
+<div class="core-box subj-overview">
+  <h2>🎯 113年新增工具框架速記</h2>
+
+  <div class="subj-plan">
+  <h3>【魚骨圖（石川圖）萬用答題要訣】</h3>
+  <div class="core-template">向右魚骨圖（要因分析）：
+  魚頭（右）= 問題/效果
+  骨刺（左）= 要因分類（建議至少4~6大類）
+  常見分類骨：人員面／環境面／資訊面／量能面／整合面／制度面
+
+向左魚骨圖（對策規劃）：
+  魚頭（左）= 目標/期望效果
+  骨刺（右）= 對策方向（與要因骨刺一一對應最佳）
+
+寫法要訣：
+  ① 先寫「魚頭」確立問題/目標，再展開骨刺
+  ② 每支骨刺下列2~3個具體子項目
+  ③ 向左的每項對策最好能對應向右的要因（因果對應）
+  ④ 結語說明「以XX對策為主軸，逐步解決YY問題」</div>
+  </div>
+
+  <div class="subj-crisis">
+  <h3>【CDM危機決策模式萬用框架】</h3>
+  <div class="core-template">CDM（Critical Decision Method / 危機決策模式）核心精神：
+→ 在【情資不完整、資源高度匱乏、時間壓力大】的情境下，仍須做出最佳決策
+
+萬用CDM答題句型：
+「依危機決策模式（CDM），在[XX情境]資訊不完整之情況下，
+ 分[N]步驟進行決策：
+ 步驟一【蒐集情資】：透過……以建立初步情境圖像；
+ 步驟二【整合資源】：動員……填補資源缺口；
+ 步驟三【執行行動】：採取……優先處置；
+ 步驟四【排序優先】：依[START/風險矩陣]……；
+ 步驟五【跨機關協作】：與[警察/醫療/工務]……共同處置。」
+
+黃金原則（隨時加分）：
+① 強調「12小時/黃金72小時」等時間壓力
+② 點名START傷患分類法（紅黃綠黑）
+③ 說明建立「聯合指揮所（ICP）」以統一指揮</div>
+  </div>
+
+  <div class="subj-admin">
+  <h3>【行政助手答題三步驟萬用法】</h3>
+  <div class="core-template">第一步：定義三概念（行政委託§2Ⅲ / 行政助手學理 / 行政協助§19）
+第二步：逐一排除法
+  → 非委託：因為[無法律授權/無獨立公權力/不以自己名義]
+  → 非協助：因為[主體非行政機關/而是自然人]
+第三步：正面論述行政助手要件
+  ① 受機關指揮派遣
+  ② 以機關名義為之
+  ③ 無獨立公權力
+  ④ 法律責任由機關承擔（國賠法）</div>
+  </div>
+</div>
+
+
+<div class="footer">113年警佐警察人員晉升警正官等訓練 第2梯次 消防人員 實務寫作題解析｜非官方參考資料・製作：Claude AI・2026/05/19</div>
+</body>
+</html>

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>111年_消防_申論題解析</title>
+<style>
+  :root{
+    --bg:#f6f5f1; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66; --line:#e5e2da;
+    --plan:#3b6e8a; --crisis:#b2551f; --admin:#6a4a8a; --info:#4a7a6a;
+    --crim:#8a3b3b; --media:#8a2b6e; --neutral:#6b6a66;
+    --overview:#8a5a3b; --overview-bg:#faf6ee;
+  }
+  * { box-sizing: border-box; }
+  body { font-family: 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif; background: var(--bg); color: var(--ink); margin: 0 auto; padding: 36px 28px 90px; font-size: 15px; line-height: 1.9; max-width: 980px; }
+  .header { background: var(--card); border: 1px solid var(--line); border-left: 5px solid var(--overview); padding: 22px 28px; border-radius: 10px; margin-bottom: 20px; }
+  .header h1 { margin: 0 0 6px 0; font-size: 1.35em; color: var(--ink); font-weight: 700; }
+  .header .sub { font-size: 0.88em; color: var(--sub); }
+  .header .tag { display: inline-block; background: var(--overview); color: #fff; border-radius: 4px; padding: 2px 10px; font-size: 0.78em; margin-left: 8px; font-weight: 600; }
+  .q-block { background: var(--card); border: 1px solid var(--line); border-radius: 10px; margin-bottom: 20px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+  .q-header { background: color-mix(in srgb, var(--subj, var(--overview)) 10%, white); color: var(--subj, var(--overview)); font-weight: bold; padding: 8px 16px; font-size: 0.95em; border-left: 4px solid var(--subj, var(--overview)); border-bottom: 1px solid var(--line); }
+  .q-score { font-weight: normal; font-size: 0.85em; margin-left: 8px; color: var(--sub); opacity: 1; }
+  .q-text { padding: 14px 18px 10px 18px; color: var(--ink); font-size: 0.93em; line-height: 1.85; border-bottom: 1px solid var(--line); background: #faf9f6; }
+  .q-text .situation { color: var(--ink); font-size: 0.91em; border-left: 3px solid var(--subj, var(--overview)); padding-left: 12px; margin-bottom: 8px; }
+  .q-text .question { color: var(--ink); font-weight: bold; margin-top: 10px; }
+  .non-official { padding: 7px 18px; background: var(--overview-bg); color: #6b4a2e; font-size: 0.82em; border-bottom: 1px solid #e8dcc8; }
+  .ans-block { padding: 14px 18px; }
+  .ans-section { margin-bottom: 18px; }
+  .ans-title { font-weight: bold; color: var(--subj, var(--overview)); margin-bottom: 8px; font-size: 0.95em; padding: 5px 0; border-bottom: 1px dashed var(--line); }
+  .law-ref { background: #fdfcfa; border-left: 3px solid var(--subj, var(--overview)); padding: 5px 12px; font-size: 0.82em; color: var(--ink); margin-bottom: 10px; border-radius: 0 3px 3px 0; }
+  .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+  .swot-cell { padding: 10px 14px; border-radius: 5px; font-size: 0.88em; }
+  .swot-s { background: #eef6f0; border: 1px solid #b8ddc0; }
+  .swot-w { background: #fbf1e6; border: 1px solid #e8c99a; }
+  .swot-o { background: #eaf2f8; border: 1px solid #b7d0e8; }
+  .swot-t { background: #fbeaea; border: 1px solid #e8b9b9; }
+  .swot-cell li, .swot-cell p { color: var(--ink); }
+  .swot-label { font-weight: bold; font-size: 0.92em; margin-bottom: 6px; }
+  .swot-s .swot-label { color: #2f7a4a; }
+  .swot-w .swot-label { color: #a9660f; }
+  .swot-o .swot-label { color: #2f5f8a; }
+  .swot-t .swot-label { color: #a83b3b; }
+  .tows-box { background: #fdfcfa; border: 1px solid var(--line); border-left: 4px solid var(--subj, var(--overview)); border-radius: 5px; padding: 10px 14px; margin-bottom: 10px; font-size: 0.88em; }
+  .tows-box .tows-title { font-weight: bold; color: var(--subj, var(--overview)); margin-bottom: 6px; }
+  .press-card { background: #fdfcfa; border: 1px solid var(--line); border-left: 4px solid var(--subj, var(--overview)); border-radius: 0 5px 5px 0; padding: 10px 14px; margin-bottom: 10px; }
+  .press-num { display: inline-block; background: var(--subj, var(--overview)); color: #fff; border-radius: 3px; padding: 1px 8px; font-size: 0.82em; font-weight: bold; margin-right: 8px; }
+  ul, ol { padding-left: 22px; margin: 6px 0; }
+  li { margin-bottom: 5px; font-size: 0.91em; color: var(--ink); }
+  li strong { color: var(--subj, var(--overview)); }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.87em; }
+  th { background: color-mix(in srgb, var(--subj, var(--overview)) 16%, white); color: var(--ink); padding: 7px 10px; text-align: left; border: 1px solid var(--line); }
+  td { padding: 7px 10px; border-bottom: 1px solid var(--line); color: var(--ink); vertical-align: top; }
+  tr:nth-child(even) td { background: #faf9f6; }
+  .section-title { background: var(--overview-bg); border-left: 4px solid var(--subj, var(--overview)); color: var(--subj, var(--overview)); padding: 8px 16px; margin: 28px 0 14px 0; font-size: 1em; font-weight: bold; border-radius: 0 6px 6px 0; }
+  .analysis-box { background: var(--overview-bg); border: 1px solid #e8dcc8; border-radius: 8px; padding: 14px 18px; margin-bottom: 20px; }
+  .analysis-box h3 { color: var(--overview); margin: 0 0 10px 0; font-size: 1em; }
+  .core-box { background: var(--overview-bg); border: 1px solid #e8dcc8; border-left: 4px solid var(--overview); border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+  .core-box h2 { color: var(--overview); margin: 0 0 12px 0; font-size: 1.05em; }
+  .core-box h3 { color: var(--overview); margin: 12px 0 6px 0; font-size: 0.95em; }
+  .core-template { background: #ffffff; border: 1px solid var(--line); border-left: 4px solid var(--overview); padding: 10px 14px; font-size: 0.88em; color: var(--ink); border-radius: 0 4px 4px 0; margin-bottom: 8px; white-space: pre-wrap; line-height: 1.9; }
+  .law-tag { display: inline-block; background: color-mix(in srgb, var(--subj, var(--overview)) 10%, white); border: 1px solid var(--subj, var(--overview)); color: var(--subj, var(--overview)); border-radius: 3px; padding: 1px 6px; font-size: 0.78em; margin-left: 4px; }
+  .footer { text-align: center; font-size: 0.78em; color: #a09d95; margin-top: 30px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .note-box { background: #fdf8ec; border: 1px solid #ecdfb8; border-radius: 5px; padding: 10px 14px; margin: 8px 0; font-size: 0.88em; color: #7a5a1a; }
+</style>
+</head>
+<body>
+<div style="position:fixed;top:8px;right:12px;z-index:9999;font-size:12px;color:#9a978d;background:rgba(255,255,255,.85);padding:2px 10px;border-radius:999px;pointer-events:none;">柯醒翰製作</div>
+
+<div class="header">
+  <h1>111年警佐警察人員晉升警正官等訓練<span class="tag">消防人員</span><span class="tag" style="background:var(--admin)">第2梯次</span></h1>
+  <div class="sub">實務寫作題解析・共<strong>5題</strong>（第1、2題各30分；第3題20分；第4、5題各10分）・非官方參考解析，以評分標準為準</div>
+</div>
+<div class="note-box">⚠ 注意：111年共5題（測驗140分鐘），與112～114年之4題架構不同，請特別留意題數及配分分配。</div>
+
+<!-- ═══ 第一題 ═══ -->
+<div class="section-title" style="--subj:var(--plan)">第一題（30分）— 方案規劃：SWOT分析 ＋ 策略配對</div>
+
+<div class="q-block" style="--subj:var(--plan)">
+  <div class="q-header">第一題 <span class="q-score">（30分）｜課程：方案規劃｜工具：SWOT＋策略配對</span></div>
+  <div class="q-text">
+    <div class="situation">【情境】甲機關廳舍使用率偏低，規劃活化為休憩小棧。內部：同仁支持願配合、設備良好。但人力有限、經費拮据、需以民間認養方式。外部：社會資源豐富、商家學校願協助、位處觀光要道。但位置偏遠交通不便、法令限制。</div>
+    <div class="question">【問題】以SWOT分析法就內外部環境因素予以分析，並進行SWOT策略配對。</div>
+  </div>
+  <div class="non-official">⚠ 非官方參考解析（申論題無官方答案）</div>
+  <div class="ans-block">
+
+    <div class="ans-section">
+      <div class="ans-title">【壹、前言】</div>
+      <p>身為甲機關本案承辦人，運用方案規劃課程所學SWOT分析架構，就廳舍活化案之內外部環境要素進行系統分析，並透過SWOT策略配對（即TOWS矩陣），提出四象限策略建議。</p>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【貳、SWOT分析】</div>
+      <div class="swot-grid">
+        <div class="swot-cell swot-s">
+          <div class="swot-label">S 優勢（內部有利）</div>
+          <ul>
+            <li><strong>S1</strong> 各部門全力支持，同仁願意留守、提供導覽</li>
+            <li><strong>S2</strong> 廳舍設備狀況良好，僅需稍加裝修即可啟用</li>
+            <li><strong>S3</strong> 機關工作特色具吸引力，可提升民眾對機關認識</li>
+          </ul>
+        </div>
+        <div class="swot-cell swot-w">
+          <div class="swot-label">W 劣勢（內部不利）</div>
+          <ul>
+            <li><strong>W1</strong> 人力有限，調度捉襟見肘</li>
+            <li><strong>W2</strong> 經費拮据，缺乏額外裝修費用</li>
+            <li><strong>W3</strong> 法令限制，須以民間認養方式運作，程序繁瑣</li>
+          </ul>
+        </div>
+        <div class="swot-cell swot-o">
+          <div class="swot-label">O 機會（外部有利）</div>
+          <ul>
+            <li><strong>O1</strong> 附近商家及學校願提供經費及志工人力協助</li>
+            <li><strong>O2</strong> 廳舍位處風景觀光要道，民眾路過可順道參訪</li>
+            <li><strong>O3</strong> 民間認養（企業社會責任）趨勢盛行，合作意願高</li>
+          </ul>
+        </div>
+        <div class="swot-cell swot-t">
+          <div class="swot-label">T 威脅（外部不利）</div>
+          <ul>
+            <li><strong>T1</strong> 位處偏遠，交通不便，民眾需自行前往或預約巴士</li>
+            <li><strong>T2</strong> 廳舍使用率低的既有印象，影響外界合作意願</li>
+            <li><strong>T3</strong> 民間認養法令限制，合作模式可能受主管機關審查</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【參、SWOT策略配對（TOWS矩陣）】</div>
+
+      <div class="tows-box">
+        <div class="tows-title">① SO策略（優勢＋機會）→ 積極擴張：發揮優勢，把握機會</div>
+        <ul>
+          <li><strong>建立多元導覽體驗：</strong>結合同仁導覽意願（S1）與商家學校志工資源（O1），設計深度體驗導覽課程，吸引學校辦理校外教學，創造穩定參訪人潮。</li>
+          <li><strong>善用觀光要道優勢：</strong>結合廳舍良好設備（S2）與地處觀光要道（O2），設計具吸引力的常設展覽，讓路過民眾自然停留。</li>
+        </ul>
+      </div>
+
+      <div class="tows-box">
+        <div class="tows-title">② WO策略（劣勢＋機會）→ 改善補強：借助機會克服劣勢</div>
+        <ul>
+          <li><strong>引入民間資源解決經費：</strong>以民間認養機制（W3已允許）積極洽談商家贊助裝修費用（O1、O3），解決經費拮据（W2）問題。</li>
+          <li><strong>志工補充人力不足：</strong>與學校志工隊合作（O1），補充機關導覽人力不足（W1），使廳舍得以常態開放。</li>
+        </ul>
+      </div>
+
+      <div class="tows-box">
+        <div class="tows-title">③ ST策略（優勢＋威脅）→ 防禦鞏固：運用優勢因應威脅</div>
+        <ul>
+          <li><strong>預約制度解決交通問題：</strong>強化同仁導覽服務（S1），搭配預約巴士接送制度（因應T1），設計定期主題參訪活動，吸引特定族群主動前往。</li>
+          <li><strong>以特色展覽扭轉印象：</strong>利用機關工作特色（S3）策劃吸引眼球的主題展覽，打破廳舍使用率低的既有印象（T2），提升合作意願。</li>
+        </ul>
+      </div>
+
+      <div class="tows-box">
+        <div class="tows-title">④ WT策略（劣勢＋威脅）→ 保守防守：降低劣勢，規避威脅</div>
+        <ul>
+          <li><strong>低成本試行計畫：</strong>先以最低裝修成本小規模試行（W2+T2），驗證可行性及民眾反應後再逐步擴大，避免大規模投入卻成效不彰的風險。</li>
+          <li><strong>提前完成法令審查：</strong>儘早與主管機關溝通民間認養合作模式（W3+T3），確認法令遵循後再對外公告，避免後期受阻。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【肆、結語】</div>
+      <p>本案建議以<strong>WO策略</strong>（引入民間經費與志工）為主軸，輔以<strong>SO策略</strong>（多元導覽體驗），在低成本、低人力投入前提下，借助外部豐富的社會資源，有效推動廳舍活化目標。</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ 第二題 ═══ -->
+<div class="section-title" style="--subj:var(--crisis)">第二題（30分）— 危機處理：現場記者說明會原則（溪流救援）</div>
+
+<div class="q-block" style="--subj:var(--crisis)">
+  <div class="q-header">第二題 <span class="q-score">（30分）｜課程：危機處理｜主題：現場媒體危機溝通</span></div>
+  <div class="q-text">
+    <div class="situation">【情境】3名大學生被困沙洲，溪水迅速暴漲。現場學生已拍攝直播上傳社群。第一批救難人員剛趕至現場。大批媒體及SNG車即將抵達。受困者尚未獲救，搶救進行中。</div>
+    <div class="question">【問題】以「危機處理」課程所學，說明召開現場記者說明會應注意原則。</div>
+  </div>
+  <div class="non-official">⚠ 非官方參考解析（申論題無官方答案）</div>
+  <div class="ans-block">
+
+    <div class="ans-section">
+      <div class="ans-title">【壹、前言】</div>
+      <p>本案具有三項特殊性：①受困者尚未獲救（搶救進行中）；②社群媒體直播已在進行；③現場環境複雜（溪流地形、天候）。現場說明會之核心挑戰是<strong>「在不影響救援的前提下，提供足夠資訊主導輿論」</strong>，以下說明應注意原則：</p>
+    </div>
+
+    <div class="press-card">
+      <div style="font-weight:bold;color:var(--subj,var(--overview));margin-bottom:6px;"><span class="press-num">原則一</span>救援優先、媒體配合（Rescue First）</div>
+      <ul>
+        <li>到達現場後，<strong>第一要務是救人，而非應對媒體</strong>。應先確認救援指揮已就位，再設立媒體區域。</li>
+        <li>指定距救援現場<strong>安全距離之固定媒體等候區</strong>，明確標示不得越線，防止媒體搶拍干擾救援行動或造成自身安全風險。</li>
+        <li>告知媒體：「我們的第一責任是救人，說明會將在第一時間安排，請先在指定區域等候。」</li>
+      </ul>
+    </div>
+
+    <div class="press-card">
+      <div style="font-weight:bold;color:var(--subj,var(--overview));margin-bottom:6px;"><span class="press-num">原則二</span>迅速出面、掌握發言先機（Speed）</div>
+      <ul>
+        <li>社群媒體直播已先行，各種猜測與情緒性評論正在擴散，消防機關<strong>須盡快召開第一次說明會</strong>（抵達現場後30分鐘內），以官方資訊取代謠言。</li>
+        <li>第一次說明會內容：確認事故地點、受困人數（3人）、已啟動搶救、目前使用之救援方式，並承諾定時更新。</li>
+      </ul>
+    </div>
+
+    <div class="press-card">
+      <div style="font-weight:bold;color:var(--subj,var(--overview));margin-bottom:6px;"><span class="press-num">原則三</span>統一發言人、單一窗口（One Voice）</div>
+      <ul>
+        <li>指定<strong>一名消防單位發言人</strong>（通常為帶隊官或指定媒體聯絡官）對外發言，其他救援人員一律不接受採訪。</li>
+        <li>統一說法，避免現場不同人員受訪時說詞不一，造成媒體放大報導矛盾之機會。</li>
+      </ul>
+    </div>
+
+    <div class="press-card">
+      <div style="font-weight:bold;color:var(--subj,var(--overview));margin-bottom:6px;"><span class="press-num">原則四</span>誠信原則：說實話，不誇大、不隱瞞（Transparency）</div>
+      <ul>
+        <li><strong>已確認之事實</strong>（受困人數3人、溪水暴漲原因、救援方式）：如實陳述。</li>
+        <li><strong>尚未確認者</strong>（受困者傷亡狀況、預計脫困時間）：明確表示「正在積極評估，確認後立即公布」，不猜測，不給無法兌現之承諾。</li>
+        <li>避免說「一定沒問題」等過度樂觀的承諾，以免受困者後來受傷或罹難時引發更大輿論反彈。</li>
+      </ul>
+    </div>
+
+    <div class="press-card">
+      <div style="font-weight:bold;color:var(--subj,var(--overview));margin-bottom:6px;"><span class="press-num">原則五</span>以人為本：表達關懷（Human First）</div>
+      <ul>
+        <li>發言人開場應先<strong>表達對受困者及其家屬的關切</strong>，展現機關人道溫度。</li>
+        <li>說明消防機關已全力投入救援，讓民眾感受到機關的盡力與責任感。</li>
+        <li>避免第一句話是「我們沒有責任」，以免在情緒高漲的社群環境下激化對立。</li>
+      </ul>
+    </div>
+
+    <div class="press-card">
+      <div style="font-weight:bold;color:var(--subj,var(--overview));margin-bottom:6px;"><span class="press-num">原則六</span>定期更新、持續主導（Regular Update）</div>
+      <ul>
+        <li>承諾並履行<strong>每30分鐘或每小時定時更新</strong>救援進度，防止資訊空白期讓媒體與社群自行填補。</li>
+        <li>每次更新：救援進展、目前受困者狀況（可見、有回應）、下一步救援行動。</li>
+        <li>官方同步於機關社群平台發文更新，與第一線直播競爭資訊主導權。</li>
+      </ul>
+    </div>
+
+    <div class="press-card">
+      <div style="font-weight:bold;color:var(--subj,var(--overview));margin-bottom:6px;"><span class="press-num">原則七</span>不透露影響救援安全之資訊（Information Control）</div>
+      <ul>
+        <li>受困者確切位置、救援路線等資訊若公開，可能導致媒體或民眾搶進，妨礙救援，<strong>此類資訊應以「為確保救援安全，相關細節暫不公布」說明</strong>。</li>
+        <li>告知媒體：直播拍攝角度若可能使受困者更緊張或影響救援判斷，請主動配合調整。</li>
+      </ul>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【貳、結語】</div>
+      <p>現場記者說明會的核心原則是：<strong>救援第一、迅速出面、誠實一致、定期更新、以人為本</strong>。在受困者尚未脫困的高度不確定情境下，消防發言人須以冷靜、誠信、有溫度的態度，主導輿論走向，避免謠言擴散影響救援及機關形象。</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ 第三題 ═══ -->
+<div class="section-title" style="--subj:var(--admin)">第三題（20分）— 行政程序法：違法處分撤銷 ＋ 不當利益返還</div>
+
+<div class="q-block" style="--subj:var(--admin)">
+  <div class="q-header">第三題 <span class="q-score">（20分）｜簡答型｜科目：行政程序法</span></div>
+  <div class="q-text">
+    <div class="situation">【情境】甲公司申請艱困事業營業衝擊補貼，獲核准撥付20萬元；嗣後查核發現甲公司不屬本項補貼之行業別，不符合領取要件。</div>
+    <div class="question">【問題】經濟部應如何命甲公司返還該項補貼款？</div>
+  </div>
+  <div class="non-official">⚠ 非官方參考解析（簡答型無官方範本）</div>
+  <div class="ans-block">
+
+    <div class="ans-section">
+      <div class="ans-title">【一、法律程序：撤銷違法處分】</div>
+      <div class="law-ref">法規依據：行政程序法第117條（違法行政處分之撤銷）；第119條（不得主張信賴保護之情形）；第127條（授益處分撤廢後之返還義務）</div>
+
+      <p><strong>（一）原核准補貼處分為違法行政處分：</strong></p>
+      <p>甲公司不屬本項補貼之行業別，客觀上不符合受益要件，經濟部之核准撥付處分自始即屬<strong>違法之授益行政處分</strong>。</p>
+
+      <p><strong>（二）依行政程序法第117條撤銷：</strong></p>
+      <p>行政程序法第117條規定：「違法行政處分於法定救濟期間經過後，原處分機關得依職權為全部或一部之撤銷；其上級機關，亦得為之。」經濟部得<strong>依職權撤銷</strong>原核准撥付補貼之違法處分。</p>
+
+      <p><strong>（三）甲公司不得主張信賴保護（行政程序法第119條）：</strong></p>
+      <p>依第119條，有下列情形之一者，不得主張信賴保護：</p>
+      <ul>
+        <li>以詐欺、脅迫、賄賂方法，使行政機關作成行政處分者</li>
+        <li>對重要事項提供不正確資料或為不完全陳述，致使行政機關依該資料或陳述而作成行政處分者</li>
+        <li>明知行政處分違法或因重大過失而不知者</li>
+      </ul>
+      <p>本案甲公司若申請時即知不符行業別資格，屬第2款情形，<strong>不得主張信賴保護</strong>，經濟部得直接撤銷並命返還，無須考量信賴利益補償。</p>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【二、返還程序：依行政程序法第127條命返還】</div>
+      <div class="law-ref">行政程序法第127條第1項：授予利益之違法行政處分經撤銷後，受益人應返還因該處分所受領之給付</div>
+      <ul>
+        <li>依行政程序法第127條第1項，原核准處分撤銷後，甲公司應<strong>返還已受領之20萬元補貼款</strong>。</li>
+        <li>經濟部應發文通知甲公司：①說明撤銷原核准處分之理由；②限期（如30日）繳回20萬元至指定帳戶；③告知逾期將依法移送強制執行，並得加計法定利息。</li>
+        <li>返還義務之消滅時效：依行政程序法第131條，請求返還之公法上請求權，時效為5年。</li>
+      </ul>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【三、程序注意事項】</div>
+      <ul>
+        <li><strong>給予陳述意見機會：</strong>撤銷前應依行政程序法第102條，給予甲公司陳述意見之機會（或以書面通知陳述意見期間）。</li>
+        <li><strong>書面處分：</strong>撤銷決定須以書面行政處分作成，記載理由、救濟方式（訴願）及期限。</li>
+        <li><strong>拒不返還時：</strong>移送行政執行署依行政執行法強制執行。</li>
+      </ul>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【四、結論】</div>
+      <p>經濟部應：①依行政程序法第117條<strong>撤銷原核准處分</strong>→②依第127條<strong>命甲公司返還20萬元</strong>→③逾期移送<strong>強制執行</strong>。甲公司因不符資格申請，不得援引信賴保護抗辯（§119），應無條件返還全數補貼款。</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ 第四題 ═══ -->
+<div class="section-title" style="--subj:var(--info)">第四題（10分）— 政府資訊公開法：涉及第三人隱私之處理</div>
+
+<div class="q-block" style="--subj:var(--info)">
+  <div class="q-header">第四題 <span class="q-score">（10分）｜簡答型｜科目：政府資訊公開法</span></div>
+  <div class="q-text">
+    <div class="situation">【情境】博士生甲向A機關申請「科技研究獎學金」，得知學長乙曾獲准，遂向A機關申請提供乙申請獎學金之相關資訊作為填寫參考。</div>
+    <div class="question">【問題】A機關應如何處理？</div>
+  </div>
+  <div class="non-official">⚠ 非官方參考解析（簡答型無官方範本）</div>
+  <div class="ans-block">
+
+    <div class="ans-section">
+      <div class="ans-title">【分析與結論】</div>
+      <div class="law-ref">法規依據：政府資訊公開法第18條第1項第6款（個人隱私）；個人資料保護法</div>
+
+      <p><strong>（一）乙之申請資料屬個人隱私，應限制公開：</strong></p>
+      <p>依政府資訊公開法第18條第1項第6款：「公開或提供有侵害個人隱私、職業上秘密或著作權人之權益者」，得限制公開或不予提供。</p>
+      <p>乙之獎學金申請書、研究計畫書、個人學術資料等，屬乙<strong>個人之著作及隱私資訊</strong>，A機關<strong>應拒絕提供</strong>，並以書面說明理由及救濟途徑。</p>
+
+      <p><strong>（二）一般性申請資訊應予公開：</strong></p>
+      <p>A機關應區分「乙個人申請資料」與「獎學金申請規範」兩類資訊：</p>
+      <ul>
+        <li><strong>不得提供：</strong>乙之申請書、研究計畫、個人學術成就等（涉及乙之個人隱私及著作）</li>
+        <li><strong>應予提供：</strong>獎學金申請須知、評選標準、過去核准案例統計（去識別化後）等公開資訊</li>
+      </ul>
+
+      <p><strong>（三）A機關之處理方式：</strong></p>
+      <ul>
+        <li>以書面通知甲：就乙個人申請資料部分<strong>不予提供</strong>（依政府資訊公開法§18Ⅰ⑥），說明理由。</li>
+        <li>主動提供甲可公開取得之獎學金相關資訊（申請規範、評選標準），以協助甲填寫申請計畫。</li>
+        <li>告知甲提起行政救濟之途徑（訴願）。</li>
+      </ul>
+
+      <p><strong>結論：</strong>A機關應<strong>拒絕提供乙之個人申請資料</strong>（個人隱私），但可<strong>主動提供</strong>獎學金申請之一般規範及去識別化之參考資訊，以兼顧資訊公開原則及個人隱私保護。</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ 第五題 ═══ -->
+<div class="section-title" style="--subj:var(--crim)">第五題（10分）— 貪污治罪條例：監所管理員違背職務收受不正利益</div>
+
+<div class="q-block" style="--subj:var(--crim)">
+  <div class="q-header">第五題 <span class="q-score">（10分）｜簡答型｜科目：貪污治罪條例</span></div>
+  <div class="q-text">
+    <div class="situation">【情境】監所管理員乙（公務員），應高中同學甲之請求，在戒護管理機會中將兩瓶洋酒交給受刑人丙（甲之朋友）。甲事後安排乙至酒店飲宴，並支付費用3萬元。</div>
+    <div class="question">【問題】乙之行為觸犯何罪？</div>
+  </div>
+  <div class="non-official">⚠ 非官方參考解析（簡答型無官方範本）</div>
+  <div class="ans-block">
+
+    <div class="ans-section">
+      <div class="ans-title">【罪名分析】</div>
+      <div class="law-ref">法規依據：貪污治罪條例第4條第1項第5款（對於違背職務之行為收受賄賂罪）；刑法第10條第2項（公務員定義）</div>
+
+      <p><strong>（一）乙成立貪污治罪條例第4條第1項第5款 — 違背職務收受賄賂（不正利益）罪：</strong></p>
+
+      <p><strong>1. 公務員身份：</strong>乙為監所管理員，依刑法第10條第2項屬<strong>依法令服務於國家機關之公務員</strong>。</p>
+
+      <p><strong>2. 違背職務之行為：</strong></p>
+      <ul>
+        <li>監所管理員之職務包含<strong>戒護受刑人、管制物品進出</strong>，確保監所安全秩序。</li>
+        <li>依監獄行刑法相關規定，受刑人收受外部物品須經核可程序，未經許可私下夾帶物品入監係<strong>明顯違背職務</strong>之行為。</li>
+        <li>乙趁戒護管理機會私下將兩瓶洋酒交給丙，完全違背其管制職責。</li>
+      </ul>
+
+      <p><strong>3. 收受賄賂（不正利益）：</strong></p>
+      <ul>
+        <li>甲安排乙至酒店飲宴並支付費用3萬元，屬具有財產價值之<strong>「不正利益」</strong>（賄賂之廣義概念，包含財產上利益）。</li>
+        <li>乙在為甲完成違背職務行為（交付洋酒）後，收受此不正利益，因果關係明確。</li>
+      </ul>
+
+      <p><strong>4. 法定刑：</strong>貪污治罪條例第4條第1項第5款之刑度為<strong>無期徒刑或10年以上有期徒刑</strong>，得併科新臺幣1億元以下罰金，為重罪。</p>
+
+      <p><strong>（二）罪數說明：</strong></p>
+      <ul>
+        <li>乙將洋酒交予丙之<strong>違背職務行為</strong>係貪污罪之構成要件，不另論刑法其他罪名。</li>
+        <li>乙之行為係單一貪污行為，成立<strong>一罪</strong>（貪污治罪條例第4條第1項第5款）。</li>
+      </ul>
+
+      <p><strong>結論：</strong>乙之行為成立<strong>貪污治罪條例第4條第1項第5款之違背職務收受不正利益罪</strong>，係重罪，以私交換取公務員廢弛職守之典型貪污行為，法定最低刑度為10年有期徒刑。</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ 考向分析 ═══ -->
+<div class="section-title">★ 111～114年四年考向完整對照</div>
+
+<div class="analysis-box">
+  <h3>111年特殊考點整理</h3>
+  <table>
+    <tr><th>題號</th><th>核心考點</th><th>重點提醒</th></tr>
+    <tr><td>第一題（30分）</td><td>SWOT＋策略配對（廳舍活化）</td><td>注意「策略配對」即TOWS矩陣，不只是做SWOT分析，要進一步做四象限策略</td></tr>
+    <tr><td>第二題（30分）</td><td>現場記者說明會（溪流救援）</td><td>與112年第二題同類型，但本題強調「搶救進行中」「受困者未脫困」的特殊限制</td></tr>
+    <tr><td>第三題（20分）</td><td>行政程序法§117撤銷＋§127返還</td><td>必須分兩步：先撤銷違法處分，再命返還；注意§119不得主張信賴保護</td></tr>
+    <tr><td>第四題（10分）</td><td>政府資訊公開法§18第三人隱私</td><td>注意區分「第三人個人資料（不公開）」vs「一般申請規範（應公開）」</td></tr>
+    <tr><td>第五題（10分）</td><td>貪污§4Ⅰ⑤違背職務收受不正利益</td><td>「飲宴費用」屬財產上不正利益（非金錢形式之賄賂），仍屬§4Ⅰ⑤</td></tr>
+  </table>
+
+  <h3 style="color:var(--overview);margin-top:14px;">111～114年四年高頻必考結論</h3>
+  <table>
+    <tr><th>考點</th><th>出現年度</th><th>備考優先度</th></tr>
+    <tr><td>SWOT / TOWS 策略配對</td><td>111、114</td><td>⭐⭐⭐ 必背四象限</td></tr>
+    <tr><td>危機處理：記者說明會原則</td><td>111、112</td><td>⭐⭐⭐ 七大原則熟記</td></tr>
+    <tr><td>貪污§4/§5/§6 罪名辨析</td><td>111（§4）、112（§6）、113（§4/§5）、114（§6）</td><td>⭐⭐⭐⭐ 年年必考</td></tr>
+    <tr><td>便民 vs 圖利辨析</td><td>112、114</td><td>⭐⭐⭐ 萬用論述必備</td></tr>
+    <tr><td>行政程序法（閱覽、撤銷、返還）</td><td>111、112、113、114</td><td>⭐⭐⭐⭐ 四年必考</td></tr>
+    <tr><td>政府資訊公開法</td><td>111、112</td><td>⭐⭐⭐ 注意§18例外</td></tr>
+    <tr><td>法規命令 vs 行政規則</td><td>114</td><td>⭐⭐ 可能再考</td></tr>
+    <tr><td>行政助手 vs 行政委託</td><td>113</td><td>⭐⭐ 重要學理概念</td></tr>
+  </table>
+</div>
+
+
+<!-- ═══ 終極萬用總整理 ═══ -->
+<div class="section-title">★ 111～114年終極萬用答題總表</div>
+
+<div class="core-box">
+  <h2>🏆 四年考點萬用框架最終版</h2>
+
+  <h3>【貪污罪型速查：四年最高頻考點】</h3>
+  <div class="core-template">§4Ⅰ⑤ 違背職務收賄（重罪：無期/10年以上）
+要件：公務員 ＋ 違背職務行為 ＋ 收受賄賂/不正利益
+→ 111年第五題（監所管理員收飲宴）
+→ 113年第三題（消防小隊長收紅包，此款可能適用）
+
+§5Ⅰ③ 職務上行為收賄（次重罪：7年以上）
+要件：公務員 ＋ 職務上裁量行為 ＋ 收受賄賂
+→ 113年第三題（若認定非違背職務則用此款）
+
+§6Ⅰ④ 圖利罪（5年以上）
+要件：公務員 ＋ 主管事務 ＋ 明知違法 ＋ 圖私人不法利益 ＋ 因而獲益
+→ 112年第四題（場地認養登記）
+→ 114年第四題（消防稽查放水）
+
+§8Ⅰ 偵查中自白＋繳回所得 → 減輕其刑
+§12Ⅰ 情節輕微＋所得未達5萬元 → 減輕其刑（可與§8並用）</div>
+
+  <h3>【行政程序法必背條號】</h3>
+  <div class="core-template">§46  當事人卷宗閱覽權（＋限制事由）
+§102 不利益處分前應給予陳述意見機會
+§117 違法行政處分得依職權撤銷
+§119 不得主張信賴保護之三種情形
+§127 授益處分撤廢後返還義務
+§131 公法上請求權時效（5年）
+§150 法規命令定義（有授權、外部效力、不特定多數人）
+§157 法規命令發布方式（刊登政府公報）</div>
+
+  <h3>【政府資訊公開法§18六款限制記憶口訣】</h3>
+  <div class="core-template">§18 得限制公開情形（重要款項）：
+第1款：國家安全/外交/軍事機密
+第2款：偵查中犯罪資料
+第3款：行政決定前之內部擬稿（簽呈！）
+第4款：涉及個人隱私（第三人資料！）
+第6款：涉及個人隱私、職業秘密、著作權
+
+口訣：「密（機密）、偵（偵查）、稿（擬稿）、隱（隱私）」
+→ 遇到「內部簽呈」→ 第3款
+→ 遇到「第三人個人資料」→ 第6款（或第4款）</div>
+
+  <h3>【記者說明會七大原則（通用版）】</h3>
+  <div class="core-template">① 迅速（Speed）：黃金一小時內召開，30分鐘內在現場設媒體區
+② 救援/任務優先（Mission First）：現場情境下，先確保任務不受媒體干擾
+③ 統一發言人（One Voice）：單一窗口，口徑一致
+④ 誠信透明（Transparency）：已知說實話，未知說「正在確認」
+⑤ 以人為本（Human First）：開場表達對傷亡者的關切與慰問
+⑥ 定期更新（Regular Update）：承諾並履行定時資訊更新
+⑦ 對等公平（Fairness）：不差別對待不同立場媒體</div>
+</div>
+
+<div class="footer">111年警佐警察人員晉升警正官等訓練 第2梯次 消防人員 實務寫作題解析｜非官方參考資料・製作：Claude AI・2026/05/19</div>
+</body>
+</html>

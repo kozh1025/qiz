@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>110年_消防_申論題解析</title>
+<style>
+  :root{
+    --bg:#f6f5f1; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66; --line:#e5e2da;
+    --plan:#3b6e8a; --crisis:#b2551f; --admin:#6a4a8a; --info:#4a7a6a;
+    --crim:#8a3b3b; --media:#8a2b6e; --neutral:#6b6a66;
+    --overview:#8a5a3b; --overview-bg:#faf6ee;
+  }
+  * { box-sizing: border-box; }
+  body { font-family: 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif; background: var(--bg); color: var(--ink); margin: 0 auto; padding: 36px 28px 90px; font-size: 15px; line-height: 1.85; max-width: 980px; }
+
+  .header { background: var(--card); border: 1px solid var(--line); border-left: 5px solid var(--overview); padding: 22px 28px; border-radius: 10px; margin-bottom: 20px; }
+  .header h1 { margin: 0 0 6px 0; font-size: 1.35em; color: var(--ink); font-weight: 700; }
+  .header .sub { font-size: 0.88em; color: var(--sub); }
+  .header .tag { display: inline-block; background: var(--overview); color: #fff; border-radius: 4px; padding: 2px 10px; font-size: 0.78em; margin-left: 8px; font-weight: 600; }
+
+  .warning-banner { background: var(--overview-bg); border: 1px solid #e8dcc8; border-left: 4px solid var(--overview); color: #6b4a2e; padding: 10px 16px; border-radius: 6px; margin-bottom: 18px; font-size: 0.88em; }
+
+  .q-block { background: var(--card); border: 1px solid var(--line); border-radius: 10px; margin-bottom: 18px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+  .q-header { background: color-mix(in srgb, var(--subj, var(--neutral)) 10%, white); padding: 10px 16px; border-bottom: 1px solid var(--line); border-left: 4px solid var(--subj, var(--neutral)); }
+  .q-num { display: inline-block; background: var(--subj, var(--neutral)); color: #fff; border-radius: 3px; padding: 2px 10px; font-size: 0.85em; margin-right: 8px; font-weight: bold; }
+  .q-score { display: inline-block; background: #fff; border: 1px solid var(--line); color: var(--sub); border-radius: 3px; padding: 2px 8px; font-size: 0.78em; }
+  .q-title { color: var(--subj, var(--neutral)); font-size: 0.95em; margin-top: 6px; font-weight: 600; }
+
+  .q-body { padding: 14px 18px; }
+  .q-text { color: var(--ink); font-size: 0.93em; line-height: 1.8; border-left: 3px solid var(--line); padding-left: 12px; margin-bottom: 12px; }
+
+  .sub-q { background: #fdfcfa; border: 1px solid var(--line); border-radius: 6px; margin-bottom: 12px; padding: 10px 14px; border-left: 3px solid var(--subj, var(--neutral)); }
+  .sub-q-label { color: var(--subj, var(--neutral)); font-weight: bold; font-size: 0.88em; margin-bottom: 4px; }
+
+  .ans-box { background: #fdfcfa; border: 1px solid var(--line); border-radius: 8px; padding: 14px 18px; margin-bottom: 12px; }
+  .ans-title { color: var(--subj, var(--neutral)); font-weight: bold; font-size: 0.9em; margin-bottom: 8px; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+  .ans-content { color: var(--ink); font-size: 0.88em; line-height: 1.9; }
+  .ans-content p { margin: 6px 0; }
+
+  .law-tag { display: inline-block; background: color-mix(in srgb, var(--subj, var(--neutral)) 10%, white); border: 1px solid var(--subj, var(--neutral)); color: var(--subj, var(--neutral)); border-radius: 3px; padding: 1px 7px; font-size: 0.78em; margin: 2px 2px; }
+  .law-tag-red { display: inline-block; background: #f7eaea; border: 1px solid var(--crim); color: var(--crim); border-radius: 3px; padding: 1px 7px; font-size: 0.78em; margin: 2px 2px; }
+  .key-point { color: var(--subj, var(--neutral)); font-weight: bold; }
+  .warn-text { color: var(--crisis); font-size: 0.85em; }
+
+  .framework-box { background: #fdfcfa; border: 1px solid var(--line); border-left: 4px solid var(--subj, var(--neutral)); border-radius: 8px; padding: 14px 18px; margin: 10px 0; }
+  .framework-title { color: var(--subj, var(--neutral)); font-weight: bold; font-size: 0.92em; margin-bottom: 10px; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .box-item { background: #fdfcfa; border: 1px solid var(--line); border-radius: 4px; padding: 8px 12px; font-size: 0.85em; }
+  .box-label { color: var(--subj, var(--neutral)); font-weight: bold; font-size: 0.82em; margin-bottom: 4px; }
+  .box-content { color: var(--ink); }
+
+  .table-wrap { overflow-x: auto; margin: 10px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85em; }
+  th { background: color-mix(in srgb, var(--subj, var(--neutral)) 16%, white); color: var(--ink); padding: 8px 12px; text-align: left; border: 1px solid var(--line); }
+  td { padding: 7px 12px; border: 1px solid var(--line); color: var(--ink); vertical-align: top; }
+  tr:nth-child(even) td { background: #faf9f6; }
+
+  .section-title { background: var(--overview-bg); border-left: 4px solid var(--subj, var(--overview)); color: var(--subj, var(--overview)); padding: 8px 16px; margin: 28px 0 14px 0; font-size: 1em; font-weight: bold; border-radius: 0 6px 6px 0; }
+  .direction-box { background: var(--overview-bg); border: 1px solid #e8dcc8; border-radius: 8px; padding: 14px 18px; margin: 10px 0; }
+  .direction-title { color: var(--overview); font-size: 0.9em; font-weight: bold; margin-bottom: 8px; }
+
+  .universal-box { background: var(--overview-bg); border: 1px solid #e8dcc8; border-left: 4px solid var(--overview); border-radius: 8px; padding: 18px 22px; margin: 14px 0; }
+  .universal-title { color: var(--overview); font-size: 1em; font-weight: bold; margin-bottom: 12px; }
+
+  .step-list { counter-reset: step; }
+  .step-item { counter-increment: step; padding: 6px 0 6px 32px; position: relative; color: var(--ink); font-size: 0.88em; }
+  .step-item::before { content: counter(step); position: absolute; left: 0; top: 6px; background: var(--overview); color: #fff; border-radius: 50%; width: 22px; height: 22px; text-align: center; line-height: 22px; font-size: 0.8em; font-weight: bold; }
+
+  .cdm-step { background: #fdfcfa; border: 1px solid var(--line); border-radius: 6px; padding: 10px 14px; margin-bottom: 8px; }
+  .cdm-num { display: inline-block; background: var(--subj, var(--crisis)); color: #fff; border-radius: 50%; width: 26px; height: 26px; text-align: center; line-height: 26px; font-size: 0.85em; font-weight: bold; margin-right: 8px; }
+  .cdm-label { color: var(--subj, var(--crisis)); font-weight: bold; }
+  .cdm-content { color: var(--ink); font-size: 0.87em; margin-top: 4px; padding-left: 34px; }
+
+  .w-row { background: #fdfcfa; border: 1px solid var(--line); border-radius: 4px; padding: 8px 12px; margin-bottom: 6px; }
+  .w-label { display: inline-block; background: color-mix(in srgb, var(--subj, var(--neutral)) 14%, white); color: var(--subj, var(--neutral)); border-radius: 3px; padding: 1px 8px; font-size: 0.8em; font-weight: bold; min-width: 80px; margin-right: 8px; }
+  .w-content { color: var(--ink); font-size: 0.87em; }
+
+  .highlight-row { background: #fdfcfa; border-left: 3px solid var(--subj, var(--neutral)); padding: 8px 14px; margin: 6px 0; border-radius: 0 4px 4px 0; font-size: 0.87em; color: var(--ink); }
+
+  .tag-row { margin: 8px 0; }
+
+  .footer { text-align: center; font-size: 0.78em; color: #a09d95; margin-top: 30px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .year-nav { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+  .year-btn { background: #fff; color: var(--sub); border: 1px solid var(--line); border-radius: 4px; padding: 4px 12px; font-size: 0.82em; text-decoration: none; }
+  .year-btn.active { background: var(--overview); color: #fff; border-color: var(--overview); }
+</style>
+</head>
+<body>
+<div style="position:fixed;top:8px;right:12px;z-index:9999;font-size:12px;color:#9a978d;background:rgba(255,255,255,.85);padding:2px 10px;border-radius:999px;pointer-events:none;">柯醒翰製作</div>
+
+<div class="header">
+  <h1>110年警察人員升官等考試・消防人員<span class="tag">申論題解析</span></h1>
+  <div class="sub">考試年度：110年｜題型：三大題（含小題）｜總分：100分｜深橄欖綠主題</div>
+</div>
+
+<div class="warning-banner">
+  ⚠ 本解析為非官方作答參考，法條依現行法規整理，答題方向供研讀參考。實際考試以當年官方公告為準。
+</div>
+
+<div class="year-nav">
+  <span class="year-btn">108年</span>
+  <span class="year-btn">109年</span>
+  <span class="year-btn active">110年</span>
+  <span class="year-btn">111年</span>
+  <span class="year-btn">112年</span>
+  <span class="year-btn">113年</span>
+  <span class="year-btn">114年</span>
+</div>
+
+<!-- ===== 第一題 ===== -->
+<div class="section-title" style="--subj:var(--neutral)">第一題・法律綜合三小題（共40分）</div>
+
+<div class="q-block" style="--subj:var(--neutral)">
+  <div class="q-header">
+    <span class="q-num">第1題</span><span class="q-score">40分（三小題）</span>
+    <div class="q-title">行政程序法陳述意見 ＋ 政府資訊公開法更正補充 ＋ 貪污治罪條例隱匿不報</div>
+  </div>
+  <div class="q-body">
+
+    <!-- 小題一 -->
+    <div class="sub-q" style="--subj:var(--admin)">
+      <div class="sub-q-label">（一）陳述意見制度（20分）</div>
+      <div class="q-text">
+        甲員警因警察機關擬作成對其不利之行政處分（記過），請說明：行政程序法關於陳述意見之規定，及得不給予陳述意見機會之情形。
+      </div>
+      <div class="ans-box">
+        <div class="ans-title">▍ 解析與參考作答</div>
+        <div class="ans-content">
+
+          <p><span class="key-point">【一、陳述意見之意義與功能】</span><br>
+          陳述意見係指行政機關作成不利當事人之行政處分前，應給予當事人表示意見之機會，乃正當法律程序（due process）之核心要求，以實現「聽審原則」（Audi alteram partem），保障人民實質的程序權益。</p>
+
+          <p><span class="key-point">【二、行政程序法之明文規定】</span><br>
+          依<span class="law-tag">行政程序法§102</span>，行政機關作成<strong>限制或剝奪人民自由或權利之行政處分</strong>前，除第103條所列情形外，應給予該處分相對人陳述意見之機會。<br>
+          當事人可採書面或言詞方式陳述，機關應審酌其陳述（§102但書）。</p>
+
+          <p><span class="key-point">【三、得不給予陳述意見之法定情形（§103各款）】</span><br>
+          依<span class="law-tag">行政程序法§103</span>，有下列情形之一者，<strong>行政機關得不給予</strong>陳述意見之機會：</p>
+
+          <div class="table-wrap">
+            <table>
+              <tr><th>款次</th><th>情形</th><th>說明</th></tr>
+              <tr><td>第1款</td><td>大量作成同種類處分</td><td>如稅務核課等行政效率考量</td></tr>
+              <tr><td>第2款</td><td>性質上無必要</td><td>授益處分、確認處分等</td></tr>
+              <tr><td>第3款</td><td>大量作成且影響輕微</td><td>交通違規裁罰等</td></tr>
+              <tr><td>第4款</td><td>行政強制執行時</td><td>即時強制情境</td></tr>
+              <tr><td>第5款</td><td>法規另有規定，足以保障陳述機會者</td><td>聽證、訴願等替代程序</td></tr>
+              <tr><td>第6款</td><td>限制自由或財產之即時執行</td><td>緊急情形、公益急迫</td></tr>
+            </table>
+          </div>
+
+          <p><span class="key-point">【四、本案適用—記過處分】</span><br>
+          記過屬對甲不利之行政處分（懲戒措施），依§102原則上須給予陳述意見機會。若警察機關援引§103各款排除，應有具體事實依據，否則程序違法，甲得依<span class="law-tag">行政程序法§174</span>主張程序瑕疵。</p>
+
+          <div class="tag-row">
+            <span class="law-tag">行政程序法§102</span>
+            <span class="law-tag">行政程序法§103</span>
+            <span class="law-tag">行政程序法§174</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 小題二 -->
+    <div class="sub-q" style="--subj:var(--info)">
+      <div class="sub-q-label">（二）政府資訊公開法—申請更正補充（10分）</div>
+      <div class="q-text">
+        依政府資訊公開法第23條，申請更正或補充之申請人為何？請說明。
+      </div>
+      <div class="ans-box">
+        <div class="ans-title">▍ 解析與參考作答</div>
+        <div class="ans-content">
+
+          <p><span class="key-point">【一、立法目的】</span><br>
+          政府資訊公開法除保障人民知的權利外，亦設有<strong>更正補充制度</strong>，以確保政府資訊之正確性與完整性，避免錯誤或過時資訊對人民造成不利影響。</p>
+
+          <p><span class="key-point">【二、申請更正補充之申請人資格（§23）】</span><br>
+          依<span class="law-tag">政府資訊公開法§23</span>，下列人員得申請政府機關更正或補充其保有之政府資訊：</p>
+
+          <div class="highlight-row">① <strong>任何人</strong>均可申請更正：政府資訊有誤，任何關係人均得請求機關更正</div>
+          <div class="highlight-row">② <strong>資訊所記載之當事人</strong>：尤其是涉及個人資料之政府資訊，當事人有權請求補充</div>
+
+          <p>實務上，§23申請更正補充常見於：<br>
+          ・戶籍資料錯誤更正<br>
+          ・行政紀錄記載有誤（如警察紀錄）<br>
+          ・個人健保/稅籍資料不正確</p>
+
+          <p><span class="key-point">【三、程序】</span><br>
+          申請人提出更正補充申請→機關審查→認有理由者，即應更正補充，並通知申請人及利害關係第三人。機關應於一定期間內答覆（§20準用）。</p>
+
+          <div class="tag-row">
+            <span class="law-tag">政府資訊公開法§23</span>
+            <span class="law-tag">政府資訊公開法§20</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 小題三 -->
+    <div class="sub-q" style="--subj:var(--crim)">
+      <div class="sub-q-label">（三）貪污治罪條例—隱匿不報罪（10分）</div>
+      <div class="q-text">
+        甲為督察，知悉乙員警有收賄情事，為求「和平相處」而隱匿不舉報。試問甲涉何罪？
+      </div>
+      <div class="ans-box">
+        <div class="ans-title">▍ 解析與參考作答</div>
+        <div class="ans-content">
+
+          <p><span class="key-point">【一、行為定性】</span><br>
+          甲督察知悉乙收賄（貪污行為）卻故意隱匿不舉報，構成<strong>貪污治罪條例之「隱匿不報罪」</strong>，而非收賄罪本身。</p>
+
+          <p><span class="key-point">【二、法律依據】</span><br>
+          依<span class="law-tag-red">貪污治罪條例§11</span>（包庇貪污罪）：<br>
+          公務員對於主管或監督之事務，<strong>明知有貪污行為之人而予以包庇</strong>或縱容者，處一年以上七年以下有期徒刑。</p>
+
+          <p>甲身為督察，有<strong>監督職責</strong>，明知乙收賄仍不舉報，屬「縱容」行為，符合§11構成要件。</p>
+
+          <p><span class="key-point">【三、主觀要件】</span><br>
+          ・需具備「明知」（故意）<br>
+          ・「和平相處」即為主觀上縱容之動機，不影響故意之成立</p>
+
+          <p><span class="key-point">【四、刑責與注意】</span><br>
+          ・甲成立§11包庇縱容罪，可處1年以上7年以下有期徒刑<br>
+          ・乙另依<span class="law-tag-red">貪污§5Ⅰ③</span>（違背職務收賄）論處<br>
+          ・甲乙不成立共犯，各自負責</p>
+
+          <div class="tag-row">
+            <span class="law-tag-red">貪污治罪條例§11</span>
+            <span class="law-tag-red">貪污治罪條例§5Ⅰ③</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 第二題 ===== -->
+<div class="section-title" style="--subj:var(--plan)">第二題・6W2H1E 專案計畫（30分）</div>
+
+<div class="q-block" style="--subj:var(--plan)">
+  <div class="q-header">
+    <span class="q-num">第2題</span><span class="q-score">30分</span>
+    <div class="q-title">以6W2H1E架構撰擬「強化防制性騷擾專案執行計畫」（6個月）</div>
+  </div>
+  <div class="q-body">
+    <div class="q-text">
+      警察局長指示：針對近來性騷擾案件增多，請參謀幕僚人員以6W2H1E方法，規劃「強化防制性騷擾專案執行計畫」，期程6個月。請依該架構撰擬計畫要點。
+    </div>
+    <div class="ans-box">
+      <div class="ans-title">▍ 解析：6W2H1E方法論解說</div>
+      <div class="ans-content">
+        <p>6W2H1E是警政方案規劃必備框架：Why（為何）、What（做什麼）、Who（誰負責）、When（何時）、Where（哪裡）、Which（哪種方法）＋How（如何做）、How Much（資源多少）＋Evaluation（成效評估）。</p>
+      </div>
+    </div>
+
+    <div class="framework-box">
+      <div class="framework-title">▍「強化防制性騷擾專案執行計畫」6W2H1E全架構</div>
+
+      <div class="w-row">
+        <span class="w-label">Why（目的）</span>
+        <span class="w-content">近年性騷擾案件持續增加，被害人報案比例偏低，社會治安形象受損。本計畫旨在強化執法效能、提升民眾安全感、落實性騷擾防制法之執行。</span>
+      </div>
+
+      <div class="w-row">
+        <span class="w-label">What（內容）</span>
+        <div class="w-content">
+          ① 加強巡邏重點場所（夜間娛樂場所、大眾運輸、學校周邊）<br>
+          ② 建立性騷擾案件快速通報機制<br>
+          ③ 辦理員警性騷擾防制教育訓練<br>
+          ④ 設置被害人一站式服務窗口<br>
+          ⑤ 強化被害人保護與隱私保障措施
+        </div>
+      </div>
+
+      <div class="w-row">
+        <span class="w-label">Who（人員）</span>
+        <div class="w-content">
+          ・主責單位：刑事警察大隊（婦幼小組）<br>
+          ・協辦單位：各分局勤務指揮中心、社區警政中心<br>
+          ・外部合作：社會局、衛生局、家防中心、被害人保護協會
+        </div>
+      </div>
+
+      <div class="w-row">
+        <span class="w-label">When（時間）</span>
+        <div class="w-content">
+          期程：6個月（第1-2月宣導籌備、第3-4月全面執行、第5-6月追蹤評估）<br>
+          ・重點時段：夜間22:00-02:00、連假週末<br>
+          ・定期會議：每月召開協調會議1次
+        </div>
+      </div>
+
+      <div class="w-row">
+        <span class="w-label">Where（地點）</span>
+        <div class="w-content">
+          ① 夜間娛樂場所及周邊（KTV、酒吧、夜市）<br>
+          ② 大眾運輸系統（捷運、公車站牌）<br>
+          ③ 學校、補習班周邊<br>
+          ④ 社區公園、停車場等公共場所
+        </div>
+      </div>
+
+      <div class="w-row">
+        <span class="w-label">Which（策略）</span>
+        <div class="w-content">
+          A. 主動巡邏策略（增加見警率）<br>
+          B. 情資蒐集策略（分析案件熱點時段）<br>
+          C. 被害人保護策略（陪同就診、心理輔導轉介）<br>
+          D. 社區宣導策略（LINE社群、宣傳單、說明會）
+        </div>
+      </div>
+
+      <div class="w-row">
+        <span class="w-label">How（方法）</span>
+        <div class="w-content">
+          ① 增派便衣警力於高風險場所執行蒐證<br>
+          ② 設立專線電話（110加設性騷擾專項轉接）<br>
+          ③ 與場所業者簽訂合作備忘錄（安全場所認證）<br>
+          ④ 辦理社區宣導活動（學校、社區）<br>
+          ⑤ 強化數位證據蒐集能力（調閱監視器SOP）
+        </div>
+      </div>
+
+      <div class="w-row">
+        <span class="w-label">How Much（資源）</span>
+        <div class="w-content">
+          ・人力：每周加派巡邏人力3組（各分局輪值）<br>
+          ・經費：申請性騷擾防制計畫補助款（衛福部、縣市補助）<br>
+          ・設備：行動蒐證裝置、警察宣導物品、被害人服務包<br>
+          ・時間：6個月，估計動用警力XX人次
+        </div>
+      </div>
+
+      <div class="w-row">
+        <span class="w-label">Evaluation（評估）</span>
+        <div class="w-content">
+          【量化指標】<br>
+          ① 性騷擾報案件數目標（較去年增幅→反映報案意願提升）<br>
+          ② 破獲案件比率提升30%<br>
+          ③ 熱點時段見警率提升（GPS統計）<br>
+          【質化指標】<br>
+          ④ 被害人滿意度調查（一站式服務滿意度≥80%）<br>
+          ⑤ 員警教育訓練考核通過率≥90%<br>
+          【回饋機制】<br>
+          ⑥ 每月提交執行檢討報告→局長核閱→滾動修正策略
+        </div>
+      </div>
+    </div>
+
+    <div class="ans-box">
+      <div class="ans-title">▍ 法源依據</div>
+      <div class="ans-content">
+        <div class="tag-row">
+          <span class="law-tag">性騷擾防制法§4</span>
+          <span class="law-tag">性騷擾防制法§13</span>
+          <span class="law-tag">警察法§2</span>
+          <span class="law-tag">警察勤務條例§11</span>
+          <span class="law-tag">消防法§26之1</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 第三題 ===== -->
+<div class="section-title" style="--subj:var(--crisis)">第三題・CDM警察勤務安全危機決策（30分）</div>
+
+<div class="q-block" style="--subj:var(--crisis)">
+  <div class="q-header">
+    <span class="q-num">第3題</span><span class="q-score">30分</span>
+    <div class="q-title">CDM（關鍵決策模式）應用於複合危機現場決策</div>
+  </div>
+  <div class="q-body">
+    <div class="q-text">
+      某派出所員警接獲報案：一棟大樓內同時發生①持刀群架、②精神障礙女子意圖跳樓、③不明爆炸物、④人質挾持。請以CDM（Critical Decision Making，關鍵決策模式/警察勤務安全危機決策模式）分析本案應如何決策處置。
+    </div>
+
+    <div class="ans-box">
+      <div class="ans-title">▍ CDM模式說明</div>
+      <div class="ans-content">
+        <p>CDM（Critical Decision Making Model）由Gary Klein等人發展，結合「情境認知」（Situational Awareness）與「自然決策」（Naturalistic Decision Making），為警察複合危機現場決策之核心模型。</p>
+        <p>CDM五步驟循環：<strong>收集情資 → 評估情境 → 確認問題 → 選擇方案 → 執行評估</strong>，並在複合危機中持續循環更新。</p>
+      </div>
+    </div>
+
+    <div class="framework-box">
+      <div class="framework-title">▍ CDM五步驟應用於本案複合危機</div>
+
+      <div class="cdm-step">
+        <span class="cdm-num">1</span><span class="cdm-label">情資收集（Cue Recognition / Information Gathering）</span>
+        <div class="cdm-content">
+          ・確認各事件地點：群架樓層、跳樓位置、爆炸物位置、人質挾持房間<br>
+          ・評估優先順序（以生命威脅程度排序）：挾持＞跳樓＞爆炸物＞群架<br>
+          ・向指揮中心報告，請求增援（SRT特勤、爆裂物處理、談判人員）<br>
+          ・設立警戒線，疏散無關民眾
+        </div>
+      </div>
+
+      <div class="cdm-step">
+        <span class="cdm-num">2</span><span class="cdm-label">情境評估（Situation Assessment）</span>
+        <div class="cdm-content">
+          ・運用SALUTE格式評估：規模（Size）、活動（Activity）、地點（Location）、時間（Unit）、裝備（Time）<br>
+          ・判斷各危機間是否相互關聯（是否為同一事件衍生）<br>
+          ・評估資源：現有警力數量、距離最近的醫療資源、談判人員到達時間<br>
+          ・確認行動自由受限之因素（爆炸物封鎖範圍）
+        </div>
+      </div>
+
+      <div class="cdm-step">
+        <span class="cdm-num">3</span><span class="cdm-label">確認問題（Problem Recognition / Goal Setting）</span>
+        <div class="cdm-content">
+          ・<strong>核心目標</strong>：保護生命（人質、精神障礙女子）優先於逮捕<br>
+          ・<strong>各子問題確認</strong>：<br>
+          　①持刀群架→制止傷害，控制施暴者<br>
+          　②精神障礙女子→談判，避免跳樓<br>
+          　③爆炸物→疏散、聯繫爆裂物處理小組（EOD）<br>
+          　④人質挾持→談判優先、SRT警戒待命<br>
+          ・確認指揮體系：由誰擔任現場指揮官（ICS概念）
+        </div>
+      </div>
+
+      <div class="cdm-step">
+        <span class="cdm-num">4</span><span class="cdm-label">選擇方案（Option Selection / Decision Making）</span>
+        <div class="cdm-content">
+          ・<strong>方案A（談判為主）</strong>：優先保護人質與跳樓女子，談判人員介入，EOD處理爆炸物，SRT包圍群架現場<br>
+          ・<strong>方案B（武力制止群架）</strong>：若群架已造成重傷，立即制止，但需分隔各危機現場警力<br>
+          ・<strong>選擇依據</strong>：依情境嚴重性、現有資源、時間壓力，選擇談判優先（方案A）<br>
+          ・<strong>資源分配</strong>：人質談判組×2人；精神障礙處理組×2人；EOD聯繫×1人；群架控制組×4人
+        </div>
+      </div>
+
+      <div class="cdm-step">
+        <span class="cdm-num">5</span><span class="cdm-label">執行與評估（Implementation & Feedback）</span>
+        <div class="cdm-content">
+          ・依決策執行，並持續監控各危機動態<br>
+          ・每5分鐘向指揮中心回報（動態情資更新）<br>
+          ・若情況改變（爆炸物引爆、人質受傷），立即觸發CDM循環→重新評估<br>
+          ・事後撰寫複合危機處置報告，作為訓練教案
+        </div>
+      </div>
+    </div>
+
+    <div class="ans-box">
+      <div class="ans-title">▍ 複合危機原則補充</div>
+      <div class="ans-content">
+        <p><span class="key-point">生命優先原則：</span>無論任何危機，以保護人命為最高指導原則。</p>
+        <p><span class="key-point">ICS指揮體系：</span>複合危機應立即確立現場指揮官（Incident Commander），統一指揮，避免混亂。</p>
+        <p><span class="key-point">資源請求：</span>超出警力能力者（如EOD），立即請求專業支援，勿強行自行處理。</p>
+        <p><span class="key-point">媒體管制：</span>設立媒體採訪區，指定發言人統一對外說明，避免資訊混亂影響現場處置。</p>
+        <div class="tag-row">
+          <span class="law-tag">警察職權行使法§19</span>
+          <span class="law-tag">警察法§2</span>
+          <span class="law-tag">精神衛生法§32</span>
+          <span class="law-tag">災害防救法§31</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 考試方向分析 ===== -->
+<div class="section-title">■ 110年考試方向分析</div>
+
+<div class="direction-box">
+  <div class="direction-title">各題核心考點</div>
+  <div class="table-wrap">
+    <table>
+      <tr><th>題號</th><th>核心考點</th><th>能力要求</th><th>高頻程度</th></tr>
+      <tr><td>第1題(一)</td><td>行政程序法§102+§103陳述意見</td><td>法條背誦＋例外情形整理</td><td>★★★★★</td></tr>
+      <tr><td>第1題(二)</td><td>政府資訊公開法§23申請更正補充人</td><td>法條理解＋適用對象</td><td>★★★☆☆</td></tr>
+      <tr><td>第1題(三)</td><td>貪污§11包庇縱容罪</td><td>罪名辨別＋構成要件</td><td>★★★★☆</td></tr>
+      <tr><td>第2題</td><td>6W2H1E方案規劃</td><td>框架完整度＋實務具體內容</td><td>★★★★★</td></tr>
+      <tr><td>第3題</td><td>CDM五步驟複合危機</td><td>模型應用＋現場情境判斷</td><td>★★★★★</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ===== 萬用答案框架 ===== -->
+<div class="section-title">■ 核心萬用答案框架（110年重點）</div>
+
+<div class="universal-box">
+  <div class="universal-title">📌 萬用框架A：6W2H1E方案規劃（適用所有計畫題）</div>
+  <div class="step-list">
+    <div class="step-item"><strong>Why</strong>：說明問題現況＋計畫目的（2-3句）</div>
+    <div class="step-item"><strong>What</strong>：列出3-5項主要措施內容</div>
+    <div class="step-item"><strong>Who</strong>：主責單位＋協辦單位＋外部合作機關</div>
+    <div class="step-item"><strong>When</strong>：期程規劃（分期：籌備/執行/評估）＋重點時段</div>
+    <div class="step-item"><strong>Where</strong>：重點場域（高風險地點列舉）</div>
+    <div class="step-item"><strong>Which</strong>：策略選擇（A/B/C方案）</div>
+    <div class="step-item"><strong>How</strong>：具體做法（逐項說明）</div>
+    <div class="step-item"><strong>How Much</strong>：人力＋經費＋設備資源</div>
+    <div class="step-item"><strong>Evaluation</strong>：量化指標＋質化指標＋滾動修正機制</div>
+  </div>
+</div>
+
+<div class="universal-box">
+  <div class="universal-title">📌 萬用框架B：CDM五步驟（適用所有危機現場題）</div>
+  <div class="step-list">
+    <div class="step-item"><strong>情資收集</strong>：現場確認、通報增援、警戒線設立</div>
+    <div class="step-item"><strong>情境評估</strong>：生命威脅優先排序、資源盤點</div>
+    <div class="step-item"><strong>確認問題</strong>：核心目標（保護生命）＋各子問題</div>
+    <div class="step-item"><strong>選擇方案</strong>：列出A/B方案＋說明選擇依據＋資源分配</div>
+    <div class="step-item"><strong>執行評估</strong>：動態回報＋循環調整＋事後報告</div>
+  </div>
+</div>
+
+<div class="universal-box">
+  <div class="universal-title">📌 萬用框架C：行政程序法陳述意見題型</div>
+  <div class="step-list">
+    <div class="step-item">定義陳述意見之意義（正當程序、聽審原則）</div>
+    <div class="step-item">§102：不利處分→應給予陳述意見機會</div>
+    <div class="step-item">§103：六款例外（大量、性質、輕微、強制、法規另有、即時執行）</div>
+    <div class="step-item">本案適用分析（判斷是否符合例外款次）</div>
+    <div class="step-item">程序瑕疵效果（§174救濟途徑）</div>
+  </div>
+</div>
+
+<div class="universal-box">
+  <div class="universal-title">📌 萬用框架D：貪污罪名辨識速查表</div>
+  <div class="table-wrap">
+    <table>
+      <tr><th>條號</th><th>罪名</th><th>關鍵行為</th></tr>
+      <tr><td>§4Ⅰ⑤</td><td>違背職務收賄罪</td><td>收受賄賂＋違背職務行為</td></tr>
+      <tr><td>§5Ⅰ③</td><td>不違背職務收賄罪</td><td>收受賄賂（不問是否違背職務）</td></tr>
+      <tr><td>§6Ⅰ④</td><td>圖利罪</td><td>明知違法，圖自己或他人不法利益</td></tr>
+      <tr><td>§8</td><td>自首減免</td><td>偵查前自首＋繳交犯罪所得</td></tr>
+      <tr><td>§11</td><td>包庇縱容罪</td><td>主管/監督者明知貪污行為而縱容</td></tr>
+      <tr><td>§12</td><td>情節輕微減輕</td><td>犯罪情節輕微（§4§5§6）得減輕</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="footer">110年警察人員升官等考試 消防人員 申論題解析｜非官方參考資料</div>
+</body>
+</html>

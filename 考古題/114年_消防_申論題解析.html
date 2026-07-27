@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>114年_消防_申論題解析</title>
+<style>
+  :root{
+    --bg:#f6f5f1; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66; --line:#e5e2da;
+    --plan:#3b6e8a;    --plan-tint:#eaf2f6;   /* 方案規劃 */
+    --crisis:#b2551f;  --crisis-tint:#fbeee0; /* 危機處理 */
+    --admin:#6a4a8a;   --admin-tint:#f2ecf7;  /* 行政程序法 */
+    --info:#4a7a6a;    --info-tint:#eaf3ef;   /* 政府資訊公開法 */
+    --crime:#8a3b3b;   --crime-tint:#f8ecec;  /* 刑法/貪污治罪條例 */
+    --media:#8a2b6e;   --media-tint:#f7ecf3;  /* 警政溝通與行銷 */
+    --overview:#8a5a3b;--overview-tint:#faf6ee;/* 總覽性質區塊 */
+    --swot-s:#2e8f4f; --swot-s-tint:#eef6f0;
+    --swot-w:#b2701f; --swot-w-tint:#fbf1e3;
+    --swot-o:#3b6e8a; --swot-o-tint:#eaf2f6;
+    --swot-t:#a13b3b; --swot-t-tint:#f8ecec;
+  }
+  *{box-sizing:border-box;}
+  body { font-family: 'Microsoft JhengHei','Noto Sans TC',Arial,sans-serif; background: var(--bg); color: var(--ink); margin: 0; padding: 20px; font-size: 15px; line-height: 1.9; --subj:var(--overview); --subj-tint:var(--overview-tint); }
+
+  /* 頁首 */
+  .header { background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--overview); padding: 22px 28px; border-radius: 10px; margin-bottom: 20px; box-shadow:0 1px 3px rgba(0,0,0,.05); }
+  .header h1 { margin: 0 0 6px 0; font-size: 1.35em; color: var(--ink); font-weight:700; }
+  .header .sub { font-size: 0.88em; color: var(--sub); }
+  .header .tag { display: inline-block; background: var(--overview); color: #fff; border-radius: 4px; padding: 2px 10px; font-size: 0.78em; margin-left: 8px; }
+
+  .subj-plan{--subj:var(--plan);--subj-tint:var(--plan-tint);}
+  .subj-crisis{--subj:var(--crisis);--subj-tint:var(--crisis-tint);}
+  .subj-admin{--subj:var(--admin);--subj-tint:var(--admin-tint);}
+  .subj-info{--subj:var(--info);--subj-tint:var(--info-tint);}
+  .subj-crime{--subj:var(--crime);--subj-tint:var(--crime-tint);}
+  .subj-media{--subj:var(--media);--subj-tint:var(--media-tint);}
+  .subj-overview{--subj:var(--overview);--subj-tint:var(--overview-tint);}
+
+  /* 題目區塊 */
+  .q-block { background: var(--card); border: 1px solid var(--line); border-radius: 8px; margin-bottom: 20px; overflow: hidden; box-shadow:0 1px 2px rgba(0,0,0,.03); }
+  .q-header { background: var(--subj-tint); color: var(--subj); font-weight: bold; padding: 8px 16px; font-size: 0.95em; border-bottom:1px solid var(--line); }
+  .q-score { font-weight: normal; font-size: 0.85em; margin-left: 8px; opacity: 0.85; color:var(--sub); }
+  .q-text { padding: 14px 18px 10px 18px; color: var(--ink); font-size: 0.93em; line-height: 1.85; border-bottom: 1px solid var(--line); background: #fbfaf7; }
+  .q-text .situation { color: var(--sub); font-size: 0.91em; border-left: 3px solid var(--subj); padding-left: 12px; margin-bottom: 8px; }
+  .q-text .question { color: var(--ink); font-weight: bold; margin-top: 10px; }
+
+  /* 非官方警示 */
+  .non-official { padding: 7px 18px; background: #fff8ea; color: #9a6a1f; font-size: 0.82em; border-bottom: 1px solid #f0e3c0; }
+
+  /* 解答區塊 */
+  .ans-block { padding: 14px 18px; }
+  .ans-section { margin-bottom: 18px; }
+  .ans-title { font-weight: bold; color: var(--subj); margin-bottom: 8px; font-size: 0.95em; padding: 5px 0; border-bottom: 1px dashed var(--line); }
+  .sub-pts { font-size: 0.8em; color: var(--sub); margin-left: 6px; font-weight: normal; }
+
+  /* 法源標記 */
+  .law-ref { background: var(--subj-tint); border-left: 3px solid var(--subj); padding: 5px 12px; font-size: 0.82em; color: var(--ink); margin-bottom: 10px; border-radius: 0 3px 3px 0; }
+
+  /* SWOT 格子（沿用優勢=綠／劣勢=橘／機會=藍／威脅=紅之通用邏輯色，改為淺色底） */
+  .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+  .swot-cell { padding: 10px 14px; border-radius: 5px; font-size: 0.88em; }
+  .swot-s { background: var(--swot-s-tint); border: 1px solid var(--swot-s); }
+  .swot-w { background: var(--swot-w-tint); border: 1px solid var(--swot-w); }
+  .swot-o { background: var(--swot-o-tint); border: 1px solid var(--swot-o); }
+  .swot-t { background: var(--swot-t-tint); border: 1px solid var(--swot-t); }
+  .swot-label { font-weight: bold; font-size: 0.92em; margin-bottom: 6px; }
+  .swot-s .swot-label { color: var(--swot-s); }
+  .swot-w .swot-label { color: var(--swot-w); }
+  .swot-o .swot-label { color: var(--swot-o); }
+  .swot-t .swot-label { color: var(--swot-t); }
+
+  /* TOWS 策略表（隸屬方案規劃工具，套用該題科目色） */
+  .tows-box { background: var(--subj-tint); border: 1px solid var(--subj); border-radius: 5px; padding: 10px 14px; margin-bottom: 10px; font-size: 0.88em; }
+  .tows-box .tows-title { font-weight: bold; color: var(--subj); margin-bottom: 6px; }
+
+  /* 列表 */
+  ul, ol { padding-left: 22px; margin: 6px 0; }
+  li { margin-bottom: 5px; font-size: 0.91em; }
+  li strong { color: var(--subj); }
+
+  /* 表格 */
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.87em; }
+  th { background: var(--subj-tint); color: var(--subj); padding: 7px 10px; text-align: left; border-bottom:2px solid var(--subj); }
+  td { padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:nth-child(even) td { background: #faf9f6; }
+
+  /* 警示 */
+  .warn { color: #9a6a1f; font-size: 0.85em; }
+
+  /* 分析區 */
+  .analysis-box { background: var(--subj-tint); border: 1px solid var(--subj); border-radius: 8px; padding: 14px 18px; margin-bottom: 20px; }
+  .analysis-box h3 { color: var(--subj); margin: 0 0 10px 0; font-size: 1em; }
+
+  /* 核心萬用答案 */
+  .core-box { background: var(--subj-tint); border: 2px solid var(--subj); border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+  .core-box h2 { color: var(--subj); margin: 0 0 12px 0; font-size: 1.05em; }
+  .core-box h3 { color: var(--subj); margin: 12px 0 6px 0; font-size: 0.95em; }
+  .core-template { background: #ffffff; border:1px solid var(--line); border-left: 4px solid var(--subj); padding: 10px 14px; font-size: 0.88em; color: var(--ink); border-radius: 0 4px 4px 0; margin-bottom: 8px; white-space: pre-wrap; line-height: 1.9; }
+
+  /* 分隔線 */
+  .section-title { background: var(--subj-tint); border-left: 4px solid var(--subj); color: var(--subj); padding: 8px 16px; margin: 28px 0 14px 0; font-size: 1em; font-weight: bold; border-radius: 0 6px 6px 0; }
+
+  /* 頁尾 */
+  .footer { text-align: center; font-size: 0.78em; color: var(--sub); margin-top: 30px; padding-top: 14px; border-top: 1px solid var(--line); }
+</style>
+</head>
+<body>
+<div style="position:fixed;top:8px;right:12px;z-index:9999;font-size:12px;color:#9a978d;background:rgba(255,255,255,.85);padding:2px 10px;border-radius:999px;pointer-events:none;">柯醒翰製作</div>
+
+<!-- 頁首 -->
+<div class="header">
+  <h1>114年警佐警察人員晉升警正官等訓練<span class="tag">消防人員</span><span class="tag" style="background:#6b5842">第2梯次</span></h1>
+  <div class="sub">實務寫作題解析・共4題（第1、2題各30分；第3、4題各20分）・非官方參考解析，以評分標準為準</div>
+</div>
+
+<!-- ═══════════════════════════ 第一題 ═══════════════════════════ -->
+<div class="section-title subj-plan">第一題（30分）— 方案規劃：SWOT ＋ TOWS 分析</div>
+
+<div class="q-block subj-plan">
+  <div class="q-header">第一題 <span class="q-score">（30分）｜課程：方案規劃</span></div>
+  <div class="q-text">
+    <div class="situation">【情境】甲市工業園區火災頻率升高，消防局規劃「消防救災機器人方案」，市長提出三項疑慮：①符合救災需求？②購買經費高昂？③操控訓練不足？</div>
+    <div class="question">【問題】運用「方案規劃」課程所學，針對「消防救災機器人方案」進行 SWOT 分析；並根據 SWOT 結果，透過 TOWS 分析提出具體可行的策略建議。</div>
+  </div>
+  <div class="non-official">⚠ 非官方參考解析（申論題無官方答案，以下為參考示範，應試時須配合訓練課程用語）</div>
+  <div class="ans-block">
+
+    <div class="ans-section">
+      <div class="ans-title">【壹、前言定位】</div>
+      <p>身為甲市消防局本案承辦人，擬以方案規劃 SWOT 環境分析框架，系統評估「消防救災機器人方案」之內外部條件，再透過 TOWS 交叉策略矩陣，提出具體可行推動策略，以回應市長三項疑慮。</p>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【貳、SWOT 分析】</div>
+      <div class="swot-grid">
+
+        <div class="swot-cell swot-s">
+          <div class="swot-label">S 優勢（Strengths）— 內部有利條件</div>
+          <ul>
+            <li><strong>S1</strong> 射水滅火功能，可持續深入火場壓制火勢</li>
+            <li><strong>S2</strong> 毒氣偵測功能，有效降低消防員中毒風險</li>
+            <li><strong>S3</strong> 熱顯像功能，強化夜間或濃煙環境偵察效能</li>
+            <li><strong>S4</strong> 物聯網即時影像回傳，強化現場指揮決策品質</li>
+            <li><strong>S5</strong> 直接呼應「消防員救災零傷亡」政策目標</li>
+          </ul>
+        </div>
+
+        <div class="swot-cell swot-w">
+          <div class="swot-label">W 劣勢（Weaknesses）— 內部不利條件</div>
+          <ul>
+            <li><strong>W1</strong> 購置成本高昂，地方財政壓力沉重（呼應市長疑慮②）</li>
+            <li><strong>W2</strong> 操控訓練不足，人員技能尚未完備（呼應市長疑慮③）</li>
+            <li><strong>W3</strong> 工廠地形複雜，機器人機動性可能受限</li>
+            <li><strong>W4</strong> 設備維修技術與零件供應鏈尚未成熟</li>
+            <li><strong>W5</strong> 能否符合各類工廠火災需求有待驗證（呼應市長疑慮①）</li>
+          </ul>
+        </div>
+
+        <div class="swot-cell swot-o">
+          <div class="swot-label">O 機會（Opportunities）— 外部有利因素</div>
+          <ul>
+            <li><strong>O1</strong> AI與機器人技術快速進步，性能持續提升</li>
+            <li><strong>O2</strong> 工業園區火災頻率上升，社會對消防安全改善需求殷切</li>
+            <li><strong>O3</strong> 中央推動「智慧消防」政策，可爭取補助款項</li>
+            <li><strong>O4</strong> 國際已有消防機器人實戰案例可供借鏡</li>
+            <li><strong>O5</strong> 廠商及學術機構可提供技術合作與訓練資源</li>
+          </ul>
+        </div>
+
+        <div class="swot-cell swot-t">
+          <div class="swot-label">T 威脅（Threats）— 外部不利因素</div>
+          <ul>
+            <li><strong>T1</strong> 市長及議會對新設備效能存有疑慮，推動阻力較大</li>
+            <li><strong>T2</strong> 技術迭代快速，購置後可能面臨快速折舊風險</li>
+            <li><strong>T3</strong> 法規面尚未明確規範機器人用於消防救災之責任歸屬</li>
+            <li><strong>T4</strong> 操作失誤或設備故障將影響救災時效，損害公眾信任</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【參、TOWS 策略建議】</div>
+      <p style="font-size:0.88em;color:var(--sub);">TOWS 係 SWOT 的延伸策略矩陣，將內外部因素兩兩交叉，產出四類策略方向：</p>
+
+      <div class="tows-box">
+        <div class="tows-title">① SO 策略（優勢＋機會）→ 積極進攻策略</div>
+        <ul>
+          <li><strong>爭取中央智慧消防補助：</strong>運用機器人多功能優勢（S1~S4），結合中央推動智慧消防政策（O3），向上申請計畫補助，降低地方財政壓力。</li>
+          <li><strong>建立國際技術交流機制：</strong>借鏡國際實戰案例（O4），結合本市技術基礎，評估引進適合工業園區環境之機器人機型，確認符合救災需求（回應疑慮①）。</li>
+        </ul>
+      </div>
+
+      <div class="tows-box">
+        <div class="tows-title">② WO 策略（劣勢＋機會）→ 改善強化策略</div>
+        <ul>
+          <li><strong>分期採購試行計畫：</strong>針對購置費用（W1），規劃「先試驗一至二部→評估→逐步擴充」之滾動式採購，降低財政一次性衝擊。</li>
+          <li><strong>產學合作訓練課程：</strong>結合廠商與大學資源（O5），系統化建立機器人操控訓練計畫，補足人員技能不足（W2），確保操作安全。</li>
+        </ul>
+      </div>
+
+      <div class="tows-box">
+        <div class="tows-title">③ ST 策略（優勢＋威脅）→ 防護穩定策略</div>
+        <ul>
+          <li><strong>建立公開效能驗證機制：</strong>透過實地演練並公布測試數據（S1~S4），具體展示機器人效能，化解市長及議會疑慮（T1），建立信任基礎。</li>
+          <li><strong>制定操作 SOP 與應急方案：</strong>訂定明確操作規範，設計設備故障時之傳統救災並行方案（T4），確保救災能力不中斷。</li>
+        </ul>
+      </div>
+
+      <div class="tows-box">
+        <div class="tows-title">④ WT 策略（劣勢＋威脅）→ 防禦保守策略</div>
+        <ul>
+          <li><strong>要求廠商提供訓練與維保套裝：</strong>於採購規格中明訂廠商須附帶完整訓練課程及零件保固（減緩W2、W4、T2），降低初期導入風險。</li>
+          <li><strong>配合法規研修推進：</strong>主動與相關主管機關溝通，協助研擬消防機器人操作責任歸屬規範（T3），確保法制完備再全面部署。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【肆、小結】</div>
+      <p>綜上，建議採 WO 策略為主軸（分期採購＋產學訓練），輔以 SO 策略爭取補助，並以 ST 策略建立驗證機制，逐步消除疑慮，方可有效推動「消防救災機器人方案」。</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════ 第二題 ═══════════════════════════ -->
+<div class="section-title subj-crisis">第二題（30分）— 危機處理：公共安全管理倡議</div>
+
+<div class="q-block subj-crisis">
+  <div class="q-header">第二題 <span class="q-score">（30分）｜課程：危機處理（含風險管理）</span></div>
+  <div class="q-text">
+    <div class="situation">【情境】甲縣食品工廠發生鍋爐起火（20餘人傷）、倉儲火災（無傷亡，財損大）。局長宣示以「企業防災理念」為核心，研修公共安全規定、訂定防災應變措施、加重處罰。</div>
+    <div class="question">【問題】運用「危機處理（含風險管理）」課程所學，針對工廠及倉儲，以「公共安全管理的倡議」為對策提出改善建議。</div>
+  </div>
+  <div class="non-official">⚠ 非官方參考解析（申論題無官方答案）</div>
+  <div class="ans-block">
+
+    <div class="ans-section">
+      <div class="ans-title">【壹、前言】</div>
+      <p>面對工廠及倉儲火災重複發生、社會高度關注之危機情境，本人以甲縣消防局公安業務承辦人立場，運用危機處理「事前預防—事中應變—事後復原」三階段框架，結合風險管理之風險識別、評估、控制原則，提出以「公共安全管理倡議」為核心之改善建議方案。</p>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【貳、事前預防：強化法規與自主管理】<span class="sub-pts">（風險識別→風險控制）</span></div>
+      <div class="law-ref">法規依據：消防法第13條（防火管理）、第9條（設備檢修申報）、消防法施行細則、公共危險物品及可燃性高壓氣體製造儲存處理場所設置標準暨安全管理辦法</div>
+      <ul>
+        <li><strong>倡議一｜分級查核制度：</strong>依廠房危險等級（鍋爐、化學原料、易燃物儲存等）及過去違規紀錄，實施差異化查核頻率；高風險廠場提升為每季一查，一般廠場維持年度查核。</li>
+        <li><strong>倡議二｜強制防火管理人制度落實：</strong>依消防法第13條，嚴格要求符合規模之工廠及倉儲遴用合格防火管理人，定期辦理複訓，並建立防火管理計畫審核機制。</li>
+        <li><strong>倡議三｜鍋爐等特種設備強制申報：</strong>要求工廠提報鍋爐定期安全檢查紀錄至消防局備查，結合勞動部職安署跨機關資料共享，提早識別高風險設備。</li>
+        <li><strong>倡議四｜企業自主防災認證：</strong>推動建立「企業消防安全自主管理認證制度」，優良廠商公開表揚並提供保險費率優惠，以正向誘因促進廠商自律。</li>
+      </ul>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【參、事中應變：強化應變能量與指揮效能】<span class="sub-pts">（危機應對）</span></div>
+      <div class="law-ref">法規依據：災害防救法第20條（地區災害防救計畫）；消防法第29條（義勇消防組織）</div>
+      <ul>
+        <li><strong>倡議五｜工業區專屬應變計畫：</strong>於地區災害防救計畫（災害防救法第20條）中，針對工業園區製作特殊場所附冊，涵蓋鍋爐爆炸、化學品洩漏、大量濃煙等特殊情境之滅火、搶救及人員疏散SOP。</li>
+        <li><strong>倡議六｜廠商自衛消防組織演練：</strong>結合消防法第29條義勇消防組織架構，要求大型工廠及倉儲每年至少辦理兩次自衛消防演練，消防局提供輔導與評核。</li>
+        <li><strong>倡議七｜危害物品資料庫建置：</strong>建置工業區廠商危害物品電子資料庫，消防員出動前可即時查詢廠內化學物品、儲量及位置，提升搶救安全性與效率。</li>
+      </ul>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【肆、加重處罰：以罰則強化嚇阻效果】</div>
+      <div class="law-ref">法規依據：消防法第38條（未申報罰則）、相關裁罰基準；行政罰法</div>
+      <ul>
+        <li><strong>倡議八｜累犯加重裁罰：</strong>依行政罰法對累次違規之工廠及倉儲提高罰鍰上限，研議對拒不改善者依法報請主管機關限期改善並停業處分。</li>
+        <li><strong>倡議九｜違規名單公開制度：</strong>建立「公共安全違規廠商公告平台」，透過社會壓力與市場機制（如採購資格限制）促進自律，強化嚇阻效果。</li>
+        <li><strong>倡議十｜跨機關聯合稽查：</strong>整合消防、建管、勞安、環保等機關，建立聯合稽查機制，避免單一機關資源不足及廠商重複接受單項查核之行政浪費。</li>
+      </ul>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【伍、事後復原：學習與改善機制】<span class="sub-pts">（危機後學習）</span></div>
+      <ul>
+        <li><strong>倡議十一｜火災案例通報學習制度：</strong>每次重大工廠火災結案後，製作案例分析報告並辦理研討，將教訓轉化為查核重點及訓練教材。</li>
+        <li><strong>倡議十二｜督導改善追蹤小組：</strong>重大火災後設立「公共安全改善督導小組」，定期追蹤受查廠商改善進度，確保危機不重演。</li>
+      </ul>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【陸、結語】</div>
+      <p>以上十二項倡議以「預防優先、應變強化、懲罰輔助、復原學習」為主軸，落實企業防災自主管理理念，兼顧依法行政與柔性誘導，可有效降低甲縣工廠及倉儲火災之發生率與傷亡損失。</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════ 第三題 ═══════════════════════════ -->
+<div class="section-title subj-admin">第三題（20分）— 行政程序法：閱覽權利 ＋ 法規命令性質</div>
+
+<div class="q-block subj-admin">
+  <div class="q-header">第三題 <span class="q-score">（20分）｜簡答型｜科目：行政法、消防法</span></div>
+  <div class="q-text">
+    <div class="situation">【情境】甲為火災受害人，因房屋受災嚴重，擬向消防機關請求閱覽災害調查報告。消防法第26條之1第2項授權中央主管機關訂定「火災證明及火災調查資料申請辦法」。</div>
+    <div class="question">【問題一】甲是否可向消防機關申請閱覽調查報告？<br>【問題二】「火災證明及火災調查資料申請辦法」之法律性質為何？</div>
+  </div>
+  <div class="non-official">⚠ 非官方參考解析（簡答型無官方範本）</div>
+  <div class="ans-block">
+
+    <div class="ans-section">
+      <div class="ans-title">【一、甲得否申請閱覽災害調查報告】</div>
+      <div class="law-ref">法規依據：消防法第26條之1；行政程序法第46條第1項、第2項</div>
+
+      <p><strong>（一）甲具有申請資格：</strong></p>
+      <p>依<strong>行政程序法第46條第1項</strong>：「當事人或利害關係人得向行政機關申請閱覽、抄寫、複印或攝影有關資料或卷宗。」甲之房屋因火災受損，其財產、權益直接受到影響，屬行政程序上之<strong>「利害關係人」</strong>，具備申請閱覽之法律地位。</p>
+
+      <p><strong>（二）得申請之範圍：</strong></p>
+      <p>依<strong>消防法第26條之1第2項</strong>授權訂定之「火災證明及火災調查資料申請辦法」，就申請程序、範圍、資格、應備文件等予以規範，甲應依該辦法規定備齊文件向消防機關申請，原則上得申請閱覽與其災情相關之調查資料。</p>
+
+      <p><strong>（三）行政機關得依法限制部分閱覽：</strong></p>
+      <p>惟依<strong>行政程序法第46條第2項</strong>，有下列情形之一者，行政機關得拒絕或限制閱覽：</p>
+      <ul>
+        <li>行政決定前之擬稿或其他準備作業文件</li>
+        <li>涉及第三人之個人隱私、業務秘密（如其他涉案廠商資料）</li>
+        <li>有礙犯罪調查或偵查之進行</li>
+        <li>依其他法律或基於公益，顯然不宜公開者</li>
+      </ul>
+
+      <p><strong>（四）結論：</strong></p>
+      <p>甲原則上<strong>可向消防機關申請閱覽</strong>火災調查報告；消防機關應依相關辦法及行政程序法第46條審核，若有法定限制事由，得就特定部分不予提供，但須告知理由，甲並得依行政救濟途徑提出異議。</p>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【二、「火災證明及火災調查資料申請辦法」之法律性質】</div>
+      <div class="law-ref">法規依據：行政程序法第150條（法規命令定義）、第157條（法規命令發布）；消防法第26條之1第2項（授權依據）</div>
+
+      <p><strong>（一）法規命令之定義：</strong></p>
+      <p>依<strong>行政程序法第150條第1項</strong>：「本法所稱法規命令，係指行政機關基於法律授權，對多數不特定人民就一般事項所作抽象之對外發生法律效果之規定。」</p>
+
+      <p><strong>（二）本辦法符合法規命令之要件：</strong></p>
+      <ul>
+        <li><strong>具有明確法律授權：</strong>依消防法第26條之1第2項明文授權中央主管機關訂定，符合「授權明確性」原則。</li>
+        <li><strong>規範對象為不特定多數人：</strong>凡符合條件之申請人均受其規範，具「一般性」。</li>
+        <li><strong>對外發生法律效果：</strong>直接拘束人民之申請資格、程序及審核方式，具「外部效力」，非僅規範機關內部事務。</li>
+        <li><strong>抽象規範：</strong>係就一般事項預為規定，而非針對個案，具「抽象性」。</li>
+      </ul>
+
+      <p><strong>（三）結論：</strong></p>
+      <p>「火災證明及火災調查資料申請辦法」之法律性質為<strong>法規命令</strong>（行政命令之一種），而非僅具內部效力之行政規則。其訂定須依行政程序法第157條規定，刊登政府公報或新聞紙，始生效力，且對人民及行政機關均具法律拘束力。</p>
+
+      <table>
+        <tr><th>區分要素</th><th>法規命令（本案）</th><th>行政規則（對比）</th></tr>
+        <tr><td>授權依據</td><td>需法律明確授權（消防法§26-1II）</td><td>無需法律授權，依組織法</td></tr>
+        <tr><td>規範對象</td><td>不特定外部人民</td><td>機關內部人員</td></tr>
+        <tr><td>外部效力</td><td>有，直接拘束人民</td><td>無，僅內部拘束</td></tr>
+        <tr><td>發布方式</td><td>刊登政府公報（行政程序法§157）</td><td>內部下達或公告</td></tr>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════ 第四題 ═══════════════════════════ -->
+<div class="section-title subj-crime">第四題（20分）— 刑法 ＋ 貪污治罪條例：圖利罪、登載不實</div>
+
+<div class="q-block subj-crime">
+  <div class="q-header">第四題 <span class="q-score">（20分）｜簡答型｜科目：刑法、貪污治罪條例</span></div>
+  <div class="q-text">
+    <div class="situation">【情境】消防局隊員甲複查餐飲業者乙，發現室內消防栓及排煙設備缺失未改善且逾改善期限（依法應罰6,000~30,000元），但甲乙為好友，甲未開舉發單，且於複查紀錄表登載「已改善」，致乙免除罰鍰。</div>
+    <div class="question">【問題一】甲之行為觸犯何罪？<br>【問題二】上開行為與「便民」的區別為何？</div>
+  </div>
+  <div class="non-official">⚠ 非官方參考解析（簡答型無官方範本）</div>
+  <div class="ans-block">
+
+    <div class="ans-section">
+      <div class="ans-title">【一、甲之行為觸犯之罪名】</div>
+      <div class="law-ref">法規依據：刑法第213條（公務員登載不實）；貪污治罪條例第6條第1項第4款（圖利罪）</div>
+
+      <p><strong>（一）刑法第213條 — 公務員登載不實公文書罪</strong></p>
+      <p>刑法第213條規定：「公務員明知為不實之事項，而登載於職務上所掌之公文書，足以生損害於公眾或他人者，處一年以上七年以下有期徒刑。」本案分析如下：</p>
+      <ul>
+        <li><strong>主體：</strong>甲為消防局隊員，依法為<strong>公務員</strong>（刑法第10條第2項）。</li>
+        <li><strong>行為：</strong>甲<strong>明知</strong>乙之消防設備缺失「未改善」，仍於職務上所掌之<strong>複查紀錄表</strong>（公文書）登載「已改善」，屬<strong>登載不實</strong>。</li>
+        <li><strong>損害：</strong>足以生損害於公眾（消防安全遭虛報）及主管機關之執法正確性。</li>
+        <li><strong>結論：</strong>甲<strong>成立刑法第213條公務員登載不實公文書罪</strong>。</li>
+      </ul>
+
+      <p><strong>（二）貪污治罪條例第6條第1項第4款 — 圖利罪</strong></p>
+      <p>貪污治罪條例第6條第1項第4款規定：「對於主管或監督之事務，明知違背法律、法律授權之法規命令、職務命令或其他違背法令之行為，直接或間接圖自己或其他私人不法利益，因而獲得利益者。」本案分析如下：</p>
+      <ul>
+        <li><strong>主管事務：</strong>甲執行乙之消防安全設備複查業務，屬其<strong>主管之事務</strong>。</li>
+        <li><strong>明知違法：</strong>甲明知乙違反消防法規定（設備逾期未改善），依法應開立舉發單裁處罰鍰，卻故意不為。</li>
+        <li><strong>圖私人不法利益：</strong>甲之不作為使好友乙<strong>免除應受之罰鍰</strong>（新臺幣6,000元至30,000元），係<strong>間接圖私人（乙）不法財產利益</strong>。</li>
+        <li><strong>獲得利益：</strong>乙確實因此獲得免罰之財產利益。</li>
+        <li><strong>結論：</strong>甲<strong>成立貪污治罪條例第6條第1項第4款圖利罪</strong>。</li>
+      </ul>
+
+      <p><strong>（三）罪數關係：</strong></p>
+      <p>甲登載不實（刑法§213）係達成圖利乙目的（貪污§6Ⅰ④）之手段行為，二者間有<strong>方法目的關係</strong>。依現行實務，兩罪分別成立，<strong>數罪併罰</strong>，且依貪污治罪條例第6條第1項規定，圖利罪之刑度為五年以上有期徒刑。</p>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【二、甲之行為與「便民」之區別】</div>
+      <div class="law-ref">法規依據：行政程序法第8條（誠實信用）、第36條（依法調查）；消防法（執法義務）；公務員服務法第1條（忠實執行職務）</div>
+
+      <table>
+        <tr><th>比較項目</th><th>便民（合法行政）</th><th>甲之行為（違法圖利）</th></tr>
+        <tr><td>本質</td><td>在<strong>依法行政前提下</strong>，提供友善便利服務</td><td>以私情<strong>凌駕法律</strong>，廢弛法定職務</td></tr>
+        <tr><td>手段</td><td>合理延長改善期限（有法律依據）；提供改善指引；主動告知違規情形</td><td>偽造官方紀錄（登載不實）；不開立法定舉發單</td></tr>
+        <tr><td>對法律義務之影響</td><td>不影響人民依法應履行之義務</td><td>使乙得以<strong>免除法定罰鍰</strong>，直接破壞法律秩序</td></tr>
+        <tr><td>動機</td><td>提升行政效率，以人民利益為出發</td><td>基於私交，圖利特定個人，損害公益</td></tr>
+        <tr><td>法律評價</td><td>合法、值得鼓勵</td><td>違反消防法、刑法§213、貪污§6Ⅰ④</td></tr>
+      </table>
+
+      <p><strong>小結：</strong>「便民」之正確意涵係在<strong>法律框架內</strong>提供最友善、最高效之行政服務，如主動提醒、輔導改善、提供必要協助等，目的是幫助人民<strong>符合法律要求</strong>。甲之行為係以私情取代公法義務，不僅未協助乙改善消防安全、保障公眾安全，反而縱容違規並以虛假公文書掩護，早已<strong>超越便民之界限</strong>，構成違法之圖利及登載不實行為，應依法追究刑責。</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════ 考試方向分析 ═══════════════════════════ -->
+<div class="section-title subj-overview">★ 考試方向分析</div>
+
+<div class="analysis-box subj-overview">
+  <h3>各題主要考試方向</h3>
+  <table>
+    <tr><th>題號</th><th>課程/科目</th><th>核心考點</th><th>出題重點</th></tr>
+    <tr>
+      <td>第一題（30分）</td>
+      <td>方案規劃</td>
+      <td>SWOT + TOWS 矩陣</td>
+      <td>①能否正確區分內外部、有利不利條件 ②TOWS四象限策略能否扣回SWOT要素 ③策略建議是否具體可行、有回應市長疑慮</td>
+    </tr>
+    <tr>
+      <td>第二題（30分）</td>
+      <td>危機處理、風險管理</td>
+      <td>三階段架構 + 倡議型對策</td>
+      <td>①能否套用「預防→應變→復原」框架 ②對策是否具政策倡議格局（非個案處置）③是否引用法規依據佐證</td>
+    </tr>
+    <tr>
+      <td>第三題（20分）</td>
+      <td>行政法（行政程序法＋消防法）</td>
+      <td>閱覽權、法規命令</td>
+      <td>①行政程序法§46閱覽權之要件及限制 ②法規命令 vs 行政規則之區分（§150）③授權明確性原則</td>
+    </tr>
+    <tr>
+      <td>第四題（20分）</td>
+      <td>刑法＋貪污治罪條例</td>
+      <td>公務員犯罪、便民界限</td>
+      <td>①刑法§213（登載不實）構成要件 ②貪污§6Ⅰ④（圖利罪）主管事務＋明知違法＋圖私人利益 ③便民與違法之實質區別</td>
+    </tr>
+  </table>
+
+  <h3 style="margin-top:16px;">整體出題趨勢觀察</h3>
+  <ul>
+    <li><strong>課程框架導向明確：</strong>第一、二題明確標註「運用XX課程所學」，考生若未使用課程框架（SWOT/TOWS、危機三階段），即便內容豐富也難獲高分。</li>
+    <li><strong>情境帶入式考題：</strong>所有題目均以貼近實務之情境出題，考驗考生將學理轉化為實際行政判斷之能力。</li>
+    <li><strong>法律條文精確度：</strong>第三、四題明確引用條號（消防法§26-1、刑法§213、貪污§6Ⅰ④），答題時必須正確引用，不可模糊帶過。</li>
+    <li><strong>職業倫理隱形考點：</strong>第四題「便民與違法」之對比，本質上是測試考生對公務員職業倫理與依法行政之理解深度。</li>
+  </ul>
+</div>
+
+
+<!-- ═══════════════════════════ 核心萬用答案 ═══════════════════════════ -->
+<div class="section-title subj-overview">★ 核心萬用答案框架</div>
+
+<div class="core-box subj-overview">
+  <h2>🎯 佐升正消防實務寫作「萬用答題結構」</h2>
+  <p style="font-size:0.88em;color:var(--sub);">以下框架可適用於<strong>本梯次及歷屆絕大多數申論題</strong>，請依題目替換[]內容：</p>
+
+  <h3>【A】管理類題型萬用框架（適用第一、二題型）</h3>
+  <div class="core-template">壹、前言（定位身份與分析工具）
+    身為[甲市/縣政府消防局][本案承辦人/公安業務承辦人]，運用「[課程名稱]」課程所學之[框架名稱]，針對[政策/議題]進行系統分析，並提出具體可行之建議方案。
+
+貳、[分析框架]（SWOT / 危機三階段 / 風險管理五步驟）
+    ─ [優勢/預防]：……
+    ─ [劣勢/應變]：……
+    ─ [機會/復原]：……
+    ─ [威脅/學習]：……
+
+參、[對策建議]（TOWS / 倡議措施）
+    ─ [策略一]：結合[內部條件]與[外部機會]，建議……（法源：[相關法規]）
+    ─ [策略二]：針對[弱點]結合[機會]，建議……
+    ─ [策略三]：以[優勢]因應[威脅]，建議……
+
+肆、結語
+    綜上，以[核心策略]為主軸，輔以[輔助措施]，可有效達成[政策目標]，兼顧[效能/合法性/可行性]。</div>
+
+  <h3>【B】法律分析類萬用框架（適用第三、四題型）</h3>
+  <div class="core-template">一、問題釐清（重述爭點）
+    本題核心爭點為：[甲之行為是否…？/該規範之性質為何？]
+
+二、法律要件分析
+    依[法規名稱第X條]規定：「……（條文）」，分析如下：
+    （一）[要件一]：本案[甲/該辦法]……符合/不符合此要件，理由為……
+    （二）[要件二]：本案……
+    （三）[要件三]：……
+
+三、結論
+    綜上分析，[甲成立XX罪/甲得申請閱覽/該辦法性質為法規命令]。
+    [若有比較]：其與[對照概念]之區別在於……，本案屬前者，理由為……</div>
+
+  <h3>【C】萬用關鍵句庫（申論題高分加分句型）</h3>
+  <div class="core-template">▶ 情境定位句：
+「身為主管機關消防業務承辦人，秉持依法行政、保障公共安全之核心職責……」
+「鑒於本案涉及公眾安全，應兼顧執法嚴謹性與行政效能……」
+
+▶ 引入框架句：
+「運用SWOT環境分析，就優勢（S）、劣勢（W）、機會（O）、威脅（T）四構面分析如下……」
+「依危機管理理論，危機處理可分為事前預防、事中應變、事後復原三階段……」
+
+▶ 法律引用句：
+「依[法規]第[X]條規定：……，本案[甲/乙]符合/不符合上述要件，蓋因……」
+「依行政程序法第150條第1項，法規命令係指……，本辦法具備授權明確、對外效力等要件，性質屬法規命令。」
+
+▶ 結語收尾句：
+「綜上所析，建議以[策略]為主軸，分階段推動，以期在有限資源下達成最大效益。」
+「甲之行為已逾越[便民/自由裁量]之界限，構成[XX罪]，應依法追究刑事責任。」</div>
+
+  <h3>【D】必背高頻法條速查表</h3>
+  <table>
+    <tr><th>法規</th><th>條號</th><th>內容</th><th>適用題型</th></tr>
+    <tr><td>消防法</td><td>§9</td><td>消防安全設備定期檢修申報</td><td>公安管理、違規查核</td></tr>
+    <tr><td>消防法</td><td>§13</td><td>防火管理制度（一定規模場所）</td><td>工廠防災、自主管理</td></tr>
+    <tr><td>消防法</td><td>§26之1</td><td>火災調查資料申請（含授權辦法）</td><td>第三題型</td></tr>
+    <tr><td>消防法</td><td>§29</td><td>義勇消防組織</td><td>廠商自衛消防</td></tr>
+    <tr><td>災害防救法</td><td>§20</td><td>地區災害防救計畫（縣市擬訂）</td><td>應變計畫、倡議</td></tr>
+    <tr><td>行政程序法</td><td>§46</td><td>當事人閱覽卷宗權利及限制</td><td>第三題型</td></tr>
+    <tr><td>行政程序法</td><td>§150</td><td>法規命令之定義</td><td>法律性質判斷</td></tr>
+    <tr><td>刑法</td><td>§213</td><td>公務員登載不實公文書罪（1~7年）</td><td>公務員違法</td></tr>
+    <tr><td>貪污治罪條例</td><td>§6Ⅰ④</td><td>圖利罪（主管事務＋明知違法＋圖利）</td><td>公務員圖利</td></tr>
+    <tr><td>公務員服務法</td><td>§1</td><td>公務員應誠實廉潔，忠心努力執行職務</td><td>便民vs違法論述</td></tr>
+  </table>
+</div>
+
+
+<div class="footer">114年警佐警察人員晉升警正官等訓練 第2梯次 消防人員 實務寫作題解析｜非官方參考資料・製作：Claude AI・2026/05/19</div>
+</body>
+</html>

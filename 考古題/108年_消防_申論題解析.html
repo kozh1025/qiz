@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>108年_消防_申論題解析</title>
+<style>
+  :root{
+    --bg:#f6f5f1; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66; --line:#e5e2da;
+    --plan:#3b6e8a; --crisis:#b2551f; --admin:#6a4a8a; --info:#4a7a6a;
+    --crim:#8a3b3b; --media:#8a2b6e; --neutral:#6b6a66;
+    --overview:#8a5a3b; --overview-bg:#faf6ee;
+  }
+  * { box-sizing: border-box; }
+  body { font-family: 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif; background: var(--bg); color: var(--ink); margin: 0 auto; padding: 36px 28px 90px; font-size: 15px; line-height: 1.85; max-width: 980px; }
+
+  .header { background: var(--card); border: 1px solid var(--line); border-left: 5px solid var(--overview); padding: 22px 28px; border-radius: 10px; margin-bottom: 20px; }
+  .header h1 { margin: 0 0 6px 0; font-size: 1.35em; color: var(--ink); font-weight: 700; }
+  .header .sub { font-size: 0.88em; color: var(--sub); }
+  .header .tag { display: inline-block; background: var(--overview); color: #fff; border-radius: 4px; padding: 2px 10px; font-size: 0.78em; margin-left: 8px; font-weight: 600; }
+
+  .warning-banner { background: var(--overview-bg); border: 1px solid #e8dcc8; border-left: 4px solid var(--overview); color: #6b4a2e; padding: 10px 16px; border-radius: 6px; margin-bottom: 18px; font-size: 0.88em; }
+
+  .q-block { background: var(--card); border: 1px solid var(--line); border-radius: 10px; margin-bottom: 18px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+  .q-header { background: color-mix(in srgb, var(--subj, var(--overview)) 10%, white); padding: 10px 16px; border-bottom: 1px solid var(--line); border-left: 4px solid var(--subj, var(--overview)); }
+  .q-num { display: inline-block; background: var(--subj, var(--overview)); color: #fff; border-radius: 3px; padding: 2px 10px; font-size: 0.85em; margin-right: 8px; font-weight: bold; }
+  .q-score { display: inline-block; background: #fff; border: 1px solid var(--line); color: var(--sub); border-radius: 3px; padding: 2px 8px; font-size: 0.78em; }
+  .q-title { color: var(--subj, var(--overview)); font-size: 0.95em; margin-top: 6px; font-weight: 600; }
+
+  .q-body { padding: 14px 18px; }
+  .q-text { color: var(--ink); font-size: 0.93em; line-height: 1.8; border-left: 3px solid var(--line); background: #faf9f6; padding: 10px 14px; margin-bottom: 12px; border-radius: 0 6px 6px 0; }
+
+  .ans-box { background: #fdfcfa; border: 1px solid var(--line); border-radius: 8px; padding: 14px 18px; margin-bottom: 12px; }
+  .ans-title { color: var(--subj, var(--overview)); font-weight: bold; font-size: 0.9em; margin-bottom: 8px; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+  .ans-content { color: var(--ink); font-size: 0.88em; line-height: 1.9; }
+  .ans-content p { margin: 6px 0; }
+
+  .law-tag { display: inline-block; background: color-mix(in srgb, var(--subj, var(--overview)) 10%, white); border: 1px solid var(--subj, var(--overview)); color: var(--subj, var(--overview)); border-radius: 3px; padding: 1px 7px; font-size: 0.78em; margin: 2px 2px; }
+  .law-tag-red { display: inline-block; background: #f7eaea; border: 1px solid var(--crim); color: var(--crim); border-radius: 3px; padding: 1px 7px; font-size: 0.78em; margin: 2px 2px; }
+  .key-point { color: var(--subj, var(--overview)); font-weight: bold; }
+
+  .framework-box { background: #fdfcfa; border: 1px solid var(--line); border-left: 4px solid var(--subj, var(--overview)); border-radius: 8px; padding: 14px 18px; margin: 10px 0; }
+  .framework-title { color: var(--subj, var(--overview)); font-weight: bold; font-size: 0.92em; margin-bottom: 10px; }
+
+  .table-wrap { overflow-x: auto; margin: 10px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85em; }
+  th { background: color-mix(in srgb, var(--subj, var(--overview)) 16%, white); color: var(--ink); padding: 8px 12px; text-align: left; border: 1px solid var(--line); }
+  td { padding: 7px 12px; border: 1px solid var(--line); color: var(--ink); vertical-align: top; }
+  tr:nth-child(even) td { background: #faf9f6; }
+
+  .section-title { background: var(--overview-bg); border-left: 4px solid var(--subj, var(--overview)); color: var(--subj, var(--overview)); padding: 8px 16px; margin: 28px 0 14px 0; font-size: 1em; font-weight: bold; border-radius: 0 6px 6px 0; }
+
+  .w-row { background: #fdfcfa; border: 1px solid var(--line); border-radius: 4px; padding: 8px 12px; margin-bottom: 6px; }
+  .w-label { display: inline-block; background: color-mix(in srgb, var(--subj, var(--overview)) 14%, white); color: var(--subj, var(--overview)); border-radius: 3px; padding: 1px 8px; font-size: 0.8em; font-weight: bold; min-width: 100px; margin-right: 8px; vertical-align: top; }
+  .w-content { display: inline-block; color: var(--ink); font-size: 0.87em; width: calc(100% - 120px); vertical-align: top; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+  .box-item { background: #fdfcfa; border: 1px solid var(--line); border-radius: 4px; padding: 8px 12px; font-size: 0.85em; }
+  .box-label { color: var(--subj, var(--overview)); font-weight: bold; font-size: 0.82em; margin-bottom: 4px; }
+  .box-content { color: var(--ink); }
+
+  .tag-row { margin: 8px 0; }
+  .step-list { counter-reset: step; }
+  .step-item { counter-increment: step; padding: 6px 0 6px 32px; position: relative; color: var(--ink); font-size: 0.88em; }
+  .step-item::before { content: counter(step); position: absolute; left: 0; top: 6px; background: var(--overview); color: #fff; border-radius: 50%; width: 22px; height: 22px; text-align: center; line-height: 22px; font-size: 0.8em; font-weight: bold; }
+
+  .universal-box { background: var(--overview-bg); border: 1px solid #e8dcc8; border-left: 4px solid var(--overview); border-radius: 8px; padding: 18px 22px; margin: 14px 0; }
+  .universal-title { color: var(--overview); font-size: 1em; font-weight: bold; margin-bottom: 12px; }
+
+  .summary-box { background: var(--overview-bg); border: 1px solid #e8dcc8; border-radius: 8px; padding: 14px 18px; margin: 10px 0; }
+
+  .year-nav { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+  .year-btn { background: #fff; color: var(--sub); border: 1px solid var(--line); border-radius: 4px; padding: 4px 12px; font-size: 0.82em; text-decoration: none; }
+  .year-btn.active { background: var(--overview); color: #fff; border-color: var(--overview); }
+
+  .footer { text-align: center; font-size: 0.78em; color: #a09d95; margin-top: 30px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .highlight-row { background: #fdfcfa; border-left: 3px solid var(--subj, var(--overview)); padding: 8px 14px; margin: 6px 0; border-radius: 0 4px 4px 0; font-size: 0.87em; color: var(--ink); }
+</style>
+</head>
+<body>
+<div style="position:fixed;top:8px;right:12px;z-index:9999;font-size:12px;color:#9a978d;background:rgba(255,255,255,.85);padding:2px 10px;border-radius:999px;pointer-events:none;">柯醒翰製作</div>
+
+<div class="header">
+  <h1>108年警察人員升官等考試・消防人員<span class="tag">申論題解析</span></h1>
+  <div class="sub">考試年度：108年｜題型：兩大題（各50分）｜總分：100分｜深青藍主題</div>
+</div>
+
+<div class="warning-banner">
+  ⚠ 本解析為非官方作答參考，法條依現行法規整理，答題方向供研讀參考。實際考試以當年官方公告為準。
+</div>
+
+<div class="year-nav">
+  <span class="year-btn active">108年 ●</span>
+  <span class="year-btn">109年</span>
+  <span class="year-btn">110年</span>
+  <span class="year-btn">111年</span>
+  <span class="year-btn">112年</span>
+  <span class="year-btn">113年</span>
+  <span class="year-btn">114年</span>
+</div>
+
+<!-- ===== 第一題 ===== -->
+<div class="section-title" style="--subj:var(--plan)">第一題・6W2H1E 夏夜歡樂派對安全維護計畫（50分）</div>
+
+<div class="q-block" style="--subj:var(--plan)">
+  <div class="q-header">
+    <span class="q-num">第1題</span><span class="q-score">50分</span>
+    <div class="q-title">以6W2H1E架構規劃「夏夜歡樂派對安全維護工作計畫」</div>
+  </div>
+  <div class="q-body">
+    <div class="q-text">
+      某縣市政府擬於暑假舉辦「夏夜歡樂派對」大型活動，預計湧入數萬名民眾。消防局長指示：請以6W2H1E工作計畫方法，規劃本次活動之消防安全維護工作計畫。請依架構逐項說明。
+    </div>
+
+    <div class="ans-box">
+      <div class="ans-title">▍ 6W2H1E方法論說明</div>
+      <div class="ans-content">
+        <p>6W2H1E係方案規劃之標準化架構：<strong>Why（為何）、What（做什麼）、Who（誰）、When（何時）、Where（哪裡）、Which（哪種方式）＋How（如何）、How Much（資源）＋Evaluation（評估）</strong>。每項須具體可執行，避免空泛描述。</p>
+      </div>
+    </div>
+
+    <div class="framework-box">
+      <div class="framework-title">▍「夏夜歡樂派對」消防安全維護工作計畫 6W2H1E</div>
+
+      <div class="w-row">
+        <span class="w-label">Why（目的）</span>
+        <span class="w-content">
+          ・本次活動預計吸引民眾5萬人，人群聚集密度高，發生踩踏、火災、緊急傷病之風險顯著提升<br>
+          ・依消防法§13、公共安全相關法規，大型集會活動主辦機關應落實消防安全管理<br>
+          ・目標：確保活動期間零死亡、零重傷，疏散時間符合安全標準
+        </span>
+      </div>
+
+      <div class="w-row">
+        <span class="w-label">What（工作內容）</span>
+        <span class="w-content">
+          ① 事前：場地消防安全查核（滅火器、逃生出口、電路安全）<br>
+          ② 事前：規劃人流管制動線（入口/出口分流、單向通道）<br>
+          ③ 事中：消防人員現場待命（救護車、水線架設）<br>
+          ④ 事中：緊急廣播系統就位（疏散廣播演練）<br>
+          ⑤ 事後：活動結束安全離場管控（防止踩踏）<br>
+          ⑥ 全程：救護站設置（現場急救處理）
+        </span>
+      </div>
+
+      <div class="w-row">
+        <span class="w-label">Who（人員組織）</span>
+        <span class="w-content">
+          ・指揮官：消防局長（或指定代理人）<br>
+          ・現場指揮：分隊長×2（分區負責）<br>
+          ・消防隊員：×12名（分3組輪替）<br>
+          ・救護員：×6名（2救護站+機動組）<br>
+          ・協力：警察局（人流管制）、衛生局（醫療支援）、主辦單位保全
+        </span>
+      </div>
+
+      <div class="w-row">
+        <span class="w-label">When（時間規劃）</span>
+        <span class="w-content">
+          【事前準備】活動前2週：場地安全勘查、計畫核備<br>
+          【事前準備】活動前1週：人員訓練、器材備妥、跨機關協調會<br>
+          【活動當日】開放前2小時：人員進駐、救護站開設<br>
+          【活動期間】18:00-23:00：全程待命（三班輪替）<br>
+          【活動結束】23:00-00:30：離場管控、場地安全確認
+        </span>
+      </div>
+
+      <div class="w-row">
+        <span class="w-label">Where（地點佈署）</span>
+        <span class="w-content">
+          ① 主舞台前方（高密度人群區）：消防員×4、救護員×2<br>
+          ② 主要出入口×4處：各派員管控人流<br>
+          ③ 救護站×2處（活動東西側各1）<br>
+          ④ 消防車停放位置（距主場地不超過50公尺，確保出水距離）<br>
+          ⑤ 指揮所（指揮官、無線電通訊中心）
+        </span>
+      </div>
+
+      <div class="w-row">
+        <span class="w-label">Which（方法選擇）</span>
+        <span class="w-content">
+          ・人流管制：柵欄分流（非全面封鎖，保留應急通道）<br>
+          ・消防水源：預先架設水線（應對舞台特效引發火災）<br>
+          ・通訊：無線電＋LINE群組（多重備援）<br>
+          ・救護後送：就近後送3家指定醫院（事先協調急診量能）
+        </span>
+      </div>
+
+      <div class="w-row">
+        <span class="w-label">How（執行方法）</span>
+        <span class="w-content">
+          ① 事前召開跨機關協調會議（消防、警察、衛生、主辦）<br>
+          ② 製作「緊急疏散計畫圖」張貼現場並告知工作人員<br>
+          ③ 辦理1次活動前安全演練（含廣播疏散模擬）<br>
+          ④ 建立即時通訊群組，各崗位30分鐘回報一次安全狀況<br>
+          ⑤ 設置現場志工（協助引導民眾）×20名<br>
+          ⑥ 與主辦單位簽訂「消防安全協議書」，明確責任歸屬
+        </span>
+      </div>
+
+      <div class="w-row">
+        <span class="w-label">How Much（資源）</span>
+        <span class="w-content">
+          ・人力：消防員12名、救護員6名（估計XX加班工時）<br>
+          ・車輛：消防車×2、救護車×2、指揮車×1<br>
+          ・設備：滅火器（備用20具）、AED×4台、救護包×6套<br>
+          ・經費：主辦單位依「大型活動消防安全維護費用收費標準」負擔
+        </span>
+      </div>
+
+      <div class="w-row">
+        <span class="w-label">Evaluation（評估機制）</span>
+        <span class="w-content">
+          【量化指標】<br>
+          ① 緊急事件響應時間（目標：接報後3分鐘內到達）<br>
+          ② 救護案件處理完成率（目標100%）<br>
+          ③ 活動期間零火災、零重大傷亡<br>
+          【質化指標】<br>
+          ④ 現場人員滿意度問卷（主辦、民眾、參與機關）<br>
+          【事後】<br>
+          ⑤ 活動結束後3日內提交「執行成效報告」，檢討缺失，作為下次活動改善依據
+        </span>
+      </div>
+    </div>
+
+    <div class="tag-row">
+      <span class="law-tag">消防法§13</span>
+      <span class="law-tag">消防法§15-3</span>
+      <span class="law-tag">公共安全管理白皮書</span>
+      <span class="law-tag">大型活動安全管理辦法</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 第二題 ===== -->
+<div class="section-title" style="--subj:var(--media)">第二題・社群媒體行銷之優勢與限制（50分）</div>
+
+<div class="q-block" style="--subj:var(--media)">
+  <div class="q-header">
+    <span class="q-num">第2題</span><span class="q-score">50分</span>
+    <div class="q-title">消防機關運用社群媒體行銷之優勢與應注意之限制</div>
+  </div>
+  <div class="q-body">
+    <div class="q-text">
+      近年政府機關積極運用社群媒體（Facebook、Instagram、YouTube、LINE等）進行機關形象行銷與政策宣導。請以消防機關為例，說明運用社群媒體之主要優勢，並分析應注意之限制與風險。（本題50分，請作充分說明）
+    </div>
+
+    <div class="ans-box">
+      <div class="ans-title">▍ 一、社群媒體行銷之定義與背景</div>
+      <div class="ans-content">
+        <p>社群媒體（Social Media）係指以網際網路為基礎，允許使用者創作、分享、交流內容之數位平台，包括Facebook、Instagram、YouTube、LINE、TikTok等。政府機關運用社群媒體進行行銷，屬「政府行銷（Government Marketing）」之延伸，目的在於提升施政能見度、強化民眾認同、傳遞正確資訊。</p>
+      </div>
+    </div>
+
+    <div class="framework-box">
+      <div class="framework-title">▍ 二、消防機關運用社群媒體之主要優勢</div>
+
+      <div class="grid-2">
+        <div class="box-item">
+          <div class="box-label">① 即時性與快速傳播</div>
+          <div class="box-content">
+            災害發生時可即時推播警示資訊（如颱風路徑、疏散命令），比傳統媒體更快速，有效提升民眾防災意識與應變速度。
+          </div>
+        </div>
+        <div class="box-item">
+          <div class="box-label">② 低成本高覆蓋率</div>
+          <div class="box-content">
+            相較電視、報紙等傳統媒體，社群媒體廣告成本極低，且可精準觸及目標族群（如老年防火宣導、青少年火災知識）。
+          </div>
+        </div>
+        <div class="box-item">
+          <div class="box-label">③ 雙向互動溝通</div>
+          <div class="box-content">
+            民眾可留言、分享、詢問，消防機關可即時回覆，建立互信關係，並蒐集民眾意見作為政策參考，提升服務品質。
+          </div>
+        </div>
+        <div class="box-item">
+          <div class="box-label">④ 多元內容格式</div>
+          <div class="box-content">
+            影片（滅火器使用示範）、圖文（火場逃生SOP）、直播（防火宣導活動）等多元形式，使消防知識更易於吸收記憶。
+          </div>
+        </div>
+        <div class="box-item">
+          <div class="box-label">⑤ 形象塑造與英雄故事</div>
+          <div class="box-content">
+            消防員勇敢救援的影片、感人故事易於在社群中傳播，有效提升消防機關正面形象，並吸引優秀人才報考消防。
+          </div>
+        </div>
+        <div class="box-item">
+          <div class="box-label">⑥ 數據分析精準行銷</div>
+          <div class="box-content">
+            社群平台提供貼文觸及率、互動率、受眾年齡等數據，機關可據此調整宣導策略，提升宣傳效益。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="framework-box">
+      <div class="framework-title">▍ 三、應注意之限制與風險</div>
+
+      <div class="table-wrap">
+        <table>
+          <tr><th>限制類型</th><th>具體風險</th><th>因應對策</th></tr>
+          <tr>
+            <td>假訊息風險</td>
+            <td>錯誤防災資訊（如假撤離令）在社群媒體上比正確資訊傳播更快，易造成社會恐慌</td>
+            <td>建立即時闢謠機制，官方帳號設置認證標誌，主動澄清</td>
+          </tr>
+          <tr>
+            <td>數位落差問題</td>
+            <td>老年人、偏鄉居民未使用社群媒體，若過度依賴社群，將造成資訊不均</td>
+            <td>社群媒體為輔助管道，傳統宣導（里長系統、廣播）不可廢止</td>
+          </tr>
+          <tr>
+            <td>負評危機管理</td>
+            <td>單一救災失誤可能引發大量負評、輿論攻擊，形象受損難以控制</td>
+            <td>建立危機公關SOP：24小時內官方聲明、指定發言人、避免沉默</td>
+          </tr>
+          <tr>
+            <td>人力資源耗費</td>
+            <td>需專職社群管理人員，若人力不足，內容更新緩慢反造成負面印象</td>
+            <td>設置專責新媒體組，或委外經營，但需維持官方視角</td>
+          </tr>
+          <tr>
+            <td>個資與隱私問題</td>
+            <td>發布救災影片若涉及被救者面孔、住所，可能違反個人資料保護法</td>
+            <td>發布前應模糊敏感資訊，取得相關人員同意</td>
+          </tr>
+          <tr>
+            <td>平台依賴風險</td>
+            <td>若單一平台（如Facebook）演算法改變或停服，觸及率驟降</td>
+            <td>多平台經營（FB、IG、YouTube、LINE），避免過度依賴單一管道</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="ans-box">
+      <div class="ans-title">▍ 四、消防機關社群媒體行銷策略建議</div>
+      <div class="ans-content">
+        <p><span class="key-point">① 分眾策略</span>：Facebook觸及40歲以上族群（防火宣導），TikTok/Instagram觸及年輕族群（急救知識、防災遊戲化），LINE觸及家庭群組（全家防火教育）。</p>
+        <p><span class="key-point">② 故事行銷</span>：以消防員真實救援故事感動民眾，提升品牌認同，引發自發性分享。</p>
+        <p><span class="key-point">③ 危機通訊整合</span>：平時建立社群粉絲基礎，災時快速傳遞正確資訊，降低假訊息傷害。</p>
+        <p><span class="key-point">④ KPI監控</span>：設定每月觸及率、互動率目標，定期檢討調整，避免內容自說自話。</p>
+      </div>
+    </div>
+
+    <div class="tag-row">
+      <span class="law-tag">個人資料保護法§2</span>
+      <span class="law-tag">政府資訊公開法§7</span>
+      <span class="law-tag">災害防救法§20</span>
+      <span class="law-tag">數位部政府社群媒體管理規範</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 考試方向分析 ===== -->
+<div class="section-title">■ 108年考試方向分析</div>
+
+<div class="ans-box">
+  <div class="ans-title">各題核心考點與特色</div>
+  <div class="table-wrap">
+    <table>
+      <tr><th>題號</th><th>核心考點</th><th>工具/框架</th><th>重要程度</th><th>配分</th></tr>
+      <tr><td>第1題</td><td>大型活動消防安全管理</td><td>6W2H1E（必考框架）</td><td>★★★★★</td><td>50分</td></tr>
+      <tr><td>第2題</td><td>社群媒體行銷優勢限制</td><td>優/限分析框架</td><td>★★★★☆</td><td>50分</td></tr>
+    </table>
+  </div>
+  <div class="ans-content" style="margin-top:10px;">
+    <p><span class="key-point">108年特色：</span>兩大題各50分，題型偏重「實務操作方案」（第1題）與「政策分析論述」（第2題）。與109-114年相比，108年題目數量最少（2題），但每題深度要求最高，需充分論述。</p>
+    <p><span class="key-point">趨勢觀察：</span>社群媒體主題在108、109年連續出現，顯示命題委員對數位治理議題高度重視。6W2H1E自108年起連年考（108大型活動、109住警器、110性騷擾、112CO中毒），為<strong>必備萬用框架</strong>。</p>
+  </div>
+</div>
+
+<!-- ===== 107-114年統計 ===== -->
+<div class="section-title">■ 108-114年高頻考點統計（總整理）</div>
+
+<div class="summary-box">
+  <div class="table-wrap">
+    <table>
+      <tr><th>考點類型</th><th>出現年度</th><th>出現次數</th><th>建議熟練度</th></tr>
+      <tr><td>6W2H1E方案規劃</td><td>108、109、110、112</td><td>4次</td><td>⭐⭐⭐⭐⭐ 必背</td></tr>
+      <tr><td>魚骨圖（向左/向右）</td><td>109、111、113</td><td>3次</td><td>⭐⭐⭐⭐⭐ 必背</td></tr>
+      <tr><td>CDM危機決策模式</td><td>110、113</td><td>2次</td><td>⭐⭐⭐⭐⭐ 必背</td></tr>
+      <tr><td>危機溝通/記者說明會</td><td>111、112</td><td>2次</td><td>⭐⭐⭐⭐☆ 重要</td></tr>
+      <tr><td>SWOT+TOWS策略矩陣</td><td>111、114</td><td>2次</td><td>⭐⭐⭐⭐☆ 重要</td></tr>
+      <tr><td>社群媒體應用</td><td>108、109</td><td>2次</td><td>⭐⭐⭐☆☆ 次要</td></tr>
+      <tr><td>行政程序法§102+§103</td><td>110、111</td><td>2次</td><td>⭐⭐⭐⭐⭐ 必背</td></tr>
+      <tr><td>貪污治罪條例</td><td>110、111、112、113</td><td>4次</td><td>⭐⭐⭐⭐⭐ 必背</td></tr>
+      <tr><td>政府資訊公開法</td><td>110、111、112</td><td>3次</td><td>⭐⭐⭐⭐☆ 重要</td></tr>
+      <tr><td>消防法（各條）</td><td>108-114 全部</td><td>7次</td><td>⭐⭐⭐⭐⭐ 必背</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ===== 萬用框架總整理 ===== -->
+<div class="section-title">■ 萬用答案框架—全科目最終總覽</div>
+
+<div class="universal-box">
+  <div class="universal-title">📌 六大萬用框架速查</div>
+  <div class="step-list">
+    <div class="step-item"><strong>6W2H1E</strong>：Why→What→Who→When→Where→Which→How→How Much→Evaluation（方案規劃必用）</div>
+    <div class="step-item"><strong>向左魚骨圖</strong>：6大骨（人/機/料/法/環/測）找根因（問題分析必用）</div>
+    <div class="step-item"><strong>向右魚骨圖</strong>：6大骨展開達成目標的方法（目標達成必用）</div>
+    <div class="step-item"><strong>SWOT+TOWS</strong>：內部S/W＋外部O/T→SO/WO/ST/WT四策略（策略規劃必用）</div>
+    <div class="step-item"><strong>CDM五步驟</strong>：收集情資→評估情境→確認問題→選擇方案→執行評估（危機決策必用）</div>
+    <div class="step-item"><strong>記者說明會七原則</strong>：迅速/坦誠/同理/統一說法/持續更新/媒體關係/後續追蹤（危機溝通必用）</div>
+  </div>
+</div>
+
+<div class="universal-box">
+  <div class="universal-title">📌 法條必背速查（貪污+行政程序+政資法+消防）</div>
+  <div class="table-wrap">
+    <table>
+      <tr><th>法規</th><th>條號</th><th>內容要點</th><th>考試頻率</th></tr>
+      <tr><td>貪污治罪條例</td><td>§4Ⅰ⑤</td><td>違背職務收賄罪（最重罪）</td><td>★★★★★</td></tr>
+      <tr><td>貪污治罪條例</td><td>§5Ⅰ③</td><td>不違背職務收賄</td><td>★★★★☆</td></tr>
+      <tr><td>貪污治罪條例</td><td>§6Ⅰ④</td><td>圖利罪（明知違法圖利）</td><td>★★★★★</td></tr>
+      <tr><td>貪污治罪條例</td><td>§8</td><td>自首減免（偵查前）</td><td>★★★★☆</td></tr>
+      <tr><td>貪污治罪條例</td><td>§11</td><td>包庇縱容罪</td><td>★★★☆☆</td></tr>
+      <tr><td>貪污治罪條例</td><td>§12</td><td>情節輕微減輕</td><td>★★★☆☆</td></tr>
+      <tr><td>行政程序法</td><td>§102</td><td>不利處分→應給予陳述意見</td><td>★★★★★</td></tr>
+      <tr><td>行政程序法</td><td>§103</td><td>六款例外不需陳述意見</td><td>★★★★★</td></tr>
+      <tr><td>行政程序法</td><td>§117</td><td>違法行政處分撤銷</td><td>★★★★☆</td></tr>
+      <tr><td>行政程序法</td><td>§119</td><td>受益人信賴不保護情形</td><td>★★★☆☆</td></tr>
+      <tr><td>行政程序法</td><td>§127</td><td>利益返還</td><td>★★★☆☆</td></tr>
+      <tr><td>行政程序法</td><td>§150</td><td>法規命令定義</td><td>★★★☆☆</td></tr>
+      <tr><td>政府資訊公開法</td><td>§18</td><td>限制公開七款情形</td><td>★★★★★</td></tr>
+      <tr><td>政府資訊公開法</td><td>§23</td><td>申請更正補充</td><td>★★★☆☆</td></tr>
+      <tr><td>消防法</td><td>§6</td><td>住警器強制安裝</td><td>★★★★☆</td></tr>
+      <tr><td>消防法</td><td>§13</td><td>大型集會消防安全</td><td>★★★★☆</td></tr>
+      <tr><td>消防法</td><td>§15-3</td><td>燃氣熱水器CO防制</td><td>★★★☆☆</td></tr>
+      <tr><td>消防法</td><td>§26之1</td><td>消防員安全</td><td>★★★☆☆</td></tr>
+      <tr><td>災害防救法</td><td>§20</td><td>地方政府災害防救業務</td><td>★★★★☆</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="footer">108年警察人員升官等考試 消防人員 申論題解析｜非官方參考資料｜108-114年全系列完整版</div>
+</body>
+</html>

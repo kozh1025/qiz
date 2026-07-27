@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>109年_消防_申論題解析</title>
+<style>
+  :root{
+    --bg:#f6f5f1; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66; --line:#e5e2da;
+    --plan:#3b6e8a; --crisis:#b2551f; --admin:#6a4a8a; --info:#4a7a6a;
+    --crim:#8a3b3b; --media:#8a2b6e; --neutral:#6b6a66;
+    --overview:#8a5a3b; --overview-bg:#faf6ee;
+  }
+  * { box-sizing: border-box; }
+  body { font-family: 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif; background: var(--bg); color: var(--ink); margin: 0 auto; padding: 36px 28px 90px; font-size: 15px; line-height: 1.85; max-width: 980px; }
+
+  .header { background: var(--card); border: 1px solid var(--line); border-left: 5px solid var(--overview); padding: 22px 28px; border-radius: 10px; margin-bottom: 20px; }
+  .header h1 { margin: 0 0 6px 0; font-size: 1.35em; color: var(--ink); font-weight: 700; }
+  .header .sub { font-size: 0.88em; color: var(--sub); }
+  .header .tag { display: inline-block; background: var(--overview); color: #fff; border-radius: 4px; padding: 2px 10px; font-size: 0.78em; margin-left: 8px; font-weight: 600; }
+
+  .warning-banner { background: var(--overview-bg); border: 1px solid #e8dcc8; border-left: 4px solid var(--overview); color: #6b4a2e; padding: 10px 16px; border-radius: 6px; margin-bottom: 18px; font-size: 0.88em; }
+
+  .q-block { background: var(--card); border: 1px solid var(--line); border-radius: 10px; margin-bottom: 18px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+  .q-header { background: color-mix(in srgb, var(--subj, var(--overview)) 10%, white); padding: 10px 16px; border-bottom: 1px solid var(--line); border-left: 4px solid var(--subj, var(--overview)); }
+  .q-num { display: inline-block; background: var(--subj, var(--overview)); color: #fff; border-radius: 3px; padding: 2px 10px; font-size: 0.85em; margin-right: 8px; font-weight: bold; }
+  .q-score { display: inline-block; background: #fff; border: 1px solid var(--line); color: var(--sub); border-radius: 3px; padding: 2px 8px; font-size: 0.78em; }
+  .q-title { color: var(--subj, var(--overview)); font-size: 0.95em; margin-top: 6px; font-weight: 600; }
+
+  .q-body { padding: 14px 18px; }
+  .q-text { color: var(--ink); font-size: 0.93em; line-height: 1.8; border-left: 3px solid var(--line); background: #faf9f6; padding: 10px 14px; margin-bottom: 12px; border-radius: 0 6px 6px 0; }
+
+  .ans-box { background: #fdfcfa; border: 1px solid var(--line); border-radius: 8px; padding: 14px 18px; margin-bottom: 12px; }
+  .ans-title { color: var(--subj, var(--overview)); font-weight: bold; font-size: 0.9em; margin-bottom: 8px; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+  .ans-content { color: var(--ink); font-size: 0.88em; line-height: 1.9; }
+  .ans-content p { margin: 6px 0; }
+
+  .law-tag { display: inline-block; background: color-mix(in srgb, var(--subj, var(--overview)) 10%, white); border: 1px solid var(--subj, var(--overview)); color: var(--subj, var(--overview)); border-radius: 3px; padding: 1px 7px; font-size: 0.78em; margin: 2px 2px; }
+  .law-tag-red { display: inline-block; background: #f7eaea; border: 1px solid var(--crim); color: var(--crim); border-radius: 3px; padding: 1px 7px; font-size: 0.78em; margin: 2px 2px; }
+  .key-point { color: var(--subj, var(--overview)); font-weight: bold; }
+
+  .framework-box { background: #fdfcfa; border: 1px solid var(--line); border-left: 4px solid var(--subj, var(--overview)); border-radius: 8px; padding: 14px 18px; margin: 10px 0; }
+  .framework-title { color: var(--subj, var(--overview)); font-weight: bold; font-size: 0.92em; margin-bottom: 10px; }
+
+  .table-wrap { overflow-x: auto; margin: 10px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85em; }
+  th { background: color-mix(in srgb, var(--subj, var(--overview)) 16%, white); color: var(--ink); padding: 8px 12px; text-align: left; border: 1px solid var(--line); }
+  td { padding: 7px 12px; border: 1px solid var(--line); color: var(--ink); vertical-align: top; }
+  tr:nth-child(even) td { background: #faf9f6; }
+
+  .section-title { background: var(--overview-bg); border-left: 4px solid var(--subj, var(--overview)); color: var(--subj, var(--overview)); padding: 8px 16px; margin: 28px 0 14px 0; font-size: 1em; font-weight: bold; border-radius: 0 6px 6px 0; }
+
+  .w-row { background: #fdfcfa; border: 1px solid var(--line); border-radius: 4px; padding: 8px 12px; margin-bottom: 6px; }
+  .w-label { display: inline-block; background: color-mix(in srgb, var(--subj, var(--overview)) 14%, white); color: var(--subj, var(--overview)); border-radius: 3px; padding: 1px 8px; font-size: 0.8em; font-weight: bold; min-width: 100px; margin-right: 8px; vertical-align: top; }
+  .w-content { display: inline-block; color: var(--ink); font-size: 0.87em; width: calc(100% - 120px); vertical-align: top; }
+
+  .highlight-row { background: #fdfcfa; border-left: 3px solid var(--subj, var(--overview)); padding: 8px 14px; margin: 6px 0; border-radius: 0 4px 4px 0; font-size: 0.87em; color: var(--ink); }
+
+  .fishbone-box { background: #fdfcfa; border: 1px solid var(--line); border-left: 4px solid var(--subj, var(--overview)); border-radius: 8px; padding: 16px 20px; margin: 10px 0; }
+  .fishbone-title { color: var(--subj, var(--overview)); font-weight: bold; margin-bottom: 12px; font-size: 0.92em; }
+  .bone-item { background: #ffffff; border: 1px solid var(--line); border-radius: 4px; padding: 8px 12px; margin-bottom: 8px; }
+  .bone-label { color: var(--subj, var(--overview)); font-weight: bold; font-size: 0.85em; margin-bottom: 4px; }
+  .bone-content { color: var(--ink); font-size: 0.85em; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+  .box-item { background: #fdfcfa; border: 1px solid var(--line); border-radius: 4px; padding: 8px 12px; font-size: 0.85em; }
+  .box-label { color: var(--subj, var(--overview)); font-weight: bold; font-size: 0.82em; margin-bottom: 4px; }
+  .box-content { color: var(--ink); }
+
+  .tag-row { margin: 8px 0; }
+  .step-list { counter-reset: step; }
+  .step-item { counter-increment: step; padding: 6px 0 6px 32px; position: relative; color: var(--ink); font-size: 0.88em; }
+  .step-item::before { content: counter(step); position: absolute; left: 0; top: 6px; background: var(--overview); color: #fff; border-radius: 50%; width: 22px; height: 22px; text-align: center; line-height: 22px; font-size: 0.8em; font-weight: bold; }
+
+  .universal-box { background: var(--overview-bg); border: 1px solid #e8dcc8; border-left: 4px solid var(--overview); border-radius: 8px; padding: 18px 22px; margin: 14px 0; }
+  .universal-title { color: var(--overview); font-size: 1em; font-weight: bold; margin-bottom: 12px; }
+
+  .year-nav { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+  .year-btn { background: #fff; color: var(--sub); border: 1px solid var(--line); border-radius: 4px; padding: 4px 12px; font-size: 0.82em; text-decoration: none; }
+  .year-btn.active { background: var(--overview); color: #fff; border-color: var(--overview); }
+
+  .footer { text-align: center; font-size: 0.78em; color: #a09d95; margin-top: 30px; padding-top: 14px; border-top: 1px solid var(--line); }
+</style>
+</head>
+<body>
+<div style="position:fixed;top:8px;right:12px;z-index:9999;font-size:12px;color:#9a978d;background:rgba(255,255,255,.85);padding:2px 10px;border-radius:999px;pointer-events:none;">柯醒翰製作</div>
+
+<div class="header">
+  <h1>109年警察人員升官等考試・消防人員<span class="tag">申論題解析</span></h1>
+  <div class="sub">考試年度：109年｜題型：四大題｜總分：100分｜深琥珀橙主題</div>
+</div>
+
+<div class="warning-banner">
+  ⚠ 本解析為非官方作答參考，法條依現行法規整理，答題方向供研讀參考。實際考試以當年官方公告為準。
+</div>
+
+<div class="year-nav">
+  <span class="year-btn">108年</span>
+  <span class="year-btn">109年 ●</span>
+  <span class="year-btn">110年</span>
+  <span class="year-btn">111年</span>
+  <span class="year-btn">112年</span>
+  <span class="year-btn">113年</span>
+  <span class="year-btn">114年</span>
+</div>
+
+<!-- ===== 第一題 ===== -->
+<div class="section-title" style="--subj:var(--plan)">第一題・山域搜救困難分析—向左魚骨圖（25分）</div>
+
+<div class="q-block" style="--subj:var(--plan)">
+  <div class="q-header">
+    <span class="q-num">第1題</span><span class="q-score">25分</span>
+    <div class="q-title">山域搜救困難原因分析—向左魚骨圖（石川圖）</div>
+  </div>
+  <div class="q-body">
+    <div class="q-text">
+      近年山域意外事件頻傳，消防救難人員執行山域搜救任務時面臨諸多困難。請以「向左魚骨圖（特性要因圖/石川圖）」分析山域搜救困難之主要原因。（請標示魚骨圖結構：骨幹主題+各大骨分類+小骨細項）
+    </div>
+
+    <div class="ans-box">
+      <div class="ans-title">▍ 向左魚骨圖概念說明</div>
+      <div class="ans-content">
+        <p>「向左魚骨圖」（逆向石川圖）以<strong>「問題/結果」作為魚頭（置於左側）</strong>，從右側各方向延伸大骨（主因類別）與小骨（細項原因），逐層分析造成問題的根本原因。</p>
+        <p>向左vs向右：向右魚骨圖分析「如何達成目標」；<strong>向左魚骨圖分析「問題的原因」</strong>——本題屬向左（問題根因分析）。</p>
+      </div>
+    </div>
+
+    <div class="fishbone-box">
+      <div class="fishbone-title">▍ 向左魚骨圖：山域搜救困難原因分析</div>
+      <p style="color:var(--subj,var(--overview));font-size:0.85em;margin:0 0 12px 0;">【魚頭（左）：山域搜救任務困難重重】← 各大骨原因由右延伸</p>
+
+      <div class="bone-item">
+        <div class="bone-label">🦴 大骨①：環境因素（自然條件）</div>
+        <div class="bone-content">
+          ・地形複雜（陡坡、峭壁、溪谷、密林），搜救路線受限<br>
+          ・氣候多變（濃霧、暴雨、落石、低溫），影響行動安全<br>
+          ・GPS訊號遮蔽，定位困難<br>
+          ・日照時間短，夜間搜救危險性倍增
+        </div>
+      </div>
+
+      <div class="bone-item">
+        <div class="bone-label">🦴 大骨②：人員因素（搜救人員）</div>
+        <div class="bone-content">
+          ・山域搜救專業訓練不足（攀岩、繩索技術）<br>
+          ・人力配置不足（山域搜救組人數有限）<br>
+          ・體能消耗過大，長時間任務易生疲勞<br>
+          ・跨縣市協調不易，增援時間長
+        </div>
+      </div>
+
+      <div class="bone-item">
+        <div class="bone-label">🦴 大骨③：設備因素（裝備器材）</div>
+        <div class="bone-content">
+          ・山域搜救專用裝備不足（無人機、熱像儀數量有限）<br>
+          ・直升機使用受天候、場地限制<br>
+          ・通訊設備在深山訊號不穩<br>
+          ・山地擔架、繩索救援設備攜帶困難
+        </div>
+      </div>
+
+      <div class="bone-item">
+        <div class="bone-label">🦴 大骨④：情資因素（資訊掌握）</div>
+        <div class="bone-content">
+          ・受困者位置不明，仰賴手機定位（訊號差時無效）<br>
+          ・入山登記制度未落實，失聯人數不明<br>
+          ・山域路線複雜，缺乏完整地圖資料<br>
+          ・報案延遲（受困後數日才通報），錯失黃金救援時機
+        </div>
+      </div>
+
+      <div class="bone-item">
+        <div class="bone-label">🦴 大骨⑤：制度因素（法規組織）</div>
+        <div class="bone-content">
+          ・山域救援責任歸屬不明確（消防vs警察vs林務局）<br>
+          ・救援費用負擔爭議，影響民眾報案意願<br>
+          ・志工搜救隊整合機制不完善<br>
+          ・缺乏統一指揮中心（ICS）整合各救援資源
+        </div>
+      </div>
+
+      <div class="bone-item">
+        <div class="bone-label">🦴 大骨⑥：民眾因素（被搜救者）</div>
+        <div class="bone-content">
+          ・山域活動者準備不足（未帶備援裝備、未告知行程）<br>
+          ・自救能力差（不懂求生信號、SOS標誌）<br>
+          ・手機電量耗盡，無法持續通訊<br>
+          ・不熟悉入山申請程序，輕忽風險
+        </div>
+      </div>
+    </div>
+
+    <div class="tag-row">
+      <span class="law-tag">消防法§26之1</span>
+      <span class="law-tag">災害防救法§22</span>
+      <span class="law-tag">山域嚮導管理辦法</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 第二題 ===== -->
+<div class="section-title" style="--subj:var(--crisis)">第二題・談判準備要素與策略（25分）</div>
+
+<div class="q-block" style="--subj:var(--crisis)">
+  <div class="q-header">
+    <span class="q-num">第2題</span><span class="q-score">25分</span>
+    <div class="q-title">危機談判的準備要素與策略運用</div>
+  </div>
+  <div class="q-body">
+    <div class="q-text">
+      消防人員執行任務時，可能面臨精神障礙者、企圖輕生者等危機談判情境。請說明危機談判的主要準備要素，並說明可運用之談判策略。
+    </div>
+
+    <div class="ans-box">
+      <div class="ans-title">▍ 解析與參考作答</div>
+      <div class="ans-content">
+        <p><span class="key-point">【一、危機談判之意義】</span><br>
+        危機談判（Crisis Negotiation）係指在人質挾持、自殺企圖、精神障礙者脫序等危機情境中，透過溝通技巧化解當事人的危機情緒，在不動用強制力的前提下，達成和平解決之目標。</p>
+
+        <p><span class="key-point">【二、談判準備要素】</span></p>
+      </div>
+    </div>
+
+    <div class="framework-box">
+      <div class="framework-title">▍ 危機談判準備四大要素</div>
+
+      <div class="grid-2">
+        <div class="box-item">
+          <div class="box-label">① 情資蒐集（Intelligence）</div>
+          <div class="box-content">
+            ・當事人基本資料（姓名、年齡、精神病史）<br>
+            ・觸發危機的關鍵事件（Why now?）<br>
+            ・家庭關係、重要他人<br>
+            ・場所環境評估（出入口、障礙物）
+          </div>
+        </div>
+        <div class="box-item">
+          <div class="box-label">② 人員編組（Team）</div>
+          <div class="box-content">
+            ・主談者（Primary Negotiator）<br>
+            ・副談者（Coach，提供支援建議）<br>
+            ・指揮官（決策授權）<br>
+            ・精神科醫師或社工（專業諮詢）
+          </div>
+        </div>
+        <div class="box-item">
+          <div class="box-label">③ 環境控制（Environment）</div>
+          <div class="box-content">
+            ・封鎖現場，隔離無關人員<br>
+            ・建立安全距離（避免刺激）<br>
+            ・切斷可能的傷害手段（電力、器械）<br>
+            ・確保通訊暢通（談判電話線路）
+          </div>
+        </div>
+        <div class="box-item">
+          <div class="box-label">④ 時間管理（Time）</div>
+          <div class="box-content">
+            ・爭取時間（情緒趨於穩定）<br>
+            ・避免人為製造時間壓力<br>
+            ・與SRT特勤小組協調時機<br>
+            ・設定階段性目標（接觸→建立信任→說服）
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ans-box">
+      <div class="ans-title">▍ 談判策略</div>
+      <div class="ans-content">
+        <p><span class="key-point">策略一：積極傾聽（Active Listening）</span><br>
+        使用反映（Reflection）、情感標注（Emotional Labeling）、開放式問句，讓當事人感受被理解，建立初步信任關係。</p>
+
+        <p><span class="key-point">策略二：同理心建立（Empathy Building）</span><br>
+        承認當事人的感受（「我理解你現在很痛苦」），不直接否定其訴求，以情感連結代替理性說教。</p>
+
+        <p><span class="key-point">策略三：需求導向談判（Needs-based Negotiation）</span><br>
+        找出當事人真正的需求（安全感、被尊重、溝通管道），針對需求提供承諾（在能力範圍內），引導其放棄對峙。</p>
+
+        <p><span class="key-point">策略四：漸進式讓步（Gradual Concession）</span><br>
+        以小讓步換取大配合（如提供食物換取釋放一名人質），建立互動模式，逐步推進至安全解決。</p>
+
+        <p><span class="key-point">策略五：重要他人介入（Significant Other Involvement）</span><br>
+        邀請當事人信任的家人或朋友參與溝通，透過情感連結降低對峙意志。</p>
+      </div>
+    </div>
+
+    <div class="tag-row">
+      <span class="law-tag">精神衛生法§32</span>
+      <span class="law-tag">警察職權行使法§19</span>
+      <span class="law-tag">自殺防治法</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 第三題 ===== -->
+<div class="section-title" style="--subj:var(--plan)">第三題・6W2H1E 住宅火災警報器安裝計畫（25分）</div>
+
+<div class="q-block" style="--subj:var(--plan)">
+  <div class="q-header">
+    <span class="q-num">第3題</span><span class="q-score">25分</span>
+    <div class="q-title">以6W2H1E架構規劃「住宅用火災警報器安裝推廣計畫」</div>
+  </div>
+  <div class="q-body">
+    <div class="q-text">
+      依消防法第6條，住宅應裝設住宅用火災警報器（住警器）。請以6W2H1E架構，規劃轄區推廣住警器安裝之執行計畫。
+    </div>
+
+    <div class="framework-box">
+      <div class="framework-title">▍「住宅用火災警報器安裝推廣計畫」6W2H1E</div>
+
+      <div class="w-row">
+        <span class="w-label">Why（目的）</span>
+        <span class="w-content">住宅火災造成人員傷亡多因逃生不及，住警器可於火災發生初期發出警報，大幅提升逃生機率。依消防法§6強制規定，推廣住警器安裝率為消防主管機關之法定職責。</span>
+      </div>
+
+      <div class="w-row">
+        <span class="w-label">What（內容）</span>
+        <span class="w-content">
+          ① 調查轄區住宅住警器安裝現況（建立資料庫）<br>
+          ② 補助弱勢家庭免費安裝住警器<br>
+          ③ 辦理里鄰宣導活動<br>
+          ④ 結合物業管理公司推廣集合住宅安裝<br>
+          ⑤ 建立住警器維護更換提醒機制
+        </span>
+      </div>
+
+      <div class="w-row">
+        <span class="w-label">Who（人員）</span>
+        <span class="w-content">
+          ・主責：消防分隊（預防課）<br>
+          ・協辦：社政局（弱勢補助）、里長（社區動員）<br>
+          ・合作：住警器廠商（團購優惠）、物業管理公司
+        </span>
+      </div>
+
+      <div class="w-row">
+        <span class="w-label">When（時間）</span>
+        <span class="w-content">
+          ・第1-2月：現況調查+建立資料庫<br>
+          ・第3-4月：宣導活動+補助申請受理<br>
+          ・第5-6月：安裝執行+稽查追蹤<br>
+          ・重點時間：防火宣導月（11月）同步加強
+        </span>
+      </div>
+
+      <div class="w-row">
+        <span class="w-label">Where（地點）</span>
+        <span class="w-content">
+          ① 老舊建築（30年以上）優先<br>
+          ② 弱勢家庭（低收入、獨居老人）<br>
+          ③ 集合住宅（公寓、大樓）<br>
+          ④ 違建、簡易住宅
+        </span>
+      </div>
+
+      <div class="w-row">
+        <span class="w-label">Which（方式）</span>
+        <span class="w-content">
+          A. 主動訪視安裝（消防員入戶）<br>
+          B. 申請補助安裝（弱勢戶）<br>
+          C. 自行購買安裝（一般住戶+廠商優惠）<br>
+          D. 集體採購安裝（大樓管委會）
+        </span>
+      </div>
+
+      <div class="w-row">
+        <span class="w-label">How（方法）</span>
+        <span class="w-content">
+          ① 製作QR code宣導單，掃描可線上申請補助<br>
+          ② 結合里民大會辦理現場示範安裝<br>
+          ③ 與便利超商合作設置住警器購買點<br>
+          ④ 社群媒體（Facebook、Line）宣傳影片<br>
+          ⑤ 學校防火教育同步推廣（帶回家概念）
+        </span>
+      </div>
+
+      <div class="w-row">
+        <span class="w-label">How Much（資源）</span>
+        <span class="w-content">
+          ・人力：每週投入預防課人員3-4名進行訪視<br>
+          ・經費：弱勢補助款（縣市社福預算）+消防局宣導預算<br>
+          ・設備：住警器庫存（補助用）、宣傳物品
+        </span>
+      </div>
+
+      <div class="w-row">
+        <span class="w-label">Evaluation（評估）</span>
+        <span class="w-content">
+          【量化】安裝率提升目標（如從60%提升至80%）、補助戶數達成率<br>
+          【質化】住宅火災初期警報觸發率、民眾滿意度調查<br>
+          【追蹤】每季盤點安裝率，動態調整推廣策略
+        </span>
+      </div>
+    </div>
+
+    <div class="tag-row">
+      <span class="law-tag">消防法§6</span>
+      <span class="law-tag">住宅用火災警報器設置辦法</span>
+      <span class="law-tag">消防法§26之1</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 第四題 ===== -->
+<div class="section-title" style="--subj:var(--media)">第四題・社群媒體行銷在消防宣導之應用（25分）</div>
+
+<div class="q-block" style="--subj:var(--media)">
+  <div class="q-header">
+    <span class="q-num">第4題</span><span class="q-score">25分</span>
+    <div class="q-title">社群媒體在消防宣導與危機溝通中的應用與限制</div>
+  </div>
+  <div class="q-body">
+    <div class="q-text">
+      社群媒體（Social Media）近年在政府機關溝通上的運用日益廣泛。請說明消防機關善用社群媒體進行防火宣導及危機溝通時，有哪些優勢與應注意之限制？
+    </div>
+
+    <div class="ans-box">
+      <div class="ans-title">▍ 解析與參考作答</div>
+      <div class="ans-content">
+
+        <p><span class="key-point">【一、社群媒體應用於消防宣導之優勢】</span></p>
+      </div>
+    </div>
+
+    <div class="framework-box">
+      <div class="framework-title">▍ 優勢 vs 限制對比分析</div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>面向</th><th>優勢</th><th>限制與風險</th></tr>
+          <tr>
+            <td>傳播速度</td>
+            <td>即時發布、秒速擴散，危機時能快速傳遞警示資訊</td>
+            <td>假訊息也同樣快速擴散，難以即時澄清</td>
+          </tr>
+          <tr>
+            <td>觸及對象</td>
+            <td>跨越地理限制，可觸及年輕族群（FB/IG/Tiktok）</td>
+            <td>數位落差：老年人、低收入戶可能未使用社群媒體</td>
+          </tr>
+          <tr>
+            <td>互動性</td>
+            <td>雙向溝通，民眾可留言提問，機關即時回覆建立信任</td>
+            <td>負評、不實留言需即時處理，否則形象受損</td>
+          </tr>
+          <tr>
+            <td>成本</td>
+            <td>相較傳統媒體，社群媒體宣導成本低，效益高</td>
+            <td>需專職人員管理，否則更新不及時反造成負面印象</td>
+          </tr>
+          <tr>
+            <td>內容多元</td>
+            <td>影片、圖文、直播皆可，防火宣導內容更生動</td>
+            <td>內容若誤導或過度娛樂化，降低公信力</td>
+          </tr>
+          <tr>
+            <td>危機溝通</td>
+            <td>災害發生時即時發布疏散路線、注意事項</td>
+            <td>訊息碎片化，民眾易斷章取義；需確保官方帳號明確</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="ans-box">
+      <div class="ans-title">▍ 消防機關社群媒體經營建議</div>
+      <div class="ans-content">
+        <p><span class="key-point">① 建立官方帳號認證機制</span>：避免假冒帳號散布假訊息（如「某消防局」非官方帳號）</p>
+        <p><span class="key-point">② 分眾經營策略</span>：Facebook觸及中老年，Instagram/TikTok觸及年輕族群，訊息格式因平台調整</p>
+        <p><span class="key-point">③ 危機期間訊息一致性</span>：社群媒體發布與新聞稿保持一致，避免矛盾訊息加劇恐慌</p>
+        <p><span class="key-point">④ 假訊息因應機制</span>：建立即時闢謠SOP，第一時間官方回應，避免謠言蔓延</p>
+        <p><span class="key-point">⑤ 民眾回饋整合</span>：社群留言可作為政策改善參考（公民參與概念）</p>
+      </div>
+    </div>
+
+    <div class="tag-row">
+      <span class="law-tag">數位部政府網路服務規範</span>
+      <span class="law-tag">災害防救法§20</span>
+      <span class="law-tag">政府資訊公開法§7</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 考試方向分析 ===== -->
+<div class="section-title">■ 109年考試方向分析</div>
+
+<div class="ans-box">
+  <div class="ans-title">各題核心考點</div>
+  <div class="table-wrap">
+    <table>
+      <tr><th>題號</th><th>核心考點</th><th>模型/工具</th><th>重要程度</th></tr>
+      <tr><td>第1題</td><td>山域搜救困難原因分析</td><td>向左魚骨圖（根因分析）</td><td>★★★★☆</td></tr>
+      <tr><td>第2題</td><td>危機談判準備與策略</td><td>談判學理論（主動傾聽、同理心）</td><td>★★★★☆</td></tr>
+      <tr><td>第3題</td><td>住警器推廣方案</td><td>6W2H1E（消防法§6）</td><td>★★★★★</td></tr>
+      <tr><td>第4題</td><td>社群媒體優勢限制</td><td>優/限分析框架</td><td>★★★★☆</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ===== 萬用框架 ===== -->
+<div class="section-title">■ 核心萬用答案框架（109年重點）</div>
+
+<div class="universal-box">
+  <div class="universal-title">📌 向左魚骨圖（根因分析）萬用六大骨架</div>
+  <div class="step-list">
+    <div class="step-item"><strong>人員因素</strong>：訓練不足、人力短缺、經驗不足</div>
+    <div class="step-item"><strong>設備因素</strong>：器材不足、技術限制、維護不佳</div>
+    <div class="step-item"><strong>環境因素</strong>：天候、地形、地點特性</div>
+    <div class="step-item"><strong>制度因素</strong>：法規不足、指揮體系混亂、跨機關協調</div>
+    <div class="step-item"><strong>情資因素</strong>：資訊掌握不足、通報延遲</div>
+    <div class="step-item"><strong>民眾因素</strong>：民眾行為、配合度、自救能力</div>
+  </div>
+</div>
+
+<div class="universal-box">
+  <div class="universal-title">📌 危機談判萬用五步驟</div>
+  <div class="step-list">
+    <div class="step-item">情資蒐集（當事人背景、觸發原因）</div>
+    <div class="step-item">環境控制（封鎖現場、隔離干擾）</div>
+    <div class="step-item">建立接觸（積極傾聽、同理心）</div>
+    <div class="step-item">需求確認（找出真正需求）</div>
+    <div class="step-item">逐步引導（小讓步換大配合→和平解決）</div>
+  </div>
+</div>
+
+<div class="footer">109年警察人員升官等考試 消防人員 申論題解析｜非官方參考資料</div>
+</body>
+</html>

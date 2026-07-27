@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>112年_消防_申論題解析</title>
+<style>
+  :root{
+    --bg:#f6f5f1; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66; --line:#e5e2da;
+    --plan:#3b6e8a;    --plan-tint:#eaf2f6;   /* 方案規劃 */
+    --crisis:#b2551f;  --crisis-tint:#fbeee0; /* 危機處理 */
+    --admin:#6a4a8a;   --admin-tint:#f2ecf7;  /* 行政程序法 */
+    --info:#4a7a6a;    --info-tint:#eaf3ef;   /* 政府資訊公開法 */
+    --crime:#8a3b3b;   --crime-tint:#f8ecec;  /* 刑法/貪污治罪條例 */
+    --media:#8a2b6e;   --media-tint:#f7ecf3;  /* 警政溝通與行銷 */
+    --overview:#8a5a3b;--overview-tint:#faf6ee;/* 總覽性質區塊 */
+  }
+  *{box-sizing:border-box;}
+  body { font-family: 'Microsoft JhengHei','Noto Sans TC',Arial,sans-serif; background: var(--bg); color: var(--ink); margin: 0; padding: 20px; font-size: 15px; line-height: 1.9; --subj:var(--overview); --subj-tint:var(--overview-tint); }
+
+  .header { background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--overview); padding: 22px 28px; border-radius: 10px; margin-bottom: 20px; box-shadow:0 1px 3px rgba(0,0,0,.05); }
+  .header h1 { margin: 0 0 6px 0; font-size: 1.35em; color: var(--ink); font-weight:700; }
+  .header .sub { font-size: 0.88em; color: var(--sub); }
+  .header .tag { display: inline-block; background: var(--overview); color: #fff; border-radius: 4px; padding: 2px 10px; font-size: 0.78em; margin-left: 8px; }
+
+  .subj-plan{--subj:var(--plan);--subj-tint:var(--plan-tint);}
+  .subj-crisis{--subj:var(--crisis);--subj-tint:var(--crisis-tint);}
+  .subj-admin{--subj:var(--admin);--subj-tint:var(--admin-tint);}
+  .subj-info{--subj:var(--info);--subj-tint:var(--info-tint);}
+  .subj-crime{--subj:var(--crime);--subj-tint:var(--crime-tint);}
+  .subj-media{--subj:var(--media);--subj-tint:var(--media-tint);}
+  .subj-overview{--subj:var(--overview);--subj-tint:var(--overview-tint);}
+
+  .q-block { background: var(--card); border: 1px solid var(--line); border-radius: 8px; margin-bottom: 20px; overflow: hidden; box-shadow:0 1px 2px rgba(0,0,0,.03); }
+  .q-header { background: var(--subj-tint); color: var(--subj); font-weight: bold; padding: 8px 16px; font-size: 0.95em; border-bottom:1px solid var(--line); }
+  .q-score { font-weight: normal; font-size: 0.85em; margin-left: 8px; opacity: 0.85; color:var(--sub); }
+  .q-text { padding: 14px 18px 10px 18px; color: var(--ink); font-size: 0.93em; line-height: 1.85; border-bottom: 1px solid var(--line); background: #fbfaf7; }
+  .q-text .situation { color: var(--sub); font-size: 0.91em; border-left: 3px solid var(--subj); padding-left: 12px; margin-bottom: 8px; }
+  .q-text .question { color: var(--ink); font-weight: bold; margin-top: 10px; }
+  .non-official { padding: 7px 18px; background: #fff8ea; color: #9a6a1f; font-size: 0.82em; border-bottom: 1px solid #f0e3c0; }
+  .ans-block { padding: 14px 18px; }
+  .ans-section { margin-bottom: 18px; }
+  .ans-title { font-weight: bold; color: var(--subj); margin-bottom: 8px; font-size: 0.95em; padding: 5px 0; border-bottom: 1px dashed var(--line); }
+  .law-ref { background: var(--subj-tint); border-left: 3px solid var(--subj); padding: 5px 12px; font-size: 0.82em; color: var(--ink); margin-bottom: 10px; border-radius: 0 3px 3px 0; }
+  .w6h2e-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 10px 0; }
+  .w6h2e-cell { background: var(--subj-tint); border: 1px solid var(--subj); border-radius: 5px; padding: 10px 12px; }
+  .w6h2e-label { font-weight: bold; color: var(--subj); font-size: 0.88em; margin-bottom: 5px; }
+  .press-card { background: var(--subj-tint); border-left: 4px solid var(--subj); border-radius: 0 5px 5px 0; padding: 10px 14px; margin-bottom: 10px; }
+  .press-num { display: inline-block; background: var(--subj); color: #fff; border-radius: 3px; padding: 1px 8px; font-size: 0.82em; font-weight: bold; margin-right: 8px; }
+  ul, ol { padding-left: 22px; margin: 6px 0; }
+  li { margin-bottom: 5px; font-size: 0.91em; }
+  li strong { color: var(--subj); }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.87em; }
+  th { background: var(--subj-tint); color: var(--subj); padding: 7px 10px; text-align: left; border-bottom:2px solid var(--subj); }
+  td { padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:nth-child(even) td { background: #faf9f6; }
+  .analysis-box { background: var(--subj-tint); border: 1px solid var(--subj); border-radius: 8px; padding: 14px 18px; margin-bottom: 20px; }
+  .analysis-box h3 { color: var(--subj); margin: 0 0 10px 0; font-size: 1em; }
+  .core-box { background: var(--subj-tint); border: 2px solid var(--subj); border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+  .core-box h2 { color: var(--subj); margin: 0 0 12px 0; font-size: 1.05em; }
+  .core-box h3 { color: var(--subj); margin: 12px 0 6px 0; font-size: 0.95em; }
+  .core-template { background: #ffffff; border:1px solid var(--line); border-left: 4px solid var(--subj); padding: 10px 14px; font-size: 0.88em; color: var(--ink); border-radius: 0 4px 4px 0; margin-bottom: 8px; white-space: pre-wrap; line-height: 1.9; }
+  .section-title { background: var(--subj-tint); border-left: 4px solid var(--subj); color: var(--subj); padding: 8px 16px; margin: 28px 0 14px 0; font-size: 1em; font-weight: bold; border-radius: 0 6px 6px 0; }
+  .footer { text-align: center; font-size: 0.78em; color: var(--sub); margin-top: 30px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .law-tag { display: inline-block; background: var(--subj-tint); border: 1px solid var(--subj); color: var(--subj); border-radius: 3px; padding: 1px 6px; font-size: 0.78em; margin-left: 4px; }
+</style>
+</head>
+<body>
+<div style="position:fixed;top:8px;right:12px;z-index:9999;font-size:12px;color:#9a978d;background:rgba(255,255,255,.85);padding:2px 10px;border-radius:999px;pointer-events:none;">柯醒翰製作</div>
+
+<div class="header">
+  <h1>112年警佐警察人員晉升警正官等訓練<span class="tag">消防人員</span><span class="tag" style="background:#6b5842">第2梯次</span></h1>
+  <div class="sub">實務寫作題解析・共4題（第1、2題各30分；第3、4題各20分）・非官方參考解析，以評分標準為準</div>
+</div>
+
+<!-- ═══ 第一題 ═══ -->
+<div class="section-title subj-plan">第一題（30分）— 方案規劃：6W2H1E 執行計畫</div>
+
+<div class="q-block subj-plan">
+  <div class="q-header">第一題 <span class="q-score">（30分）｜課程：方案規劃｜工具：6W2H1E</span></div>
+  <div class="q-text">
+    <div class="situation">【情境】106-110年燃氣熱水器一氧化碳中毒161件（28死、478傷）。77%係屋外式安裝於通風不良處；75.8%集中在12、1、2月。甲市曾發生出租住宅多人死亡案例，市長責成消防局研擬為期3個月之執行計畫。</div>
+    <div class="question">【問題】以6W2H1E方案內容要項，擬具為期3個月「加強防範燃氣熱水器一氧化碳中毒執行計畫」之具體項目及內容。</div>
+  </div>
+  <div class="non-official">⚠ 非官方參考解析（申論題無官方答案）</div>
+  <div class="ans-block">
+
+    <div class="ans-section">
+      <div class="ans-title">【壹、前言】</div>
+      <p>身為甲市消防局承辦人，運用方案規劃課程所學6W2H1E架構，系統擬具本執行計畫各要項，確保計畫完整可行。</p>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【貳、計畫名稱】</div>
+      <p>「甲市112年冬季加強防範燃氣熱水器一氧化碳中毒執行計畫」</p>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【參、6W2H1E各要項內容】</div>
+      <div class="w6h2e-grid">
+
+        <div class="w6h2e-cell">
+          <div class="w6h2e-label">① Why（目的/背景）</div>
+          <ul>
+            <li>106-110年全國中毒161件，死亡28人，甲市曾發生重大死亡案例</li>
+            <li>77%因安裝於通風不良處、75.8%集中冬季，顯示可預防性高</li>
+            <li>目標：3個月內降低甲市一氧化碳中毒發生率達20%以上</li>
+          </ul>
+        </div>
+
+        <div class="w6h2e-cell">
+          <div class="w6h2e-label">② What（計畫項目）</div>
+          <ul>
+            <li>強化燃氣熱水器安裝合法性稽查</li>
+            <li>補助或協助遷移不當安裝熱水器</li>
+            <li>結合相關單位進行多元宣導</li>
+            <li>推動專技人員合法安裝制度</li>
+          </ul>
+        </div>
+
+        <div class="w6h2e-cell">
+          <div class="w6h2e-label">③ Who（執行對象/主責單位）</div>
+          <ul>
+            <li><strong>主責：</strong>甲市消防局（業務承辦科室）</li>
+            <li><strong>協辦：</strong>都發局（建管）、社會局（弱勢補助）、衛生局（醫療救護）</li>
+            <li><strong>稽查對象：</strong>出租住宅、老舊公寓、套房密集區域</li>
+            <li><strong>安裝業者：</strong>燃氣熱水器安裝業者（確認具專技資格）</li>
+          </ul>
+        </div>
+
+        <div class="w6h2e-cell">
+          <div class="w6h2e-label">④ When（時程規劃）</div>
+          <ul>
+            <li><strong>第一個月（準備期）：</strong>建置稽查清冊、採購宣傳品、辦理人員訓練</li>
+            <li><strong>第二個月（執行期）：</strong>全面展開稽查、補助申請受理、辦理宣導活動</li>
+            <li><strong>第三個月（強化期）：</strong>複查未改善案件、追蹤補助進度、辦理成果評估</li>
+            <li><strong>執行季節：</strong>涵蓋12月至翌年2月冬季高發期</li>
+          </ul>
+        </div>
+
+        <div class="w6h2e-cell">
+          <div class="w6h2e-label">⑤ Where（執行地點）</div>
+          <ul>
+            <li>全市優先：出租住宅密集區、老舊社區</li>
+            <li>重點場所：套房出租、旅宿業、浴室通風不良建物</li>
+            <li>宣導場域：社區活動中心、里辦公處、傳統市場、學校</li>
+          </ul>
+        </div>
+
+        <div class="w6h2e-cell">
+          <div class="w6h2e-label">⑥ Which（法規依據）</div>
+          <div class="law-ref">消防法第15條之3：燃氣熱水器及其配管安裝，應由消防署審查合格之人員為之；消防法第41條：違反者處1萬元以上5萬元以下罰鍰</div>
+          <ul>
+            <li>消防法§15-3（燃氣熱水器須由合格人員安裝）<span class="law-tag">消防法§15-3</span></li>
+            <li>消防法§41（違規罰鍰1萬~5萬元）<span class="law-tag">消防法§41</span></li>
+            <li>燃氣熱水器及配管技術士技能檢定相關規定</li>
+          </ul>
+        </div>
+
+        <div class="w6h2e-cell">
+          <div class="w6h2e-label">⑦ How（執行方式）</div>
+          <ul>
+            <li><strong>稽查：</strong>組成稽查小組，逐戶稽查出租住宅熱水器安裝位置及型式；不合格者限期改善，逾期依法裁罰</li>
+            <li><strong>補助遷移：</strong>申請市府補助，協助低收入戶及弱勢家庭遷移或更換不當安裝熱水器</li>
+            <li><strong>宣導：</strong>製作短影音、文宣品、里長協助入戶宣傳；結合媒體及社群平台擴散</li>
+            <li><strong>專技推廣：</strong>建立合格安裝業者名冊，提供民眾查詢，鼓勵委託專技人員安裝</li>
+          </ul>
+        </div>
+
+        <div class="w6h2e-cell">
+          <div class="w6h2e-label">⑧ How Much（所需經費）</div>
+          <ul>
+            <li><strong>稽查人力費用：</strong>加班費及交通費（估計新臺幣XX萬元）</li>
+            <li><strong>補助遷移費：</strong>每戶補助上限XXXX元，預計補助XX戶</li>
+            <li><strong>宣導費用：</strong>文宣品印製、媒體廣告、短影音製作</li>
+            <li><strong>合計預算：</strong>申請市府112年度第四季追加預算</li>
+          </ul>
+        </div>
+
+        <div class="w6h2e-cell" style="grid-column: 1 / -1;">
+          <div class="w6h2e-label">⑨ Evaluation（評估指標）</div>
+          <ul>
+            <li><strong>過程指標：</strong>稽查戶數（目標達X戶）、宣導場次（目標X場）、補助件數（目標X件）</li>
+            <li><strong>結果指標：</strong>計畫期間甲市一氧化碳中毒件數較前年同期降低XX%</li>
+            <li><strong>評估方式：</strong>每月召開工作檢討會議，追蹤各項KPI進度，並於計畫結束後提出成果報告送市政會議</li>
+            <li><strong>後續追蹤：</strong>對稽查限期改善案件進行複查，確認改善落實率</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【肆、結語】</div>
+      <p>本計畫以6W2H1E架構系統規劃，從法規稽查、補助誘因、多元宣導三管齊下，配合明確KPI評估，可在3個月冬季高發期內有效降低甲市燃氣熱水器一氧化碳中毒之發生率。</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══ 第二題 ═══ -->
+<div class="section-title subj-crisis">第二題（30分）— 危機處理：記者說明會應注意原則</div>
+
+<div class="q-block subj-crisis">
+  <div class="q-header">第二題 <span class="q-score">（30分）｜課程：危機處理｜主題：媒體危機溝通</span></div>
+  <div class="q-text">
+    <div class="situation">【情境】甲市音樂晚會煙火倒塌射向人群，數十人踩踏，8名孩童及3位地方重要人士重傷。現場6家媒體直播；友好媒體乙、負面媒體丙；社群媒體直播質疑現場管制不當、救災過慢、送醫延遲。</div>
+    <div class="question">【問題】以「危機處理」課程所學，說明召開記者說明會時應注意原則為何。</div>
+  </div>
+  <div class="non-official">⚠ 非官方參考解析（申論題無官方答案）</div>
+  <div class="ans-block">
+
+    <div class="ans-section">
+      <div class="ans-title">【壹、前言】</div>
+      <p>面對煙火事故所引發之媒體危機，身為甲市消防單位新聞媒體業務人員，應運用危機處理課程所學之<strong>「黃金一小時」媒體溝通原則</strong>，在最短時間內建立正確資訊主導權，防止謠言擴散。以下說明召開記者說明會應注意之原則：</p>
+    </div>
+
+    <div class="press-card">
+      <div style="font-weight:bold;color:var(--subj);margin-bottom:6px;"><span class="press-num">原則一</span>迅速原則（Speed）— 黃金一小時內召開</div>
+      <ul>
+        <li>事故發生後應在<strong>1小時內</strong>召開第一次記者說明會，即便資訊尚不完整，仍應主動出面，避免媒體及社群自行填補資訊空白，形成謠言。</li>
+        <li>第一次說明會以「確認事故發生、傷亡概況、已啟動應變」為主，明確告知「將於XX時舉行第二次更新說明會」。</li>
+        <li>本案現場已有6家媒體及社群直播，資訊生成速度極快，更須掌握第一時間發言先機。</li>
+      </ul>
+    </div>
+
+    <div class="press-card">
+      <div style="font-weight:bold;color:var(--subj);margin-bottom:6px;"><span class="press-num">原則二</span>誠信原則（Transparency）— 說實話，不迴避</div>
+      <ul>
+        <li>已知事實（煙火倒塌、踩踏傷亡）應<strong>如實陳述</strong>，不隱瞞已確認之死傷數字。</li>
+        <li>尚未確認之資訊（事故原因、責任歸屬）明確表示「正在調查中，待確認後公布」，不猜測、不預設立場。</li>
+        <li>絕對不可說謊或提供錯誤數字，一旦被揭穿將造成更嚴重之信任危機。</li>
+      </ul>
+    </div>
+
+    <div class="press-card">
+      <div style="font-weight:bold;color:var(--subj);margin-bottom:6px;"><span class="press-num">原則三</span>統一發言人原則（One Voice）— 單一窗口，口徑一致</div>
+      <ul>
+        <li>指定<strong>一名</strong>消防局發言人（或局長）作為唯一對外發言窗口，其他人員一律不個別接受採訪。</li>
+        <li>對內統一說明口徑，確保所有出席人員說法一致，避免因資訊落差造成矛盾。</li>
+        <li>發言人應事前充分準備，預想媒體可能提問並備妥標準答案（Q&A資料）。</li>
+      </ul>
+    </div>
+
+    <div class="press-card">
+      <div style="font-weight:bold;color:var(--subj);margin-bottom:6px;"><span class="press-num">原則四</span>以人為本原則（Human First）— 先表達關懷，再說明事實</div>
+      <ul>
+        <li>說明會開場應先<strong>表達對傷亡者（尤其8名孩童）及家屬之關切與慰問</strong>，展現人道關懷，而非第一句話就澄清機關無過失。</li>
+        <li>具體說明傷患後送情況、救治進度及機關已採取之協助措施（如開設臨時傷亡家屬服務中心）。</li>
+        <li>避免在家屬及傷亡者情緒高漲時，以冷漠的技術性說明回應，以免激化輿論。</li>
+      </ul>
+    </div>
+
+    <div class="press-card">
+      <div style="font-weight:bold;color:var(--subj);margin-bottom:6px;"><span class="press-num">原則五</span>對等原則（Fairness）— 公平對待不同立場媒體</div>
+      <ul>
+        <li>本案有友好媒體乙及負面媒體丙，應<strong>一視同仁、公平提問機會</strong>，不偏袒任何一方。</li>
+        <li>不因媒體報導立場不同而差別對待，否則將被解讀為「選擇性揭露」，激化負面媒體更強烈的批評。</li>
+        <li>對丙媒體之質疑，以<strong>事實與數據</strong>正面回應，勿採迴避或防衛姿態。</li>
+      </ul>
+    </div>
+
+    <div class="press-card">
+      <div style="font-weight:bold;color:var(--subj);margin-bottom:6px;"><span class="press-num">原則六</span>定期更新原則（Regular Update）— 持續提供最新資訊</div>
+      <ul>
+        <li>承諾並履行<strong>定時更新</strong>（如每2小時召開一次說明會，或以新聞稿方式發布），防止資訊真空被謠言填補。</li>
+        <li>每次說明會更新傷亡人數、後送醫院、救援進度等關鍵資訊。</li>
+        <li>設立官方社群媒體即時貼文，與第一線社群直播競爭資訊主導權，化解「救災過慢」等質疑。</li>
+      </ul>
+    </div>
+
+    <div class="press-card">
+      <div style="font-weight:bold;color:var(--subj);margin-bottom:6px;"><span class="press-num">原則七</span>社群媒體應對原則 — 即時回應網路輿情</div>
+      <ul>
+        <li>針對社群媒體直播中「管制不當、救災過慢、送醫延遲」之質疑，指定社群媒體小組即時回應：提供抵達時間紀錄、救援照片/影片，以事實反駁不實指控。</li>
+        <li>不與網友正面衝突，以「感謝關注，我們正在全力搶救」等正向語句回應，降低輿論對立。</li>
+        <li>可釋出官方救災側拍影片，讓大眾看到救援現場實況。</li>
+      </ul>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【貳、結語】</div>
+      <p>危機說明會之核心在於<strong>「快速、誠實、一致、關懷」</strong>。迅速掌握發言先機，以誠信與數據取代迴避，統一口徑防止資訊矛盾，並以人道關懷展現機關溫度，方能有效管控媒體危機，降低對消防機關形象之長期損傷。</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══ 第三題 ═══ -->
+<div class="section-title subj-info">第三題（20分）— 政府資訊公開法：內部簽呈得否公開</div>
+
+<div class="q-block subj-info">
+  <div class="q-header">第三題 <span class="q-score">（20分）｜簡答型｜科目：政府資訊公開法、行政程序法</span></div>
+  <div class="q-text">
+    <div class="situation">【情境】甲申請許可聘僱外國人從事家庭看護工作，遭乙機關駁回。甲不服，欲提行政救濟，請求乙機關提供駁回處分之「內部簽呈、函稿」等資料。</div>
+    <div class="question">【問題】乙機關應如何處理甲之請求？</div>
+  </div>
+  <div class="non-official">⚠ 非官方參考解析（簡答型無官方範本）</div>
+  <div class="ans-block">
+
+    <div class="ans-section">
+      <div class="ans-title">【一、適用法規與請求途徑之釐清】</div>
+      <div class="law-ref">適用法規：政府資訊公開法第18條（限制公開之情形）；行政程序法第46條（卷宗閱覽權）</div>
+      <p>甲之請求涉及兩種不同的法律途徑，乙機關須分別判斷：</p>
+      <table>
+        <tr><th>途徑</th><th>適用法規</th><th>申請人資格</th><th>可得資料範圍</th></tr>
+        <tr><td>政府資訊公開</td><td>政府資訊公開法</td><td>任何人均可申請</td><td>政府資訊（但有法定例外）</td></tr>
+        <tr><td>卷宗閱覽</td><td>行政程序法§46</td><td>當事人或利害關係人</td><td>與本人案件相關之卷宗</td></tr>
+      </table>
+      <p>甲係以「欲提行政救濟」為由請求，實質係主張<strong>行政程序法§46之卷宗閱覽權</strong>；亦可同時援引政府資訊公開法，兩者適用不同規範。</p>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【二、依政府資訊公開法之分析】</div>
+      <div class="law-ref">政府資訊公開法第18條第1項第3款：「政府機關作成意思決定前，內部單位之擬稿或其他準備作業文件」得限制公開</div>
+      <ul>
+        <li><strong>內部簽呈：</strong>屬機關作成行政決定（駁回處分）前之<strong>內部擬稿及準備作業文件</strong>，依政府資訊公開法第18條第1項第3款，<strong>得限制公開</strong>，乙機關得拒絕提供。</li>
+        <li><strong>函稿（若已對外發文之行政處分）：</strong>若駁回處分已以正式公文送達甲，該處分文書本身屬已作成之政府資訊，<strong>原則應予公開或提供</strong>（甲已收到駁回處分書，此部分已知悉）。</li>
+        <li><strong>程序：</strong>乙機關收到申請後，應於15日內（政府資訊公開法§12）以書面告知准許或拒絕之決定及理由；拒絕者，甲得提行政救濟。</li>
+      </ul>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【三、依行政程序法§46之分析】</div>
+      <div class="law-ref">行政程序法第46條第1項：當事人或利害關係人得申請閱覽有關資料或卷宗；第2項：行政機關得拒絕閱覽之法定情形</div>
+      <ul>
+        <li>甲係本案之<strong>當事人</strong>（申請人），具備申請卷宗閱覽之法律地位。</li>
+        <li>依行政程序法§46第1項，甲得申請閱覽與本案相關之卷宗，包括乙機關審查之相關文件。</li>
+        <li>但乙機關得依§46第2項拒絕之情形：
+          <ul>
+            <li>行政決定前之擬稿（內部簽呈可能受此限制）</li>
+            <li>涉及第三人隱私（如其他申請案資料）</li>
+          </ul>
+        </li>
+        <li>惟甲申請資料係為準備行政救濟，法院及行政審判實務上傾向保障當事人訴訟武器對等，乙機關應<strong>從寬認定</strong>可閱覽範圍。</li>
+      </ul>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【四、結論：乙機關之處理方式】</div>
+      <ul>
+        <li><strong>內部簽呈部分：</strong>依政府資訊公開法§18Ⅰ③，得限制公開；依行政程序法§46Ⅱ，亦得拒絕閱覽。乙機關<strong>得以書面拒絕</strong>，但須告知具體理由。</li>
+        <li><strong>駁回處分函稿（已發文者）：</strong>若甲尚未收到完整正式公文，應依法提供；若已送達，原則上不需重複提供（甲已持有）。</li>
+        <li><strong>告知救濟途徑：</strong>乙機關若拒絕，應於書面中告知甲得依法提起訴願或行政訴訟，以保障其程序權利。</li>
+        <li><strong>核心原則：</strong>行政機關應依<strong>「公開為原則、限制為例外」</strong>精神處理，凡無明確法定限制理由者，均應提供。</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══ 第四題 ═══ -->
+<div class="section-title subj-crime">第四題（20分）— 貪污治罪條例：便民 vs 圖利</div>
+
+<div class="q-block subj-crime">
+  <div class="q-header">第四題 <span class="q-score">（20分）｜簡答型｜科目：貪污治罪條例</span></div>
+  <div class="q-text">
+    <div class="situation">【情境】公務員乙為公園場地管理承辦人，明知弱勢團體丙並非合辦單位，卻將丙以「合辦單位」登記，使丙優先且免費使用公園場地。</div>
+    <div class="question">【問題】公務員乙所為係便民或圖利？</div>
+  </div>
+  <div class="non-official">⚠ 非官方參考解析（簡答型無官方範本）</div>
+  <div class="ans-block">
+
+    <div class="ans-section">
+      <div class="ans-title">【一、爭點釐清：便民與圖利之界限】</div>
+      <div class="law-ref">法規依據：貪污治罪條例第6條第1項第4款（圖利罪）；行政程序法第8條（誠實信用）；公務員服務法第1條（忠實執行職務）</div>
+      <p>本案核心爭點：乙出於協助弱勢之善意，是否足以阻卻圖利罪之成立？答案為否定。以下逐一分析。</p>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【二、乙之行為成立貪污治罪條例第6條第1項第4款圖利罪】</div>
+      <p>貪污治罪條例第6條第1項第4款：「對於主管或監督之事務，明知違背法律、法律授權之法規命令、職務命令或其他違背法令之行為，直接或間接圖自己或其他私人不法利益，因而獲得利益者。」</p>
+      <ul>
+        <li><strong>主管事務：</strong>乙為甲市公園場地管理業務承辦人，公園場地審核屬其<strong>主管事務</strong>。</li>
+        <li><strong>明知違背法令：</strong>乙<strong>明知</strong>丙並非合辦單位，場地管理規定明定須為合辦單位方可免費優先使用，乙之登記行為明顯<strong>違背相關管理規定</strong>。</li>
+        <li><strong>圖私人不法利益：</strong>乙之行為使丙獲得①<strong>優先使用</strong>公園場地及②<strong>免繳使用費</strong>兩項不法利益，係<strong>間接圖私人（丙）不法財產及使用利益</strong>。</li>
+        <li><strong>因而獲得利益：</strong>丙確實因此免費優先使用公園場地舉辦活動，利益已實現。</li>
+        <li><strong>結論：</strong>乙<strong>成立貪污治罪條例第6條第1項第4款圖利罪</strong>。</li>
+      </ul>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【三、乙之行為非「便民」之理由】</div>
+      <table>
+        <tr><th>比較項目</th><th>便民（合法）</th><th>乙之行為（圖利）</th></tr>
+        <tr><td>前提</td><td>在法律框架內提供友善服務</td><td>違背法律規定</td></tr>
+        <tr><td>手段</td><td>簡化程序、提供指引、縮短等待</td><td>偽造登記身份（登載不實）</td></tr>
+        <tr><td>對法律義務的影響</td><td>不免除相對人依法應盡的義務</td><td>使丙免除應繳納的使用費</td></tr>
+        <tr><td>主觀動機</td><td>提升行政效率、服務公眾整體利益</td><td>偏袒特定私人（縱使出於善意）</td></tr>
+        <tr><td>法律評價</td><td>合法且值得鼓勵</td><td>違反貪污§6Ⅰ④</td></tr>
+      </table>
+
+      <p><strong>關鍵說明：</strong>「便民」不以主觀惡意為必要，但須以「<strong>依法行政</strong>」為前提。乙縱使出於協助弱勢之善意，其行為仍已<strong>逾越法律授權範圍</strong>，且使丙獲得不法財產利益。貪污治罪條例圖利罪之成立，不以行為人圖利自己為必要，為他人圖利亦同，且<strong>不問主觀動機是否良善</strong>，客觀構成要件具備即成罪。</p>
+
+      <p><strong>正確的便民做法：</strong>若乙真心協助丙，應輔導丙依正規程序申請（如依申請順序排隊、協助申請社福補助減免），而非以不實登記規避規定，如此方為合法之便民服務。</p>
+    </div>
+
+    <div class="ans-section">
+      <div class="ans-title">【四、結論】</div>
+      <p>乙之行為<strong>非便民，而係圖利</strong>，成立貪污治罪條例第6條第1項第4款圖利罪。「善意動機」不能阻卻違法，依法行政是公務員不可逾越的底線；便民的正確方向是在法律框架內提供最大的服務便利，而非以私情取代公法。</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══ 考向分析 ═══ -->
+<div class="section-title subj-overview">★ 111～114年跨年度考試方向總分析</div>
+
+<div class="analysis-box subj-overview">
+  <h3>四年考題高頻考點統計</h3>
+  <table>
+    <tr><th>考點</th><th>111年</th><th>112年</th><th>113年</th><th>114年</th></tr>
+    <tr><td>SWOT/TOWS</td><td></td><td></td><td></td><td>✅第一題</td></tr>
+    <tr><td>魚骨圖</td><td></td><td></td><td>✅第一題</td><td></td></tr>
+    <tr><td>6W2H1E</td><td></td><td>✅第一題</td><td></td><td></td></tr>
+    <tr><td>危機處理三階段</td><td></td><td></td><td></td><td>✅第二題</td></tr>
+    <tr><td>CDM危機決策</td><td></td><td></td><td>✅第二題</td><td></td></tr>
+    <tr><td>媒體危機溝通</td><td></td><td>✅第二題</td><td></td><td></td></tr>
+    <tr><td>貪污§4/§5收賄</td><td></td><td></td><td>✅第三題</td><td></td></tr>
+    <tr><td>貪污§6圖利罪</td><td></td><td>✅第四題</td><td></td><td>✅第四題</td></tr>
+    <tr><td>行政程序法（卷宗/閱覽）</td><td></td><td>✅第三題</td><td></td><td>✅第三題</td></tr>
+    <tr><td>法規命令vs行政規則</td><td></td><td></td><td></td><td>✅第三題</td></tr>
+    <tr><td>行政助手概念</td><td></td><td></td><td>✅第四題</td><td></td></tr>
+    <tr><td>便民vs圖利辨析</td><td></td><td>✅第四題</td><td></td><td>✅第四題</td></tr>
+  </table>
+
+  <h3 style="margin-top:14px;">🎯 備考核心結論</h3>
+  <ul>
+    <li><strong>方案規劃工具輪流出：</strong>SWOT→魚骨圖→6W2H1E，三種工具每年輪流，下次可能再考SWOT或出新工具（甘特圖、邏輯架構矩陣）。</li>
+    <li><strong>危機處理是必考項目：</strong>每年均考，題材從地震、媒體危機到政策倡議，框架萬變不離「三階段＋CDM」。</li>
+    <li><strong>貪污圖利vs便民：幾乎年年出：</strong>112、114年均考，是最高頻的法律辨析題型，必須熟背§6Ⅰ④四要件及便民界限論述。</li>
+    <li><strong>行政法（行政程序法）穩定出現：</strong>112年政府資訊公開、113年行政助手、114年法規命令，方向各異但均以行政程序法為核心。</li>
+  </ul>
+</div>
+
+
+<!-- ═══ 四年萬用答案彙整 ═══ -->
+<div class="section-title subj-overview">★ 四年度萬用核心答案彙整（112～114年）</div>
+
+<div class="core-box subj-overview">
+  <h2>🏆 最終版萬用答題總框架（適用所有梯次）</h2>
+
+  <div class="subj-plan">
+  <h3>【方案規劃類萬用開場白】</h3>
+  <div class="core-template">「身為[機關名稱]本案業務承辦人，運用方案規劃課程所學之[工具名稱：SWOT/魚骨圖/6W2H1E]，
+系統分析本案之[問題要因/計畫內容]，提出具體可行之[策略建議/執行計畫]。」</div>
+  </div>
+
+  <div class="subj-crisis">
+  <h3>【危機處理類萬用開場白】</h3>
+  <div class="core-template">「面對[情境]所引發之危機情境，運用危機處理課程所學之
+[三階段框架：預防→應變→復原 / CDM危機決策模式 / 媒體危機溝通原則]，
+在[時間限制：12小時/黃金一小時]內採取以下應變措施：」</div>
+  </div>
+
+  <div class="subj-crime">
+  <h3>【貪污圖利vs便民萬用論述】（幾乎年年考）</h3>
+  <div class="core-template">貪污治罪條例§6Ⅰ④圖利罪四要件（全背）：
+① 公務員 ② 對主管或監督之事務 ③ 明知違背法令 ④ 直接或間接圖私人不法利益，因而獲益
+
+便民vs圖利萬用對比句：
+「便民係在【依法行政前提下】提供友善便利服務，不免除相對人之法定義務；
+ 圖利則係逾越法律授權範圍，使特定私人獲得法律所不應給予之利益。
+ 本案[乙/甲]之行為，已符合圖利罪①②③④要件，且不因[善意/私交]而阻卻違法，
+ 應成立貪污治罪條例§6Ⅰ④圖利罪。」</div>
+  </div>
+
+  <div class="subj-admin">
+  <h3>【行政法類法律性質萬用論述】</h3>
+  <div class="core-template">法規命令（行政程序法§150）：
+「具備①明確法律授權②規範不特定多數人③對外發生法律效果④抽象規範，性質為法規命令。」
+
+行政助手（學理概念）：
+「①受機關指揮派遣②以機關名義為之③無獨立公權力④責任由機關承擔，屬行政助手。」
+
+政府資訊公開vs行政程序法卷宗閱覽：
+「資訊公開：任何人可申請，但內部簽呈（§18Ⅰ③）得限制公開。
+ 卷宗閱覽（§46）：當事人/利害關係人可申請，但機關得以法定事由拒絕。
+ 兩途徑可同時援引，機關應公開為原則、限制為例外。」</div>
+  </div>
+</div>
+
+<div class="footer">112年警佐警察人員晉升警正官等訓練 第2梯次 消防人員 實務寫作題解析｜非官方參考資料・製作：Claude AI・2026/05/19</div>
+</body>
+</html>
