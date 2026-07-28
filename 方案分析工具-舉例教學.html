@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>方案分析工具｜9大工具舉例教學</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --bg:#f5f4f0; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66;
+    --accent:#8a5a3b; --line:#e5e2da; --side-w:270px;
+    --c1:#3b6e8a; --c2:#8a5a3b; --c3:#5a7d3b; --c4:#8a3b6e; --c5:#8a7a3b; --c6:#3b5a8a; --c7:#8a3b3b; --c8:#3b8a7d; --c9:#6e3b8a;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);display:flex;}
+  #sidebar{width:var(--side-w);flex-shrink:0;height:100vh;position:sticky;top:0;overflow-y:auto;background:#fbfaf7;border-right:1px solid var(--line);padding:20px 14px;}
+  #sidebar h3{font-size:.78rem;color:var(--sub);text-transform:uppercase;letter-spacing:.06em;margin:18px 6px 6px;}
+  #sidebar h3:first-child{margin-top:4px;}
+  #search{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:.85rem;margin-bottom:8px;font-family:inherit;}
+  .backlink{display:block;font-size:.8rem;color:var(--sub);text-decoration:none;margin:0 6px 10px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+  #sidebar a.nav{display:block;padding:5px 8px;font-size:.84rem;color:var(--ink);text-decoration:none;border-radius:6px;line-height:1.4;}
+  #sidebar a.nav:hover{background:var(--line);}
+  #sidebar a.nav.sub{padding-left:18px;font-size:.79rem;color:var(--sub);}
+  main{flex:1;max-width:940px;margin:0 auto;padding:44px 32px 100px;min-width:0;}
+  h1.title{font-size:1.7rem;margin:0 0 4px;}
+  .subtitle{color:var(--sub);margin-bottom:8px;}
+  .toolbar{margin-bottom:36px;padding-bottom:16px;border-bottom:1px solid var(--line);font-size:.82rem;color:#a09d95;}
+  section.chapter{margin-bottom:56px;scroll-margin-top:20px;}
+  .chapter-head{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+  .chapter-num{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.95rem;flex-shrink:0;}
+  .chapter-head h2{margin:0;font-size:1.28rem;}
+  h3.sec{scroll-margin-top:20px;font-size:1.03rem;margin:28px 0 10px;padding-left:12px;border-left:4px solid var(--line);}
+  h4.sub{font-size:.95rem;margin:16px 0 6px;color:#4a473f;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;}
+  .card p{margin:.5em 0;line-height:1.9;font-size:.94rem;text-align:justify;}
+  ul.pts{margin:.4em 0;padding-left:1.3em;line-height:1.85;font-size:.94rem;}
+  ul.pts li{margin-bottom:4px;}
+  .kw{background:#f6efe8;color:var(--accent);padding:1px 7px;border-radius:5px;font-weight:600;font-size:.88em;}
+  table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.83rem;}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top;}
+  th{background:#f1efe9;}
+  .cite{font-size:.82rem;color:#a09d95;margin-top:4px;}
+  .case-box{background:#fbf9f5;border:1px solid #e8dfd0;border-radius:12px;padding:18px 20px;margin:14px 0;}
+  .case-box h4{margin-top:0;color:var(--accent);}
+  .examtag{display:inline-block;background:#fbf6ea;color:#8a5a3b;padding:2px 8px;border-radius:6px;font-size:.72em;font-weight:600;margin-left:6px;white-space:nowrap;vertical-align:middle;}
+  .examtag.low{background:#f2f0ea;color:#a09d95;font-weight:500;}
+  .data{background:#eef4f8;border-radius:8px;padding:10px 14px;font-size:.86rem;margin:8px 0;}
+  .footnote{font-size:.78rem;color:#a09d95;border-top:1px dashed var(--line);padding-top:6px;margin-top:10px;}
+  .qa{background:#eef6f0;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.9rem;}
+  mark{background:#ffe9a8;padding:0 2px;border-radius:3px;}
+</style>
+</head>
+<body>
+<div style="position:fixed;top:10px;right:14px;z-index:9999;font-size:.72rem;color:#a09d95;background:rgba(255,255,255,.85);padding:3px 10px;border-radius:999px;border:1px solid #e5e2da;">柯醒翰製作</div>
+
+<nav id="sidebar">
+  <input id="search" type="text" placeholder="搜尋關鍵字...">
+  <a class="backlink" href="index.html">← 回筆記入口</a>
+
+  <h3>總覽</h3>
+  <a class="nav" href="#overview">整體判斷邏輯</a>
+
+  <h3>找原因．找對策</h3>
+  <a class="nav" href="#t1">① 向右魚骨圖</a>
+  <a class="nav" href="#t2">② 向左魚骨圖</a>
+
+  <h3>篩選．評估方案</h3>
+  <a class="nav" href="#t3">③ 決策矩陣分析</a>
+  <a class="nav" href="#t4">④ 可行性分析</a>
+
+  <h3>診斷．訂策略</h3>
+  <a class="nav" href="#t5">⑤ SWOT分析</a>
+  <a class="nav" href="#t6">⑥ TOWS分析</a>
+
+  <h3>值不值得．有無風險</h3>
+  <a class="nav" href="#t7">⑦ 成本效益／效果分析</a>
+  <a class="nav" href="#t8">⑧ 決策樹法</a>
+
+  <h3>執行管控</h3>
+  <a class="nav" href="#t9">⑨ 甘特圖與查核點</a>
+
+  <h3>總結</h3>
+  <a class="nav" href="#strategy">整體下筆策略</a>
+</nav>
+
+<main>
+  <h1 class="title">方案分析工具｜9大工具舉例教學</h1>
+  <div class="subtitle">115年佐升正訓練・方案規劃課程延伸教學</div>
+  <div class="toolbar">用途：以「長照2.0照管人力不足」同一案例貫穿9大工具，示範各工具的使用時機、切入點與下筆訣竅。完整教材脈絡請見 <a href="textbook-notes.html">方案管理教材深讀筆記</a>。</div>
+
+  <section class="chapter" id="overview">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c1)">總</div><h2>整體判斷邏輯</h2></div>
+    <div class="card">
+      <p>9個工具不是平行的「選一個」關係，而是依「情境屬性」分成幾條路徑。看到題目後，先判斷情境屬於哪一種，再決定要展開哪幾個工具：</p>
+      <ul class="pts">
+        <li><b>情境是既存問題，要找原因＋想對策</b> → 向右魚骨圖（找因）＋向左魚骨圖（找策）＋決策矩陣分析（篩選）</li>
+        <li><b>情境是新方案／新設備，要判斷該不該推動</b> → SWOT（診斷方案體質）＋TOWS（訂策略）＋可行性分析或成本效益分析（判斷值不值得做）</li>
+        <li><b>方案選擇涉及機率性風險</b>（天氣、市場反應等不確定因素）→ 決策樹法</li>
+        <li><b>方案已經定案，進入執行階段</b> → 甘特圖與查核點</li>
+      </ul>
+      <div class="qa"><b>提醒</b>：申論題不會要求9個工具全部用上，教材本身也明講「應依據不同的政策議題與分析目的，選擇最能協助釐清問題、篩選方案的工具」，堆砌所有工具反而顯得不精準。</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch-cause">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c2)">壹</div><h2>找原因．找對策</h2></div>
+
+    <h3 class="sec" id="t1">① 向右魚骨圖——找問題根因</h3>
+    <div class="card">
+      <p><b>切入點</b>：先把「問題癥結」用<b>肯定句、具體現象</b>寫在最右端（不是用問句），再往左展開大要因→小要因。</p>
+      <p><b>範例</b>（長照人力不足案）：</p>
+      <div class="data">問題癥結＝「照管人力不足」← 大要因「薪資競爭力低」← 小要因「起薪與免經驗的普考錄取者相當、無明文調薪機制」</div>
+      <div class="qa"><b>下筆訣竅</b>：大要因盡量給3~4個（多了會失焦），每個大要因底下配1~2個具體、可查證的小要因（最好帶數字，如案量200案、起薪43,399元），閱卷才看得出你有掌握情境給的細節，而不是套公式。</div>
+    </div>
+
+    <h3 class="sec" id="t2">② 向左魚骨圖——從根因找對策</h3>
+    <div class="card">
+      <p><b>切入點</b>：向右魚骨圖的每個「大要因」，直接對應翻譯成向左魚骨圖的一個「解決方案」，小要因用<b>動詞語句</b>（不是形容詞）寫具體做法。</p>
+      <p><b>範例</b>：對應「薪資競爭力低」→ 方案「提升薪資競爭力」→ 對策「提高起薪、給予長照服務加給」</p>
+      <div class="qa"><b>下筆訣竅</b>：向右用形容詞描述現象（「工時過長」），向左用動詞描述行動（「縮短工時」）——這個文字上的呼應，閱卷會特別注意，是拿分的細節。</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch-screen">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c3)">貳</div><h2>篩選．評估方案</h2></div>
+
+    <h3 class="sec" id="t3">③ 決策矩陣分析——多方案選一</h3>
+    <div class="card">
+      <p><b>切入點</b>：向左魚骨圖產出好幾個對策後，你需要打包成2~3個完整方案（不是逐條對策），再訂指標＋權重評分。</p>
+      <p><b>範例</b>：把方案分成甲（人才培訓）、乙（加薪攬才）、丙（AI輔助），指標是行政(0.2)、財務(0.2)、時間(0.2)、效益(0.4)：</p>
+      <table>
+        <tr><th>對策方案</th><th>行政(0.2)</th><th>財務(0.2)</th><th>時間(0.2)</th><th>效益(0.4)</th><th>總分</th><th>排序</th></tr>
+        <tr><td>方案甲</td><td>2 → 0.4</td><td>3 → 0.6</td><td>1 → 0.2</td><td>2 → 0.8</td><td>2.0</td><td>2</td></tr>
+        <tr><td>方案乙</td><td>1 → 0.2</td><td>1 → 0.2</td><td>3 → 0.6</td><td>3 → 1.2</td><td>2.2</td><td><b>1</b></td></tr>
+        <tr><td>方案丙</td><td>3 → 0.6</td><td>2 → 0.4</td><td>2 → 0.4</td><td>1 → 0.4</td><td>1.8</td><td>3</td></tr>
+      </table>
+      <p class="cite">給分範圍1（最低）～3（最高）。方案乙總分最高，建議優先推行。</p>
+      <div class="qa"><b>下筆訣竅</b>：①權重總和一定要等於1（或100%）②通常「效益」給最高權重，因為這是決策最看重的面向 ③打分後要寫一句話說明為什麼贏（如「方案乙在時間與效益兩指標領先，故總分最高」），不能只列表不解釋。</div>
+    </div>
+
+    <h3 class="sec" id="t4">④ 可行性分析——單一方案能不能推 <span class="examtag low">本頁示範為自編延伸，非教材原文案例</span></h3>
+    <div class="card">
+      <p><b>切入點</b>：跟決策矩陣不同——決策矩陣是「比較多個方案」，可行性分析是針對<b>已經選定的那一個方案</b>，逐一檢視4個面向擋不擋得下去。</p>
+      <p><b>範例</b>（針對「加薪攬才方案」）：</p>
+      <table>
+        <tr><th>面向</th><th>檢視內容</th></tr>
+        <tr><td>政治可行性</td><td>衛福部長是否支持加薪方案？立法院朝野對長照預算的態度？</td></tr>
+        <tr><td>經濟／技術可行性</td><td>每年1.2億元人事費用，政府財政能否負擔？加給制度是否有法源可循？</td></tr>
+        <tr><td>行政／法律可行性</td><td>是否需修改《長照人員訓練辦法》？跨機關（人事總處、銓敘部）協調是否有窒礙？</td></tr>
+        <tr><td>社會／環境可行性</td><td>民間長照機構從業人員會不會反彈「公私待遇差距擴大」？</td></tr>
+      </table>
+      <div class="qa"><b>下筆訣竅</b>：如果檢視後發現某面向卡關（例如預算不足），要接著寫因應措施（調整方案／提替代方案／利益協商／逐步實施／訂日出落條款）——這是可行性分析跟其他工具最不一樣的地方：它自帶「補救清單」。</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch-diagnose">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c5)">參</div><h2>診斷．訂策略</h2></div>
+
+    <h3 class="sec" id="t5">⑤ SWOT分析——診斷方案體質</h3>
+    <div class="card">
+      <p><b>切入點</b>：內部看自己機關的條件（人力/組織/經費/執行力），外部用<b>TEMPLES</b>（科技/經濟/媒體/政治/法律/環境/社會）掃描。SWOT一律用<b>形容詞語句</b>描述狀態，不要寫成行動。</p>
+      <p><b>範例</b>（針對「加薪攬才方案」）：</p>
+      <table>
+        <tr><th></th><th>Strength 優勢</th><th>Weakness 劣勢</th></tr>
+        <tr><td>內部環境</td><td>已有調薪先例、長照基金支持</td><td>需跨機關協調、預算不確定</td></tr>
+        <tr><td></td><th>Opportunity 機會</th><th>Threat 威脅</th></tr>
+        <tr><td>外部環境</td><td>長照是社會關注議題、AI科技逐漸成熟</td><td>政黨輪替不確定性、民間機構反彈</td></tr>
+      </table>
+      <div class="qa"><b>下筆訣竅</b>：4個象限盡量各寫2~4點，且內部/外部不要混淆（例如「政黨輪替」是外部政治因素，常有人誤放進W）。</div>
+    </div>
+
+    <h3 class="sec" id="t6">⑥ TOWS分析——SWOT結果轉成策略</h3>
+    <div class="card">
+      <p><b>切入點</b>：把SWOT的4象限兩兩交叉，TOWS改用<b>動詞語句</b>（要「做什麼」，不是「是什麼」）。</p>
+      <table>
+        <tr><th></th><th>優勢 S</th><th>劣勢 W</th></tr>
+        <tr><td>機會 O</td><td><b>SO進攻策略</b>：建立完善職級晉升機制，把長照管理變成有前景的專業職涯</td><td><b>WO轉型策略</b>：藉社福團體倡議，提高政府內部對薪資改革的支持度</td></tr>
+        <tr><td>威脅 T</td><td><b>ST補強策略</b>：導入績效獎金並公開透明，強化競爭優勢同時防範財務質疑</td><td><b>WT防禦策略</b>：分階段推動薪資調整，降低財政風險</td></tr>
+      </table>
+      <div class="qa"><b>下筆訣竅</b>：4個策略盡量都寫到（即使題目只問「提出策略建議」），因為TOWS的完整性就是交叉配對出全部4種，只寫1~2種會顯得沒有掌握矩陣邏輯。</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch-worth">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c6)">肆</div><h2>值不值得做．有無風險</h2></div>
+
+    <h3 class="sec" id="t7">⑦ 成本效益／成本效果分析——值不值得做 <span class="examtag low">本頁示範為自編延伸，非教材原文案例</span></h3>
+    <div class="card">
+      <p><b>切入點</b>：先問「利益能不能換算成貨幣？」能→用CBA算益本比／淨現值；不能（如滿意度、生命安全）→用CEA比效果。</p>
+      <div class="data">每年多花1.2億元人事費用（成本），換取離職率下降、案量控制在200案以下，間接減少委外或延遲服務造成的社會成本（估算利益1.5億元）<br>⇒ 益本比＝1.5／1.2＝<b>1.25＞1</b>，方案值得採行</div>
+      <div class="qa"><b>下筆訣竅</b>：CBA一定要把數字換算成同一貨幣單位比較；如果情境給的效益是「滿意度提升」這種無法貨幣化的東西，就老實承認「效益難以貨幣化，改採成本效果分析」，用「每單位成本達成的效果」來比較，不要硬凹換算。</div>
+    </div>
+
+    <h3 class="sec" id="t8">⑧ 決策樹法——有風險／機率時選方案</h3>
+    <div class="card">
+      <p><b>切入點</b>：只有題目明確給機率與報酬（或情境本身有「不確定性」關鍵字，如天氣、市場需求）才用這個工具，否則不要硬套。</p>
+      <p><b>範例</b>（外籍看護工是否鬆綁）：長照需求增加機率0.7、不增加機率0.3；提高外籍看護人數：需求增加賺200億、不增加賠200億</p>
+      <div class="data">
+        提高外籍看護工人數期望值 ＝（0.7×200億）＋（0.3×−200億）＝<b>80億元</b><br>
+        不提高外籍看護工人數期望值 ＝（0.7×−200億）＋（0.3×50億）＝<b>−125億元</b><br>
+        ⇒ 比較後應選擇「提高外籍看護工人數」方案較為有利
+      </div>
+      <div class="qa"><b>下筆訣竅</b>：一定要畫出樹狀結構（決策點用方框、機率節點用圓圈），並列出完整算式，不能只寫結論數字，過程分才是重點。</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch-control">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c8)">伍</div><h2>執行管控</h2></div>
+
+    <h3 class="sec" id="t9">⑨ 甘特圖與查核點——執行期管控</h3>
+    <div class="card">
+      <p><b>切入點</b>：這是方案已經定案之後才用的工具，跟前面8個「選方案」的工具性質不同，題目如果問「請說明如何管控執行進度」才會用到。</p>
+      <p><b>範例</b>：橫軸列第1~8季，縱軸列「需求評估→跨機關協商→法規修正草案→編列預算→送立院審核→公告實施→成效評估」7個工作項目，每項用橫條標示起訖季別，並在10%、50%、90%等節點設查核點。</p>
+      <div class="qa"><b>下筆訣竅</b>：查核結果要用固定分類回答——通過／有條件通過／查核已完成改善／查核待改善／查核不通過，不要自己發明用詞。</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="strategy">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--c9)">總</div><h2>整體下筆策略</h2></div>
+    <div class="card">
+      <p>看到題目後，先判斷這題是「找原因找對策」（魚骨圖類）還是「評估要不要推新方案」（SWOT/TOWS/可行性/CBA類），再決定要展開哪2~3個工具，這樣才會又快又準。切記：申論題不需要9個工具全部用上，堆砌所有工具反而會顯得不精準，適度且精準地運用分析工具，才能使方案更具說服力與可行性。</p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  document.getElementById('search').addEventListener('input', function(e){
+    var q = e.target.value.trim().toLowerCase();
+    var cards = document.querySelectorAll('section.chapter');
+    cards.forEach(function(sec){
+      if(!q){ sec.style.display=''; return; }
+      var text = sec.innerText.toLowerCase();
+      sec.style.display = text.indexOf(q) !== -1 ? '' : 'none';
+    });
+  });
+</script>
+</body>
+</html>
