@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>115年考場抄寫骨幹｜4科速記總表</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --bg:#f5f4f0; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66;
+    --accent:#8a6d1f; --line:#e5e2da; --side-w:270px;
+    --plan:#3b6e8a; --crisis:#b2551f; --admin:#6a4a8a; --crime:#8a3b3b;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);display:flex;}
+  #sidebar{width:var(--side-w);flex-shrink:0;height:100vh;position:sticky;top:0;overflow-y:auto;background:#fbfaf7;border-right:1px solid var(--line);padding:20px 14px;}
+  #sidebar h3{font-size:.78rem;color:var(--sub);text-transform:uppercase;letter-spacing:.06em;margin:18px 6px 6px;}
+  #sidebar h3:first-child{margin-top:4px;}
+  #search{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:.85rem;margin-bottom:8px;font-family:inherit;}
+  .backlink{display:block;font-size:.8rem;color:var(--sub);text-decoration:none;margin:0 6px 10px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+  #sidebar a.nav{display:block;padding:5px 8px;font-size:.84rem;color:var(--ink);text-decoration:none;border-radius:6px;line-height:1.4;}
+  #sidebar a.nav:hover{background:var(--line);}
+  #sidebar a.nav.sub{padding-left:18px;font-size:.79rem;color:var(--sub);}
+  main{flex:1;max-width:980px;margin:0 auto;padding:44px 32px 100px;min-width:0;}
+  h1.title{font-size:1.7rem;margin:0 0 4px;}
+  .subtitle{color:var(--sub);margin-bottom:8px;}
+  .toolbar{margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--line);font-size:.82rem;color:#a09d95;}
+  section.chapter{margin-bottom:52px;scroll-margin-top:20px;}
+  .chapter-head{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+  .chapter-num{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.95rem;flex-shrink:0;}
+  .chapter-head h2{margin:0;font-size:1.28rem;}
+  .chapter-meta{font-size:.82rem;color:var(--sub);margin:0 0 18px 44px;}
+  h3.sec{scroll-margin-top:20px;font-size:1rem;margin:24px 0 8px;padding-left:12px;border-left:4px solid var(--line);}
+  h4.sub{font-size:.92rem;margin:14px 0 6px;color:#4a473f;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;}
+  .card p{margin:.5em 0;line-height:1.8;font-size:.92rem;}
+  table{border-collapse:collapse;width:100%;margin:8px 0;font-size:.82rem;}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top;}
+  th{background:#f1efe9;}
+  .art{background:#eef4f8;color:#3b6e8a;padding:1px 6px;border-radius:5px;font-weight:600;font-size:.85em;white-space:nowrap;}
+  /* 流程鏈 */
+  .flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:10px 0;font-size:.88rem;}
+  .flow .step{background:#f1efe9;border-radius:8px;padding:8px 12px;font-weight:600;white-space:nowrap;}
+  .flow .arrow{color:var(--sub);font-weight:700;}
+  .flow.plan .step{background:#e8eff3;color:var(--plan);}
+  .flow.crisis .step{background:#f7e9de;color:var(--crisis);}
+  .flow.admin .step{background:#ece5f2;color:var(--admin);}
+  .flow.crime .step{background:#f2e5e5;color:var(--crime);}
+  /* 萬用句型框 */
+  .template{background:#fbf6ea;border:1px dashed #d8c896;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.88rem;line-height:1.9;color:#6b5a2a;}
+  .template b{color:#4a3d15;}
+  .qa{background:#eef6f0;border-radius:10px;padding:10px 14px;margin:8px 0;font-size:.87rem;line-height:1.75;}
+  mark{background:#ffe9a8;padding:0 2px;border-radius:3px;}
+  .hidden{display:none !important;}
+</style>
+</head>
+<body>
+<div style="position:fixed;top:10px;right:14px;z-index:9999;font-size:.72rem;color:#a09d95;background:rgba(255,255,255,.85);padding:3px 10px;border-radius:999px;border:1px solid #e5e2da;">柯醒翰製作</div>
+
+<nav id="sidebar">
+  <input id="search" type="text" placeholder="搜尋關鍵字...">
+  <a class="backlink" href="index.html">← 回筆記入口</a>
+
+  <h3>總覽</h3>
+  <a class="nav" href="#overview">115年考試架構</a>
+
+  <h3>壹 方案管理 Q1・30分</h3>
+  <a class="nav sub" href="#plan-flow">解題流程骨幹</a>
+  <a class="nav sub" href="#plan-tools">4大工具速記</a>
+  <a class="nav sub" href="#plan-fishbone-past">魚骨圖歷屆真實考法</a>
+  <a class="nav sub" href="#plan-swot-past">SWOT/TOWS歷屆真實考法</a>
+  <a class="nav sub" href="#plan-6w">6W2H1E骨幹速記</a>
+  <a class="nav sub" href="#plan-6w-past">6W2H1E歷屆真實考法</a>
+  <a class="nav sub" href="#plan-tpl">萬用句型</a>
+
+  <h3>貳 危機處理 Q2・30分</h3>
+  <a class="nav sub" href="#crisis-cdm">CDM五步驟</a>
+  <a class="nav sub" href="#crisis-c3i">C3I／風險管理</a>
+  <a class="nav sub" href="#crisis-nego">談判／記者會</a>
+  <a class="nav sub" href="#crisis-past">歷屆6次真實考法</a>
+
+  <h3>參 行政程序法 Q3・20分</h3>
+  <a class="nav sub" href="#admin-flow">三段論法骨幹</a>
+  <a class="nav sub" href="#admin-art">核心法條速記</a>
+  <a class="nav sub" href="#admin-new">零命中優先章節</a>
+  <a class="nav sub" href="#admin-past">歷屆4次真實考法</a>
+
+  <h3>肆 刑法貪污瀆職 Q4・20分</h3>
+  <a class="nav sub" href="#crime-flow">罪名判斷流程</a>
+  <a class="nav sub" href="#crime-art">核心法條速記</a>
+  <a class="nav sub" href="#crime-tuli">便民vs圖利表</a>
+  <a class="nav sub" href="#crime-past">歷屆5次真實考法</a>
+</nav>
+
+<main>
+  <h1 class="title">115年考場抄寫骨幹｜4科速記總表</h1>
+  <div class="subtitle">佐升正訓練・開書考專用・可直接抄寫於教材空白處</div>
+  <div class="toolbar">用途：4科的「解題流程骨幹」＋「核心速記表」＋「萬用句型」，供考前抄寫在課本空白處，開書考時快速比對抄寫。完整說明請見各科教材版筆記；本頁只放「抄得完、查得快」的濃縮版。</div>
+
+  <section class="chapter" id="overview">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--accent)">總</div><h2>115年考試架構（官方固定）</h2></div>
+    <div class="card">
+      <table>
+        <tr><th>題號</th><th>題型</th><th>科目</th><th>配分</th></tr>
+        <tr><td>第一題</td><td>實務寫作題</td><td>方案管理</td><td>30分</td></tr>
+        <tr><td>第二題</td><td>實務寫作題</td><td>危機處理</td><td>30分</td></tr>
+        <tr><td>第三題</td><td>簡答型實務寫作題</td><td>行政程序法與案例解析</td><td>20分</td></tr>
+        <tr><td>第四題</td><td>簡答型實務寫作題</td><td>刑法瀆職罪與貪污治罪條例及案例解析</td><td>20分</td></tr>
+      </table>
+      <p style="color:var(--sub);font-size:.86rem;">受訓人員應全部作答。政府資訊公開法、警政溝通與行銷、火災學等科目<b>不在115年測驗範圍內</b>。</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="plan">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--plan)">壹</div><h2>方案管理</h2></div>
+    <div class="chapter-meta">Q1・30分・實務寫作題</div>
+
+    <h3 class="sec" id="plan-flow">解題流程骨幹</h3>
+    <div class="card">
+      <p>看到題目先判斷：<b>既存問題找因找策</b>（走魚骨圖路線）還是<b>新方案該不該推動</b>（走SWOT/TOWS路線），再套對應流程：</p>
+      <div class="flow plan">
+        <div class="step">問題辨識</div><div class="arrow">→</div>
+        <div class="step">蒐集因子<br>右魚骨圖(找因)</div><div class="arrow">→</div>
+        <div class="step">訂定目標<br>左魚骨圖(找策)</div><div class="arrow">→</div>
+        <div class="step">對策評估<br>可行性/決策矩陣/決策樹</div><div class="arrow">→</div>
+        <div class="step">呈現計畫書<br>6W2H1E</div><div class="arrow">→</div>
+        <div class="step">甘特圖查核點<br>(如題目問執行管控)</div><div class="arrow">→</div>
+        <div class="step">結論</div>
+      </div>
+      <div class="flow plan">
+        <div class="step">情境分析<br>(新方案/新設備)</div><div class="arrow">→</div>
+        <div class="step">SWOT<br>內部S/W外部O/T</div><div class="arrow">→</div>
+        <div class="step">TOWS<br>SO/ST/WO/WT交叉策略</div><div class="arrow">→</div>
+        <div class="step">可行性分析<br>或成本效益分析</div><div class="arrow">→</div>
+        <div class="step">結論</div>
+      </div>
+    </div>
+
+    <h3 class="sec" id="plan-tools">4大工具速記</h3>
+    <div class="card">
+      <table>
+        <tr><th>工具</th><th>骨幹</th><th>下筆重點</th></tr>
+        <tr><td><b>向右魚骨圖</b></td><td>問題癥結(頭・右) ← 大要因 ← 小要因</td><td>頭＝肯定句＋呼應情境關鍵字；大要因用<mark>形容詞</mark>(不足/過長/複雜)</td></tr>
+        <tr><td><b>向左魚骨圖</b></td><td>目標(頭・左) ← 對策方案 ← 具體做法</td><td>對應向右每個大要因；用<mark>動詞</mark>(提高/簡化/增加)</td></tr>
+        <tr><td><b>SWOT</b></td><td>內部S優勢/W劣勢　外部O機會/T威脅(TEMPLES)</td><td>形容詞語句；內外部不要混</td></tr>
+        <tr><td><b>TOWS</b></td><td>SO進攻(優勢×機會) ST補強(優勢×威脅)<br>WO轉型(劣勢×機會) WT防禦(劣勢×威脅)</td><td>動詞語句；4格盡量都寫到</td></tr>
+        <tr><td><b>決策矩陣</b></td><td>方案×指標(權重合計=1)×評分→加權總分→排序</td><td>寫一句話說明贏在哪個指標</td></tr>
+        <tr><td><b>可行性分析</b></td><td>政治／經濟技術／行政法律／社會環境　4面向</td><td>卡關要接因應措施(調整方案/替代方案/協商/逐步實施/日出落條款)</td></tr>
+        <tr><td><b>成本效益/效果</b></td><td>能貨幣化→CBA(益本比/淨現值)　不能→CEA(比效果)</td><td>益本比&gt;1或淨現值&gt;0才可行</td></tr>
+        <tr><td><b>決策樹</b></td><td>期望值＝Σ(機率×報酬)，選最高者</td><td>只有題目給機率/報酬才用；要畫樹＋列算式</td></tr>
+        <tr><td><b>甘特圖/查核點</b></td><td>橫軸時間×縱軸工作項目；查核點10%/50%/90%等</td><td>查核結果只用固定5類詞：通過/有條件通過/已完成改善/待改善/不通過</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="plan-fishbone-past">魚骨圖歷屆真實考法（109/113年）</h3>
+    <div class="card">
+      <table>
+        <tr><th colspan="2" style="background:#e8eff3;">109年・向左魚骨圖找原因—山域搜救困難分析（25分）</th></tr>
+      </table>
+      <p style="color:var(--sub);font-size:.83rem;margin:4px 0 8px;">⚠ 這年原題把「向左魚骨圖」定義為找原因（魚頭在左、找原因），跟我們現在教的標準版本（向右＝找因、向左＝找策，見上方4大工具速記表）用詞相反，如實照抄原題架構，考場上仍以題目自己的指定用詞為準。</p>
+      <table>
+        <tr><td style="width:18%"><b>環境面</b></td><td>地形複雜路線受限、氣候多變、GPS訊號遮蔽、日照短夜間危險</td></tr>
+        <tr><td><b>人員面</b></td><td>專業訓練不足、人力配置不足、體能消耗易疲勞、跨縣市協調慢</td></tr>
+        <tr><td><b>設備面</b></td><td>專用裝備不足、直升機受天候場地限制、深山通訊不穩、擔架繩索攜帶難</td></tr>
+        <tr><td><b>情資面</b></td><td>位置不明仰賴手機定位、入山登記未落實、缺完整地圖、報案延遲</td></tr>
+        <tr><td><b>制度面</b></td><td>救援責任歸屬不明、費用負擔爭議、志工隊整合不完善、缺統一指揮中心</td></tr>
+        <tr><td><b>民眾面</b></td><td>準備不足未告知行程、自救能力差、手機電量耗盡、輕忽入山申請風險</td></tr>
+      </table>
+
+      <table style="margin-top:14px;">
+        <tr><th colspan="2" style="background:#e8eff3;">113年・向右魚骨圖(找因)＋向左魚骨圖(找策)—山域事故救援困境（30分）</th></tr>
+      </table>
+      <p style="color:var(--sub);font-size:.83rem;margin:4px 0 8px;">情境：山林解禁後死亡失蹤人數增加，搜索逾24小時占20%，核心癥結「難找・難到・難救」。這年用的才是標準版本（向右找因、向左找策）。</p>
+      <table>
+        <tr><td style="width:18%"><b>向右－人員面</b></td><td>自主管理意識不足未報備、未帶定位器、獨自登山、高估體能</td></tr>
+        <tr><td><b>向右－環境面</b></td><td>幅員廣大搜索難縮小、地形複雜植被茂密、天候多變、各縣市難易懸殊</td></tr>
+        <tr><td><b>向右－資訊面</b></td><td>失聯資訊不明確、報案延遲逾24小時、缺即時回報系統、座標難精確定位</td></tr>
+        <tr><td><b>向右－量能面</b></td><td>各縣市搜救量能不均、專業認證人員不足、科技工具配置不足、高山醫療不足</td></tr>
+        <tr><td><b>向右－整合面</b></td><td>三方資源缺整合機制、SOP不一致協作摩擦高、跨縣市調度指揮不完整</td></tr>
+        <tr><td><b>向右－制度面</b></td><td>管制機制未完備、高風險山域缺差異化管制、救難費全額公費缺誘因</td></tr>
+        <tr><td><b>向左－對策一</b></td><td>強化預防：線上登山計畫書、鼓勵攜帶定位器、安全教育、分級認證限制入山</td></tr>
+        <tr><td><b>向左－對策二</b></td><td>科技救災：即時定位監控平台、無人機搜索、3D地圖資料庫、SOS衛星求救推廣</td></tr>
+        <tr><td><b>向左－對策三</b></td><td>提升量能：山岳搜救認證制度、充實繩索及高山醫療裝備、量能分級補強計畫</td></tr>
+        <tr><td><b>向左－對策四</b></td><td>整合資源：統一指揮協調平台、整合三方資源、統一SOP、跨縣市調度機制</td></tr>
+        <tr><td><b>向左－對策五</b></td><td>資訊共享：建立事故資料庫（依原題可再補一項對策六視情境延伸）</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="plan-swot-past">SWOT/TOWS歷屆真實考法（111/114年）</h3>
+    <div class="card">
+      <table>
+        <tr><th colspan="2" style="background:#e8eff3;">111年・SWOT分析＋策略配對—甲機關廳舍活化案（30分）</th></tr>
+      </table>
+      <p style="color:var(--sub);font-size:.83rem;margin:4px 0 8px;">情境：廳舍使用率偏低，規劃活化為休憩小棧。同年用語為「策略配對」，114年同架構改稱「TOWS分析」，本質相同，可視題目用詞照抄。</p>
+      <table>
+        <tr><td style="width:14%"><b>S優勢</b></td><td>同仁支持願導覽、設備良好稍裝修可用、工作特色具吸引力</td></tr>
+        <tr><td><b>W劣勢</b></td><td>人力有限調度困難、經費拮据缺裝修費、法令限制須民間認養程序繁瑣</td></tr>
+        <tr><td><b>O機會</b></td><td>商家學校願提供經費志工、位處觀光要道、民間認養(CSR)趨勢盛行</td></tr>
+        <tr><td><b>T威脅</b></td><td>位置偏遠交通不便、使用率低既有印象影響合作、認養受主管機關審查限制</td></tr>
+        <tr><td><b>SO策略</b></td><td>多元導覽體驗(同仁意願+志工資源)、觀光要道常設展覽</td></tr>
+        <tr><td><b>WO策略</b></td><td>民間認養解決經費(商家贊助裝修)、志工補人力不足</td></tr>
+        <tr><td><b>ST策略</b></td><td>預約巴士制度解決交通、特色展覽扭轉低使用率印象</td></tr>
+        <tr><td><b>WT策略</b></td><td>低成本小規模試行、提前完成法令審查再對外公告</td></tr>
+      </table>
+      <p style="font-size:.85rem;color:var(--sub);">結論主軸：以WO策略為主（引入民間經費志工），輔以SO策略（多元導覽）。</p>
+
+      <table style="margin-top:14px;">
+        <tr><th colspan="2" style="background:#e8eff3;">114年・SWOT分析＋TOWS分析—消防救災機器人方案（30分）</th></tr>
+      </table>
+      <p style="color:var(--sub);font-size:.83rem;margin:4px 0 8px;">情境：市長三疑慮①符合需求？②經費高昂？③操控訓練不足？（見前面「為什麼114年第一題不用魚骨圖」的討論）</p>
+      <table>
+        <tr><td style="width:14%"><b>S優勢</b></td><td>射水滅火深入火場、毒氣偵測降低中毒風險、熱顯像強化夜間偵察、物聯網影像回傳強化指揮</td></tr>
+        <tr><td><b>W劣勢</b></td><td>購置成本高昂(疑慮②)、操控訓練不足(疑慮③)、工廠地形複雜機動性受限、能否符合需求待驗證(疑慮①)</td></tr>
+        <tr><td><b>O機會</b></td><td>AI機器人技術快速進步、工業區火災頻率升需求殷切、中央智慧消防政策可爭取補助、國際實戰案例可借鏡</td></tr>
+        <tr><td><b>T威脅</b></td><td>市長議會存疑推動阻力大、技術迭代快速快速折舊、法規未明確規範責任歸屬</td></tr>
+        <tr><td><b>SO策略</b></td><td>爭取中央智慧消防補助、借鏡國際案例引進機型(回應疑慮①)</td></tr>
+        <tr><td><b>WO策略</b></td><td>分期採購降低財政衝擊(試驗→評估→擴充)、產學合作訓練補足技能(回應疑慮③)</td></tr>
+        <tr><td><b>ST策略</b></td><td>公開效能驗證化解議會疑慮、訂操作SOP+故障應急並行方案</td></tr>
+        <tr><td><b>WT策略</b></td><td>要求廠商附訓練維保套裝、配合法規研修責任歸屬規範</td></tr>
+      </table>
+      <p style="font-size:.85rem;color:var(--sub);">結論主軸：以WO策略為主（分期採購＋產學訓練），輔以SO策略（爭取補助）、ST策略（驗證機制）。</p>
+    </div>
+
+    <h3 class="sec" id="plan-6w">6W2H1E 骨幹速記（考古最大宗，108/109/110/112年考過）</h3>
+    <div class="card">
+      <p style="color:var(--sub);font-size:.85rem;">整份計畫書的呈現骨架；常搭配魚骨圖/SWOT等工具一起交出完整答案。9項每項照下面填空句抄，再把【　】換成情境內容。</p>
+      <table>
+        <tr><th style="width:14%">項目</th><th>填空骨幹（抄這句，換情境內容）</th></tr>
+        <tr><td><b>Why</b><br>緣由依據</td><td>因【情境問題/現況】，為避免/防止【負面後果】，依據【相關法令】辦理</td></tr>
+        <tr><td><b>What</b><br>目標內容</td><td>目標為【具體目標】；重要內容包含①【　】②【　】③【　】</td></tr>
+        <tr><td><b>How</b><br>執行方式</td><td>由【主辦單位】採取下列作法：①【　】②【　】③【　】④【　】</td></tr>
+        <tr><td><b>Who</b><br>主辦協辦機關</td><td>主辦機關：【　】；協辦機關：【　】、【　】</td></tr>
+        <tr><td><b>Whom</b><br>利害關係人</td><td>標的人口／利害關係人：【受影響對象，如使用者、協力廠商、第一線人員】</td></tr>
+        <tr><td><b>Where</b><br>地點</td><td>執行地點／範圍：【　】</td></tr>
+        <tr><td><b>When</b><br>執行期程</td><td>自【日期/年月】起至【日期/年月】止，共計【期間長度】</td></tr>
+        <tr><td><b>How much</b><br>資源需求</td><td>經費約【金額】，由【預算來源】支應；人力配置：【　】</td></tr>
+        <tr><td><b>Effect</b><br>效果KPI/CPI</td><td>KPI：①【指標1】達OO%　②【指標2】達OO%。CPI：計畫進度如期完成、經費執行率達OO%以上</td></tr>
+      </table>
+      <div class="qa"><b>抄寫技巧</b>：考場上先把9個英文字母直式寫在答案卷左側當骨架，再逐項填情境內容——即使時間不夠，把9項名稱＋每項1句話寫滿，也比長篇大論漏寫項目拿分高。</div>
+    </div>
+
+    <h3 class="sec" id="plan-6w-past">歷屆4次實際考法（108/109/110/112年真實內容濃縮）</h3>
+    <div class="card">
+      <div class="qa" style="background:#fbf6ea;">
+        <b>⚠ 版本落差提醒</b>：官方教材（textbook-notes.html與slides-notes.html兩份都一致）採用9項為 <b>Why/What/How/Who/Whom/Where/When/How much/Effect</b>。但108、109、110、112年這4份<b>非官方參考解析</b>寫的時候，用的是另一個常見變體：<b>Why/What/Who/When/Where/<mark>Which</mark>(法規依據或方式)/How/How Much/<mark>Evaluation</mark></b>（把「Whom對象」併入Who一起寫，多出一項Which，Evaluation跟Effect是同義詞只是換了英文單字）。<br>
+        <b>考場建議：以上面「6W2H1E骨幹速記」的官方9項（Whom/Effect版本）為準來寫答案</b>，因為那是這門課教材實際教的版本、閱卷者會對照的依據；下面4組歷史內容我已經按官方9項的順序與命名重新對照排列，「法規依據」這類原答案獨立列出、但官方9項沒有的內容，併入Why或How對應行內，不再單獨佔一列，方便你直接比對抄寫邏輯。
+      </div>
+
+      <table>
+        <tr><th colspan="2" style="background:#e8eff3;">108年・夏夜歡樂派對安全維護計畫（50分）</th></tr>
+        <tr><td style="width:18%"><b>Why</b></td><td>大型活動預計吸引民眾5萬人，人潮密集度高，踩踏、火災及緊急傷病風險顯著提升；依消防法§13及大型活動安全管理相關規定，主辦機關應落實消防安全管理；目標為活動期間零死亡、零重傷</td></tr>
+        <tr><td><b>What</b></td><td>①場地消防安全查核(滅火器、逃生出口、電路安全) ②人流管制動線規劃(入口出口分流、單向通道) ③現場水線架設待命 ④緊急廣播疏散系統就位 ⑤活動結束離場安全管控(防踩踏) ⑥救護站設置</td></tr>
+        <tr><td><b>How</b></td><td>①事前召開跨機關協調會議(消防、警察、衛生、主辦) ②製作疏散計畫圖張貼現場並告知工作人員 ③辦理1次安全演練(含廣播疏散模擬) ④建立通訊群組每30分鐘回報安全狀況 ⑤人流採柵欄分流並保留應急通道，預先架設水線因應舞台特效引發之火災風險 ⑥通訊採無線電＋LINE群組雙重備援，就近協調3家指定醫院後送 ⑦設置現場志工20名協助引導 ⑧與主辦單位簽訂消防安全協議書明確責任歸屬</td></tr>
+        <tr><td><b>Who</b></td><td>指揮官為消防局長(或指定代理人)，現場指揮為分隊長×2(分區負責)，消防隊員×12名(分3組輪替)，救護員×6名(2救護站+機動組)，協力單位為警察局(人流管制)、衛生局(醫療支援)、主辦單位保全</td></tr>
+        <tr><td><b>Whom</b></td><td>活動當日參與之民眾(預估5萬人)，及主辦單位工作人員</td></tr>
+        <tr><td><b>Where</b></td><td>①主舞台前方高密度人群區(消防員×4、救護員×2) ②主要出入口×4處 ③救護站×2處(東西側各1) ④消防車停放位置(距主場地不超過50公尺確保出水距離) ⑤指揮所(指揮官、無線電通訊中心)</td></tr>
+        <tr><td><b>When</b></td><td>【事前準備】活動前2週場地安全勘查、計畫核備；活動前1週人員訓練、器材備妥、跨機關協調會 【活動當日】開放前2小時人員進駐、救護站開設 【活動期間】18:00-23:00全程待命(三班輪替) 【活動結束】23:00-00:30離場管控、場地安全確認</td></tr>
+        <tr><td><b>How much</b></td><td>人力：消防員12名、救護員6名。車輛：消防車×2、救護車×2、指揮車×1。設備：滅火器備用20具、AED×4台、救護包×6套。經費依「大型活動消防安全維護費用收費標準」由主辦單位負擔</td></tr>
+        <tr><td><b>Effect</b></td><td>緊急事件響應時間目標接報後3分鐘內到達；救護案件處理完成率100%；活動期間零火災、零重大傷亡；現場人員滿意度問卷(主辦、民眾、參與機關)；活動結束後3日內提交執行成效報告，檢討缺失作為下次改善依據</td></tr>
+      </table>
+
+      <table>
+        <tr><th colspan="2" style="background:#e8eff3;">109年・住宅火災警報器安裝推廣計畫（25分）</th></tr>
+        <tr><td style="width:18%"><b>Why</b></td><td>住宅火災造成人員傷亡多因逃生不及，住警器可於火災發生初期發出警報，大幅提升逃生機率；依消防法§6強制規定，推廣住警器安裝率為消防主管機關之法定職責</td></tr>
+        <tr><td><b>What</b></td><td>①調查轄區住宅住警器安裝現況(建立資料庫) ②補助弱勢家庭免費安裝住警器 ③辦理里鄰宣導活動 ④結合物業管理公司推廣集合住宅安裝 ⑤建立住警器維護更換提醒機制</td></tr>
+        <tr><td><b>How</b></td><td>①製作QR code宣導單，掃描可線上申請補助 ②結合里民大會辦理現場示範安裝 ③與便利超商合作設置住警器購買點 ④社群媒體(Facebook、Line)宣傳影片 ⑤學校防火教育同步推廣(帶回家概念) ⑥安裝管道採主動訪視(消防員入戶)、申請補助(弱勢戶)、自行購買(一般住戶+廠商優惠)、集體採購(大樓管委會)四種方式並行</td></tr>
+        <tr><td><b>Who</b></td><td>主責為消防分隊(預防課)，協辦為社政局(弱勢補助)、里長(社區動員)，合作對象為住警器廠商(團購優惠)、物業管理公司</td></tr>
+        <tr><td><b>Whom</b></td><td>住宅所有權人及居住人，尤其為弱勢家庭(低收入戶、獨居老人)及集合住宅住戶等未裝設住警器之高風險族群</td></tr>
+        <tr><td><b>Where</b></td><td>老舊建築(30年以上)密集區、弱勢家庭聚集地區、集合住宅(公寓大樓)、違建及簡易住宅</td></tr>
+        <tr><td><b>When</b></td><td>第1-2月現況調查+建立資料庫；第3-4月宣導活動+補助申請受理；第5-6月安裝執行+稽查追蹤；重點時間為防火宣導月(11月)同步加強</td></tr>
+        <tr><td><b>How much</b></td><td>人力：每週投入預防課人員3-4名進行訪視。經費：弱勢補助款(縣市社福預算)+消防局宣導預算。設備：住警器庫存(補助用)、宣傳物品</td></tr>
+        <tr><td><b>Effect</b></td><td>【量化】安裝率提升目標(如從60%提升至80%)、補助戶數達成率。【質化】住宅火災初期警報觸發率、民眾滿意度調查</td></tr>
+      </table>
+
+      <table>
+        <tr><th colspan="2" style="background:#e8eff3;">110年・強化防制性騷擾專案執行計畫（30分・6個月）</th></tr>
+        <tr><td style="width:18%"><b>Why</b></td><td>近年性騷擾案件持續增加，被害人報案比例偏低，社會治安形象受損；本計畫旨在強化執法效能、提升民眾安全感、落實性騷擾防制法之執行</td></tr>
+        <tr><td><b>What</b></td><td>①加強巡邏重點場所(夜間娛樂場所、大眾運輸、學校周邊) ②建立性騷擾案件快速通報機制 ③辦理員警性騷擾防制教育訓練 ④設置被害人一站式服務窗口 ⑤強化被害人保護與隱私保障措施</td></tr>
+        <tr><td><b>How</b></td><td>①增派便衣警力於高風險場所執行蒐證 ②設立專線電話(110加設性騷擾專項轉接) ③與場所業者簽訂合作備忘錄(安全場所認證) ④辦理社區宣導活動(學校、社區) ⑤強化數位證據蒐集能力(調閱監視器SOP) ⑥策略上採主動巡邏(增加見警率)、情資蒐集(分析熱點時段)、被害人保護(陪同就診、心理輔導轉介)、社區宣導(LINE社群、宣傳單、說明會)四策略並行</td></tr>
+        <tr><td><b>Who</b></td><td>主責單位為刑事警察大隊(婦幼小組)，協辦單位為各分局勤務指揮中心、社區警政中心，外部合作單位為社會局、衛生局、家防中心、被害人保護協會</td></tr>
+        <tr><td><b>Whom</b></td><td>性騷擾案件被害人，以及夜間場所、大眾運輸、校園周邊出入之民眾</td></tr>
+        <tr><td><b>Where</b></td><td>夜間娛樂場所及周邊(KTV、酒吧、夜市)、大眾運輸系統(捷運、公車站牌)、學校補習班周邊、社區公園停車場等公共場所</td></tr>
+        <tr><td><b>When</b></td><td>期程6個月(第1-2月宣導籌備、第3-4月全面執行、第5-6月追蹤評估)；重點時段為夜間22:00-02:00、連假週末；定期會議每月召開協調會議1次</td></tr>
+        <tr><td><b>How much</b></td><td>人力：每週加派巡邏人力3組(各分局輪值)。經費：申請性騷擾防制計畫補助款(衛福部、縣市補助)。設備：行動蒐證裝置、警察宣導物品、被害人服務包</td></tr>
+        <tr><td><b>Effect</b></td><td>【量化】性騷擾報案件數目標(較去年增幅反映報案意願提升)、破獲案件比率提升30%、熱點時段見警率提升(GPS統計)。【質化】被害人滿意度調查(一站式服務滿意度≥80%)、員警教育訓練考核通過率≥90%。【回饋機制】每月提交執行檢討報告→局長核閱→滾動修正策略</td></tr>
+      </table>
+
+      <table>
+        <tr><th colspan="2" style="background:#e8eff3;">112年・防範燃氣熱水器一氧化碳中毒執行計畫（30分・3個月）</th></tr>
+        <tr><td style="width:18%"><b>Why</b></td><td>106-110年全國燃氣熱水器一氧化碳中毒161件、死亡28人，甲市曾發生重大死亡案例；77%因安裝於通風不良處、75.8%集中冬季，顯示可預防性高；依消防法§15-3燃氣熱水器安裝應由合格人員為之、§41違反者處1萬至5萬元罰鍰；目標3個月內降低甲市一氧化碳中毒發生率達20%以上</td></tr>
+        <tr><td><b>What</b></td><td>①強化燃氣熱水器安裝合法性稽查 ②補助或協助遷移不當安裝熱水器 ③結合相關單位進行多元宣導 ④推動專技人員合法安裝制度</td></tr>
+        <tr><td><b>How</b></td><td>①稽查：組成稽查小組逐戶稽查出租住宅熱水器安裝位置及型式，不合格者限期改善逾期依法裁罰 ②補助遷移：協助低收入戶及弱勢家庭遷移或更換不當安裝熱水器 ③宣導：製作短影音、文宣品、里長協助入戶宣傳，結合媒體及社群平台擴散 ④專技推廣：建立合格安裝業者名冊供民眾查詢，鼓勵委託專技人員安裝</td></tr>
+        <tr><td><b>Who</b></td><td>主責為甲市消防局(業務承辦科室)，協辦為都發局(建管)、社會局(弱勢補助)、衛生局(醫療救護)</td></tr>
+        <tr><td><b>Whom</b></td><td>出租住宅、老舊公寓、套房密集區域住戶，及燃氣熱水器安裝業者</td></tr>
+        <tr><td><b>Where</b></td><td>全市優先出租住宅密集區、老舊社區；重點場所為套房出租、旅宿業、浴室通風不良建物；宣導場域為社區活動中心、里辦公處、傳統市場、學校</td></tr>
+        <tr><td><b>When</b></td><td>第一個月(準備期)建置稽查清冊、採購宣傳品、辦理人員訓練；第二個月(執行期)全面展開稽查、補助申請受理、辦理宣導活動；第三個月(強化期)複查未改善案件、追蹤補助進度、辦理成果評估；執行季節涵蓋12月至翌年2月冬季高發期</td></tr>
+        <tr><td><b>How much</b></td><td>稽查人力費用(加班費及交通費)；補助遷移費(每戶補助上限、預計補助戶數)；宣導費用(文宣品印製、媒體廣告、短影音製作)；合計預算申請市府112年度第四季追加預算</td></tr>
+        <tr><td><b>Effect</b></td><td>過程指標為稽查戶數、宣導場次、補助件數；結果指標為計畫期間中毒件數較前年同期降低比例；每月召開工作檢討會議追蹤KPI進度，計畫結束後提出成果報告送市政會議；並對稽查限期改善案件複查確認改善落實率</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="plan-tpl">萬用句型（前言／結尾）</h3>
+    <div class="template">
+      <b>前言萬用句</b>：身為OO機關本案承辦人，運用「方案規劃」課程所學，以【工具名稱】系統分析【情境核心問題】，並提出具體可行之【對策/策略】，以回應【題目給的疑慮/目標】。<br><br>
+      <b>魚骨圖轉場句</b>：透過向右魚骨圖確認要因後，以向左魚骨圖對應提出【N】大方向對策，從【面向1→面向2→…】全面著手，以有效【降低/解決】【核心問題】。<br><br>
+      <b>SWOT→TOWS轉場句</b>：依題旨所示，運用SWOT分析盤點內外部環境之優劣勢及機會威脅，並依此研擬TOWS交叉策略，分述如下。<br><br>
+      <b>6W2H1E轉場句</b>：為確保方案內容周全、結構清晰，茲以6W2H1E架構（Why／What／How／Who／Whom／Where／When／How much／Effect）完整呈現本計畫各要項如下，逐一說明其緣由、內容、執行方式及預期效果。<br><br>
+      <b>結論萬用句</b>：綜上，透過【工具1】與【工具2，如：魚骨圖與6W2H1E／SWOT-TOWS與6W2H1E】之交互運用，除可【解決核心問題】外，亦能兼顧【效率/可行性/民眾需求】，爰建議依上開方案／計畫辦理。
+    </div>
+  </section>
+
+  <section class="chapter" id="crisis">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--crisis)">貳</div><h2>危機處理</h2></div>
+    <div class="chapter-meta">Q2・30分・實務寫作題</div>
+
+    <h3 class="sec" id="crisis-cdm">CDM五步驟（近6年最常考）</h3>
+    <div class="card">
+      <div class="flow crisis">
+        <div class="step">①蒐集分析情資</div><div class="arrow">→</div>
+        <div class="step">②評估風險威脅</div><div class="arrow">→</div>
+        <div class="step">③考量政策職權<br>(7問)</div><div class="arrow">→</div>
+        <div class="step">④確定選項<br>決定行動</div><div class="arrow">→</div>
+        <div class="step">⑤採取行動<br>持續再評估</div>
+      </div>
+      <p style="color:var(--sub);font-size:.85rem;">非線性、可循環＝「旋轉車輪模式」，情況未解決可回到任一步驟重新評估。</p>
+      <p><b>③的7問精簡版</b>：這是我的職權嗎？可依法立即行動嗎？政策規範怎麼要求？如何符合規範處理？該用強制力還是降階策略？有無管轄權/協調問題？行動前還有什麼要考量？</p>
+      <p><b>套情境技巧</b>：113年考法是把地震12小時應變逐一套入5步驟展開（蒐集災情/動員人力/搜救方法/救災優先順序/跨機關合作），<b>務必逐步驟展開情境內容</b>，不要只默寫步驟名稱。</p>
+    </div>
+
+    <h3 class="sec" id="crisis-c3i">C3I框架／風險管理步驟／三階段</h3>
+    <div class="card">
+      <p><b>C3I</b>（危機管理作為4分項）：<b>C</b>ommand危機指揮（統一領導、掌控情緒）　<b>C</b>ontrol情境控制（充分情資、危機處理程序）　<b>C</b>ommunication協調溝通（組織內外部一致口徑）　<b>I</b>nformation情報蒐集（研判情報有價值性）</p>
+      <p><b>三階段框架</b>（114年考過，隨時可能再出現）：<mark>預防</mark>(平時關係建立/風險評估) → <mark>應變</mark>(即時反應/現場處置) → <mark>復原</mark>(檢討究責/制度修正)</p>
+      <p><b>群眾活動危機處理4階段</b>：平時作為(建立關係/蒐集資訊/教育訓練) → 事前作為(蒐集預警情資/協調主管機關) → 事中作為(主動協調/指揮到場) → 事後作為(清理現場/檢討報告)</p>
+    </div>
+
+    <h3 class="sec" id="crisis-nego">談判要素／記者會注意事項</h3>
+    <div class="card">
+      <p><b>談判前準備7要素</b>（哈佛談判學派）：可能達成的協議、最佳退路(BATNA)、利益、關係、公平合理性、溝通、承諾</p>
+      <p><b>8項禁忌條件</b>（絕不可退讓）：武器彈藥、交換人質、酒類、釋放囚犯、交通工具（其餘視考題情境延伸列點）</p>
+      <p><b>3項基本原則</b>：重利益不重立場、堅持客觀標準、對事不對人</p>
+      <p><b>記者會／新聞發布4項考量</b>：①是否同時對內對外溝通？②是否主動公開處理細節？③是否明確規劃記者會時間？④先前提供資料是否完全正確、聚焦自身權責？</p>
+      <p><b>三合一作答提醒</b>：題目常把「危機處理＋談判＋新聞處理」包在同一情境，務必分點都答到，不要只答其中一項。</p>
+    </div>
+
+    <h3 class="sec" id="crisis-past">歷屆6次實際考法（109-114年真實內容濃縮）</h3>
+    <div class="card">
+      <table>
+        <tr><th colspan="2" style="background:#f7e9de;">109年・危機談判準備要素與策略運用（25分）</th></tr>
+        <tr><td style="width:18%"><b>準備4要素</b></td><td>①情資蒐集(病史/觸發事件/家庭關係) ②人員編組(主談/副談/指揮官/醫師社工) ③環境控制(封鎖隔離/安全距離/斷傷害手段) ④時間管理(爭取時間/避免施壓/設階段目標)</td></tr>
+        <tr><td><b>談判5策略</b></td><td>①積極傾聽(反映情感標注開放問句) ②同理心建立(承認感受不否定) ③需求導向(找真正需求) ④漸進式讓步 ⑤重要他人介入(邀信任家人)</td></tr>
+      </table>
+
+      <table style="margin-top:14px;">
+        <tr><th colspan="2" style="background:#f7e9de;">110年・CDM複合式危機決策（30分）</th></tr>
+        <tr><td colspan="2" style="color:var(--sub);font-size:.84rem;">情境：大樓內同時發生持刀群架、精障女子跳樓、不明爆炸物、人質挾持4項複合危機</td></tr>
+        <tr><td style="width:18%"><b>①蒐集情資</b></td><td>確認各事件地點、排優先序(挾持＞跳樓＞爆炸物＞群架)、請求增援、設警戒線</td></tr>
+        <tr><td><b>②情境評估</b></td><td>SALUTE格式評估、判斷危機關聯性、評估警力醫療資源、確認行動受限因素</td></tr>
+        <tr><td><b>③確認問題</b></td><td>核心目標生命優先於逮捕、逐一分項子問題、確認指揮體系(ICS)</td></tr>
+        <tr><td><b>④選擇方案</b></td><td>方案A談判為主(採用)、方案B武力制止、依嚴重性資源時間選擇</td></tr>
+        <tr><td><b>⑤執行評估</b></td><td>持續監控每5分鐘回報、情況變化即觸發重新循環、事後撰報告</td></tr>
+      </table>
+
+      <table style="margin-top:14px;">
+        <tr><th colspan="2" style="background:#f7e9de;">111年・記者說明會—溪流救援（30分）</th></tr>
+        <tr><td colspan="2" style="color:var(--sub);font-size:.84rem;">情境：3名大學生受困沙洲溪水暴漲，搶救中未脫困，社群直播已上傳，SNG即將抵達</td></tr>
+        <tr><td style="width:22%"><b>七大原則</b></td><td>①救援優先(不影響救援) ②迅速出面(30分鐘內首次說明) ③統一發言人 ④誠信原則(未確認說明正評估中) ⑤以人為本(先表達關懷) ⑥定期更新(每30分鐘/小時) ⑦資訊管制(不透露受困位置救援路線)</td></tr>
+      </table>
+
+      <table style="margin-top:14px;">
+        <tr><th colspan="2" style="background:#f7e9de;">112年・記者說明會—煙火意外（30分）</th></tr>
+        <tr><td colspan="2" style="color:var(--sub);font-size:.84rem;">情境：晚會煙火倒塌射向人群踩踏，8童及3位重要人士重傷，6家媒體直播</td></tr>
+        <tr><td style="width:22%"><b>七大原則(黃金1小時)</b></td><td>①迅速(1小時內首次說明+告知下次更新時間) ②誠信(未確認說明調查中) ③統一發言人(備妥Q&A) ④以人為本(先慰問尤其孩童) ⑤對等原則(公平對待友好與負面媒體) ⑥定期更新 ⑦社群應對(以事實反駁不實指控)</td></tr>
+      </table>
+
+      <table style="margin-top:14px;">
+        <tr><th colspan="2" style="background:#f7e9de;">113年・CDM五步驟—地震12小時應變（30分）</th></tr>
+        <tr><td colspan="2" style="color:var(--sub);font-size:.84rem;">情境：平日9:30大地震，廳舍搖晃1隊員受傷，轄區房屋倒塌人員受困，當班僅5人無外援</td></tr>
+        <tr><td style="width:18%"><b>①蒐集轄區災情</b></td><td>立即通報上級、多管道收報案建GIS標記、監聽廣播指揮中心、派員目視偵查</td></tr>
+        <tr><td><b>②動員可支援人力</b></td><td>召回休假人員、向上急請支援、啟動義勇消防隊、聯繫民間救難軍方</td></tr>
+        <tr><td><b>③缺大型機具搜救法</b></td><td>聲響呼叫法、徒手搬移輕型障礙、槓桿原理應用、支撐防二次倒塌</td></tr>
+        <tr><td><b>④人命救災優先順序</b></td><td>採START傷患分類(紅黃綠黑)、地點優先原則、避免單一案件陷阱</td></tr>
+        <tr><td><b>⑤與警察等機關合作</b></td><td>建立聯合指揮所(ICP)、警消分工、聯繫衛生醫療及工務部門、啟動EOC</td></tr>
+      </table>
+
+      <table style="margin-top:14px;">
+        <tr><th colspan="2" style="background:#f7e9de;">114年・公共安全管理三階段倡議—工廠倉儲火災（30分）</th></tr>
+        <tr><td colspan="2" style="color:var(--sub);font-size:.84rem;">情境：食品工廠鍋爐起火(20餘人傷)、倉儲火災財損大，局長宣示以企業防災理念研修規定、加重處罰</td></tr>
+        <tr><td style="width:18%"><b>事前預防</b></td><td>分級查核制度、防火管理人制度落實、鍋爐特種設備強制申報、企業自主防災認證</td></tr>
+        <tr><td><b>事中應變</b></td><td>工業區專屬應變計畫、廠商自衛消防組織演練、危害物品資料庫建置</td></tr>
+        <tr><td><b>加重處罰(嚇阻)</b></td><td>累犯加重裁罰、違規名單公開制度、跨機關聯合稽查</td></tr>
+        <tr><td><b>事後復原</b></td><td>火災案例通報學習制度、督導改善追蹤小組</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="chapter" id="admin">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--admin)">參</div><h2>行政程序法與案例解析</h2></div>
+    <div class="chapter-meta">Q3・20分・簡答型實務寫作題</div>
+
+    <h3 class="sec" id="admin-flow">三段論法骨幹（法律題固定寫法）</h3>
+    <div class="card">
+      <div class="flow admin">
+        <div class="step">大前提<br>法條定義／要件</div><div class="arrow">→</div>
+        <div class="step">小前提<br>涵攝情境事實</div><div class="arrow">→</div>
+        <div class="step">結論<br>是否該當／如何處理</div>
+      </div>
+      <p><b>常見作答骨架（依113/114年實際考法）</b>：【一、OO概念之定義與區辨】（先列法條、定義相近概念的差異）→【二、本案OO之定性分析】（把情境事實逐一套入要件判斷）→【三、結論】</p>
+      <div class="template">
+        <b>前言萬用句</b>：按行政程序法第OO條規定，【法條內容摘要】。本案OO是否該當【法律概念】，應分析如下。<br><br>
+        <b>結論萬用句</b>：綜上所述，本案OO已／未該當【法條要件】，故【法律效果，如：得撤銷／應給予陳述意見機會／屬行政協助非行政委託】。
+      </div>
+    </div>
+
+    <h3 class="sec" id="admin-art">核心法條速記（已考過，優先度最高）</h3>
+    <div class="card">
+      <table>
+        <tr><th>考點</th><th>法條</th><th>骨幹</th></tr>
+        <tr><td>閱覽卷宗<span style="color:var(--sub)">(114年考)</span></td><td class="art">§46</td><td>當事人/利害關係人得申請閱覽；得拒絕5款：擬稿準備文件、國防軍事外交機密、個人隱私營業秘密、侵害第三人權利、妨礙社會治安</td></tr>
+        <tr><td>陳述意見<span style="color:var(--sub)">(110年考)</span></td><td class="art">§102、§103</td><td>不利處分前應給陳述意見機會；得不給予8款(大量作成/情況急迫/事實明白/內容輕微等)</td></tr>
+        <tr><td>處分撤銷<span style="color:var(--sub)">(111年考)</span></td><td class="art">§117</td><td>違法處分原處分機關/上級機關得撤銷；例外：對公益重大危害／信賴利益大於撤銷公益</td></tr>
+        <tr><td>信賴保護排除</td><td class="art">§119</td><td>詐欺脅迫/提供不正確資料/明知違法 → 信賴不值得保護</td></tr>
+        <tr><td>不當得利返還</td><td class="art">§127</td><td>授益處分撤銷後，受領人應返還所受利益；時效5年</td></tr>
+        <tr><td>委託/助手/協助區辨<span style="color:var(--sub)">(113年考)</span></td><td class="art">§2Ⅲ、§16、§19</td><td>行政委託＝委託民間辦理(公告)；行政助手＝受指揮從事事實行為(不獨立行使公權力)；行政協助＝機關間暫時個案協助(不涉權限移轉)</td></tr>
+        <tr><td>法規命令定義<span style="color:var(--sub)">(114年考)</span></td><td class="art">§150、§157</td><td>行政機關基於法律授權對多數不特定人民權利義務發生法律效果之規定；應下達下級機關並登載政府公報發布</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="admin-new">零命中優先章節（教科書重點但7年未考）</h3>
+    <div class="card">
+      <table>
+        <tr><th>章節</th><th>法條</th><th>優先度</th></tr>
+        <tr><td>行政處分之附款</td><td class="art">§92-96</td><td>最高</td></tr>
+        <tr><td>聽證程序</td><td class="art">§54-66</td><td>高（與已考過的陳述意見§102是近親考點）</td></tr>
+        <tr><td>行政契約</td><td class="art">§135-149</td><td>中高（與已考過的處分撤銷§117對照）</td></tr>
+        <tr><td>行政處分無效</td><td class="art">§111</td><td>中（常與§117撤銷搭配比較）</td></tr>
+        <tr><td>陳情／送達／期日期間</td><td class="art">§168-173／§67-91／§48-51</td><td>中低，仍建議熟悉條號要件</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="admin-past">歷屆4次實際考法（110/111/113/114年真實內容濃縮）</h3>
+    <div class="card">
+      <table>
+        <tr><th colspan="2" style="background:#ece5f2;">110年・陳述意見制度（§102、§103）</th></tr>
+        <tr><td colspan="2" style="color:var(--sub);font-size:.84rem;">情境：甲員警遭警察機關擬作成不利處分（記過），問陳述意見規定及例外情形</td></tr>
+        <tr><td style="width:20%"><b>一、意義功能</b></td><td>作成不利處分前予當事人表意機會，正當法律程序核心（聽審原則）</td></tr>
+        <tr><td><b>二、明文規定</b></td><td>§102：限制/剝奪自由權利之處分前，除§103例外，應給予陳述意見（書面或言詞）</td></tr>
+        <tr><td><b>三、§103六款例外</b></td><td>①大量作成同種類處分②性質上無必要③大量作成且影響輕微④行政強制執行⑤法規另有保障陳述機會⑥即時強制之緊急公益急迫</td></tr>
+        <tr><td><b>四、本案適用</b></td><td>記過屬不利處分原則應給予陳述意見；援引§103須有具體事實依據，否則程序違法得依§174主張瑕疵</td></tr>
+      </table>
+
+      <table style="margin-top:14px;">
+        <tr><th colspan="2" style="background:#ece5f2;">111年・違法授益處分撤銷＋不當得利返還（§117、§119、§127）</th></tr>
+        <tr><td colspan="2" style="color:var(--sub);font-size:.84rem;">情境：甲公司獲經濟部核准艱困事業補貼20萬元，嗣後查核不符行業別資格</td></tr>
+        <tr><td style="width:20%"><b>一、撤銷違法處分</b></td><td>原處分違法授益處分；§117原處分機關(或上級)得依職權撤銷；§119信賴保護排除3款(詐欺脅迫賄賂/提供不正確資料/明知違法)</td></tr>
+        <tr><td><b>二、返還程序</b></td><td>§127Ⅰ撤銷後應返還已受領給付；發文載明理由/限期繳回/逾期加計利息；§131時效5年</td></tr>
+        <tr><td><b>三、程序注意</b></td><td>撤銷前依§102給予陳述意見；須書面處分載明理由救濟方式期限；拒不返還移送行政執行</td></tr>
+        <tr><td><b>四、結論</b></td><td>§117撤銷原處分→§127命返還20萬元→逾期強制執行；甲若明知不符資格不得主張§119信賴保護</td></tr>
+      </table>
+
+      <table style="margin-top:14px;">
+        <tr><th colspan="2" style="background:#ece5f2;">113年・行政委託／行政助手／行政協助辨析（§2Ⅲ、§19）</th></tr>
+        <tr><td colspan="2" style="color:var(--sub);font-size:.84rem;">情境：義勇消防人員按「指導原則」協助消防機關執行救護勤務</td></tr>
+        <tr><td style="width:20%"><b>一、三概念定義</b></td><td>行政委託(§2Ⅲ)：法律授權委託私人以自己名義行使公權力，自負責任；行政助手：受機關指揮以機關工具角色輔助，無獨立公權力，以機關名義為之，責任機關承擔；行政協助(§19)：機關對機關暫時個案協助，各自負責</td></tr>
+        <tr><td><b>二、義勇消防人員定性</b></td><td>非委託(指導原則非法律授權)；非協助(§19限機關對機關，義消為私人)；應屬<mark>行政助手</mark>(受指揮派遣、以機關名義、無獨立公權力、責任機關承擔)</td></tr>
+        <tr><td><b>三、結論</b></td><td>屬行政助手關係，非委託亦非協助；影響責任歸屬、國賠適用及管理權限</td></tr>
+      </table>
+
+      <table style="margin-top:14px;">
+        <tr><th colspan="2" style="background:#ece5f2;">114年・閱覽卷宗＋法規命令定義（§46、§150、§157）</th></tr>
+        <tr><td colspan="2" style="color:var(--sub);font-size:.84rem;">情境：甲為火災受害人擬向消防機關申請閱覽災害調查報告；消防法§26-1Ⅱ授權訂定申請辦法</td></tr>
+        <tr><td style="width:20%"><b>一、甲得否申請閱覽</b></td><td>§46Ⅰ利害關係人得申請閱覽抄寫複印；甲房屋受災權益受影響屬利害關係人，原則可申請；§46Ⅱ得限制5款情形(擬稿文件/第三人隱私/礙偵查/其他公益)</td></tr>
+        <tr><td><b>二、申請辦法之性質</b></td><td>§150Ⅰ法規命令定義：法律授權對不特定多數人一般事項抽象發生法律效果；符合明確授權/不特定多數人/對外效力/抽象規範4要件→屬<mark>法規命令</mark>(非行政規則)；§157須刊登政府公報始生效力</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="chapter" id="crime">
+    <div class="chapter-head"><div class="chapter-num" style="background:var(--crime)">肆</div><h2>刑法瀆職罪與貪污治罪條例及案例解析</h2></div>
+    <div class="chapter-meta">Q4・20分・簡答型實務寫作題・連續4年必考</div>
+
+    <h3 class="sec" id="crime-flow">罪名判斷流程骨幹</h3>
+    <div class="card">
+      <div class="flow crime">
+        <div class="step">①公務員身分判斷<br>刑§10Ⅱ</div><div class="arrow">→</div>
+        <div class="step">②主管/監督事務？<br>或利用職權機會身分？</div><div class="arrow">→</div>
+        <div class="step">③違背職務？<br>賄賂罪(貪§4/§5) vs<br>圖利罪(貪§6)</div><div class="arrow">→</div>
+        <div class="step">④減免規定？<br>貪§8自首自白<br>貪§12情節輕微</div><div class="arrow">→</div>
+        <div class="step">結論</div>
+      </div>
+      <p><b>常見作答骨架（依113/114年實際考法）</b>：【一、OO觸犯之罪名】（公務員身分→行為態樣→該當條文）→【二、得否適用減免罪責規定】（自首/自白/情節輕微逐一檢視）</p>
+      <p><b>情境固定套路</b>：消防/公務人員因私交、人情壓力而放水或圖利特定對象（複查放水/租借場地放水/收紅包放水），第一步務必快速辨識「這是圖利罪、收賄罪，還是兩者皆有」。</p>
+      <div class="template">
+        <b>前言萬用句</b>：按《貪污治罪條例》第OO條規定，【法條內容摘要】。本案OO是否構成該罪，應就其行為態樣及主觀要件析述如下。<br><br>
+        <b>結論萬用句</b>：綜上，OO之行為該當【罪名】，處【刑度】；又OO於【偵查中自白／犯罪後自首】並自動繳交全部所得財物，符合貪污治罪條例第8條第OO項規定，得【減輕／免除】其刑。
+      </div>
+    </div>
+
+    <h3 class="sec" id="crime-art">核心法條速記（依重要性排序）</h3>
+    <div class="card">
+      <table>
+        <tr><th>考點</th><th>法條</th><th>骨幹</th></tr>
+        <tr><td>公務員身分認定</td><td class="art">刑§10Ⅱ</td><td>身分公務員(法定職務權限)／授權公務員(法律明文授權)／委託公務員(委託契約+行使公權力)</td></tr>
+        <tr><td>圖利罪<span style="color:var(--sub)">(112,114年考・最核心)</span></td><td class="art">貪§6Ⅰ④⑤</td><td>明知違背法令，直接/間接圖自己或他人不法利益，因而獲得利益；5年以上</td></tr>
+        <tr><td>違背職務受賄罪<span style="color:var(--sub)">(111,113年考)</span></td><td class="art">貪§4Ⅰ⑤</td><td>對違背職務之行為要求/期約/收受賄賂；無期或10年以上（最重）</td></tr>
+        <tr><td>不違背職務受賄罪</td><td class="art">貪§5Ⅰ③</td><td>對職務上行為要求/期約/收受賄賂；7年以上</td></tr>
+        <tr><td>登載不實<span style="color:var(--sub)">(114年考)</span></td><td class="art">刑§213、§216</td><td>公務員登載不實於職務上所掌公文書，足以生損害於公眾或他人</td></tr>
+        <tr><td>自首／自白減免<span style="color:var(--sub)">(113年考)</span></td><td class="art">貪§8</td><td>犯罪後<mark>自首</mark>並繳回所得→減輕或免除；偵查中<mark>自白</mark>並繳回→減輕</td></tr>
+        <tr><td>情節輕微減刑</td><td class="art">貪§12</td><td>所得或所圖利益在<mark>新臺幣5萬元以下</mark>→減輕其刑</td></tr>
+        <tr><td>行賄罪<span style="color:var(--sub)">(至今未單獨考過)</span></td><td class="art">貪§11</td><td>對貪§4-6人員行賄；情節輕微5萬元以下同可減刑(§12Ⅱ)</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="crime-tuli">便民 vs 圖利 速記表（幾乎固定考法）</h3>
+    <div class="card">
+      <table>
+        <tr><th></th><th>圖利（違法）</th><th>便民（合法）</th></tr>
+        <tr><td>是否違背法令</td><td>違背法律／法規命令等對外發生法律效果之規定</td><td>依法行政，在法令許可範圍內</td></tr>
+        <tr><td>主觀意圖</td><td>明知違背法令，仍圖自己或他人不法利益</td><td>無圖利之故意及意圖</td></tr>
+        <tr><td>行為態樣</td><td>規避法定程序、登記不合格對象為合格</td><td>僅程序上給予方便（加速核發/主動提醒補件）</td></tr>
+        <tr><td>利益性質</td><td>不法利益</td><td>合法利益</td></tr>
+      </table>
+      <div class="qa"><b>作答口訣</b>：先問「客觀上有無違背法令、程序」，再問「主觀上是否明知違背仍為之」——兩者皆備才成立圖利罪，否則為便民或行政裁量之合法行使。</div>
+    </div>
+
+    <h3 class="sec" id="crime-past">歷屆5次實際考法（110-114年真實內容濃縮）</h3>
+    <div class="card">
+      <table>
+        <tr><th colspan="2" style="background:#f2e5e5;">110年・隱匿不報罪（貪§11）</th></tr>
+        <tr><td colspan="2" style="color:var(--sub);font-size:.84rem;">情境：甲為督察，知悉乙員警收賄，為求和平相處而隱匿不舉報</td></tr>
+        <tr><td style="width:20%"><b>行為定性</b></td><td>甲故意隱匿不舉報，構成隱匿不報罪(非收賄罪本身)</td></tr>
+        <tr><td><b>法律依據</b></td><td>貪§11包庇貪污罪：對主管監督事務明知貪污而包庇縱容，1~7年徒刑；甲有監督職責不舉報屬「縱容」</td></tr>
+        <tr><td><b>結論</b></td><td>甲成立§11包庇縱容罪；乙另依§5Ⅰ③違背職務收賄論處；甲乙不成立共犯，各自負責</td></tr>
+      </table>
+
+      <table style="margin-top:14px;">
+        <tr><th colspan="2" style="background:#f2e5e5;">111年・監所管理員違背職務收賄罪（貪§4Ⅰ⑤）</th></tr>
+        <tr><td colspan="2" style="color:var(--sub);font-size:.84rem;">情境：監所管理員乙應同學甲之請夾帶洋酒交付受刑人丙，甲事後安排乙至酒店飲宴支付3萬元</td></tr>
+        <tr><td style="width:20%"><b>要件檢視</b></td><td>①公務員身分(刑§10Ⅱ)②違背職務(戒護管制物品，夾帶違背職務)③收受不正利益(酒店飲宴3萬元)④因果關係明確</td></tr>
+        <tr><td><b>結論</b></td><td>成立貪§4Ⅰ⑤違背職務收受不正利益罪，無期或10年以上；交付洋酒為構成要件一部不另論罪</td></tr>
+      </table>
+
+      <table style="margin-top:14px;">
+        <tr><th colspan="2" style="background:#f2e5e5;">112年・便民vs圖利辨析（貪§6Ⅰ④）</th></tr>
+        <tr><td colspan="2" style="color:var(--sub);font-size:.84rem;">情境：公務員乙為公園場地承辦人，明知弱勢團體丙非合辦單位，仍登記為「合辦單位」使丙優先且免費使用</td></tr>
+        <tr><td style="width:20%"><b>要件檢視</b></td><td>①主管事務(場地管理承辦人)②明知違背法令仍登記③圖利丙優先使用+免費雙重利益④利益已實現</td></tr>
+        <tr><td><b>非便民理由</b></td><td>便民前提為依法行政、不免除法定義務；不問動機良善，客觀要件具備即成罪</td></tr>
+        <tr><td><b>結論</b></td><td>成立貪§6Ⅰ④圖利罪；正確做法應輔導丙依正規程序申請，善意動機不能阻卻違法</td></tr>
+      </table>
+
+      <table style="margin-top:14px;">
+        <tr><th colspan="2" style="background:#f2e5e5;">113年・收賄罪＋減免規定（貪§4Ⅰ⑤、§8、§12）</th></tr>
+        <tr><td colspan="2" style="color:var(--sub);font-size:.84rem;">情境：消防小隊長甲執行複查業務收受管理權人乙私下贈與3萬6千元紅包，事後遭檢舉，甲於偵查中坦承並繳回款項</td></tr>
+        <tr><td style="width:20%"><b>一、觸犯罪名</b></td><td>甲收受複查業務對象財物，成立貪§4Ⅰ⑤違背職務收賄罪(或依情節論§5Ⅰ③不違背職務收賄)</td></tr>
+        <tr><td><b>二、減免規定</b></td><td>偵查中坦承並繳回＝符合§8Ⅱ「偵查中自白並繳回全部所得」→<mark>減輕其刑</mark>(非免除)；金額3.6萬元在5萬元以下，另符合§12Ⅰ情節輕微→<mark>亦得減輕其刑</mark></td></tr>
+      </table>
+
+      <table style="margin-top:14px;">
+        <tr><th colspan="2" style="background:#f2e5e5;">114年・圖利罪＋登載不實（貪§6Ⅰ④＋刑§213）</th></tr>
+        <tr><td colspan="2" style="color:var(--sub);font-size:.84rem;">情境：消防隊員甲複查餐飲業者乙設備缺失逾期未改善，甲乙為好友，甲未開舉發單且於複查紀錄表登載「已改善」致乙免罰</td></tr>
+        <tr><td style="width:20%"><b>一(一) 登載不實</b></td><td>甲明知未改善仍於複查紀錄表(公文書)登載已改善，足生損害於公眾→成立刑§213</td></tr>
+        <tr><td><b>一(二) 圖利罪</b></td><td>主管複查業務，明知應開舉發單卻不為，使好友乙免罰，屬間接圖利→成立貪§6Ⅰ④</td></tr>
+        <tr><td><b>一(三) 罪數</b></td><td>登載不實為手段、圖利為目的(方法目的關係)，兩罪分別成立數罪併罰</td></tr>
+        <tr><td><b>二、與便民區別</b></td><td>以私情凌駕法律使乙免除法定罰鍰，已逾越便民界限</td></tr>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  document.getElementById('search').addEventListener('input', function(e){
+    var q = e.target.value.trim().toLowerCase();
+    var cards = document.querySelectorAll('section.chapter');
+    cards.forEach(function(sec){
+      if(!q){ sec.style.display=''; return; }
+      var text = sec.innerText.toLowerCase();
+      sec.style.display = text.indexOf(q) !== -1 ? '' : 'none';
+    });
+  });
+</script>
+</body>
+</html>
