@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>刑法瀆職罪與貪污治罪條例｜考場抄寫骨幹</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --bg:#f5f4f0; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66;
+    --accent:#8a3b3b; --line:#e5e2da; --side-w:270px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);display:flex;}
+  #sidebar{width:var(--side-w);flex-shrink:0;height:100vh;position:sticky;top:0;overflow-y:auto;background:#fbfaf7;border-right:1px solid var(--line);padding:20px 14px;}
+  #sidebar h3{font-size:.78rem;color:var(--sub);text-transform:uppercase;letter-spacing:.06em;margin:18px 6px 6px;}
+  #sidebar h3:first-child{margin-top:4px;}
+  #search{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:.85rem;margin-bottom:8px;font-family:inherit;}
+  .backlink{display:block;font-size:.8rem;color:var(--sub);text-decoration:none;margin:0 6px 10px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+  #sidebar a.nav{display:block;padding:5px 8px;font-size:.84rem;color:var(--ink);text-decoration:none;border-radius:6px;line-height:1.4;}
+  #sidebar a.nav:hover{background:var(--line);}
+  main{flex:1;max-width:980px;margin:0 auto;padding:44px 32px 100px;min-width:0;}
+  h1.title{font-size:1.7rem;margin:0 0 4px;}
+  .subtitle{color:var(--sub);margin-bottom:8px;}
+  .toolbar{margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid var(--line);font-size:.82rem;color:#a09d95;}
+  section.chapter{margin-bottom:52px;scroll-margin-top:20px;}
+  .chapter-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+  .chapter-num{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.95rem;flex-shrink:0;background:var(--accent);}
+  .chapter-head h2{margin:0;font-size:1.25rem;}
+  h3.sec{scroll-margin-top:20px;font-size:1.02rem;margin:24px 0 8px;padding-left:12px;border-left:4px solid var(--line);}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;}
+  .card p{margin:.5em 0;line-height:1.85;font-size:.93rem;}
+  table{border-collapse:collapse;width:100%;margin:8px 0;font-size:.82rem;}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top;}
+  th{background:#f7ecec;}
+  .art{background:#f7ecec;color:var(--accent);padding:1px 6px;border-radius:5px;font-weight:600;font-size:.85em;white-space:nowrap;}
+  .flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:10px 0;font-size:.86rem;}
+  .flow .step{background:#f7ecec;color:var(--accent);border-radius:8px;padding:8px 12px;font-weight:600;white-space:nowrap;}
+  .flow .arrow{color:var(--sub);font-weight:700;}
+  .template{background:#fbf6ea;border:1px dashed #d8c896;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.87rem;line-height:1.85;color:#6b5a2a;}
+  .qa{background:#eef6f0;border-radius:10px;padding:10px 14px;margin:8px 0;font-size:.86rem;line-height:1.75;}
+  .case-box{background:#fbf9f5;border:1px solid #e8dfd0;border-radius:12px;padding:16px 18px;margin:12px 0;}
+  .case-box h4{margin:0 0 8px;color:var(--accent);}
+  mark{background:#ffe9a8;padding:0 2px;border-radius:3px;}
+  .hidden{display:none !important;}
+</style>
+</head>
+<body>
+<div style="position:fixed;top:10px;right:14px;z-index:9999;font-size:.72rem;color:#a09d95;background:rgba(255,255,255,.85);padding:3px 10px;border-radius:999px;border:1px solid #e5e2da;">柯醒翰製作</div>
+
+<nav id="sidebar">
+  <input id="search" type="text" placeholder="搜尋關鍵字...">
+  <a class="backlink" href="index.html">← 回筆記入口</a>
+  <a class="backlink" href="corruption-crime-law.html">← 完整法條對照</a>
+
+  <h3>①罪名判斷</h3>
+  <a class="nav" href="#flow">罪名判斷流程圖</a>
+  <h3>②特別法優先</h3>
+  <a class="nav" href="#priority">貪污條例 vs 刑法瀆職罪</a>
+  <h3>③全條文速記</h3>
+  <a class="nav" href="#art-crime">刑法瀆職罪章8條</a>
+  <a class="nav" href="#art-corrupt">貪污治罪條例12條</a>
+  <h3>④罪名比較</h3>
+  <a class="nav" href="#cmp-tuli">圖利vs便民</a>
+  <a class="nav" href="#cmp-bribe">違背vs不違背職務收賄</a>
+  <a class="nav" href="#cmp-law">貪污條例vs刑法對應罪名</a>
+  <h3>⑤歷屆真實考法</h3>
+  <a class="nav" href="#past">110-114年5次完整範文</a>
+  <h3>⑥減免加重</h3>
+  <a class="nav" href="#reduce">自首自白／情節輕微／誣告加重</a>
+  <h3>⑦萬用句型</h3>
+  <a class="nav" href="#tpl">前言／結論模板</a>
+</nav>
+
+<main>
+  <h1 class="title">刑法瀆職罪與貪污治罪條例｜考場抄寫骨幹</h1>
+  <div class="subtitle">115年佐升正訓練・Q4・20分・簡答型實務寫作題</div>
+  <div class="toolbar">用途：開書考專用完整抄寫版，涵蓋已考過條號的真實範文，也涵蓋7年來從未考過的條號（避免只準備舊考點）。完整條文原文請對照 <a href="corruption-crime-law.html">法條對照</a>；學理脈絡請見 <a href="corruption-crime-textbook.html">教材筆記</a>。</div>
+
+  <section class="chapter" id="ch1">
+    <div class="chapter-head"><div class="chapter-num">①</div><h2>罪名判斷流程圖</h2></div>
+    <div class="card" id="flow">
+      <div class="flow">
+        <div class="step">是否為刑法§10Ⅱ<br>公務員？</div><div class="arrow">→</div>
+        <div class="step">身分/授權/委託<br>3類公務員判斷</div><div class="arrow">→</div>
+        <div class="step">是否該當貪污條例<br>規範行為？(§2)</div><div class="arrow">→</div>
+        <div class="step">特別法優先<br>(見②)</div><div class="arrow">→</div>
+        <div class="step">主管監督?<br>圖利罪§6Ⅰ④⑤</div>
+      </div>
+      <div class="flow">
+        <div class="step">收賄?<br>違背職務§4Ⅰ⑤／<br>不違背職務§5Ⅰ③</div><div class="arrow">→</div>
+        <div class="step">送賄?<br>行賄罪§11</div><div class="arrow">→</div>
+        <div class="step">知情不報?<br>包庇§13/14</div><div class="arrow">→</div>
+        <div class="step">減免規定檢查<br>§8自首自白／§12情節輕微</div><div class="arrow">→</div>
+        <div class="step">結論</div>
+      </div>
+      <div class="qa"><b>下筆口訣</b>：先判身分（是不是公務員）→ 再判行為（做了什麼：收/送/圖/隱匿）→ 再判是否違背職務（影響刑度輕重）→ 最後查減免（有無自首自白或金額5萬元以下）。4層問完，罪名跟刑度自然浮現。</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch2">
+    <div class="chapter-head"><div class="chapter-num">②</div><h2>特別法優先原則</h2></div>
+    <div class="card" id="priority">
+      <p class="qa"><b>貪污治罪條例第2條</b>：「公務員犯本條例之罪者，依本條例處斷。」——這是判斷「該用貪污條例還是刑法瀆職罪章」的根本依據。</p>
+      <p><b>判斷邏輯</b>：貪污治罪條例是刑法瀆職罪章的<mark>特別法</mark>，規範的行為態樣與刑法瀆職罪章高度重疊，但刑度重非常多。只要行為該當貪污治罪條例列舉的構成要件（不論金額大小），就<b>優先</b>適用貪污治罪條例；刑法瀆職罪章的對應條文（§121、§122、§129、§131等）在實務上多半只是「基礎規定」，真正定罪時很少單獨引用，除非行為態樣不完全符合貪污條例的列舉款項，才會退回刑法瀆職罪章。</p>
+      <table>
+        <tr><th>行為態樣</th><th>貪污治罪條例（優先適用）</th><th>刑法瀆職罪章（基礎/備位規定）</th></tr>
+        <tr><td>違背職務收賄</td><td class="art">§4Ⅰ⑤　無期或10年以上</td><td class="art">§122　3-10年</td></tr>
+        <tr><td>不違背職務收賄</td><td class="art">§5Ⅰ③　7年以上</td><td class="art">§121　7年以下</td></tr>
+        <tr><td>圖利罪</td><td class="art">§6Ⅰ④⑤　5年以上</td><td class="art">§131　1-7年</td></tr>
+        <tr><td>違法徵收／抑留剋扣</td><td class="art">§5Ⅰ①／§6Ⅰ①　需有「意圖得利」主觀要件</td><td class="art">§129　1-7年（無意圖得利要件時適用）</td></tr>
+      </table>
+      <div class="template"><b>萬用句</b>：按貪污治罪條例第2條規定，公務員犯本條例之罪者，依本條例處斷；本條例為刑法瀆職罪章之特別法，本案OO之行為既已該當貪污治罪條例第OO條之構成要件，依特別法優於普通法原則，應優先適用貪污治罪條例，不再論以刑法第OO條。</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch3">
+    <div class="chapter-head"><div class="chapter-num">③</div><h2>全條文速記表（20條全收錄，含從未考過）</h2></div>
+
+    <h3 class="sec" id="art-crime">刑法瀆職罪章（8條）</h3>
+    <div class="card">
+      <table>
+        <tr><th style="width:8%">條號</th><th style="width:16%">罪名</th><th>要件關鍵字</th><th style="width:14%">刑度</th><th style="width:8%">考過</th></tr>
+        <tr><td class="art">§121</td><td>不違背職務受賄</td><td>對職務上行為要求期約收受賄賂／不正利益（本身不違法）</td><td>7年以下</td><td>未考</td></tr>
+        <tr><td class="art">§122</td><td>違背職務受賄</td><td>①收賄：對違背職務之行為要求期約收受②因而違背職務行為③行賄一方</td><td>①3-10年②無期/7年以上③3年以下</td><td>未考</td></tr>
+        <tr><td class="art">§123</td><td>準受賄罪</td><td>未任公務員前先約定「上任後幫忙」而收賄，事後任公務員並履行</td><td>同§121/122</td><td>未考</td></tr>
+        <tr><td class="art">§129</td><td>違法徵收・抑留剋扣</td><td>①明知不應徵收而徵收②明知應發給而抑留不發或剋扣</td><td>1-7年</td><td>未考</td></tr>
+        <tr><td class="art">§130</td><td>廢弛職務釀災</td><td>公務員廢弛職務致釀成災害；<mark>限故意犯</mark>(明知風險卻不理會)</td><td>3-10年</td><td>未考</td></tr>
+        <tr><td class="art">§131</td><td>圖利罪(刑法版)</td><td>主管監督事務，明知違背法令，圖自己或他人不法利益因而獲利</td><td>1-7年</td><td>未考(貪§6優先)</td></tr>
+        <tr><td class="art">§132</td><td>洩密罪</td><td>①洩漏國防以外應秘密事項②<mark>過失犯亦罰</mark>③非公務員洩漏亦罰</td><td>①3年以下②1年以下③1年以下</td><td>未考</td></tr>
+        <tr><td class="art">§213</td><td>登載不實文書</td><td>明知不實事項登載於職務上所掌公文書，足生損害於公眾或他人</td><td>1-7年</td><td>📌114年考過</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="art-corrupt">貪污治罪條例（12條）</h3>
+    <div class="card">
+      <table>
+        <tr><th style="width:9%">條號</th><th style="width:17%">罪名</th><th>要件關鍵字</th><th style="width:14%">刑度</th><th style="width:8%">考過</th></tr>
+        <tr><td class="art">§2</td><td>公務員之適用</td><td>援用刑法§10Ⅱ公務員定義(身分/授權/委託)；是解題第一關</td><td>—</td><td>基礎條文</td></tr>
+        <tr><td class="art">§4</td><td>最重貪污罪</td><td>①竊取侵占公有財物②藉勢勒索③工程浮報回扣④走私漏稅運輸⑤<mark>違背職務收賄</mark></td><td>無期或10年以上</td><td>📌111,113年(第5款)</td></tr>
+        <tr><td class="art">§5</td><td>次重貪污罪</td><td>①意圖得利擅提截留公款②利用職務詐取財物③<mark>不違背職務收賄</mark></td><td>7年以上</td><td>備考(第3款)</td></tr>
+        <tr><td class="art">§6</td><td>圖利罪等</td><td>①抑留應發財物②舞弊募款徵地③竊占私有財物④<mark>主管監督圖利</mark>⑤<mark>非主管利用職權圖利</mark></td><td>5年以上</td><td>📌112,114年(第4款)</td></tr>
+        <tr><td class="art">§6-1</td><td>財產來源不明</td><td>涉嫌§4-6犯罪時及後3年內財產異常增加，命說明來源，說不清即成罪</td><td>5年以下</td><td>未考</td></tr>
+        <tr><td class="art">§8</td><td>自首自白減免</td><td>①<mark>自首</mark>並繳回所得→減輕或免除②<mark>偵查中自白</mark>並繳回→減輕</td><td>減輕/免除</td><td>📌113年考過</td></tr>
+        <tr><td class="art">§10</td><td>犯罪所得追徵</td><td>本人及配偶未成年子女，涉嫌後3年內來源可疑財產，未能證明合法者視為犯罪所得</td><td>沒收追徵</td><td>未考</td></tr>
+        <tr><td class="art">§11</td><td>行賄罪</td><td>①違背職務行賄②不違背職務行賄③行求/期約/交付3態樣④自首自白減免</td><td>①1-7年②3年以下</td><td>未考</td></tr>
+        <tr><td class="art">§12</td><td>情節輕微減刑</td><td>犯§4-6或§11，所得或所圖利益在<mark>新臺幣5萬元以下</mark></td><td>減輕其刑</td><td>備考(常搭配主罪)</td></tr>
+        <tr><td class="art">§13-14</td><td>包庇不舉發</td><td>§13直屬主管明知貪污而庇護不舉發；§14監察會計審計政風人員不舉發</td><td>§13:1-7年(對受託者6月-5年)／§14:1-7年</td><td>未考</td></tr>
+        <tr><td class="art">§15</td><td>貪污贓物罪</td><td>明知係§4-6犯罪所得財物，仍收受搬運隱匿寄藏故買(不限公務員)</td><td>1-7年</td><td>未考</td></tr>
+        <tr><td class="art">§16</td><td>誣告罪</td><td>誣告他人犯本條例之罪，依刑法誣告罪加重1/2；虛構事實假借自首意圖使人受刑事處分</td><td>加重1/2／3-10年</td><td>未考</td></tr>
+      </table>
+      <div class="qa"><b>備考重點</b>：§6-1、§10、§11、§13-14、§15、§16 這6條完全零命中，是115年最需要補強的「新鮮考點」——尤其§11行賄罪，貪污治罪條例7年來只考過收賄方，從未單獨考行賄方，一旦出題容易措手不及。</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch4">
+    <div class="chapter-head"><div class="chapter-num">④</div><h2>罪名比較速記表</h2></div>
+
+    <h3 class="sec" id="cmp-tuli">圖利罪 vs 便民（§6Ⅰ④⑤，112/114年考過）</h3>
+    <div class="card">
+      <table>
+        <tr><th></th><th>圖利（違法）</th><th>便民（合法）</th></tr>
+        <tr><td>客觀要件</td><td>違背法律/法規命令/自治條例等對外發生效力之規定</td><td>依法行政，法令許可範圍內給予方便</td></tr>
+        <tr><td>主觀要件</td><td>明知違背法令，仍圖自己或他人不法利益</td><td>無圖利之故意及意圖</td></tr>
+        <tr><td>利益性質</td><td>不法利益，且須「因而獲得利益」(結果犯)</td><td>合法利益</td></tr>
+      </table>
+      <div class="qa"><b>口訣</b>：先問客觀上有無違背法令，再問主觀上是否明知仍為之——兩者皆備才成立圖利罪，善意動機不能阻卻違法。</div>
+    </div>
+
+    <h3 class="sec" id="cmp-bribe">違背職務 vs 不違背職務收賄</h3>
+    <div class="card">
+      <table>
+        <tr><th></th><th>違背職務收賄 §4Ⅰ⑤</th><th>不違背職務收賄 §5Ⅰ③</th></tr>
+        <tr><td>職務行為本身</td><td>該為而不為、不該為而為(放水/圖利對方)</td><td>依法正常執行，只是收了對價</td></tr>
+        <tr><td>刑度</td><td>無期徒刑或10年以上(最重)</td><td>7年以上</td></tr>
+        <tr><td>典型情境</td><td>複查時明知不合格仍蓋合格章放行</td><td>正常複查合格後，事後收受道謝紅包</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="cmp-law">貪污治罪條例 vs 刑法對應罪名（特別法對照）</h3>
+    <div class="card">
+      <table>
+        <tr><th>行為</th><th>貪污治罪條例</th><th>刑法瀆職罪章</th><th>刑度差距</th></tr>
+        <tr><td>違背職務收賄</td><td class="art">§4Ⅰ⑤</td><td class="art">§122</td><td>無期/10年以上 vs 3-10年</td></tr>
+        <tr><td>不違背職務收賄</td><td class="art">§5Ⅰ③</td><td class="art">§121</td><td>7年以上 vs 7年以下</td></tr>
+        <tr><td>圖利</td><td class="art">§6Ⅰ④⑤</td><td class="art">§131</td><td>5年以上 vs 1-7年</td></tr>
+        <tr><td>違法徵收/剋扣</td><td class="art">§5Ⅰ①/§6Ⅰ①(需意圖得利)</td><td class="art">§129(無意圖得利要件時)</td><td>7年以上/5年以上 vs 1-7年</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch5">
+    <div class="chapter-head"><div class="chapter-num">⑤</div><h2>歷屆5次實際考法（110-114年完整範文）</h2></div>
+    <div class="card" id="past">
+
+      <div class="case-box">
+        <h4>110年・隱匿不報罪（貪§11／貪§5Ⅰ③）</h4>
+        <p style="color:var(--sub);font-size:.85rem;">情境：甲為督察，知悉乙員警收賄，為求和平相處而隱匿不舉報。</p>
+        <p><b>一、甲之罪名</b>：按貪污治罪條例第11條規定，公務員對主管監督事務，明知貪污有據而予以包庇或不為舉發者，處1年以上7年以下有期徒刑。甲身為督察，對乙員警之風紀狀況負有監督職責，明知乙涉嫌收賄卻故意隱匿不舉報，其動機雖為求和平相處，惟不影響故意要件之成立，屬「縱容」之行為態樣，該當本條構成要件。</p>
+        <p><b>二、乙之罪名</b>：乙收受賄賂之行為，依情節另依貪污治罪條例第5條第1項第3款（不違背職務收受賄賂罪）論處。</p>
+        <p><b>三、結論</b>：甲成立包庇縱容罪，乙成立不違背職務收賄罪；甲乙間就各自行為分別負責，因欠缺犯意聯絡及行為分擔，不成立共犯關係。</p>
+      </div>
+
+      <div class="case-box">
+        <h4>111年・監所管理員違背職務收賄罪（貪§4Ⅰ⑤）</h4>
+        <p style="color:var(--sub);font-size:.85rem;">情境：監所管理員乙應同學甲之請，戒護機會中夾帶洋酒交付受刑人丙；甲事後安排乙至酒店飲宴，支付3萬元。</p>
+        <p><b>一、公務員身分</b>：乙為監所管理員，依刑法第10條第2項規定，屬依法令服務於國家所屬機關而具有法定職務權限之身分公務員。</p>
+        <p><b>二、違背職務行為</b>：戒護管制物品進出屬乙之法定職務，未經核可擅自夾帶物品入監交付受刑人，明顯違背其戒護職責。</p>
+        <p><b>三、收受不正利益</b>：酒店飲宴消費3萬元，屬財產上不正利益，甲之贈與與乙之違背職務行為間具有對價關係，違背職務行為在先、收受利益在後，因果關係明確。</p>
+        <p><b>四、結論</b>：乙成立貪污治罪條例第4條第1項第5款違背職務收受不正利益罪，處無期徒刑或10年以上有期徒刑，得併科新臺幣1億元以下罰金；交付洋酒行為為本罪構成要件之一部，不另論他罪，成立一罪。</p>
+      </div>
+
+      <div class="case-box">
+        <h4>112年・便民vs圖利辨析（貪§6Ⅰ④）</h4>
+        <p style="color:var(--sub);font-size:.85rem;">情境：公務員乙為公園場地承辦人，明知弱勢團體丙非合辦單位，仍登記為「合辦單位」，使丙優先且免費使用場地。</p>
+        <p><b>一、爭點</b>：乙出於協助弱勢團體之善意動機，是否足以阻卻圖利罪之成立？</p>
+        <p><b>二、要件檢視</b>：乙為場地管理承辦人，對本案屬主管事務；乙明知丙非合辦單位，仍故意登記不實，違背場地管理相關規定；使丙獲得優先使用及免繳費用之雙重不法利益，且丙已實際免費優先使用，利益業已實現。</p>
+        <p><b>三、非便民之理由</b>：便民之前提為依法行政、不免除法定義務，不因主觀動機良善而阻卻違法；客觀要件具備即成立圖利罪。乙正確作法應輔導丙依正規程序申請場地或補助，而非登載不實資料。</p>
+        <p><b>四、結論</b>：乙之行為非屬便民，成立貪污治罪條例第6條第1項第4款圖利罪，處5年以上有期徒刑，得併科新臺幣3,000萬元以下罰金。</p>
+      </div>
+
+      <div class="case-box">
+        <h4>113年・收賄罪＋減免規定（貪§4Ⅰ⑤／§8／§12）</h4>
+        <p style="color:var(--sub);font-size:.85rem;">情境：消防小隊長甲執行消防安全設備複查業務時，收受該建築物管理權人乙私下贈與的3萬6千元紅包，甲欣然收受；事後遭檢舉，甲於偵查中坦承並繳回款項。</p>
+        <p><b>一、甲觸犯之罪名</b>：甲執行複查業務期間，收受複查對象乙贈與之財物，依其複查結果是否合於法定標準，論以貪污治罪條例第4條第1項第5款違背職務收賄罪，或第5條第1項第3款不違背職務收賄罪。</p>
+        <p><b>二、得否適用減免罪責規定</b>：甲於偵查中坦承並繳回全部所得，核與貪污治罪條例第8條第2項「偵查中自白，如有所得並自動繳交全部所得財物者，減輕其刑」之要件相符，得<mark>減輕</mark>其刑（非免除）；又本案所得金額為3萬6千元，未逾新臺幣5萬元，另符合第12條第1項情節輕微之規定，<mark>亦得減輕</mark>其刑，兩者可併同主張。</p>
+        <p><b>三、結論</b>：甲成立貪污治罪條例收賄罪，惟依第8條第2項及第12條第1項規定，均得減輕其刑。</p>
+      </div>
+
+      <div class="case-box">
+        <h4>114年・圖利罪＋登載不實（貪§6Ⅰ④／刑§213）</h4>
+        <p style="color:var(--sub);font-size:.85rem;">情境：消防隊員甲複查餐飲業者乙，發現消防設備缺失逾期未改善（應處罰鍰6千至3萬元），甲乙為好友，甲未開立舉發單，且於複查紀錄表登載「已改善」，致乙免受裁罰。</p>
+        <p><b>一(一) 登載不實文書罪</b>：甲為公務員，明知乙之設備缺失未改善，仍於職務上所掌之複查紀錄表（公文書）登載「已改善」不實事項，足以生損害於公眾（消防安全遭虛報）及行政記錄之正確性，該當刑法第213條登載不實文書罪。</p>
+        <p><b>一(二) 圖利罪</b>：複查業務屬甲之主管事務，甲明知乙違反消防法應予舉發裁罰，卻故意不為舉發，使好友乙獲免罰之不法利益，且該利益已實際發生，該當貪污治罪條例第6條第1項第4款圖利罪。</p>
+        <p><b>一(三) 罪數關係</b>：登載不實為手段行為、圖利為目的行為，兩者具方法目的關係，惟保護法益不同（登載不實罪保護公文書之公共信用，圖利罪保護公務廉潔性），應分別成立，數罪併罰。</p>
+        <p><b>二、與便民之區別</b>：甲以私人交誼凌駕法律規定，使乙免除法定罰鍰，已逾越便民界限，構成違法圖利及登載不實。</p>
+        <p><b>三、結論</b>：甲成立貪污治罪條例第6條第1項第4款圖利罪，及刑法第213條登載不實文書罪，數罪併罰。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch6">
+    <div class="chapter-head"><div class="chapter-num">⑥</div><h2>減免與加重事由專區</h2></div>
+    <div class="card" id="reduce">
+      <table>
+        <tr><th style="width:14%">情形</th><th>要件</th><th style="width:16%">效果</th></tr>
+        <tr><td class="art">§8Ⅰ自首</td><td>犯罪尚未被發覺前，向有偵查權公務員陳述犯罪事實並自願受裁判，且繳回全部所得</td><td>減輕或免除；查獲其他正犯共犯者<mark>免除</mark></td></tr>
+        <tr><td class="art">§8Ⅱ偵查中自白</td><td>犯罪已被發覺，於偵查中陳明犯罪事實，且繳回全部所得</td><td>僅<mark>減輕</mark>；查獲其他正犯共犯者減輕或免除</td></tr>
+        <tr><td class="art">§12情節輕微</td><td>犯§4-6或§11之罪，所得/所圖利益或行求交付財物在<mark>新臺幣5萬元以下</mark></td><td>減輕其刑（可與§8併用）</td></tr>
+        <tr><td class="art">§11Ⅴ行賄自首自白</td><td>行賄罪自首者免除其刑；偵查審判中自白者減輕或免除</td><td>免除／減輕或免除</td></tr>
+        <tr><td class="art">§16誣告加重</td><td>誣告他人犯本條例之罪；或虛構事實假借自首意圖使人受刑事處分</td><td>依刑法誣告罪加重1/2／3-10年</td></tr>
+      </table>
+      <div class="qa"><b>共犯提醒</b>：知情不報者（如110年甲督察）與行為人（如乙收賄員警）分屬不同罪名、各自負責，除非有犯意聯絡及行為分擔，否則不成立共犯關係——這是容易被誤答成「共犯」的陷阱。</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch7">
+    <div class="chapter-head"><div class="chapter-num">⑦</div><h2>萬用起結句型</h2></div>
+    <div class="template" id="tpl">
+      <b>前言萬用句</b>：按貪污治罪條例第OO條規定，【法條要件摘要】。本案OO之行為是否構成該罪，應就其公務員身分、行為態樣及主觀要件析述如下。<br><br>
+      <b>身分認定句</b>：依刑法第10條第2項規定，OO係【依法令服務於國家機關而具有法定職務權限／受委託行使公權力】之公務員，具備本罪主體資格。<br><br>
+      <b>特別法優先句</b>：本案OO之行為既已該當貪污治罪條例第OO條之構成要件，依特別法優於普通法原則，應優先適用貪污治罪條例，不再論以刑法瀆職罪章第OO條。<br><br>
+      <b>結論萬用句</b>：綜上，OO之行為該當【罪名】，處【刑度】；又OO於【偵查中自白／犯罪後自首】並自動繳交全部所得財物，符合貪污治罪條例第8條第OO項規定，得【減輕／免除】其刑；如所得金額在新臺幣5萬元以下，另得依第12條規定減輕其刑。
+    </div>
+  </section>
+
+</main>
+
+<script>
+  document.getElementById('search').addEventListener('input', function(e){
+    var q = e.target.value.trim().toLowerCase();
+    var cards = document.querySelectorAll('section.chapter');
+    cards.forEach(function(sec){
+      if(!q){ sec.style.display=''; return; }
+      var text = sec.innerText.toLowerCase();
+      sec.style.display = text.indexOf(q) !== -1 ? '' : 'none';
+    });
+  });
+</script>
+</body>
+</html>
