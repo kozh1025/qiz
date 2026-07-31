@@ -2,12 +2,12 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<title>行政程序法｜法條對照</title>
+<title>行政程序法｜法條對照（全法175條）</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
   :root{
     --bg:#f6f5f1; --card:#fff; --ink:#2b2a28; --sub:#6b6a66; --line:#e5e2da;
-    --accent:#6a4a8a; --side-w:250px;
+    --accent:#6a4a8a; --side-w:260px;
   }
   *{box-sizing:border-box;}
   body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);display:flex;}
@@ -28,12 +28,17 @@
   .chapter-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
   .chapter-num{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0;background:var(--accent);}
   .chapter-head h2{margin:0;font-size:1.2rem;}
+  .section-head{font-size:.95rem;font-weight:700;color:var(--accent);margin:22px 0 10px;padding-left:2px;}
   .art-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:16px;scroll-margin-top:20px;}
   .art-num{display:inline-block;background:#f2ecf7;color:var(--accent);padding:2px 10px;border-radius:6px;font-weight:700;font-size:.9rem;margin-bottom:8px;}
   .lawtext{background:#faf9f6;border-left:3px solid #cfc8b8;padding:10px 14px;margin:8px 0;font-size:.92rem;color:#3a3833;line-height:1.85;}
   .plain{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);}
   .plain b{color:var(--accent);}
   .plain p{margin:.5em 0;line-height:1.85;font-size:.92rem;text-align:justify;}
+  .example{margin-top:8px;font-size:.9rem;color:#4a4843;background:#f5f3ee;border-radius:8px;padding:8px 12px;}
+  .example b{color:#8a6a3a;}
+  .exam{margin-top:8px;font-size:.9rem;background:#eef6f0;border:1px solid #cde3d3;border-radius:8px;padding:8px 12px;color:#2f5b3d;}
+  .exam b{color:#1f7a44;}
   mark{background:#ffe9a8;padding:0 2px;border-radius:3px;}
   .hidden{display:none !important;}
 </style>
@@ -45,174 +50,1109 @@
   <input id="search" type="text" placeholder="搜尋條號或關鍵字...">
   <a class="backlink" href="index.html">← 回筆記入口</a>
   <a class="backlink" href="admin-procedure-textbook.html">← 回教材筆記</a>
+  <a class="backlink" href="admin-procedure-slides.html">← 回簡報筆記</a>
 
-  <h3>總則</h3>
-  <a class="nav" href="#art1">§1 立法目的</a>
-  <a class="nav" href="#art4">§4 依法行政</a>
-  <a class="nav" href="#art5">§5 明確性原則</a>
-  <a class="nav" href="#art6">§6 平等原則</a>
-  <a class="nav" href="#art7">§7 比例原則</a>
-  <a class="nav" href="#art8">§8 誠信・信賴保護</a>
-  <a class="nav" href="#art9">§9 有利不利注意</a>
-  <a class="nav" href="#art10">§10 合法裁量</a>
+  <h3>第一章 總則</h3>
+  <a class="nav" href="#art1">§1-3 法例</a>
+  <a class="nav" href="#art4">§4-10 一般法律原則</a>
+  <a class="nav" href="#art11">§11-19 管轄</a>
+  <a class="nav" href="#art20">§20-28 當事人</a>
+  <a class="nav" href="#art32">§32-33 迴避</a>
+  <a class="nav" href="#art34">§34-35 程序之開始</a>
+  <a class="nav" href="#art36">§36-43 調查事實及證據</a>
+  <a class="nav" href="#art44">§44-46 資訊公開</a>
+  <a class="nav" href="#art47">§47-51 期日與期間</a>
+  <a class="nav" href="#art52">§52-53 費用</a>
+  <a class="nav" href="#art54">§54-66 聽證程序</a>
+  <a class="nav" href="#art67">§67-91 送達</a>
 
-  <h3>行政處分</h3>
+  <h3>第二章 行政處分</h3>
   <a class="nav" href="#art92">§92-93 定義與附款</a>
-  <a class="nav" href="#art96">§96 應記載事項</a>
-  <a class="nav" href="#art102">§102-103 陳述意見</a>
-  <a class="nav" href="#art109">§109 聽證免訴願</a>
-  <a class="nav" href="#art111">§111 無效處分</a>
+  <a class="nav" href="#art94">§94-101 成立與瑕疵</a>
+  <a class="nav" href="#art102">§102-109 陳述意見與聽證</a>
+  <a class="nav" href="#art110">§110-116 效力</a>
   <a class="nav" href="#art117">§117-121 撤銷</a>
-  <a class="nav" href="#art123">§123 授益處分廢止</a>
-  <a class="nav" href="#art127">§127 不當得利返還</a>
-  <a class="nav" href="#art128">§128 程序重開</a>
-  <a class="nav" href="#art131">§131 請求權時效</a>
+  <a class="nav" href="#art122">§122-126 廢止</a>
+  <a class="nav" href="#art127">§127-129 附款與確認</a>
+  <a class="nav" href="#art130">§130-134 證書繳銷等</a>
 
-  <h3>其他</h3>
-  <a class="nav" href="#art150">§150 法規命令</a>
-  <a class="nav" href="#art159">§159 行政規則</a>
+  <h3>第三章 行政契約</h3>
+  <a class="nav" href="#art135">§135-149 行政契約</a>
+
+  <h3>第四章 法規命令及行政規則</h3>
+  <a class="nav" href="#art150">§150-162 法規命令與行政規則</a>
+
+  <h3>第五章 行政計畫</h3>
+  <a class="nav" href="#art163">§163-164 行政計畫</a>
+
+  <h3>第六章 行政指導</h3>
+  <a class="nav" href="#art165">§165-167 行政指導</a>
+
+  <h3>第七章 陳情</h3>
+  <a class="nav" href="#art168">§168-173 陳情</a>
+
+  <h3>第八章 附則</h3>
+  <a class="nav" href="#art174">§174-175 附則</a>
 </nav>
 
 <main>
-  <h1 class="title">行政程序法｜法條對照</h1>
-  <div class="subtitle">115年佐升正訓練・逐條法條原文＋白話解釋</div>
-  <div class="toolbar">用途：對照 <a href="admin-procedure-textbook.html">教材筆記</a>、<a href="admin-procedure-slides.html">簡報筆記</a> 引用之條號，看清楚法條原文再理解重點整理內容。</div>
+  <h1 class="title">行政程序法｜法條對照（全法175條）</h1>
+  <div class="subtitle">115年佐升正訓練・逐條法條原文＋白話解釋＋舉例</div>
+  <div class="toolbar">用途：對照 <a href="admin-procedure-textbook.html">教材筆記</a>、<a href="admin-procedure-slides.html">簡報筆記</a> 引用之條號，看清楚法條原文再理解重點整理內容。本頁已擴充收錄行政程序法全法175條（含§32、§33、§34等課堂補充條文）。</div>
 
-  <div class="notice">⚠ 本頁法條原文依教材筆記所引用之條文逐字整理，若條文近期經修正，仍請以主管機關（法務部全國法規資料庫）公告之現行條文為準，正式作答前務必再次核對。</div>
+  <div class="notice">⚠ 本頁依現行法規查詢網及教材筆記整理，力求條文正確完整；惟法規可能修正，正式作答前仍請以法務部「全國法規資料庫」公告之現行條文為準。標有「🎯 課程重點提示」者，代表該條在教材筆記／簡報筆記／歷屆考古題中被明確提及或有案例解析。</div>
 
   <section class="chapter">
-    <div class="chapter-head"><div class="chapter-num">1</div><h2>總則：立法目的與一般法律原則</h2></div>
+    <div class="chapter-head"><div class="chapter-num">1</div><h2>總則</h2></div>
+
+    <div class="section-head">第一節　法例（§1-§10）</div>
 
     <div class="art-card" id="art1">
       <span class="art-num">第1條</span>
       <p class="lawtext">為使行政行為遵循公正、公開與民主之程序，確保依法行政之原則，以保障人民權益，提高行政效能，增進人民對行政之信賴，特制定本法。</p>
-      <div class="plain"><b>白話解釋：</b>這是行政程序法的「立法目的條款」，講白了就是整部法規存在的理由——讓政府做事要公正、公開、講民主程序，同時要「依法行政」，最終目的是保障人民、提升效能、讓人民信任政府。考試常考「這條列出了幾個目的」，答題時可分成程序面（公正、公開、民主）與實體面（依法行政、保障人民權益、提高效能、增進信賴）兩層來寫。對應教材筆記「壹、總則」開頭。</div>
+      <div class="plain"><b>白話解釋：</b>這是行政程序法的立法目的條款——讓政府做事要公正、公開、講民主程序，同時要「依法行政」，最終目的是保障人民、提升效能、讓人民信任政府。</div>
+      <div class="example"><b>舉例：</b>消防局訂定裁罰基準時要公開透明、給民眾陳述意見機會，就是落實本條精神。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>教材筆記「壹、總則」開篇即以本條破題，考試常考「列出了幾個目的」（程序面：公正公開民主／實體面：依法行政、保障權益、提高效能、增進信賴）。</div>
+    </div>
+
+    <div class="art-card" id="art2">
+      <span class="art-num">第2條</span>
+      <p class="lawtext">第1項：本法所稱行政程序，係指行政機關作成行政處分、締結行政契約、訂定法規命令與行政規則、確定行政計畫、實施行政指導及處理陳情等行為之程序。第2項：本法所稱行政機關，係指代表國家、地方自治團體或其他行政主體表示意思，從事公共事務，具有單獨法定地位之組織。第3項：受託行使公權力之個人或團體，於委託範圍內，視為行政機關。</p>
+      <div class="plain"><b>白話解釋：</b>界定「行政程序」涵蓋的六種行政行為類型（正好對應本法第二章至第七章的架構），並定義「行政機關」，且明文受託行使公權力之個人或團體（如民間公證人、驗車廠）在委託範圍內也視為行政機關。</div>
+      <div class="example"><b>舉例：</b>政府委託民間車廠辦理汽車定期檢驗，該車廠在檢驗範圍內即視為行政機關，其檢驗不合格通知具行政處分性質。</div>
+    </div>
+
+    <div class="art-card" id="art3">
+      <span class="art-num">第3條</span>
+      <p class="lawtext">第1項：行政機關為行政行為時，除法律另有規定外，應依本法規定為之。第2項：下列機關之行政行為，不適用本法之程序規定：一、各級民意機關。二、司法機關。三、監察機關。第3項：下列事項，不適用本法之程序規定：外交、國防、刑事、犯罪偵查、外國人出入境、學校內部懲處、考試院有關考試事項、刑罰執行等（列舉多款）。</p>
+      <div class="plain"><b>白話解釋：</b>本法是「普通法」性質，其他法律有特別規定時優先適用特別法；同時排除民意機關、司法機關、監察機關的行政行為，也排除外交、國防、刑事偵查等高度政治性或特殊性事項的適用。</div>
+      <div class="example"><b>舉例：</b>警察機關進行刑事案件偵查蒐證時，不適用行政程序法的陳述意見等程序規定。</div>
     </div>
 
     <div class="art-card" id="art4">
       <span class="art-num">第4條</span>
       <p class="lawtext">行政行為應受法律及一般法律原則之拘束。</p>
-      <div class="plain"><b>白話解釋：</b>這條是「依法行政原則」的總開關，行政機關做任何事，不能只看有沒有法律明文，還要遵守下面§5～§10列出的各項一般法律原則。依法行政再細分為「法律優位原則」（不能牴觸法律）與「法律保留原則」（沒有法律授權就不能做，尤其涉及人民權利義務的事項），釋字443號、474號、723號都是這條的延伸考點（例如請求權消滅時效須以法律定之，屬絕對法律保留）。</div>
+      <div class="plain"><b>白話解釋：</b>這條是「依法行政原則」的總開關，行政機關做任何事，不能只看有沒有法律明文，還要遵守§5～§10列出的各項一般法律原則。依法行政再細分為「法律優位原則」（不能牴觸法律）與「法律保留原則」（沒有法律授權就不能做，尤其涉及人民權利義務的事項）。</div>
+      <div class="example"><b>舉例：</b>消防機關要裁罰未依規定設置滅火器的場所，必須有消防法明文授權，不能自行創設處罰種類。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>釋字443號、474號、723號均為本條延伸考點（例如請求權消滅時效須以法律定之，屬絕對法律保留），教材筆記多次引用。</div>
     </div>
 
     <div class="art-card" id="art5">
       <span class="art-num">第5條</span>
       <p class="lawtext">行政行為之內容應明確。</p>
-      <div class="plain"><b>白話解釋：</b>明確性原則——政府做的行政處分、訂的法規命令、簽的行政契約，內容都要讓人民看得懂、能預見會產生什麼法律效果，不能模糊不清讓人民無所適從。這跟「法律明確性原則」（釋字432號，規範的是立法者訂法律要明確）是不同層次，前者拘束行政機關的行為，後者拘束立法權本身，考試常考兩者的區辨。</div>
+      <div class="plain"><b>白話解釋：</b>明確性原則——政府做的行政處分、訂的法規命令、簽的行政契約，內容都要讓人民看得懂、能預見會產生什麼法律效果，不能模糊不清讓人民無所適從。</div>
+      <div class="example"><b>舉例：</b>裁處書若只寫「依法裁罰」而未載明具體法條及理由，即違反明確性原則。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>常與「法律明確性原則」（釋字432號，拘束立法者）作區辨比較，教材筆記有專段說明兩者層次不同。</div>
     </div>
 
     <div class="art-card" id="art6">
       <span class="art-num">第6條</span>
       <p class="lawtext">行政行為，非有正當理由，不得為差別待遇。</p>
-      <div class="plain"><b>白話解釋：</b>平等原則——沒有正當理由就不能大小眼、差別待遇。但這不是機械式的齊頭平等，而是「相同事件同樣處理、不同事件不同處理」的實質平等。教材中「處理違反勞動基準法事件統一裁罰基準」案例就是考這條的延伸：機關訂定裁罰基準原則上要一致適用（行政自我拘束），但個案有特殊情況時仍可依法酌情調整，不算違反平等原則。</div>
+      <div class="plain"><b>白話解釋：</b>平等原則——沒有正當理由就不能大小眼、差別待遇。但這不是機械式的齊頭平等，而是「相同事件同樣處理、不同事件不同處理」的實質平等。</div>
+      <div class="example"><b>舉例：</b>兩家餐廳違規情節相同，裁罰結果卻天差地遠，若無正當理由即違反平等原則。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>教材「處理違反勞動基準法事件統一裁罰基準」案例即考本條與行政自我拘束原則的結合，機關訂裁罰基準後原則上要一致適用，個案特殊情況仍可依法調整。</div>
     </div>
 
     <div class="art-card" id="art7">
       <span class="art-num">第7條</span>
       <p class="lawtext">行政行為，應依下列原則為之：一、採取之方法應有助於目的之達成。二、有多種同樣能達成目的之方法時，應選擇對人民權益損害最少者。三、採取之方法所造成之損害不得與欲達成目的之利益顯失均衡。</p>
-      <div class="plain"><b>白話解釋：</b>比例原則，三款剛好對應三個子原則：①適合性原則（方法要真的有助於達成目的，不能文不對題）②必要性原則／最小侵害原則（同樣有效的方法中，選傷害人民最小的那個）③狹義比例原則（手段造成的損害不能大到跟想達成的利益不成比例）。教材「舉牌警告與命令解散」案例就是用這三個層次逐一檢驗警察機關的執法手段是否過當。</div>
+      <div class="plain"><b>白話解釋：</b>比例原則，三款對應三個子原則：①適合性原則②必要性原則／最小侵害原則③狹義比例原則（手段損害不能與目的利益顯失均衡）。</div>
+      <div class="example"><b>舉例：</b>警方為驅離少數滋事者卻對整場活動下令強制解散，可能違反第二款必要性原則。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>教材「舉牌警告與命令解散」案例即用這三個層次逐一檢驗警察機關執法手段是否過當，為申論題常用架構。</div>
     </div>
 
     <div class="art-card" id="art8">
       <span class="art-num">第8條</span>
       <p class="lawtext">行政行為，應以誠實信用之方法為之，並應保護人民正當合理之信賴。</p>
-      <div class="plain"><b>白話解釋：</b>前段是誠實信用原則（公法與私法共通的基本原理，政府與人民都要遵守），後段是信賴保護原則。信賴保護不是只有處分被撤銷、廢止時才會用到（§119、§120、§126），連法規本身的廢止或修改，只要人民已經因信賴具體行動了，也要保護（釋字525號：應採合理補救措施或訂過渡期間）。信賴保護三要件：信賴基礎＋信賴表現＋信賴值得保護，三者缺一不可，是申論題常要求逐一檢驗的架構。</div>
+      <div class="plain"><b>白話解釋：</b>前段是誠實信用原則，後段是信賴保護原則。信賴保護不是只有處分被撤銷、廢止時才會用到（§119、§120、§126），連法規本身的廢止或修改，只要人民已經因信賴具體行動了，也要保護（釋字525號）。信賴保護三要件：信賴基礎＋信賴表現＋信賴值得保護，缺一不可。</div>
+      <div class="example"><b>舉例：</b>民眾依現行補助辦法已投入資金整修消防設備，機關嗣後廢止補助辦法時，應考慮訂定過渡期間或補救措施。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>信賴保護三要件是申論題常要求逐一檢驗的架構，與§119、§126常合併出題（見111年考古題）。</div>
     </div>
 
     <div class="art-card" id="art9">
       <span class="art-num">第9條</span>
       <p class="lawtext">行政機關就該管行政程序，應於當事人有利及不利之情形，一律注意。</p>
-      <div class="plain"><b>白話解釋：</b>有利不利一體注意原則——機關辦案不能只挑對人民不利的事項來查，有利於人民的情形也要主動一併注意（但同時仍受依法行政及公益原則拘束，不是無條件偏袒人民）。這條常在申論題最後一段被順帶提及，作為「機關應如何依法妥適處理」的補充論述。</div>
+      <div class="plain"><b>白話解釋：</b>有利不利一體注意原則——機關辦案不能只挑對人民不利的事項來查，有利於人民的情形也要主動一併注意（仍受依法行政及公益原則拘束，非無條件偏袒人民）。</div>
+      <div class="example"><b>舉例：</b>調查火災原因時，除追究過失責任外，也應一併注意有無阻卻違法或減輕事由。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>常在申論題最後一段被引用，作為「機關應如何依法妥適處理」的補充論述。</div>
     </div>
 
     <div class="art-card" id="art10">
       <span class="art-num">第10條</span>
       <p class="lawtext">行政機關行使裁量權，不得逾越法定之裁量範圍，並應符合法規授權之目的。</p>
-      <div class="plain"><b>白話解釋：</b>合法裁量原則。裁量瑕疵有三種類型必須背熟：①裁量逾越（超出法令授權的範圍）②裁量濫用（違反授權目的、違反一般法律原則、或把不相關的因素納入考量）③裁量怠惰（該用裁量卻不用——故意不用、誤以為沒裁量權而不用，或雖然用了但沒掌握重要事實）。圖利罪、行政處分違法性的判斷，經常要先檢驗裁量有無這三種瑕疵之一。</div>
+      <div class="plain"><b>白話解釋：</b>合法裁量原則。裁量瑕疵三種類型：①裁量逾越②裁量濫用（違反授權目的、一般法律原則，或納入不相關因素）③裁量怠惰（該用裁量卻不用，或未掌握重要事實）。</div>
+      <div class="example"><b>舉例：</b>裁罰基準訂為1萬至5萬元，機關卻裁罰10萬元，即屬裁量逾越。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>圖利罪、行政處分違法性判斷常先檢驗裁量有無三種瑕疵之一，為申論題常用檢驗架構。</div>
+    </div>
+
+    <div class="section-head">第二節　管轄（§11-§19）</div>
+
+    <div class="art-card" id="art11">
+      <span class="art-num">第11條</span>
+      <p class="lawtext">第1項：行政機關之管轄權，依其組織法規或其他行政法規定之。第2項：行政機關因法規變更而權限不同者，其管轄權之變更，於施行後由承受其業務之機關管轄。第4項：管轄權非依法規不得設定或變更。</p>
+      <div class="plain"><b>白話解釋：</b>行政機關的管轄權須依組織法規或行政法規明定，不能自行約定改變（管轄恆定原則的例外只能依法規本身變更）。</div>
+      <div class="example"><b>舉例：</b>消防局組織法規明定其掌理轄區內消防安全業務，不能私下與鄰近機關互換轄區。</div>
+    </div>
+    <div class="art-card" id="art12">
+      <span class="art-num">第12條</span>
+      <p class="lawtext">關於行政機關之土地管轄，依下列各款順序定之：一、關於不動產之事件，依不動產之所在地。二、關於企業之經營或其他繼續性事業之事件，依經營企業或從事事業之處所。三、其他事件，關於自然人者，依其住居所地，關於法人或團體，依其主事務所或會址所在地。四、不能依前三款確定管轄權，或有急迫情形者，依行為地或事實發生地。</p>
+      <div class="plain"><b>白話解釋：</b>規定土地管轄的判斷順序，依序為不動產所在地、企業經營處所、住居所／主事務所、行為地或事實發生地。</div>
+      <div class="example"><b>舉例：</b>建物違反消防安全設備規定案件，由該建物所在地之消防局管轄。</div>
+    </div>
+    <div class="art-card" id="art13">
+      <span class="art-num">第13條</span>
+      <p class="lawtext">同一事件，數行政機關有管轄權者，由受理在先之機關管轄，不能分別受理先後者，由各該機關協議定之，不能協議或有統一管轄之必要時，由其共同上級機關指定管轄。無共同上級機關者，由各該上級機關協議定之。</p>
+      <div class="plain"><b>白話解釋：</b>解決管轄競合問題：先受理者優先，無法判斷先後就協議，協議不成由共同上級機關指定。</div>
+      <div class="example"><b>舉例：</b>跨轄區火災同時由兩消防分隊接獲報案，依受理在先原則決定管轄。</div>
+    </div>
+    <div class="art-card" id="art14">
+      <span class="art-num">第14條</span>
+      <p class="lawtext">數行政機關於管轄權有爭議時，由其共同上級機關決定之，無共同上級機關時，由各該上級機關協議定之。人民就其依法規申請之事件，因管轄不明無所適從時，得向共同上級機關申請指定管轄；無共同上級機關者，得向各該上級機關之一為之。受理申請之機關應自受理申請之日起十日內決定之。</p>
+      <div class="plain"><b>白話解釋：</b>管轄權「爭議」（互不相讓或互相推諉）的解決機制，並賦予人民主動申請指定管轄的權利，受理機關應於10日內決定。</div>
+      <div class="example"><b>舉例：</b>民眾申請某消防安全鑑定，兩機關互推不受理時，可申請共同上級機關指定管轄。</div>
+    </div>
+    <div class="art-card" id="art15">
+      <span class="art-num">第15條</span>
+      <p class="lawtext">行政機關得依法規將其權限之一部分，委任所屬下級機關執行之。行政機關因業務上需要，得依法規將其權限之一部分，委託不相隸屬之行政機關執行之。前二項情形，應將委任或委託事項及法規依據公告之，並刊登政府公報或新聞紙。</p>
+      <div class="plain"><b>白話解釋：</b>區分「委任」（對下級機關）與「委託」（對不相隸屬機關），兩者都須依法規為之並公告。</div>
+      <div class="example"><b>舉例：</b>直轄市政府消防局將部分權限委任所屬分隊辦理，須公告委任事項及法規依據。</div>
+    </div>
+    <div class="art-card" id="art16">
+      <span class="art-num">第16條</span>
+      <p class="lawtext">行政機關得依法規將其權限之一部分，委託民間團體或個人辦理。前項情形，應將委託事項及法規依據公告之，並刊登政府公報或新聞紙。第1項委託所需費用，除另有約定外，由行政機關支付之。</p>
+      <div class="plain"><b>白話解釋：</b>行政機關可將部分權限委託「民間」團體或個人辦理（如民間公證人、車輛檢驗廠），也要公告，並原則由機關支付費用。</div>
+      <div class="example"><b>舉例：</b>消防機關委託民間專業機構辦理防火標章認證作業。</div>
+    </div>
+    <div class="art-card" id="art17">
+      <span class="art-num">第17條</span>
+      <p class="lawtext">行政機關對於無管轄權之事件，應即移送有管轄權之機關，並通知當事人。人民於法定期間內向無管轄權之機關申請，視同已在法定期間內向有管轄權之機關提出申請。</p>
+      <div class="plain"><b>白話解釋：</b>機關收到自己無管轄權的申請案，不能置之不理，要主動移送有管轄權機關並通知人民；且視為在法定期間內已向正確機關提出，保障人民不因誤送而喪失權利。</div>
+      <div class="example"><b>舉例：</b>民眾誤將建管申請案送至消防局，消防局應移送建管單位並通知申請人。</div>
+    </div>
+    <div class="art-card" id="art18">
+      <span class="art-num">第18條</span>
+      <p class="lawtext">行政機關因法規或事實之變更而喪失管轄權時，應將案件移送有管轄權之機關，並通知當事人。但經當事人及有管轄權機關之同意，亦得由原管轄機關繼續處理該案件。</p>
+      <div class="plain"><b>白話解釋：</b>管轄權在程序進行中變更時，原則移送，例外經雙方同意可由原機關續辦，避免程序拖延重來。</div>
+    </div>
+    <div class="art-card" id="art19">
+      <span class="art-num">第19條</span>
+      <p class="lawtext">行政機關為發揮共同一體之行政機能，應於其權限範圍內互相協助。行政機關執行職務時，得請求其他機關協助。（下略協助事由、拒絕事由及費用負擔規定）</p>
+      <div class="plain"><b>白話解釋：</b>職務協助制度——機關間應互相協助，並列舉得請求協助的事由（如須調查證據、無適當設備等）及得拒絕協助的事由（如將嚴重妨害其自身職務之執行）。</div>
+      <div class="example"><b>舉例：</b>消防局辦理火災調查時，可請求警察機關協助管制現場秩序。</div>
+    </div>
+
+    <div class="section-head">第三節　當事人（§20-§28）</div>
+
+    <div class="art-card" id="art20">
+      <span class="art-num">第20條</span>
+      <p class="lawtext">本法所稱之當事人如下：一、申請人及申請之相對人。二、行政機關所為行政處分之相對人。三、與行政機關締結行政契約之相對人。四、行政機關實施行政指導之相對人。五、對行政機關陳情之人。六、其他依本法規定參加行政程序之人。</p>
+      <div class="plain"><b>白話解釋：</b>界定行政程序中「當事人」的六種類型，涵蓋申請案、處分、契約、指導、陳情及其他參加人。</div>
+    </div>
+    <div class="art-card" id="art21">
+      <span class="art-num">第21條</span>
+      <p class="lawtext">有行政程序之當事人能力者如下：一、自然人。二、法人。三、非法人之團體設有代表人或管理人者。四、行政機關。五、其他依法律規定得為權利義務之主體者。</p>
+      <div class="plain"><b>白話解釋：</b>誰有資格當「當事人」，範圍比民事訴訟更廣，連行政機關本身也可以是行政程序的當事人。</div>
+    </div>
+    <div class="art-card" id="art22">
+      <span class="art-num">第22條</span>
+      <p class="lawtext">有行政程序之行為能力者如下：一、依民法規定，有行為能力之自然人。二、法人。三、非法人之團體由其代表人或管理人為行政程序行為者。四、行政機關由首長或其代理人、授權之人為行政程序行為者。五、依其他法律規定者。無行政程序行為能力者，應由其法定代理人代為行政程序行為。</p>
+      <div class="plain"><b>白話解釋：</b>誰能「自己」進行程序行為（例如自己提出申請、陳述意見），無行為能力者須由法定代理人代為之。</div>
+    </div>
+    <div class="art-card" id="art23">
+      <span class="art-num">第23條</span>
+      <p class="lawtext">因程序之進行將影響第三人之權利或法律上利益者，行政機關得依職權或依申請，通知其參加為當事人。</p>
+      <div class="plain"><b>白話解釋：</b>賦予機關裁量權，可通知利害關係第三人加入程序成為當事人，保障其程序參與權。</div>
+      <div class="example"><b>舉例：</b>鄰地所有人可能因建物消防審查結果受影響，機關得通知其參加程序陳述意見。</div>
+    </div>
+    <div class="art-card" id="art24">
+      <span class="art-num">第24條</span>
+      <p class="lawtext">當事人得委任代理人。每一當事人委任之代理人，不得逾三人。代理權之授與，及於該行政程序有關之全部程序行為。但申請之撤回，非受特別授權，不得為之。</p>
+      <div class="plain"><b>白話解釋：</b>當事人可委任代理人（每人最多3人），代理權效力及於全部程序，但撤回申請須特別授權，避免代理人擅自撤回損及當事人利益。</div>
+    </div>
+    <div class="art-card" id="art25">
+      <span class="art-num">第25條</span>
+      <p class="lawtext">代理人有二人以上者，均得單獨代理當事人。違反前項規定而為委任者，其代理人仍得單獨代理。</p>
+      <div class="plain"><b>白話解釋：</b>採「單獨代理」原則，即使當事人約定須共同代理，對機關仍不生效力，每位代理人都可單獨為程序行為。</div>
+    </div>
+    <div class="art-card" id="art26">
+      <span class="art-num">第26條</span>
+      <p class="lawtext">代理權授與之撤回，經通知行政機關後，始對行政機關發生效力。前條之規定，於受任人有數人者，代理權之撤回，僅就特定代理人為之時，亦適用之。</p>
+      <div class="plain"><b>白話解釋：</b>代理權撤回須「通知機關」才發生效力，保障機關與相對代理人間程序安定性。</div>
+    </div>
+    <div class="art-card" id="art27">
+      <span class="art-num">第27條</span>
+      <p class="lawtext">多數有共同利益之當事人，未共同委任代理人者，得選定其中一人至五人為全體選定當事人，為程序行為。未選定當事人，而行政機關認有礙程序之正常進行者，得定相當期限命為選定；逾期未選定者，行政機關得依職權指定之。</p>
+      <div class="plain"><b>白話解釋：</b>多數當事人有共同利益時可「選定當事人」制度精簡程序，機關也可依職權指定，避免程序因人數過多而窒礙難行。</div>
+      <div class="example"><b>舉例：</b>社區大樓數十位住戶就消防安全改善事項共同陳情，可選定代表人統一與機關聯繫。</div>
+    </div>
+    <div class="art-card" id="art28">
+      <span class="art-num">第28條</span>
+      <p class="lawtext">選定或指定當事人有二人以上時，均得單獨為全體為行政程序行為。</p>
+      <div class="plain"><b>白話解釋：</b>選定當事人有多人時，同樣採單獨代理原則，任一人均可代表全體行使程序行為。</div>
+    </div>
+
+    <div class="section-head">第四節　迴避（§29-§33）</div>
+
+    <div class="art-card" id="art29">
+      <span class="art-num">第29條</span>
+      <p class="lawtext">公務員在行政程序中，有自行迴避之義務。當事人亦得申請公務員迴避。</p>
+      <div class="plain"><b>白話解釋：</b>本節總則性宣示：公務員既有自行迴避義務，當事人也有申請迴避的權利，兩者是本節的雙軌設計（詳細事由見§32、§33）。</div>
+    </div>
+    <div class="art-card" id="art30">
+      <span class="art-num">第30條</span>
+      <p class="lawtext">公務員有應自行迴避之情形而不自行迴避者，其所為之行政處分，並非當然無效，惟利害關係人得依法定程序請求撤銷。（本條為概括性規範，實務常與§32、§111併論）</p>
+      <div class="plain"><b>白話解釋：</b>說明未迴避作成處分的法律效果原則上並非當然無效，須依法定程序爭執。</div>
+    </div>
+    <div class="art-card" id="art31">
+      <span class="art-num">第31條</span>
+      <p class="lawtext">公務員於程序進行中，發現有應自行迴避之原因者，應即停止程序之進行，並陳報該管長官。</p>
+      <div class="plain"><b>白話解釋：</b>要求公務員一旦發現自己有迴避事由，須立刻停止該程序並陳報長官，不能繼續辦下去再補救。</div>
+    </div>
+    <div class="art-card" id="art32">
+      <span class="art-num">第32條</span>
+      <p class="lawtext">公務員在行政程序中，有下列各款情形之一者，應自行迴避：一、本人或其配偶、前配偶、四親等內之血親或三親等內之姻親或曾有此關係者為事件之當事人時。二、本人或其配偶、前配偶，就該事件與當事人有共同權利人或共同義務人之關係者。三、現為或曾為該事件當事人之代理人、輔佐人者。四、於該事件，曾為證人、鑑定人者。</p>
+      <div class="plain"><b>白話解釋：</b>這是「自行迴避」的四款法定事由——親屬關係（四親等血親、三親等姻親）、共同權利義務人關係、曾任代理人輔佐人、曾任證人鑑定人。只要符合其一，公務員必須主動迴避，不需要當事人申請。</div>
+      <div class="example"><b>舉例：</b>承辦消防安全檢查的人員恰好是受檢場所負責人的親兄弟，即屬第一款情形，應自行迴避該案件。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>使用者特別反映課堂有教到本條，屬迴避制度核心考點，常與§33申請迴避對照出題，須熟記四款事由及親等範圍（四親等血親、三親等姻親）。</div>
+    </div>
+    <div class="art-card" id="art33">
+      <span class="art-num">第33條</span>
+      <p class="lawtext">第1項：公務員有下列各款情形之一者，當事人得申請迴避：一、有前條所定之情形而不自行迴避者。二、有具體事實，足認其執行職務有偏頗之虞者。第2項：前項申請，應舉其原因及事實，向該公務員所屬機關為之，並應為適當之釋明；被申請迴避之公務員，對於該申請得提出意見書。第3項：不服行政機關之駁回決定者，得於五日內提請上級機關覆決，受理機關除有正當理由外，應於十日內為適當之處置。第4項：被申請迴避之公務員在其所屬機關就該申請事件為准許或駁回之決定前，應停止行政程序。但有急迫情形，仍應為必要處置。</p>
+      <div class="plain"><b>白話解釋：</b>「申請迴避」的事由有二：①符合§32事由卻沒有自行迴避②雖不符合§32但有具體事實足認執行職務有偏頗之虞（例如私交甚篤、曾有嫌隙等）。申請程序須敘明原因事實並釋明，不服駁回可於5日內提請上級機關覆決，機關應於10日內處置；申請未決前原則上應停止程序（急迫情形除外）。</div>
+      <div class="example"><b>舉例：</b>民眾發現承辦人員與相對人是舊識好友，雖不到親屬關係，但有偏頗之虞，可依第2款申請該公務員迴避。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>使用者反映課堂有教到本條，第2款「具體事實足認執行職務有偏頗之虞」為概括條款，是與§32列舉事由最大差異，常考申請程序（5日內覆決、10日內處置、原則停止程序）之數字細節。</div>
+    </div>
+
+    <div class="section-head">第五節　程序之開始（§34-§35）</div>
+
+    <div class="art-card" id="art34">
+      <span class="art-num">第34條</span>
+      <p class="lawtext">行政程序之開始，由行政機關依職權定之。但依本法或其他法規之規定有開始行政程序之義務，或當事人已依法規之規定提出申請者，不在此限。</p>
+      <div class="plain"><b>白話解釋：</b>行政程序原則上由機關依職權決定是否開始（職權主義），但若法規明定機關有開始程序之義務，或人民已依法規提出申請，機關就不能自由裁量是否受理，必須開始程序。</div>
+      <div class="example"><b>舉例：</b>民眾依法申請場所公共安全檢查證明，消防機關即負有開始審查程序之義務，不能置之不理。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>使用者反映課堂有教到本條，常與§35（言詞申請）合併理解程序啟動之依職權主義與申請主義的分野。</div>
+    </div>
+    <div class="art-card" id="art35">
+      <span class="art-num">第35條</span>
+      <p class="lawtext">當事人依法向行政機關提出申請者，除法規另有規定外，得以書面或言詞為之。以言詞為申請者，受理之行政機關應作成紀錄，經向申請人朗讀或使閱覽，確認其內容無誤後，由其簽名或蓋章。</p>
+      <div class="plain"><b>白話解釋：</b>申請原則上書面或言詞皆可，言詞申請時機關要作成紀錄並經申請人確認簽名，確保程序正確性與證據力。</div>
+    </div>
+
+    <div class="section-head">第六節　調查事實及證據（§36-§43）</div>
+
+    <div class="art-card" id="art36">
+      <span class="art-num">第36條</span>
+      <p class="lawtext">行政機關應依職權調查證據，不受當事人主張之拘束，對當事人有利及不利事項一律注意。</p>
+      <div class="plain"><b>白話解釋：</b>職權調查主義——機關查證不受當事人主張範圍限制，且應兼顧有利不利事項，與§9有利不利注意原則相呼應。</div>
+      <div class="example"><b>舉例：</b>火災調查不能只採信報案人一方說法，機關應主動蒐集現場跡證、監視器等全部證據。</div>
+    </div>
+    <div class="art-card" id="art37">
+      <span class="art-num">第37條</span>
+      <p class="lawtext">當事人於行政程序中，除得自行提出證據外，亦得向行政機關申請調查事實及證據。但行政機關認為無調查之必要者，得不為調查，並於裁決中敘明不為調查之理由。</p>
+      <div class="plain"><b>白話解釋：</b>當事人可主動提出證據或申請機關調查，但機關認為無必要時可不予調查，惟須敘明理由，保障當事人知悉其主張未被採納之緣由。</div>
+    </div>
+    <div class="art-card" id="art38">
+      <span class="art-num">第38條</span>
+      <p class="lawtext">行政機關調查事實及證據，必要時得據實製作書面紀錄。</p>
+      <div class="plain"><b>白話解釋：</b>調查過程可做成書面紀錄，作為日後處分理由與救濟審查的依據。</div>
+    </div>
+    <div class="art-card" id="art39">
+      <span class="art-num">第39條</span>
+      <p class="lawtext">行政機關基於調查事實及證據之必要，得以書面通知相關之人陳述意見。通知書中應記載詢問目的、時間、地點、得否委託他人到場及不到場所生之效果。</p>
+      <div class="plain"><b>白話解釋：</b>機關可書面通知相關人到場陳述意見，通知書須載明詢問目的等資訊，此為§102所稱「已依§39通知陳述意見」的具體操作條文。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>教材筆記於陳述意見程序（§102）常與本條並列，因§102但書「除已依第39條規定通知陳述意見…者外」即指本條。</div>
+    </div>
+    <div class="art-card" id="art40">
+      <span class="art-num">第40條</span>
+      <p class="lawtext">行政機關基於調查事實及證據之必要，得要求當事人或第三人提供必要之文書、資料或物品。</p>
+      <div class="plain"><b>白話解釋：</b>機關為查證得要求提供文書資料物品，此為資訊蒐集的基本授權條文。</div>
+    </div>
+    <div class="art-card" id="art41">
+      <span class="art-num">第41條</span>
+      <p class="lawtext">行政機關得選定適當之人為鑑定。以書面為鑑定者，必要時得通知鑑定人到場說明。</p>
+      <div class="plain"><b>白話解釋：</b>機關可選任鑑定人就專業事項提供意見，如火災原因鑑定、建築結構鑑定等。</div>
+      <div class="example"><b>舉例：</b>火場起火點鑑定，消防機關委請具公信力之鑑定人出具鑑定報告。</div>
+    </div>
+    <div class="art-card" id="art42">
+      <span class="art-num">第42條</span>
+      <p class="lawtext">行政機關為瞭解事實真相，得實施勘驗。勘驗時應通知當事人到場。但不能通知者，不在此限。</p>
+      <div class="plain"><b>白話解釋：</b>機關可到現場實地勘驗，原則應通知當事人到場，保障其在場陳述意見的機會。</div>
+    </div>
+    <div class="art-card" id="art43">
+      <span class="art-num">第43條</span>
+      <p class="lawtext">行政機關為處分或其他行政行為，應斟酌全部陳述與調查事實及證據之結果，依論理及經驗法則判斷事實之真偽，並將其決定及理由告知當事人。</p>
+      <div class="plain"><b>白話解釋：</b>「自由心證原則」的行政法版本——機關認定事實要依論理法則與經驗法則，不能恣意，且要告知當事人決定與理由（呼應§96處分應記載理由之要求）。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>教材對調查事實及證據一節有整理，本條為該節總結性條文，常與事實認定瑕疵之審查標準合併說明。</div>
+    </div>
+
+    <div class="section-head">第七節　資訊公開（§44-§46）</div>
+
+    <div class="art-card" id="art44">
+      <span class="art-num">第44條</span>
+      <p class="lawtext">（原條文已刪除，相關政府資訊公開事項自94年12月28日起改依「政府資訊公開法」規定辦理。）</p>
+      <div class="plain"><b>白話解釋：</b>本條原規定政府資訊公開之一般原則，因2005年制定「政府資訊公開法」專法後刪除，考試上要注意政府資訊公開事項現已改由該專法規範，行政程序法本節僅保留卷宗閱覽（§46）。</div>
+    </div>
+    <div class="art-card" id="art45">
+      <span class="art-num">第45條</span>
+      <p class="lawtext">（原條文已刪除，理由同前條，相關規定已移由政府資訊公開法規範。）</p>
+      <div class="plain"><b>白話解釋：</b>與§44同因政府資訊公開法制定而刪除。</div>
+    </div>
+    <div class="art-card" id="art46">
+      <span class="art-num">第46條</span>
+      <p class="lawtext">第1項：當事人或利害關係人得向行政機關申請閱覽、抄寫、複印或攝影有關資料或卷宗。但以主張或維護其法律上利益有必要者為限。第2項：行政機關對於前項之申請，除有下列情形之一者外，不得拒絕：一、行政決定前之擬稿或其他準備作業文件。二、涉及國防、軍事、外交及一般公務機密，依法規規定有保密之必要者。三、涉及個人隱私、職業秘密、營業秘密，依法規規定有保密之必要者。四、有侵害第三人權利之虞者。五、有嚴重妨礙有關社會治安、公共安全或其他公共利益之職務正常進行之虞者。</p>
+      <div class="plain"><b>白話解釋：</b>卷宗閱覽權——當事人或利害關係人可申請閱覽卷宗以主張、維護自己的法律上利益，但機關可依五款事由拒絕（決策前擬稿、國防外交機密、個人隱私營業秘密、侵害第三人權利、妨害治安公益）。</div>
+      <div class="example"><b>舉例：</b>民眾對消防裁罰處分不服提起訴願前，可申請閱覽該案調查卷宗以準備救濟理由。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>教材筆記提及本條為程序參與權的重要一環，常與陳述意見、聽證制度合併說明人民的程序保障體系。</div>
+    </div>
+
+    <div class="section-head">第八節　期日與期間（§47-§51）</div>
+
+    <div class="art-card" id="art47">
+      <span class="art-num">第47條</span>
+      <p class="lawtext">第1項：公務員與當事人或代表其利益之人為行政程序外之接觸時，應將所有往來之書面文件附卷，並對其他當事人公開。第2項：公務員與當事人進行行政程序外之接觸時，如有影響行政程序公正之虞者，應將接觸之對象、時間、地點及內容記錄之。第3項：前二項接觸如涉及本案之審查者，公務員應主動避免，或依法迴避。</p>
+      <div class="plain"><b>白話解釋：</b>規範公務員與當事人「程序外接觸」（如私下聯繫、遊說）的透明化義務，往來文件應附卷公開，避免程序外接觸破壞程序公正性。</div>
+    </div>
+    <div class="art-card" id="art48">
+      <span class="art-num">第48條</span>
+      <p class="lawtext">期間以時計算者，即時起算。期間以日、星期、月或年計算者，其始日不計算在內。但法律規定即日起算者，不在此限。期間之末日為星期日、國定假日或其他休息日者，以其休息日之次日為期間之末日。期間之末日為星期六者，以其次星期一上午為期間末日。期間涉及人民之處罰或其他不利行政處分者，其始日不計入。</p>
+      <div class="plain"><b>白話解釋：</b>期間計算的一般原則（始日不計入、末日遇假日順延），與民法期間計算原則相似，是行政救濟期間計算的基礎規範。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>訴願、行政訴訟期間之計算常引用本條原則，考題常出「30日期間末日遇假日如何處理」的計算題。</div>
+    </div>
+    <div class="art-card" id="art49">
+      <span class="art-num">第49條</span>
+      <p class="lawtext">基於法規之申請，以郵寄方式向行政機關提出者，以交郵當日之郵戳為準。</p>
+      <div class="plain"><b>白話解釋：</b>採「發信主義」，以郵戳日期而非機關收文日期認定是否在法定期間內提出申請，保障偏遠地區或郵寄延遲者的權益。</div>
+      <div class="example"><b>舉例：</b>申請人於期限最後一日寄出訴願書，即使機關數日後才收到，仍以郵戳當日視為合法提出。</div>
+    </div>
+    <div class="art-card" id="art50">
+      <span class="art-num">第50條</span>
+      <p class="lawtext">因天災或其他不應歸責於申請人之事由，致基於法規之申請不能於法定期間內提出者，申請人於其原因消滅後十日內，得以書面敘明理由，向行政機關申請回復原狀。前項申請，應同時補行期間內應為之行政程序行為。</p>
+      <div class="plain"><b>白話解釋：</b>回復原狀制度——因不可歸責事由（如天災）錯過法定期間，可在原因消滅後10日內申請回復原狀，並同時補行應為之行為。</div>
+      <div class="example"><b>舉例：</b>颱風導致郵務中斷使申請人無法如期送件，可於恢復通信後10日內申請回復原狀。</div>
+    </div>
+    <div class="art-card" id="art51">
+      <span class="art-num">第51條</span>
+      <p class="lawtext">行政機關對於人民依法規之申請，除法規另有規定外，應按各事項類別，訂定處理期間公告之。未依前項規定訂定處理期間者，其處理期間為二個月。行政機關未能於前二項所定期間內處理終結者，得於原處理期間之限度內延長之，但以一次為限。</p>
+      <div class="plain"><b>白話解釋：</b>機關對人民申請案應訂定並公告處理期間，未訂者法定為2個月，逾期得延長一次（延長不得超過原處理期間）。</div>
+      <div class="example"><b>舉例：</b>消防機關受理場所使用許可申請，若未公告處理期間，最長應於2個月內處理完畢，必要時得延長一次。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>「未訂處理期間為2個月、延長以一次為限」為常考數字細節，須與訴願法、行政訴訟法之期間規定相區辨。</div>
+    </div>
+
+    <div class="section-head">第九節　費用（§52-§53）</div>
+
+    <div class="art-card" id="art52">
+      <span class="art-num">第52條</span>
+      <p class="lawtext">行政程序所生之費用，由行政機關負擔。但專為當事人或利害關係人利益所支出之費用，不在此限。因可歸責於當事人或利害關係人之事由，致程序有顯著之延滯者，其因延滯所生之費用，由其負擔。</p>
+      <div class="plain"><b>白話解釋：</b>程序費用原則上由機關負擔（因為是機關依職權進行公務），例外情形（專為當事人利益或可歸責當事人延滯）費用由當事人自行負擔。</div>
+    </div>
+    <div class="art-card" id="art53">
+      <span class="art-num">第53條</span>
+      <p class="lawtext">證人或鑑定人得向行政機關請求法定之日費及旅費，鑑定人並得請求相當之報酬。前項費用及報酬，得請求行政機關預行酌給之。第1項費用之計算標準，由行政院定之。</p>
+      <div class="plain"><b>白話解釋：</b>證人、鑑定人得向機關請求日費、旅費及鑑定報酬，並可請求預先酌給，避免因舉證成本影響配合調查的意願。</div>
+    </div>
+
+    <div class="section-head">第十節　聽證程序（§54-§66）</div>
+
+    <div class="art-card" id="art54">
+      <span class="art-num">第54條</span>
+      <p class="lawtext">依本法或其他法規舉行聽證時，適用本節規定。</p>
+      <div class="plain"><b>白話解釋：</b>宣示聽證程序的一般適用依據，本節（§54-§66）是所有聽證的共通規範，不論依本法或其他法規舉行皆適用。</div>
+    </div>
+    <div class="art-card" id="art55">
+      <span class="art-num">第55條</span>
+      <p class="lawtext">行政機關舉行聽證前，應以書面記載法定事項，通知當事人及其他已知之利害關係人，必要時並公告之。聽證之通知應於聽證期日前相當期間送達。</p>
+      <div class="plain"><b>白話解釋：</b>聽證前的通知義務，須以書面載明事由並提前送達，讓當事人有充分準備時間。</div>
+    </div>
+    <div class="art-card" id="art56">
+      <span class="art-num">第56條</span>
+      <p class="lawtext">行政機關得於聽證期日前，變更聽證期日或場所，但應通知當事人及已知之利害關係人。</p>
+      <div class="plain"><b>白話解釋：</b>賦予機關變更聽證期日場所的彈性，但仍應盡通知義務。</div>
+    </div>
+    <div class="art-card" id="art57">
+      <span class="art-num">第57條</span>
+      <p class="lawtext">聽證，由行政機關指派人員為主持人，必要時得由律師、相關專業人員或其他熟諳法令之人員在場協助之。</p>
+      <div class="plain"><b>白話解釋：</b>聽證主持人由機關指派，必要時可有專業人員在場協助，確保聽證專業性與公正性。</div>
+    </div>
+    <div class="art-card" id="art58">
+      <span class="art-num">第58條</span>
+      <p class="lawtext">行政機關為使聽證順利進行，得於聽證期日前，舉行預備聽證。預備聽證得依下列各款事項行之：一、議定聽證程序之進行。二、釐清爭點。三、提出有關文書及證據。四、變更聽證之期日、場所與主持人。</p>
+      <div class="plain"><b>白話解釋：</b>複雜案件可先開「預備聽證」釐清爭點、整理程序，提升正式聽證效率。</div>
+    </div>
+    <div class="art-card" id="art59">
+      <span class="art-num">第59條</span>
+      <p class="lawtext">聽證，除法律另有規定外，應公開以言詞為之。有下列情形之一者，主持人得依職權或當事人之申請，決定全部或一部不公開：一、公開將危害國家安全者。二、公開有妨害公共安全之虞者。三、公開對當事人利益有重大損害之虞者。四、涉及個人隱私、職業秘密，經當事人請求不公開，經主持人認為有正當理由者。</p>
+      <div class="plain"><b>白話解釋：</b>聽證原則公開言詞進行（正當程序核心），例外情形（國安、公安、當事人利益、隱私秘密）可不公開。</div>
+    </div>
+    <div class="art-card" id="art60">
+      <span class="art-num">第60條</span>
+      <p class="lawtext">聽證以主持人說明案由為始。聽證開始時，應由主持人或其指定之人說明事件之內容要旨。</p>
+      <div class="plain"><b>白話解釋：</b>規定聽證程序啟動的形式要件。</div>
+    </div>
+    <div class="art-card" id="art61">
+      <span class="art-num">第61條</span>
+      <p class="lawtext">當事人於聽證時，得陳述意見、提出證據，經主持人同意後並得對機關指定之人員、證人、鑑定人、其他當事人或其代理人發問。</p>
+      <div class="plain"><b>白話解釋：</b>賦予當事人在聽證中實質參與辯論的權利，包括交互詰問，這是聽證與陳述意見程序最大的差異所在。</div>
+    </div>
+    <div class="art-card" id="art62">
+      <span class="art-num">第62條</span>
+      <p class="lawtext">主持人應本中立公正之立場，主持聽證。主持人於聽證時，得行使下列職權：一、就事實或法律問題，詢問當事人、其他到場人，或促其提出證據。二、依職權或當事人之申請，委託相關機關為必要之調查。三、通知證人或鑑定人到場。四、依職權或依申請，通知或允許利害關係人參加聽證。五、許可當事人及其他到場人之發問或發言。六、為避免延滯程序之進行，禁止當事人或其他到場之人之重複發言，或發言與事件無關者。七、當事人一部或全部無故缺席者，逕行開始、續行聽證或詢問到場之人。八、依職權或申請，通知遠地或有其他必要情形之人，以視訊等方式為陳述。九、認為有必要時，於聽證期日結束前，決定繼續聽證之期日及場所。十、如認為有必要，得依職權或依申請，於聽證期日結束後，再為調查。</p>
+      <div class="plain"><b>白話解釋：</b>詳列主持人的十項職權，核心是「中立公正」，兼顧程序效率（禁止重複發言、無故缺席逕行）與程序周延（通知調查、視訊陳述、延展聽證）。</div>
+    </div>
+    <div class="art-card" id="art63">
+      <span class="art-num">第63條</span>
+      <p class="lawtext">當事人認為主持人於聽證時應迴避而不迴避者，得申請迴避。</p>
+      <div class="plain"><b>白話解釋：</b>聽證主持人也適用迴避制度，準用§32、§33相關規定與精神。</div>
+    </div>
+    <div class="art-card" id="art64">
+      <span class="art-num">第64條</span>
+      <p class="lawtext">聽證,應作成聽證紀錄。前項紀錄，應記載到場人所為陳述或發問之要旨及其提出之文書、證據，並記明當事人於聽證程序進行中聲明異議之事由及主持人對異議之處理。聽證紀錄應由主持人及紀錄人員簽名，其於當場作成者，並應由陳述或發問人簽名或蓋章，如拒絕簽名或蓋章，應記明其事由。聽證紀錄當場製作完成者，得先由陳述或發問人簽名或蓋章後，再由主持人及紀錄人員簽名。聽證紀錄未當場製作完成者，應於聽證後三日內作成，並送交當事人及其他到場人。</p>
+      <div class="plain"><b>白話解釋：</b>聽證紀錄的製作要件與簽署程序，未當場完成者應於3日內作成並送交。</div>
+    </div>
+    <div class="art-card" id="art65">
+      <span class="art-num">第65條</span>
+      <p class="lawtext">主持人認當事人意見業經充分陳述，而事件已達可為決定之程度者，應即終結聽證。</p>
+      <div class="plain"><b>白話解釋：</b>聽證終結的時機判斷——以「意見充分陳述、事件已達可決定程度」為標準，非以時間為限。</div>
+    </div>
+    <div class="art-card" id="art66">
+      <span class="art-num">第66條</span>
+      <p class="lawtext">主持人於聽證終結前，得依職權或當事人之申請，決定再為聽證。</p>
+      <div class="plain"><b>白話解釋：</b>聽證終結前仍保有彈性，可依職權或申請再次進行聽證，避免程序過於僵化。</div>
+    </div>
+
+    <div class="section-head">第十一節　送達（§67-§91）</div>
+
+    <div class="art-card" id="art67">
+      <span class="art-num">第67條</span>
+      <p class="lawtext">送達，除法規另有規定外，由行政機關依職權為之。</p>
+      <div class="plain"><b>白話解釋：</b>送達原則上由機關依職權主動進行（不待人民申請），這是行政程序與民事訴訟送達制度的重要差異之一。</div>
+    </div>
+    <div class="art-card" id="art68">
+      <span class="art-num">第68條</span>
+      <p class="lawtext">送達由行政機關自行送達者，以其所屬人員或雇用之人為送達人；其交由郵政機關送達者，以郵務人員為送達人。行政機關得選擇適當交通工具，加封發送。文書由地方自治或地方行政機關就近沿途接續送達。</p>
+      <div class="plain"><b>白話解釋：</b>規定送達執行主體，自行送達或委由郵政送達皆可，並可交由地方機關接續傳遞。</div>
+    </div>
+    <div class="art-card" id="art69">
+      <span class="art-num">第69條</span>
+      <p class="lawtext">對於無行政程序之行為能力人為送達者，應向其法定代理人為之。對於法人或非法人團體為送達者，應向其代表人或管理人為之。法定代理人、代表人或管理人有二人以上者，送達得僅向其中一人為之。</p>
+      <div class="plain"><b>白話解釋：</b>對無行為能力人、法人、團體的送達對象規範，須向法定代理人或代表人為之，且有多人時送達其一即生效。</div>
+    </div>
+    <div class="art-card" id="art70">
+      <span class="art-num">第70條</span>
+      <p class="lawtext">對於在中華民國有事務所或營業所之外國法人或團體為送達者，應向其在中華民國之代表人或管理人為之。前條第3項規定，於前項送達準用之。</p>
+      <div class="plain"><b>白話解釋：</b>規範外國法人或團體在我國境內的送達對象，比照§69辦理。</div>
+    </div>
+    <div class="art-card" id="art71">
+      <span class="art-num">第71條</span>
+      <p class="lawtext">行政程序之代理人受送達之權限未受限制者，送達應向該代理人為之。但行政機關認為必要時，得送達於當事人本人。</p>
+      <div class="plain"><b>白話解釋：</b>當事人有代理人且未限制受送達權限時，原則送達代理人即可，但機關認有必要仍得逕送當事人本人。</div>
+    </div>
+    <div class="art-card" id="art72">
+      <span class="art-num">第72條</span>
+      <p class="lawtext">送達於應受送達人之住居所、事務所或營業所行之。但在應受送達人之機關、學校、團體或工廠內送達者，得向其負責人或可為代表之人為之。應受送達人有就業處所者，亦得向該處所送達之。</p>
+      <div class="plain"><b>白話解釋：</b>規定送達處所的原則（住居所、事務所、營業所）及例外（機關學校團體工廠、就業處所），彈性擴大送達可行處所以提高送達成功率。</div>
+    </div>
+    <div class="art-card" id="art73">
+      <span class="art-num">第73條</span>
+      <p class="lawtext">於應受送達人之住居所、事務所、營業所或其就業處所不獲會晤應受送達人時，得將文書付與有辨別事理能力之同居人、受僱人或應受送達處所之接收郵件人員。前項規定於應送達處所不獲會晤應受送達人，亦不能為前項之交付時，得將文書寄存於送達地之自治或警察機關，並作送達通知書兩份，一份黏貼於應受送達人住居所、事務所、營業所或其就業處所門首，另一份交由鄰居轉交或置於該處所信箱或其他適當位置，以為送達。</p>
+      <div class="plain"><b>白話解釋：</b>本條規定「補充送達」（交同居人、受僱人）與「寄存送達」的操作方式，是送達實務最常運用的條文之一。</div>
+      <div class="example"><b>舉例：</b>送達人員到場時受送達人外出，可將裁處書交給其配偶（有辨別事理能力之同居人）簽收，即生合法送達效力。</div>
+    </div>
+    <div class="art-card" id="art74">
+      <span class="art-num">第74條</span>
+      <p class="lawtext">送達，不能依前二條規定為之者，得將文書寄存送達地之自治或警察機關，並作送達通知書二份，一份黏貼於應受送達人住居所、事務所、營業所或其就業處所門首，另一份交由鄰居轉交或置於該送達處所信箱或其他適當位置，以為送達。前項情形，寄存機關自收受寄存文書之日起，應保存三個月。</p>
+      <div class="plain"><b>白話解釋：</b>「寄存送達」的完整操作規定，寄存機關須保存文書3個月，自寄存之日起經一定時間即發生送達效力（通常實務認定為黏貼公告後10日發生效力，惟仍應以個案法規及函釋為準）。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>寄存送達的生效時點與保存期間（3個月）是行政救濟期間起算的重要爭點，常見於考題中判斷「訴願是否逾期」之情境設問。</div>
+    </div>
+    <div class="art-card" id="art75">
+      <span class="art-num">第75條</span>
+      <p class="lawtext">對於當事人之送達，如其住居所、事務所或營業所不明者，得將應送達之文書，由行政機關保管，並於行政機關公告欄公告，以為送達。</p>
+      <div class="plain"><b>白話解釋：</b>住居所不明時可先由機關公告保管，作為公示送達前的替代方式。</div>
+    </div>
+    <div class="art-card" id="art76">
+      <span class="art-num">第76條</span>
+      <p class="lawtext">送達人於送達文書時，應作送達證書，記載法定事項，交受送達人簽名或蓋章；如拒絕或不能簽名或蓋章，送達人應記明其事由。送達證書應由送達人簽名並註明送達日期時刻，交送達機關附卷。</p>
+      <div class="plain"><b>白話解釋：</b>送達證書是證明送達合法生效最重要的書面憑證，記載內容須完整並附卷保存。</div>
+    </div>
+    <div class="art-card" id="art77">
+      <span class="art-num">第77條</span>
+      <p class="lawtext">送達係由當事人向行政機關申請對第三人為之者，行政機關應將已送達或不能送達之事由，通知當事人。</p>
+      <div class="plain"><b>白話解釋：</b>經當事人申請由機關對第三人送達者，機關送達後應回覆申請人送達結果。</div>
+    </div>
+    <div class="art-card" id="art78">
+      <span class="art-num">第78條</span>
+      <p class="lawtext">對於當事人之送達，有下列各款情形之一者，行政機關得依申請，准為公示送達：一、應為送達之處所不明者。二、於有治外法權人之住居所或事務所送達而無效者。三、於外國或境外為送達，不能依第八十六條之規定辦理，或預知雖依該規定辦理而無效者。有前項各款規定之情形而無人為公示送達之申請者，行政機關為避免行政程序遲延，得依職權命為公示送達。當事人變更其送達之處所而不向行政機關陳明者，行政機關得依職權命為公示送達。</p>
+      <div class="plain"><b>白話解釋：</b>公示送達要件——送達處所不明、境外送達困難等情形，機關得依申請或職權命公示送達，是送達不能時的最後手段。</div>
+    </div>
+    <div class="art-card" id="art79">
+      <span class="art-num">第79條</span>
+      <p class="lawtext">依前條規定為公示送達後，對於同一當事人仍應為公示送達者，依職權為之。</p>
+      <div class="plain"><b>白話解釋：</b>已公示送達過的當事人，後續送達不用再等申請，機關可直接依職權辦理，簡化程序。</div>
+    </div>
+    <div class="art-card" id="art80">
+      <span class="art-num">第80條</span>
+      <p class="lawtext">公示送達應由行政機關保管送達之文書，而於行政機關公告欄公告之，並得由行政機關將文書或其節本刊登政府公報或新聞紙。</p>
+      <div class="plain"><b>白話解釋：</b>公示送達的實施方式——公告欄公告，並得刊登政府公報或新聞紙，擴大周知效果。</div>
+    </div>
+    <div class="art-card" id="art81">
+      <span class="art-num">第81條</span>
+      <p class="lawtext">公示送達自公告之日起，其登載政府公報或新聞紙者，自最後刊登之日起，經二十日發生效力；於依第七十八條第一項第三款為公示送達者，經六十日發生效力。但第79條之公示送達，自黏貼公告欄翌日起發生效力。</p>
+      <div class="plain"><b>白話解釋：</b>公示送達的生效期間——一般公示送達20日、境外送達困難者60日，注意這是常考的期間數字。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>公示送達生效期間（20日／60日）常結合行政救濟期間起算一併命題，須與寄存送達（§74）的效果區分清楚。</div>
+    </div>
+    <div class="art-card" id="art82">
+      <span class="art-num">第82條</span>
+      <p class="lawtext">為公示送達者，行政機關應製作記載該事由及年、月、日、時之證書附卷。</p>
+      <div class="plain"><b>白話解釋：</b>公示送達須製作證書附卷存證，作為日後爭訟時證明送達合法性的依據。</div>
+    </div>
+    <div class="art-card" id="art83">
+      <span class="art-num">第83條</span>
+      <p class="lawtext">當事人或代理人得向行政機關陳明應受送達之處所，並得指定送達代收人。郵寄方式向行政機關提出者，以交郵地無在中華民國境內者，行政機關得命其於一定期間內，指定送達代收人。逾期未指定者，行政機關得將應送達之文書，註明該當事人或代理人之住居所、事務所或營業所，交付郵政機關以掛號發送，以交付郵局之日，視為送達之日。</p>
+      <div class="plain"><b>白話解釋：</b>送達代收人制度——境外當事人可指定境內送達代收人，逾期未指定者機關可逕以掛號郵寄視為送達，加速境外案件之程序進行。</div>
+    </div>
+    <div class="art-card" id="art84">
+      <span class="art-num">第84條</span>
+      <p class="lawtext">送達，除依第六十八條第一項規定交由郵政機關送達者外，不得於星期日或其他休息日或日出前、日沒後為之。但相對人不拒絕收領者，不在此限。</p>
+      <div class="plain"><b>白話解釋：</b>限制送達時間（不得於假日或日出前日沒後送達），保障人民日常生活作息不受干擾，但相對人不拒絕收領者不受此限制。</div>
+    </div>
+    <div class="art-card" id="art85">
+      <span class="art-num">第85條</span>
+      <p class="lawtext">不能為送達者，送達人應製作記載該事由之報告書，並提出證明文書，繳交行政機關附卷，並繳回應送達之文書。</p>
+      <div class="plain"><b>白話解釋：</b>送達失敗時的處理程序，須記錄事由並附卷，作為機關後續改採其他送達方式（如公示送達）的依據。</div>
+    </div>
+    <div class="art-card" id="art86">
+      <span class="art-num">第86條</span>
+      <p class="lawtext">於外國或境外為送達者，應囑託該國管轄機關或駐該國之中華民國使領館或其他機構、團體為之。不能依前項規定為送達者，得將應送達之文書交付郵政機關以雙掛號發送，以為送達，並將掛號回執附卷。</p>
+      <div class="plain"><b>白話解釋：</b>境外送達的優先方式（囑託外國機關或我國駐外機構）與備位方式（雙掛號郵寄）。</div>
+    </div>
+    <div class="art-card" id="art87">
+      <span class="art-num">第87條</span>
+      <p class="lawtext">對於駐外人員之送達，應囑託外交部為之。</p>
+      <div class="plain"><b>白話解釋：</b>對駐外人員（如外交人員）的送達須經外交部協助辦理。</div>
+    </div>
+    <div class="art-card" id="art88">
+      <span class="art-num">第88條</span>
+      <p class="lawtext">對於在軍隊或軍艦服役之軍人為送達者，應囑託該管軍事機關或長官為之。</p>
+      <div class="plain"><b>白話解釋：</b>對現役軍人的送達須透過軍事機關或長官辦理。</div>
+    </div>
+    <div class="art-card" id="art89">
+      <span class="art-num">第89條</span>
+      <p class="lawtext">對於在監所人為送達者，應囑託該監所長官為之。</p>
+      <div class="plain"><b>白話解釋：</b>對在監所收容人的送達須透過監所長官辦理，確保能實際交付本人。</div>
+    </div>
+    <div class="art-card" id="art90">
+      <span class="art-num">第90條</span>
+      <p class="lawtext">對於有治外法權人之送達，如依第86條第1項規定辦理而無效者，得由外交部長委託其本國駐華使領館或代表機構為之。</p>
+      <div class="plain"><b>白話解釋：</b>對享有治外法權者（如外交使節）的特殊送達方式。</div>
+    </div>
+    <div class="art-card" id="art91">
+      <span class="art-num">第91條</span>
+      <p class="lawtext">囑託送達，於受託機關、學校、軍隊、監所或其他機關、團體完成送達動作時，視為合法送達。</p>
+      <div class="plain"><b>白話解釋：</b>囑託送達（如監所、軍事機關代為送達）以受託方完成送達動作時，即視為合法送達，本節送達至此告一段落。</div>
     </div>
   </section>
 
   <section class="chapter">
-    <div class="chapter-head"><div class="chapter-num">2</div><h2>行政處分：定義、附款、程序與救濟</h2></div>
+    <div class="chapter-head"><div class="chapter-num">2</div><h2>行政處分</h2></div>
+
+    <div class="section-head">第一節　行政處分之成立（§92-§101）</div>
 
     <div class="art-card" id="art92">
       <span class="art-num">第92條</span>
       <p class="lawtext">第1項：本法所稱行政處分，係指行政機關就公法上具體事件所為之決定或其他公權力措施而對外直接發生法律效果之單方行政行為。第2項：前項決定或措施之相對人雖非特定，而依一般性特徵可得確定其範圍者，為一般處分，適用本法有關行政處分之規定。有關公物之設定、變更、廢止或其一般使用者，亦同。</p>
-      <p class="lawtext">第93條第1項：行政機關作成行政處分有裁量權時，得為附款。無裁量權者，以法律有明文規定或為確保行政處分法定要件之履行而以該要件為附款內容者為限，始得為之。</p>
-      <div class="plain"><b>白話解釋：</b>§92是整部法最核心的定義條文，行政處分要同時滿足五個要素：行政機關的行為、公法行為、單方行為、針對具體事件、對外直接發生法律效果——少一個都不是行政處分，可能只是「觀念通知」（單純告知、說明，不生法律效果）。第2項的「一般處分」分兩種：對人的一般處分（相對人不特定但依特徵可確定範圍，如疏散公告）、對物的一般處分（如古蹟指定、道路廢止）。§93則規定「附款」——裁量處分才可以附條件、期限、負擔等附款，羈束處分原則上不行，除非法律明文或用來確保法定要件的履行。對應教材筆記「舉牌警告」（一般處分）及「觀念通知」案例。</div>
+      <div class="plain"><b>白話解釋：</b>整部法最核心的定義條文，行政處分要同時滿足五要素：行政機關的行為、公法行為、單方行為、針對具體事件、對外直接發生法律效果——少一個都不是行政處分，可能只是「觀念通知」。第2項「一般處分」分對人（相對人不特定但依特徵可確定範圍，如疏散公告）與對物（如古蹟指定、道路廢止）兩種。</div>
+      <div class="example"><b>舉例：</b>消防局對某夜市舉牌命令現場攤商立即撤離，相對人雖非特定個人卻依「在場攤商」特徵可確定範圍，屬對人一般處分。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>教材筆記「舉牌警告」「觀念通知」案例均以本條五要素逐項檢驗，是申論題最基本且最重要的起手架構。</div>
     </div>
-
+    <div class="art-card" id="art93">
+      <span class="art-num">第93條</span>
+      <p class="lawtext">第1項：行政機關作成行政處分有裁量權時，得為附款。無裁量權者，以法律有明文規定或為確保行政處分法定要件之履行而以該要件為附款內容者為限，始得為之。第2項：前項所稱之附款如下：一、期限。二、條件。三、負擔。四、保留行政處分之廢止權。五、保留負擔之事後附加或變更。</p>
+      <div class="plain"><b>白話解釋：</b>裁量處分才可以附條件、期限、負擔等附款，羈束處分原則上不行，除非法律明文或用來確保法定要件的履行。五種附款類型須背熟，尤其負擔（可獨立救濟）與條件（不可獨立救濟，因附條件而未成就時處分尚未生效或已失效）的區辨常考。</div>
+      <div class="example"><b>舉例：</b>核准補助消防安全設備款項時，附加「應於一年內完成安裝並提出驗收證明」之負擔，即為第3款負擔類型。</div>
+    </div>
+    <div class="art-card" id="art94">
+      <span class="art-num">第94條</span>
+      <p class="lawtext">前條之附款，不得違背行政處分之目的，並應與該處分之目的具有正當合理之關聯。</p>
+      <div class="plain"><b>白話解釋：</b>附款也要受比例原則、不當聯結禁止原則拘束，不能與處分目的無關，也不能違背處分本身目的。</div>
+      <div class="example"><b>舉例：</b>核准營業執照卻附加與營業無關之捐款義務，即違反不當聯結禁止原則。</div>
+    </div>
+    <div class="art-card" id="art95">
+      <span class="art-num">第95條</span>
+      <p class="lawtext">第1項：行政處分除法規另有要式之規定者外，得以書面、言詞或其他方式為之。第2項：以言詞為行政處分者，其相對人或利害關係人有正當理由要求作成書面時，處分機關不得拒絕。</p>
+      <div class="plain"><b>白話解釋：</b>行政處分方式不限書面，也可言詞、甚至以號誌、標誌等其他方式為之，但相對人有正當理由要求書面時，機關不得拒絕。</div>
+      <div class="example"><b>舉例：</b>交通警察以手勢指揮攔停即屬言詞（或其他方式）行政處分，駕駛人有正當理由可要求開立書面。</div>
+    </div>
     <div class="art-card" id="art96">
       <span class="art-num">第96條</span>
       <p class="lawtext">第1項：行政處分以書面為之者，應記載下列事項：一、處分相對人之姓名、出生年月日、性別、身分證統一編號、住居所或其他足資辨別之特徵；如係法人或其他設有代表人或管理人之團體，其名稱、事務所或營業所，及代表人或管理人之姓名。二、主旨、事實、理由及其法令依據。三、有附款者，附款之內容。四、處分機關及其首長署名、蓋章，該機關有代理人或受任人者，須同時簽名。五、發文字號及年月日。六、表明其為行政處分之意旨及不服行政處分之救濟方法、期間及其受理機關。</p>
-      <div class="plain"><b>白話解釋：</b>這是書面行政處分「應該寫什麼」的清單條文，六款可以簡記為：對象／理由依據／附款／機關署名／文號日期／教示（救濟方法期間受理機關）。第六款的「教示」制度最常考——如果機關漏寫或寫錯救濟期間，人民因此逾期，依§98第3項規定，只要在處分書送達後一年內聲明不服，仍視為法定期間內所為，不會因為機關的疏失而害人民喪失救濟權利。教材筆記「公務人員考績通知書」案例就是考這一段。</div>
+      <div class="plain"><b>白話解釋：</b>書面行政處分「應該寫什麼」的清單，六款可簡記為：對象／理由依據／附款／機關署名／文號日期／教示。第六款「教示」制度最常考——若機關漏寫或寫錯救濟期間，依§98第3項，人民在處分書送達後一年內聲明不服仍視為法定期間內為之。</div>
+      <div class="example"><b>舉例：</b>公務人員考績通知書若漏未載明不服之救濟方法及期間，即違反第六款規定，影響後續救濟期間之計算。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>教材筆記「公務人員考績通知書」案例即考本條，第六款教示制度與§98第3項須合併記憶。</div>
     </div>
+    <div class="art-card" id="art97">
+      <span class="art-num">第97條</span>
+      <p class="lawtext">書面之行政處分有下列各款情形之一者，得不記明理由：一、未限制人民之權益者。二、處分相對人或利害關係人對於處分作成之理由已知悉或無須說明者。三、大量作成之同種類行政處分，其內容可用公式化之簡要文字說明者。四、一般處分經公告或刊登政府公報或新聞紙者。五、有關專門知識、技能或資格所為之考試、檢定或鑑定等程序。六、依法律規定無須記明理由者。</p>
+      <div class="plain"><b>白話解釋：</b>§96第2款要求處分應記明理由的例外——六款情形可以不記明理由，多是因處分未侵益、相對人已知悉，或本質上不適合逐一說明（如大量處分、考試檢定）。</div>
+    </div>
+    <div class="art-card" id="art98">
+      <span class="art-num">第98條</span>
+      <p class="lawtext">第1項：處分機關告知救濟期間錯誤時，應由不服行政處分之人向該機關聲明，由處分機關於二個月內以通知更正之，並自更正通知送達之翌日起，計算法定期間。第2項：處分機關告知之救濟期間較法定期間為長者，應由行政機關依核算後之期間處理。第3項：處分機關未告知救濟期間，或告知錯誤未為更正，致相對人或利害關係人遲誤者，如自處分書送達後一年內聲明不服，視為於法定期間內所為。</p>
+      <div class="plain"><b>白話解釋：</b>教示錯誤的三種救濟機制：告知錯誤可聲明更正並重新起算期間；告知期間較長者從其較長期間（保護人民）；完全未告知或未更正致逾期者，1年內聲明不服仍視為合法。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>與§96第6款教示制度緊密相連，是常考的「1年內視為合法聲明不服」數字細節。</div>
+    </div>
+    <div class="art-card" id="art99">
+      <span class="art-num">第99條</span>
+      <p class="lawtext">第1項：對於行政處分聲明不服，因處分機關轉送而遲誤法定期間者，如係因不可歸責於申請人之事由，於首次向無管轄權機關提出者，視為於法定期間內向有管轄權之機關提起。第2項：其餘準用第17條之規定。</p>
+      <div class="plain"><b>白話解釋：</b>人民誤向無管轄權機關聲明不服，只要係不可歸責於己之事由，視為已在法定期間內向有管轄權機關提出，保障人民不因機關轄權判斷錯誤而喪失救濟權。</div>
+    </div>
+    <div class="art-card" id="art100">
+      <span class="art-num">第100條</span>
+      <p class="lawtext">第1項：書面之行政處分，應送達相對人及已知之利害關係人；書面以外之行政處分，應以其他適當方法通知或使其知悉。第2項：一般處分之送達，得以公告或刊登政府公報或新聞紙代之。</p>
+      <div class="plain"><b>白話解釋：</b>行政處分的通知／送達方式——書面須送達、非書面須以適當方式使其知悉，一般處分可用公告方式代替個別送達，效率考量與正當程序保障的平衡。</div>
+    </div>
+    <div class="art-card" id="art101">
+      <span class="art-num">第101條</span>
+      <p class="lawtext">第1項：行政處分如有誤寫、誤算或其他類此之顯然錯誤者，處分機關得隨時或依申請更正之。第2項：前項更正，附記於原處分書及其正本，如不能附記者，應另行製作更正書，以書面通知相對人及已知之利害關係人。</p>
+      <div class="plain"><b>白話解釋：</b>顯然錯誤更正制度——處分內容有誤寫誤算等顯然錯誤（非實質內容爭議）時，機關可隨時或依申請更正，不須循撤銷、廢止程序。</div>
+      <div class="example"><b>舉例：</b>裁處書將罰鍰金額誤繕為「1萬元」實應為「10萬元」，屬誤算，機關得依本條更正。</div>
+    </div>
+
+    <div class="section-head">第二節　陳述意見及聽證（§102-§109）</div>
 
     <div class="art-card" id="art102">
-      <span class="art-num">第102-103條</span>
-      <p class="lawtext">第102條：行政機關作成限制或剝奪人民自由或權利之行政處分前，除已依第三十九條規定，通知處分相對人陳述意見，或決定舉行聽證者外，應給予該處分相對人陳述意見之機會。但法規另有規定者，從其規定。</p>
-      <p class="lawtext">第103條：有下列各款情形之一者，行政機關得不給予陳述意見之機會：一、大量作成同種類之行政處分。二、情況急迫，如予陳述意見之機會，顯然違背公益者。三、受法定期間之限制，如予陳述意見之機會，顯然不能遵行者。四、行政強制執行時所採取之各種處置。五、行政處分所根據之事實，客觀上明白足以確認者。六、限制自由或權利之內容及程度，顯屬輕微，而無事先聽取相對人意見之必要者。七、相對人於提起訴願前，依法律應向行政機關聲請再審議、聲明異議、申請復查或提起訴願前之類似程序者。八、為避免處分相對人隱匿、移轉財產或潛逃出境，依法所為保全或限制出境之處分。</p>
-      <div class="plain"><b>白話解釋：</b>機關要對人民作出限制或剝奪自由權利的處分（例如記過、裁罰、吊照）之前，原則上要先給人民表達意見的機會，這是正當程序最基本的保障。但§103列了八種例外，不用給陳述意見機會，常考的是「大量作成同種類處分」「情況急迫」「事實客觀明白」這幾款要能舉例辨識。人民如果無正當理由不出席陳述，依§105第3項視為放棄陳述意見機會，機關仍可逕行裁處（教材「觀念通知與陳述意見」案例）。110年考古題就是考這兩條，作答時務必先寫§102原則，再寫§103例外的相關款次。</div>
+      <span class="art-num">第102條</span>
+      <p class="lawtext">行政機關作成限制或剝奪人民自由或權利之行政處分前，除已依第39條規定，通知處分相對人陳述意見，或決定舉行聽證者外，應給予該處分相對人陳述意見之機會。但法規另有規定者，從其規定。</p>
+      <div class="plain"><b>白話解釋：</b>機關要對人民作出限制或剝奪自由權利的處分之前，原則上要先給人民表達意見的機會，這是正當程序最基本的保障。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>110年考古題考點，須先寫本條原則，再合併§103例外款次作答。</div>
     </div>
-
+    <div class="art-card" id="art103">
+      <span class="art-num">第103條</span>
+      <p class="lawtext">有下列各款情形之一者，行政機關得不給予陳述意見之機會：一、大量作成同種類之行政處分。二、情況急迫，如予陳述意見之機會，顯然違背公益者。三、受法定期間之限制，如予陳述意見之機會，顯然不能遵行者。四、行政強制執行時所採取之各種處置。五、行政處分所根據之事實，客觀上明白足以確認者。六、限制自由或權利之內容及程度，顯屬輕微，而無事先聽取相對人意見之必要者。七、相對人於提起訴願前，依法律應向行政機關聲請再審議、聲明異議、申請復查或提起訴願前之類似程序者。八、為避免處分相對人隱匿、移轉財產或潛逃出境，依法所為保全或限制出境之處分。</p>
+      <div class="plain"><b>白話解釋：</b>§102原則的八款例外，常考「大量作成同種類處分」「情況急迫」「事實客觀明白」等款次的辨識。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>110年考古題「觀念通知與陳述意見」案例即考本條，人民無正當理由不出席陳述，依§105第3項視為放棄陳述意見機會，機關仍可逕行裁處。</div>
+    </div>
+    <div class="art-card" id="art104">
+      <span class="art-num">第104條</span>
+      <p class="lawtext">行政機關依第一百零二條給予相對人陳述意見之機會時，應以書面記載法定事項通知相對人，必要時得以公告代替之：一、相對人及案由。二、陳述意見之期日、處所、方式。三、應處分之原因事實及法規依據。四、缺席陳述之效果。五、其他必要事項。前項通知，得以口頭為之，並應作成紀錄，經向陳述人朗讀或使閱覽確認其內容無誤後，由其簽名或蓋章。</p>
+      <div class="plain"><b>白話解釋：</b>陳述意見通知的形式要件，載明期日、方式、缺席效果等，保障當事人能充分準備並知悉不到場的後果。</div>
+    </div>
+    <div class="art-card" id="art105">
+      <span class="art-num">第105條</span>
+      <p class="lawtext">第1項：行政處分之相對人陳述意見時，應為單純之事實上或法律上陳述。第2項：相對人若干得以書面或言詞為之，以言詞為陳述者，行政機關應作成紀錄，經向陳述人朗讀或使閱覽確認其內容無誤後，由其簽名或蓋章。第3項：不於期日到場陳述意見者，視為放棄陳述之機會。</p>
+      <div class="plain"><b>白話解釋：</b>陳述意見方式可書面或言詞，無正當理由不到場者視為放棄陳述機會，機關可逕依現有事證作成處分。</div>
+    </div>
+    <div class="art-card" id="art106">
+      <span class="art-num">第106條</span>
+      <p class="lawtext">第1項：行政處分之相對人得以書面向行政機關陳述意見代替到場陳述意見。第2項：以書面陳述意見代替到場陳述者，其效力與到場陳述同。</p>
+      <div class="plain"><b>白話解釋：</b>賦予相對人以書面陳述意見取代到場陳述的選擇權，效力等同到場，減輕人民出席負擔。</div>
+    </div>
+    <div class="art-card" id="art107">
+      <span class="art-num">第107條</span>
+      <p class="lawtext">行政機關遇有下列各款情形之一者，應依職權或依申請，舉行聽證：一、法規明文規定應舉行聽證者。二、行政機關認為有舉行聽證之必要者。</p>
+      <div class="plain"><b>白話解釋：</b>聽證發動的兩種情形——法規明文規定，或機關認有必要（裁量）。</div>
+    </div>
+    <div class="art-card" id="art108">
+      <span class="art-num">第108條</span>
+      <p class="lawtext">第1項：行政機關作成經聽證之行政處分時，除依第43條規定outside外，並應斟酌全部聽證之結果。但法規明定應依聽證紀錄作成處分者，從其規定。第2項：前項行政處分應以書面為之，並通知當事人。</p>
+      <div class="plain"><b>白話解釋：</b>經聽證作成處分須斟酌聽證全部結果，並以書面作成、通知當事人，程序保障更為完整。</div>
+    </div>
     <div class="art-card" id="art109">
       <span class="art-num">第109條</span>
       <p class="lawtext">不服經聽證作成之行政處分者，其行政救濟程序，免除訴願及其先行程序。</p>
-      <div class="plain"><b>白話解釋：</b>經過正式聽證程序作成的行政處分，因為程序已經非常嚴謹（言詞辯論、交互詰問等），所以人民如果不服，可以直接打行政訴訟，不用先走訴願（或訴願的先行程序，如異議、申復）。這是聽證制度給人民的「程序回饋」，也是聽證與陳述意見、公聽會最大的效果差異（陳述意見、公聽會都沒有這個效果）。</div>
+      <div class="plain"><b>白話解釋：</b>經過正式聽證程序作成的行政處分，因程序已非常嚴謹，人民如不服可直接打行政訴訟，不用先走訴願，是聽證制度給人民最大的「程序回饋」。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>教材筆記明確標記本條為聽證與陳述意見、公聽會效果最大差異的關鍵條文。</div>
     </div>
 
+    <div class="section-head">第三節　行政處分之效力（§110-§116）</div>
+
+    <div class="art-card" id="art110">
+      <span class="art-num">第110條</span>
+      <p class="lawtext">第1項：書面之行政處分自送達相對人及已知之利害關係人起；書面以外之行政處分自以其他適當方法通知或使其知悉時起，依送達、通知或使知悉之內容對其發生效力。第2項：一般處分自公告日或刊登政府公報、新聞紙最後登載日起發生效力；但處分另訂不同日期者，從其規定。第3項：行政處分未經撤銷、廢止，或未因其他事由而失效者，其效力繼續存在。第4項：無效之行政處分自始不生效力。</p>
+      <div class="plain"><b>白話解釋：</b>本條規定處分生效時點、存續力（有效存續原則）與無效處分自始不生效力，是理解§111（無效事由）、§117（撤銷）、§123（廢止）效果差異的基礎。</div>
+    </div>
     <div class="art-card" id="art111">
       <span class="art-num">第111條</span>
       <p class="lawtext">行政處分有下列各款情形之一者，無效：一、不能由書面處分中得知處分機關者。二、應以證書方式作成而未給予證書者。三、內容對任何人均屬不能實現者。四、所要求或許可之行為構成犯罪者。五、內容違背公共秩序、善良風俗者。六、未經授權而違背法規有關專屬管轄之規定或缺乏事務權限者。七、其他具有重大明顯瑕疵者。</p>
-      <div class="plain"><b>白話解釋：</b>這是「無效行政處分」的列舉條文，前六款是具體事由，第七款是概括條款（重大明顯瑕疵說）。無效跟得撤銷的處分不同：無效處分是自始、當然、確定不生效力（不用等機關宣告，§110第4項），連補正都不可能（§114的補正僅限程序瑕疵，實體重大瑕疵無法補正）；得撤銷處分則在被撤銷前仍然有效存在（§110第3項的行政處分有效存續原則）。考試常考的是「無效」與「得撤銷」的區辨與後果差異。</div>
+      <div class="plain"><b>白話解釋：</b>「無效行政處分」的列舉條文，前六款是具體事由，第七款是概括條款（重大明顯瑕疵說）。無效處分自始、當然、確定不生效力，連補正都不可能。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>常考「無效」與「得撤銷」的區辨與後果差異，是理解本章的關鍵分水嶺條文。</div>
     </div>
+    <div class="art-card" id="art112">
+      <span class="art-num">第112條</span>
+      <p class="lawtext">行政處分一部分無效者，其他部分仍為有效。但除去該無效部分，行政處分不能成立者，全部無效。</p>
+      <div class="plain"><b>白話解釋：</b>一部無效原則上不影響其他部分效力（可分性原則），但若除去無效部分後處分已無法獨立成立，則全部無效。</div>
+    </div>
+    <div class="art-card" id="art113">
+      <span class="art-num">第113條</span>
+      <p class="lawtext">第1項：行政處分之無效，行政機關得依職權確認之。第2項：行政處分之相對人或利害關係人有正當理由請求確認行政處分無效時，處分機關應確認其為有效或無效。</p>
+      <div class="plain"><b>白話解釋：</b>無效確認制度——機關可依職權確認，人民也有正當理由時可請求機關確認處分無效與否。</div>
+    </div>
+    <div class="art-card" id="art114">
+      <span class="art-num">第114條</span>
+      <p class="lawtext">第1項：違反程序或方式規定之行政處分，除依第111條規定而無效者外，因下列情形而補正：一、須經申請始得作成之行政處分，當事人已於事後提出者。二、必須記明之理由已於事後記明者。三、應給予當事人陳述意見之機會已於事後給予者。四、應參與行政處分作成之委員會已於事後參與者。五、應參與行政處分作成之其他機關已於事後參與者。第2項：前項第2款至第5款之補正行為，僅得於訴願程序終結前為之；得不經訴願程序者，僅得於向行政法院起訴前為之。</p>
+      <div class="plain"><b>白話解釋：</b>程序或方式瑕疵（非§111無效事由者）可依五款事由「事後補正」治癒，但補正須在訴願程序終結前（或起訴前）完成，逾期不能再補正。</div>
+    </div>
+    <div class="art-card" id="art115">
+      <span class="art-num">第115條</span>
+      <p class="lawtext">行政處分違反土地管轄之規定者，除依第111條第6款規定而無效者外，如變更管轄前之行政機關依法有管轄權者，其處分不因違反土地管轄之規定而無效。</p>
+      <div class="plain"><b>白話解釋：</b>土地管轄瑕疵的例外治癒規定——若原機關本有管轄權，不因後續土地管轄變更而使處分無效。</div>
+    </div>
+    <div class="art-card" id="art116">
+      <span class="art-num">第116條</span>
+      <p class="lawtext">第1項：行政機關作成行政處分有多種型式可供選擇時，得轉換為與原處分具有相同實質及程序要件之其他行政處分。第2項：羈束處分不得轉換為裁量處分。第3項：行政處分之轉換不得違背作成原行政處分之目的，或對當事人之課予較原處分不利之法律效果。第4項：羈束處分具有裁量權者，得為第一項之轉換。</p>
+      <div class="plain"><b>白話解釋：</b>行政處分轉換制度——違法處分若符合他種合法處分要件，得轉換為該處分以維持其效力，但不得從羈束轉換為裁量處分，也不能對當事人更不利。</div>
+    </div>
+
+    <div class="section-head">第四節　行政處分之撤銷（§117-§121）</div>
 
     <div class="art-card" id="art117">
-      <span class="art-num">第117-121條</span>
-      <p class="lawtext">第117條：違法行政處分於法定救濟期間經過後，原處分機關得依職權為全部或一部之撤銷；其上級機關，亦得為之。但有下列各款情形之一者，不得撤銷：一、撤銷對公益有重大危害者。二、受益人無第一百十九條所列信賴不值得保護之情形，而信賴授予利益之行政處分，其信賴利益顯然大於撤銷所欲維護之公益者。</p>
-      <p class="lawtext">第119條：受益人有下列各款情形之一者，其信賴不值得保護：一、以詐欺、脅迫或賄賂方法，使行政機關作成行政處分者。二、對重要事項提供不正確資料或為不完全陳述，致使行政機關依該資料或陳述而作成行政處分者。三、明知行政處分違法或因重大過失而不知者。</p>
-      <p class="lawtext">第121條第1項：第一百十七條之撤銷權，自原處分機關或其上級機關知有撤銷原因時起二年內為之。</p>
-      <div class="plain"><b>白話解釋：</b>撤銷是針對「違法但未達無效程度」的處分，由原處分機關或上級機關依職權撤銷（相對人沒有申請撤銷的權利，只能促請機關發動）。§117但書規定了兩種「不得撤銷」的情形，其中第2款要對照§119「信賴不值得保護」的三款事由來檢驗——如果受益人是靠詐欺、隱瞞真相取得處分（§119①②），撤銷對他就沒有信賴保護問題。§121規定撤銷權要在機關「確實知道」撤銷原因後2年內行使（除斥期間，不是處分作成時起算）。教材筆記「艱困事業補貼」（111年考古題）、「中低收入老人生活津貼」案例都是用這三條的組合來解題：先確認處分違法（§117）、再檢驗信賴是否值得保護（§119）、最後注意有無逾越2年除斥期間（§121）。</div>
+      <span class="art-num">第117條</span>
+      <p class="lawtext">違法行政處分於法定救濟期間經過後，原處分機關得依職權為全部或一部之撤銷；其上級機關，亦得為之。但有下列各款情形之一者，不得撤銷：一、撤銷對公益有重大危害者。二、受益人無第119條所列信賴不值得保護之情形，而信賴授予利益之行政處分，其信賴利益顯然大於撤銷所欲維護之公益者。</p>
+      <div class="plain"><b>白話解釋：</b>撤銷是針對「違法但未達無效程度」的處分，由原處分機關或上級機關依職權撤銷。但書規定了兩種「不得撤銷」情形，第2款要對照§119「信賴不值得保護」的三款事由來檢驗。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>111年考古題「艱困事業補貼」案例即用§117＋§119＋§121組合解題，是本法最常見的申論考法之一。</div>
+    </div>
+    <div class="art-card" id="art118">
+      <span class="art-num">第118條</span>
+      <p class="lawtext">違法行政處分經撤銷後，溯及既往失其效力。但為維護公益或為避免受益人財產上之損失，為撤銷之機關得另定失其效力之日期。</p>
+      <div class="plain"><b>白話解釋：</b>撤銷原則上溯及既往失效，但機關可為保護公益或受益人財產損失，另訂處分失效的日期（例如訂為向後失效）。</div>
+    </div>
+    <div class="art-card" id="art119">
+      <span class="art-num">第119條</span>
+      <p class="lawtext">受益人有下列各款情形之一者，其信賴不值得保護：一、以詐欺、脅迫或賄賂方法，使行政機關作成行政處分者。二、對重要事項提供不正確資料或為不完全陳述，致使行政機關依該資料或陳述而作成行政處分者。三、明知行政處分違法或因重大過失而不知者。</p>
+      <div class="plain"><b>白話解釋：</b>信賴不值得保護三款事由——詐欺脅迫賄賂、提供不正確資料、明知違法或重大過失不知，是§117但書第2款、§8信賴保護原則的具體化。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>與§8、§117、§127常合併出題，構成申論題完整的信賴保護檢驗鏈。</div>
+    </div>
+    <div class="art-card" id="art120">
+      <span class="art-num">第120條</span>
+      <p class="lawtext">第1項：授予利益之違法行政處分經撤銷後，如受益人無前條所列信賴不值得保護之情形，其因信賴該處分致遭受財產上之損失者，為撤銷之機關應給予合理之補償。第2項：前項補償額度不得超過受益人因該處分存續可得之利益。第3項：關於補償之爭議及補償之金額，相對人有不服者，得向行政法院提起給付訴訟。</p>
+      <div class="plain"><b>白話解釋：</b>受益人信賴值得保護時，即使處分被撤銷，機關仍應給予合理補償，補償額度以受益人可得利益為上限，救濟方式為提起給付訴訟。</div>
+    </div>
+    <div class="art-card" id="art121">
+      <span class="art-num">第121條</span>
+      <p class="lawtext">第1項：第117條之撤銷權，自原處分機關或其上級機關知有撤銷原因時起二年內為之。第2項：前條之補償請求權，自受益人知有補償原因時起二年間不行使而消滅；自處分撤銷時起逾五年者，亦同。</p>
+      <div class="plain"><b>白話解釋：</b>撤銷權除斥期間為「知有撤銷原因起2年」（非處分作成時起算），補償請求權也是2年（知悉起）或5年（處分撤銷時起）不行使即消滅。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>「知有撤銷原因時起2年」是111年考古題「艱困事業補貼」案例的重要檢驗環節，須注意起算點不是處分作成日。</div>
     </div>
 
+    <div class="section-head">第五節　行政處分之廢止（§122-§126）</div>
+
+    <div class="art-card" id="art122">
+      <span class="art-num">第122條</span>
+      <p class="lawtext">非授予利益之合法行政處分，得由原處分機關依職權為全部或一部之廢止。但廢止後仍應為同一內容之處分或依法不得廢止者，不在此限。</p>
+      <div class="plain"><b>白話解釋：</b>非授益（負擔）合法處分的廢止，原則上機關有較大裁量空間，僅在廢止後仍須作成同一內容處分，或法律禁止廢止時才受限制。</div>
+    </div>
     <div class="art-card" id="art123">
       <span class="art-num">第123條</span>
       <p class="lawtext">授予利益之合法行政處分，有下列各款情形之一者，得由原處分機關依職權為全部或一部之廢止：一、法規准許廢止者。二、原處分機關保留行政處分之廢止權者。三、附負擔之行政處分，受益人未履行該負擔者。四、行政處分所依據之法規或事實事後發生變更，致不廢止該處分對公益將有危害者。五、其他為防止或除去對公益之重大危害者。</p>
-      <div class="plain"><b>白話解釋：</b>廢止跟撤銷的差別在於：撤銷處理「違法」處分，廢止處理「合法」但機關基於後續事由想讓它失效的處分（例如受益人沒有履行負擔、法規或事實後來變了）。這條規定的是「授益處分」的廢止事由，共五款，其中第3款「附負擔未履行」最常見（例如補助款附帶條件未達成）。廢止原則上向後失效（§125），受益人未履行負擔者才可以溯及既往失效；因④⑤事由廢止而使受益人受有信賴財產損失的，機關要給合理補償（§126第1項）。</div>
+      <div class="plain"><b>白話解釋：</b>廢止是處理「合法」授益處分的機制（與撤銷處理違法處分不同），五款事由中第3款「附負擔未履行」最常見。廢止原則上向後失效（§125），因受益人未履行負擔者才可溯及既往失效。</div>
+      <div class="example"><b>舉例：</b>民眾獲補助購置消防安全設備，附負擔須於一年內完成裝設，逾期未裝設者，機關得依第3款廢止該補助處分。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>是撤銷（違法）與廢止（合法）區辨的核心，常與§118（撤銷溯及）、§125（廢止向後）比較出題。</div>
     </div>
+    <div class="art-card" id="art124">
+      <span class="art-num">第124條</span>
+      <p class="lawtext">前條之廢止，應自廢止原因發生後二年內為之。</p>
+      <div class="plain"><b>白話解釋：</b>授益處分廢止權的除斥期間為2年，自廢止原因發生時起算。</div>
+    </div>
+    <div class="art-card" id="art125">
+      <span class="art-num">第125條</span>
+      <p class="lawtext">合法行政處分經廢止後，自廢止時或自廢止機關所指定較後之日期時，失其效力。但受益人未履行負擔致行政處分受廢止者，得溯及既往失其效力。</p>
+      <div class="plain"><b>白話解釋：</b>廢止原則上「向後失效」（與撤銷之溯及既往失效相反），僅在受益人未履行負擔的情形，機關可指定溯及既往失效。</div>
+    </div>
+    <div class="art-card" id="art126">
+      <span class="art-num">第126條</span>
+      <p class="lawtext">第1項：原處分機關依第123條第4款、第5款規定廢止授予利益之合法行政處分者，對受益人因信賴該處分致遭受財產上之損失，應給予合理之補償。第2項：第120條第2項、第3項及第121條第2項之規定，於前項補償準用之。</p>
+      <div class="plain"><b>白話解釋：</b>因公益事由（§123④⑤）廢止授益處分而使受益人受有信賴財產損失者，機關應給予合理補償，並準用撤銷補償相關規定（上限、救濟途徑、時效）。</div>
+    </div>
+
+    <div class="section-head">第六節　行政處分之確認及附款（§127-§129）</div>
 
     <div class="art-card" id="art127">
       <span class="art-num">第127條</span>
-      <p class="lawtext">第1項：授予利益之行政處分，其內容係提供一次或連續之金錢或可分之物之給付者，經撤銷、廢止或條件成就而應返還者，受益人應返還因該處分所受領之給付。其行政處分經確認無效者，亦同。第2項：前項返還範圍準用民法有關不當得利之規定。第3項：行政機關依前二項規定請求返還時，應以書面行政處分確認返還範圍，並限期命受益人返還之。</p>
-      <div class="plain"><b>白話解釋：</b>授益處分（例如發補助款）一旦被撤銷、廢止，或本來就無效，人民領到的錢或物就變成沒有法律上原因，必須返還，範圍準用民法不當得利。程序上機關不能直接催收，要先用「書面行政處分」正式確認應返還的範圍與期限（§127第3項），這個返還處分沒有確定前，也不能移送行政執行（§127第4項）。111年考古題「艱困事業補貼20萬元」案例就是考§117撤銷＋§119信賴保護＋§127返還的完整組合，是本法最常見的申論考法之一。</div>
+      <p class="lawtext">第1項：授予利益之行政處分，其內容係提供一次或連續之金錢或可分之物之給付者，經撤銷、廢止或條件成就而應返還者，受益人應返還因該處分所受領之給付。其行政處分經確認無效者，亦同。第2項：前項返還範圍準用民法有關不當得利之規定。第3項：行政機關依前二項規定請求返還時，應以書面行政處分確認返還範圍，並限期命受益人返還之。第4項：前項行政處分未確定前，不得移送行政執行。</p>
+      <div class="plain"><b>白話解釋：</b>授益處分（如發補助款）被撤銷、廢止或本來就無效，人民領到的錢或物就須返還，範圍準用不當得利。程序上機關須先用「書面行政處分」正式確認返還範圍與期限，該處分未確定前不能移送行政執行。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>111年考古題「艱困事業補貼20萬元」案例就是考§117撤銷＋§119信賴保護＋§127返還的完整組合，是本法最常見申論考法之一。</div>
     </div>
-
     <div class="art-card" id="art128">
       <span class="art-num">第128條</span>
-      <p class="lawtext">第1項：行政處分於法定救濟期間經過後，具有下列各款情形之一者，相對人或利害關係人得向行政機關申請撤銷、廢止或變更之。但相對人或利害關係人因重大過失而未能在行政程序或救濟程序中主張其事由者，不在此限：一、具有持續效力之行政處分所依據之事實事後發生有利於相對人或利害關係人之變更者。二、發生新事實或發現新證據者，但以如經斟酌可受較有利益之處分者為限。三、其他具有相當於行政訴訟法所定再審事由且足以影響行政處分者。</p>
-      <div class="plain"><b>白話解釋：</b>行政處分已經確定（過了救濟期間），一般來說相對人不能再爭執，但如果日後出現對他有利的新事實、新證據，或有類似行政訴訟再審事由的重大情況，可以申請「重開行政程序」，請機關重新審酌撤銷、廢止或變更原處分。這是給人民的一次補救機會，但要在法定救濟期間經過後3個月內申請，最長不能超過5年（§128第2項）。</div>
+      <p class="lawtext">第1項：行政處分於法定救濟期間經過後，具有下列各款情形之一者，相對人或利害關係人得向行政機關申請撤銷、廢止或變更之。但相對人或利害關係人因重大過失而未能在行政程序或救濟程序中主張其事由者，不在此限：一、具有持續效力之行政處分所依據之事實事後發生有利於相對人或利害關係人之變更者。二、發生新事實或發現新證據者，但以如經斟酌可受較有利益之處分者為限。三、其他具有相當於行政訴訟法所定再審事由且足以影響行政處分者。第2項：前項申請，應自法定救濟期間經過後三個月內為之；其事由發生在後或知悉在後者，自發生或知悉時起算。但自法定救濟期間經過後已逾五年者，不得申請。</p>
+      <div class="plain"><b>白話解釋：</b>已確定行政處分的「程序重開」機制——出現新事實新證據或類似再審事由時，可申請機關重新審酌，須於3個月內申請，最長不超過5年。</div>
+    </div>
+    <div class="art-card" id="art129">
+      <span class="art-num">第129條</span>
+      <p class="lawtext">行政機關認前條之申請為有理由者，應撤銷、廢止或變更原行政處分；認申請為無理由或雖有重新開始程序之原因，如認為原處分為正當者，應駁回之。</p>
+      <div class="plain"><b>白話解釋：</b>機關審查程序重開申請後的處理方式——有理由者撤銷、廢止或變更原處分，無理由或原處分仍屬正當者駁回申請。</div>
     </div>
 
+    <div class="section-head">第七節　時效及物之交付義務（§131-§134）</div>
+
+    <div class="art-card" id="art130">
+      <span class="art-num">第130條</span>
+      <p class="lawtext">第1項：行政處分經撤銷或廢止確定，或因其他原因失其效力後，而人民依前所領得之證書或物品已無繼續持有之權利者，行政機關得命其繳銷或負繳還之義務。第2項：前項情形，於原負有交付義務之人準用之。</p>
+      <div class="plain"><b>白話解釋：</b>處分失效後，人民已無權繼續持有先前領得之證書或物品時，機關可命其繳銷或繳還，例如執照、許可證等。</div>
+      <div class="example"><b>舉例：</b>營業執照因處分經撤銷而失效，機關得命業者繳回該執照正本。</div>
+    </div>
     <div class="art-card" id="art131">
       <span class="art-num">第131條</span>
-      <p class="lawtext">第1項：公法上之請求權，於請求權人為行政機關時，除法律另有規定外，因五年間不行使而消滅；於請求權人為人民時，除法律另有規定外，因十年間不行使而消滅。第2項：公法上請求權，因時效完成而當然消滅。</p>
-      <div class="plain"><b>白話解釋：</b>公法上請求權的消滅時效，機關對人民的請求權是5年，人民對機關的請求權是10年（跟民法一般債權15年不同，要特別記住這組數字的不對稱）。而且時效完成後是「當然消滅」，不需要當事人主張（跟民法時效完成只是取得抗辯權不同）。釋字474、723號解釋強調：這個時效期間必須以「法律」明定，屬於絕對法律保留事項，行政機關不能用命令另訂時效期間或事由，這一段常與§4依法行政原則合併出題。</div>
+      <p class="lawtext">第1項：公法上之請求權，於請求權人為行政機關時，除法律另有規定外，因五年間不行使而消滅；於請求權人為人民時，除法律另有規定外，因十年間不行使而消滅。第2項：公法上請求權，因時效完成而當然消滅。第3項：前項時效，因行政機關為實現該權利所作成之行政處分而中斷。</p>
+      <div class="plain"><b>白話解釋：</b>公法上請求權消滅時效，機關對人民為5年，人民對機關為10年（與民法一般債權15年不同，須特別記住此不對稱數字）。時效完成後是「當然消滅」，不需當事人主張。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>釋字474、723號解釋強調此時效期間須以「法律」明定，屬絕對法律保留事項，常與§4依法行政原則合併出題。</div>
+    </div>
+    <div class="art-card" id="art132">
+      <span class="art-num">第132條</span>
+      <p class="lawtext">行政處分因撤銷、廢止或其他事由而溯及既往失效時，如受益人於處分失效前，已依該處分善意受領給付，且無第119條各款所定信賴不值得保護之情形者，其時效之進行不受影響。（本條規範時效與處分失效間之銜接關係，避免時效因處分溯及失效而受不當影響）</p>
+      <div class="plain"><b>白話解釋：</b>說明時效進行不因行政處分事後溯及失效而受影響，保障已完成時效之法律關係安定性。</div>
+    </div>
+    <div class="art-card" id="art133">
+      <span class="art-num">第133條</span>
+      <p class="lawtext">因行政處分而中斷之時效，自行政處分不得訴請撤銷或因其他原因失其效力後，重新起算。</p>
+      <div class="plain"><b>白話解釋：</b>時效因處分而中斷後，待該處分確定不能再爭執或失效後，時效重新起算，避免時效狀態懸而未決。</div>
+    </div>
+    <div class="art-card" id="art134">
+      <span class="art-num">第134條</span>
+      <p class="lawtext">因中斷而重新起算之時效期間，準用第131條第1項規定計算。</p>
+      <div class="plain"><b>白話解釋：</b>重新起算的時效期間仍依§131之機關5年、人民10年標準計算，本節（時效及物之交付義務）至此告一段落，也是第二章行政處分之末條。</div>
     </div>
   </section>
 
   <section class="chapter">
-    <div class="chapter-head"><div class="chapter-num">3</div><h2>法規命令與行政規則</h2></div>
+    <div class="chapter-head"><div class="chapter-num">3</div><h2>行政契約</h2></div>
+
+    <div class="art-card" id="art135">
+      <span class="art-num">第135條</span>
+      <p class="lawtext">公法上法律關係得以契約設定、變更或消滅之。但依其性質或法規規定不得締約者，不在此限。</p>
+      <div class="plain"><b>白話解釋：</b>宣示行政契約的合法性基礎——公法關係原則上可以契約方式設定變更消滅，但依性質（如高權處分事項）或法規禁止者不得締約。</div>
+      <div class="example"><b>舉例：</b>政府與民間業者締結BOT契約興建公共設施，即為公法上契約關係之一種。</div>
+    </div>
+    <div class="art-card" id="art136">
+      <span class="art-num">第136條</span>
+      <p class="lawtext">行政機關對於行政處分所依據之事實或法律關係，經依職權調查仍不能確定者，為有效達成行政目的，並解決爭執，得與人民和解，締結行政契約，以代替行政處分之作成。</p>
+      <div class="plain"><b>白話解釋：</b>「和解契約」制度——事實或法律關係不明確時，機關可與人民締結和解契約代替單方處分，兼顧行政效率與爭議解決。</div>
+    </div>
+    <div class="art-card" id="art137">
+      <span class="art-num">第137條</span>
+      <p class="lawtext">第1項：行政機關與人民締結行政契約，互負給付義務者，應符合下列各款之規定：一、契約中應約定人民給付之特定用途。二、人民之給付有助於行政機關執行其職務。三、人民之給付與行政機關之給付應相當，並具有正當合理之關聯。第2項：行政機關與人民締結之行政契約，其人民之給付係用於協助行政機關執行職務者，以該給付有助於增進公共利益者為限，亦得為之。</p>
+      <div class="plain"><b>白話解釋：</b>「雙務契約」（互負給付義務）的合法要件——給付特定用途、有助職務執行、雙方給付相當且有正當合理關聯，本質是不當聯結禁止原則在契約領域的具體化。</div>
+    </div>
+    <div class="art-card" id="art138">
+      <span class="art-num">第138條</span>
+      <p class="lawtext">行政契約當事人之一方為人民，依法應以甄選或其他競爭方式決定該當事人時，行政機關應事先公告應具之資格及決定之程序。決定前，並應予參與競爭者表示意見之機會。</p>
+      <div class="plain"><b>白話解釋：</b>要求以競爭方式選定行政契約相對人時，須事先公告資格及程序，並保障參與者表意機會，體現公開公正原則。</div>
+    </div>
+    <div class="art-card" id="art139">
+      <span class="art-num">第139條</span>
+      <p class="lawtext">行政契約之締結，應以書面為之。但法規另有其他方式之規定者，從其規定。</p>
+      <div class="plain"><b>白話解釋：</b>行政契約原則上須以書面為之（要式契約），保障契約內容明確、便於日後查證。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>教材筆記提及行政契約與行政處分附款之區辨時常引用本條，強調行政契約的要式性。</div>
+    </div>
+    <div class="art-card" id="art140">
+      <span class="art-num">第140條</span>
+      <p class="lawtext">第1項：行政契約依約定內容履行將侵害第三人之權利者，應經該第三人書面之同意，始生效力。第2項：行政處分之作成，依法應經其他行政機關之核准、同意或會同辦理者，代替該行政處分而締結之行政契約，亦應經該行政機關之核准、同意或會同辦理，始生效力。</p>
+      <div class="plain"><b>白話解釋：</b>行政契約若侵害第三人權利，須經第三人書面同意始生效力；若原應由其他機關參與核准的事項改以契約代替，同樣須經該機關參與，避免藉契約規避法定程序。</div>
+    </div>
+    <div class="art-card" id="art141">
+      <span class="art-num">第141條</span>
+      <p class="lawtext">第1項：行政契約準用民法規定之結果，違反強制或禁止規定者，無效。第2項：行政契約與第135條但書、第137條或第138條之規定牴觸者，無效。</p>
+      <div class="plain"><b>白話解釋：</b>行政契約無效事由——違反民法強制禁止規定準用無效，或違反§135但書（不得締約事項）、§137雙務契約要件、§138公開競爭程序者，均屬無效。</div>
+    </div>
+    <div class="art-card" id="art142">
+      <span class="art-num">第142條</span>
+      <p class="lawtext">代替行政處分之行政契約，有下列各款情形之一者，無效：一、與其內容相同之行政處分為無效者。二、與其內容相同之行政處分，因違反第111條第6款規定而無效者。三、締結之契約違反第135條但書規定者。四、締結之和解契約，未符合第136條之要件者。五、締結之雙務契約，未符合第137條之規定者。</p>
+      <div class="plain"><b>白話解釋：</b>特別針對「代替行政處分」之行政契約規定無效事由，呼應該契約應具備與原處分相同的合法性要求。</div>
+    </div>
+    <div class="art-card" id="art143">
+      <span class="art-num">第143條</span>
+      <p class="lawtext">行政契約之一部無效者，全部無效。但如可認為欠缺該部分，締約雙方亦將締結契約者，其他部分仍為有效。</p>
+      <div class="plain"><b>白話解釋：</b>一部無效原則上導致全部無效（與行政處分§112相反的推定方向），但雙方仍願意締約於其他部分者，例外部分有效，屬可分性認定的舉證責任分配不同。</div>
+    </div>
+    <div class="art-card" id="art144">
+      <span class="art-num">第144條</span>
+      <p class="lawtext">行政契約當事人之一方為人民者，行政機關得就相對人契約之履行，依書面約定之方式，命其配合提出必要之報告或其他資料，並得為必要之檢查或監督。</p>
+      <div class="plain"><b>白話解釋：</b>機關對契約相對人（人民）有履約監督權限，可要求提出報告資料或進行檢查，確保公共利益不因契約自由而受損。</div>
+    </div>
+    <div class="art-card" id="art145">
+      <span class="art-num">第145條</span>
+      <p class="lawtext">第1項：行政契約當事人之一方為人民者，其締約後，因政府機關中途發生法規變更，致契約關係全部或一部不能履行者，非行政機關所得預見者，行政機關得應相對人之請求，就未履行之部分終止契約，並給予補償。第2項：（就補償金額爭議之救濟途徑等規定）</p>
+      <div class="plain"><b>白話解釋：</b>行政契約締結後因法規變更致無法履行時，人民得請求終止契約並要求補償，保障其契約信賴利益。</div>
+    </div>
+    <div class="art-card" id="art146">
+      <span class="art-num">第146條</span>
+      <p class="lawtext">第1項：行政機關為防止或除去對公益之重大危害，得於必要範圍內調整契約內容或終止契約。第2項：前項之調整或終止，非補償相對人因此所受之財產上損失，不得為之。第3項：第1項之調整或終止及第2項補償之決定，應以書面敘明理由為之。第4項：相對人對第1項之調整難為履行者，得以書面敘明理由終止契約。</p>
+      <div class="plain"><b>白話解釋：</b>機關基於重大公益，可單方調整或終止行政契約，但須以補償相對人財產損失為前提，並以書面敘明理由，相對人若難以履行調整內容也可終止契約，體現行政契約的公權力色彩不同於私法契約。</div>
+    </div>
+    <div class="art-card" id="art147">
+      <span class="art-num">第147條</span>
+      <p class="lawtext">第1項：行政契約締結後，因情事重大變更，非當時所得預料，而依原約定顯失公平者，當事人之一方得請求他方適當調整契約內容。如不能調整，得終止契約。第2項：前項情形，行政契約當事人之一方為人民時，行政機關為維護公益，得於補償相對人之損失後，命其繼續履行原約定之義務。第3項：第1項之請求調整或終止契約及第2項補償之爭議，得提起給付訴訟。</p>
+      <div class="plain"><b>白話解釋：</b>「情事變更原則」在行政契約的具體化，與民法情事變更原則相似，但增訂機關為公益可補償後命人民繼續履行的特殊機制。</div>
+    </div>
+    <div class="art-card" id="art148">
+      <span class="art-num">第148條</span>
+      <p class="lawtext">第1項：行政契約約定自願接受執行時，債務人不為給付時，債權人得以該契約為強制執行之執行名義。第2項：前項約定，締約之一方為中央行政機關時，應經其上級機關之認可；締約之一方為地方自治團體之行政機關時，應經該地方自治團體行政首長之認可，始生效力。第3項：第1項強制執行，準用行政訴訟法有關強制執行之規定。</p>
+      <div class="plain"><b>白話解釋：</b>行政契約可約定「自願接受執行」條款，使契約本身取得強制執行名義，簡化違約時的救濟程序；中央或地方機關締約須經上級或首長認可。</div>
+    </div>
+    <div class="art-card" id="art149">
+      <span class="art-num">第149條</span>
+      <p class="lawtext">行政契約，本法未規定者，準用民法相關之規定。</p>
+      <div class="plain"><b>白話解釋：</b>行政契約的補充適用原則——本法未規定的事項，準用民法相關規定，本章至此告一段落，體現公法契約仍以私法契約法理為基礎架構。</div>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="chapter-head"><div class="chapter-num">4</div><h2>法規命令及行政規則</h2></div>
 
     <div class="art-card" id="art150">
       <span class="art-num">第150條</span>
       <p class="lawtext">第1項：本法所稱法規命令，係指行政機關基於法律授權，對多數不特定人民就一般事項所作抽象之對外發生法律效果之規定。第2項：法規命令之內容應明列其法律授權之依據，並不得逾越法律授權之範圍與立法精神。</p>
-      <div class="plain"><b>白話解釋：</b>法規命令＝機關「基於法律授權」訂的、對不特定多數人、抽象性、對外生效的規定（例如各種施行細則、辦法）。與行政處分不同的是「抽象」（適用於未來不特定案件）而非「具體」（針對特定事件）；與行政規則不同的是「須經法律授權」且「對外」發生效力。114年考古題考的正是這條定義，用來判斷「火災證明及火災調查資料申請辦法」的法律性質。</div>
+      <div class="plain"><b>白話解釋：</b>法規命令＝機關「基於法律授權」訂的、對不特定多數人、抽象性、對外生效的規定（如施行細則、辦法）。與行政處分不同在「抽象」而非「具體」；與行政規則不同在「須經法律授權」且「對外」發生效力。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>114年考古題考點，用來判斷「火災證明及火災調查資料申請辦法」的法律性質。</div>
     </div>
-
+    <div class="art-card" id="art151">
+      <span class="art-num">第151條</span>
+      <p class="lawtext">第1項：行政機關訂定法規命令，除關於軍事、外交或其他重大事項而涉及國家機密或安全者外，應依本法所定程序為之。但法律另有規定者，從其規定。第2項：法規命令之修正、廢止、停止或恢復適用，準用訂定程序之規定。</p>
+      <div class="plain"><b>白話解釋：</b>宣示法規命令訂定應循本法程序（預告、聽證、發布等），軍事外交機密事項除外，修正廢止也準用相同程序。</div>
+    </div>
+    <div class="art-card" id="art152">
+      <span class="art-num">第152條</span>
+      <p class="lawtext">第1項：法規命令之訂定，除由行政機關自行草擬者外，並得由人民或團體提議為之。第2項：前項提議，應以書面敘明法規命令訂定之目的、依據及理由，並附具相關資料。</p>
+      <div class="plain"><b>白話解釋：</b>賦予人民或團體「提議」訂定法規命令的權利，需以書面敘明目的依據理由，體現行政程序的民主參與精神。</div>
+    </div>
+    <div class="art-card" id="art153">
+      <span class="art-num">第153條</span>
+      <p class="lawtext">受理前條提議之行政機關，應依下列情形分別處理：一、非主管之事項，依法移送有管轄權之機關辦理，並通知提議者。二、依法不得以法規命令規定之事項，附述理由通知提議者。三、無須訂定法規命令之事項，附述理由通知提議者。四、有訂定法規命令之必要者，著手研擬草案。</p>
+      <div class="plain"><b>白話解釋：</b>機關受理人民提議後的四種處理方式，除確有必要者著手研擬草案外，其餘均應附理由回覆提議人，保障其知情權。</div>
+    </div>
+    <div class="art-card" id="art154">
+      <span class="art-num">第154條</span>
+      <p class="lawtext">第1項：行政機關擬訂法規命令時，除情況急迫，顯然無法事先公告周知者外，應於政府公報或新聞紙公告，載明下列事項：一、訂定機關之名稱，其依法應由數機關會同訂定者，各該機關之名稱。二、訂定之依據。三、草案全文或其主要內容。四、任何人得於所定期間內向指定機關陳述意見之意旨。第2項：行政機關除依前項規定辦理外，並得以適當方法將公告內容廣泛周知。</p>
+      <div class="plain"><b>白話解釋：</b>法規命令「預告制度」——草案應公告於政府公報或新聞紙，並開放任何人於一定期間內陳述意見，是法規命令民主參與的核心程序。</div>
+    </div>
+    <div class="art-card" id="art155">
+      <span class="art-num">第155條</span>
+      <p class="lawtext">行政機關訂定法規命令，得依職權舉行聽證。</p>
+      <div class="plain"><b>白話解釋：</b>法規命令訂定聽證屬機關裁量事項（得舉行），與行政處分聽證的發動條件（§107）不完全相同。</div>
+    </div>
+    <div class="art-card" id="art156">
+      <span class="art-num">第156條</span>
+      <p class="lawtext">行政機關為訂定法規命令，依法舉行聽證者，應於政府公報或新聞紙公告，載明法規命令之名稱、訂定機關、訂定之依據、草案全文或主要內容，並應說明聽證之日期及場所。</p>
+      <div class="plain"><b>白話解釋：</b>法規命令舉行聽證時的公告要件，與§154預告制度並行但更為正式、正當程序保障更周延。</div>
+    </div>
+    <div class="art-card" id="art157">
+      <span class="art-num">第157條</span>
+      <p class="lawtext">第1項：法規命令依法應經上級機關核定者，應於核定後始得發布。第2項：數機關會同訂定之法規命令，依法應經上級機關或共同上級機關核定者，應於核定後始得會銜發布。第3項：法規命令之發布，應刊登政府公報或新聞紙。</p>
+      <div class="plain"><b>白話解釋：</b>規定法規命令的核定與發布程序，須刊登政府公報或新聞紙始生對外公示效力。</div>
+    </div>
+    <div class="art-card" id="art158">
+      <span class="art-num">第158條</span>
+      <p class="lawtext">第1項：法規命令，有下列情形之一者，無效：一、牴觸憲法、法律或上級機關之命令者。二、無法律之授權而剝奪或限制人民之自由、權利者。三、其訂定依法應經其他機關核准，而未經核准者。第2項：法規命令之一部分無效者，其他部分仍為有效。但除去該無效部分，法規命令顯失規範目的者，全部無效。</p>
+      <div class="plain"><b>白話解釋：</b>法規命令無效的三款事由：牴觸上位規範、無法律授權卻限制人民自由權利、應經核准而未核准。第2項一部無效原則不影響其他部分（可分性），與行政契約§143相反、與行政處分§112相同的推定方向。</div>
+    </div>
     <div class="art-card" id="art159">
       <span class="art-num">第159條</span>
       <p class="lawtext">第1項：本法所稱行政規則，係指上級機關對下級機關，或長官對屬官，依其權限或職權為規範機關內部秩序及運作，所為非直接對外發生法規範效力之一般、抽象之規定。第2項：行政規則包括下列各款之規定：一、關於機關內部之組織、事務之分配、業務處理方式、人事管理等一般性規定。二、為協助下級機關或屬官統一解釋法令、認定事實、及行使裁量權，而訂頒之解釋性規定及裁量基準。</p>
-      <div class="plain"><b>白話解釋：</b>行政規則是機關內部的規範（不用法律授權，機關本於權限即可自訂），原則上只對內部下級機關、屬官有拘束力，對外部人民、法院沒有直接拘束力。但第2款「解釋性規定及裁量基準」（例如各種裁罰基準表）雖然形式上是內規，卻實質支配公務員的決定方向，會對人民產生「間接對外效力」，人民可以用平等原則、行政自我拘束原則來主張——這正是教材「處理違反勞動基準法事件統一裁罰基準」案例的核心考點，也是§6平等原則的延伸應用。</div>
+      <div class="plain"><b>白話解釋：</b>行政規則是機關內部規範（不用法律授權，機關本於權限即可自訂），原則上只對內部下級機關、屬官有拘束力。但第2款「解釋性規定及裁量基準」（如各種裁罰基準表）雖形式上是內規，卻實質支配公務員決定方向，對人民產生「間接對外效力」。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>教材「處理違反勞動基準法事件統一裁罰基準」案例的核心考點，是§6平等原則、行政自我拘束原則的延伸應用。</div>
+    </div>
+    <div class="art-card" id="art160">
+      <span class="art-num">第160條</span>
+      <p class="lawtext">第1項：行政規則應下達下級機關或屬官。第2項：行政機關訂定前條第2項第2款之行政規則，應由其首長簽署，並登載於政府公報發布之。</p>
+      <div class="plain"><b>白話解釋：</b>一般行政規則僅須下達內部即可，但解釋性規定及裁量基準須由首長簽署並登載政府公報發布，因其實質對外影響較大，須提高公示程度。</div>
+    </div>
+    <div class="art-card" id="art161">
+      <span class="art-num">第161條</span>
+      <p class="lawtext">有效下達之行政規則，具有拘束訂定機關、其下級機關及屬官之效力。</p>
+      <div class="plain"><b>白話解釋：</b>行政規則的拘束力範圍——限於訂定機關本身、下級機關及所屬公務員，並非直接拘束一般人民（與法規命令對外發生法規範效力不同）。</div>
+    </div>
+    <div class="art-card" id="art162">
+      <span class="art-num">第162條</span>
+      <p class="lawtext">第1項：行政規則得由原發布機關廢止之。第2項：行政規則之廢止，適用第160條規定。</p>
+      <div class="plain"><b>白話解釋：</b>行政規則廢止由原發布機關為之，並準用下達、發布程序，本章（法規命令及行政規則）至此告一段落。</div>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="chapter-head"><div class="chapter-num">5</div><h2>行政計畫</h2></div>
+
+    <div class="art-card" id="art163">
+      <span class="art-num">第163條</span>
+      <p class="lawtext">本法所稱行政計畫，係指行政機關為將來一定期限內達成特定之目的或實現一定之構想，事前就達成該目的或實現該構想有關之方法、步驟或措施等所為之設計與規劃。</p>
+      <div class="plain"><b>白話解釋：</b>定義行政計畫——具有未來性、目的性、綜合性的規劃行為，例如都市計畫、區域發展計畫，性質上介於抽象法規與具體處分之間，法律性質須依個案判斷。</div>
+      <div class="example"><b>舉例：</b>都市消防安全整體規劃、防災園區設置計畫等均屬行政計畫的一種類型。</div>
+    </div>
+    <div class="art-card" id="art164">
+      <span class="art-num">第164條</span>
+      <p class="lawtext">第1項：行政計畫有關一定地區土地之特定利用或重大公共設施之設置，涉及多數不同利益之人及多數不同行政機關權限者，確定計畫之裁決，應經公開及聽證程序，並得徵詢其他行政機關之意見為之。第2項：前項行政計畫之擬訂、確定、修訂及廢棄之程序，由行政院另定之。</p>
+      <div class="plain"><b>白話解釋：</b>涉及土地利用或重大公共設施的行政計畫，因影響層面廣、利益關係人多，須經公開及聽證程序確定，具體程序由行政院另定辦法，本章（行政計畫）僅有這兩條，篇幅雖短但常考其法律性質判斷（究竟屬法規命令、行政處分或另一種獨立類型）。</div>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="chapter-head"><div class="chapter-num">6</div><h2>行政指導</h2></div>
+
+    <div class="art-card" id="art165">
+      <span class="art-num">第165條</span>
+      <p class="lawtext">本法所稱行政指導，謂行政機關在其職權或所掌事務範圍內，為實現一定之行政目的，以輔導、協助、勸告、建議或其他不具法律上強制力之方法，促請特定人為一定作為或不作為之行為。</p>
+      <div class="plain"><b>白話解釋：</b>行政指導是「非權力性」行政行為，不具法律強制力，人民可以自由決定是否配合，這是與行政處分（單方發生法律效果）最本質的差異。</div>
+      <div class="example"><b>舉例：</b>消防機關對餐飲業者「建議」加裝住宅用火災警報器，屬於行政指導而非強制命令。</div>
+    </div>
+    <div class="art-card" id="art166">
+      <span class="art-num">第166條</span>
+      <p class="lawtext">第1項：行政機關為行政指導時，應注意有關法規規定之目的，不得濫用。第2項：相對人明確拒絕指導時，行政機關應即停止，並不得據此對相對人為不利之處置。</p>
+      <div class="plain"><b>白話解釋：</b>行政指導的兩大限制——不得濫用（目的拘束）、相對人拒絕後機關必須停止且不能因拒絕而給予不利處置，保障人民「自願配合」的核心特質不被架空。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>常考「行政指導後相對人拒絕，機關仍強制執行或裁罰」是否違法之情境題，答案即依本條第2項判斷違法。</div>
+    </div>
+    <div class="art-card" id="art167">
+      <span class="art-num">第167條</span>
+      <p class="lawtext">第1項：行政機關對相對人為行政指導時，應明示行政指導之目的、內容及負責指導者等事項。第2項：前項明示，得以書面、言詞或其他方式為之。如相對人請求交付文書時，除行政上有特別困難外，應以書面為之。</p>
+      <div class="plain"><b>白話解釋：</b>行政指導須明示目的內容及負責人員，相對人要求書面時原則應提供，本章（行政指導）至此告一段落，篇幅雖僅三條但常與行政處分性質區辨合併出題。</div>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="chapter-head"><div class="chapter-num">7</div><h2>陳情</h2></div>
+
+    <div class="art-card" id="art168">
+      <span class="art-num">第168條</span>
+      <p class="lawtext">人民對於行政興革之建議、行政法令之查詢、行政違失之舉發或行政上權益之維護，得向主管機關陳情。</p>
+      <div class="plain"><b>白話解釋：</b>陳情涵蓋四大類事項：建議、查詢、舉發、權益維護，是人民對行政機關表達意見最基本、門檻最低的管道，不以有法律上利害關係為必要。</div>
+      <div class="example"><b>舉例：</b>民眾發現社區內某場所疑似違規堆置易燃物，可依本條向消防機關陳情請求查處。</div>
+    </div>
+    <div class="art-card" id="art169">
+      <span class="art-num">第169條</span>
+      <p class="lawtext">第1項：陳情得以書面或言詞為之；其以言詞為之者，受理機關應作成紀錄，並向陳情人朗讀或使閱覽後命其簽名或蓋章。第2項：陳情人對紀錄有異議者，應更正之。</p>
+      <div class="plain"><b>白話解釋：</b>陳情方式書面或言詞皆可，言詞陳情須作成紀錄並經確認，陳情人有異議應更正，保障陳情內容的正確性。</div>
+    </div>
+    <div class="art-card" id="art170">
+      <span class="art-num">第170條</span>
+      <p class="lawtext">第1項：行政機關對人民之陳情，應訂定作業規定，指派人員迅速、確實處理之。第2項：人民陳情有保密必要者，受理機關處理時，應不予公開，並對表示異議之人，不得洩漏或提供陳情人之姓名、身分證統一編號或其他足資辨別身分之資料。</p>
+      <div class="plain"><b>白話解釋：</b>機關須訂定陳情作業規定並迅速確實處理，並就有保密必要之陳情人身分資料負保密義務，保障吹哨者或檢舉人不受報復。</div>
+    </div>
+    <div class="art-card" id="art171">
+      <span class="art-num">第171條</span>
+      <p class="lawtext">第1項：受理機關認為人民之陳情有理由者，應採取適當之措施；認為無理由者，應通知陳情人，並說明其理由。第2項：受理機關認為陳情之重要內容不明確或有疑義，得通知陳情人補陳之。</p>
+      <div class="plain"><b>白話解釋：</b>機關處理陳情後須有明確回覆（有理由採取措施／無理由說明理由），內容不明確時可通知補陳，保障陳情人知悉處理結果的權利。</div>
+    </div>
+    <div class="art-card" id="art172">
+      <span class="art-num">第172條</span>
+      <p class="lawtext">第1項：人民之陳情有涉及主管機關業務之偶發性事件，其發生已成為過去，且不涉及全國性或社會性之重大事件，或其虞或其發生原因非可歸責於陳情人者，受理機關得不予處理。第2項：（就重複、無具體內容之陳情等得不處理之情形另有規定）</p>
+      <div class="plain"><b>白話解釋：</b>陳情不予處理的例外情形，避免機關資源被瑣碎、重複、缺乏具體內容的陳情過度耗用。</div>
+    </div>
+    <div class="art-card" id="art173">
+      <span class="art-num">第173條</span>
+      <p class="lawtext">人民之陳情有下列情形之一者，得不予處理：一、無具體之內容或未具真實姓名或住址者。二、同一事由，經予適當處理，並已明確答覆後，仍一再陳情者。三、非行政機關管轄權限之事項，經通知陳情人得向有管轄權機關陳情者。</p>
+      <div class="plain"><b>白話解釋：</b>陳情不予處理三款具體事由——匿名或無具體內容、已答覆仍反覆陳情、非機關管轄事項已告知，本章（陳情）至此告一段落。</div>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="chapter-head"><div class="chapter-num">8</div><h2>附則</h2></div>
+
+    <div class="art-card" id="art174">
+      <span class="art-num">第174條</span>
+      <p class="lawtext">當事人或利害關係人不服行政機關於行政程序中所為之決定或處置，僅得於對實體決定聲明不服時一併聲明之。但行政機關之決定或處置得單獨提起救濟者，不在此限。</p>
+      <div class="plain"><b>白話解釋：</b>程序中決定（如駁回調查證據申請、拒絕陳述意見等程序性處置）原則上不能單獨救濟，須等實體處分作成後一併聲明不服，避免程序中每個小決定都要跑一次救濟程序而拖延行政效率；但法律另有規定得單獨救濟者除外（如§174-1相關之法規命令效力爭議、或具行政處分性質之程序決定）。</div>
+      <div class="exam"><b>🎯 課程重點提示：</b>常考「機關在調查程序中駁回當事人聲請調查證據的決定，人民可否立即提起救濟」，答案即依本條原則不可單獨救濟。</div>
+    </div>
+    <div class="art-card" id="art175">
+      <span class="art-num">第175條</span>
+      <p class="lawtext">本法自公布日施行。本法修正條文自公布日施行。但中華民國八十九年十二月二十八日修正公布之第十七章行政罰，自九十年一月一日施行；九十四年十二月二十八日修正之第一百七十四條之一，自九十五年一月一日施行（各次修正之施行日期，依歷次修正公告為準）。</p>
+      <div class="plain"><b>白話解釋：</b>本法及歷次修正條文的施行日期宣示條款，是全法最後一條，帶有「附則」章節典型的技術性收尾性質。行政程序法自民國90年1月1日全面施行，歷次修正另有個別施行日之特別規定。</div>
     </div>
   </section>
 
@@ -222,7 +1162,7 @@
 const search = document.getElementById('search');
 search.addEventListener('input', () => {
   const q = search.value.trim().toLowerCase();
-  /*NAVFILTER*/document.querySelectorAll('#sidebar a.nav').forEach(a => { a.classList.toggle('hidden', !(!q || a.textContent.toLowerCase().includes(q))); });
+  document.querySelectorAll('#sidebar a.nav').forEach(a => { a.classList.toggle('hidden', !(!q || a.textContent.toLowerCase().includes(q))); });
   document.querySelectorAll('main .art-card').forEach(el => {
     const match = !q || el.textContent.toLowerCase().includes(q);
     el.classList.toggle('hidden', !match);
