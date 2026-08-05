@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>危機處理作業批改與教材分析・RP204小組彙整</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --bg:#f6f5f1; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66; --line:#e5e2da;
+    --crisis:#b2551f;  --crisis-tint:#fbeee0;
+    --good:#2f7a4f; --good-tint:#eaf5ee;
+    --warn:#a8761f; --warn-tint:#fbf3e2;
+    --gap:#a33a3a; --gap-tint:#faeaea;
+    --side-w:250px;
+  }
+  *{box-sizing:border-box;}
+  body { font-family: 'Microsoft JhengHei','Noto Sans TC',Arial,sans-serif; background: var(--bg); color: var(--ink); margin: 0; font-size: 15px; line-height: 1.9; --subj:var(--crisis); --subj-tint:var(--crisis-tint); display:flex; }
+
+  #sidebar{ width:var(--side-w); flex-shrink:0; height:100vh; position:sticky; top:0; overflow-y:auto; background:#fbf9f5; border-right:1px solid var(--line); padding:22px 14px; }
+  .side-title{ font-size:1.02rem; font-weight:700; color:var(--ink); margin:0 6px 4px; line-height:1.4; }
+  .side-sub{ font-size:.74rem; color:var(--sub); margin:0 6px 18px; line-height:1.6; }
+  .tab-btn{ display:block; width:100%; text-align:left; background:#fff; border:1px solid var(--line); border-radius:8px; padding:9px 12px; margin-bottom:7px; cursor:pointer; font-family:inherit; color:var(--ink); transition:background .15s,border-color .15s; }
+  .tab-btn:hover{ background:var(--crisis-tint); }
+  .tab-btn .t-num{ display:inline-block; background:var(--sub); color:#fff; border-radius:4px; padding:0 7px; font-size:.7rem; font-weight:700; margin-right:6px; }
+  .tab-btn .t-name{ font-size:.83rem; font-weight:700; }
+  .tab-btn .t-sub{ display:block; font-size:.7rem; color:var(--sub); margin-top:3px; padding-left:24px; }
+  .tab-btn.active{ background:var(--crisis); border-color:var(--crisis); }
+  .tab-btn.active .t-num{ background:#fff; color:var(--crisis); }
+  .tab-btn.active .t-name{ color:#fff; }
+  .tab-btn.active .t-sub{ color:#fce6d4; }
+  .grade-chip{ display:inline-block; font-size:.65rem; font-weight:700; padding:1px 7px; border-radius:999px; margin-left:4px; }
+  .g-good{ background:var(--good-tint); color:var(--good); }
+  .g-warn{ background:var(--warn-tint); color:var(--warn); }
+  .g-gap{ background:var(--gap-tint); color:var(--gap); }
+  .g-none{ background:#eee; color:#888; }
+
+  main{ flex:1; min-width:0; height:100vh; overflow-y:auto; padding:24px 30px 60px; }
+  .tab-pane{ display:none; max-width:900px; margin:0 auto; }
+  .tab-pane.active{ display:block; }
+
+  .header { background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--subj); padding: 22px 28px; border-radius: 10px; margin-bottom: 20px; box-shadow:0 1px 3px rgba(0,0,0,.05); }
+  .header h1 { margin: 0 0 6px 0; font-size: 1.3em; color: var(--ink); font-weight:700; }
+  .header .sub { font-size: 0.86em; color: var(--sub); }
+  .header .tag { display: inline-block; background: var(--subj); color: #fff; border-radius: 4px; padding: 2px 10px; font-size: 0.78em; margin-left: 8px; }
+
+  .q-block { background: var(--card); border: 1px solid var(--line); border-radius: 8px; margin-bottom: 20px; overflow: hidden; box-shadow:0 1px 2px rgba(0,0,0,.03); }
+  .q-header { background: var(--subj-tint); color: var(--subj); font-weight: bold; padding: 8px 16px; font-size: 0.95em; border-bottom:1px solid var(--line); }
+  .q-score { font-weight: normal; font-size: 0.85em; margin-left: 8px; opacity: 0.85; color:var(--sub); }
+  .q-text { padding: 14px 18px 10px 18px; color: var(--ink); font-size: 0.92em; line-height: 1.85; border-bottom: 1px solid var(--line); background: #fbfaf7; }
+  .q-text .situation { color: var(--sub); font-size: 0.9em; border-left: 3px solid var(--subj); padding-left: 12px; margin-bottom: 8px; }
+  .q-text .question { color: var(--ink); font-weight: bold; margin-top: 10px; }
+
+  .section-title { background: var(--subj-tint); border-left: 4px solid var(--subj); color: var(--subj); padding: 8px 16px; margin: 24px 0 12px 0; font-size: .98em; font-weight: bold; border-radius: 0 6px 6px 0; }
+
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 14px 18px; margin-bottom: 16px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.87em; }
+  th { background: var(--subj-tint); color: var(--subj); padding: 7px 10px; text-align: left; border-bottom:2px solid var(--subj); }
+  td { padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:nth-child(even) td { background: #faf9f6; }
+
+  .mark{ font-weight:700; }
+  .m-good{ color:var(--good); }
+  .m-warn{ color:var(--warn); }
+  .m-gap{ color:var(--gap); }
+
+  .verdict-box{ border-radius:8px; padding:14px 18px; margin:14px 0; }
+  .verdict-good{ background:var(--good-tint); border:1px solid var(--good); }
+  .verdict-warn{ background:var(--warn-tint); border:1px solid var(--warn); }
+  .verdict-good h3{ color:var(--good); margin:0 0 8px; font-size:.98em; }
+  .verdict-warn h3{ color:var(--warn); margin:0 0 8px; font-size:.98em; }
+
+  .better-box{ background:#fff; border:1px solid var(--subj); border-left:4px solid var(--subj); border-radius:0 8px 8px 0; padding:14px 18px; margin:14px 0; }
+  .better-box h3{ color:var(--subj); margin:0 0 8px; font-size:.98em; }
+
+  ul, ol { padding-left: 22px; margin: 6px 0; }
+  li { margin-bottom: 6px; font-size: 0.91em; }
+  li strong { color: var(--subj); }
+
+  .footer { text-align: center; font-size: 0.78em; color: var(--sub); margin-top: 30px; padding-top: 14px; border-top: 1px solid var(--line); }
+
+  .empty-note{ background:#f3f2ee; border:1px dashed var(--sub); border-radius:8px; padding:14px 18px; color:var(--sub); font-size:.9em; }
+
+  .orig-answer{ background:#fbfaf7; border:1px solid var(--line); border-left:4px solid var(--sub); border-radius:0 8px 8px 0; padding:16px 20px; margin:14px 0 20px; }
+  .orig-answer h3{ margin:0 0 10px; font-size:.92em; color:var(--sub); font-weight:700; }
+  .orig-answer p{ margin:0 0 10px; font-size:.9em; line-height:1.9; color:var(--ink); white-space:pre-wrap; }
+  .orig-answer p:last-child{ margin-bottom:0; }
+</style>
+</head>
+<body>
+<div style="position:fixed;top:8px;right:12px;z-index:9999;font-size:12px;color:#9a978d;background:rgba(255,255,255,.85);padding:2px 10px;border-radius:999px;pointer-events:none;">柯醒翰製作</div>
+
+<nav id="sidebar">
+  <div class="side-title">危機處理作業<br>批改與教材分析</div>
+  <div class="side-sub">RP204小組彙整・107-114年共8題（6題有作答）</div>
+
+  <button class="tab-btn active" data-tab="t0">
+    <span class="t-num">總</span><span class="t-name">總覽比較</span>
+    <span class="t-sub">8題完整度一覽</span>
+  </button>
+  <button class="tab-btn" data-tab="t107">
+    <span class="t-num">107</span><span class="t-name">談判7要素</span>
+    <span class="t-sub">瓦斯自殺人質・第六組</span>
+    <span class="grade-chip g-good">優秀</span>
+  </button>
+  <button class="tab-btn" data-tab="t109">
+    <span class="t-num">109</span><span class="t-name">談判準備＋基本原則</span>
+    <span class="t-sub">籃球場爆裂物挾持・補寫範文</span>
+    <span class="grade-chip g-good">已補寫</span>
+  </button>
+  <button class="tab-btn" data-tab="t110">
+    <span class="t-num">110</span><span class="t-name">CDM決策步驟</span>
+    <span class="t-sub">複合式危機・補寫範文</span>
+    <span class="grade-chip g-good">已補寫</span>
+  </button>
+  <button class="tab-btn" data-tab="t111a">
+    <span class="t-num">111</span><span class="t-name">降階策略・控制情勢</span>
+    <span class="t-sub">量販店持刀・第五組</span>
+    <span class="grade-chip g-warn">待改進</span>
+  </button>
+  <button class="tab-btn" data-tab="t111b">
+    <span class="t-num">111</span><span class="t-name">記者說明會</span>
+    <span class="t-sub">溪流救援・第四組</span>
+    <span class="grade-chip g-warn">中等</span>
+  </button>
+  <button class="tab-btn" data-tab="t112">
+    <span class="t-num">112</span><span class="t-name">記者說明會</span>
+    <span class="t-sub">煙火意外・第三組</span>
+    <span class="grade-chip g-good">優秀</span>
+  </button>
+  <button class="tab-btn" data-tab="t113">
+    <span class="t-num">113</span><span class="t-name">CDM五步驟</span>
+    <span class="t-sub">地震救災・第二組</span>
+    <span class="grade-chip g-good">優秀</span>
+  </button>
+  <button class="tab-btn" data-tab="t114">
+    <span class="t-num">114</span><span class="t-name">公共安全管理倡議</span>
+    <span class="t-sub">工廠倉儲火災・第一組</span>
+    <span class="grade-chip g-warn">待改進</span>
+  </button>
+</nav>
+
+<main id="main">
+
+  <!-- ══════ 總覽 ══════ -->
+  <div class="tab-pane active" id="t0">
+    <div class="header">
+      <h1>作業批改總覽<span class="tag">8題</span></h1>
+      <div class="sub">依 crisis-management-slides.html／教材筆記／歷屆考題解析交叉比對，逐題檢核架構完整度</div>
+    </div>
+
+    <div class="card">
+      <table>
+        <tr><th>年度</th><th>主題</th><th>對應教材框架</th><th>完整度</th><th>一句話結論</th></tr>
+        <tr><td>107</td><td>談判準備7要素</td><td>Ch7-一</td><td><span class="mark m-good">優秀</span></td><td>7要素全覆蓋，兩處明顯亮點（利益辨析、雙重最佳退路）</td></tr>
+        <tr><td>109</td><td>談判準備要素＋基本原則</td><td>Ch7-一＋二</td><td><span class="mark m-good">已補寫</span></td><td>原未分配，已補上範文；重點在嫌犯動機不明時如何先探詢真正利益</td></tr>
+        <tr><td>110</td><td>CDM決策步驟</td><td>Ch6-4</td><td><span class="mark m-good">已補寫</span></td><td>原未分配，已補上範文；四重複合危機的排序邏輯是本題核心</td></tr>
+        <tr><td>111</td><td>降階策略・控制情勢</td><td>Ch6-5</td><td><span class="mark m-warn">待改進</span></td><td>題目只問控制情勢，答案卻多寫一半同理心傾聽；「討論與建議」技巧理解有偏差</td></tr>
+        <tr><td>111</td><td>記者說明會（溪流救援）</td><td>Ch5-二</td><td><span class="mark m-warn">中等</span></td><td>只列8點非完整10項，部分用詞未精確對應教材</td></tr>
+        <tr><td>112</td><td>記者說明會（煙火意外）</td><td>Ch5-二</td><td><span class="mark m-good">優秀</span></td><td>6份中最完整，10項全覆蓋＋會前準備＋社群輿情三段式結構</td></tr>
+        <tr><td>113</td><td>CDM五步驟（地震）</td><td>Ch6-4</td><td><span class="mark m-good">優秀</span></td><td>內容最紮實專業，精準依題目自訂5步驟作答且逐步標註CDM理論概念</td></tr>
+        <tr><td>114</td><td>公共安全管理倡議</td><td>Ch3-三（三階段）</td><td><span class="mark m-warn">待改進</span></td><td>完全未使用「預防-應變-復原」三階段框架，法規引用密度不足</td></tr>
+      </table>
+    </div>
+
+    <div class="verdict-box verdict-good">
+      <h3>✓ 整體共同優點</h3>
+      <ul>
+        <li>每份答案都有掌握「先辨析理論意涵→具體套情境→提出策略」的三段式寫法，不是死背條列。</li>
+        <li>112、113題都有额外加碼段落（會前準備、跨機關合作），展現超越基本框架的實務理解，是最值得學習的兩份。</li>
+        <li>107題的「表面立場 vs 真正利益」辨析、113題的「CDM理論概念旁註」都是值得全組互相學習的寫作技巧。</li>
+      </ul>
+    </div>
+    <div class="verdict-box verdict-warn">
+      <h3>⚠ 整體共同待改進</h3>
+      <ul>
+        <li><strong>審題精確度</strong>：111題（控制情勢）是最明顯的審題偏差案例——題目只問一半框架，卻把兩半都寫了，等於擠壓了該深入的部分。</li>
+        <li><strong>框架錨定</strong>：114題完全沒有出現「預防」「應變」「復原」關鍵詞，即使內容合理，也可能因未扣緊「運用課程所學」而失分。</li>
+        <li><strong>法規引用密度</strong>：除113、114題外，多數答案較少引用具體法條，可以再增加專業度。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════ 107 ══════ -->
+  <div class="tab-pane" id="t107">
+    <div class="header">
+      <h1>107考題（第六組）<span class="tag">談判準備7要素</span><span class="tag" style="background:#2f7a4f">優秀</span></h1>
+      <div class="sub">50分・對應 crisis-management-slides.html Ch7-一「談判前的準備（7要素）」</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header">題目摘要 <span class="q-score">（50分）</span></div>
+      <div class="q-text">
+        <div class="situation">甲君遭詐騙1,700萬瀕臨破產，與家人爭吵後留遺書，抱小孩打開瓦斯欲自殺，警消到場，談判專家出動。</div>
+        <div class="question">請完整思考談判準備7要素（利益、可能達成的協議、最佳退路、公平合理性、溝通、關係、承諾），逐一擬出說服甲君的談判策略或具體作法。</div>
+      </div>
+    </div>
+
+    <div class="orig-answer">
+      <h3>📄 第六組原始作答全文</h3>
+      <p>本案中，甲君因遭詐騙，導致瀕臨破產、家庭關係惡化及債務壓力，產生強烈絕望感，並以開啟瓦斯、抱住孩子的方式企圖自殺。</p>
+      <p><b>一、利益：找出甲君真正想要解決的問題</b><br>先同理甲君的痛苦與壓力，避免否定或責備以開放式提問，引導其說出真正困境及最在意的人事物。協助釐清核心利益，如孩子安全、家庭完整、公司經營或討回公道。將「想死」重新引導為「希望停止痛苦、解決問題」，讓甲君看見其他選擇。強調目前面臨的是財務與法律問題，而非沒有出路的人生問題。運用孩子作為生命連結，鼓勵甲君接受警方、家屬及相關單位的協助，共同尋求解決方案。</p>
+      <p><b>二、可能達成的協議：提出多種可以選擇的安全方案</b><br>警方不宜立即要求甲君離開現場，而應採取漸進式協商，提供低威脅且可自行選擇的方案，降低戒心並維持其控制感。可依序引導甲君：(1)不點燃火源；(2)放下打火機；(3)開啟門窗降低瓦斯濃度；(4)先將孩子移至安全處或同意孩子先離開；(5)關閉瓦斯；(6)由信任親友陪同談話。談判時可強調：「現在不用一次解決所有問題，我們先確保你和孩子安全，再一起處理債務、公司及詐騙問題。」後續則協助聯繫詐欺偵查、法律扶助、債務協商、社政及心理衛生等資源，由相關專業單位共同提供協助，讓甲君看見問題仍有解決的可能。</p>
+      <p><b>三、最佳退路：預先規劃談判失敗時的安全處置</b><br>警方應同步規劃最佳退路，不可僅依賴談判。首先疏散鄰近住戶、擴大警戒區，禁止一切火源，並協請瓦斯公司評估外部斷氣；消防部署水線、救護及破門裝備，醫療單位待命；同時掌握屋內格局、甲君與孩子位置，持續監測瓦斯濃度及情緒變化。另部署具救援能力之警力，僅於甲君即將引爆瓦斯、傷害孩子或生命立即危險時介入，並限制親友任意接觸，以免刺激情緒。戰術介入應作為最後手段，不可於談判中以攻堅或強制手段威脅甲君，以免升高危機、增加引爆風險。</p>
+      <p><b>四、公平合理性：以法律、事實與客觀標準增加說服力</b><br>談判人員應先理解並肯定甲君遭詐騙後的不公平感受，避免否定其情緒，再引導其以合法方式尋求協助。可說明目前仍可透過司法程序、債務協商及社會資源處理財務問題，而生命一旦失去便無法挽回。同時提醒孩子具有獨立生命權，不應承擔成年人的債務與痛苦，鼓勵甲君優先讓孩子脫離危險。警方應客觀告知可提供詐欺偵辦、法律扶助、社政及心理支持等協助，保障其安全與尊嚴，但所有承諾均須在法定權限內，不虛假保證免責、不起訴或追回全部損失，以建立信任並維持談判可信度。</p>
+      <p><b>五、溝通：採取積極傾聽並降低情緒強度</b><br>談判初期重點在於維持對話，而非急於說服。由一名主要談判人員以平穩、緩慢語調持續溝通，避免多人同時勸說。透過情緒標示（如「你現在一定很無助」）、重述與摘要確認其想法，讓甲君感受到被理解；並以開放式提問，引導其表達壓力來源、需求及仍信任的人。當甲君情緒激動或哭泣時，適度運用沉默，給予整理情緒的空間，不急於打斷。全程避免責備、爭辯、說教或空泛安慰，如「想開一點」或「你太自私」，以免增加羞愧與對立情緒，降低談判成效。</p>
+      <p><b>六、關係：建立甲君與談判員之間的信任</b><br>談判人員應在短時間內建立信任關係，先自我介紹並固定稱呼，表明首要目標是保障甲君與孩子安全，而非責備或羞辱；盡量維持同一名談判人員持續溝通，尊重並耐心傾聽甲君陳述，對可協助事項明確承諾，無法做到的部分則誠實說明，以建立可信度。同時記住甲君提及的重要人物與事件，適時回應，展現理解。親友是否介入應經甲君同意，並由警方評估其關係及情緒狀態，優先安排甲君信任、情緒穩定且願意配合警方指示者參與，以支持、陪伴及共同面對問題為主，避免責備、施壓或情緒性言語，以免破壞談判關係。</p>
+      <p><b>七、承諾：將安全行動分解成小而明確的步驟</b><br>談判人員應採取逐步承諾策略，每次僅提出一項簡單、可完成的要求，逐步降低危機。建議順序為：(1)承諾暫不點火；(2)放下打火機；(3)打開門窗改善通風；(4)將孩子移至安全位置；(5)同意孩子先離開；(6)關閉瓦斯；(7)自行走出屋外；(8)接受醫療及心理協助。每完成一步，立即以具體且尊重的方式肯定其行動，例如指出其行為有助於保護孩子與降低危險，並持續強化其願意合作、尋求解決問題的意願。避免過度讚美或操控式語言，以維持信任關係並逐步促成安全脫困。</p>
+      <p><b>綜合談判流程示例</b><br>談判開始時，談判員先自我介紹並同理甲君遭詐騙、公司經營及家庭衝突所承受的巨大壓力，表明不急於要求其離開現場，而是願意傾聽並了解其最難承受的問題。接著引導甲君將注意力由「結束生命」轉向「保護孩子」，先完成打開窗戶、放下打火機等低風險行動，再逐步引導將孩子移至安全處、關閉瓦斯及自行走出屋外。過程中，適時肯定其每一步合作行為，並誠實說明警方可協助聯繫詐欺偵辦、法律扶助、債務協商及社政、醫療等資源，但不作超出權限的承諾。最後陪同甲君接受醫療及心理協助，持續提供後續支持，協助其以合法方式面對債務、家庭及法律問題。</p>
+      <p><b>結論</b><br>本案談判重點不在於以法律責任、親情壓力或武力迫使甲君屈服，而是透過同理、積極傾聽與建立信任，理解其真正需求，並提供可選擇的安全方案。談判人員應採逐步承諾策略，引導甲君依序完成「不點火、放下點火工具、開窗通風、保護並釋放孩子、關閉瓦斯、走出現場及接受協助」等行動，逐步降低危機。同時，警方須同步完成疏散警戒、瓦斯管制、消防戒護、醫療待命及必要戰術部署等安全措施，將談判、戰術與救援整合運作，以兼顧甲君、孩子、警消人員及社區居民的生命安全。</p>
+    </div>
+
+    <div class="section-title">📐 架構分析與建議寫法</div>
+    <div class="card">
+      <p style="margin:0;font-size:.92em;">標準寫法：7要素逐一展開，每項都要「①先說明這項要素的理論意涵②具體套入本案情境③提出具體策略」三段式；50分篇幅平均分配到7項即可，重點不在字數多寡而在每項是否都做到「情境化」而非只背名詞。</p>
+    </div>
+
+    <div class="section-title">✅ 逐點檢核</div>
+    <table>
+      <tr><th>要素</th><th>是否達到</th><th>說明</th></tr>
+      <tr><td>利益</td><td><span class="mark m-good">✓✓</span></td><td>清楚區辨「想死」的表面立場 vs「希望停止痛苦」的真正利益，並具體點出核心利益（孩子安全／家庭完整／討回公道）——這是本題最重要得分點，寫得相當到位</td></tr>
+      <tr><td>可能達成的協議</td><td><span class="mark m-good">✓</span></td><td>提出漸進式6步驟方案，具體可行，並串接後續資源（法律扶助／債務協商／社政）</td></tr>
+      <tr><td>最佳退路</td><td><span class="mark m-good">✓✓</span></td><td>同時涵蓋「警方自己的最佳退路」（疏散警戒／斷氣／戰術介入預備），這是很多考生會漏掉的雙重面向，是本答案最大亮點</td></tr>
+      <tr><td>公平合理性</td><td><span class="mark m-good">✓</span></td><td>扣到法律程序、孩子獨立生命權角度，並強調「承諾須在法定權限內」，避開了「亂開空頭支票」這個常見陷阱</td></tr>
+      <tr><td>溝通</td><td><span class="mark m-good">✓</span></td><td>積極傾聽技巧齊全，且列出「不該說的話」反例（想開一點／你太自私），展現對談判禁忌的理解</td></tr>
+      <tr><td>關係</td><td><span class="mark m-good">✓</span></td><td>建立信任、固定談判人員、親友介入評估都有涵蓋</td></tr>
+      <tr><td>承諾</td><td><span class="mark m-good">✓</span></td><td>逐步承諾策略、8步驟具體行動、正向肯定回饋，完整</td></tr>
+    </table>
+
+    <div class="verdict-box verdict-good">
+      <h3>整體評價</h3>
+      <p style="margin:0;">這是6份答案中最完整紮實的一份，7要素都做到三段式展開，且有兩處明顯亮點（利益要素的表面/真正利益區辨、最佳退路要素的雙重面向）。全篇沒有離題塞入CDM或其他框架，守題意做得很好。</p>
+    </div>
+
+    <div class="better-box">
+      <h3>✏️ 是否有更好的回答</h3>
+      <ul>
+        <li>結論處可以更明確點名「重利益不重立場、堅持客觀標準、把人與問題分開」這幾個談判基本原則的<strong>名稱</strong>，目前結論已經隱含這些精神但沒有明講，點名會讓閱卷者更快確認你懂理論脈絡。</li>
+        <li>可以在溝通或承諾要素中更明確點出「爭取時間、不急迫」這個談判實務核心概念（目前隱含在漸進式協商中，但沒有講明）。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════ 109 ══════ -->
+  <div class="tab-pane" id="t109">
+    <div class="header">
+      <h1>109考題（原未分配・已補寫範文）<span class="tag">談判準備要素＋基本原則</span><span class="tag" style="background:#2f7a4f">已補寫</span></h1>
+      <div class="sub">25分＋25分・對應 crisis-management-slides.html Ch7-一＋Ch7-二</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header">題目摘要 <span class="q-score">（共50分，分兩小題各25分）</span></div>
+      <div class="q-text">
+        <div class="situation">大學籃球賽1萬名觀眾席間，黑衣男子投擲爆裂物造成推擠踩踏，隨即挾持1名民眾提出談判要求。</div>
+        <div class="question">一、談判前的準備應包括哪些要素？（25分）　二、運用談判的基本原則，提出適當的談判策略。（25分）</div>
+      </div>
+      <div class="non-official" style="padding:7px 18px;background:#fff8ea;color:#9a6a1f;font-size:.82em;border-bottom:1px solid #f0e3c0;">⚠ 原未分配、無人作答，以下為補寫之參考範文，非官方標準答案</div>
+      <div class="ans-block" style="padding:14px 18px;">
+
+        <div class="ans-section" style="margin-bottom:18px;">
+          <div class="ans-title" style="font-weight:bold;color:var(--subj);margin-bottom:8px;font-size:.95em;padding:5px 0;border-bottom:1px dashed var(--line);">【前言】</div>
+          <p style="margin:0;font-size:.92em;">本案為觀眾席前方突發爆裂物攻擊，並隨即演變為隨機挾持人質之危機事件，嫌犯身分、動機均不明，具高度不確定性與時間壓力。運用談判前準備7要素及談判基本原則，說明如下。</p>
+        </div>
+
+        <div class="ans-section" style="margin-bottom:18px;">
+          <div class="ans-title" style="font-weight:bold;color:var(--subj);margin-bottom:8px;font-size:.95em;padding:5px 0;border-bottom:1px dashed var(--line);">【一、談判前的準備（7要素，扣合本案）】<span style="font-size:.8em;color:var(--sub);font-weight:normal;">（25分）</span></div>
+          <ul>
+            <li><strong>利益</strong>：嫌犯此舉可能出於社會不滿、個人恩怨或博取關注等多重動機，均尚待釐清；談判初期應優先透過對話探詢其真正訴求，避免僅以「挾持人質、要求談判」表面行為判斷其真正利益所在。</li>
+            <li><strong>可能達成的協議</strong>：可提出低風險、漸進式的選擇，如先確認人質安全狀況、要求釋放部分人質換取溝通管道開啟、承諾在合法範圍內轉達其訴求。</li>
+            <li><strong>最佳退路</strong>：警方應同步部署霹靂小組、狙擊警戒、醫療待命，並疏散周邊觀眾至安全距離；同時評估嫌犯之退路（若堅持不合作，其面臨之法律後果），使其認知拖延對己不利。</li>
+            <li><strong>公平合理性</strong>：向嫌犯表明警方將依法處理其訴求範圍內可協助之部分，但不接受任何暴力威脅作為談判籌碼；強調人質生命權優先於任何訴求。</li>
+            <li><strong>溝通</strong>：由專責談判人員以沉穩語調建立單一溝通管道，避免現場混亂人聲干擾嫌犯情緒，並持續蒐集其口語線索判斷其精神狀態與意圖。</li>
+            <li><strong>關係</strong>：談判人員應展現中立、非敵對姿態，逐步建立信任，避免現場警力過度靠近刺激嫌犯情緒。</li>
+            <li><strong>承諾</strong>：任何承諾均須量力而為、逐步兌現（如先確認一名人質獲釋才推進下一步溝通），不可承諾超出權限之條件。</li>
+          </ul>
+        </div>
+
+        <div class="ans-section" style="margin-bottom:18px;">
+          <div class="ans-title" style="font-weight:bold;color:var(--subj);margin-bottom:8px;font-size:.95em;padding:5px 0;border-bottom:1px dashed var(--line);">【二、談判基本原則之運用（8項，扣合本案）】<span style="font-size:.8em;color:var(--sub);font-weight:normal;">（25分）</span></div>
+          <ul>
+            <li><strong>儘量擴大總體利益</strong>：溝通目標設定在「人質全數平安獲釋、嫌犯不再造成傷害」雙贏結果，而非單方面要求嫌犯立即投降。</li>
+            <li><strong>善於營造公開公平局面</strong>：不因嫌犯行為手段惡劣而在言語上羞辱或激怒，維持理性對話空間。</li>
+            <li><strong>明確目標並善於妥協</strong>：核心目標「人質安全」不可妥協，但可在非核心事項（如是否安排特定人員到場溝通）上展現彈性。</li>
+            <li><strong>平等互利</strong>：讓嫌犯感受到其表達的訴求有被認真對待，而非單純被視為犯罪者對待。</li>
+            <li><strong>重利益不重立場</strong>：嫌犯表面立場是「談判要求」，真正利益可能是被聽見、被重視或解決某項具體不滿，談判應深入探詢其真正訴求。</li>
+            <li><strong>堅持客觀標準</strong>：以法律規定、公共安全考量作為溝通依據，而非情緒性爭辯。</li>
+            <li><strong>把人與問題分開</strong>：區分嫌犯個人（可能有其困境）與其違法行為（挾持、施放爆裂物）兩件事，避免人身攻擊式對話。</li>
+            <li><strong>提出對彼此有利的解決方案</strong>：如承諾在其配合下由司法程序處理，爭取從輕量刑之可能性，換取立即停止傷害行為。</li>
+          </ul>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title" style="font-weight:bold;color:var(--subj);margin-bottom:8px;font-size:.95em;padding:5px 0;border-bottom:1px dashed var(--line);">【結語】</div>
+          <p style="margin:0;font-size:.92em;">本案具高度不確定性與公共安全風險，談判人員須同步兼顧「準備要素的完整佈局」與「基本原則的溝通態度」，並與現場戰術警力密切協調，以人質安全為最高原則，逐步化解危機。</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="better-box">
+      <h3>✏️ 解題／寫法提醒</h3>
+      <ul>
+        <li>第一小題（25分）用7要素，第二小題（25分）用8項基本原則，這是<strong>兩張不同的表</strong>，不要混寫，篇幅平均分配。</li>
+        <li>本案嫌犯動機不明（不像107題甲君動機明確是財務及家庭壓力），談判時要特別強調「先探詢真正動機」這個步驟，這是與107題最大的情境差異，也是這題的出題巧思所在。</li>
+        <li>易漏分點：忘記在「最佳退路」中同時處理警方自己的退路（戰術部署）與嫌犯退路兩個面向——這正是107題答案的亮點，可以互相對照學習。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════ 110 ══════ -->
+  <div class="tab-pane" id="t110">
+    <div class="header">
+      <h1>110考題（原未分配・已補寫範文）<span class="tag">CDM決策步驟</span><span class="tag" style="background:#2f7a4f">已補寫</span></h1>
+      <div class="sub">30分・對應 crisis-management-slides.html Ch6-4「CDM模式內涵、程序及步驟」（教材原始5步驟命名）</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header">題目摘要 <span class="q-score">（30分）</span></div>
+      <div class="q-text">
+        <div class="situation">人群密集街道上，未戴口罩年輕人持開山刀打群架；精神障礙女子從旁走向人群；一部疾駛車輛停下，男子點燃不明物擲向人群；持刀男子忽然挾持該名女子。</div>
+        <div class="question">請運用「危機處理」課程所學，說明警察勤務安全危機決策模式，須具備哪些決策程序及步驟？</div>
+      </div>
+      <div class="non-official" style="padding:7px 18px;background:#fff8ea;color:#9a6a1f;font-size:.82em;border-bottom:1px solid #f0e3c0;">⚠ 原未分配、無人作答，以下為補寫之參考範文，非官方標準答案</div>
+      <div class="ans-block" style="padding:14px 18px;">
+
+        <div class="ans-section" style="margin-bottom:18px;">
+          <div class="ans-title" style="font-weight:bold;color:var(--subj);margin-bottom:8px;font-size:.95em;padding:5px 0;border-bottom:1px dashed var(--line);">【前言】</div>
+          <p style="margin:0;font-size:.92em;">本案為群架、精神障礙者、不明爆裂物、臨時人質挾持四重威脅同時並存之複合式危機，資訊不完整且時間壓力極大，運用CDM危機決策模式5步驟，說明處置程序及排序邏輯如下。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="cdm-step" style="background:#fbfaf7;border-left:4px solid var(--subj);border-radius:0 5px 5px 0;padding:12px 16px;margin-bottom:12px;">
+            <div style="font-weight:bold;color:var(--subj);margin-bottom:8px;font-size:.93em;"><span style="display:inline-block;background:var(--subj);color:#fff;border-radius:3px;padding:1px 8px;font-size:.82em;font-weight:bold;margin-right:8px;">①</span>蒐集與分析情資</div>
+            抵達現場立即透過在場民眾、監視器初步掌握四項狀況之相對位置與人數（持刀群架人數、精障女子位置、可疑車輛及男子動向、後續挾持事件發生點），並持續更新情資，確認是否有其他潛藏風險（如共犯、更多不明物品）。
+          </div>
+          <div class="cdm-step" style="background:#fbfaf7;border-left:4px solid var(--subj);border-radius:0 5px 5px 0;padding:12px 16px;margin-bottom:12px;">
+            <div style="font-weight:bold;color:var(--subj);margin-bottom:8px;font-size:.93em;"><span style="display:inline-block;background:var(--subj);color:#fff;border-radius:3px;padding:1px 8px;font-size:.82em;font-weight:bold;margin-right:8px;">②</span>評估風險威脅狀況</div>
+            四項威脅之立即致命性不同，須排序評估：<strong>挾持人質</strong>（立即生命威脅最高）＞<strong>精障女子</strong>可能受波及或情緒失控自傷（高度不確定性）＞<strong>不明爆裂物</strong>（已爆炸則需評估是否還有其他爆裂物）＞<strong>持刀群架</strong>（若未直接波及第三人，相對風險較前三者低）。
+          </div>
+          <div class="cdm-step" style="background:#fbfaf7;border-left:4px solid var(--subj);border-radius:0 5px 5px 0;padding:12px 16px;margin-bottom:12px;">
+            <div style="font-weight:bold;color:var(--subj);margin-bottom:8px;font-size:.93em;"><span style="display:inline-block;background:var(--subj);color:#fff;border-radius:3px;padding:1px 8px;font-size:.82em;font-weight:bold;margin-right:8px;">③</span>考量政策規範與職權限制</div>
+            對持刀群架者可依現行犯逮捕，惟優先順序須讓位給更高風險事件；對<strong>精障女子之處置應評估是否符合精神衛生法通報及協助送醫要件，避免逕以強制力處理</strong>；對挾持人質之嫌犯使用警械須符合警械使用條例比例原則；對不明爆裂物須確認是否已無後續爆炸風險，非專業人員不可貿然接近，必要時協請爆裂物處理小組到場。
+            <div class="law-ref" style="background:var(--subj-tint);border-left:3px solid var(--subj);padding:5px 12px;font-size:.82em;color:var(--ink);margin-top:8px;border-radius:0 3px 3px 0;">法規依據：精神衛生法第32條；警械使用條例第4條（比例原則）</div>
+          </div>
+          <div class="cdm-step" style="background:#fbfaf7;border-left:4px solid var(--subj);border-radius:0 5px 5px 0;padding:12px 16px;margin-bottom:12px;">
+            <div style="font-weight:bold;color:var(--subj);margin-bottom:8px;font-size:.93em;"><span style="display:inline-block;background:var(--subj);color:#fff;border-radius:3px;padding:1px 8px;font-size:.82em;font-weight:bold;margin-right:8px;">④</span>確定選項並決定最佳行動方案</div>
+            依「人質安全優先、其餘風險同步管控」原則，優先調派警力處理挾持人質事件（談判優先、戰術警力備便），同步以其他警力疏散圍觀民眾、對精障女子進行安全戒護與安撫（避免使用強制力刺激其情緒）、劃定爆裂物疑似地點警戒範圍禁止靠近，持刀群架部分視是否仍在進行而彈性調度警力壓制或先行嚇阻分散。
+          </div>
+          <div class="cdm-step" style="background:#fbfaf7;border-left:4px solid var(--subj);border-radius:0 5px 5px 0;padding:12px 16px;margin-bottom:12px;">
+            <div style="font-weight:bold;color:var(--subj);margin-bottom:8px;font-size:.93em;"><span style="display:inline-block;background:var(--subj);color:#fff;border-radius:3px;padding:1px 8px;font-size:.82em;font-weight:bold;margin-right:8px;">⑤</span>採取行動並持續審視與再評估</div>
+            行動同時保持與勤務指揮中心密切聯繫請求增援（含談判人員、爆裂物處理小組、精神衛生社工資源），持續監控四項事件之發展變化，若任一事件情勢惡化（如嫌犯傷害人質、爆裂物疑似增加），立即回頭重新評估風險並調整資源分配，形成持續循環之決策模式。
+          </div>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title" style="font-weight:bold;color:var(--subj);margin-bottom:8px;font-size:.95em;padding:5px 0;border-bottom:1px dashed var(--line);">【結語】</div>
+          <p style="margin:0;font-size:.92em;">CDM模式強調在資訊不完整、多重威脅並存之複合式危機中，仍須依五步驟循環決策，並以「人質安全」為最優先排序依據，同步兼顧其他風險之管控，方能在有限警力下有效化解危機。</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="better-box">
+      <h3>✏️ 解題／寫法提醒</h3>
+      <ul>
+        <li>這題沒有像113年題目那樣給定情境化步驟名稱，必須用<strong>教材原始CDM 5步驟</strong>（蒐集情資／評估風險／考量政策法規／確定方案／行動再評估）作答。</li>
+        <li>四重威脅的排序邏輯要在②③④中反覆呼應、講清楚「為什麼」，不能只是逐一描述四個狀況——這是本題與113年地震題最大的不同：113年是單一災害類型的資源分配，這題是<strong>異質多重威脅的排序判斷</strong>。</li>
+        <li>易漏分點：對精障女子的處置容易忽略「不宜直接使用強制力」這個專業倫理考量，題目特別安排這個角色，很可能就是要考「如何處理精神障礙者」這個細節，若只把她當作一般路人處理，會漏掉這個命題重點。</li>
+        <li>本題與先前設計的模擬練習題6（化工廠複合式危機）概念相近，都是「排優先序」型的CDM題，可互相對照練習排序邏輯的寫法。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════ 111 控制情勢 ══════ -->
+  <div class="tab-pane" id="t111a">
+    <div class="header">
+      <h1>111考題（第五組）<span class="tag">降階策略・控制情勢</span><span class="tag" style="background:#a8761f">待改進</span></h1>
+      <div class="sub">30分・對應 crisis-management-slides.html Ch6-5「孟菲斯模式與降階策略」</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header">題目摘要 <span class="q-score">（30分）</span></div>
+      <div class="q-text">
+        <div class="situation">量販店客人疑似情緒不佳，持刀具揮舞吼叫，員警甲君先行到場，後援未到前遭客人追逐，最終以盾牌壓制，事後查出該客人患有精神疾病。</div>
+        <div class="question">假如您是員警甲君，請運用「危機處理」課程所學降階策略模式之「控制情勢」技巧，說明可採取之行動步驟。</div>
+      </div>
+      <div class="non-official" style="padding:7px 18px;background:#fff8ea;color:#9a6a1f;font-size:.82em;border-bottom:1px solid #f0e3c0;">⚠ 提醒：降階策略／PMHC相關主題在108-114年真實考題中從未單獨命題過，此題性質上較接近課堂案例演練或補充練習題，而非官方歷屆考古題原題。</div>
+      <div class="ans-block" style="padding:14px 18px;"></div>
+    </div>
+
+    <div class="orig-answer">
+      <h3>📄 第五組原始作答全文</h3>
+      <p>甲君處理量販店精神疾病患者持刀揮舞事件，可依「降階策略模式」中的同理心傾聽與控制情勢兩大技巧，降低衝突、爭取時間，避免危機升高。</p>
+      <p><b>一、同理心傾聽</b><br>1.專心傾聽：以平舉雙手、掌心朝外等非敵意姿勢，配合眼神交流，展現關心與尊重，降低對方戒心。<br>2.避免先入為主：不因對方言語混亂或精神異常而流露輕蔑、批判態度，保持中立與尊重。<br>3.回應感受：以「告訴我發生什麼事」、「那一定讓你很害怕」等語句，引導對方表達情緒，建立信任。<br>4.適度沉默：維持安全距離，給予對方思考與冷靜時間，避免過度刺激。<br>5.澄清訊息：透過詢問確認對方真正訴求，避免因誤解造成情勢惡化。</p>
+      <p><b>二、控制情勢</b><br>1.預擬處置計畫：保持冷靜，利用推車、貨架等障礙物拉開距離，以空間換取時間，預想各種可能情境。<br>2.團隊合作：立即通報勤務指揮中心請求支援，待後援到場後分工合作，避免單獨與持刀者對峙。<br>3.積極自我對話：提醒自己受過專業訓練，穩定情緒，避免因恐慌而做出錯誤判斷。<br>4.認知能力限制：不逞英雄、不貿然近身壓制，交由配備盾牌等器材的支援警力共同制服嫌犯。<br>5.事後檢討精進：事件結束後與主管、同仁進行案例檢討，檢視戰術運用、分工及護送就醫等流程，作為未來危機處理的改進依據。</p>
+      <p><b>結論</b>：降階策略強調以溝通取代對抗，以同理心降低情緒、以戰術控制情勢，透過爭取時間、距離與團隊支援，在兼顧執勤安全與民眾生命安全下，和平化解危機。</p>
+    </div>
+
+    <div class="section-title">📐 架構分析與建議寫法</div>
+    <div class="card">
+      <p style="margin:0;font-size:.92em;">降階策略含「同理心傾聽」與「控制情勢」兩大技巧，但<strong>題目明確只問「控制情勢」</strong>。標準寫法應該是30分全部聚焦控制情勢5項技巧（預擬處理計畫腹案／運用團隊合作方式／運用積極的自我對話／認知個人能力的限制／討論與建議），每項至少展開3-4行並具體套用本案情境；前言最多一句話帶過「降階策略含兩大技巧，本題聚焦控制情勢」即可，不需要展開同理心傾聽的內容。</p>
+    </div>
+
+    <div class="section-title">✅ 逐點檢核</div>
+    <table>
+      <tr><th>要點</th><th>是否達到</th><th>說明</th></tr>
+      <tr><td>審題（只答控制情勢）</td><td><span class="mark m-gap">✗</span></td><td><strong>把同理心傾聽整段也寫進去了</strong>，等於只有一半篇幅是真正扣題的內容，另一半雖然理論正確但不是題目問的，在實際閱卷中可能被認為文不對題而扣分</td></tr>
+      <tr><td>①預擬處置計畫</td><td><span class="mark m-good">✓</span></td><td>有涵蓋（利用推車貨架拉開距離，以空間換取時間）</td></tr>
+      <tr><td>②團隊合作</td><td><span class="mark m-good">✓</span></td><td>有涵蓋（通報指揮中心請求支援，避免單獨對峙）</td></tr>
+      <tr><td>③積極自我對話</td><td><span class="mark m-good">✓</span></td><td>有涵蓋</td></tr>
+      <tr><td>④認知能力限制</td><td><span class="mark m-good">✓</span></td><td>有涵蓋（不逞英雄、交由配備盾牌支援警力）</td></tr>
+      <tr><td>⑤討論與建議</td><td><span class="mark m-warn">⚠</span></td><td>答案寫成「事後檢討精進」（案例檢討、流程改進），但教材原意的「討論與建議」是指<strong>危機處理「當下」</strong>與team members討論戰術選項、聽取建議，屬即時決策的一環，而非事後教育訓練——這是把「當下」與「事後」兩個不同時間點的概念混淆了</td></tr>
+    </table>
+
+    <div class="verdict-box verdict-warn">
+      <h3>整體評價</h3>
+      <p style="margin:0;">5項控制情勢技巧的名稱都有對應到，但存在兩個明顯風險點：①題目只問控制情勢卻多寫了同理心傾聽，擠壓該深入展開的篇幅；②「討論與建議」被誤解為事後檢討，而非當下的戰術討論。</p>
+    </div>
+
+    <div class="better-box">
+      <h3>✏️ 更好的回答建議</h3>
+      <ul>
+        <li>把同理心傾聽的篇幅完全移除，改為把控制情勢5項技巧展開得更充分，每項可以加一句「為什麼這樣做」的理論支撐句（例如：「以空間換取時間，是降階策略的核心精神，透過拉開距離降低對峙立即性威脅」）。</li>
+        <li>第⑤項建議改寫成：「當下與到場支援同仁討論戰術選項、聽取現場資深同仁建議，共同決定壓制或持續勸說之時機」，而不是事後案例檢討。</li>
+        <li>結論可明確點出控制情勢背後的核心精神——透過時間、距離、空間與戰術靈活性降低危機，展現理解而非只是背誦5個名詞。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════ 111 記者會 ══════ -->
+  <div class="tab-pane" id="t111b">
+    <div class="header">
+      <h1>111考題（第四組・官方真實考題）<span class="tag">記者說明會・溪流救援</span><span class="tag" style="background:#a8761f">中等</span></h1>
+      <div class="sub">30分・對應 crisis-management-slides.html Ch5-二「舉行記者會應注意原則（10項）」</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header">題目摘要 <span class="q-score">（30分）</span></div>
+      <div class="q-text">
+        <div class="situation">暑假期間大學生溪谷戲水烤肉，午後暴雨致溪水暴漲，3人受困沙洲，同學已拍攝直播上傳社群，預期大批媒體與SNG車將到場。</div>
+        <div class="question">假如您是轄區消防單位負責新聞媒體業務的人員，請說明召開現場記者說明會應注意原則為何。</div>
+      </div>
+      <div class="ans-block" style="padding:14px 18px;"></div>
+    </div>
+
+    <div class="orig-answer">
+      <h3>📄 第四組原始作答全文</h3>
+      <p>一、以搶救人命為最高原則，媒體採訪不得妨礙現場救援作業。<br>
+      二、儘速掌握災情並主動發布資訊，避免資訊真空及謠言擴散。<br>
+      三、發布內容應以查證事實為限，尚未確認之傷亡或事故原因不得任意臆測。<br>
+      四、指定發言人統一對外說明，避免多頭發言造成資訊不一致。<br>
+      五、對已確認資訊應誠實說明，未知事項則表示尚待查證，不隱瞞亦不卸責。<br>
+      六、對傷患姓名、傷勢及救援影像等資訊應審慎處理，以維護個人隱私。<br>
+      七、隨救援進度適時更新災情及處置資訊，使媒體掌握最新且正確的官方消息。<br>
+      八、發言應保持冷靜及同理態度，避免責怪受困者或與媒體爭辯。</p>
+    </div>
+
+    <div class="section-title">📐 架構分析與建議寫法</div>
+    <div class="card">
+      <p style="margin:0;font-size:.92em;">標準寫法：可用「新聞性5項標準」（衝擊性／關聯性／顯眼性／新奇性／衝突性）破題說明本案為何吸引媒體，接著逐一展開教材<strong>完整10項原則</strong>（不逃避媒體／公平對待媒體／誠實發布新聞／避免個人意見／簡要發布內容／提供具體描述／考慮媒體需求／確定媒體問題／保留應保密內容／勿與媒體辯論），每項都扣合本案「已被直播上傳社群、大批媒體將至」的特殊急迫性。</p>
+    </div>
+
+    <div class="section-title">✅ 逐點檢核</div>
+    <table>
+      <tr><th>教材原則</th><th>答案是否對應到</th><th>說明</th></tr>
+      <tr><td>不逃避媒體</td><td><span class="mark m-warn">⚠</span></td><td>②「儘速主動發布」有觸及精神，但未點名原則名稱</td></tr>
+      <tr><td>公平對待媒體</td><td><span class="mark m-gap">✗</span></td><td>答案中未出現</td></tr>
+      <tr><td>誠實發布新聞</td><td><span class="mark m-good">✓</span></td><td>③⑤兩點都有扣到（合併重複表達）</td></tr>
+      <tr><td>避免個人意見</td><td><span class="mark m-warn">⚠</span></td><td>③「以查證事實為限」隱含此意，但未獨立成點</td></tr>
+      <tr><td>簡要發布內容／提供具體描述</td><td><span class="mark m-gap">✗</span></td><td>答案中未出現</td></tr>
+      <tr><td>考慮媒體需求</td><td><span class="mark m-gap">✗</span></td><td>答案中未出現</td></tr>
+      <tr><td>確定媒體問題</td><td><span class="mark m-gap">✗</span></td><td>答案中未出現</td></tr>
+      <tr><td>保留應保密內容</td><td><span class="mark m-good">✓</span></td><td>⑥「傷患資訊隱私保護」對應良好，且扣合本案「大學生」個資保護</td></tr>
+      <tr><td>勿與媒體辯論</td><td><span class="mark m-warn">⚠</span></td><td>⑧「避免責怪、保持冷靜」有觸及但未完整</td></tr>
+      <tr><td>（額外加分）搶救優先於採訪</td><td><span class="mark m-good">✓ 加分</span></td><td>①是原始10項清單外的情境化延伸，扣合「救援仍在進行中」的特殊性，是很好的補充</td></tr>
+    </table>
+
+    <div class="verdict-box verdict-warn">
+      <h3>整體評價</h3>
+      <p style="margin:0;">方向大致正確且有不錯的情境化巧思（搶救優先、隱私保護），但覆蓋度不足——只列8點，其中至少4項教材原則（公平對待媒體、簡要發布、考慮媒體需求、確定媒體問題）完全沒出現，比起112題的答案結構完整度明顯較弱。</p>
+    </div>
+
+    <div class="better-box">
+      <h3>✏️ 更好的回答建議</h3>
+      <ul>
+        <li>建議明確列出完整10項原則的<strong>教材原用詞</strong>，不要用意譯方式改寫，讓閱卷者能直接對照到教材給分點。</li>
+        <li>加入「新聞性5項標準」作為前言破題（大學生年輕生命、直播畫面衝擊性強、天災不可抗力具新奇性）。</li>
+        <li>可參考112題答案的「會前準備與統一發言」段落結構，先講發言人指定／資料彙整，再逐條列10項原則，讓文章層次更完整。</li>
+        <li>「公平對待媒體」「考慮媒體需求」「確定媒體問題」這3項務必補上，是目前最大的缺口。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════ 112 ══════ -->
+  <div class="tab-pane" id="t112">
+    <div class="header">
+      <h1>112考題（第三組・官方真實考題）<span class="tag">記者說明會・煙火意外</span><span class="tag" style="background:#2f7a4f">優秀</span></h1>
+      <div class="sub">30分・對應 crisis-management-slides.html Ch5-二＋媒體互動7點＋新聞性5標準</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header">題目摘要 <span class="q-score">（30分）</span></div>
+      <div class="q-text">
+        <div class="situation">夏季晚風音樂晚會煙火傾倒射向人群，數十人踩踏傷，含8名孩童及3位地方重要人士重傷，6家媒體即時連線（含1家關係良好、1家常負面報導），另有民眾直播質疑管制不當、救災過慢。</div>
+        <div class="question">請說明召開記者說明會時應注意原則為何。</div>
+      </div>
+      <div class="ans-block" style="padding:14px 18px;"></div>
+    </div>
+
+    <div class="orig-answer">
+      <h3>📄 第三組原始作答全文（擬答，教材第2-16至2-21頁）</h3>
+      <p>本案具有傷者眾多、孩童及地方重要人士受傷、媒體即時轉播及社群直播等特性，極具衝擊性、顯眼性及衝突性。消防機關應迅速召開記者說明會，主動提供正確資訊，避免資訊真空造成錯誤揣測。應注意如下：</p>
+      <p><b>一、會前準備與統一發言</b><br>應由甲市政府統籌消防、警察、衛生醫療及活動主辦單位資訊，指定固定新聞發言人，採單一窗口對外說明。事先確認報案、派遣、到場、救護分級、送醫及傷亡人數等資料，製作時間軸及預擬問答，避免各單位說法不一。發言人亦應了解攝影機及麥克風可能全程直播，發言必須簡潔、審慎。</p>
+      <p><b>二、召開記者說明會應注意原則</b><br>
+      1. 不要逃避媒體——應主動、即時面對媒體，先說明已確認的事實及救援作為，避免媒體因無正式消息而採信現場傳言或網路直播內容。<br>
+      2. 公平對待媒體——不得因新聞台乙與消防單位關係良好即提供獨家消息，也不得因新聞台丙經常負面報導而限制採訪。六家媒體均應獲得相同資料與採訪機會。<br>
+      3. 誠實發布新聞——應據實說明事故及救援情形，不隱瞞、不誇大。對於尚未確認事項，不宜回答「無可奉告」，可明確表示「目前仍在查證，確認後將立即公布」。<br>
+      4. 避免個人意見——發言內容應代表機關立場，不得對煙火傾倒原因、活動管制責任或人員疏失自行推測，也不應評論其他機關或承包廠商。<br>
+      5. 簡要發布內容——掌握「事故發生、消防反應、傷患救治、現場管制及後續調查」等主題，回答簡單明確，避免過多專業術語或無關說明。<br>
+      6. 提供具體描述——可說明事故發生時間、消防受理及到場時間、出動人車數量、傷患檢傷分類、送醫人數與收治醫院等具體資料，以回應救災過慢及送醫延遲的質疑。<br>
+      7. 考量媒體需求——配合截稿及直播需要，提供新聞稿、事故時間軸、救援統計及可公開影像，並預告下一次更新時間；必要時由現場指揮官或醫療專業人員補充說明。<br>
+      8. 確定媒體問題——對於問題不清、帶有假設或誤導性的提問，應請記者重述或確認問題；一次回答一項問題，避免同時回答多人提問而造成混淆。<br>
+      9. 保留應保密內容——對於事故原因調查、個人醫療資料、孩童身分及未經家屬確認的傷亡名單，不得任意公開。三位地方重要人士亦應與其他傷者採相同隱私保護標準。<br>
+      10. 勿與媒體辯論——面對新聞台丙或其他記者尖銳質疑，應保持平常心，以具體資料澄清，不與記者爭執；若問題偏離主題，應將焦點導回事故事實與救援處置。</p>
+      <p><b>三、社群輿情處理</b><br>針對民眾直播質疑現場管制、消防到場及送醫延遲，應立即蒐集並核對內容，在官方網站及社群平台同步公布經確認的事故時間軸與救護情形；如發現錯誤資訊，應迅速澄清。說明會開始時宜先表達對傷者及家屬的關懷，再說明救援措施、目前進度及後續檢討，展現同理、誠信與負責態度。</p>
+      <p>總而言之，記者說明會應把握「主動迅速、單一發言、資訊正確、公平公開、保護隱私、持續更新」原則，避免資訊落差使危機進一步擴大。</p>
+    </div>
+
+    <div class="section-title">✅ 逐點檢核</div>
+    <table>
+      <tr><th>要點</th><th>是否達到</th><th>說明</th></tr>
+      <tr><td>前言破題</td><td><span class="mark m-good">✓✓</span></td><td>明確點出「衝擊性、顯眼性、衝突性」三項新聞性標準，並準確引註「教材第2-16至2-21頁」——6份答案中唯一標注教材頁碼者，展現非常紮實的準備</td></tr>
+      <tr><td>會前準備與統一發言</td><td><span class="mark m-good">✓✓</span></td><td>額外新增段落，把消防／警察／衛生醫療／主辦單位資訊統籌、發言人指定、時間軸製作、預擬問答都寫進去，超越基本10項原則的加分內容</td></tr>
+      <tr><td>10項原則全覆蓋</td><td><span class="mark m-good">✓✓✓</span></td><td>完整寫滿全部10項，且每一項都精確扣合本案細節（新聞台乙丙差別待遇陷阱、孩童與重要人士隱私保護、如何回應救災過慢質疑）——6份答案中唯一完整覆蓋全部10項者</td></tr>
+      <tr><td>社群輿情處理</td><td><span class="mark m-good">✓</span></td><td>額外加碼段落，對應112年真題「社群直播質疑」這個關鍵情境要素</td></tr>
+      <tr><td>結尾統整</td><td><span class="mark m-good">✓</span></td><td>用「主動迅速、單一發言、資訊正確、公平公開、保護隱私、持續更新」六字訣收尾</td></tr>
+    </table>
+
+    <div class="verdict-box verdict-good">
+      <h3>整體評價</h3>
+      <p style="margin:0;">這是<strong>6份答案中寫得最完整、最扎實的一份</strong>，結構清晰（會前準備→10項原則→社群輿情→結論），10項原則全部覆蓋且逐條情境化，還額外處理了「媒體差別待遇」這個題目埋藏的陷阱，最值得當作範本學習寫作結構。</p>
+    </div>
+
+    <div class="better-box">
+      <h3>✏️ 是否有更好的回答（已接近滿分，僅供錦上添花）</h3>
+      <ul>
+        <li>全文完全沒有引用任何法條，可補一句相關法規依據（如災害防救法對緊急應變資訊公開之相關規定）增加專業度，相較113題有引用消防法第13條，這是相對欠缺的一點。</li>
+        <li>「公平對待媒體」已抓到差別待遇陷阱，可再補一句「即便新聞台丙過去報導偏負面，仍應提供同等資料與提問機會，以昭公信」，讓論述更完整。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════ 113 ══════ -->
+  <div class="tab-pane" id="t113">
+    <div class="header">
+      <h1>113考題（第二組・官方真實考題）<span class="tag">CDM五步驟・地震救災</span><span class="tag" style="background:#2f7a4f">優秀</span></h1>
+      <div class="sub">30分・對應 crisis-management-slides.html Ch6-4「CDM模式內涵、程序及步驟」（題目自訂情境化步驟名稱）</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header">題目摘要 <span class="q-score">（30分）</span></div>
+      <div class="q-text">
+        <div class="situation">上午9:30大地震，分隊廳舍搖晃1隊員受傷，轄區多處房屋倒塌，當班僅5人（含傷員）、無外援，需於12小時內評估災情、決定救災重點。</div>
+        <div class="question">參考CDM，分別說明12小時內「①蒐集轄區災情②動員可支援人力資源③缺乏大型機具搜救方法④人命救災優先順序⑤與警察等機關合作」5項步驟之應變程序及重點。</div>
+      </div>
+    </div>
+
+    <div class="orig-answer">
+      <h3>📄 第二組原始作答全文</h3>
+      <p><b>步驟一：如何蒐集轄區可能的災情</b><br>在通訊可能中斷、人力極度缺乏的初期，應採取「被動匯整與主動重點查證並行」策略（CDM-評估情勢）。<br>
+      ・內部災損與通訊檢視：立即確認分隊建築物結構安全，救災車輛移至戶外待命。指派受傷隊員（傷勢若允許）留守值班台，利用無線電（固定台、車台、手攜機）、衛星電話或災情通報系統維持與大隊/局EOC之聯繫，並登錄電話報案資訊。<br>
+      ・劃定重點災情查察區：依據分隊平日掌握之「甲種防護計畫」及高風險清冊，針對轄區內老舊建物、高密度住宅、公共設施（如醫院、學校）進行重點災情標記。<br>
+      ・啟動災情查報聯絡網：主動聯繫轄區義消幹部、里鄰長、防災社區志工或警察派出所，透過LINE群組或無線電回報各地目擊災情，取代分隊親自逐街巡邏，以發揮最大情報蒐集效益。</p>
+      <p><b>步驟二：如何動員轄區可支援的救災人力及資源</b><br>在無上級消防外援的黃金12小時內，必須「在地化」整合民間與跨單位資源（CDM-研擬策略）。<br>
+      ・召回編組與動員義消：利用簡訊、通訊軟體或透過民政系統，緊急召回本分隊休假同仁及轄區義消、民間救難團體。於分隊設立「民間人力報到組」，統籌後勤與編組。<br>
+      ・徵用民間重機械與專業人員：聯絡轄區內的營造廠、工程行、砂石場或建材行，盤點並登記可動員之怪手、吊車、鏟裝機（小山貓）及具備操作證照之民間怪手司機，編列名冊以備後續調度。<br>
+      ・結合在地醫療物資資源：聯繫轄區診所、藥局或衛生所，協調醫護人員或民間救護車於分隊或安全開闊處成立「臨時救護站」，分擔分隊緊急救護與傷患檢傷分類之壓力。</p>
+      <p><b>步驟三：缺乏大型救災機具的搜救方法</b><br>在大型機具尚未進駐、缺乏重裝備的初期，搜救重點在於「輕裝搜索、善用周邊工具與徒手掘進」（CDM-採取行動）。<br>
+      ・運用分隊現有輕型破壞器材：善用分隊現有的發電機、三用撬棒、電動/氣動破壞剪、鑿岩機、聲納探測器（若有），進行表層與淺層受困者的通道開挖。<br>
+      ・推動民間生活工具替代化：指導現場支援民眾利用千斤頂、鐵撬、木頭（作槓桿原理與支撐枕木）、鋸子、鏟子等日常工具，進行簡易的結構支撐（Shoring）與重物頂撐，防止餘震造成二次倒塌。<br>
+      ・採取「五步搜索法」與聽音辨位：針對倒塌建物，實施「呼叫、聽音、敲擊、查看、詢問（家屬）」之輕型搜救程序。保持現場靜音，利用聽診器或徒手敲擊瓦礫，確認生還者位置後優先行救。</p>
+      <p><b>步驟四：有限人力作最大化人命救災優先順序</b><br>面對多處災情，5名人力必須依據風險評估（CDM-確認危害），將資源投在「存活率最高、投資報酬率最大」的現場。<br>
+      ・實施重大災害現場檢傷分類（START）：不以單一傷患為中心，而是以整個轄區的「救活最多人」為目標。派遣人員前往各災點評估：第一優先（Immediate）建物輕度受損/局部倒塌、受困人數多、且僅需輕型救援即可脫困者（如被家具壓住、通道受阻）；延後處理（Delayed）全倒或大深度掩埋之建築物，評估需耗費大量人力、重機械且生還機率極低者，初期先予標記，暫緩投入主力，避免人力虛耗。<br>
+      ・集中兵力原則：扣除受傷隊員留守，其餘4名當班人員加上召回之義消，必須「集中一處、完成一處、再移下一處」，切忌將極少人力分散至各個災點導致一事無成。</p>
+      <p><b>步驟五：與警察等當地公務機關的合作</b><br>震後12小時內，跨機關橫向聯繫是維持社會秩序與救災動線流暢的關鍵。<br>
+      ・與警察機關之合作（治安、交通與封鎖）：請求派出所員警協助針對倒塌災區實施交通管制，嚴禁圍觀民眾進入，確保救災車輛（消防車、徵用之工程車）動線順暢；同時由警方進行災區防竊巡邏，並派員進駐分隊前進指揮所，協助核對受困者與失蹤人口身分。<br>
+      ・與民政、公所之合作（收容與後勤）：請區公所及里幹事立即開設「防災公園」或臨時避難收容處所，將消防人員疏散、救出之輕傷及無受傷災民移交民政系統安頓，避免災民滯留救災現場影響作業。<br>
+      ・與工務、環保及管線單位之合作（斷源與搶通）：協調自來水、電力、天然氣公司派員進行災區「關鍵管線切斷」（斷電、斷氣），防止搜救過程中發生二次火災或爆炸；請工務課或清潔隊協助利用小山貓搶通前往重災區的「生命線（主幹道）」，移除阻礙交通的招牌或碎石。</p>
+    </div>
+
+    <div class="section-title">📐 重要架構觀察</div>
+    <div class="card">
+      <p style="margin:0;font-size:.92em;">這題給定的5個步驟標題（蒐集轄區災情／動員人力資源／缺乏機具搜救法／人命優先順序／跨機關合作）<strong>不是教材原始CDM 5步驟的命名</strong>（教材原始：①蒐集分析情資②評估風險威脅③考量政策法規④確定方案⑤行動再評估），而是題目把CDM精神重新包裝成消防救災情境專屬的5個步驟。<strong>必須依題目指定的5個步驟標題作答</strong>，不能自己改套教材原始命名，否則會被認為文不對題——這份答案精準掌握了這一點。</p>
+    </div>
+
+    <div class="section-title">✅ 逐點檢核</div>
+    <table>
+      <tr><th>步驟</th><th>是否達到</th><th>說明</th></tr>
+      <tr><td>①蒐集轄區災情</td><td><span class="mark m-good">✓✓</span></td><td>內部災損檢視、劃定重點查察區、啟動查報聯絡網，三層次分明</td></tr>
+      <tr><td>②動員可支援人力資源</td><td><span class="mark m-good">✓✓</span></td><td>召回義消、徵用民間重機械專業人員、結合在地醫療資源，「在地化整合」概念清楚，符合「無外援12小時」的限定情境</td></tr>
+      <tr><td>③缺乏機具搜救法</td><td><span class="mark m-good">✓✓</span></td><td>輕型器材運用、民間工具替代化（千斤頂／木頭槓桿）、五步搜索法（呼叫聽音敲擊查看詢問），展現專業消防搜救知識</td></tr>
+      <tr><td>④人命優先順序</td><td><span class="mark m-good">✓</span></td><td>START傷患分類概念活用為「災點優先順序判斷」、集中兵力原則明確；惟嚴格而言START原本用於個別傷患分級，這裡轉用於災點層次，個別傷患分類寫得較簡略</td></tr>
+      <tr><td>⑤與警察等機關合作</td><td><span class="mark m-good">✓✓</span></td><td>分警察（治安交通）／民政公所（收容後勤）／工務環保管線（斷源搶通）三面向，跨機關合作寫得全面</td></tr>
+      <tr><td>CDM理論概念旁註</td><td><span class="mark m-good">✓✓ 加分</span></td><td>每步驟旁標註對應CDM理論概念（如"CDM-評估情勢""CDM-研擬策略"），6份答案中唯一有此寫法者，讓閱卷者清楚看到你知道這個步驟對應CDM原理的哪個環節</td></tr>
+    </table>
+
+    <div class="verdict-box verdict-good">
+      <h3>整體評價</h3>
+      <p style="margin:0;">6份答案中<strong>內容最紮實、專業度最高</strong>的一份，完全依題目指定的5步驟框架作答（審題精準），每個步驟都標註對應CDM理論概念，內容細節具體到位（五步搜索法、START分類、在地化整合），這個寫法非常值得學習。</p>
+    </div>
+
+    <div class="better-box">
+      <h3>✏️ 是否有更好的回答（已很完整，僅供精進）</h3>
+      <ul>
+        <li>可在最前面加一句前言，先定位本案特性（震後12小時黃金救援期、資訊不完整、人力極度有限），目前直接從步驟一開始，少了總覽式破題。</li>
+        <li>步驟④若能再補一層「對每個災點內的個別傷患也做START紅黃綠黑分類」，會讓「災點優先順序」與「個別傷患優先順序」兩層次都寫到，更完整。</li>
+        <li>結尾可加一句總結呼應CDM整體精神（如「CDM五步驟環環相扣、動態循環，本案在資源有限下更須發揮跨域整合之在地韌性」），目前步驟五後直接結束，沒有結語收尾。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════ 114 ══════ -->
+  <div class="tab-pane" id="t114">
+    <div class="header">
+      <h1>114考題（第一組・官方真實考題）<span class="tag">公共安全管理倡議</span><span class="tag" style="background:#a8761f">待改進</span></h1>
+      <div class="sub">30分・對應 crisis-management-slides.html Ch3-三「危機管理的作業階段（三階段論）」</div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header">題目摘要 <span class="q-score">（30分）</span></div>
+      <div class="q-text">
+        <div class="situation">甲縣食品工廠鍋爐起火（20餘人傷），1個月內同轄區倉儲又發生火災（無傷亡但財損大），局長宣示以企業防災理念為核心，研修公安規定、訂應變措施、加重處罰。</div>
+        <div class="question">假如您是消防局公共安全業務承辦人，請運用「危機處理（含風險管理）」課程所學，針對工廠及倉儲，以「公共安全管理的倡議」為對策提出改善建議。</div>
+      </div>
+      <div class="ans-block" style="padding:14px 18px;"></div>
+    </div>
+
+    <div class="orig-answer">
+      <h3>📄 第一組原始作答全文</h3>
+      <p>這是一件一個月內連續兩場的成災火警依據公共安全管理的倡議來逐步探討相關的對策及改善方式。</p>
+      <p><b>公共安全管理的倡議</b><br>依前述重大公共安全管理面向，可擬訂下列政策措施，以促使有關機關共同落實執行安全管理工作</p>
+      <p><b>加強教育宣導</b><br>由以往重大事故肇因可知，有相當高的比率，是從業人員未依規定程序作業所致。故加強公共安全教育宣導，提升全民安全意識，建立安全管理文化，實為改善公共安全根本之道與途徑。</p>
+      <p><b>研修法令規定</b><br>各公共安全主管機關在推動相關工作過程中，必須依法行事。然而目前相關法規並不完善，且許多配套措施尚欠妥適的補強。例如：部分公共場所之樓層內消防分班，屬於結合用途建築物，管理權責分散，各自為政，對於公共設備之維護、共同事項之管理，相互推諉，致使共同防火管理制度不易落實。因此，配合質務需求增修法規，使之具備完善的配套措施，釐清業務管理機關權責，整合相關資源，健全運作機制，為公共安全管理落實推動的重點。</p>
+      <p><b>強化督導檢核</b><br>世界各國的公共安全管理經驗指出，詳盡確實的安全檢查，可以有效降低災害事故發生的機率，相對提高督導保險與效能。</p>
+      <p><b>提升作業效能</b><br>由於都市發展與環境變遷，許多高樓、地下場地與特殊型之安全管理難度均相對增加，撤收也較不易。為防範高層建築物發生火災事故，應從設計階段即考量高層建築之建築與消防安全，從建築物設計規劃到後續營運管理的過程，配合法規的研擬、修正與執行及相關機化作業程序，針對其結構及用途的特性、火災危險性、現行建築及消防安全檢查相關作為，進行探討且研析問題所在，並提出火災搶救因應措施、建築及消防安全管理作業規範，以提供業者自行檢視之依據，政府執行單位能有事前預防、災害應變及災後調查之標準，以將高層建築物等空間之火災損失降至最低。</p>
+      <p>依上述內容可以消防法第13條防火管理來進行，由消防局提高相關罰責，場所內制定消防防護計畫書由防火管理人帶領實施自衛消防編組及轄區分隊前來驗證相關防火管理內容確實度以求達到整體公共安全。</p>
+    </div>
+
+    <div class="section-title">📐 架構分析與最大問題點</div>
+    <div class="card">
+      <p style="margin:0 0 8px;font-size:.92em;">依113/114年真實考題解析記錄的評分要點：<strong>①能否套用「預防→應變→復原」框架　②對策是否具政策倡議格局（非個案處置）　③是否引用法規依據佐證</strong>。</p>
+      <p style="margin:0;font-size:.92em;">這份答案用「教育宣導／法令研修／督導檢核／作業效能」四個<strong>並列面向</strong>組織全文，這是另一種合理的公安管理理論切入角度，但問題是：<strong>全文完全沒有出現「事前」「事中」「事後」或「預防」「應變」「復原」這幾個關鍵詞</strong>。題目明確要求「運用危機處理課程所學」，而課程教的核心時間軸框架就是三階段論，評分老師很可能會特別想看到公共安全管理倡議被放進這個時間軸架構裡展開——即使內容本身合理、具政策格局，也可能因為沒有明確錨定在課程教的三階段理論上而在「使用課程框架」這項評分要點上失分。</p>
+    </div>
+
+    <div class="section-title">✅ 逐點檢核</div>
+    <table>
+      <tr><th>要點</th><th>是否達到</th><th>說明</th></tr>
+      <tr><td>套用「預防-應變-復原」三階段框架</td><td><span class="mark m-gap">✗</span></td><td><strong>本題最大缺口</strong>：全文未出現三階段關鍵詞，改用「教育／法令／督導／效能」四面向組織，脫離課程指定框架</td></tr>
+      <tr><td>對策具政策倡議格局</td><td><span class="mark m-good">✓</span></td><td>教育宣導、法令研修、督導檢核、高層建築物特殊考量等內容方向正確，具制度層次而非個案處置</td></tr>
+      <tr><td>法規引用密度</td><td><span class="mark m-warn">⚠</span></td><td>僅引用消防法第13條1條，相較真實114年範文示範引用5-6條法規（消防法§6/§13/§26之1/§29、災害防救法§20），密度明顯不足</td></tr>
+      <tr><td>倡議條列具體化</td><td><span class="mark m-warn">⚠</span></td><td>用大段落敘述四個大方向，缺少「倡議一、倡議二...」的條列式子項，閱卷老師較不容易在短時間內抓到明確得分點</td></tr>
+      <tr><td>事後復原內容</td><td><span class="mark m-gap">✗</span></td><td>完全沒有火災案例通報學習制度、改善追蹤機制等「事後」層次的內容</td></tr>
+    </table>
+
+    <div class="verdict-box verdict-warn">
+      <h3>整體評價</h3>
+      <p style="margin:0;">倡議內容本身合理正確，但<strong>核心框架（三階段預防-應變-復原）完全沒有出現</strong>，加上法規引用密度不足、倡議項目不夠條列具體化，這份答案在6份裡是相對最弱的一份。</p>
+    </div>
+
+    <div class="better-box">
+      <h3>✏️ 更好的回答建議</h3>
+      <ul>
+        <li>強烈建議把現有4個倡議面向<strong>重新對應進「事前預防-事中應變-事後復原」三階段架構</strong>：教育宣導＋法令研修＋督導檢核可歸入「事前預防」；提升作業效能中偏現場處置的部分歸入「事中應變」；目前完全缺少的「事後復原」需補上（如火災案例通報學習制度、改善追蹤小組）。</li>
+        <li>增加更多具體法規引用：消防法第6條（設備標準）、第9條（定期檢修申報）、第29條（義勇消防組織）、災害防救法第20條（地區災害防救計畫）等，增加專業度與說服力。</li>
+        <li>把每個倡議面向拆成2-3個具體「倡議一、倡議二...」的條列式子項，而非整段敘述——申論題閱卷通常有重點清單評分，條列式比大段敘述更容易被抓到分數。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">危機處理作業批改與教材分析・依 crisis-management-slides.html／教材筆記／歷屆考題解析交叉比對｜非官方評分意見，僅供組內參考・製作：Claude AI・2026/08/04</div>
+</main>
+
+<script>
+  const btns = document.querySelectorAll('.tab-btn');
+  const panes = document.querySelectorAll('.tab-pane');
+  const mainEl = document.getElementById('main');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      panes.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      mainEl.scrollTop = 0;
+    });
+  });
+</script>
+</body>
+</html>
