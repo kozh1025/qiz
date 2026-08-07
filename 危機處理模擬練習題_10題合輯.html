@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>危機處理模擬練習題・10題合輯</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --bg:#f6f5f1; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66; --line:#e5e2da;
+    --crisis:#b2551f;  --crisis-tint:#fbeee0;
+    --side-w:250px;
+  }
+  *{box-sizing:border-box;}
+  body { font-family: 'Microsoft JhengHei','Noto Sans TC',Arial,sans-serif; background: var(--bg); color: var(--ink); margin: 0; font-size: 15px; line-height: 1.9; --subj:var(--crisis); --subj-tint:var(--crisis-tint); display:flex; }
+
+  /* ── 左側分頁選單 ── */
+  #sidebar{ width:var(--side-w); flex-shrink:0; height:100vh; position:sticky; top:0; overflow-y:auto; background:#fbf9f5; border-right:1px solid var(--line); padding:22px 14px; }
+  .side-title{ font-size:1.05rem; font-weight:700; color:var(--ink); margin:0 6px 4px; line-height:1.4; }
+  .side-sub{ font-size:.76rem; color:var(--sub); margin:0 6px 20px; line-height:1.6; }
+  .backlink{ display:block; font-size:.8rem; color:var(--sub); text-decoration:none; margin:0 6px 10px; padding-bottom:10px; border-bottom:1px solid var(--line); }
+  .tab-btn{ display:block; width:100%; text-align:left; background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px 12px; margin-bottom:8px; cursor:pointer; font-family:inherit; color:var(--ink); transition:background .15s,border-color .15s; }
+  .tab-btn:hover{ background:var(--crisis-tint); }
+  .tab-btn .t-num{ display:inline-block; background:var(--sub); color:#fff; border-radius:4px; padding:0 7px; font-size:.72rem; font-weight:700; margin-right:6px; }
+  .tab-btn .t-name{ font-size:.86rem; font-weight:700; }
+  .tab-btn .t-sub{ display:block; font-size:.72rem; color:var(--sub); margin-top:3px; padding-left:26px; }
+  .tab-btn.active{ background:var(--crisis); border-color:var(--crisis); }
+  .tab-btn.active .t-num{ background:#fff; color:var(--crisis); }
+  .tab-btn.active .t-name{ color:#fff; }
+  .tab-btn.active .t-sub{ color:#fce6d4; }
+
+  /* ── 右側內容 ── */
+  main{ flex:1; min-width:0; height:100vh; overflow-y:auto; padding:24px 30px 60px; }
+  .tab-pane{ display:none; max-width:880px; margin:0 auto; }
+  .tab-pane.active{ display:block; }
+
+  .header { background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--subj); padding: 22px 28px; border-radius: 10px; margin-bottom: 20px; box-shadow:0 1px 3px rgba(0,0,0,.05); }
+  .header h1 { margin: 0 0 6px 0; font-size: 1.3em; color: var(--ink); font-weight:700; }
+  .header .sub { font-size: 0.86em; color: var(--sub); }
+  .header .tag { display: inline-block; background: var(--subj); color: #fff; border-radius: 4px; padding: 2px 10px; font-size: 0.78em; margin-left: 8px; }
+
+  .q-block { background: var(--card); border: 1px solid var(--line); border-radius: 8px; margin-bottom: 20px; overflow: hidden; box-shadow:0 1px 2px rgba(0,0,0,.03); }
+  .q-header { background: var(--subj-tint); color: var(--subj); font-weight: bold; padding: 8px 16px; font-size: 0.95em; border-bottom:1px solid var(--line); }
+  .q-score { font-weight: normal; font-size: 0.85em; margin-left: 8px; opacity: 0.85; color:var(--sub); }
+  .q-text { padding: 14px 18px 10px 18px; color: var(--ink); font-size: 0.93em; line-height: 1.85; border-bottom: 1px solid var(--line); background: #fbfaf7; }
+  .q-text .situation { color: var(--sub); font-size: 0.91em; border-left: 3px solid var(--subj); padding-left: 12px; margin-bottom: 8px; }
+  .q-text .question { color: var(--ink); font-weight: bold; margin-top: 10px; }
+
+  .non-official { padding: 7px 18px; background: #fff8ea; color: #9a6a1f; font-size: 0.82em; border-bottom: 1px solid #f0e3c0; }
+
+  .ans-block { padding: 14px 18px; }
+  .ans-section { margin-bottom: 18px; }
+  .ans-title { font-weight: bold; color: var(--subj); margin-bottom: 8px; font-size: 0.95em; padding: 5px 0; border-bottom: 1px dashed var(--line); }
+  .sub-pts { font-size: 0.8em; color: var(--sub); margin-left: 6px; font-weight: normal; }
+
+  .law-ref { background: var(--subj-tint); border-left: 3px solid var(--subj); padding: 5px 12px; font-size: 0.82em; color: var(--ink); margin-bottom: 10px; border-radius: 0 3px 3px 0; }
+
+  .cdm-step { background: #fbfaf7; border-left: 4px solid var(--subj); border-radius: 0 5px 5px 0; padding: 12px 16px; margin-bottom: 12px; }
+  .cdm-num { display: inline-block; background: var(--subj); color: #fff; border-radius: 3px; padding: 1px 8px; font-size: 0.82em; font-weight: bold; margin-right: 8px; }
+  .cdm-title { font-weight: bold; color: var(--subj); margin-bottom: 8px; font-size: 0.93em; }
+
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.87em; }
+  th { background: var(--subj-tint); color: var(--subj); padding: 7px 10px; text-align: left; border-bottom:2px solid var(--subj); }
+  td { padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:nth-child(even) td { background: #faf9f6; }
+
+  ul, ol { padding-left: 22px; margin: 6px 0; }
+  li { margin-bottom: 5px; font-size: 0.91em; }
+  li strong { color: var(--subj); }
+
+  .tips-box { background: var(--subj-tint); border: 1px solid var(--subj); border-radius: 8px; padding: 14px 18px; margin-bottom: 20px; }
+  .tips-box h3 { color: var(--subj); margin: 0 0 10px 0; font-size: 1em; }
+  .tips-box ul { margin: 4px 0; }
+  .tips-box li { font-size: 0.9em; }
+
+  .footer { text-align: center; font-size: 0.78em; color: var(--sub); margin-top: 30px; padding-top: 14px; border-top: 1px solid var(--line); }
+</style>
+</head>
+<body>
+<div style="position:fixed;top:8px;right:12px;z-index:9999;font-size:12px;color:#9a978d;background:rgba(255,255,255,.85);padding:2px 10px;border-radius:999px;pointer-events:none;">柯醒翰製作</div>
+
+<nav id="sidebar">
+  <div class="side-title">危機處理<br>模擬練習題</div>
+  <div class="side-sub">共10題・自製情境模擬申論題・非官方參考範文</div>
+  <a class="backlink" href="index.html">← 回筆記入口</a>
+  <a class="backlink" href="危機處理作業批改與教材分析.html">← 作業批改與教材分析</a>
+  <a class="backlink" href="危機處理五大工具萬用模板.html">← 五大工具萬用模板</a>
+
+  <button class="tab-btn active" data-tab="t1">
+    <span class="t-num">1</span><span class="t-name">人質談判三合一</span>
+    <span class="t-sub">CDM＋談判＋記者會</span>
+  </button>
+  <button class="tab-btn" data-tab="t2">
+    <span class="t-num">2</span><span class="t-name">捷運隨機傷人</span>
+    <span class="t-sub">CDM五步驟單獨情境</span>
+  </button>
+  <button class="tab-btn" data-tab="t3">
+    <span class="t-num">3</span><span class="t-name">校園食物中毒</span>
+    <span class="t-sub">記者說明會單獨情境</span>
+  </button>
+  <button class="tab-btn" data-tab="t4">
+    <span class="t-num">4</span><span class="t-name">跨年活動安全維護</span>
+    <span class="t-sub">風險管理五步驟＋五策略</span>
+  </button>
+  <button class="tab-btn" data-tab="t5">
+    <span class="t-num">5</span><span class="t-name">精神健康危機</span>
+    <span class="t-sub">降階策略＋PMHC・冷門</span>
+  </button>
+  <div style="border-top:1px solid var(--line);margin:14px 6px 12px;"></div>
+  <button class="tab-btn" data-tab="t6">
+    <span class="t-num">6</span><span class="t-name">化工廠複合式危機</span>
+    <span class="t-sub">CDM深度應用・消防版</span>
+  </button>
+  <button class="tab-btn" data-tab="t7">
+    <span class="t-num">7</span><span class="t-name">土石流受困老翁</span>
+    <span class="t-sub">談判8原則＋兩階段技巧</span>
+  </button>
+  <button class="tab-btn" data-tab="t8">
+    <span class="t-num">8</span><span class="t-name">搶救爭議組織檢討</span>
+    <span class="t-sub">有效危機處理必備條件</span>
+  </button>
+  <button class="tab-btn" data-tab="t9">
+    <span class="t-num">9</span><span class="t-name">工廠倒塌特種搜救</span>
+    <span class="t-sub">OODA模式＋CDM比較</span>
+  </button>
+  <button class="tab-btn" data-tab="t10">
+    <span class="t-num">10</span><span class="t-name">抗議阻擋搶救通道</span>
+    <span class="t-sub">聚眾活動處理應用</span>
+  </button>
+</nav>
+
+<main id="main">
+
+  <!-- ══════ 第1題 ══════ -->
+  <div class="tab-pane active" id="t1">
+    <div class="header">
+      <h1>危機處理模擬練習題<span class="tag">第1題</span><span class="tag" style="background:#6b5842">CDM＋談判＋記者會 三合一</span></h1>
+      <div class="sub">自製情境模擬申論題・依115年命題規律設計（三合一組合型・預測命中率最高）・共30分</div>
+    </div>
+
+    <div class="tips-box">
+      <h3>📌 為何這樣出題</h3>
+      <p style="margin:0;font-size:0.92em;">115年危機處理官方確定固定佔Q2・30分。歷屆考題分析指出「談判」屬命題大綱必考範圍，但近6年僅109年考過1次（舊制），最可能的出法是把「CDM／三階段＋談判＋新聞處理」包在同一情境裡，要求分點作答──這正是本題設計的依據，也是目前預測中命中率最高的題型。</p>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header">模擬題1 <span class="q-score">（30分）｜課程：危機處理（含風險管理）｜工具：CDM＋談判＋記者說明會</span></div>
+      <div class="q-text">
+        <div class="situation">【情境】轄區發生一起因租金糾紛引發之挾持人質案。房客甲積欠房東乙三個月租金遭催討，情緒失控持水果刀挾持乙於租屋處2樓陽台，揚言警方若靠近就傷害人質並自殘。現場已有鄰居側錄畫面上傳社群並開始瘋傳，數家媒體SNG車已抵達巷口守候。</div>
+        <div class="question">【問題】① 請運用「警察勤務安全危機決策模式（CDM）」5步驟，說明從獲報到現場控制之處置程序及重點。（15分）　② 承上，若進入談判階段，應如何準備談判？並說明本案應注意之禁忌條件。（10分）　③ 事件落幕後，應如何召開現場記者說明會？（5分）</div>
+      </div>
+      <div class="non-official">⚠ 自製模擬練習題，非歷屆考古題原題；範文僅供參考作答架構，實際評分應以官方標準為準</div>
+      <div class="ans-block">
+
+        <div class="ans-section">
+          <div class="ans-title">【前言】</div>
+          <p style="margin:0;font-size:0.92em;">面對本案「租金糾紛引發持刀挾持人質」之複合型危機，本人身為獲報到場之員警，運用警察勤務安全危機決策模式（CDM）、危機談判技巧及新聞處理原則，分述如下。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【壹、CDM五步驟之現場處置】<span class="sub-pts">（15分）</span></div>
+
+          <div class="cdm-step">
+            <div class="cdm-title"><span class="cdm-num">①</span>蒐集與分析情資</div>
+            抵達現場立即設置警戒線隔離無關人員，透過社群側錄畫面、鄰居及乙之親友，初步了解甲乙債務糾紛始末、甲之情緒穩定度與有無自傷傷人前科；指定專人持續記錄情資更新，作為後續決策依據。
+          </div>
+
+          <div class="cdm-step">
+            <div class="cdm-title"><span class="cdm-num">②</span>評估風險威脅狀況</div>
+            研判甲持刀且情緒失控、人質乙近距離受脅迫，加以社群直播擴散可能刺激甲之情緒或產生「表演效應」，應將輿情擴散本身列為風險因子一併評估。
+          </div>
+
+          <div class="cdm-step">
+            <div class="cdm-title"><span class="cdm-num">③</span>考量警察政策規範與職權限制</div>
+            本案甲屬強制罪現行犯，惟人質安全優先於逮捕，須審酌使用強制力（破門、狙擊）之時機是否符合警械使用條例及比例原則，並確認指揮權責歸屬（分駐所主管或勤指中心指揮官）。
+            <div class="law-ref">法規依據：警械使用條例第4條（合理使用槍械要件）、比例原則</div>
+          </div>
+
+          <div class="cdm-step">
+            <div class="cdm-title"><span class="cdm-num">④</span>確定選項並決定最佳行動方案</div>
+            綜合研判，人質未受立即致命傷害前，以「談判優先、武力備便」為最佳方案，調派談判人員及霹靂小組警戒進駐，維持對話爭取時間，避免貿然強攻升高風險。
+          </div>
+
+          <div class="cdm-step">
+            <div class="cdm-title"><span class="cdm-num">⑤</span>採取行動並持續審視與再評估</div>
+            談判人員建立初步溝通管道後，每5-10分鐘回報現場動態，一旦甲情緒再升高或有具體傷害行為，立即重回步驟①②重新評估，機動調整為強制介入方案，形成持續循環之「旋轉車輪模式」。
+          </div>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【貳、談判準備與禁忌條件】<span class="sub-pts">（10分）</span></div>
+          <p style="margin:0 0 8px;font-size:0.92em;">依哈佛談判學派談判前準備7要素，逐一套入本案：</p>
+          <ul>
+            <li><strong>可能達成之協議</strong>：以乙平安獲釋、甲自願棄械為目標，可提出協助分期償債或轉介法律扶助等替代方案，降低對抗心態。</li>
+            <li><strong>最佳退路（BATNA）</strong>：使甲明白拖延對己不利（將遭強制逮捕、加重刑責）；乙則因人身安全優先，退路有限，談判應以其安全為第一考量。</li>
+            <li><strong>利益而非立場</strong>：甲真正在意的可能是被催討時的尊嚴受挫與經濟困境的無助感，談判應聚焦真實需求，而非僅在「還不還錢」立場上拉鋸。</li>
+            <li><strong>關係、公平合理性、溝通、承諾</strong>：談判人員以中立第三方姿態建立信任關係，承諾之條件（如聯繫社福資源協助）須具體可執行，避免開空頭支票破壞信任。</li>
+          </ul>
+          <p style="margin:8px 0 0;font-size:0.92em;"><strong>本案應嚴守之禁忌條件</strong>：絕不提供武器彈藥予甲，避免升高危險；絕不以酒類或藥物換取其棄械；不輕易答應交通工具或釋放條件式要求，以免助其脫逃或衍生二次危機。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【參、現場記者說明會處理】<span class="sub-pts">（5分）</span></div>
+          <p style="margin:0;font-size:0.92em;">事件落幕後（不論成功與否），應由指定發言人統一對外說明，掌握「以人為本」原則優先表達對人質安危之關切；因社群直播已擴散，須落實「資訊管制」，不透露談判內容細節與戰術部署位置，僅公布可證實之事實經過；並秉持「誠信原則」，尚未查明部分應說明「調查中」，避免臆測性發言，以維護警察機關公信力。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【結語】</div>
+          <p style="margin:0;font-size:0.92em;">本案涉及CDM決策、談判技巧與新聞處理三大面向，唯有環環相扣、缺一不可，方能兼顧人質安全、現場秩序與組織公信力之維護。</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <h3>✏️ 解題／寫法提醒</h3>
+      <ul>
+        <li>三個子題分別對應CDM／談判／記者會三個獨立框架，<strong>務必分點、分段落作答</strong>，不要混寫──這是最容易漏分的地方。</li>
+        <li>時間／篇幅依配分比例分段：①寫最多（5步驟逐一展開，每步驟至少2-3個具體做法扣合本案）、②次之（7要素＋禁忌條件挑相關的寫，不必8項全列）、③最精簡（點出3-4項最貼合本案特性的原則即可）。</li>
+        <li>把「社群直播／SNG守候」這個情境細節，用來當「為什麼要做資訊管制」的理由，展現情境化能力。</li>
+        <li>結尾務必用一句話把三個框架串起來，展現整體觀。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════ 第2題 ══════ -->
+  <div class="tab-pane" id="t2">
+    <div class="header">
+      <h1>危機處理模擬練習題<span class="tag">第2題</span><span class="tag" style="background:#6b5842">CDM五步驟 單獨情境</span></h1>
+      <div class="sub">自製情境模擬申論題・CDM為近6年最高頻工具（110、113年皆考）・共30分</div>
+    </div>
+
+    <div class="tips-box">
+      <h3>📌 為何這樣出題</h3>
+      <p style="margin:0;font-size:0.92em;">CDM與記者說明會並列危機處理最高頻主題（各考過2次）。本題刻意換成「捷運隨機傷人」情境（而非110年複合式危機或113年地震），練習把同一套5步驟框架套用到不同的突發治安事件上，訓練情境轉換能力而非死背固定情境答案。</p>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header">模擬題2 <span class="q-score">（30分）｜課程：危機處理（含風險管理）｜工具：CDM</span></div>
+      <div class="q-text">
+        <div class="situation">【情境】週五晚間尖峰時段，捷運行進間車廂內發生乘客持刀隨機傷人事件，已有2名乘客受傷倒地，嫌犯持刀盤據車廂一角情緒不穩，其餘乘客恐慌逃往鄰近車廂。您是獲報後率先抵達下一站月台之員警。</div>
+        <div class="question">【問題】請運用「警察勤務安全危機決策模式（CDM）」5步驟，說明您從獲報到現場控制之處置程序及重點。（30分）</div>
+      </div>
+      <div class="non-official">⚠ 自製模擬練習題，非歷屆考古題原題；範文僅供參考作答架構，實際評分應以官方標準為準</div>
+      <div class="ans-block">
+
+        <div class="ans-section">
+          <div class="ans-title">【前言】</div>
+          <p style="margin:0;font-size:0.92em;">面對本案捷運車廂內隨機傷人事件，在資訊不完整、密閉空間資源受限、時間壓力極大之情況下，運用警察勤務安全危機決策模式（CDM）5步驟，說明處置程序及重點如下。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="cdm-step">
+            <div class="cdm-title"><span class="cdm-num">①</span>蒐集與分析情資</div>
+            抵達月台後立即透過站務人員調閱月台及車廂監視畫面，確認嫌犯位置、人數、是否持續行凶；同時透過目擊乘客初步了解傷者人數及傷勢輕重，並請捷運控制中心暫停該列車行進、鎖定車門，避免嫌犯逃逸至其他車廂擴大傷害。
+          </div>
+
+          <div class="cdm-step">
+            <div class="cdm-title"><span class="cdm-num">②</span>評估風險威脅狀況</div>
+            研判密閉車廂內乘客恐慌逃竄可能引發推擠踩踏之二次傷害，加以嫌犯情緒不穩、行凶動機未明（隨機或針對性），須將車廂空間狹小、逃生動線受限、乘客混雜於嫌犯周邊等因素一併納入風險評估。
+          </div>
+
+          <div class="cdm-step">
+            <div class="cdm-title"><span class="cdm-num">③</span>考量警察政策規範與職權限制</div>
+            本案嫌犯屬現行犯，惟乘客與嫌犯距離近，使用警械須審慎評估流彈波及無辜乘客之風險，並確認符合警械使用條例第4條「合理使用槍械」要件及比例原則，同時釐清捷警與轄區分局之指揮權責分工。
+            <div class="law-ref">法規依據：警械使用條例第4條（合理使用槍械）、比例原則</div>
+          </div>
+
+          <div class="cdm-step">
+            <div class="cdm-title"><span class="cdm-num">④</span>確定選項並決定最佳行動方案</div>
+            綜合研判現場資源（獨自到場、尚無支援）、時間壓力（傷者需儘速後送）與嫌犯狀態，決定以「先疏散周邊乘客、拉開安全距離、持續口頭喝令」為優先方案，若嫌犯持續攻擊行為且危及生命，始考量使用警械制止。
+          </div>
+
+          <div class="cdm-step">
+            <div class="cdm-title"><span class="cdm-num">⑤</span>採取行動並持續審視與再評估</div>
+            行動同時通報勤務指揮中心請求霹靂小組、救護車增援，並持續透過監視畫面及現場觀察掌握嫌犯動態；若嫌犯棄械投降則轉為戒護送醫傷患，若情勢未解除則回頭重新蒐集情資與評估風險，機動調整方案，形成持續循環之「旋轉車輪模式」。
+          </div>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【結語】</div>
+          <p style="margin:0;font-size:0.92em;">CDM模式強調在資訊不完整、時間壓力大之情境下，仍須依五步驟循環決策，以「保護乘客生命安全」為最高原則，兼顧員警自身安全與嫌犯人權保障。</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <h3>✏️ 解題／寫法提醒</h3>
+      <ul>
+        <li>純CDM單一框架題，30分全部押在5步驟上，<strong>每一步都要寫滿、寫具體</strong>，不能只背步驟名稱就帶過。</li>
+        <li>前言先定位本案特性（資訊不完整＋時間壓力大＋密閉空間資源受限），讓閱卷者知道你懂CDM的核心精神。</li>
+        <li>第③步「考量警察政策規範與職權限制」最容易被忽略，很多人只寫①②④⑤，本題可扣警械使用條例、比例原則、流彈風險評估。</li>
+        <li>結尾務必點出CDM是「循環／旋轉車輪模式」而非線性流程，這是閱卷老師常抓的加分細節。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════ 第3題 ══════ -->
+  <div class="tab-pane" id="t3">
+    <div class="header">
+      <h1>危機處理模擬練習題<span class="tag">第3題</span><span class="tag" style="background:#6b5842">記者說明會 單獨情境</span></h1>
+      <div class="sub">自製情境模擬申論題・記者說明會為近6年最高頻主題之一（111、112年連續兩年皆考）・共30分</div>
+    </div>
+
+    <div class="tips-box">
+      <h3>📌 為何這樣出題</h3>
+      <p style="margin:0;font-size:0.92em;">111年溪流救援、112年煙火意外都考「召開記者說明會應注意原則」，是連續兩年命中的特例。本題換成「校園食物中毒」情境，練習把同一套原則套用在涉及未成年人、家長情緒激動的不同場景，並加強「新聞性5標準」的破題運用。</p>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header">模擬題3 <span class="q-score">（30分）｜課程：危機處理（含風險管理）｜工具：記者說明會＋媒體互動</span></div>
+      <div class="q-text">
+        <div class="situation">【情境】某國中營養午餐爆發大規模疑似食物中毒事件，數十名學生送醫，部分症狀嚴重，家長已聚集校門口情緒激動，多家媒體SNG車已在校門口架設完畢並開始直播。您是縣府危機處理小組成員。</div>
+        <div class="question">【問題】請說明召開現場記者說明會應注意之原則，並說明應如何與媒體互動因應本案。（30分）</div>
+      </div>
+      <div class="non-official">⚠ 自製模擬練習題，非歷屆考古題原題；範文僅供參考作答架構，實際評分應以官方標準為準</div>
+      <div class="ans-block">
+
+        <div class="ans-section">
+          <div class="ans-title">【前言】</div>
+          <p style="margin:0;font-size:0.92em;">本案涉及未成年學生集體送醫，符合新聞性5項標準（衝擊性——受影響學生人數多、關聯性——攸關家長切身利益、顯眼性——涉及校園食安、新奇性、衝突性），必然引發媒體高度關注，應妥慎進行媒體互動與記者說明會之因應。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【壹、與媒體互動應注意事項】</div>
+          <ul>
+            <li><strong>指派單一新聞發言人</strong>：由縣府教育局或衛生局指定，統一對外發言口徑，避免各單位各自表述致資訊矛盾。</li>
+            <li><strong>平常心面對記者、發布經確認新聞</strong>：不迴避採訪，但發布內容須經確認，尚未查明中毒原因前避免臆測性發言（如貿然歸咎廚房衛生問題）。</li>
+            <li><strong>保密偵查中資訊、避免特殊人物曝光</strong>：保密尚在送驗中之檢體結果，並避免讓個別受害學生身分曝光，保障其隱私。</li>
+          </ul>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【貳、記者說明會應注意十項原則（扣合本案）】</div>
+          <table>
+            <tr><th>原則</th><th>扣合本案做法</th></tr>
+            <tr><td>不逃避媒體／公平對待媒體</td><td>建議1小時黃金時間內召開首次說明會，公平邀集各家媒體，不獨厚特定媒體</td></tr>
+            <tr><td>誠實發布新聞</td><td>中毒原因未確認部分明確告知「送驗調查中」，避免誤導</td></tr>
+            <tr><td>避免個人意見／簡要發布內容／提供具體描述</td><td>僅陳述已查證事實（送醫人數、初步症狀、已採取之應變措施），不加入個人臆測</td></tr>
+            <tr><td>考慮媒體需求／確定媒體問題</td><td>備妥Q&amp;A應對常見提問（是否停止供餐、是否究責廠商），允許提問但避免陷入細節攻防</td></tr>
+            <tr><td>以人為本</td><td>說明開頭先表達對受害學生及家長之關懷慰問，展現同理而非只公布數據</td></tr>
+            <tr><td>保留新聞內容／勿與媒體辯論</td><td>對敏感或涉法律責任部分保留後續說明，遇質疑性提問以事實回應，避免情緒性辯論</td></tr>
+            <tr><td>定期更新</td><td>明確告知下次說明會時間（如每小時或視檢驗結果更新一次），持續掌握輿情主動權</td></tr>
+          </table>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【結語】</div>
+          <p style="margin:0;font-size:0.92em;">本案處理核心在於「速度」與「誠信」——愈早以正確、具人本關懷之姿態主動說明，愈能降低家長與社會之疑慮，避免謠言擴散反而加劇危機。</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <h3>✏️ 解題／寫法提醒</h3>
+      <ul>
+        <li>兩張表都要用上——「新聞性5標準」可當破題（說明本案為何吸引媒體）＋「媒體互動7點」＋「記者會10項原則」逐條扣合本案情境。</li>
+        <li>不要只列條列名詞，每一項原則後面都要接一句「本案怎麼做」，才能拿到情境化的分數。</li>
+        <li>易漏分點：忘記提「指派新聞發言人」「避免臆測性發言」這類公務倫理考點；忘記把「黃金時間」具體時間帶寫出來（如1小時內）。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════ 第4題 ══════ -->
+  <div class="tab-pane" id="t4">
+    <div class="header">
+      <h1>危機處理模擬練習題<span class="tag">第4題</span><span class="tag" style="background:#6b5842">風險管理 五步驟＋五策略</span></h1>
+      <div class="sub">自製情境模擬申論題・課程正式名稱「危機處理（含風險管理）」核心理論・共30分</div>
+    </div>
+
+    <div class="tips-box">
+      <h3>📌 為何這樣出題</h3>
+      <p style="margin:0;font-size:0.92em;">114年考過的「三階段預防-應變-復原＋公共安全管理倡議」以及C3I危機管理架構，115年已確定不會再考。但「風險管理」是本科正式名稱「危機處理（含風險管理）」的一半，教材第貳章完整介紹五步驟與五項策略，屬課程核心理論架構，近6年雖未單獨命題，仍建議完整準備以防基礎概念題被抽考。</p>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header">模擬題4 <span class="q-score">（30分）｜課程：危機處理（含風險管理）｜工具：風險管理五步驟＋五策略</span></div>
+      <div class="q-text">
+        <div class="situation">【情境】警察機關規劃跨年夜大型演唱會安全維護勤務，現場預估聚集10萬人，需事前識別各項潛在風險（人潮踩踏、突發治安事件、交通壅塞、天候因素等）並研擬因應對策。</div>
+        <div class="question">【問題】請運用「風險管理」五步驟及五項策略，說明如何辨識並因應本次大型活動安全維護之風險。（30分）</div>
+      </div>
+      <div class="non-official">⚠ 自製模擬練習題，非歷屆考古題原題；範文僅供參考作答架構，實際評分應以官方標準為準</div>
+      <div class="ans-block">
+
+        <div class="ans-section">
+          <div class="ans-title">【前言】</div>
+          <p style="margin:0;font-size:0.92em;">大型跨年活動聚集大量人潮，風險型態多元且具高度不確定性，運用風險管理五步驟及五項策略，分述如下。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【壹、風險管理五步驟（扣合本案）】</div>
+          <ul>
+            <li><strong>①風險衡量</strong>：事前盤點各類風險——人潮密度風險（踩踏）、治安風險（扒竊滋事）、交通壅塞風險、天候風險（大雨低溫），依發生機率與影響程度排序，人潮踩踏列為最高優先風險。</li>
+            <li><strong>②技術選擇</strong>：針對不同風險選擇對應管理技術，如人流管制採分區與單向動線設計、治安風險採便衣熱區巡查、交通壅塞採替代道路及接駁專案。</li>
+            <li><strong>③決策執行</strong>：召開跨機關協調會議（警政、消防、交通、衛生），核定各分區警力部署、緊急疏散路線及醫療站設置，並完成兵棋推演。</li>
+            <li><strong>④風險溝通</strong>：透過記者會、官方社群平台公告入場管制措施、禁止攜帶物品及緊急聯絡方式，事前教育民眾配合疏散指引。</li>
+            <li><strong>⑤績效監控與回饋</strong>：活動期間透過CCTV及現場回報系統即時監控人流密度，活動後檢討執行落差，回饋至下次大型活動風險清單。</li>
+          </ul>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【貳、風險管理五項策略（扣合本案）】</div>
+          <ul>
+            <li><strong>規避風險</strong>：若特定路段風險過高（如老舊天橋承重不足），直接封閉不開放通行，從源頭消除風險。</li>
+            <li><strong>降低發生機率</strong>：加強分流管制、設置人流警戒線，降低群聚超過安全密度之機率。</li>
+            <li><strong>減低影響衝擊</strong>：預先部署醫療站、AED及救護車待命，一旦發生意外可即時降低傷亡衝擊。</li>
+            <li><strong>風險轉嫁</strong>：活動主辦單位投保公共意外責任險，將部分財務風險轉嫁予保險公司。</li>
+            <li><strong>保有風險</strong>：對機率極低且已窮盡合理防範措施之殘餘風險（如極端氣候），列冊保有並持續監控，作為應變預備方案。</li>
+          </ul>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【結語】</div>
+          <p style="margin:0;font-size:0.92em;">風險管理五步驟與五策略環環相扣，唯有事前系統性識別風險並選擇適當因應策略，方能將大型活動安全維護風險降至最低，確保民眾安全與活動順利進行。</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <h3>✏️ 解題／寫法提醒</h3>
+      <ul>
+        <li>五步驟建議中英專有名詞並列（風險衡量risk measurement、技術選擇selection of techniques等），展現對原簡報架構的熟悉度。</li>
+        <li>五項策略口訣「避、降、減、轉、保」務必能直接默寫，並逐項具體套進本案情境，不能只列名詞。</li>
+        <li>易漏分點：五步驟與五策略是兩套不同架構，容易寫混或遺漏其中一套；忘記把「風險溝通」獨立成一步，很多人會誤併入「決策執行」。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════ 第5題 ══════ -->
+  <div class="tab-pane" id="t5">
+    <div class="header">
+      <h1>危機處理模擬練習題<span class="tag">第5題</span><span class="tag" style="background:#6b5842">降階策略＋PMHC 冷門新鮮題</span></h1>
+      <div class="sub">自製情境模擬申論題・教材重點但6年來從未單獨命題・共30分</div>
+    </div>
+
+    <div class="tips-box">
+      <h3>📌 為何這樣出題</h3>
+      <p style="margin:0;font-size:0.92em;">降階策略、同理心傾聽、精神衛生法§32、PMHC四模式都是教材裡的重點內容，但6年來從未單獨命題，屬於「零命中冷門考點」。CDM、記者會、談判、三階段4個主題若已輪過一輪，這類冷門題就有機會被翻出來製造新鮮感，建議至少準備一遍以防萬一。</p>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header">模擬題5 <span class="q-score">（30分）｜課程：危機處理（含風險管理）｜工具：降階策略＋PMHC</span></div>
+      <div class="q-text">
+        <div class="situation">【情境】警方獲報，一名有精神疾病就醫紀錄之男子在自宅頂樓邊緣徘徊，疑似有自傷之虞，鄰居報案，其母親在場情緒崩潰、不斷哭喊男子的名字。</div>
+        <div class="question">【問題】① 警察到場後應如何運用「降階策略」與「同理心傾聽」技巧進行處置？（15分）　② 請說明我國警察機關於精神健康危機處理上的角色定位與現況困境。（15分）</div>
+      </div>
+      <div class="non-official">⚠ 自製模擬練習題，非歷屆考古題原題；範文僅供參考作答架構，實際評分應以官方標準為準</div>
+      <div class="ans-block">
+
+        <div class="ans-section">
+          <div class="ans-title">【前言】</div>
+          <p style="margin:0;font-size:0.92em;">本案男子疑似因精神疾病於頂樓徘徊有自傷之虞，須運用降階策略之戰術性溝通技巧，並正視我國警察機關於精神健康危機處理之角色困境，分述如下。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【壹、降階策略與同理心傾聽技巧之運用】<span class="sub-pts">（15分）</span></div>
+          <p style="margin:0 0 8px;font-size:0.92em;">降階策略係衝突管理危機處理模式之一，透過戰術性溝通技巧，使員警得策略性減緩事件變化速度、掌握更多時間與空間，屬降低危機情境之關鍵策略。</p>
+          <table>
+            <tr><th>技巧類別</th><th>扣合本案做法</th></tr>
+            <tr><td><strong>同理心傾聽</strong>：專心關注傾聽</td><td>耐心聽男子表達其困擾，不急於下指令或逼近</td></tr>
+            <tr><td>不先入為主與主觀判斷</td><td>不預設男子必然會跳樓，避免言語刺激</td></tr>
+            <tr><td>專注於對象感受</td><td>回應其情緒（如「你現在一定很痛苦」），而非急於講道理</td></tr>
+            <tr><td>允許暫時性沉默</td><td>給予男子思考空間，不因沉默而躁進</td></tr>
+            <tr><td>澄清問題與訊息</td><td>適時確認男子真正的困擾與需求，避免誤判</td></tr>
+            <tr><td><strong>控制情勢</strong>：預擬處理計畫腹案</td><td>到場前先設想若男子情緒升高之應變方案</td></tr>
+            <tr><td>運用團隊合作方式</td><td>分派人員分別安撫母親情緒、與男子對話、聯繫救護及社工資源，避免單打獨鬥</td></tr>
+            <tr><td>運用積極的自我對話</td><td>談判人員自我情緒管理，維持冷靜語調</td></tr>
+            <tr><td>認知個人能力的限制</td><td>非精神醫療專業，避免自行判斷病情，應儘速聯繫專業資源</td></tr>
+            <tr><td>討論與建議</td><td>評估在安全前提下邀請母親（重要他人）協助勸說，但須留意其在場是否反刺激男子情緒</td></tr>
+          </table>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【貳、我國警察機關之角色定位與現況困境】<span class="sub-pts">（15分）</span></div>
+          <div class="law-ref">法規依據：精神衛生法第32條；行政程序法第19條（行政協助）</div>
+          <p style="margin:0 0 8px;font-size:0.92em;">依精神衛生法第32條，警消機關發現有傷害自己或他人之虞之病人，應通知當地主管機關並視需要協助或共同處理，除法律另有規定外應即護送前往就近適當醫療機構就醫。</p>
+          <ul>
+            <li><strong>現行分工</strong>：警察負責評估傷害風險、協助勸導管束及護送就醫、維護現場安全，惟<strong>無強制送醫權限</strong>；消防協助醫療救護與簡易評估；衛生機關負責個案資料查詢及專業精神狀況評估。</li>
+            <li><strong>現況困境一</strong>：衛生機關危機處置權責不明、主動性不足，醫護多僅電話諮詢而非到場，警察須獨力承擔第一線風險。</li>
+            <li><strong>現況困境二</strong>：警察未受充分精神疾病辨識與危機介入訓練，易因強制手段激化衝突。</li>
+            <li><strong>現況困境三</strong>：現行分工權責不明，未落實行政程序法第19條行政協助原則下之跨機關即時共同處理。</li>
+            <li><strong>建議解方</strong>：參考PMHC四種模式（CIT以警察獨力應對／CRM警消共同應對／MCT衛生為主／PMHC警衛社綜合合作），由現行以警察獨力應對之CIT模式，逐步朝CRM或PMHC轉型，並落實員警CIT危機介入訓練，降低警察獨自承擔精神健康危機處置之風險。</li>
+          </ul>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【結語】</div>
+          <p style="margin:0;font-size:0.92em;">唯有透過同理心傾聽與降階策略降低現場衝突風險，並同步推動跨機關角色分工明確化，方能兼顧病人權益與公共安全。</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <h3>✏️ 解題／寫法提醒</h3>
+      <ul>
+        <li>子題①套「同理心傾聽5項」＋「控制情勢5項」逐一情境化；子題②務必引用<strong>精神衛生法第32條</strong>，並帶出PMHC四模式作為現況困境的解方，展現理論深度。</li>
+        <li>易漏分點：忘記引用精神衛生法§32；把「降階策略」寫成單純的安撫技巧，漏掉它其實是「戰術性衝突管理」的定位（爭取時間、距離、空間與戰術靈活性）。</li>
+        <li>子題②的「無強制送醫權限」是最容易被考的細節，務必寫出來。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════ 第6題 ══════ -->
+  <div class="tab-pane" id="t6">
+    <div class="header">
+      <h1>危機處理模擬練習題<span class="tag">第6題</span><span class="tag" style="background:#6b5842">CDM深度應用・消防版複合危機</span></h1>
+      <div class="sub">自製情境模擬申論題・仿110年複合式危機真實考法，改編為消防救災情境・共30分</div>
+    </div>
+
+    <div class="tips-box">
+      <h3>📌 為何這樣出題</h3>
+      <p style="margin:0;font-size:0.92em;">110年真實考題以「群架＋跳樓＋爆裂物＋人質」四重複合危機考CDM排序能力。本題改編為消防人員最常遇到的複合式現場——結構倒塌受困＋化學外洩＋群眾阻擋＋二次爆炸風險，練習在資源有限、多重威脅並存時，用CDM排定救災優先順序。</p>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header">模擬題6 <span class="q-score">（30分）｜課程：危機處理（含風險管理）｜工具：CDM</span></div>
+      <div class="q-text">
+        <div class="situation">【情境】某化工廠深夜發生連環意外：鍋爐爆炸造成3名員工受困瓦礫堆，伴隨化學槽車閥門損壞持續外洩不明氣體，現場員工情緒失控阻擋消防車輛進出，廠區另一頭又傳出第二次小型爆炸巨響。您是率隊抵達之消防分隊小隊長，現場僅2部消防車、1輛救護車，增援尚未到達。</div>
+        <div class="question">【問題】請運用「警察勤務安全危機決策模式（CDM）」5步驟，說明您如何在資訊不完整、資源有限之情況下，排定處置優先順序並說明各步驟重點。（30分）</div>
+      </div>
+      <div class="non-official">⚠ 自製模擬練習題，非歷屆考古題原題；範文僅供參考作答架構，實際評分應以官方標準為準</div>
+      <div class="ans-block">
+
+        <div class="ans-section">
+          <div class="ans-title">【前言】</div>
+          <p style="margin:0;font-size:0.92em;">面對化工廠爆炸合併化學物外洩、群眾阻擋及二次爆炸之複合式危機，在資訊不完整、資源有限（僅2車1護、增援未達）之情況下，運用CDM危機決策模式5步驟，排定處置優先順序，說明如下。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="cdm-step">
+            <div class="cdm-title"><span class="cdm-num">①</span>蒐集與分析情資</div>
+            抵達現場立即與廠方人員確認受困人數、位置、外洩氣體種類（透過廠內危害物品清冊或安全資料表初步比對），並派員偵測氣體濃度，同時觀察阻擋群眾之情緒與人數規模。
+          </div>
+          <div class="cdm-step">
+            <div class="cdm-title"><span class="cdm-num">②</span>評估風險威脅狀況</div>
+            研判多重威脅並存——受困員工有立即生命危險、不明氣體外洩可能造成搜救人員二次中毒、群眾阻擋延誤搶救時效、二次爆炸隨時可能發生，須將「對搜救人員自身安全的威脅」列為評估首位。
+          </div>
+          <div class="cdm-step">
+            <div class="cdm-title"><span class="cdm-num">③</span>考量政策規範與職權限制</div>
+            搶救人員進入前須確認防護裝備等級是否足以因應外洩氣體種類，若氣體種類不明且濃度未知，應優先評估是否具備進入條件，避免搜救人員成為第二批傷患；同時考量是否可協調警力到場協助排除阻擋群眾。
+            <div class="law-ref">法規依據：職業安全衛生法（個人防護裝備配置）；消防法（危險物品申報與防護原則）</div>
+          </div>
+          <div class="cdm-step">
+            <div class="cdm-title"><span class="cdm-num">④</span>確定選項並決定最佳行動方案</div>
+            依「生命安全優先、搜救人員安全次之、財損最後」原則排序：優先處置受困員工搜救（若防護裝備許可），同時聯繫化學防護分隊及毒災應變隊增援，請求警力排除阻擋群眾以利車輛通行，並劃定二次爆炸警戒區、非必要人員後撤至安全距離。
+          </div>
+          <div class="cdm-step">
+            <div class="cdm-title"><span class="cdm-num">⑤</span>採取行動並持續審視與再評估</div>
+            行動同時保持與指揮中心密切聯繫，持續監測氣體濃度與結構穩定性，若偵測數值超過安全值或再次發生爆炸徵兆，立即回頭重新評估風險、調整或暫停搜救行動，形成持續循環之決策模式。
+          </div>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【結語】</div>
+          <p style="margin:0;font-size:0.92em;">CDM模式強調在資訊不完整、多重威脅並存之複合式危機中，仍須依五步驟循環決策，並以「搜救人員安全」與「生命優先」為核心，逐一化解各項威脅。</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <h3>✏️ 解題／寫法提醒</h3>
+      <ul>
+        <li>複合式危機題的關鍵在於<strong>排優先序的邏輯要說清楚</strong>，不能只列出各項威脅卻沒有交代「為什麼先處理這個、後處理那個」。</li>
+        <li>本題4個威脅源（受困員工／氣體外洩／群眾阻擋／二次爆炸）建議在②評估風險時就先排序，④再依序展開對應方案，前後呼應。</li>
+        <li>易漏分點：忘記強調「搜救人員自身安全」這個消防特有的考量點（警察題型較少強調此點，但消防題型是重點）；忘記請求跨單位（警力、毒災應變隊）支援。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════ 第7題 ══════ -->
+  <div class="tab-pane" id="t7">
+    <div class="header">
+      <h1>危機處理模擬練習題<span class="tag">第7題</span><span class="tag" style="background:#6b5842">談判8原則＋兩階段技巧 深度單獨</span></h1>
+      <div class="sub">自製情境模擬申論題・談判8項基本原則與兩階段技巧表尚未單獨深度練習過・共30分</div>
+    </div>
+
+    <div class="tips-box">
+      <h3>📌 為何這樣出題</h3>
+      <p style="margin:0;font-size:0.92em;">題1的談判子題只用到「7要素＋禁忌條件」，教材裡的「談判8項基本原則」與「談判目標與技巧兩階段表（初階段建立關係／談判階段商討問題）」還沒有深度練習過。消防人員在山難、水災等搜救現場，經常需要說服受困或拒絕撤離者，本題就是練習這兩張表的完整套用。</p>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header">模擬題7 <span class="q-score">（30分）｜課程：危機處理（含風險管理）｜工具：談判8項基本原則＋兩階段目標與技巧</span></div>
+      <div class="q-text">
+        <div class="situation">【情境】山區發生土石流，一名獨居老翁受困自家二樓，消防搜救人員抵達後，老翁因擔心飼養多年的愛犬與畢生積蓄放在屋內，情緒激動拒絕在未攜帶財物與愛犬的情況下撤離，氣象單位預警土石流有再次發生之虞，時間緊迫。</div>
+        <div class="question">【問題】請運用危機處理談判的基本原則與談判目標及技巧，說明搜救人員應如何說服老翁儘速撤離。（30分）</div>
+      </div>
+      <div class="non-official">⚠ 自製模擬練習題，非歷屆考古題原題；範文僅供參考作答架構，實際評分應以官方標準為準</div>
+      <div class="ans-block">
+
+        <div class="ans-section">
+          <div class="ans-title">【前言】</div>
+          <p style="margin:0;font-size:0.92em;">本案受困老翁因財物與寵物眷戀而拒絕撤離，時間緊迫具高度風險，須運用危機處理談判的基本原則與談判目標及技巧，儘速安全完成撤離。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【壹、談判基本原則之運用】<span class="sub-pts">（扣合本案）</span></div>
+          <ul>
+            <li><strong>儘量擴大總體利益</strong>：向老翁說明撤離對其生命安全最為有利，人在財物才在，事後政府有相關救助及補償機制可協助財物損失。</li>
+            <li><strong>明確目標並善於妥協</strong>：核心目標是「安全撤離」，可妥協允許攜帶最基本的重要物品（藥品、證件），但不接受耗時翻找財物。</li>
+            <li><strong>重利益不重立場</strong>：老翁表面立場是「不撤離」，真正利益其實是「害怕失去畢生積蓄與陪伴多年的狗」，談判應針對此真實需求提出解方（例如承諾協助攜帶小型犬隻同行）。</li>
+            <li><strong>堅持客觀標準</strong>：以土石流監測資料、氣象局預警等客觀數據說明再次發生的急迫性，而非僅憑主觀勸說。</li>
+            <li><strong>堅持把人與問題分開</strong>：理解老翁對財物與寵物的情感依附並非無理取鬧，避免用命令口吻激化對立。</li>
+            <li><strong>提出對彼此有利的解決方案</strong>：承諾攜帶犬隻同行、事後優先協助尋回或看管財物。</li>
+          </ul>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【貳、談判目標與技巧（依危機發展階段）】</div>
+          <table>
+            <tr><th>階段</th><th>目標</th><th>扣合本案技巧</th></tr>
+            <tr><td>初階段（建立關係）</td><td>建立信任、發洩情緒、評估問題</td><td>積極傾聽老翁的擔憂，情緒歸類、簡述語意確認理解其顧慮，而非立即命令撤離</td></tr>
+            <tr><td>談判階段（商討問題）</td><td>商討問題、達成協議</td><td>以開放式提問了解其真正在意的財物與寵物項目，提出具體可行的替代方案，並以說服技巧強調時間急迫性</td></tr>
+          </table>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【結語】</div>
+          <p style="margin:0;font-size:0.92em;">唯有理解老翁真正在意的利益並提出具體可行的替代方案，同時把握「人與問題分開」原則展現同理，方能在有限時間內完成安全撤離，避免憾事發生。</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <h3>✏️ 解題／寫法提醒</h3>
+      <ul>
+        <li>本題刻意<strong>不涉及CDM或記者會</strong>，純粹深度考談判，練習把8項基本原則和兩階段技巧表都寫滿，不要不小心又寫回7要素／禁忌條件（那是題1已經練過的另一張表）。</li>
+        <li>「重利益不重立場」是這類題型最容易拿分的亮點——一定要點出「表面立場」與「真正利益」的落差並具體分析。</li>
+        <li>易漏分點：兩階段技巧表容易只寫技巧名詞（積極傾聽、開放式提問）卻沒有具體套進本案情境。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════ 第8題 ══════ -->
+  <div class="tab-pane" id="t8">
+    <div class="header">
+      <h1>危機處理模擬練習題<span class="tag">第8題</span><span class="tag" style="background:#6b5842">有效危機處理必備條件 6項</span></h1>
+      <div class="sub">自製情境模擬申論題・教材第肆章框架，6年來從未單獨命題・共30分</div>
+    </div>
+
+    <div class="tips-box">
+      <h3>📌 為何這樣出題</h3>
+      <p style="margin:0;font-size:0.92em;">「有效危機處理之必備條件」6項（常設單位、瞭解原因、設定策略、暢通溝通、紓減擴散、立即反應）是教材第肆章的完整框架，近6年從未單獨命題過，屬於組織管理層次的題型，與CDM／談判等個案處置層次不同，建議準備一遍以因應「組織如何強化危機處理量能」這類命題角度。</p>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header">模擬題8 <span class="q-score">（30分）｜課程：危機處理（含風險管理）｜工具：有效危機處理必備條件6項</span></div>
+      <div class="q-text">
+        <div class="situation">【情境】轄區消防局近年連續發生多起重大火災搶救爭議（出勤延誤、搶救策略遭質疑），社會觀感不佳，局長要求全面檢討組織的危機處理能量。</div>
+        <div class="question">【問題】請依「有效危機處理之必備條件」，說明消防局應如何強化整體危機處理量能。（30分）</div>
+      </div>
+      <div class="non-official">⚠ 自製模擬練習題，非歷屆考古題原題；範文僅供參考作答架構，實際評分應以官方標準為準</div>
+      <div class="ans-block">
+
+        <div class="ans-section">
+          <div class="ans-title">【前言】</div>
+          <p style="margin:0;font-size:0.92em;">面對社會對消防局搶救爭議之質疑，運用「有效危機處理之必備條件」6項，檢討並強化組織整體危機處理量能，分述如下。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【危機處理必備條件6項（扣合本案）】</div>
+          <ul>
+            <li><strong>常設危機處理單位</strong>：建議消防局設立常設之「危機處理小組」或指定專責科室，平時即進行風險盤點與應變計畫研擬，而非事件發生才臨時編組。</li>
+            <li><strong>瞭解並分析危機發生原因</strong>：針對歷次搶救爭議逐案檢討，區分是SOP不足、人力裝備不足或溝通不良所致，對症下藥而非籠統檢討。</li>
+            <li><strong>設定危機管理總策略</strong>：訂定明確之危機應變總方針（如「生命優先、資訊透明、專業說明」），作為各級人員面對爭議事件之一致行動準則。</li>
+            <li><strong>建立通暢溝通管道</strong>：強化局內指揮體系與對外發言機制，確保現場資訊能即時上傳指揮中心，並有效對外說明，避免各說各話。</li>
+            <li><strong>紓減危機的擴散</strong>：對已引發社會關注之個案，主動說明並提出具體改善作為，避免爭議持續發酵擴散為對整體組織信任之質疑。</li>
+            <li><strong>迅速有效的立即反應</strong>：強化教育訓練及編排備勤機制，確保出勤時效，並在爭議發生後第一時間啟動危機處理小組因應，而非被動等待輿論延燒。</li>
+          </ul>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【結語】</div>
+          <p style="margin:0;font-size:0.92em;">唯有從制度面建立常設機制、深入分析原因、設定總策略、暢通溝通、紓減擴散並強化即時反應能力，方能從根本提升消防局整體危機處理量能，重建社會信任。</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <h3>✏️ 解題／寫法提醒</h3>
+      <ul>
+        <li>這是<strong>組織管理層次</strong>的題型（不是個案處置），6項條件每項都要對應「消防局層級」的具體制度作法，不能寫成個案SOP。</li>
+        <li>口訣「常瞭設暢紓即」務必能默寫，且順序建議依教材原順序寫，展現架構完整性。</li>
+        <li>易漏分點：把6項寫成同義重複的空話（如都寫「加強訓練」），每一項都要有明顯區隔的具體作法。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════ 第9題 ══════ -->
+  <div class="tab-pane" id="t9">
+    <div class="header">
+      <h1>危機處理模擬練習題<span class="tag">第9題</span><span class="tag" style="background:#6b5842">OODA模式＋CDM比較</span></h1>
+      <div class="sub">自製情境模擬申論題・OODA為反恐特種部隊決策模式，教材中與CDM並列但從未單獨命題・共30分</div>
+    </div>
+
+    <div class="tips-box">
+      <h3>📌 為何這樣出題</h3>
+      <p style="margin:0;font-size:0.92em;">教材同時介紹CDM與OODA兩種決策模式，但歷屆考題只考過CDM，OODA從未單獨出現。本題設計為「比較型」題目，練習說明OODA循環程序，並與CDM做異同比較，這類比較型題目是申論題中較容易展現理論理解深度的題型。</p>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header">模擬題9 <span class="q-score">（30分）｜課程：危機處理（含風險管理）｜工具：OODA模式＋CDM比較</span></div>
+      <div class="q-text">
+        <div class="situation">【情境】一棟舊工廠倒塌，多人受困，消防局特種搜救隊（含搜救犬）獲報馳援，現場結構不穩定、隨時可能二次坍塌，搜救隊須在極短時間內完成判斷與行動，爭取黃金72小時。</div>
+        <div class="question">【問題】請運用「OODA模式」，說明特種搜救隊到場後的決策循環程序及重點；並比較OODA與CDM兩模式之異同。（30分）</div>
+      </div>
+      <div class="non-official">⚠ 自製模擬練習題，非歷屆考古題原題；範文僅供參考作答架構，實際評分應以官方標準為準</div>
+      <div class="ans-block">
+
+        <div class="ans-section">
+          <div class="ans-title">【前言】</div>
+          <p style="margin:0;font-size:0.92em;">面對結構不穩定、決策時效要求極高之搜救情境，運用「OODA模式」說明特種搜救隊處置程序，並與CDM模式進行比較，分述如下。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【壹、OODA模式之應用（觀察-引導-決策-行動循環）】</div>
+          <ul>
+            <li><strong>觀察（Observation）</strong>：快速掃描現場結構受損情形、受困者可能位置（聲響／生命跡象偵測儀）、搜救犬初步搜索結果，同時觀察結構持續變化跡象（裂縫擴大、異音）。</li>
+            <li><strong>引導（Orient）</strong>：綜合研判觀察所得，判斷何處搜救優先（生還機率最高）、何處結構最不穩定需先行支撐，形成情境圖像。</li>
+            <li><strong>決策（Decision）</strong>：依研判結果決定搜救介入方式（破壞攻擊面、支撐點設置順序）與撤離時機（結構有致命風險立即撤離）。</li>
+            <li><strong>行動（Action）</strong>：執行搜救及支撐作業，並持續回到觀察階段重新掃描現場變化，形成快速循環。</li>
+          </ul>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【貳、OODA與CDM之異同比較】</div>
+          <table>
+            <tr><th>面向</th><th>說明</th></tr>
+            <tr><td>相同點</td><td>兩者均強調在資訊不完整、時間壓力大之情境下，透過循環式決策持續蒐集資訊、調整行動，而非一次性線性決策</td></tr>
+            <tr><td>起源與定位</td><td>OODA源自反恐特種部隊，CDM源自警察勤務安全危機決策模式（PERF編製）</td></tr>
+            <tr><td>循環週期與強調重點</td><td>OODA循環週期更短、更強調「速度」搶時間（如本案結構倒塌之瞬時判斷）；CDM五步驟更完整涵蓋政策法規考量與資源整合</td></tr>
+            <tr><td>適用情境</td><td>OODA適合單兵／小組極短時間之戰術判斷；CDM適合需兼顧法規職權與多方協調之複合式危機情境</td></tr>
+          </table>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【結語】</div>
+          <p style="margin:0;font-size:0.92em;">本案屬結構不穩定、決策時效要求極高之特種搜救情境，OODA快速循環模式尤其適用；惟若涉及跨機關資源整合與法規職權考量，仍須輔以CDM模式之完整步驟，兩者可視情境靈活搭配運用。</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <h3>✏️ 解題／寫法提醒</h3>
+      <ul>
+        <li>比較型題目的關鍵是<strong>先各自完整說明，再用一段專門做比較</strong>，不要邊寫OODA邊穿插比較，結構會亂。</li>
+        <li>比較時建議從「起源」「循環週期／強調重點」「適用情境」三個角度切入，展現不是死背而是理解兩者設計邏輯的差異。</li>
+        <li>易漏分點：忘記點出OODA的口訣（觀、引、決、行）；比較時只寫「都是循環模式」過於籠統，要寫出具體差異點。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════ 第10題 ══════ -->
+  <div class="tab-pane" id="t10">
+    <div class="header">
+      <h1>危機處理模擬練習題<span class="tag">第10題</span><span class="tag" style="background:#6b5842">聚眾活動處理應用</span></h1>
+      <div class="sub">自製情境模擬申論題・教材第捌章2x2矩陣框架，改編為消防救災遭群眾阻擋情境・共30分</div>
+    </div>
+
+    <div class="tips-box">
+      <h3>📌 為何這樣出題</h3>
+      <p style="margin:0;font-size:0.92em;">「聚眾活動處理應用」的2x2矩陣框架是教材第捌章重點，但歷屆考題從未單獨出現。此框架通常以警察處理示威遊行為情境，本題改編為消防人員實務上更可能遇到的狀況——搶救現場遭陳情或抗議群眾阻擋，練習把矩陣框架套進消防救災情境。</p>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header">模擬題10 <span class="q-score">（30分）｜課程：危機處理（含風險管理）｜工具：聚眾活動處理應用2x2矩陣</span></div>
+      <div class="q-text">
+        <div class="situation">【情境】環保團體因不滿工廠長期污染，於廠外聚集抗議，適逢廠內發生火警，抗議群眾情緒激動，部分人員阻擋消防車輛進場搶救。</div>
+        <div class="question">【問題】請運用「聚眾活動處理應用」之策略類型矩陣，說明您應如何兼顧搶救時效與群眾權益，處置本案。（30分）</div>
+      </div>
+      <div class="non-official">⚠ 自製模擬練習題，非歷屆考古題原題；範文僅供參考作答架構，實際評分應以官方標準為準</div>
+      <div class="ans-block">
+
+        <div class="ans-section">
+          <div class="ans-title">【前言】</div>
+          <p style="margin:0;font-size:0.92em;">本案環保團體因不滿工廠污染而抗議，適逢廠內發生火警，抗議群眾情緒激動可能阻擋消防車輛進場，須運用「聚眾活動處理應用」之策略類型矩陣，兼顧搶救時效與群眾權益，分述如下。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【壹、聚眾活動策略類型判斷】</div>
+          <p style="margin:0;font-size:0.92em;">依「活動性質（和平／暴力）×警方手段（柔性／強制）」2x2矩陣研判，本案抗議群眾訴求明確（反污染）且尚未有暴力行為，屬「和平示威遊行」類型，惟因阻擋消防車通行已直接威脅廠內受困人員生命安全，須立即採取柔性但堅定之疏處作為，避免升高對立又能爭取搶救時效。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【貳、處理流程（扣合本案）】</div>
+          <ul>
+            <li><strong>情報蒐集及風險評估為最先作為</strong>：到場後立即掌握抗議群眾人數、訴求、有無帶頭者，評估阻擋通行對搶救時效之影響程度。</li>
+            <li><strong>主動溝通疏導</strong>：由現場指揮官聯繫協調帶頭者，說明廠內正有人員受困之緊急狀況，請求協助開闢救援通道，多數民眾在了解攸關人命後會配合退讓。</li>
+            <li><strong>警告約制作為</strong>：對於堅持阻擋、經勸導無效者，會同警力依法採取警告及約制作為（如強制驅離特定路段），惟應以「不影響救援」為最高原則，避免使用過度強制力反而擴大衝突。</li>
+            <li><strong>事後溝通</strong>：火警撲滅後，主動與環保團體代表溝通後續污染改善追蹤機制，回應其訴求本質，避免衝突再度發生。</li>
+          </ul>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【結語】</div>
+          <p style="margin:0;font-size:0.92em;">聚眾活動處理應以情報先行、溝通疏導為主，強制作為為輔，本案更須在「保障民眾表達意見權利」與「搶救生命分秒必爭」間取得平衡，以說之以理、動之以情的方式儘速排除障礙，確保救援時效。</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <h3>✏️ 解題／寫法提醒</h3>
+      <ul>
+        <li>先用矩陣<strong>明確定位本案類型</strong>（和平／暴力 × 柔性／強制），再展開處理流程，展現有先分類再處置的邏輯。</li>
+        <li>消防版的聚眾活動題，重點在於凸顯「搶救時效與群眾權益的兩難」，結尾務必點出如何在兩者間取得平衡。</li>
+        <li>易漏分點：忘記強調本案屬「和平」類型不宜貿然採強制手段；忘記處理流程要包含「事後溝通」回應抗議者訴求本質，而非只顧當下排除障礙。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">危機處理・自製模擬練習題10題合輯｜非官方參考資料・製作：Claude AI・2026/08/04</div>
+</main>
+
+<script>
+  const btns = document.querySelectorAll('.tab-btn');
+  const panes = document.querySelectorAll('.tab-pane');
+  const mainEl = document.getElementById('main');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      panes.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      mainEl.scrollTop = 0;
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,2723 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>危機處理五大工具萬用模板・情資選項庫</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --bg:#f6f5f1; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66; --line:#e5e2da;
+    --crisis:#b2551f; --crisis-tint:#fbeee0;
+    --side-w:260px;
+  }
+  *{box-sizing:border-box;}
+  body { font-family: 'Microsoft JhengHei','Noto Sans TC',Arial,sans-serif; background: var(--bg); color: var(--ink); margin: 0; font-size: 15px; line-height: 1.9; --subj:var(--crisis); --subj-tint:var(--crisis-tint); display:flex; }
+
+  #sidebar{ width:var(--side-w); flex-shrink:0; height:100vh; position:sticky; top:0; overflow-y:auto; background:#fbf9f5; border-right:1px solid var(--line); padding:20px 14px; }
+  .side-title{ font-size:1.05rem; font-weight:700; color:var(--ink); margin:0 6px 4px; line-height:1.4; }
+  .side-sub{ font-size:.74rem; color:var(--sub); margin:0 6px 16px; line-height:1.6; }
+  .backlink{ display:block; font-size:.8rem; color:var(--sub); text-decoration:none; margin:0 6px 10px; padding-bottom:10px; border-bottom:1px solid var(--line); }
+  #search{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:.85rem;margin-bottom:14px;font-family:inherit;box-sizing:border-box;}
+  .tab-btn{ display:block; width:100%; text-align:left; background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px 12px; margin-bottom:7px; cursor:pointer; font-family:inherit; color:var(--ink); transition:background .15s,border-color .15s; }
+  .tab-btn:hover{ background:var(--crisis-tint); }
+  .tab-btn .t-num{ display:inline-block; background:var(--sub); color:#fff; border-radius:4px; padding:0 7px; font-size:.7rem; font-weight:700; margin-right:6px; }
+  .tab-btn .t-name{ font-size:.85rem; font-weight:700; }
+  .tab-btn .t-sub{ display:block; font-size:.71rem; color:var(--sub); margin-top:3px; padding-left:24px; }
+  .tab-btn.active{ background:var(--crisis); border-color:var(--crisis); }
+  .tab-btn.active .t-num{ background:#fff; color:var(--crisis); }
+  .tab-btn.active .t-name{ color:#fff; }
+  .tab-btn.active .t-sub{ color:#fce6d4; }
+
+  main{ flex:1; min-width:0; height:100vh; overflow-y:auto; padding:24px 30px 60px; }
+  .tab-pane{ display:none; max-width:980px; margin:0 auto; }
+  .tab-pane.active{ display:block; }
+
+  .header { background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--subj); padding: 22px 28px; border-radius: 10px; margin-bottom: 18px; box-shadow:0 1px 3px rgba(0,0,0,.05); }
+  .header h1 { margin: 0 0 6px 0; font-size: 1.3em; color: var(--ink); font-weight:700; }
+  .header .sub { font-size: 0.86em; color: var(--sub); }
+  .header .tag { display: inline-block; background: var(--subj); color: #fff; border-radius: 4px; padding: 2px 10px; font-size: 0.78em; margin-left: 8px; }
+
+  .jumprow{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;}
+  .jumprow a{font-size:.78rem;color:var(--subj);text-decoration:none;padding:4px 11px;border-radius:999px;background:var(--subj-tint);border:1px solid #ecd4b8;white-space:nowrap;}
+  .jumprow a:hover{background:var(--subj);color:#fff;}
+  .jumprow .grp{font-size:.78rem;color:var(--sub);align-self:center;margin-right:-2px;}
+
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 14px 18px; margin-bottom: 16px; }
+  .card p{margin:.4em 0;font-size:.9em;line-height:1.85;}
+  .card b{color:var(--subj);}
+
+  .point-card{ background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 20px; margin-bottom:16px; scroll-margin-top:16px; }
+  .point-head{ display:flex; align-items:baseline; gap:8px; margin-bottom:6px; padding-bottom:8px; border-bottom:1px dashed var(--line); }
+  .point-num{ display:inline-block; background:var(--subj); color:#fff; border-radius:5px; padding:1px 9px; font-size:.85em; font-weight:700; flex-shrink:0; }
+  .point-name{ font-size:1.03em; font-weight:700; color:var(--subj); }
+  .point-theory{ margin:0 0 12px; font-size:.87em; color:var(--sub); line-height:1.7; }
+  .opt-grid{ display:flex; flex-wrap:wrap; gap:7px; }
+  .opt{ background:#fbfaf7; border:1px solid var(--line); border-radius:6px; padding:5px 11px; font-size:.85em; line-height:1.5; }
+  .opt b{ color:var(--subj); font-weight:700; margin-right:2px; }
+
+  .template{background:#fbf6ea;border:1px dashed #d8c896;border-radius:10px;padding:14px 18px;margin:16px 0 20px;font-size:.9rem;line-height:1.9;color:#6b5a2a;}
+  .template b{color:#4a3d15;}
+
+  .note-box{background:var(--subj-tint);border:1px solid var(--subj);border-radius:8px;padding:14px 18px;margin-bottom:20px;font-size:.88em;color:var(--ink);line-height:1.85;}
+  .note-box b{color:var(--subj);}
+  .note-box h3{margin:0 0 8px;font-size:1em;color:var(--subj);}
+
+  .usage-steps{counter-reset:step;list-style:none;padding:0;margin:0;}
+  .usage-steps li{counter-increment:step;position:relative;padding:4px 0 14px 34px;font-size:.92em;line-height:1.8;}
+  .usage-steps li::before{content:counter(step);position:absolute;left:0;top:3px;width:24px;height:24px;background:var(--subj);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8em;font-weight:700;}
+
+  .footer { text-align: center; font-size: 0.78em; color: var(--sub); margin-top: 30px; padding-top: 14px; border-top: 1px solid var(--line); }
+
+  mark{background:#ffe2a8;padding:0 2px;border-radius:3px;}
+  .opt.hide{display:none !important;}
+</style>
+</head>
+<body>
+<div style="position:fixed;top:8px;right:12px;z-index:9999;font-size:12px;color:#9a978d;background:rgba(255,255,255,.85);padding:2px 10px;border-radius:999px;pointer-events:none;">柯醒翰製作</div>
+
+<nav id="sidebar">
+  <div class="side-title">危機處理<br>五大工具萬用模板</div>
+  <div class="side-sub">CDM／降階處理／談判／媒體互動／注意事項・每個官方要點配30個情境化選項，供申論題寫作快速取材</div>
+  <a class="backlink" href="index.html">← 回筆記入口</a>
+  <a class="backlink" href="危機處理作業批改與教材分析.html">← 作業批改與教材分析</a>
+  <a class="backlink" href="危機處理模擬練習題_10題合輯.html">← 10題模擬練習</a>
+  <input id="search" type="text" placeholder="在目前分頁內搜尋關鍵字...">
+
+  <button class="tab-btn active" data-tab="t0">
+    <span class="t-num">說</span><span class="t-name">使用說明</span>
+    <span class="t-sub">怎麼用這份模板</span>
+  </button>
+  <button class="tab-btn" data-tab="tcdm">
+    <span class="t-num">1</span><span class="t-name">CDM危機決策模式</span>
+    <span class="t-sub">5步驟・150個選項</span>
+  </button>
+  <button class="tab-btn" data-tab="tdeesc">
+    <span class="t-num">2</span><span class="t-name">降階處理</span>
+    <span class="t-sub">同理心傾聽＋控制情勢・300個選項</span>
+  </button>
+  <button class="tab-btn" data-tab="tnego">
+    <span class="t-num">3</span><span class="t-name">談判</span>
+    <span class="t-sub">7要素＋8原則＋兩階段＋禁忌・540個選項</span>
+  </button>
+  <button class="tab-btn" data-tab="tmedia">
+    <span class="t-num">4</span><span class="t-name">媒體互動</span>
+    <span class="t-sub">新聞性5標準＋互動7點＋記者會10項・660個選項</span>
+  </button>
+  <button class="tab-btn" data-tab="tnote">
+    <span class="t-num">5</span><span class="t-name">注意事項</span>
+    <span class="t-sub">寫作技巧＋前言結語句型・270個選項</span>
+  </button>
+</nav>
+
+<main id="main">
+
+  <!-- ══════ 使用說明 ══════ -->
+  <div class="tab-pane active" id="t0">
+    <div class="header">
+      <h1>使用說明<span class="tag">怎麼用這份模板</span></h1>
+      <div class="sub">延伸自「危機處理作業批改與教材分析」與「危機處理模擬練習題10題合輯」・危機處理（含風險管理）科目・Q2固定30分申論題・開書考專用</div>
+    </div>
+
+    <div class="note-box">
+      <h3>⚠ 這份文件是「素材庫」，不是「標準答案」</h3>
+      <p>每個工具底下的<b>要點名稱（如①蒐集與分析情資、不要逃避媒體）都是教材原文字，考試時務必逐字照抄</b>，閱卷者是依教材給分點對照。但每個要點底下的<b>30個選項是舉例／情境化素材</b>，是幫你在考場快速聯想「這個要點可以怎麼具體展開」的詞庫，不是教材本身的內容，也不需要、也不可能30個全部寫進去——依題目情境挑2-4個最貼合的組成句子即可。</p>
+    </div>
+
+    <div class="card">
+      <p style="font-size:.95em;font-weight:700;color:var(--ink);margin-bottom:10px;">怎麼用（4步驟）</p>
+      <ol class="usage-steps">
+        <li>看到題目，先判斷題目要考哪個／哪幾個工具（CDM／降階處理／談判／媒體互動），是否為「三合一」混合題，並確認題目有沒有<b>自訂步驟名稱</b>（如113年地震題自訂5步驟標題）——若有，一律依題目指定的名稱作答，不要照套教材原始命名。</li>
+        <li>點選對應分頁，依配分比例分配篇幅後，逐一展開該工具的官方要點（要點標題全部逐字照抄）。</li>
+        <li>每個要點先寫一句「理論意涵」（可參考該要點下方的灰字說明），再從30個選項中挑2-4個符合本案情境的具體做法，串成「情境化＋策略」的完整句子——即「理論意涵→具體套情境→提出策略」三段式寫法。</li>
+        <li>套用<b>注意事項</b>分頁的前言破題句型與結語收束句型，並對照該分頁「審題」「框架錨定」「篇幅分配」等7類提醒，檢查有沒有漏掉常見扣分點。</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <p style="font-size:.95em;font-weight:700;color:var(--ink);margin-bottom:8px;">5大工具對應教材與歷屆考古題</p>
+      <table style="width:100%;border-collapse:collapse;font-size:.87em;">
+        <tr style="background:var(--subj-tint);color:var(--subj);"><th style="padding:7px 10px;text-align:left;">工具</th><th style="padding:7px 10px;text-align:left;">對應教材</th><th style="padding:7px 10px;text-align:left;">歷屆出現</th></tr>
+        <tr><td style="padding:7px 10px;border-bottom:1px solid var(--line);">CDM危機決策模式</td><td style="padding:7px 10px;border-bottom:1px solid var(--line);">Ch6-4</td><td style="padding:7px 10px;border-bottom:1px solid var(--line);">110年、113年（近6年最高頻之一）</td></tr>
+        <tr><td style="padding:7px 10px;border-bottom:1px solid var(--line);">降階處理（降階策略模式）</td><td style="padding:7px 10px;border-bottom:1px solid var(--line);">Ch6-5</td><td style="padding:7px 10px;border-bottom:1px solid var(--line);">未單獨命題過，屬冷門但教材重點</td></tr>
+        <tr><td style="padding:7px 10px;border-bottom:1px solid var(--line);">談判</td><td style="padding:7px 10px;border-bottom:1px solid var(--line);">Ch7</td><td style="padding:7px 10px;border-bottom:1px solid var(--line);">109年</td></tr>
+        <tr><td style="padding:7px 10px;border-bottom:1px solid var(--line);">媒體互動／記者說明會</td><td style="padding:7px 10px;border-bottom:1px solid var(--line);">Ch5</td><td style="padding:7px 10px;border-bottom:1px solid var(--line);">111年、112年（近6年最高頻之一）</td></tr>
+        <tr><td style="padding:7px 10px;">三階段論（預防-應變-復原）</td><td style="padding:7px 10px;">Ch3-三</td><td style="padding:7px 10px;">114年（未獨立成一個工具分頁，併入注意事項的框架錨定提醒）</td></tr>
+      </table>
+    </div>
+
+    <div class="footer">危機處理五大工具萬用模板・延伸自RP204小組彙整批改記錄與10題模擬練習・非官方標準答案，僅供寫作素材參考・製作：Claude AI</div>
+  </div>
+
+  <!-- ══════ CDM ══════ -->
+  <div class="tab-pane" id="tcdm">
+    <div class="header">
+      <h1>CDM警察勤務安全危機決策模式<span class="tag">5步驟・150個選項</span></h1>
+      <div class="sub">對應 crisis-management-slides.html Ch6-4・PERF編製・非線性可循環，稱「旋轉車輪模式」・110年、113年考過</div>
+    </div>
+    <div class="jumprow">
+      <span class="grp">跳至：</span>
+      <a href="#cdm-1">①蒐集與分析情資</a><a href="#cdm-2">②評估風險威脅狀況</a><a href="#cdm-3">③考量政策規範與職權限制</a><a href="#cdm-4">④確定選項並決定最佳行動方案</a><a href="#cdm-5">⑤採取行動並持續審視與再評估</a>
+    </div>
+
+<div class="point-card" id="cdm-1">
+  <div class="point-head"><span class="point-num">①</span><span class="point-name">蒐集與分析情資</span></div>
+  <p class="point-theory">情資蒐集為決策起點，須多元來源查證並隨事件發展持續更新</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 現場初步蒐證錄影存證</span>
+    <span class="opt"><b>2.</b> 社群媒體直播畫面側錄</span>
+    <span class="opt"><b>3.</b> 在場目擊民眾訪談</span>
+    <span class="opt"><b>4.</b> 勤務指揮中心先期派遣資料研判</span>
+    <span class="opt"><b>5.</b> 中央氣象署氣象資料查詢</span>
+    <span class="opt"><b>6.</b> 衛星定位座標即時回傳</span>
+    <span class="opt"><b>7.</b> 空拍機空中偵蒐畫面</span>
+    <span class="opt"><b>8.</b> 線民提供秘密情資</span>
+    <span class="opt"><b>9.</b> 關係人通聯紀錄調閱</span>
+    <span class="opt"><b>10.</b> 治安顧慮人口與前科紀錄查詢</span>
+    <span class="opt"><b>11.</b> 周邊路口監視器影像調閱</span>
+    <span class="opt"><b>12.</b> 車籍及駕籍資料查詢</span>
+    <span class="opt"><b>13.</b> 醫院緊急救護紀錄查詢</span>
+    <span class="opt"><b>14.</b> 廠區化學品安全資料表查閱</span>
+    <span class="opt"><b>15.</b> 里鄰長及社區志工回報</span>
+    <span class="opt"><b>16.</b> 與消防醫療單位交叉比對情資</span>
+    <span class="opt"><b>17.</b> 現場指揮官目視觀察綜整</span>
+    <span class="opt"><b>18.</b> 通訊軟體群組即時回報</span>
+    <span class="opt"><b>19.</b> 無線電通聯紀錄查閱</span>
+    <span class="opt"><b>20.</b> 有毒氣體偵測儀器讀值</span>
+    <span class="opt"><b>21.</b> 空中勤務直升機空拍回傳</span>
+    <span class="opt"><b>22.</b> 網路輿情擴散範圍監控</span>
+    <span class="opt"><b>23.</b> 建築物結構與樓層配置圖調閱</span>
+    <span class="opt"><b>24.</b> 保全系統監控畫面調閱</span>
+    <span class="opt"><b>25.</b> 機關學校人員在場清冊確認</span>
+    <span class="opt"><b>26.</b> 劃設警戒線區隔管制人車</span>
+    <span class="opt"><b>27.</b> 指定專人持續記錄情資更新</span>
+    <span class="opt"><b>28.</b> 建立情資彙整表逐項比對</span>
+    <span class="opt"><b>29.</b> 與到場各單位交換情資避免落差</span>
+    <span class="opt"><b>30.</b> 過濾查證網路謠言與二手轉述</span>
+  </div>
+</div>
+
+<div class="point-card" id="cdm-2">
+  <div class="point-head"><span class="point-num">②</span><span class="point-name">評估風險威脅狀況</span></div>
+  <p class="point-theory">各項威脅之急迫性與致命性不同，須排序評估並隨情勢變化重新調整</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 各項威脅立即致命性排序</span>
+    <span class="opt"><b>2.</b> 研判情勢升高或降溫趨勢</span>
+    <span class="opt"><b>3.</b> 衡量在場警消人身安全風險</span>
+    <span class="opt"><b>4.</b> 評估行為人情緒與精神狀態</span>
+    <span class="opt"><b>5.</b> 查證行為人有無自傷傷人前科</span>
+    <span class="opt"><b>6.</b> 評估人質受脅迫之近接程度</span>
+    <span class="opt"><b>7.</b> 評估圍觀群眾情緒與聚集規模</span>
+    <span class="opt"><b>8.</b> 研判有無共犯或第三人涉入</span>
+    <span class="opt"><b>9.</b> 評估武器殺傷力與取得難易度</span>
+    <span class="opt"><b>10.</b> 研判危險物質擴散範圍速度</span>
+    <span class="opt"><b>11.</b> 評估建築物結構倒塌可能性</span>
+    <span class="opt"><b>12.</b> 評估天候變化對搶救之影響</span>
+    <span class="opt"><b>13.</b> 研判現場有無易燃易爆物品</span>
+    <span class="opt"><b>14.</b> 評估孩童老人身障者暴露風險</span>
+    <span class="opt"><b>15.</b> 評估直播擴散之表演效應</span>
+    <span class="opt"><b>16.</b> 評估案件社會矚目與敏感程度</span>
+    <span class="opt"><b>17.</b> 評估警力裝備是否足以因應</span>
+    <span class="opt"><b>18.</b> 研判增援到場所需時間缺口</span>
+    <span class="opt"><b>19.</b> 評估逃生路線疏散可行性</span>
+    <span class="opt"><b>20.</b> 研判有無二次災害連鎖效應</span>
+    <span class="opt"><b>21.</b> 評估交通壅塞對應變之影響</span>
+    <span class="opt"><b>22.</b> 研判公共設施損壞風險</span>
+    <span class="opt"><b>23.</b> 評估傳染病生物性危害風險</span>
+    <span class="opt"><b>24.</b> 研判資安事件波及基礎設施</span>
+    <span class="opt"><b>25.</b> 評估行為人與人質談判空間</span>
+    <span class="opt"><b>26.</b> 研判高處墜落活動受限風險</span>
+    <span class="opt"><b>27.</b> 評估水域深度流速等風險</span>
+    <span class="opt"><b>28.</b> 研判有毒氣體濃度致命標準</span>
+    <span class="opt"><b>29.</b> 評估媒體聚集對管制之干擾</span>
+    <span class="opt"><b>30.</b> 隨情資更新動態修正評估結果</span>
+  </div>
+</div>
+
+<div class="point-card" id="cdm-3">
+  <div class="point-head"><span class="point-num">③</span><span class="point-name">考量警察政策規範與職權限制</span></div>
+  <p class="point-theory">任何處置作為均須於法定職權範圍內，並符合比例原則與政策指引</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 檢視警察職權行使法之權限範圍</span>
+    <span class="opt"><b>2.</b> 研判使用警械是否符合比例原則</span>
+    <span class="opt"><b>3.</b> 確認符合社會秩序維護法處置要件</span>
+    <span class="opt"><b>4.</b> 評估精神衛生法通報送醫之要件</span>
+    <span class="opt"><b>5.</b> 研判家庭暴力防治法保護令要件</span>
+    <span class="opt"><b>6.</b> 確認災害防救法通報應變分工</span>
+    <span class="opt"><b>7.</b> 研判傳染病防治法強制隔離規定</span>
+    <span class="opt"><b>8.</b> 評估集會遊行法許可及處置規範</span>
+    <span class="opt"><b>9.</b> 確認案件屬本轄或應移請他機關</span>
+    <span class="opt"><b>10.</b> 研判是否須通報社政或少家法庭</span>
+    <span class="opt"><b>11.</b> 評估使用強制力前是否已完成勸導</span>
+    <span class="opt"><b>12.</b> 考量採取漸進式武力使用原則</span>
+    <span class="opt"><b>13.</b> 研判是否具備即時強制法定要件</span>
+    <span class="opt"><b>14.</b> 確認搜索扣押作為是否需司法令狀</span>
+    <span class="opt"><b>15.</b> 評估是否應優先談判而非強制作為</span>
+    <span class="opt"><b>16.</b> 研判是否須通報檢察官到場指揮</span>
+    <span class="opt"><b>17.</b> 考量對精神障礙者保護性約束界限</span>
+    <span class="opt"><b>18.</b> 評估對未成年人處置之特別程序</span>
+    <span class="opt"><b>19.</b> 確認蒐證程序符合證據保全規定</span>
+    <span class="opt"><b>20.</b> 研判是否需調度其他機關支援</span>
+    <span class="opt"><b>21.</b> 評估使用警用武器裝備開槍規範</span>
+    <span class="opt"><b>22.</b> 考量個資法對情資揭露之限制</span>
+    <span class="opt"><b>23.</b> 確認是否應簽報層轉請示長官</span>
+    <span class="opt"><b>24.</b> 研判是否須啟動跨機關聯合應變</span>
+    <span class="opt"><b>25.</b> 評估執法作為對正當程序之衝擊</span>
+    <span class="opt"><b>26.</b> 考量是否需通譯協助外籍人士案件</span>
+    <span class="opt"><b>27.</b> 確認密錄器蒐證器材全程記錄要求</span>
+    <span class="opt"><b>28.</b> 研判是否符合行政執行法即時強制</span>
+    <span class="opt"><b>29.</b> 評估是否需調派談判或霹靂小組</span>
+    <span class="opt"><b>30.</b> 確認決策過程留存書面紀錄查考</span>
+  </div>
+</div>
+
+<div class="point-card" id="cdm-4">
+  <div class="point-head"><span class="point-num">④</span><span class="point-name">確定選項並決定最佳行動方案</span></div>
+  <p class="point-theory">統整任務目標與各項可行方案，選擇風險最小且符合比例原則者</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 訂定人質安全優先之處置原則</span>
+    <span class="opt"><b>2.</b> 同步調派警力疏散圍觀群眾</span>
+    <span class="opt"><b>3.</b> 成立現場指揮所統一調度資源</span>
+    <span class="opt"><b>4.</b> 建立分區包夾戰術隊形</span>
+    <span class="opt"><b>5.</b> 優先派遣談判人員與行為人溝通</span>
+    <span class="opt"><b>6.</b> 安排霹靂小組或攻堅警力戒備</span>
+    <span class="opt"><b>7.</b> 協調狙擊警力占據制高點待命</span>
+    <span class="opt"><b>8.</b> 封鎖周邊道路管制人車進出</span>
+    <span class="opt"><b>9.</b> 建立醫療救護待命區</span>
+    <span class="opt"><b>10.</b> 規劃傷患後送動線與醫院聯繫</span>
+    <span class="opt"><b>11.</b> 調度消防搶救器材進駐待命</span>
+    <span class="opt"><b>12.</b> 動員義消及社區志工協助支援</span>
+    <span class="opt"><b>13.</b> 申請空中直升機或水上救援支援</span>
+    <span class="opt"><b>14.</b> 設置多層次警戒管制範圍</span>
+    <span class="opt"><b>15.</b> 保留戰術掩蔽及安全撤離路線</span>
+    <span class="opt"><b>16.</b> 選定符合比例原則之武力層級</span>
+    <span class="opt"><b>17.</b> 研擬應變計畫並準備備援方案</span>
+    <span class="opt"><b>18.</b> 進行任務分工並指定各組負責人</span>
+    <span class="opt"><b>19.</b> 確保通訊系統具備備援管道</span>
+    <span class="opt"><b>20.</b> 召開現場協調會議整合各單位意見</span>
+    <span class="opt"><b>21.</b> 評估是否需社工或心理諮商資源介入</span>
+    <span class="opt"><b>22.</b> 規劃階段性目標並訂定執行時程</span>
+    <span class="opt"><b>23.</b> 沙盤推演可能情境並預擬應變作為</span>
+    <span class="opt"><b>24.</b> 確認裝備物資是否齊全並即時補給</span>
+    <span class="opt"><b>25.</b> 尋求建築物掩蔽降低暴露風險</span>
+    <span class="opt"><b>26.</b> 排定各項資源投入之優先順序</span>
+    <span class="opt"><b>27.</b> 考量氣候及日照條件對行動時機影響</span>
+    <span class="opt"><b>28.</b> 建立與上級指揮中心之回報機制</span>
+    <span class="opt"><b>29.</b> 規劃疏散路線並設置引導人員</span>
+    <span class="opt"><b>30.</b> 比較各方案對無辜第三人之波及程度</span>
+  </div>
+</div>
+
+<div class="point-card" id="cdm-5">
+  <div class="point-head"><span class="point-num">⑤</span><span class="point-name">採取行動並持續審視與再評估</span></div>
+  <p class="point-theory">行動並非終點，須持續監控成效並於情勢有變時重回前步驟再評估</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 持續聯繫指揮中心請求增援</span>
+    <span class="opt"><b>2.</b> 隨時監控情勢並回報最新進度</span>
+    <span class="opt"><b>3.</b> 情勢升高立即回頭蒐集情資</span>
+    <span class="opt"><b>4.</b> 確認無殘存威脅後始可解除警戒</span>
+    <span class="opt"><b>5.</b> 安排傷患後續就醫及家屬通知</span>
+    <span class="opt"><b>6.</b> 維持封鎖至鑑識人員完成蒐證</span>
+    <span class="opt"><b>7.</b> 召開檢討會議並記錄經驗教訓</span>
+    <span class="opt"><b>8.</b> 檢視裝備耗損並辦理補充送修</span>
+    <span class="opt"><b>9.</b> 撰寫案件檢討報告陳報上級</span>
+    <span class="opt"><b>10.</b> 追蹤行為人後續司法偵辦程序</span>
+    <span class="opt"><b>11.</b> 協調社工心理師關懷被害人後續</span>
+    <span class="opt"><b>12.</b> 安排參與人員心理減壓及輔導</span>
+    <span class="opt"><b>13.</b> 檢視標準作業程序提出修正建議</span>
+    <span class="opt"><b>14.</b> 監控後續網路輿情並適時澄清</span>
+    <span class="opt"><b>15.</b> 確認交通秩序恢復正常運作</span>
+    <span class="opt"><b>16.</b> 移送人犯並辦理相關法律程序</span>
+    <span class="opt"><b>17.</b> 清點歸還借用之裝備器材</span>
+    <span class="opt"><b>18.</b> 對表現優異人員簽報敘獎</span>
+    <span class="opt"><b>19.</b> 追蹤有害物質是否完全清除</span>
+    <span class="opt"><b>20.</b> 安排暴露風險人員健康追蹤檢查</span>
+    <span class="opt"><b>21.</b> 更新案件檔案並歸檔備查</span>
+    <span class="opt"><b>22.</b> 檢視應變缺失納入教育訓練教材</span>
+    <span class="opt"><b>23.</b> 通報相關機關辦理後續複查</span>
+    <span class="opt"><b>24.</b> 確認環境安全無虞後開放通行</span>
+    <span class="opt"><b>25.</b> 持續關注被害人及家屬情緒狀況</span>
+    <span class="opt"><b>26.</b> 評估是否需延長警戒或持續駐守</span>
+    <span class="opt"><b>27.</b> 檢討通訊裝備備援機制運作成效</span>
+    <span class="opt"><b>28.</b> 彙整媒體詢問統一由發言窗口回應</span>
+    <span class="opt"><b>29.</b> 建立長期追蹤機制防範類案再發生</span>
+    <span class="opt"><b>30.</b> 記錄決策歷程供未來案例參考學習</span>
+  </div>
+</div>
+
+<div class="template">
+  <b>CDM前言範例</b>：<br>
+  寫法一：面對本案【持刀挾持人質】危機事件，於資訊不完整、時間壓力大之情況下，運用CDM警察勤務安全危機決策模式5步驟，說明處置程序及重點如下。<br>
+  寫法二：本案屬【天然災害搶救】性質之危機處理情境，具高度不確定性與時間急迫性，茲運用CDM危機決策模式（蒐集情資、評估風險、考量規範、決定方案、行動評估）5步驟，析述處置作為如下。<br><br>
+  <b>CDM結語範例</b>：<br>
+  寫法一：綜上，CDM危機決策模式5步驟並非一次性之線性流程，而係如「旋轉車輪」般得隨【情勢發展】隨時回頭循環檢視、動態修正，全程並以【人質安全】為最高原則，妥適處理本案危機。<br>
+  寫法二：末以，危機處理瞬息萬變，CDM模式強調的正是非線性、可循環之「旋轉車輪」特性，唯有不斷蒐集新情資、重新評估風險並滾動調整策略，方能於【OO案件】中兼顧現場安全與依法行政，圓滿完成任務。
+</div>
+
+    <div class="footer">CDM共5步驟・150個選項</div>
+  </div>
+
+  <!-- ══════ 降階處理 ══════ -->
+  <div class="tab-pane" id="tdeesc">
+    <div class="header">
+      <h1>降階處理（降階策略模式）<span class="tag">同理心傾聽＋控制情勢・300個選項</span></h1>
+      <div class="sub">對應 crisis-management-slides.html Ch6-5・衝突管理危機處理模式之一，源自孟菲斯模式（CIT）・6年來未單獨命題但為教材重點</div>
+    </div>
+    <div class="jumprow">
+      <span class="grp">同理心傾聽：</span>
+      <a href="#deesc-emp-1">①專心與關注的傾聽</a><a href="#deesc-emp-2">②不先入為主與主觀判斷</a><a href="#deesc-emp-3">③專注於對象的感受</a><a href="#deesc-emp-4">④允許暫時性沉默</a><a href="#deesc-emp-5">⑤澄清問題與訊息</a>
+    </div>
+    <div class="jumprow">
+      <span class="grp">控制情勢：</span>
+      <a href="#deesc-ctrl-1">①預擬處理計畫腹案</a><a href="#deesc-ctrl-2">②運用團隊合作方式</a><a href="#deesc-ctrl-3">③運用積極的自我對話</a><a href="#deesc-ctrl-4">④認知個人能力的限制</a><a href="#deesc-ctrl-5">⑤討論與建議</a>
+    </div>
+
+<h2 style="font-size:1.05em;color:var(--subj);margin:8px 0 14px;padding-left:10px;border-left:4px solid var(--subj);">一、同理心傾聽</h2>
+
+<div class="point-card" id="deesc-emp-1">
+  <div class="point-head"><span class="point-num">①</span><span class="point-name">專心與關注的傾聽</span></div>
+  <p class="point-theory">以全神貫注之肢體語言與態度展現尊重，是建立信任之第一步。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 採平舉雙手掌心朝外之非敵意姿勢</span>
+    <span class="opt"><b>2.</b> 維持穩定眼神交流不迴避對方視線</span>
+    <span class="opt"><b>3.</b> 語調放緩降低音量展現耐心</span>
+    <span class="opt"><b>4.</b> 摘下墨鏡露出雙眼傳達真誠態度</span>
+    <span class="opt"><b>5.</b> 側身站立降低正面對峙壓迫感</span>
+    <span class="opt"><b>6.</b> 蹲低身段與對象視線齊平對話</span>
+    <span class="opt"><b>7.</b> 暫停無線電通話避免分心中斷</span>
+    <span class="opt"><b>8.</b> 面部表情維持中性平和不顯不耐</span>
+    <span class="opt"><b>9.</b> 指定單一人員發話避免多人插話</span>
+    <span class="opt"><b>10.</b> 讓對方完整陳述不急於打斷</span>
+    <span class="opt"><b>11.</b> 保持雙手可見不置於槍套附近</span>
+    <span class="opt"><b>12.</b> 以點頭等肢體動作回應表達關注</span>
+    <span class="opt"><b>13.</b> 適時以簡短語助詞回應顯示在聽</span>
+    <span class="opt"><b>14.</b> 身體微幅前傾表達關心不逼近</span>
+    <span class="opt"><b>15.</b> 收起交叉雙臂等防衛性肢體語言</span>
+    <span class="opt"><b>16.</b> 維持可控之安全距離不過度靠近</span>
+    <span class="opt"><b>17.</b> 放慢自身動作步調避免刺激對方</span>
+    <span class="opt"><b>18.</b> 以對方稱謂稱呼建立個人連結</span>
+    <span class="opt"><b>19.</b> 排除環境噪音移至相對安靜處對話</span>
+    <span class="opt"><b>20.</b> 音量隨對象情緒起伏彈性調整</span>
+    <span class="opt"><b>21.</b> 全程面向說話者不東張西望</span>
+    <span class="opt"><b>22.</b> 現場其他人員後退保持安靜陪同</span>
+    <span class="opt"><b>23.</b> 語速配合對象步調不搶話催促</span>
+    <span class="opt"><b>24.</b> 收起手錶時鐘等催促性動作</span>
+    <span class="opt"><b>25.</b> 允許對象宣洩情緒不中途制止</span>
+    <span class="opt"><b>26.</b> 專注聆聽內容而非急於構思回應</span>
+    <span class="opt"><b>27.</b> 留意語氣停頓等非語言訊息線索</span>
+    <span class="opt"><b>28.</b> 暫緩手邊勤務動作展現優先順位</span>
+    <span class="opt"><b>29.</b> 以自然呼吸與放鬆肩頸傳遞鎮定</span>
+    <span class="opt"><b>30.</b> 保持耐心不因對象複述而顯躁進</span>
+  </div>
+</div>
+
+<div class="point-card" id="deesc-emp-2">
+  <div class="point-head"><span class="point-num">②</span><span class="point-name">不先入為主與主觀判斷</span></div>
+  <p class="point-theory">避免以刻板印象或過往經驗預設對象意圖，影響客觀研判。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 不因對方外觀衣著逕下負面判斷</span>
+    <span class="opt"><b>2.</b> 不因精神疾病病史預設具攻擊性</span>
+    <span class="opt"><b>3.</b> 不因言語混亂而流露輕蔑態度</span>
+    <span class="opt"><b>4.</b> 保持中立不預設對方說謊</span>
+    <span class="opt"><b>5.</b> 不因前科紀錄逕行標籤化對待</span>
+    <span class="opt"><b>6.</b> 尊重對象陳述不隨意質疑動機</span>
+    <span class="opt"><b>7.</b> 不以個人好惡評斷對方處境</span>
+    <span class="opt"><b>8.</b> 避免以刻板印象解讀肢體反應</span>
+    <span class="opt"><b>9.</b> 不預設事件必然朝負面發展</span>
+    <span class="opt"><b>10.</b> 對每起案件保持個案獨立判斷</span>
+    <span class="opt"><b>11.</b> 不因對方職業身分而差別對待</span>
+    <span class="opt"><b>12.</b> 避免將激動情緒逕自解讀為敵意</span>
+    <span class="opt"><b>13.</b> 不因過往類似案件經驗預設結果</span>
+    <span class="opt"><b>14.</b> 保留對事件成因之開放式判斷</span>
+    <span class="opt"><b>15.</b> 不因種族性別年齡產生差別心證</span>
+    <span class="opt"><b>16.</b> 避免以「無理取鬧」等詞彙定性</span>
+    <span class="opt"><b>17.</b> 不因對方拒絕合作即認定挑釁</span>
+    <span class="opt"><b>18.</b> 蒐證前不預先鎖定單一假設</span>
+    <span class="opt"><b>19.</b> 不以自身情緒投射對方意圖</span>
+    <span class="opt"><b>20.</b> 避免因語言隔閡誤判理解能力</span>
+    <span class="opt"><b>21.</b> 不因對方情緒激動即認定將行凶</span>
+    <span class="opt"><b>22.</b> 對重複報案者仍保持同等重視</span>
+    <span class="opt"><b>23.</b> 不以刻板方式解讀文化差異表達</span>
+    <span class="opt"><b>24.</b> 保持客觀不受同仁先入印象影響</span>
+    <span class="opt"><b>25.</b> 不因對方衣衫不整聯想遊民滋事</span>
+    <span class="opt"><b>26.</b> 避免以酒醉或發瘋一語帶過成因</span>
+    <span class="opt"><b>27.</b> 不預設對方必然無理性溝通能力</span>
+    <span class="opt"><b>28.</b> 對曖昧不明陳述保留查證空間</span>
+    <span class="opt"><b>29.</b> 覺察自身偏見並主動加以克制</span>
+    <span class="opt"><b>30.</b> 不因單一片段訊息驟下結論</span>
+  </div>
+</div>
+
+<div class="point-card" id="deesc-emp-3">
+  <div class="point-head"><span class="point-num">③</span><span class="point-name">專注於對象的感受</span></div>
+  <p class="point-theory">先回應情緒感受而非急於講理糾正，讓對方感到被理解尊重。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 以「這一定讓你很難受」回應情緒</span>
+    <span class="opt"><b>2.</b> 明確為對方情緒命名如恐懼焦慮</span>
+    <span class="opt"><b>3.</b> 語氣傳達真誠關懷而非公式化</span>
+    <span class="opt"><b>4.</b> 先處理情緒感受後再處理事實</span>
+    <span class="opt"><b>5.</b> 不急於說理反駁先接住情緒</span>
+    <span class="opt"><b>6.</b> 對痛苦遭遇表達真誠關切</span>
+    <span class="opt"><b>7.</b> 不以「沒什麼大不了」淡化感受</span>
+    <span class="opt"><b>8.</b> 認可對方憤怒背後之委屈</span>
+    <span class="opt"><b>9.</b> 對其恐懼保持理解不予否定</span>
+    <span class="opt"><b>10.</b> 以「我能感受到你的無助」回應</span>
+    <span class="opt"><b>11.</b> 關心對方當下身心是否無恙</span>
+    <span class="opt"><b>12.</b> 對其疲憊給予肯定與體諒</span>
+    <span class="opt"><b>13.</b> 不因情緒重複表達而顯不耐</span>
+    <span class="opt"><b>14.</b> 區分接納情緒與認同行為之界線</span>
+    <span class="opt"><b>15.</b> 以關懷語句表達我很擔心你</span>
+    <span class="opt"><b>16.</b> 對喪失重要事物給予同理回應</span>
+    <span class="opt"><b>17.</b> 避免以說教方式回應情緒宣洩</span>
+    <span class="opt"><b>18.</b> 對受挫尊嚴給予尊重與肯定</span>
+    <span class="opt"><b>19.</b> 以摘要覆述確認情緒被理解</span>
+    <span class="opt"><b>20.</b> 對絕望感受給予不批判之接納</span>
+    <span class="opt"><b>21.</b> 留意對方語氣變化反映之心境</span>
+    <span class="opt"><b>22.</b> 對委屈遭遇表達感同身受</span>
+    <span class="opt"><b>23.</b> 不以陳腔濫調空泛安慰帶過</span>
+    <span class="opt"><b>24.</b> 對恐懼公權力介入予以理解</span>
+    <span class="opt"><b>25.</b> 關注對方生理需求如寒冷飢渴</span>
+    <span class="opt"><b>26.</b> 以沉默陪伴取代急於給建議</span>
+    <span class="opt"><b>27.</b> 肯定對方撐到此刻之不易</span>
+    <span class="opt"><b>28.</b> 對憤怒情緒不予對抗而予接納</span>
+    <span class="opt"><b>29.</b> 表達對其安危之在意優先於偵辦</span>
+    <span class="opt"><b>30.</b> 用詞貼近對方感受避免制式用語</span>
+  </div>
+</div>
+
+<div class="point-card" id="deesc-emp-4">
+  <div class="point-head"><span class="point-num">④</span><span class="point-name">允許暫時性沉默</span></div>
+  <p class="point-theory">給予對象整理思緒與情緒沉澱之空間，避免躁進反升高對抗。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 給予對方充分思考整理情緒時間</span>
+    <span class="opt"><b>2.</b> 不急於以言語填補沉默空檔</span>
+    <span class="opt"><b>3.</b> 沉默時仍保持安全距離戒備</span>
+    <span class="opt"><b>4.</b> 觀察沉默中之肢體語言變化</span>
+    <span class="opt"><b>5.</b> 不將沉默逕自解讀為拒絕溝通</span>
+    <span class="opt"><b>6.</b> 維持在場陪伴不催促發言</span>
+    <span class="opt"><b>7.</b> 避免連續追問打斷沉默思考</span>
+    <span class="opt"><b>8.</b> 藉沉默讓激動情緒逐漸沉澱</span>
+    <span class="opt"><b>9.</b> 忍受令人不安之沉默不搶話</span>
+    <span class="opt"><b>10.</b> 理解沉默可能為創傷反應之一環</span>
+    <span class="opt"><b>11.</b> 允許對方哭泣不急於出言安慰</span>
+    <span class="opt"><b>12.</b> 留意沉默結束之重新開口時機</span>
+    <span class="opt"><b>13.</b> 以點頭等非語言動作維持連結</span>
+    <span class="opt"><b>14.</b> 克制自身對沉默之焦慮感</span>
+    <span class="opt"><b>15.</b> 利用沉默空檔研擬下一步戰術</span>
+    <span class="opt"><b>16.</b> 現場人員同步保持安靜不搭話</span>
+    <span class="opt"><b>17.</b> 不因沉默升高逕自採取強制作為</span>
+    <span class="opt"><b>18.</b> 尊重文化差異對沉默之不同接受度</span>
+    <span class="opt"><b>19.</b> 沉默中持續留意周遭環境安全</span>
+    <span class="opt"><b>20.</b> 不頻繁查看手錶顯露不耐</span>
+    <span class="opt"><b>21.</b> 讓對方掌握對話節奏之主導權</span>
+    <span class="opt"><b>22.</b> 避免以空泛安慰語句打破沉默</span>
+    <span class="opt"><b>23.</b> 沉默時維持鎮定面部表情</span>
+    <span class="opt"><b>24.</b> 避免趁沉默貿然拉近距離</span>
+    <span class="opt"><b>25.</b> 提問後預留充分停頓等待回應</span>
+    <span class="opt"><b>26.</b> 不因沉默逕行負面臆測</span>
+    <span class="opt"><b>27.</b> 察覺沉默顯示需轉介專業協助</span>
+    <span class="opt"><b>28.</b> 允許沉默作為對方保留顏面空間</span>
+    <span class="opt"><b>29.</b> 沉默中觀察呼吸與情緒平穩狀況</span>
+    <span class="opt"><b>30.</b> 以耐心等待取代重複催促發言</span>
+  </div>
+</div>
+
+<div class="point-card" id="deesc-emp-5">
+  <div class="point-head"><span class="point-num">⑤</span><span class="point-name">澄清問題與訊息</span></div>
+  <p class="point-theory">透過開放式提問與覆述確認，釐清對方真正訴求避免誤解升高衝突。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 以開放式提問引導對方說明原委</span>
+    <span class="opt"><b>2.</b> 覆述關鍵內容確認理解無誤</span>
+    <span class="opt"><b>3.</b> 詢問具體人事時地物細節</span>
+    <span class="opt"><b>4.</b> 避免以誘導性問題影響陳述</span>
+    <span class="opt"><b>5.</b> 使用淺顯用語避免專業術語</span>
+    <span class="opt"><b>6.</b> 一次僅提出一項問題避免混亂</span>
+    <span class="opt"><b>7.</b> 適時以是非題確認關鍵事實</span>
+    <span class="opt"><b>8.</b> 確認對方真正訴求而非表面陳述</span>
+    <span class="opt"><b>9.</b> 查證關係人身分與彼此關係</span>
+    <span class="opt"><b>10.</b> 釐清事件發生之時間先後順序</span>
+    <span class="opt"><b>11.</b> 區分客觀事實與主觀認知差異</span>
+    <span class="opt"><b>12.</b> 詢問是否有立即需要如用藥</span>
+    <span class="opt"><b>13.</b> 與在場證人交叉查證資訊</span>
+    <span class="opt"><b>14.</b> 對模糊陳述追問具體釐清</span>
+    <span class="opt"><b>15.</b> 以「我聽到的是」句型覆核理解</span>
+    <span class="opt"><b>16.</b> 避免遽下結論填補未明資訊</span>
+    <span class="opt"><b>17.</b> 溫和追問而非咄咄逼問細節</span>
+    <span class="opt"><b>18.</b> 確認對方是否已知悉相關指示</span>
+    <span class="opt"><b>19.</b> 核實所持器械或威脅之具體內容</span>
+    <span class="opt"><b>20.</b> 詢問事件之觸發原因或導火線</span>
+    <span class="opt"><b>21.</b> 釐清在場其他人員之角色關係</span>
+    <span class="opt"><b>22.</b> 確認資訊是否與先前通報有異動</span>
+    <span class="opt"><b>23.</b> 具體確認對方期望之結果為何</span>
+    <span class="opt"><b>24.</b> 避免使用法律術語造成誤解</span>
+    <span class="opt"><b>25.</b> 重複關鍵細節請對方確認無誤</span>
+    <span class="opt"><b>26.</b> 適時詢問對方姓名以利溝通</span>
+    <span class="opt"><b>27.</b> 針對前後陳述矛盾處溫和求證</span>
+    <span class="opt"><b>28.</b> 確認醫療或身心特殊狀況資訊</span>
+    <span class="opt"><b>29.</b> 釐清是否涉及第三人安危</span>
+    <span class="opt"><b>30.</b> 以簡短提問取代長篇質問</span>
+  </div>
+</div>
+
+<h2 style="font-size:1.05em;color:var(--subj);margin:28px 0 14px;padding-left:10px;border-left:4px solid var(--subj);">二、控制情勢</h2>
+
+<div class="point-card" id="deesc-ctrl-1">
+  <div class="point-head"><span class="point-num">①</span><span class="point-name">預擬處理計畫腹案</span></div>
+  <p class="point-theory">事前沙盤推演多種可能情境並備妥應處方案，避免臨場慌亂失序。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 抵達前於途中沙盤推演可能情境</span>
+    <span class="opt"><b>2.</b> 同時預想最佳與最壞發展狀況</span>
+    <span class="opt"><b>3.</b> 事先規劃自身及對方之退路</span>
+    <span class="opt"><b>4.</b> 善用貨架推車等障礙物拉開距離</span>
+    <span class="opt"><b>5.</b> 預先設想武力介入之啟動時機</span>
+    <span class="opt"><b>6.</b> 事先掌握就近醫療後送資源位置</span>
+    <span class="opt"><b>7.</b> 預擬主要與備援兩種應處方案</span>
+    <span class="opt"><b>8.</b> 依現場地形擬定專屬應變計畫</span>
+    <span class="opt"><b>9.</b> 預先規劃周邊民眾疏散動線</span>
+    <span class="opt"><b>10.</b> 設想對方持械攻擊之因應步驟</span>
+    <span class="opt"><b>11.</b> 設想對方脫逃時之攔截方案</span>
+    <span class="opt"><b>12.</b> 盤點現有警力裝備是否足敷因應</span>
+    <span class="opt"><b>13.</b> 預先劃定警戒管制區域範圍</span>
+    <span class="opt"><b>14.</b> 規劃主要方案受阻時之替代作法</span>
+    <span class="opt"><b>15.</b> 預想對方可能反應並備妥回應話術</span>
+    <span class="opt"><b>16.</b> 善用掩蔽物拉開距離換取時間</span>
+    <span class="opt"><b>17.</b> 預先確認支援人力到達之集結點</span>
+    <span class="opt"><b>18.</b> 評估是否需請求霹靂小組等特勤支援</span>
+    <span class="opt"><b>19.</b> 到場前先調閱對象相關紀錄研判</span>
+    <span class="opt"><b>20.</b> 事先擬妥降階溝通之開場話術</span>
+    <span class="opt"><b>21.</b> 站位避免遭包夾或退路受阻</span>
+    <span class="opt"><b>22.</b> 將天候光線等環境因素納入計畫</span>
+    <span class="opt"><b>23.</b> 預先規劃人員輪替避免體力透支</span>
+    <span class="opt"><b>24.</b> 設定情勢升高轉為強制作為之判斷點</span>
+    <span class="opt"><b>25.</b> 事先與線上指揮官確認決策權限</span>
+    <span class="opt"><b>26.</b> 規劃器械或危險物品之隔離方式</span>
+    <span class="opt"><b>27.</b> 針對人質情境預擬談判備案</span>
+    <span class="opt"><b>28.</b> 預想現場媒體民眾圍觀之因應</span>
+    <span class="opt"><b>29.</b> 保留至少一項安全撤離方案</span>
+    <span class="opt"><b>30.</b> 參考過往同類案件經驗調整腹案</span>
+  </div>
+</div>
+
+<div class="point-card" id="deesc-ctrl-2">
+  <div class="point-head"><span class="point-num">②</span><span class="point-name">運用團隊合作方式</span></div>
+  <p class="point-theory">獨力應對風險極高，應分工合作彼此掩護，發揮團隊整體戰力。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 立即通報勤務指揮中心請求支援</span>
+    <span class="opt"><b>2.</b> 到場後劃分主談與戒護等角色分工</span>
+    <span class="opt"><b>3.</b> 避免單獨一人與對象正面對峙</span>
+    <span class="opt"><b>4.</b> 支援警力保持距離不刺激對象</span>
+    <span class="opt"><b>5.</b> 指定專人記錄現場情資變化</span>
+    <span class="opt"><b>6.</b> 另派人力安撫在場家屬或民眾</span>
+    <span class="opt"><b>7.</b> 與消防醫療單位協調同步待命</span>
+    <span class="opt"><b>8.</b> 團隊成員間以手勢默契溝通</span>
+    <span class="opt"><b>9.</b> 支援到場後迅速進行情資交接</span>
+    <span class="opt"><b>10.</b> 避免多人同時對對象喊話下指令</span>
+    <span class="opt"><b>11.</b> 由具相關訓練專長人員擔任主談</span>
+    <span class="opt"><b>12.</b> 團隊成員彼此掩護注意周邊安全</span>
+    <span class="opt"><b>13.</b> 建立單一對外通訊窗口避免紊亂</span>
+    <span class="opt"><b>14.</b> 主談人員疲累時安排適時輪替</span>
+    <span class="opt"><b>15.</b> 協調霹靂小組等特勤單位到場備便</span>
+    <span class="opt"><b>16.</b> 現場設置聯合指揮所統一調度</span>
+    <span class="opt"><b>17.</b> 分派人力管制圍觀民眾及交通</span>
+    <span class="opt"><b>18.</b> 各單位行動前先確認彼此分工</span>
+    <span class="opt"><b>19.</b> 支援人員候命位置避免曝光刺激對象</span>
+    <span class="opt"><b>20.</b> 結合社工衛生單位共同到場協處</span>
+    <span class="opt"><b>21.</b> 全體同仁隨時待命聽取指揮調度</span>
+    <span class="opt"><b>22.</b> 保留一名機動人力因應突發狀況</span>
+    <span class="opt"><b>23.</b> 與救護人員協調傷患後送動線</span>
+    <span class="opt"><b>24.</b> 事先約定支援介入之啟動信號</span>
+    <span class="opt"><b>25.</b> 跨單位資訊即時同步避免落差</span>
+    <span class="opt"><b>26.</b> 避免各自為政導致指令相互矛盾</span>
+    <span class="opt"><b>27.</b> 明確指定現場指揮官統一決策</span>
+    <span class="opt"><b>28.</b> 安排傳遞訊息人員不中斷主談視線</span>
+    <span class="opt"><b>29.</b> 各級人員依專業分工各司其職</span>
+    <span class="opt"><b>30.</b> 事件落幕後統一交接後續處理單位</span>
+  </div>
+</div>
+
+<div class="point-card" id="deesc-ctrl-3">
+  <div class="point-head"><span class="point-num">③</span><span class="point-name">運用積極的自我對話</span></div>
+  <p class="point-theory">透過內在言語自我提醒與情緒調節，維持冷靜以利正確判斷情勢。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 提醒自己已受過專業訓練具備能力</span>
+    <span class="opt"><b>2.</b> 透過深呼吸調節自身情緒節奏</span>
+    <span class="opt"><b>3.</b> 默念口訣穩定情緒避免慌亂</span>
+    <span class="opt"><b>4.</b> 告訴自己現場需要冷靜非爭輸贏</span>
+    <span class="opt"><b>5.</b> 以過往成功處理經驗自我打氣</span>
+    <span class="opt"><b>6.</b> 默想對方言語並非針對個人</span>
+    <span class="opt"><b>7.</b> 反覆自我確認保持專業客觀立場</span>
+    <span class="opt"><b>8.</b> 不因對方挑釁而自我懷疑動搖</span>
+    <span class="opt"><b>9.</b> 自我提示放慢步調以穩制動</span>
+    <span class="opt"><b>10.</b> 覺察自身緊張反應並主動調節</span>
+    <span class="opt"><b>11.</b> 以正向語句取代負面自我暗示</span>
+    <span class="opt"><b>12.</b> 聚焦當下而非預先設想最壞結果</span>
+    <span class="opt"><b>13.</b> 默數數秒延緩衝動反應時間</span>
+    <span class="opt"><b>14.</b> 自我提醒言行將牽動對方情緒</span>
+    <span class="opt"><b>15.</b> 刻意放鬆肩頸下顎等緊繃部位</span>
+    <span class="opt"><b>16.</b> 告訴自己保持耐心方能爭取時間</span>
+    <span class="opt"><b>17.</b> 以守護生命之使命感自我激勵</span>
+    <span class="opt"><b>18.</b> 以自我肯定語句降低恐懼感受</span>
+    <span class="opt"><b>19.</b> 默念情緒穩定即是專業展現</span>
+    <span class="opt"><b>20.</b> 避免陷入自責影響當下判斷</span>
+    <span class="opt"><b>21.</b> 提醒自己不需即刻解決所有問題</span>
+    <span class="opt"><b>22.</b> 刻意維持穩定語調克制怒氣</span>
+    <span class="opt"><b>23.</b> 以「我可以應對」句自我激勵</span>
+    <span class="opt"><b>24.</b> 提醒自己保持耐心不受言語激怒</span>
+    <span class="opt"><b>25.</b> 專注呼吸與腳步穩定身心狀態</span>
+    <span class="opt"><b>26.</b> 疲憊之際仍自我要求維持專業</span>
+    <span class="opt"><b>27.</b> 默想此刻鎮定足以感染對方情緒</span>
+    <span class="opt"><b>28.</b> 刻意將個人情緒隔絕於處置之外</span>
+    <span class="opt"><b>29.</b> 自我克制不逞一時血氣之勇</span>
+    <span class="opt"><b>30.</b> 以慢即是穩之信念自我提醒</span>
+  </div>
+</div>
+
+<div class="point-card" id="deesc-ctrl-4">
+  <div class="point-head"><span class="point-num">④</span><span class="point-name">認知個人能力的限制</span></div>
+  <p class="point-theory">誠實面對自身專業與體能之侷限，適時求援而非逞強獨力承擔。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 明認自身非精神醫療專業避免診斷</span>
+    <span class="opt"><b>2.</b> 不貿然徒手近身壓制持械對象</span>
+    <span class="opt"><b>3.</b> 遇專業判斷不足時轉介相關資源</span>
+    <span class="opt"><b>4.</b> 明認警察無強制送醫之法定權限</span>
+    <span class="opt"><b>5.</b> 超出訓練範圍之談判交由專責人員</span>
+    <span class="opt"><b>6.</b> 承認體能或傷病狀態不宜勉強行動</span>
+    <span class="opt"><b>7.</b> 危險物品處置交由專業小組執行</span>
+    <span class="opt"><b>8.</b> 不因語言隔閡逕自臆測對方意思</span>
+    <span class="opt"><b>9.</b> 不確定之處誠實告知避免虛應</span>
+    <span class="opt"><b>10.</b> 自覺情緒失衡時主動請求輪替</span>
+    <span class="opt"><b>11.</b> 認知管轄權限不足時協調他轄支援</span>
+    <span class="opt"><b>12.</b> 不因過往成功經驗而輕忽風險</span>
+    <span class="opt"><b>13.</b> 研判警力不足時即主動請求增援</span>
+    <span class="opt"><b>14.</b> 醫療處置以基本救護範圍為限</span>
+    <span class="opt"><b>15.</b> 不承諾逾越自身職權之結果</span>
+    <span class="opt"><b>16.</b> 察覺自身疲勞徵兆適時反映</span>
+    <span class="opt"><b>17.</b> 特殊器材操作交由受過訓練人員</span>
+    <span class="opt"><b>18.</b> 不知答案時坦承並協助後續查證</span>
+    <span class="opt"><b>19.</b> 重大決策尊重指揮體系不擅自決定</span>
+    <span class="opt"><b>20.</b> 缺乏防護裝備前不貿然近身接觸</span>
+    <span class="opt"><b>21.</b> 認知勉強行動恐使情勢升高風險</span>
+    <span class="opt"><b>22.</b> 自殺風險評估交由專業人員判斷</span>
+    <span class="opt"><b>23.</b> 高壓下記憶有限應指派人員記錄</span>
+    <span class="opt"><b>24.</b> 虛心接受資深同仁之經驗建議</span>
+    <span class="opt"><b>25.</b> 使用強制力前確認符合權限規範</span>
+    <span class="opt"><b>26.</b> 認知進入私人場所之法定界限</span>
+    <span class="opt"><b>27.</b> 力量懸殊時不逞強應待團隊支援</span>
+    <span class="opt"><b>28.</b> 不擅自對外承諾偵辦或裁罰結果</span>
+    <span class="opt"><b>29.</b> 察覺個人專業侷限主動求助而非逞能</span>
+    <span class="opt"><b>30.</b> 認知單打獨鬥風險轉為團隊因應</span>
+  </div>
+</div>
+
+<div class="point-card" id="deesc-ctrl-5">
+  <div class="point-head"><span class="point-num">⑤</span><span class="point-name">討論與建議</span></div>
+  <p class="point-theory">危機處理當下即時與同仁討論戰術選項並聽取建議，而非事後檢討。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 當下與到場同仁討論可行戰術選項</span>
+    <span class="opt"><b>2.</b> 即時徵詢資深同仁對現場之研判建議</span>
+    <span class="opt"><b>3.</b> 行動前與指揮官即時確認決策方向</span>
+    <span class="opt"><b>4.</b> 電話即時徵詢精神科醫師專業意見</span>
+    <span class="opt"><b>5.</b> 現場簡短集合討論下一步處置方式</span>
+    <span class="opt"><b>6.</b> 採取強制作為前先聽取同僚意見</span>
+    <span class="opt"><b>7.</b> 即時與談判人員討論話題切入時機</span>
+    <span class="opt"><b>8.</b> 當下評估是否邀請家屬到場協助勸說</span>
+    <span class="opt"><b>9.</b> 行動前快速確認團隊成員準備狀況</span>
+    <span class="opt"><b>10.</b> 即時討論究竟續談或轉為強制作為</span>
+    <span class="opt"><b>11.</b> 現場與醫護人員即時討論對象身心狀況</span>
+    <span class="opt"><b>12.</b> 行動前即時進行風險效益簡短討論</span>
+    <span class="opt"><b>13.</b> 當下與夥伴確認下一步行進路線</span>
+    <span class="opt"><b>14.</b> 即時徵詢在場人員對戰術之不同看法</span>
+    <span class="opt"><b>15.</b> 現場簡短討論是否已達介入時機</span>
+    <span class="opt"><b>16.</b> 與線上指揮中心即時討論後續調度</span>
+    <span class="opt"><b>17.</b> 即時徵詢危險物品處理人員之建議</span>
+    <span class="opt"><b>18.</b> 當下與法制人員確認使用強制力界限</span>
+    <span class="opt"><b>19.</b> 現場快速凝聚團隊對行動方案之共識</span>
+    <span class="opt"><b>20.</b> 即時討論現行策略是否需臨場調整</span>
+    <span class="opt"><b>21.</b> 行動前徵詢第一線同仁對現場之直覺判斷</span>
+    <span class="opt"><b>22.</b> 當下討論撤離路線及集合地點選擇</span>
+    <span class="opt"><b>23.</b> 即時與社工人員討論介入方式是否恰當</span>
+    <span class="opt"><b>24.</b> 現場簡短交換對對象情緒變化之觀察</span>
+    <span class="opt"><b>25.</b> 突破僵局前即時討論替代方案</span>
+    <span class="opt"><b>26.</b> 當下確認是否需加派人力再行動</span>
+    <span class="opt"><b>27.</b> 即時徵詢戒護人員對安全距離之建議</span>
+    <span class="opt"><b>28.</b> 行動前與夥伴即時核對彼此分工</span>
+    <span class="opt"><b>29.</b> 現場即時討論優先處理事項先後順序</span>
+    <span class="opt"><b>30.</b> 當下聽取多方意見後再定奪行動時機</span>
+  </div>
+</div>
+
+<div class="card">
+  <p><b>孟菲斯模式（CIT）背景</b>：1980年代末發源於美國田納西州孟菲斯市警局，是處理精神健康危機之應變模式。內涵三項：①成立危機干預小組②培訓警察對精障者辨識能力之臨床知識③建立降低衝突之語言技巧及轉介治療程序。</p>
+  <p><b>精神衛生法第32條與現行分工困境</b>：警消機關發現有傷害自己或他人之虞之病人，應通知當地主管機關並視需要協助或共同處理，除法律另有規定外應即護送前往就近適當醫療機構就醫。惟現行警察機關<b>無強制送醫權限</b>，僅能協助勸導、管束及護送就醫，專業精神狀況評估仍須仰賴衛生機關到場，第一線風險多由警察獨自承擔。</p>
+  <p><b>PMHC四種合作模式</b>：CIT（警察獨力應對，即孟菲斯模式）／CRM（警醫共同應對）／MCT（衛生為主、醫護應對）／PMHC（警衛社綜合合作）。我國現況多屬CIT模式，建議未來逐步朝CRM或PMHC轉型，強化跨機關即時協處量能，降低警察獨自承擔精神健康危機處置之風險。</p>
+</div>
+
+<div class="template">
+  <b>降階處理前言範例</b>：<br><br>
+  寫法一：本案【情境簡述，如：民眾情緒失控持刀滋事】，對象具【特性關鍵字，如精神疾病病史／高度自傷風險】，員警到場應運用降階策略模式之戰術性溝通技巧，透過同理心傾聽與控制情勢兩大類技巧，策略性減緩事件變化速度，分述如下。<br><br>
+  寫法二：面對【情境關鍵字，如：頂樓徘徊有自傷之虞】之危機情境，第一線員警應本於降階策略模式，以同理心傾聽建立信任、以控制情勢技巧掌握現場主導，避免情勢因不當刺激而升高，說明如下。<br><br>
+  <b>降階處理結語範例</b>：<br><br>
+  寫法一：綜上，降階策略之核心精神不在單純安撫對方情緒，而在透過戰術性溝通爭取更多時間、距離、空間與戰術靈活性，為後續談判或強制介入創造有利條件，方能兼顧對象權益與現場安全。<br><br>
+  寫法二：降階策略運用得宜，可使員警在【情境關鍵字，如：資訊不足、時間壓力極大】之情況下，仍能爭取寶貴時間與空間、保留戰術彈性，此一「以時間換取安全」之精神，方為降階處理之核心價值所在，而非僅止於言語安撫。
+</div>
+
+    <div class="footer">降階處理共10項技巧・300個選項</div>
+  </div>
+
+  <!-- ══════ 談判 ══════ -->
+  <div class="tab-pane" id="tnego">
+    <div class="header">
+      <h1>危機談判<span class="tag">7要素＋8原則＋兩階段＋禁忌・540個選項</span></h1>
+      <div class="sub">對應 crisis-management-slides.html Ch7・源自哈佛談判學派・109年考過</div>
+    </div>
+    <div class="jumprow">
+      <span class="grp">準備7要素：</span>
+      <a href="#nego-el-1">①可能達成的協議</a><a href="#nego-el-2">②最佳退路</a><a href="#nego-el-3">③利益</a><a href="#nego-el-4">④關係</a><a href="#nego-el-5">⑤公平合理性</a><a href="#nego-el-6">⑥溝通</a><a href="#nego-el-7">⑦承諾</a>
+    </div>
+    <div class="jumprow">
+      <span class="grp">基本原則8項：</span>
+      <a href="#nego-pr-1">①擴大總體利益</a><a href="#nego-pr-2">②公開公平公正</a><a href="#nego-pr-3">③明確目標善於妥協</a><a href="#nego-pr-4">④平等互利</a><a href="#nego-pr-5">⑤重利益不重立場</a><a href="#nego-pr-6">⑥客觀標準</a><a href="#nego-pr-7">⑦人與問題分開</a><a href="#nego-pr-8">⑧對彼此有利方案</a>
+    </div>
+    <div class="jumprow">
+      <span class="grp">目標與技巧：</span>
+      <a href="#nego-ph-1">①初階段：建立關係</a><a href="#nego-ph-2">②談判階段：商討問題</a><a href="#nego-taboo">禁忌條件8項</a>
+    </div>
+
+<h2 style="font-size:1.05em;color:var(--subj);margin:8px 0 14px;padding-left:10px;border-left:4px solid var(--subj);">一、談判前的準備（7要素）</h2>
+
+<div class="point-card" id="nego-el-1">
+  <div class="point-head"><span class="point-num">①</span><span class="point-name">可能達成的協議（Options）</span></div>
+  <p class="point-theory">指談判雙方可共同創造之多元解決方案，方案越多元，達成共識彈性越大</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 先列出多種可能方案供雙方共同篩選</span>
+    <span class="opt"><b>2.</b> 由低門檻選項開始逐步建立互信</span>
+    <span class="opt"><b>3.</b> 提供分階段執行之替代方案</span>
+    <span class="opt"><b>4.</b> 給予對方可自主選擇之空間</span>
+    <span class="opt"><b>5.</b> 設計可逆、可隨時調整之暫行措施</span>
+    <span class="opt"><b>6.</b> 以先小後大方式分批提出要求</span>
+    <span class="opt"><b>7.</b> 用階段性目標取代一次到位條件</span>
+    <span class="opt"><b>8.</b> 邀請對方參與方案內容之研擬</span>
+    <span class="opt"><b>9.</b> 以人身安全為優先排序各項方案</span>
+    <span class="opt"><b>10.</b> 分批釋放人質換取溝通管道延續</span>
+    <span class="opt"><b>11.</b> 移除現場危險物品作為前提方案</span>
+    <span class="opt"><b>12.</b> 協調安置地點供其暫時棲身</span>
+    <span class="opt"><b>13.</b> 引入社工或醫療資源共同研擬方案</span>
+    <span class="opt"><b>14.</b> 提出延後強制作為之緩衝方案</span>
+    <span class="opt"><b>15.</b> 以物資或資源交換化解對立</span>
+    <span class="opt"><b>16.</b> 安排信任第三人到場協助溝通</span>
+    <span class="opt"><b>17.</b> 列出方案優先順序供其比較選擇</span>
+    <span class="opt"><b>18.</b> 開啟替代溝通管道如電話或書面</span>
+    <span class="opt"><b>19.</b> 研擬分期清償或協商還款方案</span>
+    <span class="opt"><b>20.</b> 提出限制性但可執行之折衷條件</span>
+    <span class="opt"><b>21.</b> 規劃撤離後之安置與補償方案</span>
+    <span class="opt"><b>22.</b> 保留後續協商彈性避免條件僵化</span>
+    <span class="opt"><b>23.</b> 以短期承諾換取長期問題處理時間</span>
+    <span class="opt"><b>24.</b> 設計多套方案因應情勢變化</span>
+    <span class="opt"><b>25.</b> 納入雙方均可接受之底線條件</span>
+    <span class="opt"><b>26.</b> 提出象徵性讓步以利對話持續</span>
+    <span class="opt"><b>27.</b> 結合公部門與民間資源共同提案</span>
+    <span class="opt"><b>28.</b> 訂定明確可執行之後續追蹤機制</span>
+    <span class="opt"><b>29.</b> 以危機解除為前提逐步鬆動立場</span>
+    <span class="opt"><b>30.</b> 彙整談判過程意見形成可行方案</span>
+  </div>
+</div>
+
+<div class="point-card" id="nego-el-2">
+  <div class="point-head"><span class="point-num">②</span><span class="point-name">最佳退路（Alternative，即BATNA）</span></div>
+  <p class="point-theory">指若協議不成時可採取之最佳替代方案，退路越實在，談判籌碼越穩固</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 同步規劃強制作為以防談判破裂</span>
+    <span class="opt"><b>2.</b> 部署警力戒護維持現場管控</span>
+    <span class="opt"><b>3.</b> 安排霹靂小組待命為最後手段</span>
+    <span class="opt"><b>4.</b> 協調救護與醫療資源同步待命</span>
+    <span class="opt"><b>5.</b> 評估斷水斷電或斷氣等外部處置</span>
+    <span class="opt"><b>6.</b> 擴大警戒範圍禁止外人進入</span>
+    <span class="opt"><b>7.</b> 疏散周邊住戶降低危害範圍</span>
+    <span class="opt"><b>8.</b> 準備破門或強制驅離之應變方案</span>
+    <span class="opt"><b>9.</b> 讓對方認知拖延對其更為不利</span>
+    <span class="opt"><b>10.</b> 說明現況若無共識之後續發展</span>
+    <span class="opt"><b>11.</b> 評估己方談判籌碼與底線</span>
+    <span class="opt"><b>12.</b> 保持戰術與談判雙軌並進</span>
+    <span class="opt"><b>13.</b> 隨時掌握現場情勢變化調整部署</span>
+    <span class="opt"><b>14.</b> 準備法定強制執行程序備案</span>
+    <span class="opt"><b>15.</b> 評估對方僅存選項是否有限</span>
+    <span class="opt"><b>16.</b> 避免單押談判而忽略後備方案</span>
+    <span class="opt"><b>17.</b> 安排狙擊警戒作為最終防線</span>
+    <span class="opt"><b>18.</b> 檢視周邊逃逸路線並予以封鎖</span>
+    <span class="opt"><b>19.</b> 準備替代人力接手談判工作</span>
+    <span class="opt"><b>20.</b> 掌握對方資源與外援是否有限</span>
+    <span class="opt"><b>21.</b> 評估時間壓力對雙方之影響</span>
+    <span class="opt"><b>22.</b> 建立指揮體系決定戰術介入時機</span>
+    <span class="opt"><b>23.</b> 持續蒐集情資研判對方真實處境</span>
+    <span class="opt"><b>24.</b> 保留申請搜索或拘票之法律途徑</span>
+    <span class="opt"><b>25.</b> 準備現場滅火或化學處理器材</span>
+    <span class="opt"><b>26.</b> 設置多重應變層級因應情勢升高</span>
+    <span class="opt"><b>27.</b> 檢討若協議破局之因應作為</span>
+    <span class="opt"><b>28.</b> 確保現場指揮官掌握終止談判權限</span>
+    <span class="opt"><b>29.</b> 平時建立標準作業程序強化應變量能</span>
+    <span class="opt"><b>30.</b> 檢討談判與強制作為之轉換時機</span>
+  </div>
+</div>
+
+<div class="point-card" id="nego-el-3">
+  <div class="point-head"><span class="point-num">③</span><span class="point-name">利益（Interests）</span></div>
+  <p class="point-theory">指隱藏於立場主張背後之真正需求與顧慮，掌握利益方能找到共同解方</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 區辨言語表面立場與內心真正需求</span>
+    <span class="opt"><b>2.</b> 以開放式提問引導說出核心困境</span>
+    <span class="opt"><b>3.</b> 探詢對人身安全之基本需求</span>
+    <span class="opt"><b>4.</b> 辨識對尊嚴與顏面受損之敏感反應</span>
+    <span class="opt"><b>5.</b> 釐清經濟壓力或債務糾紛之根源</span>
+    <span class="opt"><b>6.</b> 探究情感失落或被拋棄之恐懼</span>
+    <span class="opt"><b>7.</b> 了解對子女或家人安危之牽掛</span>
+    <span class="opt"><b>8.</b> 辨析是否渴望被傾聽而非被說服</span>
+    <span class="opt"><b>9.</b> 探詢對公平對待或討回公道之渴望</span>
+    <span class="opt"><b>10.</b> 釐清是否希望保有自主選擇權</span>
+    <span class="opt"><b>11.</b> 了解對方對未來不確定性之焦慮</span>
+    <span class="opt"><b>12.</b> 探究長期壓力累積後之情緒崩潰點</span>
+    <span class="opt"><b>13.</b> 辨識對社會觀感或名譽之在意程度</span>
+    <span class="opt"><b>14.</b> 了解對人際關係破裂之孤立感受</span>
+    <span class="opt"><b>15.</b> 釐清對制度或體制不公之積怨</span>
+    <span class="opt"><b>16.</b> 探詢是否有未獲肯定之付出與委屈</span>
+    <span class="opt"><b>17.</b> 辨析求助訊號與絕望情緒之差異</span>
+    <span class="opt"><b>18.</b> 了解對過往承諾落空之失望心理</span>
+    <span class="opt"><b>19.</b> 探究是否渴望重新獲得掌控感</span>
+    <span class="opt"><b>20.</b> 釐清對健康或病痛之實際擔憂</span>
+    <span class="opt"><b>21.</b> 辨識多重利益並存時之優先順序</span>
+    <span class="opt"><b>22.</b> 了解對方對責任歸屬之堅持原因</span>
+    <span class="opt"><b>23.</b> 探詢是否希望對方認錯或道歉</span>
+    <span class="opt"><b>24.</b> 釐清表面憤怒下隱藏之委屈與無助</span>
+    <span class="opt"><b>25.</b> 了解對居住或財產保全之顧慮</span>
+    <span class="opt"><b>26.</b> 探究是否因孤立無援而採取極端手段</span>
+    <span class="opt"><b>27.</b> 辨析理性訴求與情緒宣洩之比例</span>
+    <span class="opt"><b>28.</b> 了解對方重視之核心價值與信念</span>
+    <span class="opt"><b>29.</b> 釐清是否存在多方利益衝突待整合</span>
+    <span class="opt"><b>30.</b> 綜合各項線索排列利益優先順序</span>
+  </div>
+</div>
+
+<div class="point-card" id="nego-el-4">
+  <div class="point-head"><span class="point-num">④</span><span class="point-name">關係（Relationship）</span></div>
+  <p class="point-theory">指談判雙方之信任與互動基礎，良好關係有助於化解對立、促成合作</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 自我介紹並固定稱呼建立親近感</span>
+    <span class="opt"><b>2.</b> 全程由同一人擔任主要聯繫窗口</span>
+    <span class="opt"><b>3.</b> 表明首要目的為維護對方安全</span>
+    <span class="opt"><b>4.</b> 以尊重態度取代命令或威嚇語氣</span>
+    <span class="opt"><b>5.</b> 避免流露不耐或輕視之肢體語言</span>
+    <span class="opt"><b>6.</b> 對能協助事項明確承諾並確實做到</span>
+    <span class="opt"><b>7.</b> 對無法做到之事誠實說明原因</span>
+    <span class="opt"><b>8.</b> 記住對方提及之重要人物與事件</span>
+    <span class="opt"><b>9.</b> 以同理心回應而非急於糾正</span>
+    <span class="opt"><b>10.</b> 保持語調平穩降低對方防衛心</span>
+    <span class="opt"><b>11.</b> 避免多人同時發言造成混亂</span>
+    <span class="opt"><b>12.</b> 適度自我揭露拉近雙方距離</span>
+    <span class="opt"><b>13.</b> 尊重對方情緒反應不予批判</span>
+    <span class="opt"><b>14.</b> 以一致態度維持談判可信度</span>
+    <span class="opt"><b>15.</b> 建立與對方相似背景之連結感</span>
+    <span class="opt"><b>16.</b> 在可能範圍內滿足對方合理小要求</span>
+    <span class="opt"><b>17.</b> 展現耐心陪伴而非急於結束對話</span>
+    <span class="opt"><b>18.</b> 以肯定語句回應對方之努力與配合</span>
+    <span class="opt"><b>19.</b> 避免使用威脅或恐嚇性字眼</span>
+    <span class="opt"><b>20.</b> 建立共同解決問題之夥伴關係</span>
+    <span class="opt"><b>21.</b> 留意文化背景與價值觀之差異</span>
+    <span class="opt"><b>22.</b> 以平等對話取代上對下之姿態</span>
+    <span class="opt"><b>23.</b> 適時給予情緒支持而非說教</span>
+    <span class="opt"><b>24.</b> 保持眼神與肢體語言傳達真誠</span>
+    <span class="opt"><b>25.</b> 對敏感話題保持謹慎與尊重</span>
+    <span class="opt"><b>26.</b> 避免與對方發生正面衝突或爭辯</span>
+    <span class="opt"><b>27.</b> 以正向回饋強化合作意願</span>
+    <span class="opt"><b>28.</b> 隨時關注情緒變化調整互動方式</span>
+    <span class="opt"><b>29.</b> 建立現場人員一致可信賴之形象</span>
+    <span class="opt"><b>30.</b> 對家屬或第三方保持一致溝通口徑</span>
+  </div>
+</div>
+
+<div class="point-card" id="nego-el-5">
+  <div class="point-head"><span class="point-num">⑤</span><span class="point-name">公平合理性（Legitimacy）</span></div>
+  <p class="point-theory">指以客觀外部標準取代主觀施壓，使提出之方案讓對方感受公正合理</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 說明處置方式係依法定程序辦理</span>
+    <span class="opt"><b>2.</b> 引用相關法規作為溝通依據</span>
+    <span class="opt"><b>3.</b> 強調承諾均在法定權限範圍內</span>
+    <span class="opt"><b>4.</b> 不做虛假保證或無法兌現之承諾</span>
+    <span class="opt"><b>5.</b> 說明現行社會救助資源與管道</span>
+    <span class="opt"><b>6.</b> 引用過往類似案例之處理方式</span>
+    <span class="opt"><b>7.</b> 以公正客觀之標準取代主觀判斷</span>
+    <span class="opt"><b>8.</b> 說明司法程序仍可處理相關爭議</span>
+    <span class="opt"><b>9.</b> 澄清權責分工避免逾越職權</span>
+    <span class="opt"><b>10.</b> 引用機關內部作業規範為依據</span>
+    <span class="opt"><b>11.</b> 強調第三人生命權不應被犧牲</span>
+    <span class="opt"><b>12.</b> 以社會普遍認同之價值觀溝通</span>
+    <span class="opt"><b>13.</b> 說明強制作為之法律授權基礎</span>
+    <span class="opt"><b>14.</b> 引用專業人員意見強化說服力</span>
+    <span class="opt"><b>15.</b> 以中立第三方標準化解對立</span>
+    <span class="opt"><b>16.</b> 說明債務或糾紛可透過協商解決</span>
+    <span class="opt"><b>17.</b> 澄清不起訴或減刑非執法人員可承諾</span>
+    <span class="opt"><b>18.</b> 引用政府補償或救助機制說明</span>
+    <span class="opt"><b>19.</b> 強調程序公正保障雙方權益</span>
+    <span class="opt"><b>20.</b> 以一致標準對待所有當事人</span>
+    <span class="opt"><b>21.</b> 說明後續申訴或救濟管道</span>
+    <span class="opt"><b>22.</b> 引用主管機關公告之處理原則</span>
+    <span class="opt"><b>23.</b> 以客觀事實駁斥不實傳聞或誤解</span>
+    <span class="opt"><b>24.</b> 強調公權力行使限於必要合理範圍</span>
+    <span class="opt"><b>25.</b> 說明配合處理可獲得之實質協助</span>
+    <span class="opt"><b>26.</b> 引用醫療或專業評估結果佐證</span>
+    <span class="opt"><b>27.</b> 以公開透明方式說明處置理由</span>
+    <span class="opt"><b>28.</b> 澄清權利義務避免各說各話</span>
+    <span class="opt"><b>29.</b> 引用社會通念說明合理期待範圍</span>
+    <span class="opt"><b>30.</b> 說明現場處置符合標準作業程序</span>
+  </div>
+</div>
+
+<div class="point-card" id="nego-el-6">
+  <div class="point-head"><span class="point-num">⑥</span><span class="point-name">溝通（Communication）</span></div>
+  <p class="point-theory">指訊息清楚傳遞與雙向理解之歷程，有效溝通可降低誤解、緩和情緒</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 由單一主談人員持續對話避免混亂</span>
+    <span class="opt"><b>2.</b> 使用開放式問句引導對方表達</span>
+    <span class="opt"><b>3.</b> 以情緒標示回應辨識對方感受</span>
+    <span class="opt"><b>4.</b> 適時重述並摘要確認理解無誤</span>
+    <span class="opt"><b>5.</b> 保持語調平穩緩慢降低對峙感</span>
+    <span class="opt"><b>6.</b> 適度運用沉默給予對方思考空間</span>
+    <span class="opt"><b>7.</b> 避免打斷對方發言造成挫折感</span>
+    <span class="opt"><b>8.</b> 減少專業術語改以淺白用語溝通</span>
+    <span class="opt"><b>9.</b> 以簡短句子降低資訊負荷</span>
+    <span class="opt"><b>10.</b> 避免說教式或訓誡式言語</span>
+    <span class="opt"><b>11.</b> 避免空泛安慰或過度樂觀保證</span>
+    <span class="opt"><b>12.</b> 觀察肢體語言掌握情緒變化</span>
+    <span class="opt"><b>13.</b> 適時反映情感協助對方梳理思緒</span>
+    <span class="opt"><b>14.</b> 以貼近對方用詞方式拉近距離</span>
+    <span class="opt"><b>15.</b> 保持專注傾聽不急於提出解方</span>
+    <span class="opt"><b>16.</b> 避免爭辯是非對錯激化對立</span>
+    <span class="opt"><b>17.</b> 適度給予正向回饋鼓勵持續對話</span>
+    <span class="opt"><b>18.</b> 以低姿態語氣化解防衛心理</span>
+    <span class="opt"><b>19.</b> 確認訊息傳達無誤避免誤解</span>
+    <span class="opt"><b>20.</b> 善用提問釐清模糊或矛盾陳述</span>
+    <span class="opt"><b>21.</b> 避免使用威脅或命令式語句</span>
+    <span class="opt"><b>22.</b> 掌握發言節奏避免搶話或催促</span>
+    <span class="opt"><b>23.</b> 以非語言訊號傳達關注與耐心</span>
+    <span class="opt"><b>24.</b> 適時給予對方情緒宣洩之空間</span>
+    <span class="opt"><b>25.</b> 留意環境噪音降低溝通干擾</span>
+    <span class="opt"><b>26.</b> 以具體問題取代籠統質問</span>
+    <span class="opt"><b>27.</b> 觀察用詞變化研判情緒起伏</span>
+    <span class="opt"><b>28.</b> 保持通話或對話管道暢通不中斷</span>
+    <span class="opt"><b>29.</b> 適時總結談話重點確認共識</span>
+    <span class="opt"><b>30.</b> 以尊重稱謂取代貶抑或標籤化用語</span>
+  </div>
+</div>
+
+<div class="point-card" id="nego-el-7">
+  <div class="point-head"><span class="point-num">⑦</span><span class="point-name">承諾（Commitment）</span></div>
+  <p class="point-theory">指雙方對具體可行行動之允諾，內容應務實明確且在權限與能力範圍內</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 採取逐步承諾策略由簡單要求開始</span>
+    <span class="opt"><b>2.</b> 每完成一步立即給予具體肯定</span>
+    <span class="opt"><b>3.</b> 承諾內容須具體可執行避免空泛</span>
+    <span class="opt"><b>4.</b> 不做超出職權範圍之保證</span>
+    <span class="opt"><b>5.</b> 明確告知可提供之協助與限制</span>
+    <span class="opt"><b>6.</b> 避免過度承諾破壞後續信任</span>
+    <span class="opt"><b>7.</b> 將承諾轉化為可觀察之具體行動</span>
+    <span class="opt"><b>8.</b> 確認對方理解承諾內容與條件</span>
+    <span class="opt"><b>9.</b> 以書面或見證方式強化承諾效力</span>
+    <span class="opt"><b>10.</b> 承諾事項應設定合理完成期限</span>
+    <span class="opt"><b>11.</b> 避免以空頭支票換取短期讓步</span>
+    <span class="opt"><b>12.</b> 逐項確認雙方對承諾之共識</span>
+    <span class="opt"><b>13.</b> 承諾應具備可驗證之具體標準</span>
+    <span class="opt"><b>14.</b> 對已達成事項適時公開肯定</span>
+    <span class="opt"><b>15.</b> 避免過度讚美流於操控式言語</span>
+    <span class="opt"><b>16.</b> 承諾內容應符合現實可行性</span>
+    <span class="opt"><b>17.</b> 說明承諾兌現之時間與方式</span>
+    <span class="opt"><b>18.</b> 對尚未能承諾事項誠實告知現況</span>
+    <span class="opt"><b>19.</b> 以漸進方式擴大承諾範圍</span>
+    <span class="opt"><b>20.</b> 確保現場人員對承諾口徑一致</span>
+    <span class="opt"><b>21.</b> 承諾應留有合理彈性因應變化</span>
+    <span class="opt"><b>22.</b> 避免片面承諾未經授權之條件</span>
+    <span class="opt"><b>23.</b> 對承諾內容保留後續追蹤機制</span>
+    <span class="opt"><b>24.</b> 以具體時間表呈現承諾執行步驟</span>
+    <span class="opt"><b>25.</b> 承諾前先評估己方履行能力</span>
+    <span class="opt"><b>26.</b> 對達成之小承諾給予即時回饋</span>
+    <span class="opt"><b>27.</b> 避免以威脅語氣包裝承諾條件</span>
+    <span class="opt"><b>28.</b> 承諾應與對方核心利益相連結</span>
+    <span class="opt"><b>29.</b> 說明未履行承諾之可能後果</span>
+    <span class="opt"><b>30.</b> 承諾最終應納入正式協議或紀錄</span>
+  </div>
+</div>
+
+<div class="template">
+  <b>談判7要素前言範例</b>：<br>
+  ①本案【情境關鍵字，如：甲攜刀挾持人質，情緒激動】情勢危急，各方立場與利益交錯，資訊有限且時間壓力甚鉅，允宜運用談判準備七要素（協、退、利、係、理、溝、諾），有系統地建立處置架構，以兼顧現場安全與危機化解，茲分述如下：<br>
+  ②面對【情境關鍵字，如：乙拒絕撤離、情緒瀕臨失控】此類立場對立、當事人情緒不穩之危機案件，若僅憑臨場直覺應對，恐難兼顧安全維護與處理成效，故宜援引哈佛談判學派所發展之準備七要素，逐一檢視協議、退路、利益、關係、合理性、溝通及承諾等面向，以擬定完整處置策略：<br><br>
+  <b>談判7要素結語範例</b>：<br>
+  ①綜上，透過談判準備七要素之系統性運用，得以在確保【情境關鍵字，如：人質及現場人員安全】之前提下，逐步引導當事人趨於理性、化解僵局，達成危機和平落幕之目標。<br>
+  ②綜合而論，危機處理現場情勢瞬息萬變，惟有事前掌握利益、退路與合理性，過程中兼顧關係經營與有效溝通，並以務實承諾逐步取信於當事人，方能提高談判成功機率，確保【情境關鍵字，如：當事人與周邊民眾】之生命安全，圓滿落幕。
+</div>
+
+<h2 style="font-size:1.05em;color:var(--subj);margin:28px 0 14px;padding-left:10px;border-left:4px solid var(--subj);">二、談判的基本原則（8項）</h2>
+
+<div class="point-card" id="nego-pr-1">
+  <div class="point-head"><span class="point-num">①</span><span class="point-name">應儘量擴大總體利益</span></div>
+  <p class="point-theory">談判非零和賽局，應跳脫單純分配思維，透過創造性方案擴大雙方可得利益之總和。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 尋求雙方都能接受的雙贏結果</span>
+    <span class="opt"><b>2.</b> 避免陷入你輸我贏的零和思維</span>
+    <span class="opt"><b>3.</b> 以整體利益取代單一議題爭執</span>
+    <span class="opt"><b>4.</b> 結合多項議題進行整合性交換</span>
+    <span class="opt"><b>5.</b> 創造超越原始立場的附加價值</span>
+    <span class="opt"><b>6.</b> 引導雙方共同界定問題全貌</span>
+    <span class="opt"><b>7.</b> 將各方人身安全與合法權益一併納入考量</span>
+    <span class="opt"><b>8.</b> 提出兼顧公共安全與個人訴求之方案</span>
+    <span class="opt"><b>9.</b> 避免因小失大而犧牲核心目標</span>
+    <span class="opt"><b>10.</b> 以長遠關係取代一時得失計算</span>
+    <span class="opt"><b>11.</b> 統整各方資源創造更大談判空間</span>
+    <span class="opt"><b>12.</b> 兼顧執法目的與人道關懷</span>
+    <span class="opt"><b>13.</b> 將短期讓步轉化為長期信任累積</span>
+    <span class="opt"><b>14.</b> 尋找雙方需求重疊之交集</span>
+    <span class="opt"><b>15.</b> 以資源共享取代資源爭奪</span>
+    <span class="opt"><b>16.</b> 避免因堅持枝節而擴大衝突</span>
+    <span class="opt"><b>17.</b> 促成多贏而非單方勝出之結果</span>
+    <span class="opt"><b>18.</b> 將危機化解與後續復原一併規劃</span>
+    <span class="opt"><b>19.</b> 兼顧當事人尊嚴與公權力行使</span>
+    <span class="opt"><b>20.</b> 整合心理、法律、實務多層面考量</span>
+    <span class="opt"><b>21.</b> 避免因情緒對立而窄化談判選項</span>
+    <span class="opt"><b>22.</b> 以創造性選項取代非此即彼思維</span>
+    <span class="opt"><b>23.</b> 兼顧個案處置與組織整體形象</span>
+    <span class="opt"><b>24.</b> 擴大可協商議題以增加彈性空間</span>
+    <span class="opt"><b>25.</b> 將對立雙方目標重新框架為共同目標</span>
+    <span class="opt"><b>26.</b> 避免過早鎖定單一解決方案</span>
+    <span class="opt"><b>27.</b> 兼顧即時安全與後續處理程序</span>
+    <span class="opt"><b>28.</b> 統籌各機關資源形成整體解決方案</span>
+    <span class="opt"><b>29.</b> 以互惠原則擴大雙方可接受範圍</span>
+    <span class="opt"><b>30.</b> 兼顧當事人訴求與第三方安全</span>
+  </div>
+</div>
+
+<div class="point-card" id="nego-pr-2">
+  <div class="point-head"><span class="point-num">②</span><span class="point-name">應善於營造公開、公平、公正的競爭局面</span></div>
+  <p class="point-theory">談判過程應維持資訊公開、程序公平與立場公正，使雙方信任談判機制本身之正當性。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 全程如實告知談判進度與限制</span>
+    <span class="opt"><b>2.</b> 不因對方身分而有差別對待</span>
+    <span class="opt"><b>3.</b> 以中立第三方角色主持溝通</span>
+    <span class="opt"><b>4.</b> 公開說明談判規則與底線範圍</span>
+    <span class="opt"><b>5.</b> 避免暗中承諾無法兌現之條件</span>
+    <span class="opt"><b>6.</b> 讓對方充分表達意見不打斷</span>
+    <span class="opt"><b>7.</b> 以一致標準回應雙方訴求</span>
+    <span class="opt"><b>8.</b> 避免使用威脅或欺瞞手段取信</span>
+    <span class="opt"><b>9.</b> 公平分配發言與協商時間</span>
+    <span class="opt"><b>10.</b> 不因對方態度惡劣而言語羞辱</span>
+    <span class="opt"><b>11.</b> 讓對方了解決策依據與流程</span>
+    <span class="opt"><b>12.</b> 避免資訊不對稱造成對方誤判</span>
+    <span class="opt"><b>13.</b> 以透明溝通降低對方疑慮</span>
+    <span class="opt"><b>14.</b> 對雙方訴求一視同仁予以評估</span>
+    <span class="opt"><b>15.</b> 不刻意隱瞞對己方不利之事實</span>
+    <span class="opt"><b>16.</b> 建立可受公評之協商紀錄</span>
+    <span class="opt"><b>17.</b> 避免偏袒任一方造成觀感不公</span>
+    <span class="opt"><b>18.</b> 以客觀角色取代主觀好惡判斷</span>
+    <span class="opt"><b>19.</b> 讓第三方見證談判過程之公正性</span>
+    <span class="opt"><b>20.</b> 公開協商底線之調整原則</span>
+    <span class="opt"><b>21.</b> 不利用資訊優勢刻意誤導對方</span>
+    <span class="opt"><b>22.</b> 以一致口徑對外說明處理方式</span>
+    <span class="opt"><b>23.</b> 尊重對方陳述機會不預設立場</span>
+    <span class="opt"><b>24.</b> 避免因個人情緒影響公正判斷</span>
+    <span class="opt"><b>25.</b> 以程序正義贏得對方信任</span>
+    <span class="opt"><b>26.</b> 讓對方參與方案形成過程</span>
+    <span class="opt"><b>27.</b> 公平考量各方風險與利益</span>
+    <span class="opt"><b>28.</b> 不因輿論壓力而改變公正立場</span>
+    <span class="opt"><b>29.</b> 以一致原則處理類似訴求</span>
+    <span class="opt"><b>30.</b> 避免暗箱操作損及談判公信力</span>
+  </div>
+</div>
+
+<div class="point-card" id="nego-pr-3">
+  <div class="point-head"><span class="point-num">③</span><span class="point-name">應明確目標、並善於妥協</span></div>
+  <p class="point-theory">談判前應區分核心目標與非核心事項，於非核心處展現彈性，以妥協換取核心目標之達成。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 設定不可退讓之核心底線</span>
+    <span class="opt"><b>2.</b> 於非核心事項展現彈性讓步</span>
+    <span class="opt"><b>3.</b> 事前排列目標優先順序</span>
+    <span class="opt"><b>4.</b> 區分必須堅持與可協商項目</span>
+    <span class="opt"><b>5.</b> 以階段性目標逐步推進協議</span>
+    <span class="opt"><b>6.</b> 明訂最低可接受條件</span>
+    <span class="opt"><b>7.</b> 避免目標模糊導致談判失焦</span>
+    <span class="opt"><b>8.</b> 於次要議題適度退讓換取信任</span>
+    <span class="opt"><b>9.</b> 設定妥協之上限與下限</span>
+    <span class="opt"><b>10.</b> 以小讓步換取對方善意回應</span>
+    <span class="opt"><b>11.</b> 保留核心安全目標不予交換</span>
+    <span class="opt"><b>12.</b> 適時調整非關鍵條件展現誠意</span>
+    <span class="opt"><b>13.</b> 以時間換取妥協空間</span>
+    <span class="opt"><b>14.</b> 明確區隔原則性與技術性議題</span>
+    <span class="opt"><b>15.</b> 於形式細節保持彈性</span>
+    <span class="opt"><b>16.</b> 對核心價值堅持到底</span>
+    <span class="opt"><b>17.</b> 以漸進式讓步降低對方戒心</span>
+    <span class="opt"><b>18.</b> 設定可退讓之緩衝地帶</span>
+    <span class="opt"><b>19.</b> 避免一次讓步過多喪失籌碼</span>
+    <span class="opt"><b>20.</b> 以互相讓步建立對等關係</span>
+    <span class="opt"><b>21.</b> 明訂談判之停損點</span>
+    <span class="opt"><b>22.</b> 保留調整空間因應情勢變化</span>
+    <span class="opt"><b>23.</b> 以彈性做法達成剛性目標</span>
+    <span class="opt"><b>24.</b> 妥協時說明理由避免誤解為軟弱</span>
+    <span class="opt"><b>25.</b> 分階段檢視目標達成程度</span>
+    <span class="opt"><b>26.</b> 於非原則性事項快速讓步</span>
+    <span class="opt"><b>27.</b> 堅守法律紅線但彈性處理程序</span>
+    <span class="opt"><b>28.</b> 以具體目標取代空泛訴求</span>
+    <span class="opt"><b>29.</b> 妥協須以不違反核心利益為前提</span>
+    <span class="opt"><b>30.</b> 適時重新確認雙方目標一致性</span>
+  </div>
+</div>
+
+<div class="point-card" id="nego-pr-4">
+  <div class="point-head"><span class="point-num">④</span><span class="point-name">注重平等互利原則</span></div>
+  <p class="point-theory">談判雙方應立於對等地位，避免上對下之支配姿態，使雙方均能自協議中獲得實質利益。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 以平等地位取代上對下姿態</span>
+    <span class="opt"><b>2.</b> 避免命令式口吻激化對立</span>
+    <span class="opt"><b>3.</b> 讓對方感受訴求受到認真對待</span>
+    <span class="opt"><b>4.</b> 提供對方對等表達機會</span>
+    <span class="opt"><b>5.</b> 避免單方面施加壓力或恐嚇</span>
+    <span class="opt"><b>6.</b> 以互惠條件交換雙方讓步</span>
+    <span class="opt"><b>7.</b> 尊重對方基本人格尊嚴</span>
+    <span class="opt"><b>8.</b> 不因公權力優勢而輕忽對方感受</span>
+    <span class="opt"><b>9.</b> 讓雙方在協議中均有所得</span>
+    <span class="opt"><b>10.</b> 避免使用貶抑性語言對待對方</span>
+    <span class="opt"><b>11.</b> 以協商夥伴關係取代對立關係</span>
+    <span class="opt"><b>12.</b> 兼顧對方合理需求與己方立場</span>
+    <span class="opt"><b>13.</b> 讓對方參與方案討論而非被動接受</span>
+    <span class="opt"><b>14.</b> 以對等溝通建立雙向信任</span>
+    <span class="opt"><b>15.</b> 避免因權力不對等造成單方讓步</span>
+    <span class="opt"><b>16.</b> 提供實質回饋而非空泛承諾</span>
+    <span class="opt"><b>17.</b> 以互惠原則設計協議內容</span>
+    <span class="opt"><b>18.</b> 尊重對方文化背景與生活方式</span>
+    <span class="opt"><b>19.</b> 避免將對方視為單純敵對一方</span>
+    <span class="opt"><b>20.</b> 讓對方感受被平等看待而非被控制</span>
+    <span class="opt"><b>21.</b> 以雙向溝通取代單向指示</span>
+    <span class="opt"><b>22.</b> 兼顧雙方顏面避免當眾難堪</span>
+    <span class="opt"><b>23.</b> 提供對方選擇空間而非強制指定</span>
+    <span class="opt"><b>24.</b> 以對等姿態進行條件交換</span>
+    <span class="opt"><b>25.</b> 避免因情緒優勢而輕視對方立場</span>
+    <span class="opt"><b>26.</b> 讓協議內容兼顧雙方基本需求</span>
+    <span class="opt"><b>27.</b> 以互利共生取代零和對抗思維</span>
+    <span class="opt"><b>28.</b> 尊重對方自主決定之空間</span>
+    <span class="opt"><b>29.</b> 避免因身分落差產生輕蔑態度</span>
+    <span class="opt"><b>30.</b> 以誠懇態度回應對方合理疑慮</span>
+  </div>
+</div>
+
+<div class="point-card" id="nego-pr-5">
+  <div class="point-head"><span class="point-num">⑤</span><span class="point-name">重利益不重立場原則</span></div>
+  <p class="point-theory">立場為表面主張，利益為背後真正需求，談判應探究對方立場背後之真實動機與需求。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 探究對方表面訴求背後之真正需求</span>
+    <span class="opt"><b>2.</b> 詢問對方堅持某立場之原因</span>
+    <span class="opt"><b>3.</b> 區分對方口頭要求與內心真實顧慮</span>
+    <span class="opt"><b>4.</b> 以提問釐清訴求背後之動機</span>
+    <span class="opt"><b>5.</b> 避免僅針對立場字面進行攻防</span>
+    <span class="opt"><b>6.</b> 找出雙方立場底下之共同利益</span>
+    <span class="opt"><b>7.</b> 理解對方拒絕退讓之深層原因</span>
+    <span class="opt"><b>8.</b> 將表面對立轉化為利益層面對話</span>
+    <span class="opt"><b>9.</b> 探詢對方最在意之核心關切</span>
+    <span class="opt"><b>10.</b> 以同理心理解對方立場之成因</span>
+    <span class="opt"><b>11.</b> 避免執著於對方最初開出之條件</span>
+    <span class="opt"><b>12.</b> 挖掘立場背後之情感或心理需求</span>
+    <span class="opt"><b>13.</b> 以開放式問句引導對方說出真實想法</span>
+    <span class="opt"><b>14.</b> 辨識對方立場中可鬆動之部分</span>
+    <span class="opt"><b>15.</b> 從對方過往經歷推敲其真正顧慮</span>
+    <span class="opt"><b>16.</b> 避免直接否定對方表面立場</span>
+    <span class="opt"><b>17.</b> 以利益交換取代立場對峙</span>
+    <span class="opt"><b>18.</b> 探究對方擔憂之根本來源</span>
+    <span class="opt"><b>19.</b> 將對方訴求還原為具體需求項目</span>
+    <span class="opt"><b>20.</b> 辨別對方堅持是策略性或真實底線</span>
+    <span class="opt"><b>21.</b> 以觀察對方情緒反應推測真實在意之事</span>
+    <span class="opt"><b>22.</b> 避免將立場僵化視為唯一解方</span>
+    <span class="opt"><b>23.</b> 引導對方描述理想結果而非堅持條件</span>
+    <span class="opt"><b>24.</b> 從生活背景推敲對方真正需求</span>
+    <span class="opt"><b>25.</b> 以背後利益設計滿足雙方之方案</span>
+    <span class="opt"><b>26.</b> 避免將談判簡化為輸贏立場之爭</span>
+    <span class="opt"><b>27.</b> 探詢對方最擔心失去之事物</span>
+    <span class="opt"><b>28.</b> 辨識立場僅為達成利益之手段</span>
+    <span class="opt"><b>29.</b> 以真實需求為基礎重新界定問題</span>
+    <span class="opt"><b>30.</b> 避免因立場對立而忽略共同利益</span>
+  </div>
+</div>
+
+<div class="point-card" id="nego-pr-6">
+  <div class="point-head"><span class="point-num">⑥</span><span class="point-name">堅持使用客觀標準原則</span></div>
+  <p class="point-theory">談判遇歧見時，應援引法律或專業數據等客觀標準判斷，避免淪為意志力較量。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 引用法律規定作為協商依據</span>
+    <span class="opt"><b>2.</b> 以氣象、水位等監測數據佐證急迫性</span>
+    <span class="opt"><b>3.</b> 援引專業機關鑑定意見</span>
+    <span class="opt"><b>4.</b> 以公共安全標準作為判斷基準</span>
+    <span class="opt"><b>5.</b> 引用過往案例作為參考依據</span>
+    <span class="opt"><b>6.</b> 以科學數據取代主觀臆測</span>
+    <span class="opt"><b>7.</b> 援引主管機關公告作為說明基礎</span>
+    <span class="opt"><b>8.</b> 以標準作業程序作為協商準則</span>
+    <span class="opt"><b>9.</b> 引用專家學者意見增加說服力</span>
+    <span class="opt"><b>10.</b> 以量化風險評估作為決策依據</span>
+    <span class="opt"><b>11.</b> 援引法院判例說明處理方式</span>
+    <span class="opt"><b>12.</b> 以第三方公正機構評估結果為據</span>
+    <span class="opt"><b>13.</b> 引用主管機關公告之處置標準</span>
+    <span class="opt"><b>14.</b> 以客觀事實取代雙方各自解讀</span>
+    <span class="opt"><b>15.</b> 援引醫療專業判斷傷病急迫程度</span>
+    <span class="opt"><b>16.</b> 以市場行情或公定價格作為依據</span>
+    <span class="opt"><b>17.</b> 引用法規授權範圍界定處理權限</span>
+    <span class="opt"><b>18.</b> 以歷史統計資料佐證風險程度</span>
+    <span class="opt"><b>19.</b> 援引國際公認之處理準則</span>
+    <span class="opt"><b>20.</b> 以檢測報告數據取代口頭爭辯</span>
+    <span class="opt"><b>21.</b> 引用內部規範說明權限界線</span>
+    <span class="opt"><b>22.</b> 以客觀時間表降低情緒化爭執</span>
+    <span class="opt"><b>23.</b> 以現場錄影或錄音紀錄還原事實</span>
+    <span class="opt"><b>24.</b> 以雙方均認可之標準建立共識</span>
+    <span class="opt"><b>25.</b> 引用專業訓練準則作為行動依據</span>
+    <span class="opt"><b>26.</b> 以具公信力之第三方數據化解爭議</span>
+    <span class="opt"><b>27.</b> 援引專業團體訂定之處置規範</span>
+    <span class="opt"><b>28.</b> 以明確法條取代模糊之道德訴求</span>
+    <span class="opt"><b>29.</b> 引用過往處置經驗作為參考基準</span>
+    <span class="opt"><b>30.</b> 以客觀事實脈絡引導理性討論</span>
+  </div>
+</div>
+
+<div class="point-card" id="nego-pr-7">
+  <div class="point-head"><span class="point-num">⑦</span><span class="point-name">堅持把人與問題分開原則</span></div>
+  <p class="point-theory">談判應區分當事人與其行為問題兩個層次，避免人身攻擊，針對事件本身理性處理。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 區分對方個人與其違法行為</span>
+    <span class="opt"><b>2.</b> 避免人身攻擊式言語對話</span>
+    <span class="opt"><b>3.</b> 對事不對人保持理性態度</span>
+    <span class="opt"><b>4.</b> 理解對方情緒反應而非予以指責</span>
+    <span class="opt"><b>5.</b> 避免使用標籤化字眼定義對方</span>
+    <span class="opt"><b>6.</b> 針對行為後果說明而非否定人格</span>
+    <span class="opt"><b>7.</b> 以尊重態度看待對方情感依附</span>
+    <span class="opt"><b>8.</b> 不因對方過往紀錄預設負面立場</span>
+    <span class="opt"><b>9.</b> 將問題聚焦於具體事件本身</span>
+    <span class="opt"><b>10.</b> 避免因對方言詞挑釁而情緒對立</span>
+    <span class="opt"><b>11.</b> 承認對方情緒感受之合理性</span>
+    <span class="opt"><b>12.</b> 以同理心回應而非嘲諷或訓斥</span>
+    <span class="opt"><b>13.</b> 避免翻舊帳影響當下協商</span>
+    <span class="opt"><b>14.</b> 將個人恩怨與公務處理界線分明</span>
+    <span class="opt"><b>15.</b> 對於對方過激言行保持沉著以對</span>
+    <span class="opt"><b>16.</b> 理解行為背後之心理壓力來源</span>
+    <span class="opt"><b>17.</b> 避免以權威姿態貶低對方</span>
+    <span class="opt"><b>18.</b> 就事論事討論解決方案細節</span>
+    <span class="opt"><b>19.</b> 不因對方身分背景而有成見</span>
+    <span class="opt"><b>20.</b> 以尊重口吻取代命令式指令</span>
+    <span class="opt"><b>21.</b> 避免將對方情緒失控視為惡意挑釁</span>
+    <span class="opt"><b>22.</b> 聚焦事件解決而非追究對錯輸贏</span>
+    <span class="opt"><b>23.</b> 理解對方情感依附並非無理取鬧</span>
+    <span class="opt"><b>24.</b> 避免因對方拒絕配合而言語羞辱</span>
+    <span class="opt"><b>25.</b> 以關懷語氣緩解對方防衛心理</span>
+    <span class="opt"><b>26.</b> 將對方視為需要協助之當事人</span>
+    <span class="opt"><b>27.</b> 尊重對方保有基本隱私與空間</span>
+    <span class="opt"><b>28.</b> 以冷靜語調降低對方敵意</span>
+    <span class="opt"><b>29.</b> 區分情緒宣洩與具體訴求兩個層次</span>
+    <span class="opt"><b>30.</b> 保持專業距離但不失人性關懷</span>
+  </div>
+</div>
+
+<div class="point-card" id="nego-pr-8">
+  <div class="point-head"><span class="point-num">⑧</span><span class="point-name">提出對彼此有利的解決方案</span></div>
+  <p class="point-theory">談判後段應主動設計具體可行之替代方案，使雙方在協議中均能獲得實質利益。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 提出多套替代方案供對方選擇</span>
+    <span class="opt"><b>2.</b> 承諾配合條件下爭取從輕處理</span>
+    <span class="opt"><b>3.</b> 設計兼顧雙方核心需求之方案</span>
+    <span class="opt"><b>4.</b> 提供具體可執行之配套措施</span>
+    <span class="opt"><b>5.</b> 以階段性方案降低對方抗拒</span>
+    <span class="opt"><b>6.</b> 承諾協助後續安置或輔導資源</span>
+    <span class="opt"><b>7.</b> 提出兼顧安全與尊嚴之解決途徑</span>
+    <span class="opt"><b>8.</b> 結合社福資源提供實質協助</span>
+    <span class="opt"><b>9.</b> 承諾協助安置對方牽掛之人或物</span>
+    <span class="opt"><b>10.</b> 設計可逐步驗證信任之方案</span>
+    <span class="opt"><b>11.</b> 提供替代場所或資源因應需求</span>
+    <span class="opt"><b>12.</b> 以互惠條件交換對方配合意願</span>
+    <span class="opt"><b>13.</b> 承諾事後優先協助處理財物損失</span>
+    <span class="opt"><b>14.</b> 提出短期與長期兼顧之解方</span>
+    <span class="opt"><b>15.</b> 結合法律程序與人道考量提出方案</span>
+    <span class="opt"><b>16.</b> 設計對方可保留顏面之退場方式</span>
+    <span class="opt"><b>17.</b> 提供分期或漸進式履行之選項</span>
+    <span class="opt"><b>18.</b> 承諾協調相關機關共同協助</span>
+    <span class="opt"><b>19.</b> 以創意方案化解表面對立僵局</span>
+    <span class="opt"><b>20.</b> 提出可驗證且具體可行之承諾</span>
+    <span class="opt"><b>21.</b> 結合心理輔導與後續追蹤機制</span>
+    <span class="opt"><b>22.</b> 設計滿足雙方最低需求之折衷方案</span>
+    <span class="opt"><b>23.</b> 承諾提供必要之醫療或安全保障</span>
+    <span class="opt"><b>24.</b> 提出兼顧公權力與個人訴求之做法</span>
+    <span class="opt"><b>25.</b> 以彈性履行方式提高對方接受度</span>
+    <span class="opt"><b>26.</b> 結合社區或家屬資源共同協助</span>
+    <span class="opt"><b>27.</b> 提供具公信力第三方監督之保證</span>
+    <span class="opt"><b>28.</b> 設計雙方均可接受之時間表</span>
+    <span class="opt"><b>29.</b> 承諾配合程度將列入後續考量</span>
+    <span class="opt"><b>30.</b> 提出兼顧即時處置與長期修復之方案</span>
+  </div>
+</div>
+
+<h2 style="font-size:1.05em;color:var(--subj);margin:28px 0 14px;padding-left:10px;border-left:4px solid var(--subj);">三、危機處理的談判目標與技巧（依發展階段）</h2>
+
+<div class="point-card" id="nego-ph-1">
+  <div class="point-head"><span class="point-num">①</span><span class="point-name">危機初階段（爆發期）：建立關係</span></div>
+  <p class="point-theory">危機初階段以建立關係、互信與安全感為核心，協助當事人宣洩情緒並初步評估問題全貌。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 以專注眼神與姿態展現傾聽誠意</span>
+    <span class="opt"><b>2.</b> 運用簡述語意確認理解其陳述</span>
+    <span class="opt"><b>3.</b> 為對方情緒命名並予以回應</span>
+    <span class="opt"><b>4.</b> 適時給予沉默空間讓對方宣洩</span>
+    <span class="opt"><b>5.</b> 以開放態度接納對方負面情緒</span>
+    <span class="opt"><b>6.</b> 蒐集對方基本資料與現場情資</span>
+    <span class="opt"><b>7.</b> 建立自我介紹與角色說明之初步互動</span>
+    <span class="opt"><b>8.</b> 以低姿態語氣降低對方防衛心理</span>
+    <span class="opt"><b>9.</b> 確認現場安全距離與逃生路線</span>
+    <span class="opt"><b>10.</b> 以耐心態度陪伴對方情緒起伏</span>
+    <span class="opt"><b>11.</b> 避免過早提出要求或條件</span>
+    <span class="opt"><b>12.</b> 觀察對方肢體語言評估情緒狀態</span>
+    <span class="opt"><b>13.</b> 以第一人稱表達關心而非質問</span>
+    <span class="opt"><b>14.</b> 了解對方過往經歷降低陌生感</span>
+    <span class="opt"><b>15.</b> 反映對方情緒使其感受被理解</span>
+    <span class="opt"><b>16.</b> 建立固定聯繫窗口累積信任感</span>
+    <span class="opt"><b>17.</b> 以平穩語調安撫對方激動情緒</span>
+    <span class="opt"><b>18.</b> 評估對方是否持有危險物品</span>
+    <span class="opt"><b>19.</b> 適時複誦對方話語確認無誤</span>
+    <span class="opt"><b>20.</b> 避免打斷對方陳述其想法</span>
+    <span class="opt"><b>21.</b> 以真誠態度回應對方疑慮</span>
+    <span class="opt"><b>22.</b> 掌握現場人數配置與動線</span>
+    <span class="opt"><b>23.</b> 給予對方表達不滿之機會</span>
+    <span class="opt"><b>24.</b> 以肯定語句回應對方感受合理性</span>
+    <span class="opt"><b>25.</b> 評估對方情緒是否趨於穩定</span>
+    <span class="opt"><b>26.</b> 建立信任前避免承諾具體條件</span>
+    <span class="opt"><b>27.</b> 觀察環境線索研判事件成因</span>
+    <span class="opt"><b>28.</b> 以簡短回應鼓勵對方持續表達</span>
+    <span class="opt"><b>29.</b> 確認警戒範圍排除危險因子</span>
+    <span class="opt"><b>30.</b> 綜合情資研判事件性質與動機</span>
+  </div>
+</div>
+
+<div class="point-card" id="nego-ph-2">
+  <div class="point-head"><span class="point-num">②</span><span class="point-name">談判階段（擴散期）：商討問題</span></div>
+  <p class="point-theory">談判階段聚焦商討問題核心、預判各項結果，並研擬達成協議及替代行動方案。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 以開放式提問探詢對方真正需求</span>
+    <span class="opt"><b>2.</b> 運用問題導向提問聚焦具體訴求</span>
+    <span class="opt"><b>3.</b> 以假設性提問預判對方可能反應</span>
+    <span class="opt"><b>4.</b> 提出具體選項供對方比較評估</span>
+    <span class="opt"><b>5.</b> 以邏輯清晰之語句表達己方立場</span>
+    <span class="opt"><b>6.</b> 運用說服技巧強化方案吸引力</span>
+    <span class="opt"><b>7.</b> 說明配合方案可獲得之具體利益</span>
+    <span class="opt"><b>8.</b> 以數據佐證強化說服力道</span>
+    <span class="opt"><b>9.</b> 規劃多套替代行動方案因應變化</span>
+    <span class="opt"><b>10.</b> 預先設想協議破裂之因應對策</span>
+    <span class="opt"><b>11.</b> 以漸進式提問引導對方鬆動立場</span>
+    <span class="opt"><b>12.</b> 提出時間表明確協議履行方式</span>
+    <span class="opt"><b>13.</b> 以類比說明增加對方理解程度</span>
+    <span class="opt"><b>14.</b> 持續傾聽掌握對方立場之變化</span>
+    <span class="opt"><b>15.</b> 以摘要覆述確認雙方共識範圍</span>
+    <span class="opt"><b>16.</b> 評估各項方案之可行性與風險</span>
+    <span class="opt"><b>17.</b> 預判對方拒絕後之下一步行動</span>
+    <span class="opt"><b>18.</b> 以誘導式提問釐清對方底線</span>
+    <span class="opt"><b>19.</b> 說明不配合可能面臨之後果</span>
+    <span class="opt"><b>20.</b> 提出階段性協議降低一次到位壓力</span>
+    <span class="opt"><b>21.</b> 以正向語言包裝要求降低抗拒</span>
+    <span class="opt"><b>22.</b> 規劃強制介入之備用方案</span>
+    <span class="opt"><b>23.</b> 確認協議內容並取得口頭承諾</span>
+    <span class="opt"><b>24.</b> 以具體條件交換對方讓步</span>
+    <span class="opt"><b>25.</b> 評估對方接受方案之可能程度</span>
+    <span class="opt"><b>26.</b> 預留調整協議細節之彈性空間</span>
+    <span class="opt"><b>27.</b> 以清楚簡潔用語避免對方誤解</span>
+    <span class="opt"><b>28.</b> 引導對方共同參與方案設計</span>
+    <span class="opt"><b>29.</b> 將協議內容書面化或明確化</span>
+    <span class="opt"><b>30.</b> 規劃後續追蹤與履行確認機制</span>
+  </div>
+</div>
+
+<h2 style="font-size:1.05em;color:var(--subj);margin:28px 0 14px;padding-left:10px;border-left:4px solid var(--subj);">四、談判的禁忌條件</h2>
+
+<div class="point-card" id="nego-taboo">
+  <div class="point-head"><span class="point-name">談判的禁忌條件（8項絕不可退讓）</span></div>
+  <p class="point-theory">武器彈藥爆裂物／交換人質／酒或含酒精飲料／鎖匙或密碼／毒品／釋放囚犯／交通工具／其他——這8項是談判過程中絕不可交換或退讓的底線條件。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 拒絕提供任何武器彈藥予對方以免升高危險</span>
+    <span class="opt"><b>2.</b> 婉拒協助取得爆裂物材料並說明法律限制</span>
+    <span class="opt"><b>3.</b> 對於加裝火力之要求一律嚴正拒絕</span>
+    <span class="opt"><b>4.</b> 以安全考量說明無法提供槍械彈藥</span>
+    <span class="opt"><b>5.</b> 拒絕以第三人或員警交換人質降低風險</span>
+    <span class="opt"><b>6.</b> 婉拒自願入內換人之要求並說明替代方案</span>
+    <span class="opt"><b>7.</b> 說明人質交換將使情勢更難掌控而不予同意</span>
+    <span class="opt"><b>8.</b> 以維護所有人安全為由拒絕人質互換提議</span>
+    <span class="opt"><b>9.</b> 拒絕提供酒類飲品以免對方失控加劇風險</span>
+    <span class="opt"><b>10.</b> 說明酒精將影響判斷力而婉拒該項要求</span>
+    <span class="opt"><b>11.</b> 以健康安全為由拒絕含酒精飲料之要求</span>
+    <span class="opt"><b>12.</b> 對於藉酒壯膽之要求說明無法配合</span>
+    <span class="opt"><b>13.</b> 拒絕交付保險箱或門禁密碼等關鍵資訊</span>
+    <span class="opt"><b>14.</b> 婉拒提供車輛鑰匙以免影響現場控制</span>
+    <span class="opt"><b>15.</b> 說明鎖匙密碼涉及他人安全而不予提供</span>
+    <span class="opt"><b>16.</b> 對於索取電子鎖密碼之要求嚴正婉拒</span>
+    <span class="opt"><b>17.</b> 拒絕提供毒品或管制藥物予對方</span>
+    <span class="opt"><b>18.</b> 說明毒品將加劇失控風險而不予配合</span>
+    <span class="opt"><b>19.</b> 以法律禁止為由婉拒毒品類要求</span>
+    <span class="opt"><b>20.</b> 對於索求鎮靜藥物之要求審慎評估後拒絕</span>
+    <span class="opt"><b>21.</b> 說明釋放在押人犯非現場人員權限而婉拒</span>
+    <span class="opt"><b>22.</b> 拒絕以釋放同夥作為交換條件</span>
+    <span class="opt"><b>23.</b> 以司法程序獨立為由婉拒釋囚要求</span>
+    <span class="opt"><b>24.</b> 婉拒提供交通工具以免助其脫逃</span>
+    <span class="opt"><b>25.</b> 說明車輛提供將衍生二次危機而不予同意</span>
+    <span class="opt"><b>26.</b> 對於指定特定車輛或路線接送嚴正拒絕</span>
+    <span class="opt"><b>27.</b> 以現場管制為由拒絕提供逃逸用交通工具</span>
+    <span class="opt"><b>28.</b> 對於超出權限之金錢或財物要求審慎婉拒</span>
+    <span class="opt"><b>29.</b> 拒絕配合現場直播或公開喊話等衍生要求</span>
+    <span class="opt"><b>30.</b> 說明不可退讓事項一律回報指揮官統一裁示</span>
+  </div>
+</div>
+
+<div class="template">
+  <b>談判原則/技巧前言範例</b>：<br>
+  1. 面對本案【情境事件】之危機，本人身為到場處理人員，應運用談判之基本原則與談判目標及技巧，妥善化解僵局並確保【情境對象】人身安全，茲分述如下。<br>
+  2. 本案【情境對象】因【情境訴求或原因】陷入對峙僵局，情勢緊迫且具高度風險，須把握談判基本原則，並依危機發展階段運用相應之目標與技巧，以下分述之。<br><br>
+  <b>談判原則/技巧結語範例</b>：<br>
+  1. 綜上，唯有落實談判基本原則、掌握兩階段目標與技巧，並嚴守禁忌條件之底線，方能兼顧當事人安全與公權力之有效行使，圓滑化解本案危機。<br>
+  2. 總結而言，談判成敗繫於能否兼顧總體利益、客觀標準與人性關懷，本人將秉持上述原則與技巧，並謹守禁忌條件不予退讓，全力促成本案圓滿落幕。
+</div>
+
+    <div class="footer">談判共18個要點（7＋8＋2＋1）・540個選項</div>
+  </div>
+
+  <!-- ══════ 媒體互動 ══════ -->
+  <div class="tab-pane" id="tmedia">
+    <div class="header">
+      <h1>媒體互動與記者說明會<span class="tag">新聞性5標準＋互動7點＋記者會10項・660個選項</span></h1>
+      <div class="sub">對應 crisis-management-slides.html Ch5・111年、112年考過（近6年最高頻之一）</div>
+    </div>
+    <div class="jumprow">
+      <span class="grp">新聞性5標準：</span>
+      <a href="#media-news-1">①衝擊性</a><a href="#media-news-2">②關聯性</a><a href="#media-news-3">③顯眼性</a><a href="#media-news-4">④新奇性</a><a href="#media-news-5">⑤衝突性</a>
+    </div>
+    <div class="jumprow">
+      <span class="grp">媒體互動7點：</span>
+      <a href="#media-int-1">①指派新聞發言人</a><a href="#media-int-2">②平常心面對記者</a><a href="#media-int-3">③發布經確認新聞</a><a href="#media-int-4">④保密待偵查資訊</a><a href="#media-int-5">⑤避免臆測性發言</a><a href="#media-int-6">⑥避免讓特殊人物曝光</a><a href="#media-int-7">⑦謹慎面對鏡頭或麥克風</a>
+    </div>
+    <div class="jumprow">
+      <span class="grp">記者會10項原則：</span>
+      <a href="#media-press-1">①不要逃避媒體</a><a href="#media-press-2">②公平對待媒體</a><a href="#media-press-3">③誠實發布新聞</a><a href="#media-press-4">④避免個人意見</a><a href="#media-press-5">⑤簡要發布內容</a><a href="#media-press-6">⑥提供具體描述</a><a href="#media-press-7">⑦考慮媒體需求</a><a href="#media-press-8">⑧確定媒體問題</a><a href="#media-press-9">⑨保留新聞內容</a><a href="#media-press-10">⑩勿與媒體辯論</a>
+    </div>
+
+<h2 style="font-size:1.05em;color:var(--subj);margin:8px 0 14px;padding-left:10px;border-left:4px solid var(--subj);">一、新聞性5項標準（前言破題用）</h2>
+
+<div class="point-card" id="media-news-1">
+  <div class="point-head"><span class="point-num">①</span><span class="point-name">衝擊性</span></div>
+  <p class="point-theory">受影響人數及嚴重程度愈高愈具新聞性——事件規模愈大，媒體評估報導優先順序愈前面。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 傷亡人數眾多</span>
+    <span class="opt"><b>2.</b> 波及範圍達數十戶以上</span>
+    <span class="opt"><b>3.</b> 癱瘓重要交通樞紐</span>
+    <span class="opt"><b>4.</b> 造成大規模停水停電</span>
+    <span class="opt"><b>5.</b> 多處建築物受損倒塌</span>
+    <span class="opt"><b>6.</b> 影響民生基礎設施運作</span>
+    <span class="opt"><b>7.</b> 波及鄰近學校及醫療院所</span>
+    <span class="opt"><b>8.</b> 大量民眾緊急撤離避難</span>
+    <span class="opt"><b>9.</b> 財物損失金額龐大</span>
+    <span class="opt"><b>10.</b> 危害公共安全時間長達數小時</span>
+    <span class="opt"><b>11.</b> 造成周邊商家被迫停業</span>
+    <span class="opt"><b>12.</b> 災情波及跨縣市範圍</span>
+    <span class="opt"><b>13.</b> 影響尖峰時段大量通勤族</span>
+    <span class="opt"><b>14.</b> 導致重要聯外道路封閉</span>
+    <span class="opt"><b>15.</b> 波及大型集會活動人潮</span>
+    <span class="opt"><b>16.</b> 造成群聚感染擴散風險</span>
+    <span class="opt"><b>17.</b> 影響飲用水源安全</span>
+    <span class="opt"><b>18.</b> 波及易燃易爆高風險場所</span>
+    <span class="opt"><b>19.</b> 造成長時間交通壅塞</span>
+    <span class="opt"><b>20.</b> 波及老弱婦孺等脆弱族群</span>
+    <span class="opt"><b>21.</b> 損害具保存價值之文化資產</span>
+    <span class="opt"><b>22.</b> 衝擊地方觀光旅遊人潮</span>
+    <span class="opt"><b>23.</b> 引發大量民眾恐慌情緒</span>
+    <span class="opt"><b>24.</b> 波及工業區生產線運作</span>
+    <span class="opt"><b>25.</b> 影響通訊網路正常運作</span>
+    <span class="opt"><b>26.</b> 導致大範圍停班停課</span>
+    <span class="opt"><b>27.</b> 波及港口機場等樞紐設施</span>
+    <span class="opt"><b>28.</b> 造成環境污染持續擴散</span>
+    <span class="opt"><b>29.</b> 影響民眾日常生活作息</span>
+    <span class="opt"><b>30.</b> 傷亡情況有持續擴大之虞</span>
+  </div>
+</div>
+
+<div class="point-card" id="media-news-2">
+  <div class="point-head"><span class="point-num">②</span><span class="point-name">關聯性</span></div>
+  <p class="point-theory">與讀者觀眾切身利害愈相關愈具新聞性——愈貼近多數閱聽眾生活經驗，愈能引發共鳴。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 攸關民眾食品衛生安全</span>
+    <span class="opt"><b>2.</b> 涉及居住環境公共安全</span>
+    <span class="opt"><b>3.</b> 與通勤族日常動線高度相關</span>
+    <span class="opt"><b>4.</b> 影響大眾日常用水品質</span>
+    <span class="opt"><b>5.</b> 涉及學童上下學安全</span>
+    <span class="opt"><b>6.</b> 與房價及居住權益相關</span>
+    <span class="opt"><b>7.</b> 涉及消費者權益保障</span>
+    <span class="opt"><b>8.</b> 攸關民眾就醫可近性</span>
+    <span class="opt"><b>9.</b> 與在地就業機會相關</span>
+    <span class="opt"><b>10.</b> 涉及個人資料外洩疑慮</span>
+    <span class="opt"><b>11.</b> 攸關高齡長者照護權益</span>
+    <span class="opt"><b>12.</b> 與颱風假停班停課判斷相關</span>
+    <span class="opt"><b>13.</b> 涉及租屋族居住安全</span>
+    <span class="opt"><b>14.</b> 攸關社區治安觀感</span>
+    <span class="opt"><b>15.</b> 與外出用餐飲食安全相關</span>
+    <span class="opt"><b>16.</b> 涉及公共場所逃生動線</span>
+    <span class="opt"><b>17.</b> 攸關親子出遊安全</span>
+    <span class="opt"><b>18.</b> 與物價波動間接相關</span>
+    <span class="opt"><b>19.</b> 涉及信用卡及財產安全</span>
+    <span class="opt"><b>20.</b> 攸關寵物飼主權益</span>
+    <span class="opt"><b>21.</b> 與空氣品質及健康相關</span>
+    <span class="opt"><b>22.</b> 涉及節慶活動安全</span>
+    <span class="opt"><b>23.</b> 攸關上班族通勤保險理賠</span>
+    <span class="opt"><b>24.</b> 與社區大樓管理制度相關</span>
+    <span class="opt"><b>25.</b> 涉及外送及物流從業安全</span>
+    <span class="opt"><b>26.</b> 攸關校園霸凌防治</span>
+    <span class="opt"><b>27.</b> 與長照機構照護品質相關</span>
+    <span class="opt"><b>28.</b> 涉及網路購物交易安全</span>
+    <span class="opt"><b>29.</b> 攸關假期出遊交通安全</span>
+    <span class="opt"><b>30.</b> 與在地產業發展前景相關</span>
+  </div>
+</div>
+
+<div class="point-card" id="media-news-3">
+  <div class="point-head"><span class="point-num">③</span><span class="point-name">顯眼性</span></div>
+  <p class="point-theory">牽涉人物愈重要愈多愈有新聞價值——當事人身分知名度或涉及人數，直接牽動報導篇幅。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 涉及民意代表或政府首長</span>
+    <span class="opt"><b>2.</b> 牽涉知名藝人或公眾人物</span>
+    <span class="opt"><b>3.</b> 涉及地方仕紳或宗親領袖</span>
+    <span class="opt"><b>4.</b> 波及企業負責人或高階主管</span>
+    <span class="opt"><b>5.</b> 涉及外國籍人士或使節</span>
+    <span class="opt"><b>6.</b> 牽涉退休高階將領或官員</span>
+    <span class="opt"><b>7.</b> 涉及知名運動選手</span>
+    <span class="opt"><b>8.</b> 波及大型企業員工眾多</span>
+    <span class="opt"><b>9.</b> 涉及宗教團體重要人士</span>
+    <span class="opt"><b>10.</b> 牽涉學校校長或教育界人士</span>
+    <span class="opt"><b>11.</b> 涉及醫界權威人士</span>
+    <span class="opt"><b>12.</b> 波及知名學者專家</span>
+    <span class="opt"><b>13.</b> 涉及地方派系代表人物</span>
+    <span class="opt"><b>14.</b> 牽涉現職執法人員</span>
+    <span class="opt"><b>15.</b> 涉及退休司法人員</span>
+    <span class="opt"><b>16.</b> 波及知名網紅或意見領袖</span>
+    <span class="opt"><b>17.</b> 涉及公益團體負責人</span>
+    <span class="opt"><b>18.</b> 牽涉大型社團幹部</span>
+    <span class="opt"><b>19.</b> 涉及選舉候選人</span>
+    <span class="opt"><b>20.</b> 波及公務機關主管</span>
+    <span class="opt"><b>21.</b> 涉及知名企業家族成員</span>
+    <span class="opt"><b>22.</b> 牽涉媒體從業人員本身</span>
+    <span class="opt"><b>23.</b> 涉及外交使節團成員</span>
+    <span class="opt"><b>24.</b> 波及大批遊客或旅行團</span>
+    <span class="opt"><b>25.</b> 涉及知名建築師或設計師</span>
+    <span class="opt"><b>26.</b> 牽涉退休民意代表</span>
+    <span class="opt"><b>27.</b> 涉及地方創生指標人物</span>
+    <span class="opt"><b>28.</b> 波及大型活動主辦單位負責人</span>
+    <span class="opt"><b>29.</b> 涉及知名主持人或名嘴</span>
+    <span class="opt"><b>30.</b> 牽涉家族企業第二代成員</span>
+  </div>
+</div>
+
+<div class="point-card" id="media-news-4">
+  <div class="point-head"><span class="point-num">④</span><span class="point-name">新奇性</span></div>
+  <p class="point-theory">事件愈超乎常情愈有新聞價值——發生原因、手法或結果愈脫離常軌，愈易引發好奇。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 發生機率極為罕見</span>
+    <span class="opt"><b>2.</b> 肇因手法前所未見</span>
+    <span class="opt"><b>3.</b> 發生地點出乎意料</span>
+    <span class="opt"><b>4.</b> 事發時間點反常</span>
+    <span class="opt"><b>5.</b> 涉案手法異於常理</span>
+    <span class="opt"><b>6.</b> 巧合情節高度戲劇化</span>
+    <span class="opt"><b>7.</b> 事件結果出人意表</span>
+    <span class="opt"><b>8.</b> 首次出現之新型態案件</span>
+    <span class="opt"><b>9.</b> 與過往類似案件模式迥異</span>
+    <span class="opt"><b>10.</b> 涉及最新科技運用</span>
+    <span class="opt"><b>11.</b> 發生於平時被視為安全之場所</span>
+    <span class="opt"><b>12.</b> 案情發展曲折離奇</span>
+    <span class="opt"><b>13.</b> 短時間內連續發生同類事件</span>
+    <span class="opt"><b>14.</b> 天候條件極端罕見</span>
+    <span class="opt"><b>15.</b> 涉及動物或特殊物種因素</span>
+    <span class="opt"><b>16.</b> 當事人反應出乎常理</span>
+    <span class="opt"><b>17.</b> 案發過程遭全程錄影記錄</span>
+    <span class="opt"><b>18.</b> 涉及跨國或跨境特殊情節</span>
+    <span class="opt"><b>19.</b> 事件規模創下紀錄</span>
+    <span class="opt"><b>20.</b> 發生於重要節日或紀念日</span>
+    <span class="opt"><b>21.</b> 肇因牽涉罕見天災現象</span>
+    <span class="opt"><b>22.</b> 案件偵辦手法首創先例</span>
+    <span class="opt"><b>23.</b> 涉及罕見職業或身分背景</span>
+    <span class="opt"><b>24.</b> 事發地點具特殊地理條件</span>
+    <span class="opt"><b>25.</b> 救援過程出現戲劇性轉折</span>
+    <span class="opt"><b>26.</b> 涉及新興科技產品瑕疵</span>
+    <span class="opt"><b>27.</b> 案情與都市傳說巧合呼應</span>
+    <span class="opt"><b>28.</b> 當事人年齡層極端罕見</span>
+    <span class="opt"><b>29.</b> 事件時間點巧合引發聯想</span>
+    <span class="opt"><b>30.</b> 處理過程出現罕見突發狀況</span>
+  </div>
+</div>
+
+<div class="point-card" id="media-news-5">
+  <div class="point-head"><span class="point-num">⑤</span><span class="point-name">衝突性</span></div>
+  <p class="point-theory">事件潛藏危險或暴力性愈高愈有新聞價值——對立衝突成分愈重，愈能牽動閱聽眾情緒。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 涉及肢體衝突或鬥毆</span>
+    <span class="opt"><b>2.</b> 潛藏群眾對立情緒</span>
+    <span class="opt"><b>3.</b> 涉及持有危險器械</span>
+    <span class="opt"><b>4.</b> 現場情勢一觸即發</span>
+    <span class="opt"><b>5.</b> 涉及公權力與民眾對峙</span>
+    <span class="opt"><b>6.</b> 潛藏二次意外風險</span>
+    <span class="opt"><b>7.</b> 涉及縱火或爆裂物疑慮</span>
+    <span class="opt"><b>8.</b> 現場瀰漫緊張對立氛圍</span>
+    <span class="opt"><b>9.</b> 涉及家庭或職場暴力</span>
+    <span class="opt"><b>10.</b> 潛藏抗爭或陳情行動</span>
+    <span class="opt"><b>11.</b> 涉及幫派或組織性對立</span>
+    <span class="opt"><b>12.</b> 現場民眾情緒激動失控</span>
+    <span class="opt"><b>13.</b> 涉及執法人員與嫌疑人對峙</span>
+    <span class="opt"><b>14.</b> 潛藏報復性行為疑慮</span>
+    <span class="opt"><b>15.</b> 涉及財產糾紛引發衝突</span>
+    <span class="opt"><b>16.</b> 現場出現叫囂或推擠場面</span>
+    <span class="opt"><b>17.</b> 涉及跨國或跨族群對立</span>
+    <span class="opt"><b>18.</b> 潛藏再次引爆或倒塌風險</span>
+    <span class="opt"><b>19.</b> 涉及網路輿論對立延燒</span>
+    <span class="opt"><b>20.</b> 現場救援人員面臨人身威脅</span>
+    <span class="opt"><b>21.</b> 涉及言語恐嚇或威脅情事</span>
+    <span class="opt"><b>22.</b> 潛藏群聚抗議擴大之虞</span>
+    <span class="opt"><b>23.</b> 涉及利益團體間角力</span>
+    <span class="opt"><b>24.</b> 現場情勢隨時可能失控</span>
+    <span class="opt"><b>25.</b> 涉及道路或路權糾紛</span>
+    <span class="opt"><b>26.</b> 潛藏危險化學物質洩漏風險</span>
+    <span class="opt"><b>27.</b> 涉及派系或立場對立鮮明</span>
+    <span class="opt"><b>28.</b> 現場出現對峙僵局</span>
+    <span class="opt"><b>29.</b> 涉及施暴者拒捕或抗拒行為</span>
+    <span class="opt"><b>30.</b> 潛藏連鎖反應擴大衝突</span>
+  </div>
+</div>
+
+<h2 style="font-size:1.05em;color:var(--subj);margin:28px 0 14px;padding-left:10px;border-left:4px solid var(--subj);">二、與媒體互動應注意（7點）</h2>
+
+<div class="point-card" id="media-int-1">
+  <div class="point-head"><span class="point-num">①</span><span class="point-name">指派新聞發言人</span></div>
+  <p class="point-theory">統一對外發言窗口與口徑，避免各單位各自表述致資訊矛盾混亂。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 指定單一層級適當之發言人</span>
+    <span class="opt"><b>2.</b> 統一對外發言口徑</span>
+    <span class="opt"><b>3.</b> 避免各單位各自對媒體發言</span>
+    <span class="opt"><b>4.</b> 發言人應熟悉案情全貌</span>
+    <span class="opt"><b>5.</b> 設置媒體聯繫窗口專線</span>
+    <span class="opt"><b>6.</b> 建立發言人備援機制</span>
+    <span class="opt"><b>7.</b> 發言人層級應與案件規模相符</span>
+    <span class="opt"><b>8.</b> 事前協調各單位口徑一致</span>
+    <span class="opt"><b>9.</b> 明確劃分發言人職權範圍</span>
+    <span class="opt"><b>10.</b> 發言人應具備危機溝通訓練</span>
+    <span class="opt"><b>11.</b> 避免基層人員擅自受訪</span>
+    <span class="opt"><b>12.</b> 建立發言前跨單位審核機制</span>
+    <span class="opt"><b>13.</b> 指派專責幕僚協助資料彙整</span>
+    <span class="opt"><b>14.</b> 發言人應隨時掌握最新進度</span>
+    <span class="opt"><b>15.</b> 設立媒體服務中心統一窗口</span>
+    <span class="opt"><b>16.</b> 避免多頭馬車對外發聲</span>
+    <span class="opt"><b>17.</b> 發言人應與指揮官保持密切聯繫</span>
+    <span class="opt"><b>18.</b> 建立發言內容事前彙報流程</span>
+    <span class="opt"><b>19.</b> 明訂各層級對媒體應對權責</span>
+    <span class="opt"><b>20.</b> 發言人應具備跨單位協調能力</span>
+    <span class="opt"><b>21.</b> 避免臨時更換發言人造成混亂</span>
+    <span class="opt"><b>22.</b> 發言人應熟悉相關法規權限</span>
+    <span class="opt"><b>23.</b> 建立發言人與幕僚群工作分工</span>
+    <span class="opt"><b>24.</b> 事先備妥書面新聞稿範本</span>
+    <span class="opt"><b>25.</b> 發言人應保持情緒穩定沉著</span>
+    <span class="opt"><b>26.</b> 統籌各單位對外發布時機</span>
+    <span class="opt"><b>27.</b> 避免發言人越權承諾事項</span>
+    <span class="opt"><b>28.</b> 發言人應具備臨場應變能力</span>
+    <span class="opt"><b>29.</b> 建立發言紀錄留存備查機制</span>
+    <span class="opt"><b>30.</b> 發言人應與長官口徑保持一致</span>
+  </div>
+</div>
+
+<div class="point-card" id="media-int-2">
+  <div class="point-head"><span class="point-num">②</span><span class="point-name">平常心面對記者</span></div>
+  <p class="point-theory">以專業從容態度應對採訪，不迴避亦不敵視，避免情緒化反應影響機關形象。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 不迴避亦不刻意躲避採訪</span>
+    <span class="opt"><b>2.</b> 以平和態度回應提問</span>
+    <span class="opt"><b>3.</b> 避免與記者發生言語衝突</span>
+    <span class="opt"><b>4.</b> 保持專業從容之應對態度</span>
+    <span class="opt"><b>5.</b> 不因尖銳提問而動怒</span>
+    <span class="opt"><b>6.</b> 以尊重態度對待採訪人員</span>
+    <span class="opt"><b>7.</b> 避免流露不耐或輕蔑神情</span>
+    <span class="opt"><b>8.</b> 主動說明而非被動迴避</span>
+    <span class="opt"><b>9.</b> 以誠懇態度面對詰問</span>
+    <span class="opt"><b>10.</b> 避免情緒性字眼回應</span>
+    <span class="opt"><b>11.</b> 保持一致且穩定之應對節奏</span>
+    <span class="opt"><b>12.</b> 不將媒體視為對立一方</span>
+    <span class="opt"><b>13.</b> 適度展現同理與關懷態度</span>
+    <span class="opt"><b>14.</b> 避免用官腔套話搪塞</span>
+    <span class="opt"><b>15.</b> 以平實語言取代艱澀術語</span>
+    <span class="opt"><b>16.</b> 保持基本禮貌與耐心</span>
+    <span class="opt"><b>17.</b> 不因反覆提問而顯焦躁</span>
+    <span class="opt"><b>18.</b> 適時給予合理回覆時限</span>
+    <span class="opt"><b>19.</b> 避免對特定媒體差別對待</span>
+    <span class="opt"><b>20.</b> 以開放態度接受媒體監督</span>
+    <span class="opt"><b>21.</b> 保持自信但不失謙遜態度</span>
+    <span class="opt"><b>22.</b> 避免與記者發生肢體拉扯</span>
+    <span class="opt"><b>23.</b> 對敏感提問亦從容以對</span>
+    <span class="opt"><b>24.</b> 建立長期良性互動關係</span>
+    <span class="opt"><b>25.</b> 不因外界壓力遷怒採訪人員</span>
+    <span class="opt"><b>26.</b> 適度運用幽默緩和緊張氣氛</span>
+    <span class="opt"><b>27.</b> 保持中立客觀之表達方式</span>
+    <span class="opt"><b>28.</b> 避免對媒體提出無理要求</span>
+    <span class="opt"><b>29.</b> 尊重媒體採訪自由與權利</span>
+    <span class="opt"><b>30.</b> 以平常心看待負面報導壓力</span>
+  </div>
+</div>
+
+<div class="point-card" id="media-int-3">
+  <div class="point-head"><span class="point-num">③</span><span class="point-name">發布經確認新聞</span></div>
+  <p class="point-theory">對外發布之訊息應事先查證核實，避免未經確認消息誤導視聽、損及公信力。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 發布前逐項查證資料正確性</span>
+    <span class="opt"><b>2.</b> 統計數字須經彙整核實</span>
+    <span class="opt"><b>3.</b> 避免發布未經證實之消息</span>
+    <span class="opt"><b>4.</b> 建立多重查核審核流程</span>
+    <span class="opt"><b>5.</b> 資料來源須明確可溯</span>
+    <span class="opt"><b>6.</b> 發布前與第一線單位再次確認</span>
+    <span class="opt"><b>7.</b> 避免搶快而犧牲正確性</span>
+    <span class="opt"><b>8.</b> 數據應隨案情進展即時更新</span>
+    <span class="opt"><b>9.</b> 發布內容須經權責主管核可</span>
+    <span class="opt"><b>10.</b> 避免引用未經證實之網路傳言</span>
+    <span class="opt"><b>11.</b> 建立跨單位資訊比對機制</span>
+    <span class="opt"><b>12.</b> 發布前確認時間地點等基本事實</span>
+    <span class="opt"><b>13.</b> 對外數字應與內部通報一致</span>
+    <span class="opt"><b>14.</b> 避免發布片面未查證之說法</span>
+    <span class="opt"><b>15.</b> 建立新聞稿逐級審閱制度</span>
+    <span class="opt"><b>16.</b> 發布前確認法規適用無誤</span>
+    <span class="opt"><b>17.</b> 對尚在查證中事項如實說明</span>
+    <span class="opt"><b>18.</b> 避免引用非官方消息來源</span>
+    <span class="opt"><b>19.</b> 發布內容應與現場實況相符</span>
+    <span class="opt"><b>20.</b> 建立資料更新版本控管機制</span>
+    <span class="opt"><b>21.</b> 發布前確認當事人身分無誤</span>
+    <span class="opt"><b>22.</b> 避免將推測當作確定事實發布</span>
+    <span class="opt"><b>23.</b> 統一各單位發布數據之口徑</span>
+    <span class="opt"><b>24.</b> 發布前確認相關法律用語正確</span>
+    <span class="opt"><b>25.</b> 對外說明應標明查證進度</span>
+    <span class="opt"><b>26.</b> 避免因媒體催促而倉促回應</span>
+    <span class="opt"><b>27.</b> 建立發布內容存檔備查機制</span>
+    <span class="opt"><b>28.</b> 發布前確認無損當事人權益</span>
+    <span class="opt"><b>29.</b> 對於錯誤資訊主動即時更正</span>
+    <span class="opt"><b>30.</b> 發布前確認符合現行法令規定</span>
+  </div>
+</div>
+
+<div class="point-card" id="media-int-4">
+  <div class="point-head"><span class="point-num">④</span><span class="point-name">保密待偵查資訊</span></div>
+  <p class="point-theory">尚在調查偵辦中之敏感資訊應予保密，以免影響偵查作為並損及當事人權益。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 偵查中案情細節不予公開</span>
+    <span class="opt"><b>2.</b> 檢體化驗結果待確認前保密</span>
+    <span class="opt"><b>3.</b> 尚未查明之肇因不預先公布</span>
+    <span class="opt"><b>4.</b> 保全證物相關資訊予以保密</span>
+    <span class="opt"><b>5.</b> 未確認之傷亡名單暫不對外</span>
+    <span class="opt"><b>6.</b> 案發現場蒐證細節不予揭露</span>
+    <span class="opt"><b>7.</b> 涉案人身分於偵結前予以保密</span>
+    <span class="opt"><b>8.</b> 避免洩漏偵查作為及時機</span>
+    <span class="opt"><b>9.</b> 對尚在比對之資料予以保留</span>
+    <span class="opt"><b>10.</b> 未經家屬同意之個資不予公開</span>
+    <span class="opt"><b>11.</b> 案件關鍵跡證暫緩對外說明</span>
+    <span class="opt"><b>12.</b> 避免透露後續查緝行動計畫</span>
+    <span class="opt"><b>13.</b> 對監視器畫面內容審慎處理</span>
+    <span class="opt"><b>14.</b> 尚待鑑定之項目不預先論斷</span>
+    <span class="opt"><b>15.</b> 保護證人及檢舉人身分資料</span>
+    <span class="opt"><b>16.</b> 未結案前偵辦方向不予揭露</span>
+    <span class="opt"><b>17.</b> 對通聯紀錄等資料嚴予保密</span>
+    <span class="opt"><b>18.</b> 避免公開足以影響審判之資訊</span>
+    <span class="opt"><b>19.</b> 醫療診斷及傷勢細節從嚴管控</span>
+    <span class="opt"><b>20.</b> 案件研判過程不對外說明</span>
+    <span class="opt"><b>21.</b> 對尚未起訴之嫌疑人資料保留</span>
+    <span class="opt"><b>22.</b> 避免揭露線民或情資來源</span>
+    <span class="opt"><b>23.</b> 建立分級管制資訊發布制度</span>
+    <span class="opt"><b>24.</b> 對外說明僅限已查證公開範圍</span>
+    <span class="opt"><b>25.</b> 避免透露內部會議研判內容</span>
+    <span class="opt"><b>26.</b> 現場照片依規範審慎釋出</span>
+    <span class="opt"><b>27.</b> 對關係人聯絡方式予以保密</span>
+    <span class="opt"><b>28.</b> 尚在函詢釐清事項暫不公開</span>
+    <span class="opt"><b>29.</b> 避免揭露尚未確認之責任歸屬</span>
+    <span class="opt"><b>30.</b> 對偵查不公開原則嚴格遵守</span>
+  </div>
+</div>
+
+<div class="point-card" id="media-int-5">
+  <div class="point-head"><span class="point-num">⑤</span><span class="point-name">避免臆測性發言</span></div>
+  <p class="point-theory">對尚未查證之原因或結果不作臆測推論，以免誤導輿論或損及當事人權益。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 不對肇事原因妄加猜測</span>
+    <span class="opt"><b>2.</b> 避免以個人主觀論斷案情</span>
+    <span class="opt"><b>3.</b> 不預先歸咎特定人員責任</span>
+    <span class="opt"><b>4.</b> 對死傷人數不作誇大推估</span>
+    <span class="opt"><b>5.</b> 避免使用不確定臆測用語</span>
+    <span class="opt"><b>6.</b> 不對尚未鑑定結果先下結論</span>
+    <span class="opt"><b>7.</b> 避免比較類推其他案例定調</span>
+    <span class="opt"><b>8.</b> 對責任歸屬保持中立不評論</span>
+    <span class="opt"><b>9.</b> 不揣測當事人動機或意圖</span>
+    <span class="opt"><b>10.</b> 避免對偵辦方向作預測性發言</span>
+    <span class="opt"><b>11.</b> 對假設性問題不予臆測回應</span>
+    <span class="opt"><b>12.</b> 不預估案件後續發展走向</span>
+    <span class="opt"><b>13.</b> 避免以片面資訊做整體論斷</span>
+    <span class="opt"><b>14.</b> 對外說明限於已查證事實</span>
+    <span class="opt"><b>15.</b> 不對他人專業判斷妄加評論</span>
+    <span class="opt"><b>16.</b> 避免發言涉入是非對錯評價</span>
+    <span class="opt"><b>17.</b> 對尚待釐清事項如實表示未知</span>
+    <span class="opt"><b>18.</b> 不對可能求償金額臆測</span>
+    <span class="opt"><b>19.</b> 避免預告尚未定案之處理結果</span>
+    <span class="opt"><b>20.</b> 對輿論質疑不作情緒性反駁</span>
+    <span class="opt"><b>21.</b> 不代替司法機關認定責任</span>
+    <span class="opt"><b>22.</b> 避免以推論取代查證事實</span>
+    <span class="opt"><b>23.</b> 對外說明應區分事實與看法</span>
+    <span class="opt"><b>24.</b> 不搶先公布未定案之結論</span>
+    <span class="opt"><b>25.</b> 避免對當事人品行妄加評論</span>
+    <span class="opt"><b>26.</b> 對於謠言不隨之起舞論斷</span>
+    <span class="opt"><b>27.</b> 不對其他機關作為妄加評論</span>
+    <span class="opt"><b>28.</b> 避免發言預設立場影響觀感</span>
+    <span class="opt"><b>29.</b> 對敏感提問回應尚在查證中</span>
+    <span class="opt"><b>30.</b> 不對未來政策方向擅自承諾</span>
+  </div>
+</div>
+
+<div class="point-card" id="media-int-6">
+  <div class="point-head"><span class="point-num">⑥</span><span class="point-name">避免讓特殊人物曝光</span></div>
+  <p class="point-theory">對涉案知名人士、孩童或弱勢族群，應採與一般民眾相同或更嚴謹之隱私保護標準。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 隱去未成年人姓名及影像</span>
+    <span class="opt"><b>2.</b> 保護性侵害被害人身分資訊</span>
+    <span class="opt"><b>3.</b> 對知名人士採一致隱私標準</span>
+    <span class="opt"><b>4.</b> 避免公布家屬聯絡方式</span>
+    <span class="opt"><b>5.</b> 對弱勢族群身分予以遮蔽</span>
+    <span class="opt"><b>6.</b> 避免鏡頭特寫足以辨識之特徵</span>
+    <span class="opt"><b>7.</b> 對受害兒少採取分開安置保護</span>
+    <span class="opt"><b>8.</b> 不主動提供特殊人物聯絡窗口</span>
+    <span class="opt"><b>9.</b> 避免透露其住居所地址</span>
+    <span class="opt"><b>10.</b> 對身心障礙者身分予以保護</span>
+    <span class="opt"><b>11.</b> 避免公布車牌等可追蹤資訊</span>
+    <span class="opt"><b>12.</b> 對受害人採取馬賽克處理原則</span>
+    <span class="opt"><b>13.</b> 婉拒媒體對特殊人物直接採訪</span>
+    <span class="opt"><b>14.</b> 避免透露其任職單位細節</span>
+    <span class="opt"><b>15.</b> 對政要家屬同等予以保護</span>
+    <span class="opt"><b>16.</b> 避免公開足以肉搜之線索</span>
+    <span class="opt"><b>17.</b> 對證人身分嚴格保密處理</span>
+    <span class="opt"><b>18.</b> 避免透露其子女就讀學校</span>
+    <span class="opt"><b>19.</b> 對受害人採一對一關懷不受訪</span>
+    <span class="opt"><b>20.</b> 婉拒安排特殊人物出面說明</span>
+    <span class="opt"><b>21.</b> 避免公布病歷等敏感資料</span>
+    <span class="opt"><b>22.</b> 對外籍人士身分同等予以保護</span>
+    <span class="opt"><b>23.</b> 避免透露其社群帳號資訊</span>
+    <span class="opt"><b>24.</b> 對高知名度當事人不特別曝光</span>
+    <span class="opt"><b>25.</b> 建立特殊人物保護清單管控</span>
+    <span class="opt"><b>26.</b> 避免安排特殊人物於鏡頭前經過</span>
+    <span class="opt"><b>27.</b> 對受害兒少心理諮商資訊保密</span>
+    <span class="opt"><b>28.</b> 避免透露其宗教信仰等隱私</span>
+    <span class="opt"><b>29.</b> 對特殊人物採統一發言代答</span>
+    <span class="opt"><b>30.</b> 避免媒體包圍特殊人物住處</span>
+  </div>
+</div>
+
+<div class="point-card" id="media-int-7">
+  <div class="point-head"><span class="point-num">⑦</span><span class="point-name">謹慎面對鏡頭或麥克風</span></div>
+  <p class="point-theory">發言人應意識鏡頭與麥克風可能全程直播或收音，發言務求簡潔審慎、避免失言。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 留意麥克風可能未關閉持續收音</span>
+    <span class="opt"><b>2.</b> 意識到直播鏡頭全程記錄</span>
+    <span class="opt"><b>3.</b> 發言內容力求簡潔扼要</span>
+    <span class="opt"><b>4.</b> 避免脫稿發表不當言論</span>
+    <span class="opt"><b>5.</b> 注意肢體語言及表情得宜</span>
+    <span class="opt"><b>6.</b> 避免於鏡頭前竊竊私語</span>
+    <span class="opt"><b>7.</b> 發言前先行組織重點次序</span>
+    <span class="opt"><b>8.</b> 避免使用情緒化或戲謔用詞</span>
+    <span class="opt"><b>9.</b> 留意背景畫面呈現之觀感</span>
+    <span class="opt"><b>10.</b> 發言速度放緩以求清晰</span>
+    <span class="opt"><b>11.</b> 避免對鏡頭做出不當手勢</span>
+    <span class="opt"><b>12.</b> 談話內容避免離題發散</span>
+    <span class="opt"><b>13.</b> 注意服裝儀容維持專業形象</span>
+    <span class="opt"><b>14.</b> 避免在收音範圍內談論敏感事項</span>
+    <span class="opt"><b>15.</b> 發言前確認麥克風開關狀態</span>
+    <span class="opt"><b>16.</b> 對於失言應即時澄清更正</span>
+    <span class="opt"><b>17.</b> 避免與同仁在鏡頭前爭執</span>
+    <span class="opt"><b>18.</b> 發言用詞力求中性客觀</span>
+    <span class="opt"><b>19.</b> 留意站位避免遮擋重要畫面</span>
+    <span class="opt"><b>20.</b> 避免對鏡頭做出承諾性發言</span>
+    <span class="opt"><b>21.</b> 發言結束前確認錄音已停止</span>
+    <span class="opt"><b>22.</b> 注意連線直播之即時性風險</span>
+    <span class="opt"><b>23.</b> 避免使用可能引發歧義之字詞</span>
+    <span class="opt"><b>24.</b> 發言時保持穩定語調與節奏</span>
+    <span class="opt"><b>25.</b> 留意周邊人員言行同受鏡頭記錄</span>
+    <span class="opt"><b>26.</b> 避免接受非正式場合突襲採訪</span>
+    <span class="opt"><b>27.</b> 發言前設想可能之延伸提問</span>
+    <span class="opt"><b>28.</b> 注意手機錄影亦可能全程流出</span>
+    <span class="opt"><b>29.</b> 對艱澀專業用語應轉化說明</span>
+    <span class="opt"><b>30.</b> 發言後主動確認報導內容無誤</span>
+  </div>
+</div>
+
+<h2 style="font-size:1.05em;color:var(--subj);margin:28px 0 14px;padding-left:10px;border-left:4px solid var(--subj);">三、舉行記者會應注意原則（10項，近6年最高頻）</h2>
+
+<div class="point-card" id="media-press-1">
+  <div class="point-head"><span class="point-num">①</span><span class="point-name">不要逃避媒體</span></div>
+  <p class="point-theory">危機發生時應主動即時面對媒體，避免資訊真空遭謠言填補。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 主動召開記者會說明事故概況</span>
+    <span class="opt"><b>2.</b> 掌握黃金時間內發布初步訊息</span>
+    <span class="opt"><b>3.</b> 指定專責發言人統一對外說明</span>
+    <span class="opt"><b>4.</b> 於現場劃設採訪區開放採訪</span>
+    <span class="opt"><b>5.</b> 第一時間發布新聞稿說明狀況</span>
+    <span class="opt"><b>6.</b> 不以救災優先為由拒絕受訪</span>
+    <span class="opt"><b>7.</b> 建立媒體聯絡窗口即時回應</span>
+    <span class="opt"><b>8.</b> 事故發生後儘速安排說明會</span>
+    <span class="opt"><b>9.</b> 避免以「無可奉告」迴避提問</span>
+    <span class="opt"><b>10.</b> 主動掌握發言時機搶先說明</span>
+    <span class="opt"><b>11.</b> 不論假日夜間均安排人員應對</span>
+    <span class="opt"><b>12.</b> 設立現場發言台正面對鏡頭</span>
+    <span class="opt"><b>13.</b> 不待媒體追問才被動回應</span>
+    <span class="opt"><b>14.</b> 主動於社群平台同步發布訊息</span>
+    <span class="opt"><b>15.</b> 避免相關人員神隱不接電話</span>
+    <span class="opt"><b>16.</b> 安排首長於適當時機出面說明</span>
+    <span class="opt"><b>17.</b> 建立固定時段之例行發布機制</span>
+    <span class="opt"><b>18.</b> 主動回應網路及現場傳言</span>
+    <span class="opt"><b>19.</b> 事故延續期間持續安排說明</span>
+    <span class="opt"><b>20.</b> 不因案情複雜而拖延回應</span>
+    <span class="opt"><b>21.</b> 主動邀請媒體參與說明會</span>
+    <span class="opt"><b>22.</b> 安排備援發言人以防人力不足</span>
+    <span class="opt"><b>23.</b> 避免僅以書面回應取代面對面說明</span>
+    <span class="opt"><b>24.</b> 同時透過電視、廣播及網路發布</span>
+    <span class="opt"><b>25.</b> 對於敏感問題仍應正面回應</span>
+    <span class="opt"><b>26.</b> 主動說明目前已確認之事實</span>
+    <span class="opt"><b>27.</b> 展現積極負責面對問題之態度</span>
+    <span class="opt"><b>28.</b> 不因層級不足而延後回應</span>
+    <span class="opt"><b>29.</b> 掌握輿情動向適時主動澄清</span>
+    <span class="opt"><b>30.</b> 建立跨單位聯繫確保有人應對</span>
+  </div>
+</div>
+
+<div class="point-card" id="media-press-2">
+  <div class="point-head"><span class="point-num">②</span><span class="point-name">公平對待媒體</span></div>
+  <p class="point-theory">應以一致標準對待各家媒體，不因交情或立場而有差別待遇。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 新聞稿同步發送予所有採訪媒體</span>
+    <span class="opt"><b>2.</b> 不因交情提供特定媒體獨家消息</span>
+    <span class="opt"><b>3.</b> 不因報導立場限制特定媒體採訪</span>
+    <span class="opt"><b>4.</b> 各媒體採訪位置公平安排</span>
+    <span class="opt"><b>5.</b> 提問機會平均分配予各家記者</span>
+    <span class="opt"><b>6.</b> 同一時間點統一發布資訊</span>
+    <span class="opt"><b>7.</b> 不因媒體規模大小差別對待</span>
+    <span class="opt"><b>8.</b> 平面、電子及網路媒體一視同仁</span>
+    <span class="opt"><b>9.</b> 不因過去負面報導拒絕受訪</span>
+    <span class="opt"><b>10.</b> 採訪證核發標準一致公開</span>
+    <span class="opt"><b>11.</b> 拍攝角度及位置公平提供</span>
+    <span class="opt"><b>12.</b> 不提前透露訊息予特定記者</span>
+    <span class="opt"><b>13.</b> 全國性與地方性媒體同等對待</span>
+    <span class="opt"><b>14.</b> 不以媒體立場決定回應態度</span>
+    <span class="opt"><b>15.</b> 提供各媒體相同之書面資料</span>
+    <span class="opt"><b>16.</b> 輪流開放首位提問順序</span>
+    <span class="opt"><b>17.</b> 不因競爭關係排擠特定媒體</span>
+    <span class="opt"><b>18.</b> 主流媒體與網路自媒體同等看待</span>
+    <span class="opt"><b>19.</b> 採訪動線安排一致不偏袒</span>
+    <span class="opt"><b>20.</b> 不以獨家承諾換取正面報導</span>
+    <span class="opt"><b>21.</b> 各媒體均可取得相同影像畫面</span>
+    <span class="opt"><b>22.</b> 不因記者個人交情特別禮遇</span>
+    <span class="opt"><b>23.</b> 說明會邀請對象公開不篩選</span>
+    <span class="opt"><b>24.</b> 不因媒體曾提出尖銳問題而排除</span>
+    <span class="opt"><b>25.</b> 對批評性媒體維持相同配合度</span>
+    <span class="opt"><b>26.</b> 採訪申請程序公平受理</span>
+    <span class="opt"><b>27.</b> 不對特定媒體提前釋出資料</span>
+    <span class="opt"><b>28.</b> 各媒體提問時間分配相近</span>
+    <span class="opt"><b>29.</b> 不以業務或廣告關係影響對待</span>
+    <span class="opt"><b>30.</b> 建立公平對待媒體之內部共識</span>
+  </div>
+</div>
+
+<div class="point-card" id="media-press-3">
+  <div class="point-head"><span class="point-num">③</span><span class="point-name">誠實發布新聞</span></div>
+  <p class="point-theory">面對外界應忠實呈現事故真貌，不隱匿亦不誇大渲染。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 如實說明事故發生經過</span>
+    <span class="opt"><b>2.</b> 不隱瞞救援進度及困難</span>
+    <span class="opt"><b>3.</b> 不誇大搜救成果或績效</span>
+    <span class="opt"><b>4.</b> 尚未確認事項坦承查證中</span>
+    <span class="opt"><b>5.</b> 避免以「無可奉告」迴避事實</span>
+    <span class="opt"><b>6.</b> 發現誤植資訊立即更正</span>
+    <span class="opt"><b>7.</b> 不使用模糊語句誤導認知</span>
+    <span class="opt"><b>8.</b> 誠實說明傷亡人數及狀況</span>
+    <span class="opt"><b>9.</b> 不因形象考量隱匿負面訊息</span>
+    <span class="opt"><b>10.</b> 對外說明前先確認資料正確性</span>
+    <span class="opt"><b>11.</b> 不掩飾救援過程中之疏失</span>
+    <span class="opt"><b>12.</b> 前後說法保持一致不矛盾</span>
+    <span class="opt"><b>13.</b> 主動更正先前錯誤發布之訊息</span>
+    <span class="opt"><b>14.</b> 不以片面資訊誤導媒體判斷</span>
+    <span class="opt"><b>15.</b> 誠實揭露處置過程之困難</span>
+    <span class="opt"><b>16.</b> 不刻意淡化事故嚴重程度</span>
+    <span class="opt"><b>17.</b> 對死傷數字如實更新公布</span>
+    <span class="opt"><b>18.</b> 不迴避機關本身應檢討之處</span>
+    <span class="opt"><b>19.</b> 資訊有變動時即時誠實說明</span>
+    <span class="opt"><b>20.</b> 不以未經證實消息搶先發布</span>
+    <span class="opt"><b>21.</b> 承認現階段資訊有限之事實</span>
+    <span class="opt"><b>22.</b> 不美化處理過程掩蓋缺失</span>
+    <span class="opt"><b>23.</b> 對外說法與內部掌握資訊一致</span>
+    <span class="opt"><b>24.</b> 不以推託方式迴避責任歸屬</span>
+    <span class="opt"><b>25.</b> 誠實說明尚待釐清之部分</span>
+    <span class="opt"><b>26.</b> 不以片面數據誤導社會觀感</span>
+    <span class="opt"><b>27.</b> 發布前確實查核消息來源</span>
+    <span class="opt"><b>28.</b> 對錯誤訊息公開澄清說明</span>
+    <span class="opt"><b>29.</b> 不因輿論壓力扭曲事實陳述</span>
+    <span class="opt"><b>30.</b> 秉持誠信原則贏得媒體信任</span>
+  </div>
+</div>
+
+<div class="point-card" id="media-press-4">
+  <div class="point-head"><span class="point-num">④</span><span class="point-name">避免個人意見</span></div>
+  <p class="point-theory">發言應代表機關立場，不揣測原因與責任歸屬，避免流於主觀評論。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 發言內容應代表機關立場</span>
+    <span class="opt"><b>2.</b> 不推測事故發生原因</span>
+    <span class="opt"><b>3.</b> 不評論其他機關處理方式</span>
+    <span class="opt"><b>4.</b> 不評論承包廠商或相關業者</span>
+    <span class="opt"><b>5.</b> 不臆測相關人員是否有疏失</span>
+    <span class="opt"><b>6.</b> 避免以個人立場回答假設性問題</span>
+    <span class="opt"><b>7.</b> 不對尚未釐清之責任歸屬表態</span>
+    <span class="opt"><b>8.</b> 僅陳述已確認之官方訊息</span>
+    <span class="opt"><b>9.</b> 不對外發表個人揣測性言論</span>
+    <span class="opt"><b>10.</b> 避免使用「我認為」等個人措辭</span>
+    <span class="opt"><b>11.</b> 不評論尚在進行中之調查結果</span>
+    <span class="opt"><b>12.</b> 面對挑釁提問仍保持機關中立</span>
+    <span class="opt"><b>13.</b> 不對案件當事人做價值判斷</span>
+    <span class="opt"><b>14.</b> 不預測尚未確定之處理結果</span>
+    <span class="opt"><b>15.</b> 不表達對特定人員之個人觀感</span>
+    <span class="opt"><b>16.</b> 避免涉入政治性議題表態</span>
+    <span class="opt"><b>17.</b> 不以個人名義評論相關單位</span>
+    <span class="opt"><b>18.</b> 對技術原因不做未經證實之猜測</span>
+    <span class="opt"><b>19.</b> 不將個人情緒帶入公開發言</span>
+    <span class="opt"><b>20.</b> 拒絕回答超出職權範圍之提問</span>
+    <span class="opt"><b>21.</b> 不對其他案件做個人比較評論</span>
+    <span class="opt"><b>22.</b> 發言內容侷限於獲授權之範圍</span>
+    <span class="opt"><b>23.</b> 不對責任歸屬妄下論斷</span>
+    <span class="opt"><b>24.</b> 避免以私人身分發表看法</span>
+    <span class="opt"><b>25.</b> 不因記者引導而表態個人立場</span>
+    <span class="opt"><b>26.</b> 究責問題交由調查程序處理</span>
+    <span class="opt"><b>27.</b> 不對外承諾尚未拍板之結果</span>
+    <span class="opt"><b>28.</b> 保持中立語氣不涉入是非評斷</span>
+    <span class="opt"><b>29.</b> 不對死傷原因做主觀臆測</span>
+    <span class="opt"><b>30.</b> 一律以機關公告內容為準回應</span>
+  </div>
+</div>
+
+<div class="point-card" id="media-press-5">
+  <div class="point-head"><span class="point-num">⑤</span><span class="point-name">簡要發布內容</span></div>
+  <p class="point-theory">掌握事故重點分類精簡表達，避免冗長艱澀內容造成理解負擔。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 掌握事故重點主題簡明說明</span>
+    <span class="opt"><b>2.</b> 避免使用艱澀專業術語</span>
+    <span class="opt"><b>3.</b> 以事故發生、應變、救治、管制為主軸</span>
+    <span class="opt"><b>4.</b> 一次僅回答一項重點問題</span>
+    <span class="opt"><b>5.</b> 避免冗長贅述無關細節</span>
+    <span class="opt"><b>6.</b> 說明內容以民眾易懂用語表達</span>
+    <span class="opt"><b>7.</b> 新聞稿控制在適當篇幅之內</span>
+    <span class="opt"><b>8.</b> 依重要程度排序說明內容</span>
+    <span class="opt"><b>9.</b> 避免逐項朗讀內部作業程序</span>
+    <span class="opt"><b>10.</b> 以簡短時間軸方式呈現進度</span>
+    <span class="opt"><b>11.</b> 避免重複陳述相同內容</span>
+    <span class="opt"><b>12.</b> 掌握五何原則精簡回應</span>
+    <span class="opt"><b>13.</b> 開場說明控制在數分鐘內</span>
+    <span class="opt"><b>14.</b> 先講結論再視需要補充細節</span>
+    <span class="opt"><b>15.</b> 避免使用機關內部代碼用語</span>
+    <span class="opt"><b>16.</b> 針對提問精準回應不離題</span>
+    <span class="opt"><b>17.</b> 事先準備簡明扼要之新聞稿</span>
+    <span class="opt"><b>18.</b> 避免詳述非必要之處理程序</span>
+    <span class="opt"><b>19.</b> 以條列方式呈現重點資訊</span>
+    <span class="opt"><b>20.</b> 說明內容聚焦單一事件核心</span>
+    <span class="opt"><b>21.</b> 避免鉅細靡遺說明內部分工</span>
+    <span class="opt"><b>22.</b> 掌握每次發布之核心訊息</span>
+    <span class="opt"><b>23.</b> 用詞精簡避免模糊冗長</span>
+    <span class="opt"><b>24.</b> 每次說明鎖定一項主題重點</span>
+    <span class="opt"><b>25.</b> 避免因緊張而長篇贅言</span>
+    <span class="opt"><b>26.</b> 以簡短聲明搭配後續問答</span>
+    <span class="opt"><b>27.</b> 說明內容避免涉及過多背景</span>
+    <span class="opt"><b>28.</b> 掌握重點先後順序清楚表達</span>
+    <span class="opt"><b>29.</b> 準備簡要標準回應範本</span>
+    <span class="opt"><b>30.</b> 避免以冗長數據淹沒重點訊息</span>
+  </div>
+</div>
+
+<div class="point-card" id="media-press-6">
+  <div class="point-head"><span class="point-num">⑥</span><span class="point-name">提供具體描述</span></div>
+  <p class="point-theory">以明確時間、數據及事實回應外界疑問，強化說明之可信度。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 說明事故發生確切時間</span>
+    <span class="opt"><b>2.</b> 說明受理報案與到場時間</span>
+    <span class="opt"><b>3.</b> 說明出動人車數量</span>
+    <span class="opt"><b>4.</b> 提供傷患檢傷分類統計</span>
+    <span class="opt"><b>5.</b> 說明送醫人數及收治醫院</span>
+    <span class="opt"><b>6.</b> 說明事故現場地點及範圍</span>
+    <span class="opt"><b>7.</b> 說明搜救動用之特殊裝備</span>
+    <span class="opt"><b>8.</b> 提供人員疏散安置人數</span>
+    <span class="opt"><b>9.</b> 說明救援過程關鍵時間點</span>
+    <span class="opt"><b>10.</b> 提供現場管制範圍具體資訊</span>
+    <span class="opt"><b>11.</b> 說明支援單位及動員規模</span>
+    <span class="opt"><b>12.</b> 提供傷亡人數詳細分類</span>
+    <span class="opt"><b>13.</b> 說明搶救所需時間及進度</span>
+    <span class="opt"><b>14.</b> 提供事故影響戶數或範圍</span>
+    <span class="opt"><b>15.</b> 說明分階段調派之人力規模</span>
+    <span class="opt"><b>16.</b> 提供安置收容處所地點</span>
+    <span class="opt"><b>17.</b> 說明後續複勘或鑑定時程</span>
+    <span class="opt"><b>18.</b> 提供事故現場氣候等相關條件</span>
+    <span class="opt"><b>19.</b> 說明救護車輛出勤數量</span>
+    <span class="opt"><b>20.</b> 提供跨單位協調支援內容</span>
+    <span class="opt"><b>21.</b> 說明危險物質種類及數量</span>
+    <span class="opt"><b>22.</b> 提供事故現場影像或圖資</span>
+    <span class="opt"><b>23.</b> 說明後續追蹤處理期程</span>
+    <span class="opt"><b>24.</b> 提供各階段搶救進度數據</span>
+    <span class="opt"><b>25.</b> 說明現場交通管制措施內容</span>
+    <span class="opt"><b>26.</b> 提供傷患後續醫療狀況更新</span>
+    <span class="opt"><b>27.</b> 說明動員之特種車輛種類</span>
+    <span class="opt"><b>28.</b> 提供事故發生前之背景資訊</span>
+    <span class="opt"><b>29.</b> 說明相關單位分工權責內容</span>
+    <span class="opt"><b>30.</b> 提供具體數據回應外界質疑</span>
+  </div>
+</div>
+
+<div class="point-card" id="media-press-7">
+  <div class="point-head"><span class="point-num">⑦</span><span class="point-name">考慮媒體需求</span></div>
+  <p class="point-theory">配合各媒體截稿時間與呈現形式，提供適切素材利於報導。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 配合媒體截稿時間發布訊息</span>
+    <span class="opt"><b>2.</b> 提供適合直播之現場畫面</span>
+    <span class="opt"><b>3.</b> 預告下一次發布會時間</span>
+    <span class="opt"><b>4.</b> 提供事故時間軸供媒體引用</span>
+    <span class="opt"><b>5.</b> 提供可公開播出之影像資料</span>
+    <span class="opt"><b>6.</b> 準備足夠份數之新聞稿</span>
+    <span class="opt"><b>7.</b> 設置具電力及網路之採訪區</span>
+    <span class="opt"><b>8.</b> 安排指揮官接受個別採訪</span>
+    <span class="opt"><b>9.</b> 因應平面、電視及網路不同需求</span>
+    <span class="opt"><b>10.</b> 提前通知說明會時間異動</span>
+    <span class="opt"><b>11.</b> 提供無法到場媒體之電話採訪</span>
+    <span class="opt"><b>12.</b> 準備救援統計圖表供引用</span>
+    <span class="opt"><b>13.</b> 安排適合拍攝之採訪位置</span>
+    <span class="opt"><b>14.</b> 配合晨間及晚間新聞時段</span>
+    <span class="opt"><b>15.</b> 提供背景資料利於深入報導</span>
+    <span class="opt"><b>16.</b> 安排站立訪問供各台輪流拍攝</span>
+    <span class="opt"><b>17.</b> 提供後續提問之聯繫窗口</span>
+    <span class="opt"><b>18.</b> 於安全範圍內開放現場拍攝</span>
+    <span class="opt"><b>19.</b> 確保採訪區空間足敷使用</span>
+    <span class="opt"><b>20.</b> 視需要提供手語翻譯服務</span>
+    <span class="opt"><b>21.</b> 統計數據整理成利於播出之圖卡</span>
+    <span class="opt"><b>22.</b> 配合各台採訪人力調度時間</span>
+    <span class="opt"><b>23.</b> 通知場地異動避免媒體撲空</span>
+    <span class="opt"><b>24.</b> 提供簡報資料供後續查證引用</span>
+    <span class="opt"><b>25.</b> 因應連線直播需求預留時間</span>
+    <span class="opt"><b>26.</b> 安排採訪動線兼顧各台需求</span>
+    <span class="opt"><b>27.</b> 提供空拍或縮時影像資料</span>
+    <span class="opt"><b>28.</b> 配合週刊雜誌較長截稿週期</span>
+    <span class="opt"><b>29.</b> 主動詢問媒體特殊採訪需求</span>
+    <span class="opt"><b>30.</b> 提供文字、圖像及影音多元素材</span>
+  </div>
+</div>
+
+<div class="point-card" id="media-press-8">
+  <div class="point-head"><span class="point-num">⑧</span><span class="point-name">確定媒體問題</span></div>
+  <p class="point-theory">回應前先確認問題內容與範圍，避免誤解提問導致答非所問。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 請記者重述語意不清之提問</span>
+    <span class="opt"><b>2.</b> 一次僅回答一項問題</span>
+    <span class="opt"><b>3.</b> 避免同時回答多人提問造成混淆</span>
+    <span class="opt"><b>4.</b> 回答前先複述問題以確認理解</span>
+    <span class="opt"><b>5.</b> 對帶有預設立場之提問先行釐清</span>
+    <span class="opt"><b>6.</b> 對誤導性問題先糾正錯誤前提</span>
+    <span class="opt"><b>7.</b> 將複合式問題拆解逐一回應</span>
+    <span class="opt"><b>8.</b> 確認提問所指涉之事件或時間點</span>
+    <span class="opt"><b>9.</b> 請記者說明專有名詞所指為何</span>
+    <span class="opt"><b>10.</b> 現場嘈雜時請記者提高音量重述</span>
+    <span class="opt"><b>11.</b> 依序點名回答避免搶答混亂</span>
+    <span class="opt"><b>12.</b> 提問混亂時先請記者依序發言</span>
+    <span class="opt"><b>13.</b> 對超出職權範圍之提問先予確認</span>
+    <span class="opt"><b>14.</b> 避免僅憑片面聽聞倉促作答</span>
+    <span class="opt"><b>15.</b> 複雜問題請記者以書面提出確認</span>
+    <span class="opt"><b>16.</b> 確認提問屬即時應變或長期政策</span>
+    <span class="opt"><b>17.</b> 對假設性提問先確認其前提</span>
+    <span class="opt"><b>18.</b> 以自己理解之語句覆述問題</span>
+    <span class="opt"><b>19.</b> 確認記者所屬單位以利對應說明</span>
+    <span class="opt"><b>20.</b> 對模糊提問追問具體想了解內容</span>
+    <span class="opt"><b>21.</b> 釐清提問是否涉及特定人員</span>
+    <span class="opt"><b>22.</b> 安排人員協助整理現場提問</span>
+    <span class="opt"><b>23.</b> 對交錯提問逐一記錄後回應</span>
+    <span class="opt"><b>24.</b> 確認問題核心後再展開說明</span>
+    <span class="opt"><b>25.</b> 避免斷章取義未經確認即回應</span>
+    <span class="opt"><b>26.</b> 對重複提問先確認是否已回覆過</span>
+    <span class="opt"><b>27.</b> 請記者明確指出質疑之依據</span>
+    <span class="opt"><b>28.</b> 確認提問範圍避免答非所問</span>
+    <span class="opt"><b>29.</b> 對艱澀問題請記者換句話說</span>
+    <span class="opt"><b>30.</b> 建立提問登記機制利於逐一處理</span>
+  </div>
+</div>
+
+<div class="point-card" id="media-press-9">
+  <div class="point-head"><span class="point-num">⑨</span><span class="point-name">保留新聞內容</span></div>
+  <p class="point-theory">對於偵查、隱私及未確認事項應審慎保留，避免造成二次傷害。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 不公開尚在調查中之事故原因結論</span>
+    <span class="opt"><b>2.</b> 不揭露傷患個人醫療資料</span>
+    <span class="opt"><b>3.</b> 不公布未成年當事人身分</span>
+    <span class="opt"><b>4.</b> 罹難者姓名未經家屬確認不公開</span>
+    <span class="opt"><b>5.</b> 保護目擊證人之個人隱私</span>
+    <span class="opt"><b>6.</b> 不透露可能影響偵查之案情細節</span>
+    <span class="opt"><b>7.</b> 不公開涉及國家安全之部署內容</span>
+    <span class="opt"><b>8.</b> 不揭露廠商營業秘密相關資訊</span>
+    <span class="opt"><b>9.</b> 未經證實之死傷人數不率先公布</span>
+    <span class="opt"><b>10.</b> 不公開被害人住居所等個資</span>
+    <span class="opt"><b>11.</b> 不提供罹難者遺體相關畫面</span>
+    <span class="opt"><b>12.</b> 談判或協商中案件不公開細節</span>
+    <span class="opt"><b>13.</b> 不揭露安全防護之具體弱點</span>
+    <span class="opt"><b>14.</b> 不公開可能影響司法程序之內容</span>
+    <span class="opt"><b>15.</b> 保護檢舉人或吹哨者身分資訊</span>
+    <span class="opt"><b>16.</b> 不揭露可能遭模仿之作案手法</span>
+    <span class="opt"><b>17.</b> 不搶先公布尚未完成相驗之死因</span>
+    <span class="opt"><b>18.</b> 保護生還者不願曝光之意願</span>
+    <span class="opt"><b>19.</b> 不公開機關內部懲處相關事項</span>
+    <span class="opt"><b>20.</b> 不揭露與公共安全無關之商業機密</span>
+    <span class="opt"><b>21.</b> 不公開重要人士維安部署細節</span>
+    <span class="opt"><b>22.</b> 不揭露尚未起訴之偵查卷證內容</span>
+    <span class="opt"><b>23.</b> 不預先公布尚未核定之處分結果</span>
+    <span class="opt"><b>24.</b> 不公開其他機關以保密方式提供之資訊</span>
+    <span class="opt"><b>25.</b> 不揭露受影響住戶詳細地址</span>
+    <span class="opt"><b>26.</b> 不公開違反個資法規範之內容</span>
+    <span class="opt"><b>27.</b> 通知家屬前不搶先發布傷亡名單</span>
+    <span class="opt"><b>28.</b> 涉刑案內容會同檢警協調後發布</span>
+    <span class="opt"><b>29.</b> 不公開未成年學生就讀學校資訊</span>
+    <span class="opt"><b>30.</b> 對外發布前先過濾應保密事項</span>
+  </div>
+</div>
+
+<div class="point-card" id="media-press-10">
+  <div class="point-head"><span class="point-num">⑩</span><span class="point-name">勿與媒體辯論</span></div>
+  <p class="point-theory">面對尖銳質疑應保持理性，以事實澄清取代爭辯對立。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 面對尖銳提問仍保持平常心</span>
+    <span class="opt"><b>2.</b> 以具體資料澄清不與記者爭執</span>
+    <span class="opt"><b>3.</b> 提問偏離主題時導回事故焦點</span>
+    <span class="opt"><b>4.</b> 不因記者質疑而動怒</span>
+    <span class="opt"><b>5.</b> 避免使用防衛或對立語氣</span>
+    <span class="opt"><b>6.</b> 不將提問語氣視為針對個人</span>
+    <span class="opt"><b>7.</b> 以理性態度回應而非反駁</span>
+    <span class="opt"><b>8.</b> 不打斷記者發言表達不滿</span>
+    <span class="opt"><b>9.</b> 對挑釁性問題以事實回應化解</span>
+    <span class="opt"><b>10.</b> 不與特定媒體公開爭論報導內容</span>
+    <span class="opt"><b>11.</b> 保持專業態度面對重複質疑</span>
+    <span class="opt"><b>12.</b> 不採取情緒性言詞回擊</span>
+    <span class="opt"><b>13.</b> 對批評先表達理解再說明事實</span>
+    <span class="opt"><b>14.</b> 不當場評論媒體報導是否失實</span>
+    <span class="opt"><b>15.</b> 避免與記者陷入口舌之爭</span>
+    <span class="opt"><b>16.</b> 說明立場後不糾結用詞爭辯</span>
+    <span class="opt"><b>17.</b> 對假設性指控不逐一反駁爭辯</span>
+    <span class="opt"><b>18.</b> 保持語氣平和不提高音量</span>
+    <span class="opt"><b>19.</b> 不以威脅或警告語氣回應媒體</span>
+    <span class="opt"><b>20.</b> 對重複追問耐心說明而非動怒</span>
+    <span class="opt"><b>21.</b> 以澄清代替反駁化解對立</span>
+    <span class="opt"><b>22.</b> 不在鏡頭前與記者爭辯對錯</span>
+    <span class="opt"><b>23.</b> 適時以「稍後補充說明」緩和氣氛</span>
+    <span class="opt"><b>24.</b> 不因單一問題糾纏影響整體節奏</span>
+    <span class="opt"><b>25.</b> 對情緒性指控回歸事實說明</span>
+    <span class="opt"><b>26.</b> 避免公開駁斥媒體先前報導</span>
+    <span class="opt"><b>27.</b> 保持風度不做人身攻擊式回應</span>
+    <span class="opt"><b>28.</b> 以耐心取代爭辯化解緊張氣氛</span>
+    <span class="opt"><b>29.</b> 對敏感話題冷靜說明立場</span>
+    <span class="opt"><b>30.</b> 適時結束爭議性問答導回主軸</span>
+  </div>
+</div>
+
+<div class="template">
+  <b>媒體互動前言範例</b>：<br>
+  範例一：本案因【情境關鍵字：如傷亡人數眾多、波及戶數多】，復涉及【情境關鍵字：孩童、地方重要人士等】，加以事件過程【情境關鍵字：新奇特殊情節】、現場潛藏【情境關鍵字：對立或危險情形】等特性，符合新聞性衝擊性、顯眼性、新奇性及衝突性等標準，核與多數閱聽眾切身利益攸關，勢必引發媒體高度關注。<br><br>
+  範例二：按新聞性5項標準析之，本案【情境關鍵字：事件概述】造成【情境關鍵字：傷亡損害情形】，復因攸關【情境關鍵字：與民眾生活之關聯】，事件本身復有【情境關鍵字：異於常情之處】，加以現場潛藏【情境關鍵字：危險或對立情形】，是以本案極具新聞價值，可預期成為媒體報導焦點。<br><br>
+  <b>媒體互動結語範例</b>：<br>
+  範例一：綜上，消防機關於處理【情境關鍵字】過程中，允宜指派適當發言人統一對外發布經確認之訊息，並謹慎面對鏡頭及麥克風，於保障偵查不公開及當事人隱私之前提下，兼顧民眾知的權利，以建立機關公信力並維護良好媒體關係。<br><br>
+  範例二：是以，面對【情境關鍵字】所引發之媒體高度關注，消防機關應本於平常心與專業態度，妥適運用前述媒體互動應注意事項，於資訊透明公開與偵查保密間取得衡平，方能有效降低社會疑慮，樹立危機處理之專業形象。<br><br>
+  範例三：總結而言，機關辦理記者會應謹守「不逃不避、一視同仁、誠實以告、客觀中立、簡明扼要、具體翔實、體察需求、確認提問、審慎保留、理性不辯」等原則，方能有效化解【情境事件】所生之危機，重建社會信任。
+</div>
+
+    <div class="footer">媒體互動共22個要點（5＋7＋10）・660個選項</div>
+  </div>
+
+  <!-- ══════ 注意事項 ══════ -->
+  <div class="tab-pane" id="tnote">
+    <div class="header">
+      <h1>注意事項與前言結語句型<span class="tag">跨工具寫作技巧・270個選項</span></h1>
+      <div class="sub">整理自RP204小組8題批改記錄＋10題模擬練習提醒・適用CDM／降階處理／談判／媒體互動任一工具</div>
+    </div>
+    <div class="jumprow">
+      <span class="grp">寫作技巧：</span>
+      <a href="#note-1">①審題與只答所問</a><a href="#note-2">②框架錨定與教材原文字</a><a href="#note-3">③篇幅與配分比例分配</a><a href="#note-4">④情境化三段式寫法</a><a href="#note-5">⑤法規引用與專業佐證</a><a href="#note-6">⑥條列化與標題結構</a><a href="#note-7">⑦複合式比較式三合一寫法</a>
+    </div>
+    <div class="jumprow">
+      <span class="grp">句型模板：</span>
+      <a href="#note-intro">前言破題法（30句）</a><a href="#note-outro">結語收束法（30句）</a>
+    </div>
+
+<div class="point-card" id="note-1">
+  <div class="point-head"><span class="point-num">①</span><span class="point-name">審題與只答所問</span></div>
+  <p class="point-theory">申論題最先扣分的原因往往是文不對題，題目問什麼就要精準答什麼，切勿自由發揮</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 題目只問控制情勢，勿再多寫同理心傾聽稀釋篇幅</span>
+    <span class="opt"><b>2.</b> 先圈出題目動詞：說明、分析、評析、擬訂，據此作答</span>
+    <span class="opt"><b>3.</b> 兩張評分表（7要素25分、8原則25分）分開作答不可混寫</span>
+    <span class="opt"><b>4.</b> 三個子題對應三個獨立框架，務必分點分段作答</span>
+    <span class="opt"><b>5.</b> 題目問處置程序，不要只寫處置原則</span>
+    <span class="opt"><b>6.</b> 題目問因應作為，不要通篇只寫事前預防</span>
+    <span class="opt"><b>7.</b> 逐字核對題目關鍵詞，作答標題要能扣回題幹</span>
+    <span class="opt"><b>8.</b> 題目要求排序，就要寫出先後順序及其理由</span>
+    <span class="opt"><b>9.</b> 題目只問單一工具，不要三個框架全部展開</span>
+    <span class="opt"><b>10.</b> 審題時圈出配分與子題數，避免漏答或答非所問</span>
+    <span class="opt"><b>11.</b> 題目問記者會說明，不要誤答成談判策略</span>
+    <span class="opt"><b>12.</b> 子題各自獨立成段落，不要在同一段落中跳題</span>
+    <span class="opt"><b>13.</b> 題目設定的角色（指揮官、發言人）要對應扣題</span>
+    <span class="opt"><b>14.</b> 題目問優先順序，不要只條列不排序</span>
+    <span class="opt"><b>15.</b> 分清題目問的是步驟還是原則，兩者不可互答</span>
+    <span class="opt"><b>16.</b> 題目未問到的理論工具不要主動加寫進去</span>
+    <span class="opt"><b>17.</b> 作答前先列大綱對應子題數，避免漏答或多答</span>
+    <span class="opt"><b>18.</b> 題目問本案處置，就要具體套入案情不寫抽象理論</span>
+    <span class="opt"><b>19.</b> 雙表評分題要先確認兩表各自對應的子題與分數</span>
+    <span class="opt"><b>20.</b> 題目問決策模式，不要誤寫成溝通技巧</span>
+    <span class="opt"><b>21.</b> 每個子題作答前先複誦題幹一次，確認扣題方向</span>
+    <span class="opt"><b>22.</b> 題目要求列舉幾項，就精確對應數量作答不多不少</span>
+    <span class="opt"><b>23.</b> 背景說明勿寫過長，以免擠壓核心作答篇幅</span>
+    <span class="opt"><b>24.</b> 題目問媒體因應，不要越寫越偏到現場指揮體系</span>
+    <span class="opt"><b>25.</b> 作答段落順序與題目子題順序一致，便於閱卷對照</span>
+    <span class="opt"><b>26.</b> 題目問限制條件，不要誤答成成因或影響</span>
+    <span class="opt"><b>27.</b> 多重子題交卷前逐題覆核，確認沒有遺漏任何一小題</span>
+    <span class="opt"><b>28.</b> 題目問角色任務，就要寫出該角色的具體作為而非空泛原則</span>
+    <span class="opt"><b>29.</b> 不要用同一段文字同時回答兩個子題，須各自分段</span>
+    <span class="opt"><b>30.</b> 審題時先辨明這是控制情勢還是關係建立層次的提問</span>
+  </div>
+</div>
+
+<div class="point-card" id="note-2">
+  <div class="point-head"><span class="point-num">②</span><span class="point-name">框架錨定與教材原文字</span></div>
+  <p class="point-theory">作答用詞要緊扣教材與題目給定的專有名詞，讓閱卷者能直接對照給分點</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 題目重新命名5步驟時，依題目用詞作答，不要改回教材原名</span>
+    <span class="opt"><b>2.</b> CDM原始5步驟名稱與題目包裝名稱不同時，以題目為準</span>
+    <span class="opt"><b>3.</b> 全文務必出現預防、應變、復原等關鍵詞，扣緊課程用語</span>
+    <span class="opt"><b>4.</b> 記者會10項原則要用教材原文字列出，不要自行意譯改寫</span>
+    <span class="opt"><b>5.</b> 讓閱卷者能直接對照教材給分點，用詞要貼近課本原句</span>
+    <span class="opt"><b>6.</b> 理論工具（CDM、降階處理、談判）要點名寫出，勿只寫概念</span>
+    <span class="opt"><b>7.</b> 教材專有名詞勿用白話取代，會被認為未運用課程所學</span>
+    <span class="opt"><b>8.</b> 題目重新包裝的步驟名稱只用於本題，不要套用到其他題目</span>
+    <span class="opt"><b>9.</b> 框架關鍵詞第一次出現時要用教材全名，不要簡稱帶過</span>
+    <span class="opt"><b>10.</b> 7要素、8原則的每一項名稱都要寫全，不要只寫縮寫或代號</span>
+    <span class="opt"><b>11.</b> 引用理論時明確點出出自哪個模式或原則，不要籠統帶過</span>
+    <span class="opt"><b>12.</b> 教材用語與自創用語混用時，優先採用教材用語以利給分</span>
+    <span class="opt"><b>13.</b> 題目已定義專屬名詞時，全文用詞要與題目定義保持一致</span>
+    <span class="opt"><b>14.</b> 作答中至少一次完整覆誦題目給定的步驟或原則全名</span>
+    <span class="opt"><b>15.</b> 不要因為求精簡而省略關鍵詞，關鍵詞正是閱卷給分點</span>
+    <span class="opt"><b>16.</b> 框架名稱前後不一致，甲名乙名交替使用會讓閱卷者混淆</span>
+    <span class="opt"><b>17.</b> 每一段落開頭先點出對應的教材關鍵詞，再展開說明</span>
+    <span class="opt"><b>18.</b> 題目情境化後的步驟命名仍要能對應回原理論架構精神</span>
+    <span class="opt"><b>19.</b> 不確定教材原文用詞時，寧可原文照抄也不要自創替代詞</span>
+    <span class="opt"><b>20.</b> 標題與內文都要出現理論關鍵詞，不要只在標題出現一次</span>
+    <span class="opt"><b>21.</b> 避免用同義詞取代教材專有名詞，例如以溝通取代談判</span>
+    <span class="opt"><b>22.</b> 每個原則展開說明時，該原則的教材名稱要重複出現一次</span>
+    <span class="opt"><b>23.</b> 教材原有步驟數量與題目步驟數量不同時，以題目數量為準</span>
+    <span class="opt"><b>24.</b> 全文至少完整列出一次理論工具的項目清單，不要只提部分</span>
+    <span class="opt"><b>25.</b> 專業用詞前後應統一，不要一下用情勢研判一下用情資研判</span>
+    <span class="opt"><b>26.</b> 題目情境用詞如救災、火場，也要融入理論關鍵詞中呼應</span>
+    <span class="opt"><b>27.</b> 理論架構名稱建議在前言與結語都各出現一次，前後呼應</span>
+    <span class="opt"><b>28.</b> 條列理論項目時，項目順序建議依教材原順序排列不要打亂</span>
+    <span class="opt"><b>29.</b> 教材關鍵詞是閱卷給分依據，寫作時每段至少扣回一次</span>
+    <span class="opt"><b>30.</b> 避免整段意譯教材內容卻完全不出現教材原有的專有名詞</span>
+  </div>
+</div>
+
+<div class="point-card" id="note-3">
+  <div class="point-head"><span class="point-num">③</span><span class="point-name">篇幅與配分比例分配</span></div>
+  <p class="point-theory">篇幅與作答時間應依題目配分比例分配，高分子題多寫，低分子題精簡帶過</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 依配分比例分配篇幅，分數越高的子題寫越多</span>
+    <span class="opt"><b>2.</b> 三子題配分不同時，寫作時間也要依比例分配</span>
+    <span class="opt"><b>3.</b> 25分的框架與10分的框架，篇幅不能一樣長</span>
+    <span class="opt"><b>4.</b> 先看總分與子題配分，再決定各段落要寫幾行</span>
+    <span class="opt"><b>5.</b> 主要框架（配分最高）應占全文最大篇幅</span>
+    <span class="opt"><b>6.</b> 次要子題（配分較低）用精簡條列帶過即可</span>
+    <span class="opt"><b>7.</b> 不要把時間平均分給每個子題，忽略配分差異</span>
+    <span class="opt"><b>8.</b> 高分子題若寫得太少，等於放棄該題大部分分數</span>
+    <span class="opt"><b>9.</b> 低分子題寫太多會擠壓高分子題的作答時間</span>
+    <span class="opt"><b>10.</b> 動筆前先概算每個子題大約可寫幾段，控制篇幅</span>
+    <span class="opt"><b>11.</b> 配分相同的兩張表，篇幅也應大致相當不可偏廢</span>
+    <span class="opt"><b>12.</b> 30分大題若只答一半重點，等同放棄另一半分數</span>
+    <span class="opt"><b>13.</b> 依作答時間反推篇幅，避免最後一題來不及完整作答</span>
+    <span class="opt"><b>14.</b> 每個要素或原則展開的篇幅要平均，不要厚此薄彼</span>
+    <span class="opt"><b>15.</b> 先寫配分最高的部分，避免時間不夠導致重點漏寫</span>
+    <span class="opt"><b>16.</b> 篇幅分配要對應題目要求的子題數量，不可失衡</span>
+    <span class="opt"><b>17.</b> 次要背景說明控制在總篇幅一到兩成以內</span>
+    <span class="opt"><b>18.</b> 配分低的子題答少沒關係，切勿反過來寫太多</span>
+    <span class="opt"><b>19.</b> 每段落字數大致與該段對應配分成正比</span>
+    <span class="opt"><b>20.</b> 作答前先用配分比例畫出段落架構草稿再下筆</span>
+    <span class="opt"><b>21.</b> 避免把大部分篇幅留給前言結語，核心作答篇幅不足</span>
+    <span class="opt"><b>22.</b> 高配分子題若展開不足，即使論述正確分數仍有限</span>
+    <span class="opt"><b>23.</b> 兩個框架併陳作答時，篇幅比例應反映各自配分權重</span>
+    <span class="opt"><b>24.</b> 時間分配建議依分數換算，每分鐘對應約一分的作答量</span>
+    <span class="opt"><b>25.</b> 篇幅失衡最常見狀況是把簡單子題寫成長篇大論</span>
+    <span class="opt"><b>26.</b> 交卷前檢查各段篇幅是否與配分比例大致相符</span>
+    <span class="opt"><b>27.</b> 配分說明通常在題目括號中標示，審題時務必先確認</span>
+    <span class="opt"><b>28.</b> 篇幅分配失當即使內容正確也會被認定重點掌握不佳</span>
+    <span class="opt"><b>29.</b> 同一大題底下多個小項，字數應隨小項配分遞增或遞減</span>
+    <span class="opt"><b>30.</b> 篇幅超支時，優先精簡低配分部分而非高配分部分</span>
+  </div>
+</div>
+
+<div class="point-card" id="note-4">
+  <div class="point-head"><span class="point-num">④</span><span class="point-name">情境化三段式寫法</span></div>
+  <p class="point-theory">每項要素展開須兼具理論意涵、案情套用與具體策略，三者缺一不可</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 每項要素展開時依意涵、套案、策略三段式撰寫</span>
+    <span class="opt"><b>2.</b> 先解釋理論意涵，再具體套入本案情境，最後提出策略</span>
+    <span class="opt"><b>3.</b> 不要只列條列名詞，每項原則後面要接本案具體做法</span>
+    <span class="opt"><b>4.</b> 條列原則後方一定要有一句本案應如何處理</span>
+    <span class="opt"><b>5.</b> 光寫理論定義不套案情，閱卷者難以判斷是否真正理解</span>
+    <span class="opt"><b>6.</b> 每個要素至少要有一句話明確指向本案的具體人事時地物</span>
+    <span class="opt"><b>7.</b> 三段式寫法：理論說明、案例連結、具體行動缺一不可</span>
+    <span class="opt"><b>8.</b> 只套案情沒有理論意涵，會被認為缺乏學理依據</span>
+    <span class="opt"><b>9.</b> 只有理論沒有案情，會被認為未能靈活應用於實務</span>
+    <span class="opt"><b>10.</b> 具體策略要寫可執行的作為，不要寫抽象的口號</span>
+    <span class="opt"><b>11.</b> 每一要素展開段落建議三到四句，涵蓋三段式結構</span>
+    <span class="opt"><b>12.</b> 套案情時應具體點出案例中的角色、地點或情境細節</span>
+    <span class="opt"><b>13.</b> 避免通篇使用教科書式定義卻沒有回扣到題目情境</span>
+    <span class="opt"><b>14.</b> 策略段落要交代誰、做什麼、如何做三個要件</span>
+    <span class="opt"><b>15.</b> 每項原則寫完定義後，緊接著寫一句本案對應作為</span>
+    <span class="opt"><b>16.</b> 情境化不是重複題幹敘述，而是提出具體處置建議</span>
+    <span class="opt"><b>17.</b> 三段式結構中，套案情境的篇幅不宜少於理論說明</span>
+    <span class="opt"><b>18.</b> 每一段落結尾用一句話收束，呼應該要素對本案的意義</span>
+    <span class="opt"><b>19.</b> 避免全部要素都用同一套案情文字，要依要素性質微調</span>
+    <span class="opt"><b>20.</b> 具體策略應包含可觀察的行動或決策，不是空泛態度</span>
+    <span class="opt"><b>21.</b> 情境化寫法可用就本案而言等語句銜接理論與案例</span>
+    <span class="opt"><b>22.</b> 條列式原則若缺少套案說明，會被判定為只是背誦條文</span>
+    <span class="opt"><b>23.</b> 三段式寫法有助於閱卷者同時看到理解、應用與判斷能力</span>
+    <span class="opt"><b>24.</b> 案情細節可重複援引題目提供的關鍵字，加強扣題感</span>
+    <span class="opt"><b>25.</b> 策略敘述避免空談原則，要具體到可執行的處置步驟</span>
+    <span class="opt"><b>26.</b> 每項要素三段式寫作長度應大致均衡，不宜一項獨大</span>
+    <span class="opt"><b>27.</b> 套案情境時，宜具體指出案件中的危機主體或關係人</span>
+    <span class="opt"><b>28.</b> 若題目情境複雜，套案情可拆成前中後三階段分別對應</span>
+    <span class="opt"><b>29.</b> 策略段落建議搭配資源或人力配置等實務細節增加說服力</span>
+    <span class="opt"><b>30.</b> 三段式寫法可用意涵、案例、作為三個小標題輔助結構</span>
+  </div>
+</div>
+
+<div class="point-card" id="note-5">
+  <div class="point-head"><span class="point-num">⑤</span><span class="point-name">法規引用與專業佐證</span></div>
+  <p class="point-theory">適度引用相關法規與作業規範，能大幅提升申論內容的專業度與說服力</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 全文完全沒有引用法條會被評為專業度不足，至少補一條</span>
+    <span class="opt"><b>2.</b> 可視情境引用精神衛生法第32條處理精神疾患相關危機</span>
+    <span class="opt"><b>3.</b> 使用強制力情境可引用警械使用條例第4條佐證合法性</span>
+    <span class="opt"><b>4.</b> 消防救災情境可引用消防法相關條文強化處置依據</span>
+    <span class="opt"><b>5.</b> 範文常見引用5至6條法規，只引用1條密度明顯不足</span>
+    <span class="opt"><b>6.</b> 法條引用不必每段都有，但全文至少要有一到兩處</span>
+    <span class="opt"><b>7.</b> 引用法條時條號要精確，不要只寫相關法規帶過</span>
+    <span class="opt"><b>8.</b> 談判或強制到場情境可佐以警察職權行使法相關條文</span>
+    <span class="opt"><b>9.</b> 法規引用宜放在策略或處置作為段落，強化行動合法性</span>
+    <span class="opt"><b>10.</b> 除法條外也可引用相關作業程序或標準作業流程佐證</span>
+    <span class="opt"><b>11.</b> 引用法條後應簡述其適用意旨，不要只寫條號不解釋</span>
+    <span class="opt"><b>12.</b> 多重子題作答時每個子題宜各自搭配至少一條相關法規</span>
+    <span class="opt"><b>13.</b> 涉及強制送醫情境可引用精神衛生法相關強制就醫條文</span>
+    <span class="opt"><b>14.</b> 涉及現場警戒管制可引用相關災害防救法規佐證權限</span>
+    <span class="opt"><b>15.</b> 法規引用要與本案情境相符，不要生硬套用不相關條文</span>
+    <span class="opt"><b>16.</b> 引用法條可放在段落結尾作為策略正當性的收束句</span>
+    <span class="opt"><b>17.</b> 專業佐證不限法條，也可引用中央或地方相關作業要點</span>
+    <span class="opt"><b>18.</b> 法規密度不足會被認為未能展現實務工作應有的法治素養</span>
+    <span class="opt"><b>19.</b> 引用法規時可簡註立法目的，展現理解而非死背條號</span>
+    <span class="opt"><b>20.</b> 涉及人身自由限制的處置，務必附上相關法律授權依據</span>
+    <span class="opt"><b>21.</b> 記者會或媒體因應情境可引用政府資訊公開法相關規定</span>
+    <span class="opt"><b>22.</b> 法規引用建議分散於不同段落，不要集中堆砌在同一處</span>
+    <span class="opt"><b>23.</b> 每引用一條法規，緊接著要說明其與本案處置的關聯</span>
+    <span class="opt"><b>24.</b> 涉及跨機關協調情境可引用災害防救法通報協調條文</span>
+    <span class="opt"><b>25.</b> 法條字號若記不精確，至少寫出法規全名與適用情境</span>
+    <span class="opt"><b>26.</b> 引用法規有助於閱卷者判斷是否具備依法行政的觀念</span>
+    <span class="opt"><b>27.</b> 現場強制驅離或管制情境可佐以社會秩序維護法相關規定</span>
+    <span class="opt"><b>28.</b> 涉及媒體發言分寸可援引個人資料保護法相關規範提醒</span>
+    <span class="opt"><b>29.</b> 法規佐證應優先選擇與消防救災或治安勤務直接相關者</span>
+    <span class="opt"><b>30.</b> 全文法規密度可作為交卷前自我檢查的重要指標之一</span>
+  </div>
+</div>
+
+<div class="point-card" id="note-6">
+  <div class="point-head"><span class="point-num">⑥</span><span class="point-name">條列化與標題結構</span></div>
+  <p class="point-theory">條列式標題結構比大段散文敘述更容易讓閱卷者快速掌握得分點</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 大段落敘述不易被閱卷者抓到分數，改用條列式標題</span>
+    <span class="opt"><b>2.</b> 每個大方向前面加上一、二、三等數字標題</span>
+    <span class="opt"><b>3.</b> 條列式子項比大段敘述更容易對應到評分清單</span>
+    <span class="opt"><b>4.</b> 避免通篇散文式寫作，適度切割成標題加內文</span>
+    <span class="opt"><b>5.</b> 倡議或策略建議應逐項編號，不要合併成一段文字</span>
+    <span class="opt"><b>6.</b> 標題要精簡點出重點，內文才展開細節說明</span>
+    <span class="opt"><b>7.</b> 閱卷時間短，條列標題能幫助快速定位得分點</span>
+    <span class="opt"><b>8.</b> 每個要素或原則都應有獨立小標題，不要合併書寫</span>
+    <span class="opt"><b>9.</b> 條列時建議用（一）（二）（三）或1、2、3統一格式</span>
+    <span class="opt"><b>10.</b> 大標題下可再用小標題分層，呈現論述層次</span>
+    <span class="opt"><b>11.</b> 避免用首先、其次、再者取代明確數字編號</span>
+    <span class="opt"><b>12.</b> 標題應與教材關鍵詞一致，方便閱卷對照給分表</span>
+    <span class="opt"><b>13.</b> 每個條列項目建議控制在三到五句話之內不宜過長</span>
+    <span class="opt"><b>14.</b> 條列結構有助於閱卷者在短時間內確認答題完整度</span>
+    <span class="opt"><b>15.</b> 全文若通篇沒有分段標題，會被認為結構鬆散不易評分</span>
+    <span class="opt"><b>16.</b> 條列式寫法也要注意項目間邏輯順序，不是隨意排列</span>
+    <span class="opt"><b>17.</b> 標題文字盡量對應教材或題目原文字，不要另創說法</span>
+    <span class="opt"><b>18.</b> 每個小標題後方緊接一到兩句破題句再展開細節</span>
+    <span class="opt"><b>19.</b> 條列項目數量應與題目要求的要素或原則數量一致</span>
+    <span class="opt"><b>20.</b> 過多層次的巢狀條列反而顯得雜亂，建議控制在兩層內</span>
+    <span class="opt"><b>21.</b> 標題與內文之間可用冒號或破折號區隔，版面更清楚</span>
+    <span class="opt"><b>22.</b> 條列式呈現有助於自我檢查是否遺漏任一項要素</span>
+    <span class="opt"><b>23.</b> 大方向底下的子項建議用（一）（二）而非重複數字一二三</span>
+    <span class="opt"><b>24.</b> 條列標題應具體點出內容重點，不要只寫說明如下</span>
+    <span class="opt"><b>25.</b> 段落過長時可拆成條列，避免閱卷者漏看中間論點</span>
+    <span class="opt"><b>26.</b> 條列格式建議全文統一，不要前半條列後半改回散文</span>
+    <span class="opt"><b>27.</b> 每個條列項目前後呼應標題文字，避免文不對題</span>
+    <span class="opt"><b>28.</b> 條列式結構也適用於前言後的正文開展，非僅限策略段</span>
+    <span class="opt"><b>29.</b> 適度使用條列可讓版面留白，提升閱卷觀感與可讀性</span>
+    <span class="opt"><b>30.</b> 條列項目結尾可用一句小結收束，強化該項目完整性</span>
+  </div>
+</div>
+
+<div class="point-card" id="note-7">
+  <div class="point-head"><span class="point-num">⑦</span><span class="point-name">複合式／比較式／三合一混合題寫法</span></div>
+  <p class="point-theory">複合題與比較題重點在排序邏輯與整合觀點，不能只是逐項平行描述</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 比較型題目先各自完整說明，再另立段落專門比較</span>
+    <span class="opt"><b>2.</b> 不要邊寫邊穿插比較，會讓結構顯得雜亂不清</span>
+    <span class="opt"><b>3.</b> 複合式危機題要說清楚排序邏輯，不能只列項目</span>
+    <span class="opt"><b>4.</b> 四重威脅類題目要在後續段落中反覆呼應排序原因</span>
+    <span class="opt"><b>5.</b> 光描述各項威脅而不交代先後順序，會被認為缺乏判斷力</span>
+    <span class="opt"><b>6.</b> 優先順序要說明為什麼先處理這個、後處理那個</span>
+    <span class="opt"><b>7.</b> 三合一框架混合題結尾要用一句話把各框架串起來</span>
+    <span class="opt"><b>8.</b> 比較段落應明確指出異同點，不要只是重複前述內容</span>
+    <span class="opt"><b>9.</b> 複合式題目建議先列出所有威脅，再另立段落排序說明</span>
+    <span class="opt"><b>10.</b> 排序邏輯可依急迫性、影響範圍或資源限制等標準說明</span>
+    <span class="opt"><b>11.</b> 混合題各框架分述完畢後，須有整合性結論呼應整體觀</span>
+    <span class="opt"><b>12.</b> 比較兩個以上情境時，建議用同一組指標逐一對照</span>
+    <span class="opt"><b>13.</b> 避免比較型題目寫成兩篇獨立短文毫無交集</span>
+    <span class="opt"><b>14.</b> 排序類題目每一項威脅都要標示處理順序的位置</span>
+    <span class="opt"><b>15.</b> 三個子框架個別完整後，再用一段說明彼此關聯性</span>
+    <span class="opt"><b>16.</b> 比較段落宜用表格思維書寫，即使用文字也要條理分明</span>
+    <span class="opt"><b>17.</b> 複合式危機的排序理由要具體，不要只寫比較嚴重帶過</span>
+    <span class="opt"><b>18.</b> 混合題若各部分互不呼應，會被認為只是拼湊三篇短文</span>
+    <span class="opt"><b>19.</b> 結尾段落須明確指出三個工具如何共同支撐整體處置</span>
+    <span class="opt"><b>20.</b> 比較型題目結尾建議加一句總結性判斷，不要比較完就結束</span>
+    <span class="opt"><b>21.</b> 排序邏輯建議搭配具體標準，如時間急迫性、傷亡風險</span>
+    <span class="opt"><b>22.</b> 四重威脅或多重威脅類題目，每項威脅都要簡述因應作為</span>
+    <span class="opt"><b>23.</b> 複合題各框架間如有先後關係，應在段落間清楚交代</span>
+    <span class="opt"><b>24.</b> 比較型題目避免同一段落中反覆來回比較兩個情境</span>
+    <span class="opt"><b>25.</b> 混合題整體觀的收束句應點出三工具互補而非各自獨立</span>
+    <span class="opt"><b>26.</b> 避免用以上二字帶過排序結論，仍應具體說明理由</span>
+    <span class="opt"><b>27.</b> 排序類題目建議用首要、次要、再次明確標示層級</span>
+    <span class="opt"><b>28.</b> 比較段落結尾應有一句判斷性小結，不要只列異同就結束</span>
+    <span class="opt"><b>29.</b> 複合式危機處理宜先掌握情勢，再決定各項威脅處理順序</span>
+    <span class="opt"><b>30.</b> 三合一混合題最後一段是整合分數的關鍵，切勿草草帶過</span>
+  </div>
+</div>
+
+<h2 style="font-size:1.05em;color:var(--subj);margin:28px 0 14px;padding-left:10px;border-left:4px solid var(--subj);">前言結語萬用句型（適用CDM／降階處理／談判／媒體互動任一工具）</h2>
+
+<div class="point-card" id="note-intro">
+  <div class="point-head"><span class="point-name">前言破題法（30種開頭句型）</span></div>
+  <p class="point-theory">申論題前言的功能是快速定位本案特性＋點名要運用的理論工具，讓閱卷者第一眼就知道你懂框架。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 面對本案【危機類型】，在資訊不完整、時間壓力大之情況下，運用【理論工具】【步驟名稱】，說明處置程序及重點如下</span>
+    <span class="opt"><b>2.</b> 本案具有【特性一】、【特性二】等特性，極具衝擊性、顯眼性及衝突性，亟需妥善因應</span>
+    <span class="opt"><b>3.</b> 身為【角色】，運用「危機處理」課程所學之【理論工具】，說明如下</span>
+    <span class="opt"><b>4.</b> 有鑑於【危機情境】對【對象】造成之潛在威脅，茲依【理論工具】分析如下</span>
+    <span class="opt"><b>5.</b> 綜觀本案【情境概述】，其發展態勢符合危機事件三項特性，析述如下</span>
+    <span class="opt"><b>6.</b> 依【理論工具】之精神，就本案【危機類型】處置程序說明如下</span>
+    <span class="opt"><b>7.</b> 值此【情境】之際，指揮人員須把握【原則】，以下依步驟說明處置作為</span>
+    <span class="opt"><b>8.</b> 觀諸本案案情，【危機主體】所引發之危機兼具不確定性與時間壓力，說明如下</span>
+    <span class="opt"><b>9.</b> 為有效因應本案【危機類型】，茲運用【理論工具】說明具體作為如下</span>
+    <span class="opt"><b>10.</b> 揆諸本案情節，屬【危機屬性】之升高風險案件，亟待妥善處置</span>
+    <span class="opt"><b>11.</b> 當前消防救災現場屢見【危機類型】案例，本案即為一例，以下依【理論工具】說明</span>
+    <span class="opt"><b>12.</b> 鑑於【危機情境】瞬息萬變，指揮人員須運用【理論工具】迅速研判決策</span>
+    <span class="opt"><b>13.</b> 就本案而言，【危機主體】之行為已對【對象】構成立即威脅，說明處置重點如下</span>
+    <span class="opt"><b>14.</b> 危機處理之核心在於【原則】，本案即應循此脈絡展開說明如下</span>
+    <span class="opt"><b>15.</b> 本案涉及【子題一】、【子題二】及【子題三】三面向，以下分依框架說明</span>
+    <span class="opt"><b>16.</b> 一旦【危機主體】情緒失控、現場資訊混亂，指揮人員即應運用【理論工具】研判</span>
+    <span class="opt"><b>17.</b> 茲以【理論工具】為分析架構，就本案【危機類型】處置說明如下</span>
+    <span class="opt"><b>18.</b> 本案發生於【情境地點】，具有時間急迫、資源有限之特性，說明處置程序如下</span>
+    <span class="opt"><b>19.</b> 處理【危機類型】案件時，指揮人員須秉持【原則】，茲就本案分析如下</span>
+    <span class="opt"><b>20.</b> 綜合案情研判，【危機主體】所生之危機屬於【危機屬性】，以下依步驟說明</span>
+    <span class="opt"><b>21.</b> 依「危機處理」課程所授【理論工具】，就本案情境分析並說明處置作為如下</span>
+    <span class="opt"><b>22.</b> 本案為【危機類型】之典型案例，兼具不確定性、時間壓力及高關注度三項特徵</span>
+    <span class="opt"><b>23.</b> 突發【危機類型】事件發生時，第一線指揮官應立即啟動【理論工具】，說明如下</span>
+    <span class="opt"><b>24.</b> 就【危機主體】與【對象】間之緊張關係，運用【理論工具】分析如下</span>
+    <span class="opt"><b>25.</b> 現場情勢瞬息萬變，本案【危機類型】亟需運用【理論工具】妥為因應，說明如下</span>
+    <span class="opt"><b>26.</b> 本案處置須兼顧【工具一】與【工具二】雙重考量，分別說明並於文末整合</span>
+    <span class="opt"><b>27.</b> 倘【危機主體】持續採取【行為】，指揮人員應依【理論工具】研判因應</span>
+    <span class="opt"><b>28.</b> 本案【危機主體】之危機行為，已符合啟動【理論工具】處置機制之要件，說明如下</span>
+    <span class="opt"><b>29.</b> 有效之危機處理須兼顧【面向一】與【面向二】，本案即依此脈絡說明如下</span>
+    <span class="opt"><b>30.</b> 綜上情勢研判，本案兼具高度不確定性與媒體關注度，茲運用【理論工具】說明處置重點如下</span>
+  </div>
+</div>
+
+<div class="point-card" id="note-outro">
+  <div class="point-head"><span class="point-name">結語收束法（30種結尾句型）</span></div>
+  <p class="point-theory">申論題結語的功能是收束全文重點＋呼應前言揭示的理論工具，展現首尾呼應的整體觀。</p>
+  <div class="opt-grid">
+    <span class="opt"><b>1.</b> 【理論工具】強調在資訊不完整、時間壓力大之情境下，仍須依步驟循環決策，以【原則】為最高原則</span>
+    <span class="opt"><b>2.</b> 唯有【作法一】，方能兼顧【價值一】與【價值二】</span>
+    <span class="opt"><b>3.</b> 綜上，【要素一】與【要素二】環環相扣，缺一不可</span>
+    <span class="opt"><b>4.</b> 危機處理貴在【原則】，唯有平時演練、臨場應變，方能化危機為轉機</span>
+    <span class="opt"><b>5.</b> 總言之，【理論工具】各步驟並非獨立運作，須整體循環檢視方能奏效</span>
+    <span class="opt"><b>6.</b> 綜觀全文，本案處置應以【核心原則】為依歸，兼顧【面向一】與【面向二】</span>
+    <span class="opt"><b>7.</b> 職是之故，指揮人員唯有嫻熟【理論工具】，方能在瞬息萬變之現場從容應對</span>
+    <span class="opt"><b>8.</b> 由是觀之，【工具一】、【工具二】與【工具三】三者相輔相成，缺一不可</span>
+    <span class="opt"><b>9.</b> 質言之，危機處理成敗繫於【關鍵因素】，不可不慎</span>
+    <span class="opt"><b>10.</b> 綜合以上分析，唯有落實【原則一】與【原則二】，方能有效降低危害</span>
+    <span class="opt"><b>11.</b> 是以，本案處置應兼顧【短期目標】與【長期目標】，方為周延之道</span>
+    <span class="opt"><b>12.</b> 總結而言，【理論工具】之運用貴在靈活，須依現場情勢隨時調整步驟</span>
+    <span class="opt"><b>13.</b> 綜上所述，唯有事前準備、事中應變、事後檢討三者並重，方能建立完整【對象】安全量能</span>
+    <span class="opt"><b>14.</b> 要言之，【原則一】、【原則二】與【原則三】三者不可偏廢</span>
+    <span class="opt"><b>15.</b> 準此，指揮人員應以【核心價值】為念，方能兼顧民眾安全與人員安全</span>
+    <span class="opt"><b>16.</b> 綜言之，危機處理之精髓在於【原則】，本案處置應循此原則貫徹始終</span>
+    <span class="opt"><b>17.</b> 末者，唯有平時扎實訓練，方能於危機發生時從容運用【理論工具】妥善處置</span>
+    <span class="opt"><b>18.</b> 總之，【工具一】與【工具二】並非互斥，而應相互搭配運用於本案處置</span>
+    <span class="opt"><b>19.</b> 是故，本案處置成效繫於【關鍵作為】能否落實，不容輕忽</span>
+    <span class="opt"><b>20.</b> 綜上所陳，危機處理應以【最高原則】為核心，方能圓滿達成任務</span>
+    <span class="opt"><b>21.</b> 準此以觀，【要素一】、【要素二】與【要素三】三者環環相扣，構成完整處置鏈</span>
+    <span class="opt"><b>22.</b> 要之，唯有秉持【原則】，方能在資訊不全之情況下作出最適決策</span>
+    <span class="opt"><b>23.</b> 職此之故，本案處置應兼顧【面向一】、【面向二】與【面向三】，方屬周延</span>
+    <span class="opt"><b>24.</b> 綜前所述，危機處理不僅是技術問題，更是【核心價值】之具體實踐</span>
+    <span class="opt"><b>25.</b> 總的來說，【理論工具】之核心價值在於【原則】，本案應以此為依歸</span>
+    <span class="opt"><b>26.</b> 由上可知，唯有落實分階段處置，方能兼顧【短期應變】與【長期復原】</span>
+    <span class="opt"><b>27.</b> 綜合言之，本案處置若能貫徹【原則一】與【原則二】，當可化解危機於無形</span>
+    <span class="opt"><b>28.</b> 末言之，危機處理須臾不可鬆懈，唯有持續精進，方能保障【對象】安全</span>
+    <span class="opt"><b>29.</b> 總歸而言，【工具一】與【工具二】相輔相成，共同構築完整之危機處理體系</span>
+    <span class="opt"><b>30.</b> 綜上，本案處置唯有兼顧【原則一】、【原則二】與【原則三】，方能畢竟全功</span>
+  </div>
+</div>
+
+    <div class="footer">注意事項共9類・270個選項</div>
+  </div>
+
+</main>
+
+<script>
+  const btns = document.querySelectorAll('.tab-btn');
+  const panes = document.querySelectorAll('.tab-pane');
+  const mainEl = document.getElementById('main');
+  const search = document.getElementById('search');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      panes.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      mainEl.scrollTop = 0;
+      search.value = '';
+      applyFilter('');
+    });
+  });
+
+  function applyFilter(q){
+    q = q.trim().toLowerCase();
+    document.querySelectorAll('.tab-pane.active .point-card').forEach(card => {
+      const match = !q || card.textContent.toLowerCase().includes(q);
+      card.style.display = match ? '' : 'none';
+    });
+  }
+  search.addEventListener('input', () => applyFilter(search.value));
+
+  document.querySelectorAll('.jumprow a').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  });
+</script>
+</body>
+</html>

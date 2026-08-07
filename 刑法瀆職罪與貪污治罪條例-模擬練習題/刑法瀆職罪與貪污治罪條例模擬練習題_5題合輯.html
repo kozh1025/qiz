@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>刑法瀆職罪與貪污治罪條例模擬練習題・5題合輯</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --bg:#f6f5f1; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66; --line:#e5e2da;
+    --crime:#8a3b3b; --crime-tint:#f2e5e5;
+    --side-w:250px;
+  }
+  *{box-sizing:border-box;}
+  body { font-family: 'Microsoft JhengHei','Noto Sans TC',Arial,sans-serif; background: var(--bg); color: var(--ink); margin: 0; font-size: 15px; line-height: 1.9; --subj:var(--crime); --subj-tint:var(--crime-tint); display:flex; }
+
+  /* ── 左側分頁選單 ── */
+  #sidebar{ width:var(--side-w); flex-shrink:0; height:100vh; position:sticky; top:0; overflow-y:auto; background:#fbf9f5; border-right:1px solid var(--line); padding:22px 14px; }
+  .side-title{ font-size:1.05rem; font-weight:700; color:var(--ink); margin:0 6px 4px; line-height:1.4; }
+  .side-sub{ font-size:.76rem; color:var(--sub); margin:0 6px 20px; line-height:1.6; }
+  .backlink{ display:block; font-size:.8rem; color:var(--sub); text-decoration:none; margin:0 6px 10px; padding-bottom:10px; border-bottom:1px solid var(--line); }
+  .tab-btn{ display:block; width:100%; text-align:left; background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px 12px; margin-bottom:8px; cursor:pointer; font-family:inherit; color:var(--ink); transition:background .15s,border-color .15s; }
+  .tab-btn:hover{ background:var(--crime-tint); }
+  .tab-btn .t-num{ display:inline-block; background:var(--sub); color:#fff; border-radius:4px; padding:0 7px; font-size:.72rem; font-weight:700; margin-right:6px; }
+  .tab-btn .t-name{ font-size:.86rem; font-weight:700; }
+  .tab-btn .t-sub{ display:block; font-size:.72rem; color:var(--sub); margin-top:3px; padding-left:26px; }
+  .tab-btn.active{ background:var(--crime); border-color:var(--crime); }
+  .tab-btn.active .t-num{ background:#fff; color:var(--crime); }
+  .tab-btn.active .t-name{ color:#fff; }
+  .tab-btn.active .t-sub{ color:#f0d6d6; }
+
+  /* ── 右側內容 ── */
+  main{ flex:1; min-width:0; height:100vh; overflow-y:auto; padding:24px 30px 60px; }
+  .tab-pane{ display:none; max-width:880px; margin:0 auto; }
+  .tab-pane.active{ display:block; }
+
+  .header { background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--subj); padding: 22px 28px; border-radius: 10px; margin-bottom: 20px; box-shadow:0 1px 3px rgba(0,0,0,.05); }
+  .header h1 { margin: 0 0 6px 0; font-size: 1.3em; color: var(--ink); font-weight:700; }
+  .header .sub { font-size: 0.86em; color: var(--sub); }
+  .header .tag { display: inline-block; background: var(--subj); color: #fff; border-radius: 4px; padding: 2px 10px; font-size: 0.78em; margin-left: 8px; }
+
+  .q-block { background: var(--card); border: 1px solid var(--line); border-radius: 8px; margin-bottom: 20px; overflow: hidden; box-shadow:0 1px 2px rgba(0,0,0,.03); }
+  .q-header { background: var(--subj-tint); color: var(--subj); font-weight: bold; padding: 8px 16px; font-size: 0.95em; border-bottom:1px solid var(--line); }
+  .q-score { font-weight: normal; font-size: 0.85em; margin-left: 8px; opacity: 0.85; color:var(--sub); }
+  .q-text { padding: 14px 18px 10px 18px; color: var(--ink); font-size: 0.93em; line-height: 1.85; border-bottom: 1px solid var(--line); background: #fbfaf7; }
+  .q-text .situation { color: var(--sub); font-size: 0.91em; border-left: 3px solid var(--subj); padding-left: 12px; margin-bottom: 8px; }
+  .q-text .question { color: var(--ink); font-weight: bold; margin-top: 10px; }
+
+  .non-official { padding: 7px 18px; background: #fff8ea; color: #9a6a1f; font-size: 0.82em; border-bottom: 1px solid #f0e3c0; }
+
+  .ans-block { padding: 14px 18px; }
+  .ans-section { margin-bottom: 18px; }
+  .ans-title { font-weight: bold; color: var(--subj); margin-bottom: 8px; font-size: 0.95em; padding: 5px 0; border-bottom: 1px dashed var(--line); }
+  .sub-pts { font-size: 0.8em; color: var(--sub); margin-left: 6px; font-weight: normal; }
+
+  .law-ref { background: var(--subj-tint); border-left: 3px solid var(--subj); padding: 5px 12px; font-size: 0.82em; color: var(--ink); margin-bottom: 10px; border-radius: 0 3px 3px 0; }
+
+  .elem-step { background: #fbfaf7; border-left: 4px solid var(--subj); border-radius: 0 5px 5px 0; padding: 12px 16px; margin-bottom: 12px; }
+  .elem-num { display: inline-block; background: var(--subj); color: #fff; border-radius: 3px; padding: 1px 8px; font-size: 0.82em; font-weight: bold; margin-right: 8px; }
+  .elem-title { font-weight: bold; color: var(--subj); margin-bottom: 8px; font-size: 0.93em; }
+
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.87em; }
+  th { background: var(--subj-tint); color: var(--subj); padding: 7px 10px; text-align: left; border-bottom:2px solid var(--subj); }
+  td { padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:nth-child(even) td { background: #faf9f6; }
+
+  ul, ol { padding-left: 22px; margin: 6px 0; }
+  li { margin-bottom: 5px; font-size: 0.91em; }
+  li strong { color: var(--subj); }
+
+  .tips-box { background: var(--subj-tint); border: 1px solid var(--subj); border-radius: 8px; padding: 14px 18px; margin-bottom: 20px; }
+  .tips-box h3 { color: var(--subj); margin: 0 0 10px 0; font-size: 1em; }
+  .tips-box ul { margin: 4px 0; }
+  .tips-box li { font-size: 0.9em; }
+
+  .footer { text-align: center; font-size: 0.78em; color: var(--sub); margin-top: 30px; padding-top: 14px; border-top: 1px solid var(--line); }
+</style>
+</head>
+<body>
+<div style="position:fixed;top:8px;right:12px;z-index:9999;font-size:12px;color:#9a978d;background:rgba(255,255,255,.85);padding:2px 10px;border-radius:999px;pointer-events:none;">柯醒翰製作</div>
+
+<nav id="sidebar">
+  <div class="side-title">刑法瀆職罪與<br>貪污治罪條例<br>模擬練習題</div>
+  <div class="side-sub">共5題・自製情境模擬申論題・非官方參考範文</div>
+  <a class="backlink" href="../index.html">← 回筆記入口</a>
+  <a class="backlink" href="../corruption-crime-law.html">← 完整法條對照</a>
+  <a class="backlink" href="../刑法瀆職罪與貪污治罪條例-抄寫骨幹.html">← 考場抄寫骨幹</a>
+
+  <button class="tab-btn active" data-tab="t1">
+    <span class="t-num">1</span><span class="t-name">特種行業稽查放水</span>
+    <span class="t-sub">圖利罪§6Ⅰ④＋登載不實§213</span>
+  </button>
+  <button class="tab-btn" data-tab="t2">
+    <span class="t-num">2</span><span class="t-name">酒駕稽查收賄放行</span>
+    <span class="t-sub">違背職務收賄§4Ⅰ⑤＋自首減免§8</span>
+  </button>
+  <button class="tab-btn" data-tab="t3">
+    <span class="t-num">3</span><span class="t-name">拖吊業者行賄遭拒</span>
+    <span class="t-sub">行賄罪§11・雙方視角</span>
+  </button>
+  <button class="tab-btn" data-tab="t4">
+    <span class="t-num">4</span><span class="t-name">偵查隊長知情不報</span>
+    <span class="t-sub">包庇罪§13 vs §14</span>
+  </button>
+  <button class="tab-btn" data-tab="t5">
+    <span class="t-num">5</span><span class="t-name">分局長異常財產</span>
+    <span class="t-sub">財產來源不明§6-1＋§10</span>
+  </button>
+</nav>
+
+<main id="main">
+
+  <!-- ══════ 第1題 ══════ -->
+  <div class="tab-pane active" id="t1">
+    <div class="header">
+      <h1>刑法瀆職罪與貪污治罪條例模擬練習題<span class="tag">第1題</span><span class="tag" style="background:#6b4a30">圖利罪＋登載不實</span></h1>
+      <div class="sub">自製情境模擬申論題・依115年命題規律設計（圖利vs便民為112,114年連續考點）・共20分</div>
+    </div>
+
+    <div class="tips-box">
+      <h3>📌 為何這樣出題</h3>
+      <p style="margin:0;font-size:0.92em;">「圖利罪」是本科最核心的考點，112年、114年連續兩年出現「圖利vs便民」的辨析題型，且114年更進一步結合刑法第213條登載不實文書罪一併出題，已形成固定套路：「公務員因私交或人情，對主管事務放水，並在職務上所掌公文書登載不實」。本題延續此命題邏輯，改以警察稽查特種行業為情境，並刻意設計成「全程未收受任何對價」，用意在於檢驗你是否清楚圖利罪的成立「不以收受財物為必要」這個最容易被誤解的關鍵。</p>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header">模擬題1 <span class="q-score">（20分）｜課程：刑法瀆職罪與貪污治罪條例｜考點：圖利罪＋登載不實文書罪＋圖利與便民之區辨</span></div>
+      <div class="q-text">
+        <div class="situation">【情境】警員甲服務於OO分駐所，依規定主管轄區特種行業（如視聽歌唱、酒店等八大行業）之定期稽查業務。甲於某次排定之例行稽查中，發現舊識乙所經營之「OO複合式咖啡廳」，實際經營項目已逾越原核准登記範圍，涉嫌違反社會秩序維護法有關特種行業管理之規定，依規定甲應予舉發並陳報分局裁處停業或罰鍰。惟甲念及與乙多年之交情，未依實填載稽查結果，逕於稽查紀錄表（甲職務上所掌之公文書）上填載「稽查合格，無違規事項」，使乙得以繼續照常營業。甲全程未向乙收受任何金錢、財物或其他對價。嗣經民眾檢舉，分局調閱蒐證影像與稽查紀錄比對後發現不符，報請政風單位調查屬實。</div>
+        <div class="question">【問題】① 請依「罪名判斷流程」，逐層分析甲之刑事責任，並說明其與刑法第213條之關係。（14分）　② 圖利罪與便民之區辨標準為何？本案得否以「便民」或「未收受對價」為由，阻卻甲之罪責？（6分）</div>
+      </div>
+      <div class="non-official">⚠ 自製模擬練習題，非歷屆考古題原題；範文僅供參考作答架構，實際評分應以官方標準為準</div>
+      <div class="ans-block">
+
+        <div class="ans-section">
+          <div class="ans-title">【前言】</div>
+          <p style="margin:0;font-size:0.92em;">按貪污治罪條例第6條第1項第4款規定，公務員對於主管或監督之事務，明知違背法律等規定，直接或間接圖自己或其他私人不法利益，因而獲得利益者，處5年以上有期徒刑，得併科新臺幣3,000萬元以下罰金。本案甲身為特種行業稽查業務之主管人員，其未依實舉發並登載不實紀錄之行為是否構成本罪，暨與刑法登載不實文書罪之關係，應就其公務員身分、行為態樣及主觀要件析述如下。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【壹、罪名判斷流程逐層析述】<span class="sub-pts">（14分）</span></div>
+
+          <div class="elem-step">
+            <div class="elem-title"><span class="elem-num">①</span>身分判斷</div>
+            依刑法第10條第2項規定，甲為警員，依法令服務於國家所屬機關而具有法定職務權限，屬「身分公務員」，具備貪污治罪條例上開各罪之犯罪主體資格。
+            <div class="law-ref">法規依據：刑法第10條第2項——依法令服務於國家、地方自治團體所屬機關而具有法定職務權限，以及其他依法令從事於公共事務，而具有法定職務權限者，均屬公務員。</div>
+          </div>
+
+          <div class="elem-step">
+            <div class="elem-title"><span class="elem-num">②</span>行為判斷（是否該當圖利罪客觀要件）</div>
+            甲主管轄區特種行業稽查業務，對本案屬「主管之事務」；甲明知乙之經營項目已逾越登記範圍、違反社會秩序維護法相關規定，依規定應予舉發，卻故意不為舉發，並於稽查紀錄表登載「合格」之不實事項，使乙得以規避停業或罰鍰之不利處分，客觀上已符合「明知違背法令，直接圖自己或第三人不法利益，因而獲得利益」之構成要件。
+          </div>
+
+          <div class="elem-step">
+            <div class="elem-title"><span class="elem-num">③</span>是否違背職務／主觀明知要件</div>
+            舉發稽查不合格業者，屬甲法定職務範圍內「應為而不為」之消極不作為；甲主觀上明知乙違規卻仍故意隱匿，具直接故意，並非出於裁量誤判或善意疏失，主、客觀要件均已具備。
+          </div>
+
+          <div class="elem-step">
+            <div class="elem-title"><span class="elem-num">④</span>減免規定檢查</div>
+            甲所圖得之利益為乙得以繼續營業之無形利益，非以財物型態呈現，尚難逕依貪污治罪條例第12條「所得或所圖得財物或不正利益在新臺幣5萬元以下」之標準量化認定；甲於本案並無自首或偵查中自白情事，尚無第8條減免規定之適用。
+          </div>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【貳、與刑法第213條之罪數關係】</div>
+          <p style="margin:0 0 8px;font-size:0.92em;">甲於稽查紀錄表（其職務上所掌之公文書）明知不實仍登載「稽查合格，無違規事項」，足以生損害於公眾（稽查制度之公信力遭虛報）及分局行政管考之正確性，另該當刑法第213條公務員登載不實文書罪。登載不實行為為手段、圖利乙繼續營業為目的，兩者具方法目的關係，惟保護法益不同（登載不實罪保護公文書之公共信用，圖利罪保護公務廉潔性與國家對公務員之信賴），依實務見解應分別成立，數罪併罰。</p>
+          <div class="law-ref">法規依據：刑法第213條——公務員明知為不實之事項，而登載於職務上所掌之公文書，足以生損害於公眾或他人者，處1年以上7年以下有期徒刑。</div>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【參、圖利與便民之區辨】<span class="sub-pts">（6分）</span></div>
+          <table>
+            <tr><th></th><th>圖利（違法）</th><th>便民（合法）</th></tr>
+            <tr><td>客觀要件</td><td>違背法律／法規命令／自治條例等對外發生效力之規定</td><td>依法行政，於法令許可範圍內給予方便</td></tr>
+            <tr><td>主觀要件</td><td>明知違背法令，仍圖自己或他人不法利益</td><td>無圖利之故意及意圖</td></tr>
+            <tr><td>利益性質</td><td>不法利益，且須「因而獲得利益」（結果犯）</td><td>合法利益</td></tr>
+          </table>
+          <p style="margin:8px 0 0;font-size:0.92em;">本案甲之行為不得以「便民」阻卻罪責：其一，便民之前提為依法行政、不免除法定義務，甲明知乙違規卻登載合格，客觀上已違背法令；其二，甲主觀上明知乙違規仍故意隱匿並登載不實，具圖利之直接故意。此一故意存在與否，與甲是否收受對價無涉——圖利罪之成立，僅要求「明知違背法令、圖自己或他人不法利益、因而獲得利益」，並不以公務員本人自對方收受財物或不正利益為構成要件，此點與賄賂罪最大不同，是本題最核心的辨析所在。倘甲除登載不實外，另有收受乙交付之財物或其他對價，則另涉及違背職務受賄罪，因其保護法益與圖利罪重疊、不法內涵更重，學理及實務上多認為應成立法條競合，論以較重之受賄罪，圖利罪不再論罪。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【結語】</div>
+          <p style="margin:0;font-size:0.92em;">綜上，甲之行為該當貪污治罪條例第6條第1項第4款圖利罪，及刑法第213條登載不實文書罪，兩罪數罪併罰；縱甲未收受任何對價，仍無解於其刑責，蓋圖利罪之本質在於公務員濫用職權破壞公務廉潔性與人民信賴，而非單純之財產犯罪，此為作答本類考題應緊扣之核心觀念。</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <h3>✏️ 解題／寫法提醒</h3>
+      <ul>
+        <li>看到「公務員因人情／交情放水」的情境，第一步先用罪名判斷流程分「身分→行為→主管性→主觀明知」四層拆解，不要跳著寫。</li>
+        <li>只要情境出現「稽查紀錄表」「複查表」「驗收單」等公文書字眼，幾乎都要聯想到刑法第213條登載不實，且務必與圖利罪「數罪併罰」，只答一罪是這幾年最常見的漏分處。</li>
+        <li>遇到「甲有無收受對價」這類問法，直接點出「圖利罪不以收受財物為要件」，並可延伸一句「若另有收受對價，則轉為賄賂罪與圖利罪之法條競合」，展現你懂得罪名之間的界線，是加分寫法。</li>
+        <li>結語建議用一句話把「圖利罪的保護法益是公務廉潔性，不是財產犯罪」點出來，呼應題目「未收受對價」的設計巧思。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════ 第2題 ══════ -->
+  <div class="tab-pane" id="t2">
+    <div class="header">
+      <h1>刑法瀆職罪與貪污治罪條例模擬練習題<span class="tag">第2題</span><span class="tag" style="background:#6b4a30">違背職務收賄＋自首減免</span></h1>
+      <div class="sub">自製情境模擬申論題・貪污治罪條例最重刑度＋減免規定精細辨析（111,113年連續考點）・共20分</div>
+    </div>
+
+    <div class="tips-box">
+      <h3>📌 為何這樣出題</h3>
+      <p style="margin:0;font-size:0.92em;">「違背職務收賄罪」與「自首自白減免規定」是本科歷屆最常見的組合，111年（監所管理員夾帶洋酒）、113年（消防小隊長收紅包）皆採此套路。多數考生能答出收賄罪名，卻在「減免規定」這一關失分——關鍵在於「自首」與「偵查中自白」雖然都要求「繳回全部所得」，法律效果卻差一個位階（自首最高可到免除，偵查中自白只能減輕），若再加上「因而查獲其他正犯或共犯」，效果更會再往上跳一級。本題刻意把這三層變化都放進同一個情境，逼你把貪污治罪條例第8條的四種組合徹底釐清。</p>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header">模擬題2 <span class="q-score">（20分）｜課程：刑法瀆職罪與貪污治罪條例｜考點：違背職務收受賄賂罪＋自首與偵查中自白之區辨＋共犯判斷</span></div>
+      <div class="q-text">
+        <div class="situation">【情境】警員甲於OO分局交通分隊服勤，某夜執行酒後駕車攔檢勤務時，攔查駕駛人乙，發現乙呼氣有明顯酒味且步履不穩，已達不能安全駕駛之虞。乙情急之下自車內取出現金2萬元塞入甲之制服口袋，請求通融放行，甲一時貪念收下，未依規定對乙實施酒精濃度測試，亦未製單舉發，即讓乙自行駕車離去。3日後，甲深感不安，於尚未被任何機關或告發人發覺前，主動至法務部廉政署陳述上情並自願接受裁判，同時繳回全部2萬元現金；甲並供出，其同事丙警員半年前亦曾以相同手法放行另一名酒駕者並收受好處3萬元。廉政署調查後，查獲丙涉案屬實。</div>
+        <div class="question">【問題】① 甲之行為該當何罪？應如何論罪？（8分）　② 甲之自首行為，得否減輕或免除其刑？其供出丙並查獲丙涉案之事實，對甲之刑責有何影響？（8分）　③ 丙之行為應如何論罪？甲、丙是否成立共犯？（4分）</div>
+      </div>
+      <div class="non-official">⚠ 自製模擬練習題，非歷屆考古題原題；範文僅供參考作答架構，實際評分應以官方標準為準</div>
+      <div class="ans-block">
+
+        <div class="ans-section">
+          <div class="ans-title">【前言】</div>
+          <p style="margin:0;font-size:0.92em;">按貪污治罪條例第4條第1項第5款規定，對於違背職務之行為，要求、期約或收受賄賂或其他不正利益者，處無期徒刑或10年以上有期徒刑，得併科新臺幣1億元以下罰金，為貪污治罪條例中刑度最重之罪名。本案甲於酒駕攔檢勤務中收賄放行，其罪責之成立及可否適用減免規定，應分述如下。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【壹、甲之罪名】<span class="sub-pts">（8分）</span></div>
+
+          <div class="elem-step">
+            <div class="elem-title"><span class="elem-num">①</span>身分</div>
+            甲為警員，依刑法第10條第2項規定，屬依法令服務於國家機關而具有法定職務權限之公務員。
+          </div>
+          <div class="elem-step">
+            <div class="elem-title"><span class="elem-num">②</span>職務行為</div>
+            依法對酒後駕車者實施酒測、依法製單舉發並移送法辦，屬甲執行交通稽查勤務之法定職責；甲明知乙已達不能安全駕駛之虞，卻未實施測試、未依法舉發，屬「應為而不為」之消極違背職務行為。
+          </div>
+          <div class="elem-step">
+            <div class="elem-title"><span class="elem-num">③</span>對價關係</div>
+            乙交付現金2萬元與甲縱放之行為間，時間緊接、因果相隨，具有明顯對價關係，該當「收受賄賂」。
+          </div>
+          <div class="elem-step">
+            <div class="elem-title"><span class="elem-num">④</span>結論</div>
+            甲之行為該當貪污治罪條例第4條第1項第5款違背職務收受賄賂罪，處無期徒刑或10年以上有期徒刑，得併科新臺幣1億元以下罰金。
+          </div>
+          <div class="law-ref">法規依據：貪污治罪條例第4條第1項第5款——對於違背職務之行為，要求、期約或收受賄賂或其他不正利益者，處無期徒刑或10年以上有期徒刑，得併科新臺幣1億元以下罰金。</div>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【貳、減免規定之適用】<span class="sub-pts">（8分）</span></div>
+          <table>
+            <tr><th>項目</th><th>貪污治罪條例第8條第1項・自首</th><th>貪污治罪條例第8條第2項・偵查中自白</th></tr>
+            <tr><td>成立要件</td><td>犯罪尚未被發覺前，主動向有偵查權之公務員陳述並自願受裁判，繳回全部所得</td><td>犯罪已被發覺，於偵查中陳明犯罪事實，繳回全部所得</td></tr>
+            <tr><td>基本效果</td><td>減輕或免除其刑</td><td>僅減輕其刑</td></tr>
+            <tr><td>因而查獲其他正犯或共犯</td><td>免除其刑</td><td>減輕或免除其刑</td></tr>
+          </table>
+          <p style="margin:8px 0;font-size:0.92em;">本案甲於本身犯行「尚未被任何機關或告發人發覺前」，即主動向具司法警察權之廉政署陳述全部經過並自願接受裁判，核屬貪污治罪條例第8條第1項之「自首」，而非同條第2項之「偵查中自白」（後者以犯罪已被發覺為前提，與本案時序不符），應注意勿混淆兩者。</p>
+          <p style="margin:0;font-size:0.92em;">甲已自動繳交全部所得2萬元，符合自首之基本要件，本得減輕或免除其刑；甲並因供述而使廉政署查獲丙涉案之另一收賄犯行，核屬「因而查獲其他正犯或共犯」之情形，依貪污治罪條例第8條第1項後段規定，應逕予<mark>免除其刑</mark>，而非僅止於「減輕或免除」之擇一判斷——此為本條適用上最容易被忽略的加分細節。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【參、丙之罪名及甲丙是否成立共犯】<span class="sub-pts">（4分）</span></div>
+          <p style="margin:0;font-size:0.92em;">丙之收賄放行行為，與甲各自獨立實行，其構成要件該當關係與甲相同，應依貪污治罪條例第4條第1項第5款論以違背職務收受賄賂罪。甲、丙雖服務於同一單位，然本案並無證據顯示甲、丙就各自之收賄放行行為存有事前犯意聯絡或行為分擔，甲僅係於自首時一併供出丙之另案犯行，性質上屬「查獲其他正犯或共犯」之事後供述，而非甲、丙共同實行犯罪，故甲、丙間<mark>不成立共犯關係</mark>，應各自依其本身之犯行分別論罪科刑。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【結語】</div>
+          <p style="margin:0;font-size:0.92em;">綜上，甲成立貪污治罪條例第4條第1項第5款違背職務收受賄賂罪，惟因其於犯罪未被發覺前自首、繳回全部所得，且因而查獲丙之犯行，依同條例第8條第1項後段規定，應免除其刑；丙則獨立成立同一罪名，不因甲之自首而免責。本案彰顯貪污治罪條例減免規定設計之精神：以優厚之刑責減免，換取瓦解貪瀆共犯結構、儘速查獲全案之政策目的。</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <h3>✏️ 解題／寫法提醒</h3>
+      <ul>
+        <li>看到「主動陳述、繳回所得」的情境，第一步先確認時序：是「尚未被發覺」還是「已被發覺、偵查中」，這決定了要套用第8條第1項還是第2項，法律效果差一個位階，千萬別混用。</li>
+        <li>「因而查獲其他正犯或共犯」是加重減免效果的關鍵字，只要題目出現「供出同夥」「因而查獲」等字眼，記得把效果再往上跳一級（自首＋查獲共犯＝免除；偵查中自白＋查獲共犯＝減輕或免除）。</li>
+        <li>兩人以上涉案不代表就是共犯，務必檢查有無「犯意聯絡＋行為分擔」，沒有的話就是各自獨立論罪，這是常見的誤答陷阱。</li>
+        <li>結尾可以點出減免規定背後的政策目的（鼓勵自新、瓦解共犯結構），展現你不只會套法條，還懂立法精神。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════ 第3題 ══════ -->
+  <div class="tab-pane" id="t3">
+    <div class="header">
+      <h1>刑法瀆職罪與貪污治罪條例模擬練習題<span class="tag">第3題</span><span class="tag" style="background:#6b4a30">行賄罪・雙方視角</span></h1>
+      <div class="sub">自製情境模擬申論題・貪污治罪條例施行以來從未單獨考過行賄方，是115年最需要補強的新鮮考點・共20分</div>
+    </div>
+
+    <div class="tips-box">
+      <h3>📌 為何這樣出題</h3>
+      <p style="margin:0;font-size:0.92em;">根據歷屆考題統計，貪污治罪條例第11條行賄罪自設置以來，從未在申論題中單獨以「行賄方」的角度出題，命題重心長期集中在收賄的公務員身上。這正是最容易讓人措手不及的盲點——萬一今年出題角度反過來，從行賄人的立場問「他犯了什麼罪」，很多人反而會因為太習慣寫公務員視角而語塞。本題刻意採雙主體設計，同時檢驗「行賄既遂點」「違背職務與否之區辨」以及「公務員拒絕收受後的處理方式」，一次覆蓋這個章節最容易被忽略的三個角落。</p>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header">模擬題3 <span class="q-score">（20分）｜課程：刑法瀆職罪與貪污治罪條例｜考點：行賄罪＋既遂判斷＋違背職務行賄與不違背職務行賄之區辨＋公務員廉政倫理規範</span></div>
+      <div class="q-text">
+        <div class="situation">【情境】拖吊業者甲經營之OO拖吊公司，其車輛經常有超載、違規停放保管場之情形。甲為避免遭轄區交通分隊員警丙依法拍照取締，於某日親自攜帶現金3萬元至丙服勤之派出所，趁四下無人之際，將現金置於丙桌上，並向丙表示：「以後我們家的拖吊車如果有違規，麻煩通融一下，不要照相舉發」。丙當場嚴詞拒絕，將現金退還甲，並要求甲離去。丙返所後，認為此事不宜隱瞞，遂於當日將經過陳報所長，並將在場監視器錄得之過程一併陳報政風室。</div>
+        <div class="question">【問題】① 甲之行為該當何罪？其既遂與否，是否受丙拒絕收受之影響？（10分）　② 本案應論以「違背職務行賄罪」或「不違背職務行賄罪」？理由為何？（6分）　③ 丙拒收並陳報之處理方式，在法律及公務員倫理規範上應如何評價？（4分）</div>
+      </div>
+      <div class="non-official">⚠ 自製模擬練習題，非歷屆考古題原題；範文僅供參考作答架構，實際評分應以官方標準為準</div>
+      <div class="ans-block">
+
+        <div class="ans-section">
+          <div class="ans-title">【前言】</div>
+          <p style="margin:0;font-size:0.92em;">按貪污治罪條例第11條規定，對於公務員關於違背職務之行為，行求、期約或交付賄賂或其他不正利益者，處1年以上7年以下有期徒刑，得併科新臺幣300萬元以下罰金；關於不違背職務之行為為之者，處3年以下有期徒刑、拘役或科或併科新臺幣50萬元以下罰金。本罪處罰對象為行賄之私人，與收賄罪互為對向犯，本案應就甲之行為態樣、既遂時點及丙之因應方式析述如下。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【壹、甲之罪名與既遂判斷】<span class="sub-pts">（10分）</span></div>
+
+          <div class="elem-step">
+            <div class="elem-title"><span class="elem-num">①</span>行為主體</div>
+            甲為拖吊業者，不具公務員身分，屬貪污治罪條例第11條第4項「不具第二條人員之身分而犯前三項之罪」之行賄主體。
+          </div>
+          <div class="elem-step">
+            <div class="elem-title"><span class="elem-num">②</span>行為態樣</div>
+            貪污治罪條例第11條之行賄行為，包括「行求」「期約」「交付」三種態樣，其中「行求」係指單方提出行賄之意思表示，不以對方允諾或收受為必要，屬「舉動犯」性質；本案甲已將現金攜至現場並置於丙桌上、明確表達請求通融之意思，客觀上已完成「行求」之行為。
+          </div>
+          <div class="elem-step">
+            <div class="elem-title"><span class="elem-num">③</span>既遂判斷</div>
+            本罪之既遂時點在於行為人提出行賄意思之時，不因對方拒絕、退回而使既遂變為未遂或不成立犯罪。丙雖當場嚴詞拒絕並退還現金，然此僅係丙個人之反應，無礙於甲行求行為本身已經完成之事實。
+          </div>
+          <div class="elem-step">
+            <div class="elem-title"><span class="elem-num">④</span>結論</div>
+            甲之行為該當貪污治罪條例第11條第4項準用相關項次之非公務員對於公務員行賄罪，且為既遂，不因丙拒收而阻卻既遂之成立。
+          </div>
+          <div class="law-ref">法規依據：貪污治罪條例第11條第4項——不具第二條人員之身分而犯前三項之罪者，亦同（即依行賄行為違背職務與否，分別適用第1項或第2項之刑度）。</div>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【貳、違背職務行賄罪或不違背職務行賄罪之區辨】<span class="sub-pts">（6分）</span></div>
+          <p style="margin:0;font-size:0.92em;">違背職務與不違背職務之區分，繫於行為人所請託之事項，是否要求公務員為「應為而不為、不應為而為」之行為。本案甲請求丙「以後如有違規，不要照相舉發」，其實質內容是要求丙就依法應予取締、舉發之違規事實，故意不作為，已逾越丙依法執行職務裁量權限之範圍，屬要求丙為違背職務之行為，而非單純請託丙在合法權限內給予行政上之方便。故本案應論以貪污治罪條例第11條第4項準用第1項之「非公務員對於公務員違背職務行賄罪」，處1年以上7年以下有期徒刑，得併科新臺幣300萬元以下罰金，而非刑度較輕之不違背職務行賄罪（第11條第4項準用第2項）。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【參、丙之處理方式的評價】<span class="sub-pts">（4分）</span></div>
+          <p style="margin:0;font-size:0.92em;">丙當場拒絕收受賄款，其行為本身即未該當貪污治罪條例任何收賄罪名之構成要件，不生刑事責任問題。丙返所後主動陳報所長並知會政風室，其處理方式合乎公務員廉政倫理規範揭示「拒絕不正請託、保持公務廉潔」之精神；惟嚴格而言，該規範第4點至第5點所定「受贈財物逾500元應於3日內簽報」之程序，係規範「已收受」餽贈後之處理機制，本案丙全程拒收，並無「受贈」之事實，尚不生該簽報期限之適用問題，但丙主動陳報並保全相關證據之作法，仍值得肯定，屬公務員面對不正利益請求時之典範處理方式。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【結語】</div>
+          <p style="margin:0;font-size:0.92em;">綜上，甲之行為該當貪污治罪條例第11條第4項準用第1項之違背職務行賄罪，其既遂與否不受丙拒絕收受之影響；丙因全程拒收且主動陳報，不生刑事責任，其處理方式亦合於公務員廉政倫理規範之精神。本案提醒吾人，行賄罪之風險不僅存在於收賄之公務員一方，凡遇不正利益之請求，唯有當場拒絕並儘速陳報，方能徹底免除自身之法律風險。</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <h3>✏️ 解題／寫法提醒</h3>
+      <ul>
+        <li>這是這幾年最容易被忽略的出題方向：站在「送賄人」的角度作答。看到情境主角是廠商、業者、民眾而非公務員時，要立刻反應這是在考貪污治罪條例第11條，而非第4、5條。</li>
+        <li>「行求」既遂不以對方收受為必要，是本條最核心也最常被忽略的觀念，遇到「對方拒絕」的情節，務必明講「不影響既遂」，這是關鍵得分句。</li>
+        <li>違背職務或不違背職務行賄，判斷的重點永遠回到「請託的事項本身」是否要求公務員違反法定職責，而不是看金額大小或雙方交情。</li>
+        <li>這類雙主體題型，建議依「行賄方」「收賄方（或拒收方）」分開設段落作答，結構清楚才不會遺漏任一方的評價。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════ 第4題 ══════ -->
+  <div class="tab-pane" id="t4">
+    <div class="header">
+      <h1>刑法瀆職罪與貪污治罪條例模擬練習題<span class="tag">第4題</span><span class="tag" style="background:#6b4a30">包庇罪主體區辨</span></h1>
+      <div class="sub">自製情境模擬申論題・貪污治罪條例第13、14條施行以來從未出題，人事人員排除是最常見誤答陷阱・共20分</div>
+    </div>
+
+    <div class="tips-box">
+      <h3>📌 為何這樣出題</h3>
+      <p style="margin:0;font-size:0.92em;">包庇罪（貪污治罪條例第13條、第14條）同樣是從未出現在歷屆申論題中的「新鮮考點」。這兩條最容易混淆的地方在於適用主體的範圍：第13條規範「直屬主管」，範圍較廣；第14條則是「列舉規定」，只限監察、會計、審計、犯罪調查、督察、政風6類人員，人事人員不在列舉範圍內。很多人直覺會認為「知情不報都算包庇」，因而誤把人事人員也套進第14條，這正是本題設計雙主體情境（直屬主管＋人事室主任）的用意，逼你把「列舉規定不得類推適用」的原則具體操作一次。</p>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header">模擬題4 <span class="q-score">（20分）｜課程：刑法瀆職罪與貪污治罪條例｜考點：包庇或不為舉發罪（直屬主管vs列舉人員）＋共犯判斷</span></div>
+      <div class="q-text">
+        <div class="situation">【情境】警員乙服務於OO分局偵查隊，職掌轄區八大行業之查緝業務，涉嫌長期收受業者賄賂，對業者之非法營業情事故意不予查緝。此事經同仁私下反映後，乙之直屬主管、偵查隊長甲已具體知悉。惟甲考量乙即將調升外調、案情複雜，且不願因而影響隊內士氣，遂決定隱匿此事，未依規定簽報政風室，僅私下告誡乙「以後收斂一點」。半年後，分局人事室主任丁亦從其他管道聽聞乙涉嫌收賄之傳言，丁認為此事不屬人事業務權責範圍，且傳言尚未經查證，故亦未採取任何通報動作。其後，政風室經其他管道主動查獲乙上開收賄情事屬實，甲、丁未通報一事亦一併曝光。</div>
+        <div class="question">【問題】① 甲之不予舉發行為，是否成立貪污治罪條例上之罪責？（8分）　② 丁之未通報行為，是否成立相同罪責？請說明理由。（8分）　③ 乙本身之收賄行為，應如何論罪？（4分）</div>
+      </div>
+      <div class="non-official">⚠ 自製模擬練習題，非歷屆考古題原題；範文僅供參考作答架構，實際評分應以官方標準為準</div>
+      <div class="ans-block">
+
+        <div class="ans-section">
+          <div class="ans-title">【前言】</div>
+          <p style="margin:0;font-size:0.92em;">按貪污治罪條例第13條規定，直屬主管長官對於所屬人員，明知貪污有據，而予以庇護或不為舉發者，處1年以上7年以下有期徒刑；同條例第14條則規定，辦理監察、會計、審計、犯罪調查、督察、政風人員，因執行職務，明知貪污有據之人員，不為舉發者，亦處1年以上7年以下有期徒刑。兩者均屬「知情不報」之處罰規定，惟適用主體範圍寬窄有別，本案應就甲、丁之身分及知悉程度分別析述如下。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【壹、甲之罪責】<span class="sub-pts">（8分）</span></div>
+
+          <div class="elem-step">
+            <div class="elem-title"><span class="elem-num">①</span>身分</div>
+            甲為乙之偵查隊長，屬乙之直屬主管長官，具備貪污治罪條例第13條之犯罪主體資格。
+          </div>
+          <div class="elem-step">
+            <div class="elem-title"><span class="elem-num">②</span>明知貪污有據</div>
+            甲已經同仁具體反映乙收賄不查緝之情事，並非道聽塗說之空泛傳言，應認甲已「明知貪污有據」。
+          </div>
+          <div class="elem-step">
+            <div class="elem-title"><span class="elem-num">③</span>庇護或不為舉發</div>
+            甲基於避免影響乙之調升及隊內士氣等考量，決定不依規定簽報政風室，僅私下告誡了事，此一「消極隱匿＋以私了方式取代法定簽報程序」之作法，該當「不為舉發」之構成要件。
+          </div>
+          <div class="elem-step">
+            <div class="elem-title"><span class="elem-num">④</span>結論</div>
+            甲之行為該當貪污治罪條例第13條直屬主管包庇或不為舉發罪，處1年以上7年以下有期徒刑。
+          </div>
+          <div class="law-ref">法規依據：貪污治罪條例第13條第1項——直屬主管長官對於所屬人員，明知貪污有據，而予以庇護或不為舉發者，處1年以上7年以下有期徒刑。</div>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【貳、丁之罪責】<span class="sub-pts">（8分）</span></div>
+          <p style="margin:0 0 8px;font-size:0.92em;">貪污治罪條例第14條所定之犯罪主體，明文列舉為「辦理監察、會計、審計、犯罪調查、督察、政風」6類人員，性質上屬列舉規定，依「列舉排除其他」之解釋原則，不得類推適用於列舉範圍以外之人員。丁為分局人事室主任，其職務性質屬人事行政，並非上開6類人員之一，縱丁確有知悉乙涉嫌收賄之情事而未通報，仍不具備第14條之犯罪主體資格，<mark>不成立該條之罪</mark>；且丁亦非乙之直屬主管，與第13條之適用主體亦有未合，故丁不成立第13條之罪。</p>
+          <p style="margin:0;font-size:0.92em;">退步言之，本案丁所知悉者僅係「其他管道聽聞之傳言」，尚未經任何查證，是否已達「明知貪污有據」之確信程度，容有疑義，此與甲業經同仁具體反映之情形有間，益徵丁客觀上更難認該當包庇罪之構成要件。惟丁知悉相關傳言而消極不予聞問，於行政上仍可能有違反公務員服務法忠實義務或相關內部通報規定之虞，僅屬行政責任範疇，尚非刑事責任所能及。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【參、乙之罪名】<span class="sub-pts">（4分）</span></div>
+          <p style="margin:0;font-size:0.92em;">乙為偵查隊員，依法職掌轄區八大行業之查緝業務，其對業者之非法營業「故意不予查緝」，屬其法定職務範圍內「應為而不為」之違背職務行為，其收受賄賂與違背職務行為間具對價關係，應論以貪污治罪條例第4條第1項第5款違背職務收受賄賂罪，處無期徒刑或10年以上有期徒刑，得併科新臺幣1億元以下罰金。甲、丁之不予舉報或不予通報，均係於乙之收賄行為完成後始知悉，與乙欠缺事前之犯意聯絡及行為分擔，甲、丁應各自依其本身之行為分別論罪（甲論以第13條，丁不成立犯罪），均不與乙成立共犯關係。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【結語】</div>
+          <p style="margin:0;font-size:0.92em;">綜上，甲身為乙之直屬主管，明知貪污有據仍不為舉發，成立貪污治罪條例第13條之罪；丁雖亦知悉相關情事而未通報，然人事人員不在第14條列舉之主體範圍內，復無其他積極包庇行為，尚難論以刑事罪責；乙則獨立成立違背職務收受賄賂罪。本案彰顯包庇罪適用主體「一寬一嚴」之立法設計，作答時務必先確認行為人之具體身分，切勿見「知情不報」即一律套用同一條文。</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <h3>✏️ 解題／寫法提醒</h3>
+      <ul>
+        <li>遇到「知情不報」的情境，第一步永遠是先確認行為人的身分：是不是直屬主管（§13，範圍較寬）？還是監察、會計、審計、犯罪調查、督察、政風6類人員之一（§14，列舉規定）？身分不對，條文就不能套。</li>
+        <li>「人事人員不算§14」是這個章節最經典的陷阱，只要考題出現人事、總務、庶務等非列舉人員知情不報的情節，要明確寫出「不成立第14條，僅可能涉及行政責任」，這是精準度的展現。</li>
+        <li>「明知貪污有據」是主觀要件的門檻，題目若只寫「聽聞傳言、尚未查證」，可以進一步討論是否已達「明知」的程度，而不是照單全收。</li>
+        <li>多個行為人同時出現時，記得逐一交代彼此是否成立共犯（有無犯意聯絡＋行為分擔），不要因為都跟同一件事有關就當然視為共犯。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════ 第5題 ══════ -->
+  <div class="tab-pane" id="t5">
+    <div class="header">
+      <h1>刑法瀆職罪與貪污治罪條例模擬練習題<span class="tag">第5題</span><span class="tag" style="background:#6b4a30">財產來源不明＋犯罪所得推定</span></h1>
+      <div class="sub">自製情境模擬申論題・貪污治罪條例第6-1、10條從未出題，舉證責任轉換是最反直覺的考點・共20分</div>
+    </div>
+
+    <div class="tips-box">
+      <h3>📌 為何這樣出題</h3>
+      <p style="margin:0;font-size:0.92em;">第6條之1「財產來源不明罪」與第10條「犯罪所得推定」，同樣是貪污治罪條例中完全零命中的條文，但兩條的重要性不容小覷——它們處理的是貪瀆案件最現實的困境：查得到財產異常增加，卻查不到具體的犯罪對價關係時，該怎麼辦。這兩條的特殊之處，在於把一般刑事訴訟「無罪推定、檢方負舉證責任」的原則，局部翻轉成由被告自證財產來源合法，是整部條例中最反直覺、也最容易寫不清楚的制度設計，值得優先準備。</p>
+    </div>
+
+    <div class="q-block">
+      <div class="q-header">模擬題5 <span class="q-score">（20分）｜課程：刑法瀆職罪與貪污治罪條例｜考點：財產來源不明罪＋犯罪所得推定＋舉證責任轉換</span></div>
+      <div class="q-text">
+        <div class="situation">【情境】OO分局長甲因涉嫌長期包庇轄區非法賭博電子遊藝場，遭檢舉後由地方檢察署檢察官分案偵辦。檢察官偵查中，除查得甲確有收受賭場業者按月致送之「保護費」外，另發現甲自涉嫌包庇犯罪時起至偵查時止之近3年內，名下增加兩筆總價值逾800萬元之不動產，及數個銀行帳戶內共計300餘萬元之異常存款，均與甲之警官薪資、獎金等合法收入顯不相當。檢察官乃依法命甲就上開來源可疑之財產提出說明，甲僅泛稱該等財產「係炒作股票及朋友借貸所得」，惟迄未能提出任何交易紀錄、對帳單或借貸契約等資料以實其說。</div>
+        <div class="question">【問題】① 甲得否僅以「炒股及借貸」之空泛說明，免除其法律責任？請說明貪污治罪條例第6條之1之構成要件，並涵攝本案。（12分）　② 承上，若甲始終無法提出合理說明，在法律效果上有何後果？此與同條例第10條之關係為何？（8分）</div>
+      </div>
+      <div class="non-official">⚠ 自製模擬練習題，非歷屆考古題原題；範文僅供參考作答架構，實際評分應以官方標準為準</div>
+      <div class="ans-block">
+
+        <div class="ans-section">
+          <div class="ans-title">【前言】</div>
+          <p style="margin:0;font-size:0.92em;">按貪污治罪條例第6條之1規定，公務員犯本條例特定罪嫌，於偵查中經檢察官發現本人及其配偶、未成年子女，自涉嫌犯罪時及其後3年內，有財產增加與收入顯不相當者，得命本人就來源可疑之財產提出說明，無正當理由未為說明、無法提出合理說明或說明不實者，處5年以下有期徒刑、拘役或科或併科不明來源財產額度以下之罰金。本罪為本科完全未曾出現、卻極具實務意義之條文，本案應就其構成要件及與第10條之關係析述如下。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【壹、貪污治罪條例第6條之1之構成要件與本案涵攝】<span class="sub-pts">（12分）</span></div>
+
+          <div class="elem-step">
+            <div class="elem-title"><span class="elem-num">①</span>前提罪嫌</div>
+            本罪之適用，以公務員犯貪污治罪條例第6條之1第1項各款所列罪嫌之一為前提。甲所涉嫌之包庇罪（貪污治罪條例第13條）雖非該項第1款「第4條至前條之罪」所直接列舉，惟其行為態樣屬「假借職務上之權力、機會或方法所犯之罪」，仍該當同項第10款之概括規定，故甲仍具備本罪適用之前提資格。
+          </div>
+          <div class="elem-step">
+            <div class="elem-title"><span class="elem-num">②</span>財產異常增加</div>
+            甲自涉嫌包庇犯罪時起至偵查時止之近3年內，名下增加不動產及存款合計逾1,100萬元，核與其警官薪資、獎金等合法收入顯不相當，該當「財產增加與收入顯不相當」之要件。
+          </div>
+          <div class="elem-step">
+            <div class="elem-title"><span class="elem-num">③</span>偵查中命本人說明</div>
+            本罪之說明義務，僅限於「檢察官偵查中」始得發動，本案已由檢察官依法命甲就可疑財產提出說明，程序上核無不合。
+          </div>
+          <div class="elem-step">
+            <div class="elem-title"><span class="elem-num">④</span>未能合理說明</div>
+            甲僅泛稱「炒股及借貸所得」，卻未能提出任何交易紀錄、對帳單或借貸契約等客觀資料佐證，核屬「無法提出合理說明」，該當本罪之構成要件。
+          </div>
+          <div class="law-ref">法規依據：貪污治罪條例第6條之1第1項——公務員犯下列各款所列罪嫌之一，檢察官於偵查中，發現公務員本人及其配偶、未成年子女自公務員涉嫌犯罪時及其後3年內，有財產增加與收入顯不相當時，得命本人就來源可疑之財產提出說明，無正當理由未為說明、無法提出合理說明或說明不實者，處5年以下有期徒刑、拘役或科或併科不明來源財產額度以下之罰金。</div>
+
+          <p style="margin:10px 0 0;font-size:0.92em;">甲不得僅以「炒股及借貸」之空泛說明免責，蓋本罪之立法目的即在於因應貪瀆案件金流隱匿、舉證困難之特性，將財產來源之舉證責任轉換由被告負擔——此為本罪與一般刑事訴訟「無罪推定、檢察官負實質舉證責任」原則之重大例外：被告若不能就可疑財產提出「合理、具體、可供查證」之說明（例如具體交易紀錄、對帳單、契約文件等），即應負本罪之刑事責任，空泛之答辯不足以免責。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【貳、法律效果及與第10條之關係】<span class="sub-pts">（8分）</span></div>
+          <p style="margin:0 0 8px;font-size:0.92em;">甲若始終無法提出合理說明，即應依貪污治罪條例第6條之1論以財產來源不明罪，處5年以下有期徒刑、拘役或科或併科不明來源財產額度以下之罰金——此為第6條之1本身所設之獨立刑責，處罰的是「不說明、無法合理說明或說明不實」此一行為本身。</p>
+          <p style="margin:0;font-size:0.92em;">除上開刑責外，依同條例第10條規定，甲本人及其配偶、未成年子女自涉嫌犯罪時及其後3年內取得之來源可疑財產，經檢察官或法院於偵查、審判程序中命本人證明來源合法而未能證明者，視為其犯罪所得。第10條與第6條之1互為表裡：第6條之1處罰「未說明或說明不實」之行為本身，第10條則進一步將「無法證明來源合法」之財產直接「視為犯罪所得」，據以宣告沒收、追徵，兩者共同構成貪污犯罪資產剝奪機制之核心，甲名下逾1,100萬元之異常財產，除可能使甲另負第6條之1之刑責外，亦有依第10條規定遭沒收、追徵之風險。</p>
+        </div>
+
+        <div class="ans-section">
+          <div class="ans-title">【結語】</div>
+          <p style="margin:0;font-size:0.92em;">綜上，甲不得僅以空泛說明免除責任，其行為該當貪污治罪條例第6條之1財產來源不明罪；若始終無法提出合理說明，除應負該條之刑責外，其異常增加之財產另依同條例第10條規定，有視為犯罪所得而遭沒收、追徵之效果。本案之核心在於掌握「舉證責任轉換」此一特殊設計，並清楚區分第6條之1（處罰不說明之行為）與第10條（沒收財產本身）二者功能上之分工與呼應關係。</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <h3>✏️ 解題／寫法提醒</h3>
+      <ul>
+        <li>這條的最大特色是「舉證責任轉換」，作答時務必明確點出這是「無罪推定原則的例外」，並說明其立法理由（因應貪瀆案件金流隱匿、舉證困難），這是這條考點的靈魂所在，不寫出來等於沒抓到重點。</li>
+        <li>財產是否「顯不相當」，記得要具體比對「異常增加之財產金額」與「同期間之合法收入（薪資、獎金等）」，用數字說話，展現涵攝能力。</li>
+        <li>遇到列舉條文（如本題第6條之1第1項各款前提罪嫌），若前提罪名不在列舉款項內，別急著說不適用，先檢查有沒有第10款之類的概括／兜底規定。</li>
+        <li>第6條之1與第10條是「處罰行為」與「沒收財產」兩件事，答題時建議分開兩段說明，並在結語點出兩者如何互相呼應，展現體系性理解。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">刑法瀆職罪與貪污治罪條例・自製模擬練習題5題合輯｜非官方參考資料・製作：Claude AI・2026/08/05</div>
+</main>
+
+<script>
+  const btns = document.querySelectorAll('.tab-btn');
+  const panes = document.querySelectorAll('.tab-pane');
+  const mainEl = document.getElementById('main');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      panes.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      mainEl.scrollTop = 0;
+    });
+  });
+</script>
+</body>
+</html>
