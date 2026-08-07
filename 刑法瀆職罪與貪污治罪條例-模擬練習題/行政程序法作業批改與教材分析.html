@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>行政程序法作業批改與教材分析・個人彙整50案例</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --bg:#f6f5f1; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66; --line:#e5e2da;
+    --admin:#6a4a8a;  --admin-tint:#f2ecf7;
+    --good:#2f7a4f; --good-tint:#eaf5ee;
+    --warn:#a8761f; --warn-tint:#fbf3e2;
+    --gap:#a33a3a; --gap-tint:#faeaea;
+    --side-w:260px;
+  }
+  *{box-sizing:border-box;}
+  body { font-family: 'Microsoft JhengHei','Noto Sans TC',Arial,sans-serif; background: var(--bg); color: var(--ink); margin: 0; font-size: 15px; line-height: 1.9; --subj:var(--admin); --subj-tint:var(--admin-tint); display:flex; }
+
+  #sidebar{ width:var(--side-w); flex-shrink:0; height:100vh; position:sticky; top:0; overflow-y:auto; background:#fbf9f5; border-right:1px solid var(--line); padding:20px 14px; }
+  .side-title{ font-size:1.02rem; font-weight:700; color:var(--ink); margin:0 6px 4px; line-height:1.4; }
+  .side-sub{ font-size:.72rem; color:var(--sub); margin:0 6px 16px; line-height:1.6; }
+  .tab-btn{ display:block; width:100%; text-align:left; background:#fff; border:1px solid var(--line); border-radius:8px; padding:8px 11px; margin-bottom:6px; cursor:pointer; font-family:inherit; color:var(--ink); transition:background .15s,border-color .15s; }
+  .tab-btn:hover{ background:var(--admin-tint); }
+  .tab-btn .t-name{ font-size:.82rem; font-weight:700; display:block; }
+  .tab-btn .t-sub{ display:block; font-size:.7rem; color:var(--sub); margin-top:2px; }
+  .tab-btn.active{ background:var(--admin); border-color:var(--admin); }
+  .tab-btn.active .t-name{ color:#fff; }
+  .tab-btn.active .t-sub{ color:#e5d8f2; }
+
+  main{ flex:1; min-width:0; height:100vh; overflow-y:auto; padding:24px 30px 60px; }
+  .tab-pane{ display:none; max-width:920px; margin:0 auto; }
+  .tab-pane.active{ display:block; }
+
+  .header { background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--subj); padding: 20px 26px; border-radius: 10px; margin-bottom: 20px; box-shadow:0 1px 3px rgba(0,0,0,.05); }
+  .header h1 { margin: 0 0 6px 0; font-size: 1.25em; color: var(--ink); font-weight:700; }
+  .header .sub { font-size: 0.85em; color: var(--sub); }
+
+  .case-card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; margin-bottom: 22px; overflow: hidden; box-shadow:0 1px 2px rgba(0,0,0,.03); }
+  .case-head { background: var(--admin-tint); color: var(--admin); font-weight: bold; padding: 10px 18px; font-size: 1em; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+  .verdict-chip{ display:inline-block; font-size:.72rem; font-weight:700; padding:2px 10px; border-radius:999px; }
+  .g-good{ background:var(--good-tint); color:var(--good); }
+  .g-warn{ background:var(--warn-tint); color:var(--warn); }
+  .g-gap{ background:var(--gap-tint); color:var(--gap); }
+  .g-none{ background:#eee; color:#888; }
+
+  .case-scenario { padding: 12px 18px; color: var(--sub); font-size: 0.88em; line-height: 1.8; background:#fbfaf7; border-bottom:1px solid var(--line); }
+  .case-scenario b{ color:var(--ink); }
+
+  .orig-answer{ padding:14px 18px; background:#fff; border-bottom:1px dashed var(--line); }
+  .orig-answer h4{ margin:0 0 8px; font-size:.82em; color:var(--sub); font-weight:700; }
+  .orig-answer p{ margin:0 0 8px; font-size:.89em; line-height:1.85; color:var(--ink); }
+  .orig-answer p:last-child{ margin-bottom:0; }
+
+  .verdict-block{ padding:14px 18px; }
+  .verdict-block h4{ margin:0 0 8px; font-size:.82em; color:var(--admin); font-weight:700; }
+  .verdict-block ul{ margin:4px 0; padding-left:20px; }
+  .verdict-block li{ font-size:.88em; margin-bottom:6px; line-height:1.8; }
+  .law-tag{ display:inline-block; background:var(--admin-tint); color:var(--admin); border:1px solid var(--admin); border-radius:4px; padding:0 6px; font-size:.82em; font-weight:600; margin:0 2px; }
+  .fix-note{ background:var(--gap-tint); border-left:3px solid var(--gap); padding:8px 12px; margin-top:8px; font-size:.87em; border-radius:0 6px 6px 0; }
+  .fix-note b{ color:var(--gap); }
+
+  table.overview{ width:100%; border-collapse:collapse; margin:10px 0; font-size:.86em; }
+  table.overview th{ background:var(--admin-tint); color:var(--admin); padding:7px 10px; text-align:left; border-bottom:2px solid var(--admin); }
+  table.overview td{ padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  table.overview tr:nth-child(even) td{ background:#faf9f6; }
+
+  .empty-note{ background:#f3f2ee; border:1px dashed var(--sub); border-radius:8px; padding:12px 16px; color:var(--sub); font-size:.88em; margin-bottom:14px; }
+  .footer { text-align: center; font-size: 0.78em; color: var(--sub); margin-top: 30px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .group-note{ background:var(--admin-tint); border:1px solid var(--admin); border-radius:8px; padding:12px 18px; margin-bottom:18px; font-size:.88em; }
+
+  .model-answer{ background:#eef3fb; border:1px solid #3a6ea5; border-top:3px solid #2c5282; padding:16px 20px; margin-top:0; }
+  .model-answer h4{ margin:0 0 10px; font-size:.88em; color:#2c5282; font-weight:700; }
+  .model-answer h5{ margin:14px 0 6px; font-size:.86em; color:#2c5282; font-weight:700; }
+  .model-answer h5:first-of-type{ margin-top:4px; }
+  .model-answer p{ margin:0 0 10px; font-size:.89em; line-height:1.95; color:var(--ink); text-align:justify; }
+  .model-answer p:last-child{ margin-bottom:0; }
+  .model-answer .q-label{ display:inline-block; background:#2c5282; color:#fff; border-radius:5px; padding:1px 8px; font-size:.78em; font-weight:700; margin-bottom:8px; }
+</style>
+</head>
+<body>
+<div style="position:fixed;top:8px;right:12px;z-index:9999;font-size:12px;color:#9a978d;background:rgba(255,255,255,.85);padding:2px 10px;border-radius:999px;pointer-events:none;">柯醒翰製作</div>
+
+<nav id="sidebar">
+  <div class="side-title">行政程序法作業<br>批改與教材分析</div>
+  <div class="side-sub">個人彙整・消防業務案例50題（46題有作答）・已核對全法175條</div>
+
+  <button class="tab-btn active" data-tab="t0"><span class="t-name">📊 總覽比較</span><span class="t-sub">50題完整度一覽</span></button>
+  <button class="tab-btn" data-tab="g1"><span class="t-name">1｜迴避・當事人・程序調查</span><span class="t-sub">案例1,25,27,28,29,42</span></button>
+  <button class="tab-btn" data-tab="g2"><span class="t-name">2｜送達制度全解</span><span class="t-sub">案例4,9,31,32,33,45</span></button>
+  <button class="tab-btn" data-tab="g3"><span class="t-name">3｜卷宗閱覽・陳情・程序外接觸</span><span class="t-sub">案例10,16,20</span></button>
+  <button class="tab-btn" data-tab="g4"><span class="t-name">4｜職務協助・委託・委任</span><span class="t-sub">案例12,13,26</span></button>
+  <button class="tab-btn" data-tab="g5"><span class="t-name">5｜行政處分之定性與方式</span><span class="t-sub">案例2,3,22,46</span></button>
+  <button class="tab-btn" data-tab="g6"><span class="t-name">6｜附款・行政契約・行政指導</span><span class="t-sub">案例6,7,8,39</span></button>
+  <button class="tab-btn" data-tab="g7"><span class="t-name">7｜陳述意見・聽證・第三人參加</span><span class="t-sub">案例30,36,41</span></button>
+  <button class="tab-btn" data-tab="g8"><span class="t-name">8｜處分理由・教示・救濟保障</span><span class="t-sub">案例14,19,23,34</span></button>
+  <button class="tab-btn" data-tab="g9"><span class="t-name">9｜無效・更正・適用範圍</span><span class="t-sub">案例17,21,35</span></button>
+  <button class="tab-btn" data-tab="g10"><span class="t-name">10｜撤銷・廢止・信賴保護</span><span class="t-sub">案例5,11,24,37,38</span></button>
+  <button class="tab-btn" data-tab="g11"><span class="t-name">11｜期間・時效・程序重開</span><span class="t-sub">案例15,18,40,43,44</span></button>
+  <button class="tab-btn" data-tab="g12"><span class="t-name">12｜未作答四題</span><span class="t-sub">案例47-50</span></button>
+  <button class="tab-btn" data-tab="tStat"><span class="t-name">📈 法條出題頻率統計</span><span class="t-sub">主題分組・單條次數・135條後死角</span></button>
+</nav>
+
+<main id="main">
+
+<div class="tab-pane active" id="t0">
+  <div class="header">
+    <h1>行政程序法作業批改總覽</h1>
+    <div class="sub">50個消防業務案例（阿明系列）・依admin-procedure-law.html全法175條逐條核對・每題40-30分鐘作答時間之考場節奏建議</div>
+  </div>
+  <div class="group-note">
+    <b>核對方式說明：</b>已將您整理的 admin-procedure-law.html（全法175條逐條原文）作為核對基準，逐一比對50題中每一個法條引用是否精確、涵攝是否完整。發現<b>3處明確的法條引用錯誤</b>（案例7、19）、<b>2處引用不夠精確</b>（案例5、34）、以及數處論證完整度可再加強之處，詳見各分組頁籤。
+  </div>
+  <table class="overview">
+    <tr><th>案例</th><th>主題</th><th>核心法條</th><th>評級</th><th>一句話結論</th></tr>
+    <tr><td>1</td><td>迴避申請覆決</td><td>§33</td><td><span style="color:var(--good);font-weight:700">✓優秀</span></td><td>精準抓到「5日內覆決」而非訴願的關鍵陷阱</td></tr>
+    <tr><td>2</td><td>觀念通知・陳述意見未到</td><td>§92,§102,§105Ⅲ</td><td><span style="color:var(--good);font-weight:700">✓正確</span></td><td>觀念通知欠缺法效性論證清楚，並引用保護規範理論</td></tr>
+    <tr><td>3</td><td>警告/命令離開・比例原則</td><td>§92,§7</td><td><span style="color:var(--good);font-weight:700">✓正確</span></td><td>事實行為vs行政處分區辨清楚，比例原則三階段扎實</td></tr>
+    <tr><td>4</td><td>補充送達17歲表妹</td><td>§73</td><td><span style="color:var(--good);font-weight:700">✓正確</span></td><td>辨別事理能力不以成年為必要，論證精準</td></tr>
+    <tr><td>5</td><td>裁罰基準性質・平等原則</td><td>§159Ⅱ②,§6</td><td><span style="color:var(--warn);font-weight:700">⚠待加強</span></td><td>條號正確但涵攝不足，漏未論述行政自我拘束原則</td></tr>
+    <tr><td>6</td><td>附款種類與限制</td><td>§93,§94</td><td><span style="color:var(--good);font-weight:700">✓優秀</span></td><td>條件負擔區辨完整，5大限制論述扎實，本份最佳答案之一</td></tr>
+    <tr><td>7</td><td>行政契約類型・併用禁止</td><td>§135-148</td><td><span style="color:var(--gap);font-weight:700">✗有誤</span></td><td>應引§137雙務契約卻誤引§136；§148引用完全錯誤</td></tr>
+    <tr><td>8</td><td>行政指導界限</td><td>§165,§166Ⅱ</td><td><span style="color:var(--good);font-weight:700">✓正確</span></td><td>定義與拒絕保護引用精確</td></tr>
+    <tr><td>9</td><td>期間計算・郵戳為準</td><td>§48,§49</td><td><span style="color:var(--warn);font-weight:700">⚠待加強</span></td><td>規則正確但自行推算日期與題目設定自相矛盾</td></tr>
+    <tr><td>10</td><td>卷宗閱覽・單獨救濟</td><td>§46,§174</td><td><span style="color:var(--gap);font-weight:700">✗有缺口</span></td><td>完全未處理關鍵反方法條§174，且答錯題外送達內容</td></tr>
+    <tr><td>11</td><td>撤銷・信賴保護・補償</td><td>§117,§8,§120</td><td><span style="color:var(--warn);font-weight:700">⚠可加強</span></td><td>跳過§119信賴不值得保護的檢驗步驟</td></tr>
+    <tr><td>12</td><td>職務協助發動與拒絕</td><td>§19</td><td><span style="color:var(--good);font-weight:700">✓優秀</span></td><td>精準區辨「應拒絕」羈束與「得拒絕」裁量之差異</td></tr>
+    <tr><td>13</td><td>委託民間公會</td><td>§16,§2Ⅲ,§92</td><td><span style="color:var(--good);font-weight:700">✓正確</span></td><td>公告程序、視為機關效力、消極處分論證環環相扣</td></tr>
+    <tr><td>14</td><td>救濟教示・訴願未逾期</td><td>§96Ⅰ⑥,§98Ⅲ</td><td><span style="color:var(--good);font-weight:700">✓優秀</span></td><td>一般期間與例外1年內視為合法架構完整</td></tr>
+    <tr><td>15</td><td>公法請求權時效5年</td><td>§131</td><td><span style="color:var(--warn);font-weight:700">⚠可加強</span></td><td>結論正確，可補時效未中斷之論述</td></tr>
+    <tr><td>16</td><td>陳情不予處理</td><td>§168,§173①②</td><td><span style="color:var(--good);font-weight:700">✓正確</span></td><td>化名與重複陳情兩款事由引用精準</td></tr>
+    <tr><td>17</td><td>無效處分①③</td><td>§111,§110Ⅳ</td><td><span style="color:var(--good);font-weight:700">✓優秀</span></td><td>缺機關名稱、內容不能實現兩事由涵攝清楚</td></tr>
+    <tr><td>18</td><td>行政程序重開</td><td>§128</td><td><span style="color:var(--good);font-weight:700">✓優秀</span></td><td>主觀3個月/客觀5年/新證據三要件層次分明</td></tr>
+    <tr><td>19</td><td>訴願書寄錯機關</td><td>§99（準用§17）</td><td><span style="color:var(--warn);font-weight:700">△條號對・引文需訂正</span></td><td>條號§99方向正確，但自行複述的「十日內移送」文字並非§99原文，誤植成訴願法§61的用語</td></tr>
+    <tr><td>20</td><td>程序外接觸</td><td>§47</td><td><span style="color:var(--good);font-weight:700">✓正確</span></td><td>透明化義務三層次完整</td></tr>
+    <tr><td>21</td><td>刑事偵查排除適用</td><td>§3Ⅲ③</td><td><span style="color:var(--warn);font-weight:700">⚠品質待加強</span></td><td>結論正確但誤引§46Ⅱ⑤，文字破碎需重整</td></tr>
+    <tr><td>22</td><td>法律保留原則</td><td>應補§4</td><td><span style="color:var(--warn);font-weight:700">⚠有缺口</span></td><td>全篇沒有引用任何具體法條</td></tr>
+    <tr><td>23</td><td>明確性原則・理由記載</td><td>§5,§96Ⅰ②</td><td><span style="color:var(--good);font-weight:700">✓正確</span></td><td>兩條並用論證扎實</td></tr>
+    <tr><td>24</td><td>誠信信賴保護</td><td>§8</td><td><span style="color:var(--good);font-weight:700">✓優秀</span></td><td>信賴保護三要件完整套用兩小題</td></tr>
+    <tr><td>25</td><td>職權調查・有利不利注意</td><td>§36</td><td><span style="color:var(--good);font-weight:700">✓正確</span></td><td>§36本身即整合兩層意涵，引用精準</td></tr>
+    <tr><td>26</td><td>權限委任・管轄恆定</td><td>§15,§159</td><td><span style="color:var(--good);font-weight:700">✓正確</span></td><td>正確指出行政規則不能取代法規依據</td></tr>
+    <tr><td>27</td><td>職權開始原則</td><td>§34</td><td><span style="color:var(--good);font-weight:700">✓正確</span></td><td>職權開始為原則、申請開始為例外區辨清楚</td></tr>
+    <tr><td>28</td><td>當事人能力・行為能力</td><td>§21,§22</td><td><span style="color:var(--good);font-weight:700">✓正確</span></td><td>並反映民法成年年齡下修至18歲之最新規定</td></tr>
+    <tr><td>29</td><td>職權調查各項權限</td><td>§36-43</td><td><span style="color:var(--warn);font-weight:700">⚠可加強</span></td><td>誤把§38歸類為「要求提供資料權」（應為§40）</td></tr>
+    <tr><td>30</td><td>聽證vs公聽會</td><td>§107,§109</td><td><span style="color:var(--good);font-weight:700">✓正確</span></td><td>對象/功能/適用/效力四點比較表格清楚</td></tr>
+    <tr><td>31</td><td>寄存送達生效時點</td><td>§74</td><td><span style="color:var(--warn);font-weight:700">⚠見解分歧</span></td><td>條文未明訂確切生效時點，屬實務見解灰色地帶</td></tr>
+    <tr><td>32</td><td>公示送達要件・生效</td><td>§78,§81</td><td><span style="color:var(--good);font-weight:700">✓正確</span></td><td>20日生效期間引用精確</td></tr>
+    <tr><td>33</td><td>留置送達</td><td>§73Ⅲ,§76</td><td><span style="color:var(--good);font-weight:700">✓正確</span></td><td>拒絕簽收不影響送達效力論證清楚</td></tr>
+    <tr><td>34</td><td>不記明理由例外</td><td>§96,§97</td><td><span style="color:var(--warn);font-weight:700">⚠可加強</span></td><td>自行改寫條文非官方原文，應直接引§97①</td></tr>
+    <tr><td>35</td><td>顯然錯誤更正</td><td>§101,§111</td><td><span style="color:var(--good);font-weight:700">✓正確</span></td><td>與無效事由區辨清楚</td></tr>
+    <tr><td>36</td><td>陳述意見瑕疵補正</td><td>§102,§114</td><td><span style="color:var(--good);font-weight:700">✓優秀</span></td><td>補正時點法條依據精確</td></tr>
+    <tr><td>37</td><td>撤銷vs廢止・事實變更</td><td>§117,§123④</td><td><span style="color:var(--warn);font-weight:700">⚠款次需微調</span></td><td>列舉§123款次時多算一款，需對照原文校對</td></tr>
+    <tr><td>38</td><td>不當得利返還</td><td>§127</td><td><span style="color:var(--good);font-weight:700">✓正確</span></td><td>書面處分確認返還範圍程序要求精確</td></tr>
+    <tr><td>39</td><td>和解契約</td><td>§136</td><td><span style="color:var(--good);font-weight:700">✓正確</span></td><td>三要件套用精準，與案例7形成對照</td></tr>
+    <tr><td>40</td><td>法規命令預告程序</td><td>§154</td><td><span style="color:var(--good);font-weight:700">✓優秀</span></td><td>四款公告事項完整引用</td></tr>
+    <tr><td>41</td><td>第三人參加程序</td><td>§23</td><td><span style="color:var(--good);font-weight:700">✓優秀</span></td><td>補充保護規範理論與裁量收縮至零，理論深度最高</td></tr>
+    <tr><td>42</td><td>言詞申請・一次告知補正</td><td>§35,§165,§51</td><td><span style="color:var(--warn);font-weight:700">⚠citation牽強</span></td><td>§51用來支撐一次性告知稍嫌牽強</td></tr>
+    <tr><td>43</td><td>回復原狀</td><td>§50</td><td><span style="color:var(--good);font-weight:700">✓正確</span></td><td>10日期限引用準確</td></tr>
+    <tr><td>44</td><td>處理期間2個月</td><td>§51</td><td><span style="color:var(--good);font-weight:700">✓正確</span></td><td>未訂期間及延長一次規定完整</td></tr>
+    <tr><td>45</td><td>送達代收人</td><td>§83</td><td><span style="color:var(--good);font-weight:700">✓正確</span></td><td>效力引用精確</td></tr>
+    <tr><td>46</td><td>言詞處分・書面化要求</td><td>§95</td><td><span style="color:var(--good);font-weight:700">✓正確</span></td><td>兩項引用精確</td></tr>
+    <tr><td>47</td><td>法規命令無效事由</td><td>§158</td><td><span style="color:#888">未作答</span></td><td>教材架構已附，供補寫參考</td></tr>
+    <tr><td>48</td><td>重大行政計畫確定程序</td><td>§164</td><td><span style="color:#888">未作答</span></td><td>教材架構已附，供補寫參考</td></tr>
+    <tr><td>49</td><td>行政指導明示・書面化</td><td>§167</td><td><span style="color:#888">未作答</span></td><td>教材架構已附，供補寫參考</td></tr>
+    <tr><td>50</td><td>行政契約準用民法</td><td>§149</td><td><span style="color:#888">未作答</span></td><td>教材架構已附，供補寫參考</td></tr>
+  </table>
+  <div class="group-note" style="margin-top:20px;">
+    <b>3個最重要的發現（值得全部重讀）：</b><br>
+    ① <b>案例7</b>：情境是消防局與民間救護公司互負給付義務（補助換出勤），這是典型「雙務契約」應引<span class="law-tag">§137</span>，但答案誤引「和解契約」<span class="law-tag">§136</span>（§136專用於事實或法律關係不明確時，本案並無此要素）；第二問「契約與處分併用禁止」更是誤引<span class="law-tag">§148</span>（§148實際規定的是「約定自願接受執行」，與此完全無關）。可對照<b>案例39</b>——那才是真正符合§136和解契約情境的案例。<br>
+    ② <b>案例10</b>：文件裡留著一句「+174條」的待辦註記，顯示寫作者當下已經意識到該補<span class="law-tag">§174</span>（程序中決定不得單獨救濟原則）卻沒有真正寫進論證，這是完成度最高但最可惜的一題。<br>
+    ③ <b>案例19</b>（已修正判定）：情境是消防局裁處書漏未教示受理機關，致阿明誤將訴願書寄到無管轄權之區公所——§99第2項明文「其餘準用第17條之規定」，且§99第1項要件「因不可歸責於申請人之事由，於首次向無管轄權機關提出」與本案事實完全吻合，答案引用<span class="law-tag">§99</span>條號方向正確；真正的問題是自行複述的「該機關應於十日內移送…」這段文字並非§99官方原文（§99本身沒有規定移送天數，僅第2項準用§17「應即移送」），反而是誤把訴願法§61的具體用語安在§99頭上，屬於「條號對、內容抄錯」而非條號誤植。
+  </div>
+</div>
+
+<div class="tab-pane" id="g1">
+  <div class="header"><h1>分組1｜迴避・當事人・程序調查</h1><div class="sub">案例1、25、27、28、29、42・對應行政程序法第一章總則（迴避、當事人能力、程序開始、調查證據各節）</div></div>
+
+  <div class="case-card">
+    <div class="case-head">案例一・不服迴避申請駁回如何救濟 <span class="verdict-chip g-good">✓優秀</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明認為消防局承辦員要求補正圖說係蓄意刁難，申請該員迴避；消防局以其僅屬臆測而駁回。<br><b>問：</b>(一)消防局及承辦員應如何處理迴避申請？(二)阿明不服駁回決定應如何救濟？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>(一）依行政程序法第33條規定，公務員如有法定應自行迴避之事由，或有具體事實足認其執行職務有偏頗之虞者，當事人得申請迴避。阿明應向承辦員所屬之消防局提出迴避申請，並舉出迴避原因及具體事實，作適當之釋明。被申請迴避之承辦員得提出意見書，而在消防局就迴避申請作成准許或駁回決定前，承辦員原則上應停止行政程序，但有急迫情形者，仍得為必要處置。</p>
+      <p>本案阿明僅以承辦員要求補正圖說，即認為承辦員蓄意刁難，若未提出其他具體事實或證據，通常不足以認定承辦員有偏頗之虞。因此，消防局得審查其申請後作成駁回決定。</p>
+      <p>（二）如消防局認為阿明未提出具體事證，其主張僅屬臆測，因而駁回其迴避申請，阿明如不服該駁回決定，依行政程序法第33條第3項規定，應於駁回決定後「5日內」提請上級機關覆決，而非直接提起訴願。上級機關除有正當理由外，應於受理後「10日內」為適當處置。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li>經核對<span class="law-tag">§33Ⅲ</span>原文「不服行政機關之駁回決定者，得於五日內提請上級機關覆決，受理機關除有正當理由外，應於十日內為適當之處置」，答案完全精準對應，數字細節（5日內覆決、10日內處置）無誤。</li>
+        <li>精準抓到本題最大陷阱——不服迴避駁回是向<b>上級機關聲請「覆決」</b>，而非提起訴願，這是最容易被誤答的地方，本答案正確迴避了這個陷阱。</li>
+        <li>(一)的涵攝也做得好：僅以「要求補正」推論「蓄意刁難」缺乏具體事證，正確連結到§33Ⅰ②「具體事實足認有偏頗之虞」的門檻不足。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例二十五・拒絕斟酌有利證據 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>消防局裁罰阿明「未依規定維護消防設備」，僅蒐集警報器未鳴響之不利證據，對阿明提出的停電監視器畫面（有利證據）拒絕斟酌。<br><b>問：</b>(一)承辦人拒絕斟酌有利證據是否合法？(二)行政機關調查事實有何具體要求？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>(一) 承辦人拒絕斟酌阿明提出的有利證據，是否符合《行政程序法》的規定？<br>承辦人之作法不符合《行政程序法》之規定。依《行政程序法》第36條規定，行政機關對於行政程序中的事實認定，應依職權調查證據，不受當事人主張之拘束，且對當事人有利及不利之事項，均應一律注意。此即行政程序法所採之「職權調查原則」及「客觀調查義務」。</p>
+      <p>本案中，消防局雖查得火災警報器未鳴響之事實，作為認定阿明未依規定維護消防安全設備之依據。然而，阿明提出監視器畫面，證明當日係因台電外部大規模停電，且備用電源恰巧耗盡，並非平時疏於保養所致，該證據足以影響違規事實之認定，屬於對阿明有利的重要證據。</p>
+      <p>惟承辦人表示「我只負責找你違規的證據，對你有利的證據你自己去跟法官說」，顯示其僅蒐集不利證據，而拒絕審酌有利證據，已違反行政程序法第36條所要求之職權調查義務及客觀、公正原則，使行政處分有事實調查不完整之瑕疵，依法可能構成違法行政處分。</p>
+      <p>（二）《行政程序法》針對行政機關調查事實時，有何具體要求？機關應對事實調查訂有下列要求：<br>1、依職權調查證據：行政機關應主動蒐集、調查與案件有關之事實及證據，不得消極等待當事人提出證明，亦不得僅依單方主張作成處分。<br>2、兼顧有利與不利事項：行政機關應對當事人有利及不利之證據一併調查與審酌，不得僅蒐集不利證據而忽略有利證據，以維持行政程序之客觀、公正。<br>3、完整認定事實並說明理由：行政機關應綜合全部證據認定事實，若對當事人提出之證據不予採信，亦應於行政處分中具體說明理由，使當事人了解行政機關之判斷依據，並利於後續救濟。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§36</span>原文本身已同時包含「不受當事人主張拘束」與「有利不利一律注意」兩層意涵（「行政機關應依職權調查證據，不受當事人主張之拘束，對當事人有利及不利事項一律注意」），答案引用精準，不算重複贅引。</li>
+        <li>結論「使行政處分有事實調查不完整之瑕疵」用詞穩健，沒有過度斷言違法，展現法律論述的分寸感。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例二十七・職權開始原則 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>消防局接獲密報阿明違法囤積爆竹煙火，主動立案稽查，阿明抗議機關未經其同意不得啟動程序。<br><b>問：</b>(一)阿明主張是否正確？(二)行政程序開始採何種原則？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>(一）阿明的主張不正確。主要原因：我國行政程序法規定，行政程序的開始原則上由行政機關依職權主動發動。本案適用：消防局接獲檢舉，得知阿明涉嫌在山區違法囤積大量爆竹煙火，此行為已嚴重危害公共安全。法律效果：消防局基於維護公共安全之公益目的，有權利且有義務主動立案並派員稽查，完全不需經過阿明的申請或同意。</p>
+      <p>（二）我國《行政程序法》對於行政程序的開始，同時採取以下兩種原則，但以職權開始原則為常態：<br>１、職權開始原則（主要原則）：法源依據《行政程序法》第34條前段規定：「行政程序之開始，由行政機關依職權定之。」核心概念：行政機關為了達成行政目的、維護公共利益，可以主動發動行政程序（例如：主動稽查違章建築、查緝違法爆竹、進行環境污染抽檢等）。<br>２、申請開始原則（例外原則）：法源依據《行政程序法》第34條但書規定：「但法令另有規定者，依其規定。」核心概念：只有在法律另有明確規定時，行政程序才必須經由人民的申請才會開始（例如：人民申請建築執照、申請核發福利津貼、申請專利等）。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§34</span>本文與但書引用精準，職權開始（原則）與申請開始（例外）的區辨清楚。</li>
+        <li>小瑕疵：條號打成簡體「条」而非繁體「條」，屬於輸入法混用的格式問題，非法律錯誤，正式作答時建議留意全篇字體一致。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例二十八・當事人能力與行為能力 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明16歲兒子小明未經同意自行向消防局申請核發合格證明，承辦人要求須由法定代理人辦理。<br><b>問：</b>(一)小明是否具當事人能力？(二)小明是否具行為能力？要求法代代辦是否合法？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>（一）當事人能力：指得參與行政程序成為當事人之法定資格。依行政程序法第21條之規定，有行政程序之當事人能力者如下：1.自然人 2.法人 3.非法人之團體設有代表人或管理人者 4.行政機關 5.其他依法律規定得為權利義務之主體者。依上述之規定小明具有當事人能力。</p>
+      <p>（二）行政程序之行為能力：指得有效從事或接受行政程序行為之資格。依行政程序法第22條之規定，有行政程序之行為能力者如下：1.依民法規定，有行為能力之自然人（通常指滿18歲的成年人）。2.法人。3.非法人之團體，由其代表人或管理人為行政程序行為者。4.行政機關，由首長或其代理人、授權之人為行政程序行為者。5.依其他法律規定者。無行政程序行為能力者（如未成年人、受監護宣告者），須由法定代理人代為行政程序行為。依上述內容小明不具有行政程序之行為能力，故消防員要求其法定代理人代為辦理是為合法。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§21</span>五款、<span class="law-tag">§22</span>五款皆完整正確列出，且「通常指滿18歲的成年人」正確反映民法2023年起成年年齡下修至18歲的最新規定，展現與時俱進的細心。</li>
+        <li>當事人能力（能不能當當事人）與行為能力（能不能自己做程序行為）兩層次區辨清楚，是很典型也答得很扎實的一題。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例二十九・職權調查與Google地圖比對 <span class="verdict-chip g-warn">⚠可加強</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明申請「防火避難設施改善計畫」聲稱周邊淨空，承辦人透過Google地圖及實地勘查發現周邊被違建搭滿。阿明主張機關只能依申請書面資料審查。<br><b>問：</b>(一)阿明主張是否成立？(二)機關調查證據具備何種權限？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>（一）阿明之主張在《行政程序法》上不成立。1.採職權調查原則（職權探知主義）：依《行政程序法》第36條規定，行政機關應依職權調查事實，不受當事人陳述及提出證據之拘束。行政程序異於民事訴訟之當事人進行主義，行政機關為確保行政行為之合法性與公平性，負有主動發現真實之義務。2.落實有利與不利一體注意原則：依本法第9條規定，行政機關就該管行政程序，應於當事人有利及不利之情形，一律注意。機關審查申請案時，不得僅憑當事人單方書面陳述，仍須客觀查證真實狀況。3.小結：消防局承辦人運用Google地圖比對並進行實地勘查，係依職權發現真實之合法履職行為。阿明主張機關「僅能依其提出之書面資料審查」，顯然違反本法第36條之規定，故其主張不成立。</p>
+      <p>（二）行政機關調查事實及證據之權限：依《行政程序法》第一章第六節（第36條至第43條）規範，行政機關具備下列調查權限與手段：1.自由蒐集證據權（§36）：不受當事人陳述或舉證之拘束，得主動運用各式合法管道（如網路圖資、現場勘驗等）蒐集事證。2.要求提供資料權（§38、§40）：基於調查必要，得要求當事人或第三人提供必要之文書、資料或物件。3.實施現場勘驗權（§42）：得由承辦人員親赴現場實地勘查，並製作紀錄或筆錄。4.通知陳述意見權（§39）：基於調查必要，得以書面通知相關人員至指定場所陳述意見或提出說明。5.選定鑑定人權（§41）：遇有專業或技術性事項，得選定適當之專家實施鑑定。6.自由心證與事實認定權（§43）：得斟酌全部調查結果，依論理與經驗法則判斷事實真偽，並載明理由告知當事人。結論：消防局承辦人實施現場勘驗與圖資比對，係落實本法第36條與第42條之法定職權。阿明之抗議缺乏法律依據，行政機關得依法據實認定事實並作後續處置。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li>整體架構完整，六項調查權限（§36自由蒐證/§39通知陳述/§40要求提供資料/§41鑑定/§42勘驗/§43自由心證）幾乎涵蓋整節。</li>
+        <li><b>小瑕疵：</b>把<span class="law-tag">§38</span>歸類為「要求提供資料權」並與§40並列，但經核對§38原文「行政機關調查事實及證據，必要時得據實製作書面紀錄」，其實是<b>調查紀錄的製作規定</b>，跟「要求提供文書資料」（§40的內容）是不同的權限。建議拆開：§38獨立列為「調查紀錄製作權」，§40才是「要求提供資料權」，兩者不宜合併列在同一項下。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例四十二・口頭申請與一次告知補正 <span class="verdict-chip g-warn">⚠citation稍嫌牽強</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明口頭向消防分隊申請補習班消防安全設備會勘，值班人員要求其回去自寫「公文」再送，否則不受理。<br><b>問：</b>(一)口頭申請是否合法？(二)拒絕受理是否正確？消防人員應如何處理？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文（節錄）</h4>
+      <p>阿明以「口頭」方式提出消防安全設備會勘申請，在一般《行政程序法》上屬合法之申請形式；惟就《消防法》等特別法規而言，尚欠缺法定之實質要件。依《行政程序法》第35條規定：「當事人向行政機關提出申請，得以書面或口頭為之。以口頭提出者，行政機關應作成紀錄，向申請人朗讀或使閱覽後，由其簽名或蓋章。」我國行政程序法對於人民向機關提出申請，原則上採「方式自由原則」。</p>
+      <p>依《消防法》第10條及中央主管機關訂定之《建築物消防安全設備圖說審查及竣工查驗作業要點》規定，供公眾使用建築物之消防安全設備於竣工或變更使用時，應向當地消防機關申請會勘查驗，並應檢附經合格消防設備師（士）測試簽證之竣工圖說、測試報告書及相片等專業文件。阿明以口頭方式提出申請，在程序法層面上「形式合法」；但因未檢附特別法所規定的法定表件與專業圖說，該申請在內容上屬於「要件不備（有瑕疵）之申請」。</p>
+      <p>值班人員拒絕受理並要求阿明回去「寫公文」並不正確：民眾向行政機關申請作成行政處分，依法使用的是「申請書」，而非「公文」。消防人員依法應落實「行政收件、行政指導與限期補正」等程序：1.落實口頭申請之法定紀錄（行政程序法第35條）；2.行使行政指導與說明義務（行政程序法第165條），向阿明說明需委託合格消防設備師/士協助繪製竣工圖說；3.開立一次告知單並限期補正（行政程序法第51條）；4.補正後排程實質會勘。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§35</span>方式自由原則、<span class="law-tag">§165</span>行政指導引用精確。</li>
+        <li><b>值得留意的引用瑕疵：</b>用<span class="law-tag">§51</span>來支撐「開立一次告知單並限期補正」的做法，但經核對§51原文，該條規範的其實是<b>「機關處理期間」</b>的長度（未訂者為2個月），並非「一次性告知補正缺漏文件」的具體操作規範。「一次性告知、不得分次要求補件」比較接近行政效能一般原則或便民服務精神下的行政慣例，用§51直接當作法源稍嫌牽強。若要更精確，可改用「行政機關處理人民申請案件應本於行政效能原則，避免程序拖延」的一般性論述，而非把它掛在§51條文本身上。</li>
+        <li>整體回答很有實務感，把消防機關的正確處理SOP寫得很具體（作成紀錄→行政指導→一次告知補正→排程會勘），這個流程化寫法值得保留，只是條號依據需要微調。</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-pane" id="g2">
+  <div class="header"><h1>分組2｜送達制度全解</h1><div class="sub">案例4、9、31、32、33、45・對應行政程序法第一章第十一節送達（§67-91）</div></div>
+
+  <div class="case-card">
+    <div class="case-head">案例四・補充送達與17歲表妹代收 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>裁處書送達阿明住所時因外出不在，由寄住之17歲表妹小惠代收，小惠疏未轉交。<br><b>問：</b>(一)交由17歲表妹代收是否合法送達？(二)阿明以未親自收受、表妹未成年為由主張送達不合法有無理由？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>(一)是發生合法送達的效力，因1.阿明與小惠為同居人（係指與應受送達人同居一處共同生活而言、不以具有親屬關係或永久共同生活為必要）。2.小惠應已有辨明事理之能力，雖小惠為17歲，但依行政程序法73條規定，有無辨別事理能力不以代收人已成年而具有完全行為能力為必要。</p>
+      <p>(二)阿明主張應無理由，因1.阿明雖表示未親自收受，但依行政程序法73條補充送達之規定，於應送達處所不遇會晤應收送達人時，得將文書賦予有辨別事理能力之同居人、受僱人或應送達處所之接收郵件人員。2.阿明表示小惠未成年，小惠雖未達法定之成年年齡，但依行政程序法73條所定，其應已有辨別事理之能力，因小惠已讀高中2年級。結論，阿明雖未親自收受，但其同居人小惠雖未成年卻已具有辨別事理之能力，故郵務人員將裁決書交由小惠轉達小明是可以的，故1.送達效力為合法的、2.阿明主張無理由。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li>經核對<span class="law-tag">§73Ⅰ</span>原文「於應送達處所不獲會晤應受送達人時，得將文書付與有辨別事理能力之同居人、受雇人或應送達處所之接收郵件人員」，答案的論證完全對應，「辨別事理能力」不以成年為要件的重點掌握精準。</li>
+        <li>「同居人」的定義補充（不以親屬關係或永久共同生活為必要）是超出條文本身的學理補充，展現對概念的深入理解，值得肯定。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例九・期間末日計算與郵戳為準 <span class="verdict-chip g-warn">⚠待加強</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明115年10月1日（週四）簽收改善通知單，須於文到次日起20日內完成改善；第20天恰逢星期日，隔天星期一為國定假日，阿明於假期後星期二掛號郵寄改善計畫，消防局星期三收到。<br><b>問：</b>(一)20日改善期限末日如何計算？(二)阿明提出時間應以何日為準？是否逾期？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>(一) 阿明的20日的改善期限末日應以《行政程序法》第48條規定：起始日不計入。故阿明於115年10月1日（週四）簽收通知單，自「次日」（10月2日，週五）起算第1天。20日之計算：10月2日起算第20天，剛好落在10月21日（週三），但依題目給的情境設定，第20天為星期日，且隔天星期一適逢國定假日。故再依《行政程序法》第48條第4項規定，期間之末日為星期日、國定假日或其他休息日者，以該日之「次日」為期間之末日。所以原星期日的休息日與星期一的國定假日皆為休息日，因此阿明的改善期限末日應順延至假期後的「星期二」。</p>
+      <p>(二) 依《行政程序法》第49條之規定，基於法規之申請或補件，以掛號郵寄方式向行政機關提出者，以交郵當日之郵戳為準，而非以機關收受日為準。因此，阿明於星期二將信件交由郵局掛號寄出，應以郵戳日期的時間為準，故阿明並未逾期。雖然消防局於星期三才收到信件，但不影響其在法定期限內完成提出之事實。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§48Ⅳ</span>末日遇假日順延、<span class="law-tag">§49</span>郵戳為準兩項規則引用正確，結論（未逾期）也正確。</li>
+        <li class="fix-note"><b>文字內部矛盾：</b>答案先自行推算出「10月2日起算第20天，剛好落在10月21日（<b>週三</b>）」，緊接著卻說「依題目給的情境設定，第20天為<b>星期日</b>」——同一句話裡出現兩個互相矛盾的星期幾判斷！正式作答時，題目已經明確設定「第20天為星期日」這個前提，就直接採用即可，不需要自己重新計算日期並得出一個與題目設定衝突的星期數，這樣反而會讓閱卷者懷疑你不確定規則怎麼用。建議刪除「剛好落在10月21日（週三）」這句自行推算的文字，直接從題目給定的「第20天為星期日」出發即可。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例三十一・寄存送達之要件與生效 <span class="verdict-chip g-warn">⚠見解分歧需留意</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明出國一個月，郵差無法會晤本人也無同居人受僱人可代收，將裁處書寄存於當地警察派出所並張貼通知。阿明回國後主張未實際收到，訴願期限不應起算。<br><b>問：</b>(一)此送達方式稱為何？(二)裁處書是自實際領取日或寄存之日發生效力？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>（一）依據《行政程序法》第74條第1項規定，應受送達人住居所、事務所或營業所均無法會晤應受送達人，亦無受領文書之同居人或受僱人時，得將文書寄存於送達地之地方自治團體機關或警察機關，並作送達通知書兩份，一份黏貼於應受送達人住居所、事務所或營業所門首，另一份交由鄰居轉交或置於該送達處所適當位置，即完成寄存送達。郵差將文書交給警察派出所並張貼通知的行為，稱為「寄存送達」。</p>
+      <p>（二）依據行政程序法第74條第2項規定，寄存機關就交付文書之日起，即發生送達效力，不以應受送達人實際前往領取或知悉文書內容為必要。因此，阿明雖主張因出國未實際收到而不應起算期限，在法律上並不可採；其提起訴願的30天法定不變期間，仍應自「寄存之日」起算。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li>寄存送達的操作方式（寄存機關、通知書兩份、黏貼門首）引用<span class="law-tag">§74Ⅰ</span>正確。</li>
+        <li class="fix-note"><b>提醒（非錯誤，而是條文本身的灰色地帶）：</b>經核對§74原文，第2項規定的其實是「由郵政機關為送達者，得將文書寄存於送達地之郵政機關」，第3項才是「寄存機關自收受寄存文書之日起，應保存三個月」——<b>條文本身並沒有一項明確規定「自寄存之日起即發生送達效力」的確切時點</b>（不像公示送達§81有明訂「經20日發生效力」）。「寄存之日即生效力」是實務與學說的通說見解，但並非§74Ⅱ的條文原文內容，這點答案引用的項次（第2項）與其複述的內容對不上。建議作答時改用「實務通說認為」的措辭來表述生效時點，而非斷言為條文明文規定，這樣即使遇到不同見解的閱卷老師也比較不會被扣分。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例三十二・公示送達要件與生效 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明的瓦斯行遭重罰，阿明搬家且戶籍遷出行蹤成謎，裁處書無法送達，消防局將裁處書黏貼於機關公告欄。<br><b>問：</b>(一)得採何種送達制度？(二)公告後經多少日發生效力？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>依《行政程序法》規定，受送達人有應為送達之處所不明等情形時，行政機關得採公示送達。本案阿明搬離原住所並遷出戶籍，行蹤不明，致消防局無法完成一般送達，因此得依法採公示送達方式，將裁處書公告於機關公告欄，以完成送達程序。又依《行政程序法》規定，公示送達自公告日起滿20日發生送達效力。因此，本案公告滿20日後，即生合法送達之效力，即使阿明未實際閱覽公告，法律上仍視為已完成送達。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li>經核對<span class="law-tag">§78Ⅰ①</span>「應為送達之處所不明者」及<span class="law-tag">§81</span>「經二十日發生效力」，答案結論完全正確。</li>
+        <li>可以再精進之處：答案沒有點出具體法條號（只寫「依行政程序法規定」），若能明確標出§78、§81的條號，會讓答案更專業扎實，這是相對於其他答案（如案例31、33都有明確標號）稍微簡略的地方。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例三十三・留置送達之適用 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>郵差交付舉發通知單，阿明大喊「我拒收！我不簽名！」轉身鎖門，郵差將通知單塞入信箱後離開。<br><b>問：</b>(一)此為何種送達方式？(二)阿明主張未簽收送達不合法，是否成立？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>（一）阿明拒絕收領並離開，郵差將文書留在現場的行為，屬於「留置送達」。依《行政程序法》第73條第3項規定，應受送達人無正當理由拒絕收領文書時，送達人得將文書留置於應送達處所，以為送達。故本題，郵差已親自將消防局的「舉發違反消防法案件通知單」交付阿明，但阿明明確表示「我拒收！我不簽名！」，且隨即轉身進屋鎖門，顯然係無正當理由拒絕收領。因此，郵差將文書留置於阿明住處，屬於《行政程序法》第73條所規定的「留置送達」。</p>
+      <p>（二）阿明主張沒有簽收，所以送達不合法，原則上不成立。《行政程序法》第76條第一項及第二項規定，送達證書如遇受送達人拒絕簽名或蓋章，送達人應記明拒絕的事由，並不表示受送達人拒絕簽收後，送達即當然無效。本題中，阿明已經明確拒絕收領，郵差依法將文書留置於送達處所，即可發生送達的法律效果。因此，「沒有簽名」本身並不會使送達當然失效。故阿明事後僅以「我沒有簽收」為理由主張送達不合法，並無理由。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§73Ⅲ</span>留置送達要件、<span class="law-tag">§76Ⅱ</span>拒絕簽名不影響效力，兩條引用皆精確對應原文。</li>
+        <li>三點結論式收尾清楚有力，是本組答案中結構最俐落的一份。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例四十五・指定送達代收人 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明因常出國，向消防局書面指定律師朋友小李為送達代收人，一個月後郵差將裁處書交小李簽收。<br><b>問：</b>(一)指定代收人是否有效？(二)交小李簽收當天是否算合法送達給阿明？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>（一）是，具有法律效力。理由：依據《行政程序法》第83條第1項規定：「當事人或代理人經指定送達代收人，向行政機關陳明者，應向該代收人為送達。」阿明已正式透過書面向消防局陳明指定小李為送達代收人，完全符合法定程序，故該指定行為合法有效。</p>
+      <p>（二）是，當天即算合法送達給阿明。理由：承上所述，既然當事人已合法指定送達代收人，行政機關依法即「應」向該代收人送達。因此，當郵差將裁處書交由小李簽收的當下，在法律效力上就等同於已經合法送達給阿明本人，送達效力於簽收當日發生。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§83Ⅰ</span>引用精確，論證簡潔有力。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="group-note">
+    <b>本組整體觀察：</b>送達制度是這份彙整裡答得最穩定的一類（4/6正確、2/6屬於「規則對但表述可以更嚴謹」的等級），沒有出現條號完全誤植的情形。案例9的「自我矛盾式推算」與案例31的「生效時點條文依據」是本組最值得回頭訂正的兩處細節。
+  </div>
+</div>
+
+<div class="tab-pane" id="g3">
+  <div class="header"><h1>分組3｜卷宗閱覽・陳情・程序外接觸</h1><div class="sub">案例10、16、20・對應§46卷宗閱覽、§168-173陳情、§47程序外接觸</div></div>
+
+  <div class="case-card">
+    <div class="case-head">案例十・閱覽卷宗之權利與救濟限制 <span class="verdict-chip g-gap">✗有缺口（本份彙整最可惜的一題）</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明的店面火災後，向消防局申請閱覽卷宗，特別指明要看「火災調查鑑定書的內部擬稿」及「其他關係人的訪談草案」，消防局僅提供部分現場照片，拒絕提供內部擬稿。<br><b>問：</b>(一)阿明有無申請權？拒絕合法嗎？(二)得否單獨對拒絕決定提起救濟？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p><b>（一）閱覽卷宗問題</b><br>阿明是否有權申請閱覽？有。依《行政程序法》第46條，當事人或利害關係人得申請閱覽、抄寫、複印或攝影相關資料。阿明為火災受災承租人，對火災原因調查結果及後續求償具有法律上利害關係，具申請閱覽資格。<br>消防局拒絕提供內部擬稿是否合法？合法。火災鑑定書內部擬稿、訪談草案屬行政機關作成決定前之準備作業文件，涉及內部意見形成及他人資料，依《行政程序法》第46條得限制閱覽，因此拒絕提供並無違法。</p>
+      <p><b>（二）是否得單獨提起行政救濟？</b><br>依《行政程序法》第46條規定，當事人或利害關係人對於行政程序資料具有閱覽、抄寫、複印或攝影之申請權。消防局受理後，若作成拒絕提供特定資料之決定，即是對阿明申請閱覽權利所為之具體判斷。該拒絕決定具有以下特徵：由行政機關作成（係消防局依法行使公權力所為之決定）；針對具體事件（係針對阿明申請閱覽特定火災調查卷宗所為）；直接影響人民權利（該決定使阿明無法取得所申請之資料，限制其閱覽卷宗之權利）。因此，該拒絕閱覽決定具有行政處分性質，阿明得就此單獨提起訴願；若對訴願決定不服，亦得提起行政訴訟。雖然火災調查程序本身並非對阿明作成行政處分，但「拒絕閱覽卷宗」這個獨立決定，已對外發生法律效果，故具有可爭訟性。不過，若消防局僅提供部分資料，而對內部擬稿之拒絕屬於單純行政內部作業或尚未對外發生法律效果，則可能不具行政處分性；但本題中消防局已對阿明的申請作成明確拒絕決定，故應認為具有行政處分性。<br><i style="color:var(--gap);">（文件原文在此處留有一句手寫註記：「+174條」）</i></p>
+      <p><b>（三）送達方式問題</b><br>處所不明時如何送達？依《行政程序法第78條第1項》規定，受送達人住居所、事務所等處所不明時，行政機關得採用公示送達方式。公示送達何時生效？依《行政程序法第81條》規定公示送達自公告之日起，經20日發生效力。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li>(一) <span class="law-tag">§46</span>閱覽權及拒絕事由（決定前之擬稿或準備作業文件）引用正確，內部擬稿本屬<span class="law-tag">§46Ⅱ①</span>明文列舉的拒絕事由，涵攝清楚。</li>
+        <li class="fix-note"><b>最重要的缺口：</b>(二)完全沒有處理本題最關鍵的反方法條<span class="law-tag">§174</span>——「當事人或利害關係人不服行政機關於行政程序中所為之決定或處置，僅得於對實體決定聲明不服時一併聲明之」。「拒絕閱覽卷宗」正是一個典型的「程序中決定」，依§174原則上<b>不得單獨救濟</b>，必須等到後續實體處分（如火災調查結果或裁罰處分）作成後一併聲明不服，除非能論證其屬於§174但書「本法或其他法規另有規定」的例外（例如主張閱覽卷宗權本身已構成一個獨立對外發生效力的具體決定）。答案完全沒有討論§174，直接論證「拒絕決定具行政處分性質可單獨救濟」，等於迴避了最需要被正面處理的爭點——而且文件裡自己留了一句「+174條」的待辦註記，顯示寫作當下其實已經意識到這個缺口，卻沒有真的補上，非常可惜。</li>
+        <li class="fix-note"><b>離題內容：</b>(三)「送達方式問題」完全是題目沒有問到的內容——本案事實裡沒有任何「處所不明」的情節，公示送達與本案毫無關聯。在40-30分鐘的作答時間裡回答題目沒問的內容，等於排擠了原本該用來補強§174論證的時間，這是本題最需要調整的地方：時間應該花在正面處理§174，而不是自行延伸到題目沒問的送達方式。</li>
+      </ul>
+    </div>
+    <div class="model-answer">
+      <h4>📝 國考標準示範解答</h4>
+      <h5>(一) 阿明有無申請權？拒絕合法嗎？</h5>
+      <p><span class="q-label">1. 閱覽卷宗之權利主體及範圍</span><br>按行政程序法第46條第1項：「當事人或利害關係人得向行政機關申請閱覽、抄寫、複印或攝影有關資料或卷宗。但以主張或維護其法律上利益有必要者為限。」阿明為本件火災之相對人（店面所有人／使用人），對火災調查結果及可能衍生之裁罰或求償具有法律上利害關係，具備申請閱覽卷宗之權利主體資格。</p>
+      <p><span class="q-label">2. 消防局拒絕提供內部擬稿之合法性</span><br>惟依同法第46條第2項規定，行政機關對閱覽申請除有法定情形外不得拒絕，其中第1款即為：「行政決定前之擬稿或其他準備作業文件。」本案阿明所欲閱覽之「火災調查鑑定書內部擬稿」及「關係人訪談草案」，均屬消防局作成最終鑑定結論前之內部準備作業文件，核屬第46條第2項第1款所定得拒絕提供之事項，消防局拒絕提供於法有據，尚非違法。</p>
+      <h5>(二) 得否單獨對拒絕決定提起救濟？</h5>
+      <p><span class="q-label">1. 程序中決定原則不得單獨救濟</span><br>按行政程序法第174條：「當事人或利害關係人不服行政機關於行政程序中所為之決定或處置，僅得於對實體決定聲明不服時一併聲明之。但行政機關之決定或處置得強制執行或本法或其他法規另有規定者，不在此限。」</p>
+      <p><span class="q-label">2. 涵攝本案</span><br>消防局就阿明閱覽卷宗申請所為之部分拒絕，性質上係火災調查此一行政程序「進行中」所為之程序上決定，尚非終局、對外發生規制效果之實體行政處分（如裁罰處分或鑑定結論本身）。依第174條本文，此類程序中決定原則上不得單獨提起訴願或行政訴訟，阿明僅得於消防局嗣後就本件火災調查結果作成實體決定（例如裁罰處分）後，一併聲明不服，將拒絕閱覽卷宗之瑕疵一併主張之。</p>
+      <p><span class="q-label">3. 例外情形之檢討</span><br>第174條但書設有例外：「該決定或處置得強制執行，或本法或其他法規另有規定者」，得單獨救濟。本案消防局拒絕提供內部擬稿之決定，性質上並非得強制執行之處置，行政程序法或消防相關法規亦查無賦予閱覽卷宗被拒者得單獨提起救濟之明文規定，是本案並無但書例外情形之適用。</p>
+      <p><span class="q-label">4. 結論</span><br>阿明就消防局部分拒絕閱覽卷宗之決定，依第174條規定，尚不得單獨提起訴願或行政訴訟，僅得於消防局後續作成實體決定（如裁罰處分）時，一併就此程序瑕疵聲明不服。</p>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例十六・陳情之處理原則與得不予處理之要件 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明為報復鄰居，先化名「正義使者」檢舉其消防設備不合格（查無異狀），後改實名檢舉（再次查無違規並正式回文），仍不滿意，連續一個月每天寄出同內容檢舉信。<br><b>問：</b>(一)阿明舉發行為性質為何？(二)消防局對化名檢舉及重複投書得如何處理？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>（一）法律性質：行政上之「陳情」。依據《行政程序法》第168條規定，人民對於行政興革之建議、行政法令之查詢、行政違失之舉發或行政上權益之維護，得向主管機關提出「陳情」。阿明向消防局檢舉鄰居消防設備不合格，屬於對「行政違失（或法令違反）」之舉發，性質上即為陳情。</p>
+      <p>（二）針對阿明的「化名檢舉」與「重複投書」，消防局可依《行政程序法》第173條規定，得不予處理：1.化名檢舉部分：依據第173條第1款，陳情有「無真實姓名或住址者」之情形，受理機關得不予處理。阿明初次以「正義使者」化名投書且未留真實姓名與聯絡地址，消防局依法得不予處理（雖然消防局先前已派員查看，但在法律上得逕行不受理）。2.後續同一事由一再投書部分：依據第173條第2款，陳情有「同一事由，經予適當處理，並已明確答覆後，而仍一再陳情者」之情形，受理機關得不予處理。阿明後續雖實名檢舉，但消防局已再次查核確認無違規，並已正式回文詳細說明結果（即已適當處理並明確答覆）；阿明針對完全相同的內容連續一個月每天寄信，屬於「同一事由一再陳情」，消防局得不予處理，免去逐封回復之負擔。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§168</span>陳情定義、<span class="law-tag">§173①②</span>兩款不予處理事由，全部精確對應原文款次，涵攝也扎實（化名對應①、已答覆仍反覆陳情對應②，兩款分開處理不混用，架構清楚）。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例二十・維持公正程序與程序外接觸之禁止 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明查驗程序進行中，私下打聽承辦消防員住家地址，攜「有利於己的非正式評估報告」登門拜訪，欲私下溝通查驗標準。<br><b>問：</b>(一)消防員面對私下接觸有何規範？(二)若因職務必要須接觸，應採取何種保全程序？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>(一) 依《行政程序法》第47條規定，行政機關應維持行政程序之公平、公正及透明。行政程序進行中，行政機關或公務員不得接受當事人於正式程序外之私下接觸，以避免影響行政決定之公正性。上述行為屬於正式行政程序外的接觸（程序外接觸），承辦消防員應予拒絕，不得私下討論案件內容，更不得接受可能影響公正判斷之資料或請託，以維護行政程序公平及依法行政原則。</p>
+      <p>(二) 依《行政程序法》第47條規定，如因職務需要必須於正式程序外與當事人接觸，應採取保全程序，以確保程序公開透明，包括：1.製作書面紀錄：詳實記載接觸時間、地點、參與人員及談話內容。2.將紀錄附卷保存：將程序外接觸紀錄併入行政卷宗，作為案件審查資料。3.通知其他當事人：如案件涉及其他利害關係人，應視情形通知其知悉，以維護程序公平。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§47</span>三項規範（附卷公開Ⅰ／影響公正之虞應記錄Ⅱ／涉及本案審查應主動迴避Ⅲ）都有對應到，三層次保全程序（書面紀錄/附卷保存/通知當事人）架構清楚。</li>
+        <li>可以再精進：§47Ⅲ「涉及本案之審查者，公務員應主動避免，或依法迴避」這一層在(二)沒有特別點出（(二)著重在保全程序的操作面），若能補上這句，會讓論述更完整——尤其本案阿明帶了「非正式評估報告」企圖影響查驗標準，已經涉及本案審查核心，理論上承辦員應考慮是否需要迴避，而不只是做紀錄附卷了事。</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-pane" id="g4">
+  <div class="header"><h1>分組4｜職務協助・委託・委任</h1><div class="sub">案例12、13、26・對應§15委任下級、§16委託民間、§19職務協助</div></div>
+
+  <div class="case-card">
+    <div class="case-head">案例十二・行政協助之發動與拒絕要件 <span class="verdict-chip g-good">✓優秀</span></div>
+    <div class="case-scenario"><b>情境：</b>消防局調查化工廠火災，因缺乏精密檢驗設備與專業鑑定人員，發函請環保局協助鑑定化學物質，環保局評估抽調人員將致本週多場重大稽查勤務無法出勤。<br><b>問：</b>(一)此屬何種制度？發動事由為何？(二)環保局得否拒絕？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>（一）消防局向環保局請求鑑定之定性與發動事由：此屬行政程序法第19條之「行政協助」（職務協助）：消防局與環保局為機關對機關間暫時性、個案性之協助，不涉權限移轉，非行政委託（委託私人以自己名義行使公權力）亦非行政助手（私人受指揮從事事實行為）。發動事由依第19條第2項，消防局因內部欠缺精密檢驗設備與專業鑑定人員，且對化學物質成分無法獨自調查，同時該當第2款（人員設備不足等事實上原因）及第3款（執行職務所必要認定之事實不能獨自調查）；又依第3項，非緊急情形應以書面為之，消防局已發函，合於要式。</p>
+      <p>（二）環保局得否拒絕：第19條第4項規定，協助將嚴重妨害被請求機關自身職務之執行者，被請求機關「應」拒絕（羈束，非裁量），與第5項「認有正當理由得拒絕」之裁量性質有別。本案環保局評估抽調人員將致當週多場重大稽查勤務無法出勤，嚴重影響本職工作，核與第4項第2款要件相符，應屬應拒絕事由。依第6項，環保局應敘明理由通知消防局；消防局如有異議，由雙方共同上級機關（無共同上級機關則由環保局上級機關）決定，消防局不得逕行否定其拒絕。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li>經核對<span class="law-tag">§19Ⅳ②</span>「如提供協助，將嚴重妨害其自身職務之執行者」(應拒絕，羈束) vs <span class="law-tag">§19Ⅴ</span>「認有正當理由不能協助者，得拒絕之」(裁量)，答案精準抓到這個最容易被忽略的差異，正確判定本案屬於「應拒絕」而非「得拒絕」，這是本份彙整中法律推理最細膩的答案之一。</li>
+        <li>還額外補充區辨「行政協助」與「行政委託」「行政助手」三者的不同（不涉權限移轉），展現對相關概念的整體掌握，值得肯定。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例十三・行政機關權限之委託與受託人之地位 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>消防局將消防安全設備圖說審查業務委託「民間消防設備師公會」辦理，公會審查阿明的商場圖說後認定排煙設備不合格予以退件，阿明疑惑退件的是「民間公會」，是否算行政處分。<br><b>問：</b>(一)委託民間公會有何程序要求？(二)公會的法律身分與退件之法律性質為何？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>(一)依行政程序法第16條第1項規定，行政機關得依法規將權限之一部分，委託民間團體或個人辦理。消防局將消防安全設備圖說委託民間消防設備師公會審查辦理，此乃行政委託精神之展現。又依同條第2項規定，應將委託事項及法規依據公告之，並刊登政府公報或新聞紙。</p>
+      <p>(二)依行政程序法第2條第3項規定，受託行使公權力之個人或團體，於委託範圍內視同行政機關。本案中，消防局依法將消防安全設備圖說審查之公權力權限委託給民間公會。因此，該公會在受託進行圖說審查的業務範圍內，其法律身分並非一般私法人或民間團體，而是依法具有擬制行政機關之受託行使公權力之團體。另依行政程序法第92條第1項規定，本法所稱之行政處分，係指行政機關就公法具體事件所為之決定或其他公權力措施而對外直接發生法律效果之單方行政行為。本案中發函退件之主體為該民間公會，其於受託範圍內視同行政機關。公會針對阿明所申辦之商場工程依據消防法規進行審查，並認定排煙設備不合格予以退件，此行為本質上屬行政機關拒絕人民申請之單方面意思，使阿明無法通過審查，進而影響開工之法律效果。綜上所述，該民間公會發函退件之行為其法律性質屬於典型之消極處分(拒絕核准之行政處分)。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§16Ⅰ§Ⅱ</span>委託公告程序、<span class="law-tag">§2Ⅲ</span>視為行政機關、<span class="law-tag">§92Ⅰ</span>消極處分定性，三條環環相扣，論證完整。</li>
+        <li>小提醒：原文(一)結尾有一句「如果行政訴訟找消防公司，」語意未完就中斷，看起來是寫作中斷留下的殘句，建議刪除或補完，正式謄寫時要記得檢查有沒有類似寫一半忘記刪除的句子。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例二十六・權限之委任與管轄恆定 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>《消防法》明定裁罰機關為直轄市縣市政府，某市政府未經法規授權，逕以「內部行政規則」將裁罰權下放給消防局及各消防大隊，由大隊自行開單裁罰。<br><b>問：</b>(一)以行政規則移轉裁罰權是否合法？(二)委任所屬下級機關應符合哪些程序？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>（一）1.法律依據：依《行政程序法》第15條第1項規定，行政機關得依法規將其權限之一部分委任所屬下級機關執行。又依同法第159條規定，行政規則係規範機關內部秩序及運作之規定，不直接對外發生法規範效力。2.個案分析：本案《消防法》明定裁罰機關為直轄市、縣（市）政府，惟市政府未經法規授權，僅以下達行政規則方式將裁罰權交由消防大隊行使，不符合《行政程序法》第15條「依法規委任」之要件。3.結論：故本案權限委任不合法，消防大隊不得以自己名義作成裁罰處分，其行政處分具有權限瑕疵。</p>
+      <p>（二）1.法律依據：依《行政程序法》第15條規定，行政機關得依法規將其權限之一部分委任所屬下級機關執行。2.應符合之要件：（1）須有法規依據。（2）委任對象須為所屬下級機關。（3）委任事項及法規依據，應公告並刊登政府公報或新聞紙。（4）完成合法委任後，受委任機關始得於委任範圍內以自己名義行使職權。3.結論：行政機關須依《行政程序法》第15條完成權限委任程序後，受委任機關始得合法行使受委任權限。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§15Ⅰ</span>委任要件、<span class="law-tag">§159</span>行政規則不能取代法規依據的區辨精準，正確點出「行政規則」對外不能設定裁罰權此一關鍵限制。</li>
+        <li>三段式（法律依據/個案分析/結論）寫法工整，是本組中格式最標準的一份。</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-pane" id="g5">
+  <div class="header"><h1>分組5｜行政處分之定性與方式</h1><div class="sub">案例2、3、22、46・對應§92處分定義、§95處分方式、§4依法行政與法律保留</div></div>
+
+  <div class="case-card">
+    <div class="case-head">案例二・行政處分與觀念通知之區辨 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明檢舉某大樓管委會未維護消防安全設備，消防局查無違規函覆「特此告知」；若查有違規，通知主委建國20日內陳述意見，建國逾期未到。<br><b>問：</b>(一)查無違規之函復性質為何？(二)建國逾期未陳述，可否逕行裁罰？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>（一）消防局函復阿明的行為，性質上屬於「觀念通知」（事實行為），而非行政處分。1.法效性之欠缺：依《行政程序法》第92條第1項規定，行政處分必須對外「直接發生法律效果」。消防局函復內容為「經查無實證……特此告知」，僅是將現場調查結果與事實狀況告知檢舉人阿明，並未對阿明的權利或法律上利益進行創設、變更或廢止，不具備法效性。2.檢舉之性質為促使機關發動職權：實務見解（如最高行政法院主流決議）認為，一般人民向行政機關舉發違規，原則上僅是促使行政機關發動職權調查之「事實行為」。除非特別法規範有明文賦予檢舉人「請求行政機關處罰被檢舉人」之主觀公權利（保護規範理論），否則主管機關查無違規而函覆檢舉人，僅屬理由說明與事實告知（觀念通知），阿明並不能對該函復提起訴願或行政訴訟。</p>
+      <p>（二）若建國無正當理由未於通知之20日內前往陳述意見，且違規事證明確，消防局可以依法逕行裁罰。1.已給予程序保障（踐行正當法律程序）：依《行政程序法》第102條及《行政罰法》第42條規定，行政機關於作成裁罰處分前，原則上應給予相對人陳述意見之機會。消防局已主動通知建國於20日內陳述意見，即已合法提供該項程序保障。2.不陳述者「視為放棄陳述機會」：依《行政程序法》第105條第3項規定：「不於期間內提出陳述書者，視為放棄陳述之機會。」消防局給予合理期限（20日），建國無正當理由逾期未到，法律效果上即視為其自行放棄該權利。行政機關得逕行採證裁罰：行政機關已完備告知程序，建國既已放棄陳述機會，且消防局現場調查之「違規事證明確」，行政機關即可直接依據調查所得之證據作成裁罰處分，無須等待或無限期通知。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§92Ⅰ</span>法效性欠缺論證清楚，並補充「保護規範理論」與最高行政法院見解說明檢舉人無主觀公權利，理論層次高於其他答案的平均水準。</li>
+        <li><span class="law-tag">§102</span>、<span class="law-tag">§105Ⅲ</span>陳述意見視為放棄的效果精確對應原文。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例三・現場警戒區命令離開之法律性質與比例原則 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>工廠大火，指揮官劃定警戒區，阿明欲強行闖入搶救貴重機具，消防人員先擴音「警告」，阿明持續推擠後指揮官「命令離開」，阿明仍不聽從，事後遭裁處罰鍰。<br><b>問：</b>(一)警告與命令離開的法律性質為何？(二)阿明主張裁罰過當違反比例原則有無理由？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>(一)行政機關基於公權力，就具體事件對特定人民所為並直接發生法律效果之行為，屬行政處分；若僅為提醒、勸告，未直接發生法律效果者，屬事實行為。本案消防指揮官先以擴音器警告阿明離開，再以舉牌或口頭命令其離開。警告僅係提醒危險並促使自行離開，未直接發生法律效果，屬事實行為；命令離開係要求阿明負有離開現場之義務，已直接影響其權利義務，屬行政處分。警告屬事實行為；命令離開屬行政處分。</p>
+      <p>(二)行政機關行使公權力應符合比例原則，包括適當性、必要性及衡量性。本案消防指揮官先警告阿明離開，惟阿明仍持續停留於危險區域，遂命令其離開，事後並依法裁罰。命令離開有助於維護公共安全，符合適當性；警告無效後始命令離開，屬侵害較小且必要之手段，符合必要性；公共安全利益大於阿明保護個人財產之利益，未顯失均衡，符合衡量性。消防局之處分符合比例原則，阿明主張裁罰過當，尚無理由。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li>事實行為（警告）vs行政處分（命令離開）的區辨精準對應<span class="law-tag">§92</span>要件。</li>
+        <li><span class="law-tag">§7</span>比例原則三款（適當性/必要性/衡量性）逐一套用扎實，是本份彙整裡示範最標準的比例原則套用寫法之一，值得作為範本反覆練習。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例二十二・法律保留原則之適用 <span class="verdict-chip g-warn">⚠有缺口（缺具體法條）</span></div>
+    <div class="case-scenario"><b>情境：</b>消防局內部發布公文規定曾違規超存瓦斯之瓦斯行3年內禁止申請負責人變更，阿明據此被拒絕過戶給兒子。<br><b>問：</b>(一)以內部公文限制負責人變更是否合法？(二)阿明主張缺乏法律依據涉及何種原則？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>（一）不符合行政程序法規定。消防局以「內部發布的一紙公文」就直接拒絕人民申請、限制營業負責人變更，已涉及對人民的營業相關權益之限制。1、這類限制必須要有法律明文授權，否則牴觸行政程序法的依法行政精神。2、若理解為「行政規則」，也不能直接對人民產生不利效果（或至少需符合條件）。若此公文性質屬於行政規則（內部裁量基準），一般對行政機關拘束；要能對外直接限制人民，必須符合妥當的法律授權與公開等要求。</p>
+      <p>（二）阿明主張缺乏法律依據，屬於「依法行政原則」，進一步可連結到「法律保留原則」。1、依法行政原則：行政機關行使公權力必須有法律依據。2、法律保留原則：對人民權利限制（尤其涉及重大限制）應由法律作出規範或至少由法律授權行政機關為之。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li>概念方向正確：正確區辨依法行政原則與法律保留原則，並正確判斷內部公文（行政規則性質）不能直接對外限制人民權利。</li>
+        <li class="fix-note"><b>缺口：</b>全篇沒有引用任何具體法條號！應該補上<span class="law-tag">§4</span>「行政行為應受法律及一般法律原則之拘束」作為依法行政原則的明確法源依據，讓論證有條號支撐，而不是只停留在抽象學理敘述。這是本份彙整中少數完全「零法條引用」的答案，申論題的「法規依據」給分點會因此偏弱，建議日後補寫時務必養成「每一個論點都掛一個條號」的習慣。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例四十六・書面以外之行政處分要求作成書面 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>消防員發現室內展演場違法明火表演，口頭下令阿明立即停止表演並清場，阿明要求開立書面公文否則不理，消防員因未帶公文紙而拒絕。<br><b>問：</b>(一)口頭命令是否為有效行政處分？(二)消防員可否拒絕作成書面？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>（一）行政程序法第95條第一項規定「行政處分除法規另有要式之規定者外，得以書面、言詞或其他方式為之。」故消防員以言語之方式命令「阿明立刻停止表演」為有效之行政處分。</p>
+      <p>（二）依行政程序法第95條第二項規定「以書面以外方式所為之行政處分，其相對人或利害關係人有正當理由要求作成書面時，處分機關不得拒絕。」消防員無法拒絕阿明要求作成書面處分之請求，雖無法「立刻」給予，事後仍應補作成書面處分送達阿明，原先下達的口頭處分依然合法有效。因此，阿明仍須配合停止明火表演，不得以「沒拿到書面公文」為理由抗拒執行。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§95Ⅰ§Ⅱ</span>兩項引用精確，且正確點出「口頭處分先生效，事後補書面」這個關鍵時序，避免了「沒書面就不用配合」的常見誤解。</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-pane" id="g6">
+  <div class="header"><h1>分組6｜附款・行政契約・行政指導</h1><div class="sub">案例6、7、8、39・對應§93附款、§135-149行政契約、§165-166行政指導・本組含最重要的citation修正（案例7）</div></div>
+
+  <div class="case-card">
+    <div class="case-head">案例六・行政處分之附款限制與種類 <span class="verdict-chip g-good">✓優秀（本份彙整最完整答案之一）</span></div>
+    <div class="case-scenario"><b>情境：</b>消防局核准阿明設立危險物品儲放場所（裁量處分），許可函附加「應增設防爆牆始得營運」及「未依規定每半年演練，本局得廢止許可」兩項要求。<br><b>問：</b>(一)此二要求在行政程序法上稱何種制度？種類為何？(二)行政機關作成此類附加要求受哪些限制？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>(一)1.法律性質與種類判斷：本案消防局核准設立許可時所附加的兩項要求，均屬行政處分之附款（行政程序法第93條）。附款是指行政機關作成主要行政處分（本案為「設立許可」）之外，另外附加的從屬性意思表示，用以限制、補充或保留該處分的效力。<br>(1)「應增設防爆牆始得營運」→停止條件（附條件）：這項要求使處分（許可設立）的效力發生繫於將來不確定事實（是否完成增設防爆牆）。在防爆牆完工並經查驗合格前，許可雖已作成，但營運之效力尚未發生，屬於「停止條件」（又稱「延緩條件」）。條件與負擔的區別實益在於：條件未成就前處分不生效力；負擔則處分已生效，僅受處分人負有履行義務，未履行時機關須另行依法撤銷或廢止，不能自動使處分失效。本案用語為「始得營運」，性質上偏向條件；但實務上亦有見解認為此類「附條件的許可要求先行為」實質上仍近似「負擔」（因為機關通常仍須以行政處分或事實行為確認前提要件是否達成），作答時建議兩說並陳，並敘明區辨標準。<br>(2)「未辦理演練得廢止許可」→廢止權之保留：依行政程序法第93條第2項第4款，機關保留「嗣後廢止之權利」，即為廢止權保留之附款。此款使消防局於處分作成後，若受處分人日後未依約定履行特定義務（每半年辦理自衛消防編組演練），得依保留之廢止權，另以行政處分方式廢止原許可，而毋須再重新論證廢止之公益要件（第123條各款）是否具備，但仍應踐行正當程序（如通知、給予陳述意見機會等）。</p>
+      <p>(二)（一）附款許可性之限制（第93條第1項）：裁量處分，機關作成裁量處分時，本得依裁量權附加附款（本案「設立許可」屬裁量處分，故消防局原則上得附加附款）。羈束處分，僅於「法律有明文規定」或「為確保行政處分法定要件之履行而以該要件作為附款內容」時，始得附加附款。<br>（二）目的關聯性（不當聯結禁止原則）：附款所要求的內容，須與該行政處分之目的具有實質關聯，不得夾帶與許可目的無關之要求。本案「增設防爆牆」「辦理消防演練」均與危險物品儲放場所之公共安全（消防安全）目的直接相關，符合關聯性要求。<br>（三）比例原則：附款所加諸之義務，須為達成行政目的所必要，且對相對人造成之負擔應與所欲達成之公益相當，不得過度（適當性、必要性、衡量性三階段檢驗）。例如若防爆牆規格、演練頻率明顯超出法規標準或消防安全實際需求，即可能構成裁量濫用。<br>（四）明確性原則：附款內容應具體明確，使相對人得以知悉其應遵守之具體作為義務（如防爆牆之規格、位置；演練之週期、內容），避免流於空泛而使相對人無所適從。<br>（五）不得違背行政處分之本質（禁止實質變更主處分）：附款不得使主處分之內容產生本質變更，或使受益人實質上無法享有處分賦予之利益（例如附款內容過於嚴苛，導致許可形同虛設）。<br>（六）程序與救濟保障：附款如使相對人權益受不利影響，相對人得單獨或一併對主處分提起行政救濟（訴願、行政訴訟），實務上通常認為若附款可分離於主處分（如本案之負擔或保留廢止權），得單獨聲明不服；若屬條件、期限而與主處分不可分割者，則應對原處分整體救濟。<br>結論：消防局於許可函中所附加之兩項要求，分別為（附）條件（或近似負擔）與廢止權之保留，均屬行政程序法第93條規範之附款類型。因原處分屬裁量處分，消防局原則上得依裁量權附加附款，惟仍應受目的關聯性（不當聯結禁止）、比例原則、明確性原則及不得使主處分本質產生變更等界限之拘束，並保障相對人之救濟權利，始符合依法行政之要求。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li>經核對<span class="law-tag">§93</span>五款附款種類、<span class="law-tag">§94</span>目的關聯性，全部精準對應，且誠實揭露「條件vs負擔」實務見解分歧並建議兩說並陳，展現高度成熟的法學素養。</li>
+        <li>五大限制（裁量vs羈束/目的關聯/比例原則/明確性/不得變更本質/救濟保障，實際列了六項）論述完整扎實，是46份答案中理論深度與涵攝完整度最高的之一，值得當作範本。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例七・行政契約與行政處分併用之禁止 <span class="verdict-chip g-gap">✗有誤（本份彙整最重要的citation修正）</span></div>
+    <div class="case-scenario"><b>情境：</b>消防局與阿明經營的救護車公司簽訂「委託協助大量傷病患救護合約書」，由消防局提供經費補助與無線電設備，阿明負有重大災害時接受調度出勤救護之義務。某次阿明以司機休假為由拒絕出勤，消防局憤而直接開立「裁處書（行政處分）」命阿明繳回設備與補助款。<br><b>問：</b>(一)此契約屬私法契約或行政契約？類型為何？(二)消防局逕以裁處書命阿明繳回是否適法？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>(一)一、法條（大前提）：依《行政程序法》第135條規定，公法上法律關係得以契約設定、變更或消滅之。又同法第136條規定，行政機關與人民締結行政契約，以代替行政處分或約定行政上權利義務者，屬行政契約。二、法事實（小前提）：本案消防局與阿明簽訂契約，由消防局提供補助及無線電設備，阿明則負有重大災害發生時接受消防局指揮調度執行救護勤務之義務，其內容係為執行公共救災任務，而非單純商業交易。三、說明理由（涵攝）：本契約目的在於協助消防機關執行法定防救災職務，約定雙方於公法上之權利義務，具有公行政目的，並非建立私法上財產交易關係，因此屬行政契約。其性質係行政機關為達成行政任務，委由人民協助履行公行政事項之合作契約（行政合作契約）。四、結論：消防局與阿明簽訂之「委託協助大量傷病患救護合約書」屬行政契約，其類型為行政合作契約（履行行政任務之行政契約）。</p>
+      <p>(二)一、法條（大前提）：依《行政程序法》第148條規定，行政契約當事人之一方不履行契約義務時，應依契約約定或循行政契約爭議之法律程序處理，不得逕以行政處分變更或取代契約關係。行政機關不得以行政處分處理契約履行爭議，此即行政契約與行政處分併用禁止原則。二、法事實（小前提）：本案阿明拒絕依契約約定出勤，消防局未依契約約定或循行政契約爭議程序處理，反而逕自作成裁處書，命其返還設備及補助款。三、說明理由（涵攝）：阿明是否違約、是否應返還補助及設備，均屬行政契約履行或違約效果之爭議，消防局應依契約約定請求履行、解除契約、請求返還或提起行政訴訟，而不得片面以行政處分方式直接課予返還義務。除法律另有明文授權外，以行政處分介入行政契約關係，違反行政契約與行政處分不得併用之原則。四、結論：消防局逕以「裁處書（行政處分）」命阿明返還設備及補助款，原則上不適法。應依行政契約約定或循行政契約爭議程序處理，不得以行政處分取代契約救濟機制。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見（兩處明確citation錯誤）</h4>
+      <ul>
+        <li class="fix-note"><b>錯誤①：契約類型引錯條號。</b>經核對<span class="law-tag">§136</span>原文，該條專門規範<b>「和解契約」</b>——「行政機關對於行政處分所依據之事實或法律關係，經依職權調查仍不能確定者…得與人民和解，締結行政契約」，適用前提是「事實或法律關係不明確」。但本案（補助經費設備 換取 出勤救護義務）雙方權利義務關係非常清楚，完全沒有「事實不明確」的要素，根本不是和解契約的情境！本案真正的類型應該是<span class="law-tag">§137</span>「雙務契約」（互負給付義務），應檢驗§137三要件（①契約約定人民給付之特定用途②人民給付有助機關執行職務③雙方給付相當且有正當合理關聯）才對。可以對照本組<b>案例39</b>——那才是真正「事實無法查明」（起火點無法確定）而適用§136和解契約的正確情境，兩案放在一起比對就能清楚看出差異所在。</li>
+        <li class="fix-note"><b>錯誤②：「契約處分併用禁止」引錯條號。</b>經核對<span class="law-tag">§148</span>原文，該條規範的其實是「<b>約定自願接受執行</b>」（行政契約可約定自願接受強制執行，作為執行名義），與「契約和處分不得併用」完全無關！答案自行複述的§148條文內容也與官方原文完全不符。正確的處理方向應該是：機關若欲片面調整或終止行政契約，必須符合<span class="law-tag">§146</span>（因重大公益必要，且須補償相對人財產損失）或<span class="law-tag">§147</span>（情事變更原則）的嚴格要件，而非直接開立行政處分要求返還——本案消防局既未主張重大公益危害，也未踐行§146/§147的補償及書面敘明理由程序，逕以行政處分方式片面課予返還義務，才是真正不適法的理由所在，而非泛稱有一條「§148併用禁止」規定。</li>
+        <li>好消息是：結論本身（消防局逕開裁處書不適法）方向正確，只是支撐這個結論的法條依據需要整個替換，建議重新以§137（定性）+§146/§147（機關片面介入契約的限制）架構重寫這一題。</li>
+      </ul>
+    </div>
+    <div class="model-answer">
+      <h4>📝 國考標準示範解答</h4>
+      <h5>(一) 此契約屬私法契約或行政契約？類型為何？</h5>
+      <p><span class="q-label">1. 契約性質：行政契約</span><br>按行政程序法第135條：「公法上法律關係得以契約設定、變更或消滅之。」區辨行政契約與私法契約，通說採「契約標的說」——契約內容涉及公法上權利義務者為行政契約。本案消防局委由民間救護業者協助執行大量傷病患救護，屬消防局法定公權力事項之公私協力，契約標的具高度公益性及公行政目的，應定性為行政契約。</p>
+      <p><span class="q-label">2. 契約類型：雙務契約</span><br>按行政程序法第137條第1項：「行政機關與人民締結行政契約，互負給付義務者，應符合下列各款之規定：一、契約中應約定人民給付之特定用途。二、人民之給付有助於行政機關執行其職務。三、人民之給付與行政機關之給付應相當，並具有正當合理之關聯。」本案消防局提供補助款及設備（機關給付），阿明負出勤救護義務（人民給付），核與三要件相符：①補助款、設備供阿明履行出勤義務之特定用途；②出勤救護有助消防局執行法定救災職務；③雙方給付相當，具正當合理關聯。是本契約應定性為第137條「雙務契約」。</p>
+      <p><span class="q-label">3. 排除和解契約之適用</span><br>本案雙方權利義務於締約時已明確約定，並無第136條所要求「事實或法律關係經職權調查仍不能確定」之要素，故非和解契約。</p>
+      <h5>(二) 消防局逕以裁處書命阿明繳回，是否適法？</h5>
+      <p><span class="q-label">1. 行政契約與行政處分不得併用原則</span><br>契約一經締結，其後契約關係之變動（終止、調整、違約處理），應循行政契約之法定途徑處理，機關不得片面改以行政處分介入或取代契約關係。</p>
+      <p><span class="q-label">2. 機關單方介入契約之法定要件</span><br>依第146條第1項：「行政契約當事人之一方為人民者，行政機關為防止或除去對公益之重大危害，得於必要範圍內調整契約內容或終止契約。」第2項：「前項之調整或終止，非補償相對人因此所受之財產上損失，不得為之。」第3項要求「應以書面敘明理由為之」。若係因情事重大變更致履行顯失公平，另有第147條情事變更原則可資適用。</p>
+      <p><span class="q-label">3. 涵攝</span><br>本案阿明僅一次因司機休假未能出勤，消防局並未踐行第146條之敘明理由、補償程序，亦未循契約約定或提起給付訴訟，逕行開立裁處書命其繳回，顯係以行政處分片面終結契約關係，於法未合。</p>
+      <p><span class="q-label">4. 結論</span><br>消防局逕以裁處書命阿明繳回，於法不合。應依第146條以書面敘明理由調整或終止契約並補償阿明之財產損失，或循契約約定、提起行政訴訟法上之給付訴訟請求返還，不得逕以行政處分為之。</p>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例八・行政指導之界限與拒絕之效果 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>消防員強烈建議阿明自費安裝住警器，阿明以預算不足、法規未強制舊透天安裝為由拒絕，消防員威脅將其列高風險場所並頻繁安檢重罰。<br><b>問：</b>(一)勸導安裝的性質為何？(二)因拒絕而揚言頻繁安檢重罰是否合法？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>1.依據行政程序法第165條規定，行政指導是指行政機關在其職權或所掌事務範圍內，為實現一定之行政目的，以輔導、協助、勸告、建議或其他不具法律上強制力之方法，促請特定人為一定作為或不作為之行為。2.消防局為了提升居家安全的行政目的，派消防員前往進行防火宣導，並「強烈建議」阿明自費安裝。此一宣導與建議行為，並未直接對阿明課予法律上的義務，亦不具法律強制力，故本質上屬於非權力性質的行政事實行為（行政指導）。</p>
+      <p>（二）消防員揚言頻繁安檢並重罰之合法性：消防員揚言將其列為高風險場所、頻繁安檢並查到違規就重罰的行為，不符合法律規定，屬於違法的行政行為。1.拒絕指導之保護：依據行政程序法第166條第2項明文規定：「相對人明確拒絕指導時，行政機關應即停止，並不得據此對相對人為不利之處置。」2.禁止不當聯結原則：行政機關行使權力或採取行政措施時，其手段與所欲達成的行政目的之間，必須具有實質的正當合理關聯，不得將不相關的手段與目的互相聯結。（三）1.阿明已明確以預算不足且法規未強制為由拒絕安裝，消防員應立即停止該行政指導，更不得因為阿明的拒絕，而揚言將其列為高風險場所或施以頻繁安檢等不利處置。2.消防員企圖利用「密集消防安全檢查」與「抓到違規就重罰」等法定職權作為威脅手段，強迫阿明接受原本不具強制力的安裝建議。這已構成典型的權力濫用，且違反了禁止不當聯結原則與行政程序法第166條對於拒絕行政指導者的保護規定，因此該言詞威脅手段完全不合法。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§165</span>定義、<span class="law-tag">§166Ⅱ</span>拒絕保護，兩條引用完全精確，並補充「禁止不當聯結原則」強化論證，是很扎實的一題。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例三十九・代替行政處分之和解契約 <span class="verdict-chip g-good">✓正確（與案例7對照的正確示範）</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明工廠火警延燒至隔壁，消防局窮盡調查仍無法百分之百確定起火點是阿明機台故障或隔壁電線走火，消防局與阿明及鄰居協商，雙方同意各自承擔一半責任並繳納罰鍰，簽署書面契約。<br><b>問：</b>(一)此屬何種契約類型？(二)締結要件與目的為何？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>第一題：《行政程序法》第136條規範的是和解契約。指當行政機關對於行政處分所依據的事實或法律關係，經依職權調查後仍無法確定時，為有效達成行政目的並解決爭執，得與人民相互讓步，締結行政契約以代替行政處分。</p>
+      <p>第二題：締結和解契約需符合以下核心要件：1.事實或法律關係不明：機關依職權調查後，事實狀態或適用法律依然無法確定。2.相互讓步：機關與人民雙方必須有讓步之行為，不能單方面要求人民完全接受處分內容。3.代替行政處分：和解的結果以締結「行政契約」來呈現，其效力等同於行政處分。（一）締結要件：1.事實或法律關係存有不明確：必須是行政處分作成前，行政機關對於事實關係（如起火點為何）或法律適用有所爭執，且經過客觀調查後仍無法確定。2.達成協議：當事人與行政機關雙方必須經過協商，並且達成意思合致。3.書面方式：和解契約必須以書面作成，以確保契約內容明確。4.排除裁量逾越：行政機關締結契約時，不得逾越法定權限，且須確保和解內容符合行政目的（即合義務性）。（二）締結目的：1.促進紛爭解決：在事實真偽難明的情況下，透過雙方退讓、達成協議的方式，替代單方面的行政處分，迅速解決爭議。2.避免行政資源耗損：免除未來可能發生的長期訴願及行政訴訟程序，降低國家與當事人的時間、人力與財務成本。3.兼顧公益與私益：在事實無法百分之百查明而難以單方認定違規主體時，透過和解讓雙方共同負擔適當責任，達成兼顧公共利益與當事人權益的衡平狀態。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li>本案「窮盡調查仍無法確定起火點」正是<span class="law-tag">§136</span>和解契約的典型適用情境，事實不明確、相互讓步、代替處分三要件套用精準無誤。</li>
+        <li>與案例7放在一起比對非常有教育意義——這一題才是真正該用§136的情境，案例7則不該用，兩題對照練習能幫助釐清「和解契約」與「雙務契約」的適用界線。</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-pane" id="g7">
+  <div class="header"><h1>分組7｜陳述意見・聽證・第三人參加</h1><div class="sub">案例30、36、41・對應§102陳述意見、§107-109聽證、§23第三人參加</div></div>
+
+  <div class="case-card">
+    <div class="case-head">案例三十・聽證與公聽會之區別 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>消防局針對化學工業區制定《化學災害防救行政計畫》舉辦「公聽會」，阿明身為周邊居民不滿，認為應舉行正式「聽證」。<br><b>問：</b>(一)聽證與公聽會主要區別為何？(二)機關是否必須舉行聽證？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>一、二者區別：1.公聽會：實質上均係行政機關訂定行政命令（法規命令）、行政計畫，或影響多數人權益之行政處分時，向相對人、利害關係人、專家學者、社會公正人士、一般民眾等，廣泛蒐集意見，提供行政機關參考的制度。2.聽證：係指行政處分相對人或利害關係人所提供之陳述事實、釐清問題及主張或提出證據之機會，乃當事人得就指控或不利決定前進行答辯或防禦之機會。</p>
+      <p>二、不同之處：1.「對象」不同——公聽會對象包括相對人、利害關係人、專家學者及一般民眾在內；聽證對象限縮行政處分之相對人、利害關係人。2.「功能」不同——公聽會在於蒐集廣泛民眾意見，作為機關決策的參考；聽證在提供相對人、利害關係人陳述事實、釐清問題、提供證據，乃當事人進行答辯或防禦的權利。3.「適用之行政行為」不同——公聽會適用於機關訂定法規命令，確定行政計畫的行政行為；聽證適用於不利之行政處分。4.「效力」不同——公聽會其決定並無一定的拘束力；聽證其行政處分，依行政程序法第109條規定，行政救濟免除訴願及其先行程序。</p>
+      <p>(二) 否，行政程序法第107條規定，行政機關僅於法規明文規定應舉行、或機關認為有必要兩種情形才舉行聽證，人民無強制請求權。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li>四點比較表（對象/功能/適用行為/效力）架構清楚，<span class="law-tag">§109</span>免除訴願先行程序、<span class="law-tag">§107</span>兩款發動情形皆精確對應原文。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例三十六・程序瑕疵之補正時機 <span class="verdict-chip g-good">✓優秀</span></div>
+    <div class="case-scenario"><b>情境：</b>消防局漏未給阿明陳述意見機會即開罰，阿明訴願後，消防局發現疏失，於「訴願程序終結前」補發通知讓阿明陳述意見，聽取後維持原裁罰。<br><b>問：</b>(一)此屬何種瑕疵？事後補救稱為何？(二)在訴願終結前補救是否合法有效？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>一、法源依據：（一）行政程序法第102條——行政機關作成限制或剝奪人民權利之行政處分前，除法律另有規定外，應給予當事人陳述意見之機會，以保障其程序參與權及防禦權。（二）行政程序法第114條第1項第3款——行政處分作成時如有程序或方式瑕疵，得於行政救濟程序終結前完成補正者，其行政處分仍屬合法。</p>
+      <p>二、法理說明：行政程序法要求行政機關作成不利處分前，應先給予當事人陳述意見，以落實正當法律程序及保障人民防禦權。若機關未踐行陳述意見程序即逕行裁罰，屬於程序瑕疵，而非實體違法。為兼顧行政效率與人民權益，行政程序法第114條設有程序瑕疵補正制度，允許行政機關於行政救濟程序終結前補行必要程序。若已完成補正，且不影響當事人權益，原行政處分仍得維持其效力。</p>
+      <p>三、本案分析：（一）消防局未於裁罰前給予阿明陳述意見機會，即逕行開立裁處書，違反行政程序法第102條規定，屬於程序瑕疵。（二）消防局於阿明提起訴願後，發現程序疏失，並在訴願程序終結前補發通知，讓阿明到局陳述意見，完成聽取意見程序，此即屬行政程序法第114條所稱之程序瑕疵補正（補正程序）。（三）由於補正係在行政救濟程序終結前完成，符合第114條第1項第3款規定，因此其補正具有法律效力。消防局於聽取阿明意見後，認原裁罰仍屬適法而維持原處分，原則上並無違法。</p>
+      <p>四、結論：（一）消防局未於裁罰前給予阿明陳述意見，屬於程序瑕疵；事後補行陳述意見程序，稱為程序瑕疵之補正（補正程序）。（二）消防局於訴願程序終結前完成補正，符合行政程序法第114條規定，補正時點合法有效，因此原裁罰處分得維持其效力。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§102</span>陳述意見原則、<span class="law-tag">§114Ⅰ③</span>補正事由、<span class="law-tag">§114Ⅱ</span>補正時點限制（訴願終結前），三條環環相扣、法源說明理由結論四段式架構工整，是本份彙整格式最標準的答案之一。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例四十一・第三人參與行政程序之權利 <span class="verdict-chip g-good">✓優秀（理論深度最高）</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明瓦斯行屢次違規超存液化石油氣，消防局正對其調查裁罰，隔壁鄰居小華提心吊膽，向消防局申請「參加」該行政程序以表達意見並監督執法。<br><b>問：</b>(一)小華非相對人，是否有權要求參加？(二)消防局應如何處理小華的申請？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>(一) 大前提（法令依據與法理）：依《行政程序法》第23條規定，行政機關涉入之行政程序，其結果有損害第三人權利或法律上利益之虞者，行政機關得依職權或依申請，通知其參加為當事人。此即行政程序中「程序第三人」轉化為當事人編制之依據。關於「法律上利害關係」之認定，實務依司法院釋字第469號解釋所揭示之「保護規範理論」，若法律規定之目的不僅在維護公益，亦有保護特定群體、個人之意旨時，該特定群體即享有法律上之利害關係。小前提：本案中，原處分相對人阿明因違規超存液化石油氣而受消防局調查。消防局據以執法之《消防法》等相關安全規範，其立法目的除維護公共安全外，顯然亦包含保障該高風險場所周邊緊鄰居民之生命、財產安全。小華身為「住在隔壁的鄰居」，處於公共安全風險之核心範圍，其身家性命安全深受消防局最終處置結果之影響，具備法律上之利害關係，符合本法第23條「有損害權利或法律上利益之虞」之要件。結論：小華屬於法律上之利害關係人，依法具有向消防局「申請參加」該行政程序之權利。</p>
+      <p>(二) 大前提：形式與實質審查——行政機關收到第三人參加之申請後，應依本法第36條職權調查原則，審查申請人是否具備法律上利害關係，並作成准駁之程序決定。裁量收縮法理：法條文字雖規定行政機關「得」依申請通知參加，屬行政裁量權；惟若行政程序之結果涉及人民生命、身體等重大基礎法益時，行政機關之裁量權應收縮至零，義務上必須准許其參加。當事人保障義務：第三人經准許參加後，依本法第23條後段規定即「參加為當事人」，行政機關應依法賦予其本法第46條之閱覽卷宗權、第102條之陳述意見權，並於程序終結後，依第100條規定將終局處分書送達該參加人。小前提：消防局收到小華之申請後，因本案涉及液化石油氣超存之重大公共安全風險，攸關鄰居小華之生命、財產權，消防局之行政裁量權已收縮至零，依法應作成准許小華參加之行政決定。准許後，消防局在後續程序中，必須通知小華參與相關調查或聽證，並在作成裁罰或處分前給予小華陳述意見、申請閱覽卷宗之機會。最終，消防局對阿明作成之處分書，亦必須依法送達給小華，並附記救濟教示。結論：消防局依法應作成准許小華參加之決定，於程序中全面保障其閱覽卷宗與陳述意見等當事人權利，並將最終處分書依法送達予小華。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§23</span>基本引用正確，並補充「保護規範理論」（釋字469號）與「裁量收縮至零」兩項進階學理，將§23的「得」通知參加，論證為本案涉及重大生命身體法益時應收縮為「應」准許參加，這是本份彙整中<b>理論深度最高</b>的一題。</li>
+        <li>進一步串聯§36職權調查、§46閱覽卷宗、§102陳述意見、§100送達，把第三人參加後應享有的完整當事人權利說明得非常周延，是很值得反覆研讀的示範答案。</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-pane" id="g8">
+  <div class="header"><h1>分組8｜處分理由・教示・救濟保障</h1><div class="sub">案例14、19、23、34・對應§96處分記載事項、§5明確性、§98教示錯誤、訴願法救濟移送</div></div>
+
+  <div class="case-card">
+    <div class="case-head">案例十四・行政處分之教示制度與漏載之救濟效果 <span class="verdict-chip g-good">✓優秀</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明工廠遭裁處書罰款3萬元，承辦人漏填救濟教示文字，阿明8個月後才提起訴願，消防局主張已逾30日訴願期間不應受理。<br><b>問：</b>(一)裁處書載明救濟方法期間受理機關稱何種制度？(二)阿明是否逾期？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>（一）按《行政程序法》第96條第1項第6款規定，書面行政處分應記載表明其為行政處分之意旨，以及不服行政處分之救濟方法、期間及其受理機關。此項規定旨在使行政處分之相對人知悉其權利救濟途徑，避免因不諳法令而喪失救濟機會，學理上稱為「救濟教示制度」。本題消防局所作成之罰鍰裁處書，屬書面行政處分，原應記載阿明如有不服，得提起訴願之方法、法定期間及受理機關。惟承辦人員漏未記載，係違反前述救濟教示之規定。故本題所稱制度為救濟教示制度。</p>
+      <p>（二）1.原則：按《訴願法》第14條第1項規定，訴願之提起，應自行政處分達到或公告期滿之次日起30日內為之。因此，原則上，阿明應自裁處書送達次日起30日內提起訴願。2.例外：惟依《行政程序法》第98條第3項規定，處分機關未告知救濟期間，或告知錯誤而未為更正，致相對人或利害關係人遲誤者，如自處分書送達後一年內聲明不服，視為於法定期間內所為。此規定係為保障人民權利，避免行政機關因未履行救濟教示義務，反而使人民承受喪失救濟權利之不利益。3.涵攝：本題消防局於裁處書中完全漏未記載提起訴願之方法、期間及受理機關，致阿明不知道應如何、於何期間內及向何機關提起救濟，因而遲至收到裁處書後8個月始提起訴願。阿明雖已超過一般30日之訴願期間，但其遲誤係因消防局未為救濟教示所致，且阿明係於裁處書送達後一年內聲明不服，符合《行政程序法》第98條第3項之規定，應視為於法定期間內提起訴願。4.結論：消防局主張阿明已超過30日訴願期間，尚非有據。阿明於收到裁處書後8個月提起訴願，依法應視為在法定期間內所為，故其訴願並未逾期，受理機關不得僅以逾越30日為由不予受理。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§96Ⅰ⑥</span>教示制度、<span class="law-tag">§98Ⅲ</span>1年內視為法定期間，兩條精確對應，並先引《訴願法》§14Ⅰ一般30日期間作對照基準，再導出例外，架構完整無懈可擊。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例十九・不服行政處分之錯誤遞件與無管轄權之移送 <span class="verdict-chip g-warn">△條號正確・引文需訂正</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明因裁處書漏未記載救濟受理機關，誤將「訴願書」寄到完全沒有管轄權的「當地區公所」，區公所收文後發現屬消防局業務。<br><b>問：</b>(一)區公所應如何處理？(二)寄錯機關會否導致喪失救濟期限？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>(一) 依據《行政程序法》第99條第1項規定：「對於行政處分聲明不服，因處分機關未為告知或告知錯誤致向無管轄權之機關為之者，該機關應於十日內移送有管轄權之機關，並通知當事人。」因此，區公所在發現這屬於消防局的業務（自己無管轄權）後，依法必須採取以下兩個動作：1.主動移送：在收到訴願書的10日內，將案件移送給有管轄權的機關（即原處分機關消防局）。2.通知當事人：將「案件已移送給消防局」的這件事，正式通知阿明，讓他知道案件的去向。</p>
+      <p>(二) 不會喪失權益。依據《行政程序法》第99條第2項規定：「前項情形，視為自始向有管轄權之機關為聲明不服。」只要阿明是在法定的30日訴願期間內把文件寄達「區公所」，法律上就會把「區公所收件的那一天」，直接當作是阿明向「消防局」提出訴願的日期。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見（修正：條號方向正確，具體引文需訂正）</h4>
+      <ul>
+        <li class="fix-note"><b>條號§99本身選對了。</b>§99第2項明文「其餘準用第17條之規定」，第1項要件「對於行政處分聲明不服，因處分機關轉送而遲誤法定期間者，如係因<b>不可歸責於申請人之事由，於首次向無管轄權機關提出</b>者，視為於法定期間內向有管轄權之機關提起」，與本案事實鏈（消防局裁處書漏未教示受理機關→阿明首次表示不服即誤寄區公所，遲誤非可歸責於阿明）完全吻合。本考科既以行政程序法為範圍，§99正是專為此一情境設計的條文，優先於較泛用的§17，方向並無錯誤。</li>
+        <li class="fix-note"><b>真正的問題出在自行複述的條文內容，不是條號。</b>答案寫「§99第1項：『對於行政處分聲明不服，因處分機關未為告知或告知錯誤致向無管轄權之機關為之者，該機關應於十日內移送有管轄權之機關，並通知當事人』」——這段文字經核對admin-procedure-law.html的§99原文，<b>並非§99的官方文字</b>；§99本身沒有規定移送天數，只有第2項「準用第17條」（§17僅規定「應即移送」，同樣沒有寫「十日」）。答案裡「十日內移送」這個具體天數，其實是把《訴願法》第61條「應於十日內移送有管轄權之機關，並通知訴願人」的用語，誤植貼到了§99頭上。這屬於「條號選對、內文抄錯」，在申論題逐字引用的評分上仍會被扣分，但性質上比「整條引錯」輕微。</li>
+        <li>訴願法§61雖然不是本案最貼切的主軸法源，但因本案文件形式上已是「訴願書」，若想把「幾日內移送」講得更具體精確，可以在§99＋§17的架構之後，補充援引訴願法§61作為平行、更具體的程序規定，兩者併陳並不衝突，只是不宜把§61的文字誤標成§99的原文。</li>
+      </ul>
+    </div>
+    <div class="model-answer">
+      <h4>📝 國考標準示範解答</h4>
+      <h5>(一) 區公所應如何處理？</h5>
+      <p><span class="q-label">1. 法律定性：本案屬行政程序法第99條所定「聲明不服誤向無管轄機關」之情形</span><br>本案消防局裁處書漏未記載救濟受理機關，致阿明首次表示不服時即誤將訴願書寄至無管轄權之區公所，其遲誤要非可歸責於阿明，核與行政程序法第99條第1項所定要件相符。</p>
+      <p><span class="q-label">2. 移送機制：準用第17條</span><br>按行政程序法第99條第2項：「其餘準用第17條之規定。」而第17條第1項規定：「行政機關對事件管轄權之有無，應依職權調查；其認無管轄權者，應即移送有管轄權之機關，並通知當事人。」區公所於收受阿明所提訴願書後，經審查發現本件屬消防局管轄之業務，應依上開規定，即行將訴願書移送有管轄權之機關（消防局或其上級訴願管轄機關），並通知阿明已完成移送之事實。</p>
+      <h5>(二) 寄錯機關會否導致喪失救濟期限？</h5>
+      <p><span class="q-label">1. 法律效果：視為於法定期間內向有管轄權機關提起</span><br>按行政程序法第99條第1項：「對於行政處分聲明不服，因處分機關轉送而遲誤法定期間者，如係因不可歸責於申請人之事由，於首次向無管轄權機關提出者，視為於法定期間內向有管轄權之機關提起。」</p>
+      <p><span class="q-label">2. 涵攝本案</span><br>阿明因消防局裁處書漏未記載救濟受理機關，於首次表示不服時即誤將訴願書寄至無管轄權之區公所，其遲誤純係消防局教示義務有瑕疵所致，非可歸責於阿明。依前揭第99條第1項規定，阿明提起訴願，應視為於法定期間內向有管轄權之消防局提起，其提起訴願之效力，以區公所收受訴願書之日為準。</p>
+      <p><span class="q-label">3. 補充：與行政程序法第98條第3項之關聯</span><br>本案消防局裁處書漏未記載救濟受理機關，另涉及行政程序法第98條第3項：「處分機關未告知救濟期間，或告知錯誤而未為更正，致相對人或利害關係人遲誤者，如自處分書送達後一年內聲明不服，視為於法定期間內所為。」第98條係就「教示瑕疵本身」提供最長1年的補救期間，第99條則是針對「因教示瑕疵導致誤向無管轄機關聲明不服」此一後續結果所設之特別效果規定，二者可併同援引，完整說明阿明之救濟權利受到雙重保障。</p>
+      <p><span class="q-label">4. 結論</span><br>阿明將訴願書誤寄無管轄權之區公所，並不會導致其喪失救濟期限。依行政程序法第99條規定，其訴願應視為於法定期間內向有管轄權之消防局提起，區公所並應依第99條第2項準用第17條規定，即行移送並通知阿明。</p>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例二十三・明確性原則 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>消防員開立限期改善通知單，內容僅寫「請將廠內不安全之處全數弄好，恢復成法規要求的樣子」，阿明不知具體要改善什麼。<br><b>問：</b>(一)此文字記載有無瑕疵？(二)違反哪一項一般法律原則？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>(一)一.本案限期改善通知單上之文字記載在行政程序法上，具有明確性不足之程序與內容瑕疵。該限期改善通知單在法律性質上屬規制人民義務之行政處分，依行政程序法第96條第1項第2款，應載明主旨、事實、理由及法令依據。二.本案具體違規事實與改善之內容均未列明，導致受處分人（阿明）無從知悉其處分之具體內容與法令依據，顯已構成行政處分記載內容之程序與實體瑕疵。</p>
+      <p>(二)本案違反行政程序法第5條規定行政行為之內容應明確。即行政法上之「明確性原則」。其限期改善通知單內容必須將改善項目表達清晰、範圍明確，使處分相對人得以預見、理解其法律效果與義務內容，並得據以辦理或提起救濟。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§96Ⅰ②</span>應載明事實理由法令依據、<span class="law-tag">§5</span>明確性原則，兩條並用論證扎實，理由記載瑕疵與明確性原則的雙重角度分析完整。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例三十四・書面行政處分得不記明理由之情形 <span class="verdict-chip g-warn">⚠可加強（款次引用不夠精確）</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明申請「優良防火管理場所」認證，消防局審查後認為完全符合資格，發函核准，但公文未詳細記載核准理由。<br><b>問：</b>(一)書面處分是否原則應記載理由？(二)這份核准公文未記明理由是否違法？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>（一）原則上應記載理由，依據行政程序法(下稱本法)第96條相關規定，書面行政處分應記載主旨、事實、理由及其法令依據，使當事人了解行政機關作成處分的原因，以保障人民權益，並利於事後救濟及監督，因此書面行政處分原則上均應附具理由。</p>
+      <p>（二）不違法，依據本法第97條相關規定，行政處分對於人民依法規之申請，係完全依其申請內容作成，而未損害任何第三人權益者，得不記明理由。本案中：阿明依法申請「優良防火管理場所」認證，消防局審查後認定符合資格，完全依照阿明的申請內容予以核准。此核准處分並未影響或損害第三人權益。因此，本案符合本法第97條相關規定中得不記明理由之例外情形，因此消防局雖未於核准公文中詳細記載核准理由，仍屬合法，並不違法。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li>結論（得不記明理由，不違法）正確。</li>
+        <li class="fix-note"><b>引用精確度可再提升：</b>答案自行改寫的「§97」條文內容——「行政處分對於人民依法規之申請，係完全依其申請內容作成，而未損害任何第三人權益者，得不記明理由」——經核對官方§97六款原文，<b>找不到完全相同表述的款次</b>。§97六款分別是①未限制人民之權益者②相對人已知悉或可知悉理由者③大量作成之同種類處分④一般處分經公告刊登者⑤考試檢定鑑定程序⑥依法律規定無須記明理由者。本案（完全依阿明申請內容核准，未損害任何人權益）最貼切對應的應該是<span class="law-tag">§97①</span>「未限制人民之權益者」——因為是完全授益、沒有限制阿明權益的處分。建議直接引用§97①原文，而不要自行組合改寫一句條文本身沒有的文字，這樣在申論題的條號給分上會更精確。</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-pane" id="g9">
+  <div class="header"><h1>分組9｜無效・更正・適用範圍</h1><div class="sub">案例17、21、35・對應§111無效事由、§101顯然錯誤、§3適用範圍排除</div></div>
+
+  <div class="case-card">
+    <div class="case-head">案例十七・無效行政處分之認定與效力 <span class="verdict-chip g-good">✓優秀</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明遭消防局裁處書開罰，裁處書完全沒有記載處分機關名稱及首長署名，主旨要求阿明「1天內銷毀廠內100噸危險化學物質」。<br><b>問：</b>(一)此裁處書法律效力為何？(二)阿明需要提訴願撤銷嗎？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>（一）本件裁處書屬無效行政處分，不生法律效力。依《行政程序法》第111條規定，行政處分有該條所定情形之一者，無效。其中第1款規定，不能由書面處分中得知處分機關者，行政處分無效；第3款規定，內容對任何人均屬不能實現者，亦屬無效行政處分。查本案裁處書未記載處分機關名稱，使人民無法由書面內容得知作成處分之機關，符合《行政程序法》第111條第1款規定；另命阿明於一天內銷毀廠內一百噸危險化學物質，客觀上任何人均無法完成，符合同條第3款規定。因此，本件裁處書屬無效行政處分，自始不生法律效力，且無須經撤銷程序即當然無效。</p>
+      <p>（二）阿明原則上無須提起訴願請求撤銷該裁處書。依《訴願法》第1條規定，人民對於中央或地方機關之行政處分，認為違法或不當，致損害其權利或利益者，得提起訴願。惟訴願制度係針對具有法律效力之行政處分，請求撤銷或變更；而無效行政處分因自始即不生法律效力，並非須透過訴願程序撤銷始失效。本案裁處書既符合《行政程序法》第111條所定無效事由，屬無效行政處分，自始不生法律效力，故阿明無須向消防局或上級機關提起訴願撤銷。惟若消防局仍主張該處分有效，阿明得依法請求確認行政處分無效，以維護自身權益。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§111①</span>不能得知處分機關、<span class="law-tag">§111③</span>內容對任何人均不能實現，兩款事由的涵攝清楚——尤其「1天內銷毀100噸化學物質」正確扣住「對任何人均不能實現」（客觀不能，不是僅對阿明困難）的判斷標準。</li>
+        <li>補充「確認行政處分無效」作為備位救濟途徑，展現完整的救濟體系概念，是本份彙整中無效處分論述最完整的一題。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例二十一・本法適用範圍與刑事案件除外規定 <span class="verdict-chip g-warn">⚠品質待加強（結論對但引用有誤且文字破碎）</span></div>
+    <div class="case-scenario"><b>情境：</b>警消聯合對疑似縱火的阿明進行刑事案件犯罪偵查詢問，阿明主張依行政程序法有權閱覽全部卷宗並要求30天陳述意見期間。<br><b>問：</b>(一)刑事偵查程序是否適用行政程序法？(二)阿明得否主張行政程序法上的權利？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>（一）本件核心在於探討警消人員進行刑事犯罪案件之偵查程序時是否適用行政程序法及疑似縱火犯阿明可否依據行政程序法主張權利。依行政程序法第46條第二項第五款之規定行政機關對前項之申請原則上不得拒絕除非有下情形中提到有嚴重妨礙有關社會安寧公共安全或其他公共利益之職務正常進行之虞者阿明疑似為縱火犯且已進入刑事偵查階段不適用行政程序法之相關規定且行政程序法第三條第三款中提到下列事項不適用本法之程序規定刑事案件犯罪偵查程序所以阿明還是可以依刑事訴訟法第33條規定辯設人於審判中得檢閱卷宗及證物並得抄錄或攝影向法院申請調閱相關紀錄。</p>
+      <p>（二）不得依行政程序法主張相關權益，因本案應屬於刑事訴訟法相關規定不屬於行政訴訟法相關規定因本案件不屬於行政程序法之範疇阿明不得主張30日之意見陳述其相關權益。結論：該案件不適用行政程序法且阿明不得依行政程序法主張相關權益。</p>
+      <p style="color:var(--sub);font-size:.85em;">（以上依原文語意整理標點，原文本身缺乏標點分段、末句有語意未完之處）</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li>結論正確（刑事偵查程序不適用行政程序法，阿明不得主張30日陳述意見），核心依據<span class="law-tag">§3Ⅲ③</span>「刑事案件犯罪偵查程序」不適用本法程序規定，這條引用是對的。</li>
+        <li class="fix-note"><b>多餘且錯誤的引用：</b>開頭引用「§46第2項第5款」（卷宗閱覽拒絕事由：嚴重妨礙社會治安公共安全職務正常進行之虞）來支撐「不適用行政程序法」的結論，但§46Ⅱ⑤講的是「機關可以拒絕人民閱覽卷宗的其中一個事由」，跟「整個程序是否適用行政程序法」是完全不同層次的問題，兩者沒有邏輯關聯，應該刪除這段引用，直接以§3Ⅲ③作為唯一依據即可。</li>
+        <li><b>文字品質：</b>本題是46份答案中書寫品質最弱的一份——缺乏標點分段、論述跳躍、結尾語句不完整。建議重新以「大前提（§3Ⅲ③排除刑事偵查程序）→小前提（本案屬刑事偵查）→結論（不適用，改依刑事訴訟法§33主張閱卷權）」三段式整理，會比現在的長段落更清楚易讀，也更容易被閱卷者快速抓到得分點。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例三十五・行政處分之顯然錯誤與更正 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明因未設消防設備遭開罰3萬元，裁處書將阿明身分證字號末碼「8」誤打成「3」，阿明主張這是無效處分拒絕繳款。<br><b>問：</b>(一)此瑕疵屬何種程度？(二)消防局應如何處理？阿明主張無效有理由嗎？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>（一）依裁處書將受處分人身分證字號最後一碼誤植，屬於行政程序法第101條所稱之誤寫或其他顯然錯誤，僅屬形式瑕疵，並未影響處分內容及受處分人之辨識，不影響行政處分之效力。</p>
+      <p>（二）依《行政程序法》第101條規定，依職權或依申請隨時更正裁處書之顯然錯誤，無須重新作成行政處分。阿明不得據此主張行政處分無效，因本案並非《行政程序法》第111條所稱重大且明顯之瑕疵，行政處分仍屬有效。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§101</span>顯然錯誤更正、<span class="law-tag">§111</span>重大明顯瑕疵的對照區辨清楚，正確指出「一碼誤植」與「重大明顯瑕疵」的量級差異，簡潔有力。</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-pane" id="g10">
+  <div class="header"><h1>分組10｜撤銷・廢止・信賴保護</h1><div class="sub">案例5、11、24、37、38・對應§10裁量濫用、§117撤銷、§123廢止、§127不當得利返還、§131時效</div></div>
+
+  <div class="case-card">
+    <div class="case-head">案例五・裁量基準之性質與平等原則、裁量濫用之禁止 <span class="verdict-chip g-gap">✗有缺口（漏掉題目點名的核心考點）</span></div>
+    <div class="case-scenario"><b>情境：</b>消防局訂有「統一裁罰基準」，阿明與老王犯相同輕微違規、皆無前科，老王依基準開罰最低額2萬元，承辦員卻因阿明「態度不佳、頻頻抱怨」捨棄基準直接開最高額10萬元。<br><b>問：</b>(一)「統一裁罰基準」屬何種法規範性質？(二)對阿明的裁罰決定是否違反行政程序法相關原則？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>（一）行政程序法第159條第2項第2款規定，行政規則包含為協助下級機關或屬官統一解釋法令、認定事實、及行使裁量權，而訂頒之解釋性規定及裁量基準。</p>
+      <p>（二）《行政程序法》第6條明文規定：「行政行為，非有正當理由，不得為差別待遇。」這就是行政法上的平等原則。它的核心含意是「相同事件應為相同處理，不同事件應為不同處理」，禁止行政機關毫無理由地做出不公平的差別對待。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li>(一)<span class="law-tag">§159Ⅱ②</span>裁量基準屬行政規則，定性正確。</li>
+        <li class="fix-note"><b>(二)漏掉本題真正的考點——裁量濫用禁止：</b>本題標題就寫著「裁量濫用之禁止」，但答案只寫了<span class="law-tag">§6</span>平等原則，完全沒有引用<span class="law-tag">§10</span>「行政機關行使裁量權，不得逾越法定之裁量範圍，並應符合法規授權之目的」。裁量基準一旦訂定，機關原則上應受「行政自我拘束原則」拘束（其法理基礎正是§6平等原則），這部分答對了；但承辦員捨棄基準的<b>理由</b>——「態度不佳、頻頻抱怨」——與違規事實的嚴重程度毫無關聯，這是納入與案件無關因素而做出裁量，屬於§10所稱「裁量濫用」的典型態樣（違反授權目的、摻入不相關考量），這才是本案的核心破綻，答案完全沒有點出來。</li>
+        <li><b>更完整的寫法：</b>應並列引用§6（平等原則／行政自我拘束）+ §10（裁量濫用禁止），並具體指出「態度不佳」不是消防法規授權裁罰輕重應考量的因素（違規情節、危害程度、是否累犯才是），兩者合併才能完整涵蓋題目要求的兩個原則。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例十一・違法行政處分之撤銷與信賴保護原則 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>消防局承辦人「誤算」阿明所得，誤發5千元弱勢住警器補助，阿明已持核准函購買安裝設備。半年後消防局稽核發現錯誤，欲撤銷處分並追討5千元，阿明主張不願退還。<br><b>問：</b>(一)此瑕疵屬何種行政處分瑕疵？原處分機關得否依職權撤銷？(二)阿明的主張可適用何原則？消防局應如何處理？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>（一）1.消防局承辦人因「計算錯誤」誤認阿明符合資格，使不具備法定制額條件的阿明獲得補助，該補助處分係屬違法之行政處分。2.消防局是否能因職權撤銷?依照行政程序法第117條。違法行政處分於法定救濟期間經過後，原處分機關得依職權為全部或一部之撤銷；其上級機關，亦得為之。</p>
+      <p>（二）1.阿明得依行政程序法第8條。行政行為，應以誠實信用之方法為之，並應保護人民正當合理之信賴。並提供1.消防局核發補助5,000元的核准函（有效之行政處分）。2.實際上產生了再行支配財產的行為（拿著核准函去特約器材行購買並安裝設備）。主張不退還。2.消防局依據行政程序法第120條應衡量「信賴利益」與「公共利益」兩種情況。情況一:信賴利益大於公益（不得撤銷處分，阿明無須退款）——若消防局評估阿明已確實善意將該款項用於採購安裝住警器與滅火器，且阿明並無任何欺罔過失，阿明保護信賴利益的必要性大於收回5千元公帑之公益，則消防局不得撤銷該補助處分，亦不得追討5千元。情況二:公益大於信賴利益（撤銷處分，但須給予合理補償）——若消防局評估為了落實法定補助條件與預算公平性（公益），仍決定依法撤銷該違法處分，則阿明因信賴該處分所受之財產上損失（已購買安裝設備之支出），消防局應給予合理補償（依據《行政程序法》第120條）。由於消防局撤銷處分後應補償阿明已消費的5,000元損失，抵銷後阿明實質上亦無須再掏錢退還。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§117</span>違法處分之職權撤銷、<span class="law-tag">§8</span>誠信信賴保護、<span class="law-tag">§120</span>信賴利益與公益衡量兩種情況並陳，架構完整。</li>
+        <li>「抵銷後阿明實質上亦無須再掏錢退還」的結論展現對§120補償機制實際效果的掌握，是本份彙整中信賴保護論述最完整的一題之一。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例二十四・誠實信用原則與信賴保護原則 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明拿設計圖向消防局諮詢，消防局長官書面回覆「完全符合現行消防法規，請放心施工」，阿明因此砸重金裝潢；完工查驗時消防局卻以「先前回覆錯誤」為由拒發許可。<br><b>問：</b>(一)消防局事後推翻書面承諾是否違法？(二)阿明可主張何種原則保護自己？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>（一）1.法律依據：依《行政程序法》第8條規定，行政行為應遵循誠實信用原則，並應保護人民正當合理之信賴，不得無正當理由任意變更既有行政立場，以維護人民對行政機關之信賴。2.本案分析：本案消防局以正式書面回覆阿明，明確表示設計圖符合現行消防法規，阿明基於該公權力表示而投入鉅額資金裝潢。嗣後消防局僅以「先前回覆錯誤」為由推翻先前承諾，拒絕核發許可，將使人民無法預見行政機關之作為，造成對行政機關的不信任。3.結論：因此，消防局無正當理由逕自推翻先前正式書面表示，有違反《行政程序法》第8條誠實信用原則及信賴保護原則之虞。</p>
+      <p>（二）1.法律依據：阿明可主張《行政程序法》第8條之信賴保護原則。所謂信賴保護原則，係指人民因信賴行政機關合法且正式之公權力表示，而安排其生活或財產，且該信賴值得保護時，行政機關不得任意撤銷、變更或推翻原處分；如依法撤銷，亦應兼顧人民信賴利益，必要時給予合理補償。2.本案分析：本案中：1.消防局以正式書面確認設計符合規定。2.阿明善意信賴該表示，且無詐欺、脅迫或重大過失。3.阿明已投入大量裝潢費用，信賴利益已具體形成。因此，阿明之信賴具有保護必要，消防局不得僅因事後認定錯誤即否定其權益。3.結論：本案中，消防局以正式書面表示設計符合消防法規，阿明據此投入重大成本，已形成值得保護之信賴利益。消防局事後僅因法令解釋改變即推翻原承諾，有違反《行政程序法》第8條誠實信用原則及信賴保護原則之虞。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§8</span>誠信信賴保護原則的三個信賴保護要件（信賴基礎、信賴表現、信賴值得保護）雖未逐一列出標籤，但實質內容都有涵蓋，論述完整。</li>
+        <li class="fix-note"><b>可以更完整之處：</b>本案中「消防局的諮詢書面回覆」本質上是否構成具法效性的「行政處分」或僅是「觀念通知／行政指導」，會影響後續能否直接主張§117/§120撤銷程序，這一層定性本題完全沒有處理，直接跳到§8信賴保護原則。若能先定性「諮詢回覆」的法律性質（多數見解認為非正式諮詢意見屬於觀念通知，但因具體、正式且供人民具體施工依據，仍可能構成信賴基礎），論述會更嚴謹，但不影響本題結論之正確性。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例三十七・合法授益處分之廢止 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明十年前取得合法許可設立液化石油氣儲氣槽，十年後周邊蓋滿醫院與住宅區，消防局評估繼續存在將嚴重危害公共安全，發函廢止許可。<br><b>問：</b>(一)消防局使合法處分效力消滅的行為稱為什麼？(二)是否符合行政程序法的法定事由？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>（一）在行政法上，使行政處分效力消滅的機制主要分為「撤銷」與「廢止」：1.撤銷（第117條）：針對「違法」的行政處分，使其溯及既往或向後失其效力。2.廢止（第123條）：針對「合法」的行政處分，因事後發生法定事由，經機關考量後向後使其失其效力。本案中，阿明十年前取得的許可為「合法」的行政處分，消防局事後因周邊環境改變而發函廢止，該行為在法律上即稱為「行政處分之廢止」。</p>
+      <p>（二）依據《行政程序法》第123條規定，合法之授益行政處分，除法規另有規定外，非有下列情形之一者，不得廢止：1.法規准許廢止者。2.原處分機關保留行政處分之廢止權者。3.附負擔之行政處分，受益人未履行該負擔者。4.行政處分所依據之法規或事實狀況於作成後發生變更，致不廢止該處分對公益將有重大危害者。5.其他。6.為防止或除去對公益之重大有害結果者。事實狀況發生變更：阿明設立儲氣槽時為空地，十年後周邊陸續蓋滿大型醫院與住宅區，屬於「行政處分作成後，客觀事實狀況發生巨大變更」。不廢止將有重大危害：液化石油氣儲氣槽位於人口稠密及大型醫院旁，具高度危險性，若發生爆炸或洩漏，將對周邊廣大民眾之生命、身體及財產等「公共安全（公益）造成極大危害」。符合法定事由：消防局為保護公共安全，基於環境變更廢止該許可，完全符合第123條第4款之規定。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li>撤銷（§117，違法）與廢止（§123，合法）的區辨清楚，並正確命中§123④「事實狀況事後變更」作為本案適用款次，涵攝紮實。</li>
+        <li class="fix-note"><b>小瑕疵：</b>把§123的第5款「其他為防止或除去對公益之重大危害者」誤拆成「5.其他」與「6.為防止或除去對公益之重大有害結果者」兩款——法條其實只有5款，不影響本案結論（因為本案本來就是用第4款而非第5款），但條列時法條款數要對，避免被閱卷者認為連基本條文結構都記錯。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例三十八・不當得利之返還 <span class="verdict-chip g-good">✓正確（引文稍有出入，不影響結論）</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明領取5萬元老舊弱勢住宅消防設備改善補助，附負擔「三年內不得變更為營業用途，否則應繳回全額」，一年後阿明將住宅一樓改裝早餐店營業，消防局依法廢止原處分並要求返還。<br><b>問：</b>(一)阿明手中保有的5萬元在行政法上構成什麼？(二)消防局應以何種方式命其返還？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>一、阿明手中保有的5萬元補助款，在行政法上構成什麼？構成「公法上不當得利」。（一）授益處分廢止：消防局當初發放補助款的處分屬於「授予利益之行政處分」，並附加負擔（三年內不得變更為營業用途）。阿明違反負擔將一樓改為早餐店，消防局依法廢止原核准處分。（二）法律原因消滅：當原授益處分經廢止而失去效力後，阿明當初受領5萬元補助款的「法律上原因」即告消滅。法源依據：《行政程序法》第127條第1項：授予利益之行政處分，其內容係提供一次或連續之金錢或可分物之給付者，經撤銷、廢止或條件成就而有溯及既往失效之情形時，受益人應返還因該處分所受領之給付。其行政處分經確認無效者，亦同。</p>
+      <p>二、消防局要求阿明返還這筆錢，應透過何種方式下達命令？消防局應以「書面行政處分」的方式下達命令，確認返還金額並限期命阿明返還。法源依據：《行政程序法》第127條第3項：「行政機關依前二項規定請求返還時，應以書面行政處分確認返還範圍，並限期命受益人返還之。」</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§127Ⅰ</span>公法上不當得利之發生原因（授益處分廢止致法律上原因消滅）、<span class="law-tag">§127Ⅲ</span>須以書面行政處分確認返還範圍並限期命返還，兩層次區辨清楚，結論正確。</li>
+        <li><b>引文微誤，不影響結論：</b>自行摘寫的§127Ⅰ條文中「經撤銷、廢止或條件成就而<u>有溯及既往失效之情形時</u>」一段為自行改寫，實際條文為「經撤銷、廢止或條件成就而應返還者」，並無「溯及既往失效」的限定語（廢止原則上是向後失效，不當得利返還義務不以溯及既往為前提）。作答時引用條文建議儘量逐字覆誦，或以「依……規定」帶過大意，避免自行改寫出與原文不符、甚至可能誤導審查方向的文字。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="group-note"><b>本組整體觀察：</b>本組5題除案例5明顯漏掉題目點名的核心考點（§10裁量濫用）外，其餘4題（撤銷、廢止、信賴保護、不當得利）都掌握得相當扎實，尤其案例11、24對§8/§120信賴保護原則「信賴基礎、信賴表現、利益衡量」三層次的掌握，是全份彙整中信賴保護主題寫得最完整的部分。</div>
+</div>
+
+<div class="tab-pane" id="g11">
+  <div class="header"><h1>分組11｜期間・時效・程序重開・法制預告</h1><div class="sub">案例15、18、40、43、44・對應§131公法上請求權時效、§128程序重開、§154法規命令預告、§50回復原狀、§51處理期間</div></div>
+
+  <div class="case-card">
+    <div class="case-head">案例十五・公法上請求權之時效消滅 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明的KTV於民國108年5月收到10萬元裁處書拒不繳納，承辦人員因交接疏漏遲未移送行政執行，直到114年6月新任承辦人才發函要求限期繳納。<br><b>問：</b>(一)消防局的請求權屬何種權利？有無法定期間限制？(二)114年6月阿明可否依法拒絕繳納？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>（一）消防局對阿明10萬元罰鍰之請求，屬於公法上請求權。依行政程序法第131條第1項規定，請求權人為行政機關時，除法律另有規定外，因5年間不行使而消滅。</p>
+      <p>（二）本案消防局自108年5月裁處後，至114年6月始要求阿明繳納，已逾5年。如無時效中斷等事由，其公法上請求權已因時效完成而消滅，故阿明得依法拒絕繳納。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§131Ⅰ</span>「請求權人為行政機關者，因5年間不行使而消滅」引用精準，並正確計算108年5月至114年6月已逾5年，結論正確。</li>
+        <li><b>可以更完整之處：</b>若能補一句§131Ⅱ「公法上請求權，因時效完成而當然消滅」（不待當事人主張，與民法消滅時效須抗辯不同），會讓答案在理論深度上更完整，但不影響本題已經正確的結論。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例十八・法定救濟期間經過後之申請行政程序重開 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明兩年前申請火災受災戶特別救助金因無法提出居住事實證明遭駁回，未提訴願致確定。兩年後整理舊家廢墟意外找出當年確實居住的證明文件（新證據）。<br><b>問：</b>(一)原處分已逾法定救濟期間，阿明有何法律途徑？(二)須符合行政程序法哪些時間與要件限制？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>阿明可以依據《行政程序法》第128條規定，向消防局申請「行政程序重開」來要求重新審查。</p>
+      <p>（一）阿明可以依法申請行政程序重開（又稱程序再開）。雖然駁回處分已逾法定救濟期間而具有形式確定力，但為了照顧實體正義，法律允許在具備特定法定事由時，讓行政機關重新審查已確定的行政處分。</p>
+      <p>（二）依據《行政程序法》第128條規定，阿明必須符合以下嚴格的時效與實體要件：1.時間限制——主觀時效：必須在知悉新證據後3個月內提出申請。客觀時效：自原處分確定時（即救濟期間屆滿之次日）起算，若已逾5年則不得申請。阿明處分確定至今為2年，未過5年期限。2.實體要件限制——法定事由：阿明發現了「新證據」（確實居住之證明文件）。該證據必須是處分作成前已存在，但當時未經斟酌，且若經斟酌阿明將可受較有利之處分。非因故意或重大過失：阿明當時無法提出此文件，必須不是因為自己的故意或重大過失所導致（例如因火災現場混亂未能及時尋獲，至兩年後才意外挖出，即符合此要件）。管轄機關：必須向原處分機關（即消防局）提出申請。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§128</span>程序重開的主觀時效（知悉後3個月）、客觀時效（確定後5年）、實體要件（新證據＋非因故意重大過失＋須向原處分機關申請）四個要件全部到齊，是本份彙整中要件列點最完整的一題。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例四十・法規命令草案預告程序 <span class="verdict-chip g-good">✓優秀</span></div>
+    <div class="case-scenario"><b>情境：</b>消防署擬訂新版《各類場所消防安全設備設置標準》（法規命令），承辦人認為只是技術性規範，欲直接請長官核定發布，法制人員提醒須先公開草案供民眾表達意見。<br><b>問：</b>(一)擬訂法規命令草案時依法應辦理何種程序？(二)公告中依法須載明哪些事項？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>依《行政程序法》第154條，行政機關擬訂法規命令時，除情況急迫，顯然無法事先公告周知者外，應於政府公報或新聞紙公告，載明下列事項：一、訂定機關之名稱，其依法應由數機關會同訂定者，各該機關名稱。二、訂定之依據。三、草案全文或其主要內容。四、任何人得於所定期間內向指定機關陳述意見之意旨。行政機關除為前項之公告外，並得以適當之方法，將公告內容廣泛周知。本案應辦理「法規命令草案預告程序」，不能僅因屬技術性規範而直接發布。</p>
+      <p>（一）應辦理之程序：消防署擬訂法規命令草案後，原則上應：1.將草案刊登於政府公報或新聞紙，公開預告。2.提供一定期間，使任何人得向指定機關陳述意見。3.除上述公告外，並得透過機關網站、新聞稿或其他適當方式，將公告內容廣泛周知。只有在「情況急迫，顯然無法事先公告周知」時，才可以例外免辦草案預告。單純屬於技術性規範，並不是免予預告的法定理由。</p>
+      <p>（二）公告必須載明之事項：公告依法應載明下列四項：1.訂定機關名稱。2.訂定依據。3.草案全文或主要內容。4.意見陳述方式，包括期限、受理機關及聯絡方式等。※結論：消防署應先完成法規命令草案預告，給予民眾知悉及表達意見的機會，再依程序核定、發布。其目的在落實行政公開及人民參與，提升法規命令的正當性與可行性。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§154</span>四款公告應載明事項全部正確條列，並精準抓住「情況急迫，顯然無法事先公告周知」才是唯一例外——特別點出「單純屬於技術性規範不是免預告的法定理由」，正好戳破題目情境中承辦人「這只是技術性規範」的錯誤想法，涵攝精準，是本份彙整中少數同時兼顧條文完整性與情境破題力道的答案。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例四十三・遲誤期間之回復原狀 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明準備在30日訴願期限內寄出訴願書，期限最後幾天強颱引發土石流，聯外道路中斷一週、郵局停止營業，導致錯過期限；道路搶通後阿明立刻寄出並說明遲延原因。<br><b>問：</b>(一)阿明因天災錯過法定救濟期間，法律上有無救濟途徑？(二)須在原因消滅後幾日內提出申請？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>（一）有救濟途徑。颱風引發土石流造成道路中斷及郵局停業屬天災，依《行政程序法》第50條第1項規定，因天災或其他不應歸責於申請人之事由，致基於法規之申請不能於法定期間內提出者，得於其原因消滅後十日內，申請回復原狀。</p>
+      <p>（二）阿明必須在道路搶通(原因消滅)後的十日內提出申請。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§50Ⅰ</span>回復原狀之要件（天災或不可歸責事由＋原因消滅後10日內）引用完整精準，「道路搶通＝原因消滅」的事實涵攝清楚，結論正確。</li>
+        <li><b>可以更完整之處：</b>可補充§50Ⅱ「申請回復原狀，應同時補行期間內應為之行政程序行為」——即阿明申請回復原狀時，須將訴願書一併補行提出，而不能只申請回復原狀卻不附上訴願書，這是實務上容易漏掉的配套動作。不影響本題結論。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例四十四・處理期間之預設與逾期效果 <span class="verdict-chip g-good">✓正確</span></div>
+    <div class="case-scenario"><b>情境：</b>阿明申請防焰物品認證，法規未定審查期限、消防局也未公告處理時限，送件後等了3個月毫無下文，承辦人僅稱「案子很多還在排隊」。<br><b>問：</b>(一)法規未規定且機關未公告時，處理期間應為多久？(二)等了3個月是否已構成逾期？</div>
+    <div class="orig-answer">
+      <h4>📄 原始作答全文</h4>
+      <p>（一）處理期間應為「二個月」。依據《行政程序法》第51條第2項明文規定：「行政機關未依前項規定訂定處理期間者，其處理期間為二個月。」因此，在法規未明文規定，且消防局也沒有對外公告處理時限的情形下，法律直接預設這類申請案的處理期間就是兩個月。</p>
+      <p>（二）是的，消防局已經構成「逾期」。阿明送件後已經等待了三個月，明顯超過了法定的兩個月處理期間。補充說明：依據《行政程序法》第51條第3項規定，如果案件無法在期限內處理完畢，機關確實可以延長（以一次為限，最長不得超過兩個月），但必須將延長之事由「通知申請人」。在本案情境中，消防局對阿明「完全沒有下文」，承辦人僅口頭推託說還在排隊，並未依法踐行書面或正式的延長通知程序。因此，在沒有合法延長處理期間的情況下，法定時限依然是兩個月，消防局讓阿明等了三個月，在法律上已構成逾期（即行政機關怠於作為）。</p>
+    </div>
+    <div class="verdict-block">
+      <h4>✅ 核對意見</h4>
+      <ul>
+        <li><span class="law-tag">§51Ⅱ</span>未公告則法定2個月、<span class="law-tag">§51Ⅲ</span>延長須通知申請人且以一次為限，兩項要件都到位，並正確指出承辦人「口頭推託」不等於合法的延長通知程序，結論正確、論述完整。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="group-note"><b>本組整體觀察：</b>本組5題全部答對，且案例18（程序重開四要件）、案例40（法規命令預告＋破解題目陷阱）、案例44（區辨「口頭推託」與「合法延長通知」）三題論述完整度都在水準之上，是12組中命中率最高的一組。</div>
+</div>
+
+<div class="tab-pane" id="g12">
+  <div class="header"><h1>分組12｜未作答四題・架構提示</h1><div class="sub">案例47、48、49、50・這4題小組彙整中沒有寫答案，以下僅提供考點定位與作答架構，不是完整範答（若後續需要完整範答再另行提出）</div></div>
+  <div class="group-note"><b>說明：</b>本組4題在彙整文件中只有題目、沒有答案。依同一套方法先定位核心法條與作答骨架，供接下來練習時自行填寫涵攝與結論；每題作答時間僅40-30分鐘，建議直接用「大前提（法條）→小前提（事實）→結論」三段式，不需要額外堆砌其他原則。</div>
+
+  <div class="case-card">
+    <div class="case-head">案例四十七・法規命令之無效事由 <span class="verdict-chip g-none">○未作答</span></div>
+    <div class="case-scenario"><b>情境：</b>市政府消防局自行發布「嚴懲謊報火警實施辦法」（法規命令），規定謊報者除罰鍰外須強制服勞役48小時，但《消防法》完全沒有授權地方機關可設「強制勞役」這種處罰種類。阿明拒絕服勞役。<br><b>問：</b>(一)此法規命令在法律上是否站得住腳？(二)依行政程序法規定，該法規命令的效力為何？</div>
+    <div class="verdict-block">
+      <h4>📍 架構提示</h4>
+      <ul>
+        <li><b>核心法條：</b><span class="law-tag">§158Ⅰ②</span>「無法律之授權而剝奪或限制人民之自由、權利者」，法規命令無效。</li>
+        <li><b>作答骨架：</b>(一)「強制勞役」屬限制人身自由的處罰種類，依法律保留原則須有法律明文授權；《消防法》全文並無此種授權，消防局逕以法規命令創設，於法無據。(二)依§158Ⅰ②，本辦法關於「強制勞役」部分因無法律授權而剝奪限制人民自由，應屬無效；可再提§158Ⅱ「一部無效、原則上其他部分仍有效，但除去該部分顯失規範目的者全部無效」——本案僅「強制勞役」條款違法，「依消防法處以罰鍰」部分若本有法律依據，原則上仍可單獨有效。</li>
+        <li><b>可連結原則：</b>法律保留原則（人身自由限制屬法律保留密度最高的事項，不得僅以法規命令創設）。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例四十八・重大行政計畫之確定程序 <span class="verdict-chip g-none">○未作答</span></div>
+    <div class="case-scenario"><b>情境：</b>消防局擬定「特定區域重大消防防災中心設置計畫」，涉及廣大土地徵收與周邊區域用途變更，影響成千上萬居民與商家權益。消防局原想開完內部會議就直接拍板定案，遭專家學者質疑程序不合法。<br><b>問：</b>(一)這類行政計畫在行政程序法上有無特別規範？(二)須依法履行哪些公開程序？</div>
+    <div class="verdict-block">
+      <h4>📍 架構提示</h4>
+      <ul>
+        <li><b>核心法條：</b><span class="law-tag">§164Ⅰ</span>「行政計畫有關一定地區土地之特定利用或重大公共設施之設置，涉及多數不同利益之人及多數不同行政機關權限者，確定其計畫之裁決，應經公開及聽證程序」。</li>
+        <li><b>作答骨架：</b>(一)有特別規範，本計畫涉及土地徵收（特定地區土地利用）與重大公共設施設置，且牽涉大量居民、商家利益及可能跨機關權限（如都市計畫主管機關），核屬§164Ⅰ規範對象，不能僅以內部會議拍板。(二)須履行「公開」＋「聽證」程序，讓受影響之多數不同利益人有表達意見與答辯的機會，最終計畫裁決須綜合聽證結果作成；§164Ⅱ另規定擬訂、確定、修訂、廢棄之具體程序由行政院另定之，可補充說明尚須依行政院訂定之細部程序辦理。</li>
+        <li><b>易混淆點：</b>本題與案例30（聽證與公聽會之區別）可互相參照——行政計畫確定程序用的是正式聽證，不是單純蒐集意見的公聽會。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例四十九・行政指導之明示與相對人要求書面化 <span class="verdict-chip g-none">○未作答</span></div>
+    <div class="case-scenario"><b>情境：</b>消防員對阿明進行「防救災動線規劃」行政指導，口頭建議拆除走道貨架以利逃生。阿明覺得有道理，但擔心日後其他消防員標準不一，要求將建議內容寫成正式書面指導書交付。<br><b>問：</b>(一)消防員進行行政指導時，依法應向阿明「明示」哪些資訊？(二)面對阿明要求交付「書面」指導內容，消防員依法應如何回應？</div>
+    <div class="verdict-block">
+      <h4>📍 架構提示</h4>
+      <ul>
+        <li><b>核心法條：</b><span class="law-tag">§167</span>Ⅰ「行政機關對相對人為行政指導時，應明示行政指導之目的、內容及負責指導者等事項」；Ⅱ「前項明示，得以書面、言詞或其他方式為之。如相對人請求交付文書時，除行政上有特別困難外，應以書面為之」。</li>
+        <li><b>作答骨架：</b>(一)應明示三項：①行政指導之目的（如提升逃生安全）②內容（具體建議事項，如拆除左側貨架）③負責指導之人員（該名消防員或所屬單位）。(二)依§167Ⅱ後段，阿明已明確請求交付書面，除非行政上有特別困難，消防員原則上不得拒絕，應將建議內容做成書面指導書交付阿明；本案並無「行政上特別困難」之情形，故消防員應予交付。</li>
+        <li><b>可連結案例：</b>與案例8（行政指導之界限與拒絕之效果，§165、§166）同一章節，答題時可注意§166是「相對人拒絕指導」的保護、§167是「明示與書面化義務」，兩條功能不同，勿混用。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-head">案例五十・行政契約之準用民法規定 <span class="verdict-chip g-none">○未作答</span></div>
+    <div class="case-scenario"><b>情境：</b>消防局與阿明簽訂「消防救護車輛專案維修保養合約」（行政契約），阿明嚴重遲延交車影響勤務，消防局求償時發現契約漏未約定遲延交車的違約金或利息計算方式，法制室建議直接引用民法給付遲延規定求償。<br><b>問：</b>(一)行政契約可否直接引用規範私人間權利義務的民法？(二)行政程序法對此有何具體依據？</div>
+    <div class="verdict-block">
+      <h4>📍 架構提示</h4>
+      <ul>
+        <li><b>核心法條：</b><span class="law-tag">§149</span>「行政契約，本法未規定者，準用民法相關之規定」。</li>
+        <li><b>作答骨架：</b>(一)可以。行政契約雖屬公法契約，但行政程序法就契約履行細節（如遲延給付之效果、違約金計算）未必規定周全，法律明文允許補充適用民法法理，故消防局可依民法給付遲延（民法§229以下）之規定向阿明求償利息或損害賠償，並非法制室的權宜之計，而是有明文依據的正規作法。(二)具體依據即§149，此為行政契約專章（§135-149）壓軸條文，確立「行政程序法優先適用、未規定事項準用民法」的補充適用原則，體現行政契約雖具公法性質，仍以私法契約法理為骨幹架構。</li>
+        <li><b>提醒：</b>本題與案例7（行政契約與行政處分併用禁止，§135、§136、§137、§146-148）同屬契約章節，可合併複習§135-149整章脈絡，考試常在同一大題中混合出「契約定性＋履行爭議處理」。</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-pane" id="tStat">
+  <div class="header">
+    <h1>法條出題頻率統計</h1>
+    <div class="sub">依50個案例之核心法條（citation錯誤已訂正為正確條號）統計・作為考前重點複習排序參考</div>
+  </div>
+
+  <div class="group-note">
+    <b>統計方式說明：</b>以每個案例批改後「訂正版」核心法條為準計算（例如案例7以§137、§146、§147計，而非原答案誤引之§136、§148；案例19以§99（準用§17）計，訂正原答案誤植訴願法§61用語於§99之錯誤；案例5補計漏未引用的§10；案例22補計漏未引用的§4），逐一歸入所屬章節與條號後統計次數。
+  </div>
+
+  <div style="font-weight:700;color:var(--admin);margin:22px 0 10px;font-size:1.02em;">① 依主題分組統計（送達、迴避調查兩組並列出題密度最高）</div>
+  <table class="overview">
+    <tr><th>分組主題</th><th>案例數</th><th>涵蓋條號</th></tr>
+    <tr><td>送達制度全解</td><td>6題（4,9,31,32,33,45）</td><td>§67-91（§48、§49、§73、§74、§76、§78、§81、§83）</td></tr>
+    <tr><td>迴避・當事人・程序調查</td><td>6題（1,25,27,28,29,42）</td><td>§21-43（§33、§34、§35、§36-43）</td></tr>
+    <tr><td>撤銷・廢止・信賴保護</td><td>5題（5,11,24,37,38）</td><td>§6、§8、§10、§117、§120、§123、§127</td></tr>
+    <tr><td>期間・時效・程序重開</td><td>5題（15,18,40,43,44）</td><td>§50、§51、§128、§131、§154</td></tr>
+    <tr><td>行政處分之定性與方式</td><td>4題（2,3,22,46）</td><td>§4、§7、§92、§95</td></tr>
+    <tr><td>附款・行政契約・行政指導</td><td>4題（6,7,8,39）</td><td>§93、§94、§136、§137、§146、§147、§165、§166</td></tr>
+    <tr><td>處分理由・教示・救濟保障</td><td>4題（14,19,23,34）</td><td>§5、§96、§97、§98、§99（準用§17）</td></tr>
+    <tr><td>卷宗閱覽・陳情・程序外接觸</td><td>3題（10,16,20）</td><td>§46、§47、§168、§173、§174</td></tr>
+    <tr><td>職務協助・委託・委任</td><td>3題（12,13,26）</td><td>§2、§15、§16、§19、§159</td></tr>
+    <tr><td>陳述意見・聽證・第三人參加</td><td>3題（30,36,41）</td><td>§23、§102、§107、§109、§114</td></tr>
+    <tr><td>無效・更正・適用範圍</td><td>3題（17,21,35）</td><td>§3、§101、§110、§111</td></tr>
+  </table>
+
+  <div style="font-weight:700;color:var(--admin);margin:26px 0 10px;font-size:1.02em;">② 單一條號出現次數最高（同一條在不同情境反覆被考）</div>
+  <table class="overview">
+    <tr><th>條號</th><th>條名</th><th>次數</th><th>出現案例</th></tr>
+    <tr><td><span class="law-tag">§92</span></td><td>行政處分定義</td><td>3</td><td>案例2、3、13</td></tr>
+    <tr><td><span class="law-tag">§96</span></td><td>書面處分應記載事項</td><td>3</td><td>案例14、23、34</td></tr>
+    <tr><td><span class="law-tag">§8</span></td><td>誠信信賴保護</td><td>2</td><td>案例11、24</td></tr>
+    <tr><td><span class="law-tag">§36</span></td><td>職權調查／有利不利注意</td><td>2</td><td>案例25、29</td></tr>
+    <tr><td><span class="law-tag">§51</span></td><td>處理期間2個月</td><td>2</td><td>案例42、44</td></tr>
+    <tr><td><span class="law-tag">§73</span></td><td>補充送達／留置送達</td><td>2</td><td>案例4、33</td></tr>
+    <tr><td><span class="law-tag">§102</span></td><td>陳述意見</td><td>2</td><td>案例2、36</td></tr>
+    <tr><td><span class="law-tag">§111</span></td><td>無效事由</td><td>2</td><td>案例17、35</td></tr>
+    <tr><td><span class="law-tag">§117</span></td><td>違法處分撤銷</td><td>2</td><td>案例11、37</td></tr>
+    <tr><td><span class="law-tag">§159</span></td><td>行政規則定義</td><td>2</td><td>案例5、26</td></tr>
+    <tr><td><span class="law-tag">§165</span></td><td>行政指導定義</td><td>2</td><td>案例8、42</td></tr>
+  </table>
+
+  <div style="font-weight:700;color:var(--admin);margin:26px 0 10px;font-size:1.02em;">③ §135以後（第三章起）覆蓋率——練習題明顯的死角</div>
+  <table class="overview">
+    <tr><th>章節</th><th>條號範圍</th><th>條數</th><th>這份練習題有練到的條號</th><th>覆蓋率</th></tr>
+    <tr><td>第三章 行政契約</td><td>§135-149</td><td>15條</td><td>§136、§137、§146、§147（僅4條，且§137/146/147是案例7引錯後被訂正才浮現）</td><td>約27%</td></tr>
+    <tr><td>第四章 法規命令及行政規則</td><td>§150-162</td><td>13條</td><td>§154、§159（§158雖有出題但案例47未作答）</td><td>約15%</td></tr>
+    <tr><td>第五章 行政計畫</td><td>§163-164</td><td>2條</td><td>0條（案例48出題但完全未作答）</td><td>0%</td></tr>
+    <tr><td>第六章 行政指導</td><td>§165-167</td><td>3條</td><td>§165、§166（§167雖有出題但案例49未作答）</td><td>約67%（1/3空白）</td></tr>
+    <tr><td>第七章 陳情</td><td>§168-173</td><td>6條</td><td>§168、§173①②（僅2條）</td><td>約33%</td></tr>
+    <tr><td>第八章 附則</td><td>§174-175</td><td>2條</td><td>§174本該用在案例10卻漏未引用，§175完全沒出現過</td><td>幾乎0%</td></tr>
+  </table>
+
+  <div class="group-note" style="margin-top:22px;">
+    <b>3個複習建議：</b><br>
+    ① <span class="law-tag">§92</span>、<span class="law-tag">§96</span>是出現頻率最高的兩條（各3次），分別對應「行政處分vs觀念通知vs事實行為的定性」與「處分理由記載瑕疵」兩大常考題型，幾乎每次換個消防情境就能重考一遍，務必熟練。<br>
+    ② <b>送達（§67-91）與迴避・當事人・程序調查（§20-43）</b>並列出題密度最高，各佔50題中的6題（12%），代表整節都容易出題，不能只挑幾條背，應整節通讀。<br>
+    ③ <b>第五章行政計畫（§163、§164）完全掛零、行政契約章15條中有11條未練到、§174從未真正被答對過、§175從未出現過</b>——這些「課本沒教＋練習題也沒練到」的雙重死角，是目前準備上最大的破口，建議優先排入下一階段複習清單。
+  </div>
+</div>
+
+<div class="footer">行政程序法作業批改與教材分析｜非官方評分意見，僅供個人參考・製作：Claude AI・2026/08/04</div>
+</main>
+
+<script>
+  const btns = document.querySelectorAll('.tab-btn');
+  const panes = document.querySelectorAll('.tab-pane');
+  const mainEl = document.getElementById('main');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      panes.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      mainEl.scrollTop = 0;
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>行政程序法｜考場抄寫骨幹</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --bg:#f5f4f0; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66;
+    --accent:#6a4a8a; --accent-tint:#f2ecf7; --line:#e5e2da; --side-w:270px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);display:flex;}
+  #sidebar{width:var(--side-w);flex-shrink:0;height:100vh;position:sticky;top:0;overflow-y:auto;background:#fbfaf7;border-right:1px solid var(--line);padding:20px 14px;}
+  #sidebar h3{font-size:.78rem;color:var(--sub);text-transform:uppercase;letter-spacing:.06em;margin:18px 6px 6px;}
+  #sidebar h3:first-child{margin-top:4px;}
+  #search{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:.85rem;margin-bottom:8px;font-family:inherit;}
+  .backlink{display:block;font-size:.8rem;color:var(--sub);text-decoration:none;margin:0 6px 10px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+  #sidebar a.nav{display:block;padding:5px 8px;font-size:.84rem;color:var(--ink);text-decoration:none;border-radius:6px;line-height:1.4;}
+  #sidebar a.nav:hover{background:var(--line);}
+  main{flex:1;max-width:980px;margin:0 auto;padding:44px 32px 100px;min-width:0;}
+  h1.title{font-size:1.7rem;margin:0 0 4px;}
+  .subtitle{color:var(--sub);margin-bottom:8px;}
+  .toolbar{margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid var(--line);font-size:.82rem;color:#a09d95;}
+  section.chapter{margin-bottom:52px;scroll-margin-top:20px;}
+  .chapter-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+  .chapter-num{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.95rem;flex-shrink:0;background:var(--accent);}
+  .chapter-head h2{margin:0;font-size:1.25rem;}
+  h3.sec{scroll-margin-top:20px;font-size:1.02rem;margin:24px 0 8px;padding-left:12px;border-left:4px solid var(--line);}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;}
+  .card p{margin:.5em 0;line-height:1.85;font-size:.93rem;}
+  table{border-collapse:collapse;width:100%;margin:8px 0;font-size:.82rem;}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top;}
+  th{background:var(--accent-tint);}
+  .art{background:var(--accent-tint);color:var(--accent);padding:1px 6px;border-radius:5px;font-weight:600;font-size:.85em;white-space:nowrap;}
+  .flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:10px 0;font-size:.86rem;}
+  .flow .step{background:var(--accent-tint);color:var(--accent);border-radius:8px;padding:8px 12px;font-weight:600;white-space:nowrap;}
+  .flow .arrow{color:var(--sub);font-weight:700;}
+  .template{background:#fbf6ea;border:1px dashed #d8c896;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.87rem;line-height:1.85;color:#6b5a2a;}
+  .qa{background:#eef6f0;border-radius:10px;padding:10px 14px;margin:8px 0;font-size:.86rem;line-height:1.75;}
+  mark{background:#ffe9a8;padding:0 2px;border-radius:3px;}
+  .hidden{display:none !important;}
+
+  /* 樹狀圖 */
+  .tree-root{background:var(--accent);color:#fff;border-radius:12px;padding:14px 20px;font-weight:700;font-size:1.02rem;margin-bottom:4px;}
+  .tree-root .sub{display:block;font-weight:400;font-size:.82rem;color:#e5d8f2;margin-top:4px;}
+  .tree-wrap{border-left:3px solid var(--accent);margin-left:16px;padding-left:0;}
+  .tree-branch{position:relative;margin:0 0 0 20px;padding:14px 0 14px 22px;border-left:3px solid var(--line);}
+  .tree-branch:last-child{border-left:3px solid transparent;}
+  .tree-branch::before{content:'';position:absolute;left:-3px;top:22px;width:20px;height:3px;background:var(--accent);}
+  .tree-branch.main{border-left:3px solid var(--accent);}
+  .branch-label{display:inline-block;background:var(--accent-tint);color:var(--accent);border-radius:8px;padding:6px 14px;font-weight:700;font-size:.92rem;margin-bottom:8px;}
+  .branch-label.strong{background:var(--accent);color:#fff;}
+  .branch-detail{font-size:.85rem;color:var(--ink);line-height:2;padding-left:2px;}
+  .branch-detail b{color:var(--accent);}
+  .tree-branch .flow{margin:8px 0 4px;}
+</style>
+</head>
+<body>
+<div style="position:fixed;top:10px;right:14px;z-index:9999;font-size:.72rem;color:#a09d95;background:rgba(255,255,255,.85);padding:3px 10px;border-radius:999px;border:1px solid #e5e2da;">柯醒翰製作</div>
+
+<nav id="sidebar">
+  <input id="search" type="text" placeholder="搜尋關鍵字...">
+  <a class="backlink" href="index.html">← 回筆記入口</a>
+  <a class="backlink" href="admin-procedure-law.html">← 完整法條對照</a>
+  <a class="backlink" href="admin-procedure-textbook.html">← 教材筆記</a>
+
+  <h3>①作答架構</h3>
+  <a class="nav" href="#tree">作答架構判斷樹狀圖</a>
+  <h3>②七大行為類型速記</h3>
+  <a class="nav" href="#branchA">A｜行政處分（最常考）</a>
+  <a class="nav" href="#branchB">B｜事實行為・觀念通知</a>
+  <a class="nav" href="#branchC">C｜行政契約</a>
+  <a class="nav" href="#branchD">D｜法規命令・行政規則</a>
+  <a class="nav" href="#branchE">E｜行政計畫</a>
+  <a class="nav" href="#branchF">F｜行政指導</a>
+  <a class="nav" href="#branchG">G｜陳情</a>
+  <h3>③萬用起結句型</h3>
+  <a class="nav" href="#tpl">前言／涵攝／結論模板</a>
+</nav>
+
+<main>
+  <h1 class="title">行政程序法｜考場抄寫骨幹</h1>
+  <div class="subtitle">115年佐升正訓練・申論題作答架構速查</div>
+  <div class="toolbar">用途：拿到題目先照著①的樹狀圖定性「這是哪一種行政行為」，再照對應分支的步驟展開論述。完整條文原文請對照 <a href="admin-procedure-law.html">法條對照</a>；學理脈絡請見 <a href="admin-procedure-textbook.html">教材筆記</a>；真實批改案例請見 <a href="刑法瀆職罪與貪污治罪條例-模擬練習題/行政程序法作業批改與教材分析.html">作業批改與教材分析</a>（50案例統計）。</div>
+
+  <section class="chapter" id="ch1">
+    <div class="chapter-head"><div class="chapter-num">①</div><h2>作答架構判斷樹狀圖</h2></div>
+    <div class="card" id="tree">
+
+      <div class="tree-root">先問一句話：「這個情境裡，機關做的這件事，屬於行政程序法哪一種行為？」
+        <span class="sub">行政程序法§2第1項已經把行政程序限定成六種行為（處分／契約／法規命令行政規則／計畫／指導／陳情），先定性、才知道要走哪一線條文</span>
+      </div>
+
+      <div class="tree-wrap">
+
+        <div class="tree-branch">
+          <div class="branch-label">0｜程序性・管轄問題（題目還沒問到實體行為，先卡在程序前端）</div>
+          <div class="branch-detail">
+            管轄有無爭議／移送 → <span class="art">§11-14</span>、<span class="art">§17</span>、<span class="art">§99準用§17</span><br>
+            委任下級／委託平行機關／委託民間 → <span class="art">§15</span>、<span class="art">§16</span><br>
+            職務協助（應拒絕Ⅳ vs 得拒絕Ⅴ要分清） → <span class="art">§19</span><br>
+            當事人能力／行為能力／代理／選定當事人／迴避 → <span class="art">§20-33</span><br>
+            職權調查・有利不利注意・調查手段 → <span class="art">§36-43</span><br>
+            送達（補充／留置／寄存／公示，各有生效時點） → <span class="art">§67-91</span><br>
+            期間計算・郵戳為準・回復原狀・處理期間 → <span class="art">§48-51</span>
+          </div>
+        </div>
+
+        <div class="tree-branch main">
+          <div class="branch-label strong">A｜行政處分（§92-134，出題密度最高，先確認§92五要素成立）</div>
+          <div class="branch-detail">先辨：是行政處分？還是只是事實行為／觀念通知（無法效性，不可訴願）？——比對<span class="art">§92</span>「公法上具體事件之決定或其他公權力措施，對外直接發生法律效果之單方行政行為」五要素逐一檢驗。</div>
+          <div class="flow">
+            <div class="step">Step1 作成前<br>陳述意見§102<br>(例外§103)／聽證§107</div><div class="arrow">→</div>
+            <div class="step">Step2 方式記載<br>書面應載§96／<br>得不記理由§97</div><div class="arrow">→</div>
+            <div class="step">Step3 教示<br>錯誤§98Ⅲ／<br>誤向無管轄§99準用§17</div><div class="arrow">→</div>
+            <div class="step">Step4 瑕疵<br>無效§111(重大明顯)／<br>顯然錯誤更正§101</div><div class="arrow">→</div>
+            <div class="step">Step5 事後變動<br>撤銷§117-121／<br>廢止§122-126</div><div class="arrow">→</div>
+            <div class="step">Step6 救濟保障<br>程序中決定不得<br>單獨救濟§174</div>
+          </div>
+          <div class="qa"><b>信賴保護三要件</b>（撤銷§119-120、廢止§126都會用到）：信賴基礎＋信賴表現＋信賴值得保護，缺一不可，撤銷/廢止若信賴利益大於公益，原則不得撤廢，公益優先時則須補償。</div>
+        </div>
+
+        <div class="tree-branch">
+          <div class="branch-label">B｜事實行為・觀念通知</div>
+          <div class="branch-detail">關鍵測試：有沒有「直接對外發生法律效果」？沒有 → 只是通知／勸導／檢舉後查無違規之函覆，不具行政處分性質，原則不能單獨提起訴願，只能促請機關依職權發動。常與A類「命令離開／警告」的區辨併考（警告=事實行為，命令=處分）。</div>
+        </div>
+
+        <div class="tree-branch">
+          <div class="branch-label">C｜行政契約（§135-149）</div>
+          <div class="branch-detail">
+            定性：契約標的說（涉公法權義→行政契約） → <span class="art">§135</span><br>
+            類型判斷：事實/法律關係不明確、需相互讓步 →「和解契約」<span class="art">§136</span>；互負對待給付 →「雙務契約」<span class="art">§137</span>（3要件：特定用途／有助職務／給付相當關聯）<br>
+            機關片面介入契約：防止重大公益危害 → <span class="art">§146</span>（須補償）；情事變更顯失公平 → <span class="art">§147</span><br>
+            <b>陷阱</b>：§148是「約定自願接受執行」，跟「契約處分併用禁止」無關，不要混用
+          </div>
+        </div>
+
+        <div class="tree-branch">
+          <div class="branch-label">D｜法規命令・行政規則（§150-162）</div>
+          <div class="branch-detail">
+            法規命令：對外發生效力，須經預告陳述意見<span class="art">§154</span>／得依職權聽證<span class="art">§155</span>／核定發布<span class="art">§157</span><br>
+            行政規則：對內部秩序運作，下達下級機關即生效<span class="art">§160</span>、拘束下級機關屬官<span class="art">§161</span><br>
+            區辨重點：解釋性規定／裁量基準屬<span class="art">§159Ⅱ②</span>行政規則，對外部人民原則無拘束力，但機關已依基準裁處在案者，透過平等原則／行政自我拘束原則產生間接對外效力
+          </div>
+        </div>
+
+        <div class="tree-branch">
+          <div class="branch-label">E｜行政計畫（§163-164）</div>
+          <div class="branch-detail">涉及多數不同利益人或不同行政機關權限之重大計畫，確定前應公開及聽證 → <span class="art">§164</span></div>
+        </div>
+
+        <div class="tree-branch">
+          <div class="branch-label">F｜行政指導（§165-167）</div>
+          <div class="branch-detail">非強制力，僅輔導協助勸告建議 → <span class="art">§165</span>；相對人明確拒絕，機關應立即停止，<b>不得因拒絕而為不利處置</b> → <span class="art">§166Ⅱ</span>（常搭配「禁止不當聯結原則」一起論述）</div>
+        </div>
+
+        <div class="tree-branch">
+          <div class="branch-label">G｜陳情（§168-173）</div>
+          <div class="branch-detail">建議／查詢／舉發／權益維護皆屬陳情 → <span class="art">§168</span>；得不予處理：無真實姓名住址①／同一事由已答覆仍反覆陳情②等款 → <span class="art">§173</span></div>
+        </div>
+
+      </div>
+
+      <div class="qa" style="margin-top:16px;"><b>下筆口訣</b>：先定性（這是A-G哪一種行為？還是只是B事實行為？）→ 若為A行政處分，依Step1-6順序檢查，題目問到哪一步就寫到哪一步 → 全程留意§174「程序中決定不得單獨救濟」是否構成隱藏爭點（機關在程序進行中做的小決定，原則要等實體處分才能一併救濟）。</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch2">
+    <div class="chapter-head"><div class="chapter-num">②</div><h2>七大行為類型・常考條號速記</h2></div>
+
+    <h3 class="sec" id="branchA">A｜行政處分</h3>
+    <div class="card">
+      <table>
+        <tr><th style="width:10%">條號</th><th>重點</th></tr>
+        <tr><td class="art">§92</td><td>行政處分定義五要素：行政機關／公法上具體事件／決定或其他公權力措施／對外直接發生法律效果／單方行政行為</td></tr>
+        <tr><td class="art">§95</td><td>處分方式：書面／言詞／其他方式皆可，但相對人有正當理由要求作成書面時不得拒絕</td></tr>
+        <tr><td class="art">§96Ⅰ②⑥</td><td>書面應載事實理由法令依據(②)、救濟方法期間受理機關(⑥)</td></tr>
+        <tr><td class="art">§97</td><td>得不記明理由6款，最常考①「未限制人民之權益者」</td></tr>
+        <tr><td class="art">§98Ⅲ</td><td>教示錯誤或未告知，1年內聲明不服視為法定期間內為之</td></tr>
+        <tr><td class="art">§99</td><td>對處分聲明不服因處分機關轉送而遲誤法定期間，不可歸責申請人、首次向無管轄機關提出者，視為法定期間內提起；第2項準用§17</td></tr>
+        <tr><td class="art">§101</td><td>顯然錯誤（如誤寫字號），得隨時更正，無須重新作成處分</td></tr>
+        <tr><td class="art">§102/103</td><td>限制剝奪權利前應給予陳述意見，例外8款（大量作成／情況急迫／已明確等）得不給予</td></tr>
+        <tr><td class="art">§107/109</td><td>聽證發動：法規明文應舉行／機關認有必要；聽證後作成處分免除訴願及先行程序</td></tr>
+        <tr><td class="art">§110</td><td>處分自送達或公告時發生效力（存續力）</td></tr>
+        <tr><td class="art">§111</td><td>無效7款事由，常考①不能得知處分機關、③內容對任何人均不能實現（客觀不能，非僅對相對人困難）</td></tr>
+        <tr><td class="art">§114</td><td>程序方式瑕疵得補正：漏未陳述意見等瑕疵，於救濟程序終結前補正即治癒</td></tr>
+        <tr><td class="art">§117-121</td><td>違法處分之撤銷：得依職權撤銷／溯及失效／信賴不值得保護3款(119)／信賴補償(120)／除斥期間2年(121)</td></tr>
+        <tr><td class="art">§122-126</td><td>合法處分之廢止：授益處分廢止5款事由(123)／除斥期間2年(124)／原則向後失效(125)／信賴補償(126)</td></tr>
+        <tr><td class="art">§174</td><td>程序中決定或處置不得單獨救濟，僅得於實體決定聲明不服時一併聲明；例外：得強制執行或另有規定者</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="branchB">B｜事實行為・觀念通知</h3>
+    <div class="card">
+      <p>無明文條號，依<span class="art">§92</span>反面解釋判斷：欠缺「對外直接發生法律效果」即非行政處分。常見：警告勸導、單純查無違規之函覆、公務員間之內部簽核。判斷關鍵句型：「是否對相對人之權利義務產生規制效果」。</p>
+    </div>
+
+    <h3 class="sec" id="branchC">C｜行政契約</h3>
+    <div class="card">
+      <table>
+        <tr><th style="width:10%">條號</th><th>重點</th></tr>
+        <tr><td class="art">§135</td><td>公法上法律關係得以契約設定變更消滅（性質判斷：契約標的說）</td></tr>
+        <tr><td class="art">§136</td><td>和解契約：事實或法律關係職權調查仍不能確定，相互讓步締約代替處分</td></tr>
+        <tr><td class="art">§137</td><td>雙務契約3要件：特定用途／有助執行職務／給付相當有正當合理關聯</td></tr>
+        <tr><td class="art">§141</td><td>準用民法關於契約無效之規定</td></tr>
+        <tr><td class="art">§146</td><td>機關為防止或除去公益重大危害，得調整或終止契約，須補償財產損失，書面敘明理由</td></tr>
+        <tr><td class="art">§147</td><td>情事變更原則：締約後情事重大變更顯失公平，得請求調整或終止</td></tr>
+        <tr><td class="art">§149</td><td>本法未規定者，準用民法（契約章壓軸條文）</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="branchD">D｜法規命令・行政規則</h3>
+    <div class="card">
+      <table>
+        <tr><th style="width:10%">條號</th><th>重點</th></tr>
+        <tr><td class="art">§150</td><td>法規命令：依法律授權對多數不特定人民權利義務事項所訂之規範，對外發生法規範效力</td></tr>
+        <tr><td class="art">§154</td><td>訂定應公告載明訂定機關及依據、草案全文或主要內容、陳述意見期限方式，供陳述意見</td></tr>
+        <tr><td class="art">§159</td><td>行政規則：上級對下級或長官對屬官，規範內部秩序運作，非直接對外發生效力；Ⅱ②解釋性規定及裁量基準</td></tr>
+        <tr><td class="art">§160/161</td><td>下達下級機關屬官即生效；有效下達之行政規則拘束訂定機關、下級機關及屬官</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="branchE">E｜行政計畫</h3>
+    <div class="card"><p><span class="art">§163</span> 行政機關為將來一定期限內達成特定目的，事前就達成該目的有關之方法步驟或措施等所為之設計與規劃。<span class="art">§164</span> 涉及多數不同利益人及不同行政機關權限、重大公益者，確定前應舉行公開及聽證程序。</p></div>
+
+    <h3 class="sec" id="branchF">F｜行政指導</h3>
+    <div class="card"><p><span class="art">§165</span> 輔導協助勸告建議等不具法律強制力之方法，促請特定人為一定作為不作為。<span class="art">§166</span> Ⅰ不得濫用；Ⅱ相對人拒絕，機關應立即停止，不得據此為不利處置。<span class="art">§167</span> 應明示行政指導之目的內容及負責人員。</p></div>
+
+    <h3 class="sec" id="branchG">G｜陳情</h3>
+    <div class="card"><p><span class="art">§168</span> 建議、查詢、舉發、權益維護均屬陳情。<span class="art">§173</span> 得不予處理：①無真實姓名住址②同一事由已適當處理答覆仍一再陳情③非主管陳情事項而人民不欲移送。</p></div>
+  </section>
+
+  <section class="chapter" id="ch3">
+    <div class="chapter-head"><div class="chapter-num">③</div><h2>萬用起結句型</h2></div>
+    <div class="template" id="tpl">
+      <b>定性起手句</b>：本案OO之行為，依行政程序法第2條第1項規定，其性質應先予定性，始能判斷應適用本法哪一節規定；經核OO具備／不具備【對外直接發生法律效果】之要素，應定性為【行政處分／事實行為／行政契約／…】。<br><br>
+      <b>行政處分五要素句</b>：按行政程序法第92條規定，行政處分係指行政機關就公法上具體事件所為之決定或其他公權力措施而對外直接發生法律效果之單方行政行為。本案OO核與上開要件相符／不符，理由如下：……<br><br>
+      <b>陳述意見／聽證句</b>：行政機關作成限制或剝奪人民權利之行政處分前，除已依第39條調查通知或決定舉行聽證外，依第102條規定，應給予處分相對人陳述意見之機會；本案是否符合第103條所定得不給予之例外情形，應併予檢視。<br><br>
+      <b>瑕疵區辨句</b>：本案OO之瑕疵，究屬行政程序法第111條所定「重大明顯」之無效事由，抑或僅屬得依第117條撤銷之一般違法瑕疵，應視其違法情節輕重而定；若僅屬誤寫誤算等顯然錯誤，依第101條得逕行更正，無須重新作成處分。<br><br>
+      <b>信賴保護句</b>：人民主張信賴保護，應具備信賴基礎、信賴表現及信賴值得保護三要件；本案OO是否具有第119條所定信賴不值得保護之情形，攸關機關得否依第117條撤銷原處分，若撤銷，依第120條仍應對OO因信賴所受財產上之損失予以合理補償。<br><br>
+      <b>程序中決定不得單獨救濟句</b>：本案OO所受之決定或處置，究屬行政程序進行中之程序上決定，抑或已對外發生規制效果之實體行政處分，攸關其得否依第174條規定單獨提起救濟；若屬前者，原則僅得於對實體決定聲明不服時一併聲明之。<br><br>
+      <b>結論萬用句</b>：綜上，OO之行為經核與行政程序法第OO條所定要件相符／不符，【機關之作法／人民之主張】於法【有據／無據】，應為【結論】。
+    </div>
+  </section>
+
+</main>
+
+<script>
+  document.getElementById('search').addEventListener('input', function(e){
+    var q = e.target.value.trim().toLowerCase();
+    var cards = document.querySelectorAll('section.chapter');
+    cards.forEach(function(sec){
+      if(!q){ sec.style.display=''; return; }
+      var text = sec.innerText.toLowerCase();
+      sec.style.display = text.indexOf(q) !== -1 ? '' : 'none';
+    });
+  });
+</script>
+</body>
+</html>
