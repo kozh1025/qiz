@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>危機處理｜考場抄寫骨幹</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --bg:#f5f4f0; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66;
+    --accent:#b2551f; --accent-tint:#f7e9de; --line:#e5e2da; --side-w:270px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);display:flex;}
+  #sidebar{width:var(--side-w);flex-shrink:0;height:100vh;position:sticky;top:0;overflow-y:auto;background:#fbfaf7;border-right:1px solid var(--line);padding:20px 14px;}
+  #sidebar h3{font-size:.78rem;color:var(--sub);text-transform:uppercase;letter-spacing:.06em;margin:18px 6px 6px;}
+  #sidebar h3:first-child{margin-top:4px;}
+  #search{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:.85rem;margin-bottom:8px;font-family:inherit;}
+  .backlink{display:block;font-size:.8rem;color:var(--sub);text-decoration:none;margin:0 6px 10px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+  #sidebar a.nav{display:block;padding:5px 8px;font-size:.84rem;color:var(--ink);text-decoration:none;border-radius:6px;line-height:1.4;}
+  #sidebar a.nav:hover{background:var(--line);}
+  main{flex:1;max-width:980px;margin:0 auto;padding:44px 32px 100px;min-width:0;}
+  h1.title{font-size:1.7rem;margin:0 0 4px;}
+  .subtitle{color:var(--sub);margin-bottom:8px;}
+  .toolbar{margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid var(--line);font-size:.82rem;color:#a09d95;}
+  section.chapter{margin-bottom:52px;scroll-margin-top:20px;}
+  .chapter-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+  .chapter-num{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.95rem;flex-shrink:0;background:var(--accent);}
+  .chapter-head h2{margin:0;font-size:1.25rem;}
+  h3.sec{scroll-margin-top:20px;font-size:1.02rem;margin:24px 0 8px;padding-left:12px;border-left:4px solid var(--line);}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;}
+  .card p{margin:.5em 0;line-height:1.85;font-size:.93rem;}
+  table{border-collapse:collapse;width:100%;margin:8px 0;font-size:.82rem;}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top;}
+  th{background:var(--accent-tint);}
+  .art{background:var(--accent-tint);color:var(--accent);padding:1px 6px;border-radius:5px;font-weight:600;font-size:.85em;white-space:nowrap;}
+  .flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:10px 0;font-size:.86rem;}
+  .flow .step{background:var(--accent-tint);color:var(--accent);border-radius:8px;padding:8px 12px;font-weight:600;white-space:nowrap;}
+  .flow .arrow{color:var(--sub);font-weight:700;}
+  .template{background:#fbf6ea;border:1px dashed #d8c896;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.87rem;line-height:1.85;color:#6b5a2a;}
+  .qa{background:#eef6f0;border-radius:10px;padding:10px 14px;margin:8px 0;font-size:.86rem;line-height:1.75;}
+  .case-box{background:#fbf9f5;border:1px solid #e8dfd0;border-radius:12px;padding:16px 18px;margin:12px 0;}
+  .case-box h4{margin:0 0 8px;color:var(--accent);}
+  mark{background:#ffe9a8;padding:0 2px;border-radius:3px;}
+  .hidden{display:none !important;}
+</style>
+</head>
+<body>
+<div style="position:fixed;top:10px;right:14px;z-index:9999;font-size:.72rem;color:#a09d95;background:rgba(255,255,255,.85);padding:3px 10px;border-radius:999px;border:1px solid #e5e2da;">柯醒翰製作</div>
+
+<nav id="sidebar">
+  <input id="search" type="text" placeholder="搜尋關鍵字...">
+  <a class="backlink" href="index.html">← 回筆記入口</a>
+
+  <h3>①答題架構</h3>
+  <a class="nav" href="#answer-tpl">CDM／涵攝／結論公式</a>
+  <h3>②CDM／C3I／三階段</h3>
+  <a class="nav" href="#cdm">CDM五步驟</a>
+  <a class="nav" href="#c3i">C3I／風險管理／三階段</a>
+  <h3>③談判與記者會</h3>
+  <a class="nav" href="#nego">談判要素／記者會注意事項</a>
+  <h3>④歷屆真實考法</h3>
+  <a class="nav" href="#past">109-114年6次完整範文</a>
+</nav>
+
+<main>
+  <h1 class="title">危機處理｜考場抄寫骨幹</h1>
+  <div class="subtitle">115年佐升正訓練・Q2・30分・實務寫作題</div>
+  <div class="toolbar">用途：先套①的CDM五步驟公式組裝答案骨架，題目另問談判或記者會時，在④確定選項／⑤採取行動步驟中插入③的談判要素或記者會原則。完整工具舉例請見 <a href="危機處理五大工具萬用模板.html">五大工具萬用模板</a>；學理脈絡請見 <a href="crisis-management-textbook.html">教材筆記</a>；模擬練習請見 <a href="危機處理模擬練習題_10題合輯.html">10題合輯</a>。</div>
+
+  <section class="chapter" id="ch0">
+    <div class="chapter-head"><div class="chapter-num">①</div><h2>答題架構與萬用起結句型</h2></div>
+    <div class="card" id="answer-tpl">
+      <p><b>核心公式：定性啟動（前言）→ CDM五步驟展開（涵攝）→ 結論</b>（與其他3科的「大前提→涵攝→結論」三段論法邏輯相同，只是危機處理不是套法條，而是套「CDM決策模式」──前言講清楚這是什麼危機、要用CDM哪個角度切入，涵攝把情境事實逐步驟套進CDM五步驟，結論收斂成一句話，三塊分開寫、層次分明，才拿得到閱卷老師的印象分數。）</p>
+
+      <h3 class="sec" style="margin-top:20px;">一、定性（前言）── CDM啟動判斷公式</h3>
+      <p>不論題目是單一危機還是複合式危機，一律以CDM五步驟為骨幹展開；題目另外問到「記者會／新聞說明」或「談判／人質協商」，則在步驟④⑤插入對應的談判要素或記者會原則：</p>
+      <div class="template">
+        ①判斷句：題目描述「單一突發事件之處置」或「多重事件同時發生（複合式危機）」→ 皆以<b>CDM五步驟</b>為骨幹；題目再問「如何對外說明／面對媒體」→ 加掛<b>記者會七大原則</b>；題目再問「如何與行為人溝通／交換條件」→ 加掛<b>談判七要素</b>。<br>
+        ②起手式：「面對OO危機情境，運用CDM決策模式（Cognitive Decision Model），逐步蒐集情資、評估風險、確定行動方案，並就OO階段的溝通處置作為析述如下。」<br>
+        ③過渡句：「茲依CDM五步驟，逐一分析本案情資蒐集、風險評估、政策職權考量、行動決定及後續再評估如下。」
+      </div>
+
+      <h4 style="margin:16px 0 8px;color:var(--accent);">CDM／C3I／談判／記者會速查（可直接默寫套用，共10項）</h4>
+      <table>
+        <tr><th style="width:16%">項目</th><th>骨幹</th></tr>
+        <tr><td class="art">CDM①</td><td>蒐集分析情資——多管道收情資、SALUTE格式（規模/活動/位置/單位/時間/裝備）確認事態</td></tr>
+        <tr><td class="art">CDM②</td><td>評估風險威脅——研判危機關聯性、評估可用資源與行動受限因素</td></tr>
+        <tr><td class="art">CDM③</td><td>考量政策職權（7問）——是我的職權嗎？可依法立即行動嗎？政策規範怎麼要求？如何符合規範處理？該用強制力還是降階策略？有無管轄權/協調問題？行動前還有什麼要考量？</td></tr>
+        <tr><td class="art">CDM④</td><td>確定選項決定行動——列出可行方案、依嚴重性/資源/時間選定最適方案</td></tr>
+        <tr><td class="art">CDM⑤</td><td>採取行動持續再評估——非線性可循環（旋轉車輪模式），情況未解決可回任一步驟重評估</td></tr>
+        <tr><td class="art">C3I</td><td>Command指揮(統一領導)／Control控制(充分情資)／Communication溝通(內外一致口徑)／Information情報(研判價值性)</td></tr>
+        <tr><td class="art">三階段</td><td>預防(平時關係建立/風險評估)→應變(即時反應/現場處置)→復原(檢討究責/制度修正)</td></tr>
+        <tr><td class="art">談判7要素</td><td>可能達成的協議、最佳退路(BATNA)、利益、關係、公平合理性、溝通、承諾</td></tr>
+        <tr><td class="art">8項禁忌</td><td>武器彈藥、交換人質、酒類、釋放囚犯、交通工具（其餘視考題情境延伸列點），絕不可退讓</td></tr>
+        <tr><td class="art">記者會7原則</td><td>救援優先／迅速出面(黃金1小時內)／統一發言人／誠信原則／以人為本／定期更新／資訊管制(或社群應對)</td></tr>
+      </table>
+      <p style="color:var(--sub);font-size:.85rem;">背不出完整條列也沒關係，至少要寫出<mark>步驟名稱＋一句話展開</mark>兩個關鍵座標；切忌前言只寫「本題運用CDM決策模式」就跳去涵攝，這樣拿不到基本分。</p>
+
+      <h3 class="sec" style="margin-top:24px;">二、CDM五步驟展開（涵攝三層）</h3>
+      <div class="template">
+        <b>1. 情資與風險層（CDM①②）：</b>逐一蒐集分析本案情資（可用SALUTE格式），評估風險威脅及可用資源，研判各事件（如有複合危機）之關聯性與優先順序。<br><br>
+        <b>2. 政策職權層（CDM③）：</b>依7問逐一檢視是否屬本身職權、可否依法立即行動、有無管轄權或跨機關協調問題，決定採強制力或降階處理策略。<br><br>
+        <b>3. 行動與再評估層（CDM④⑤）：</b>列出可行方案並依嚴重性、資源、時間選定最適方案，採取行動後持續監控、視情況變化回到任一步驟重新評估；若涉談判，插入談判七要素與8項禁忌；若涉記者會，插入記者會七大原則（尤重「黃金1小時」內首次說明）。
+      </div>
+      <p style="color:var(--sub);font-size:.85rem;">CDM是<mark>非線性、可循環</mark>的「旋轉車輪模式」——情況未解決，可以回到任一步驟重新評估，不是走完⑤就結束；套情境時務必<b>逐步驟展開情境內容</b>，不要只默寫步驟名稱，這是閱卷最容易扣分的地方。</p>
+
+      <h3 class="sec" style="margin-top:24px;">三、結論</h3>
+      <div class="template">
+        綜上，透過CDM五步驟【蒐集情資→評估風險→考量職權→確定行動→持續再評估】之循環運用，〔並掌握談判OO要素／記者會OO原則，〕除可有效化解OO危機外，亦能兼顧【民眾安全／組織信譽／後續究責與制度修正】，爰建議依上開處置作為辦理。
+      </div>
+      <p style="color:var(--sub);font-size:.85rem;">結論的黃金結構＝<mark>CDM循環一句話</mark>（不用重複前面列過的每一步驟）＋<mark>談判／記者會補充</mark>（題目有問才寫）＋<mark>核心效益</mark>。三段寫完，一題的骨架就完整了。<b>三合一作答提醒</b>：題目常把「危機處理＋談判＋新聞處理」包在同一情境，結論務必分點都答到，不要只答其中一項。</p>
+
+      <h3 class="sec" style="margin-top:24px;">四、套用範例（定性＋涵攝節錄＋結論一次寫完）</h3>
+      <div class="case-box">
+        <h4>範例・CDM五步驟＋跨機關合作（仿113年地震12小時應變情境）</h4>
+        <p><b>定性：</b>面對「平日9:30大地震，廳舍搖晃1隊員受傷，轄區房屋倒塌人員受困，當班僅5人無外援」之複合危機情境，運用CDM決策模式逐步蒐集情資、評估風險、確定行動方案，並與警察等機關協調合作，析述如下。</p>
+        <p><b>涵攝（節錄）：</b>①情資與風險層：立即通報上級、多管道收報案並以GIS標記、監聽廣播指揮中心、派員目視偵查，掌握轄區災情全貌；同時以SALUTE格式評估當班僅5人、無外援之資源缺口與行動受限因素。②政策職權層：檢視召回休假人員、向上級請求支援、啟動義勇消防隊、聯繫民間救難及軍方協助是否屬職權範圍及法定程序，逐一檢視有無管轄權及跨機關協調問題。③行動與再評估層：缺大型機具時採聲響呼叫法、徒手搬移輕型障礙、槓桿原理應用、支撐防二次倒塌等搜救法；人命救災依START傷患分類(紅黃綠黑)、地點優先原則決定順序；建立聯合指揮所(ICP)、警消分工、聯繫衛生醫療及工務部門、啟動EOC，持續監控並視災情變化回到任一步驟重新評估。</p>
+        <p><b>結論：</b>綜上，透過CDM五步驟蒐集情資、評估風險、考量職權、確定行動、持續再評估之循環運用，並與警察、衛生醫療、工務等機關建立聯合指揮所協同合作，除可有效因應地震複合式災情外，亦能兼顧當班人力有限之現實限制，爰建議依上開處置作為辦理。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch1">
+    <div class="chapter-head"><div class="chapter-num">②</div><h2>CDM五步驟／C3I／三階段</h2></div>
+
+    <h3 class="sec" id="cdm">CDM五步驟（近6年最常考）</h3>
+    <div class="card">
+      <div class="flow">
+        <div class="step">①蒐集分析情資</div><div class="arrow">→</div>
+        <div class="step">②評估風險威脅</div><div class="arrow">→</div>
+        <div class="step">③考量政策職權<br>(7問)</div><div class="arrow">→</div>
+        <div class="step">④確定選項<br>決定行動</div><div class="arrow">→</div>
+        <div class="step">⑤採取行動<br>持續再評估</div>
+      </div>
+      <p style="color:var(--sub);font-size:.85rem;">非線性、可循環＝「旋轉車輪模式」，情況未解決可回到任一步驟重新評估。</p>
+      <p><b>③的7問精簡版</b>：這是我的職權嗎？可依法立即行動嗎？政策規範怎麼要求？如何符合規範處理？該用強制力還是降階策略？有無管轄權/協調問題？行動前還有什麼要考量？</p>
+      <p><b>套情境技巧</b>：113年考法是把地震12小時應變逐一套入5步驟展開（蒐集災情/動員人力/搜救方法/救災優先順序/跨機關合作），<b>務必逐步驟展開情境內容</b>，不要只默寫步驟名稱。</p>
+    </div>
+
+    <h3 class="sec" id="c3i">C3I框架／風險管理步驟／三階段</h3>
+    <div class="card">
+      <p><b>C3I</b>（危機管理作為4分項）：<b>C</b>ommand危機指揮（統一領導、掌控情緒）　<b>C</b>ontrol情境控制（充分情資、危機處理程序）　<b>C</b>ommunication協調溝通（組織內外部一致口徑）　<b>I</b>nformation情報蒐集（研判情報有價值性）</p>
+      <p><b>三階段框架</b>（114年考過，隨時可能再出現）：<mark>預防</mark>(平時關係建立/風險評估) → <mark>應變</mark>(即時反應/現場處置) → <mark>復原</mark>(檢討究責/制度修正)</p>
+      <p><b>群眾活動危機處理4階段</b>：平時作為(建立關係/蒐集資訊/教育訓練) → 事前作為(蒐集預警情資/協調主管機關) → 事中作為(主動協調/指揮到場) → 事後作為(清理現場/檢討報告)</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch2">
+    <div class="chapter-head"><div class="chapter-num">③</div><h2>談判要素／記者會注意事項</h2></div>
+    <div class="card" id="nego">
+      <p><b>談判前準備7要素</b>（哈佛談判學派）：可能達成的協議、最佳退路(BATNA)、利益、關係、公平合理性、溝通、承諾</p>
+      <p><b>8項禁忌條件</b>（絕不可退讓）：武器彈藥、交換人質、酒類、釋放囚犯、交通工具（其餘視考題情境延伸列點）</p>
+      <p><b>3項基本原則</b>：重利益不重立場、堅持客觀標準、對事不對人</p>
+      <p><b>記者會／新聞發布4項考量</b>：①是否同時對內對外溝通？②是否主動公開處理細節？③是否明確規劃記者會時間？④先前提供資料是否完全正確、聚焦自身權責？</p>
+      <p><b>三合一作答提醒</b>：題目常把「危機處理＋談判＋新聞處理」包在同一情境，務必分點都答到，不要只答其中一項。</p>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch3">
+    <div class="chapter-head"><div class="chapter-num">④</div><h2>歷屆6次實際考法（109-114年真實內容濃縮）</h2></div>
+    <div class="card" id="past">
+      <table>
+        <tr><th colspan="2" style="background:var(--accent-tint);">109年・危機談判準備要素與策略運用（25分）</th></tr>
+        <tr><td style="width:18%"><b>準備4要素</b></td><td>①情資蒐集(病史/觸發事件/家庭關係) ②人員編組(主談/副談/指揮官/醫師社工) ③環境控制(封鎖隔離/安全距離/斷傷害手段) ④時間管理(爭取時間/避免施壓/設階段目標)</td></tr>
+        <tr><td><b>談判5策略</b></td><td>①積極傾聽(反映情感標注開放問句) ②同理心建立(承認感受不否定) ③需求導向(找真正需求) ④漸進式讓步 ⑤重要他人介入(邀信任家人)</td></tr>
+      </table>
+
+      <table style="margin-top:14px;">
+        <tr><th colspan="2" style="background:var(--accent-tint);">110年・CDM複合式危機決策（30分）</th></tr>
+        <tr><td colspan="2" style="color:var(--sub);font-size:.84rem;">情境：大樓內同時發生持刀群架、精障女子跳樓、不明爆炸物、人質挾持4項複合危機</td></tr>
+        <tr><td style="width:18%"><b>①蒐集情資</b></td><td>確認各事件地點、排優先序(挾持＞跳樓＞爆炸物＞群架)、請求增援、設警戒線</td></tr>
+        <tr><td><b>②情境評估</b></td><td>SALUTE格式評估、判斷危機關聯性、評估警力醫療資源、確認行動受限因素</td></tr>
+        <tr><td><b>③確認問題</b></td><td>核心目標生命優先於逮捕、逐一分項子問題、確認指揮體系(ICS)</td></tr>
+        <tr><td><b>④選擇方案</b></td><td>方案A談判為主(採用)、方案B武力制止、依嚴重性資源時間選擇</td></tr>
+        <tr><td><b>⑤執行評估</b></td><td>持續監控每5分鐘回報、情況變化即觸發重新循環、事後撰報告</td></tr>
+      </table>
+
+      <table style="margin-top:14px;">
+        <tr><th colspan="2" style="background:var(--accent-tint);">111年・記者說明會—溪流救援（30分）</th></tr>
+        <tr><td colspan="2" style="color:var(--sub);font-size:.84rem;">情境：3名大學生受困沙洲溪水暴漲，搶救中未脫困，社群直播已上傳，SNG即將抵達</td></tr>
+        <tr><td style="width:22%"><b>七大原則</b></td><td>①救援優先(不影響救援) ②迅速出面(30分鐘內首次說明) ③統一發言人 ④誠信原則(未確認說明正評估中) ⑤以人為本(先表達關懷) ⑥定期更新(每30分鐘/小時) ⑦資訊管制(不透露受困位置救援路線)</td></tr>
+      </table>
+
+      <table style="margin-top:14px;">
+        <tr><th colspan="2" style="background:var(--accent-tint);">112年・記者說明會—煙火意外（30分）</th></tr>
+        <tr><td colspan="2" style="color:var(--sub);font-size:.84rem;">情境：晚會煙火倒塌射向人群踩踏，8童及3位重要人士重傷，6家媒體直播</td></tr>
+        <tr><td style="width:22%"><b>七大原則(黃金1小時)</b></td><td>①迅速(1小時內首次說明+告知下次更新時間) ②誠信(未確認說明調查中) ③統一發言人(備妥Q&A) ④以人為本(先慰問尤其孩童) ⑤對等原則(公平對待友好與負面媒體) ⑥定期更新 ⑦社群應對(以事實反駁不實指控)</td></tr>
+      </table>
+
+      <table style="margin-top:14px;">
+        <tr><th colspan="2" style="background:var(--accent-tint);">113年・CDM五步驟—地震12小時應變（30分）</th></tr>
+        <tr><td colspan="2" style="color:var(--sub);font-size:.84rem;">情境：平日9:30大地震，廳舍搖晃1隊員受傷，轄區房屋倒塌人員受困，當班僅5人無外援</td></tr>
+        <tr><td style="width:18%"><b>①蒐集轄區災情</b></td><td>立即通報上級、多管道收報案建GIS標記、監聽廣播指揮中心、派員目視偵查</td></tr>
+        <tr><td><b>②動員可支援人力</b></td><td>召回休假人員、向上急請支援、啟動義勇消防隊、聯繫民間救難軍方</td></tr>
+        <tr><td><b>③缺大型機具搜救法</b></td><td>聲響呼叫法、徒手搬移輕型障礙、槓桿原理應用、支撐防二次倒塌</td></tr>
+        <tr><td><b>④人命救災優先順序</b></td><td>採START傷患分類(紅黃綠黑)、地點優先原則、避免單一案件陷阱</td></tr>
+        <tr><td><b>⑤與警察等機關合作</b></td><td>建立聯合指揮所(ICP)、警消分工、聯繫衛生醫療及工務部門、啟動EOC</td></tr>
+      </table>
+
+      <table style="margin-top:14px;">
+        <tr><th colspan="2" style="background:var(--accent-tint);">114年・公共安全管理三階段倡議—工廠倉儲火災（30分）</th></tr>
+        <tr><td colspan="2" style="color:var(--sub);font-size:.84rem;">情境：食品工廠鍋爐起火(20餘人傷)、倉儲火災財損大，局長宣示以企業防災理念研修規定、加重處罰</td></tr>
+        <tr><td style="width:18%"><b>事前預防</b></td><td>分級查核制度、防火管理人制度落實、鍋爐特種設備強制申報、企業自主防災認證</td></tr>
+        <tr><td><b>事中應變</b></td><td>工業區專屬應變計畫、廠商自衛消防組織演練、危害物品資料庫建置</td></tr>
+        <tr><td><b>加重處罰(嚇阻)</b></td><td>累犯加重裁罰、違規名單公開制度、跨機關聯合稽查</td></tr>
+        <tr><td><b>事後復原</b></td><td>火災案例通報學習制度、督導改善追蹤小組</td></tr>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  document.getElementById('search').addEventListener('input', function(e){
+    var q = e.target.value.trim().toLowerCase();
+    var cards = document.querySelectorAll('section.chapter');
+    cards.forEach(function(sec){
+      if(!q){ sec.style.display=''; return; }
+      var text = sec.innerText.toLowerCase();
+      sec.style.display = text.indexOf(q) !== -1 ? '' : 'none';
+    });
+  });
+</script>
+</body>
+</html>

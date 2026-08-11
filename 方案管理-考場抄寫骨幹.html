@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>方案管理｜考場抄寫骨幹</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --bg:#f5f4f0; --card:#ffffff; --ink:#2b2a28; --sub:#6b6a66;
+    --accent:#3b6e8a; --accent-tint:#e8eff3; --line:#e5e2da; --side-w:270px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);display:flex;}
+  #sidebar{width:var(--side-w);flex-shrink:0;height:100vh;position:sticky;top:0;overflow-y:auto;background:#fbfaf7;border-right:1px solid var(--line);padding:20px 14px;}
+  #sidebar h3{font-size:.78rem;color:var(--sub);text-transform:uppercase;letter-spacing:.06em;margin:18px 6px 6px;}
+  #sidebar h3:first-child{margin-top:4px;}
+  #search{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:.85rem;margin-bottom:8px;font-family:inherit;}
+  .backlink{display:block;font-size:.8rem;color:var(--sub);text-decoration:none;margin:0 6px 10px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+  #sidebar a.nav{display:block;padding:5px 8px;font-size:.84rem;color:var(--ink);text-decoration:none;border-radius:6px;line-height:1.4;}
+  #sidebar a.nav:hover{background:var(--line);}
+  main{flex:1;max-width:980px;margin:0 auto;padding:44px 32px 100px;min-width:0;}
+  h1.title{font-size:1.7rem;margin:0 0 4px;}
+  .subtitle{color:var(--sub);margin-bottom:8px;}
+  .toolbar{margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid var(--line);font-size:.82rem;color:#a09d95;}
+  section.chapter{margin-bottom:52px;scroll-margin-top:20px;}
+  .chapter-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+  .chapter-num{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.95rem;flex-shrink:0;background:var(--accent);}
+  .chapter-head h2{margin:0;font-size:1.25rem;}
+  h3.sec{scroll-margin-top:20px;font-size:1.02rem;margin:24px 0 8px;padding-left:12px;border-left:4px solid var(--line);}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;}
+  .card p{margin:.5em 0;line-height:1.85;font-size:.93rem;}
+  table{border-collapse:collapse;width:100%;margin:8px 0;font-size:.82rem;}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top;}
+  th{background:var(--accent-tint);}
+  .art{background:var(--accent-tint);color:var(--accent);padding:1px 6px;border-radius:5px;font-weight:600;font-size:.85em;white-space:nowrap;}
+  .flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:10px 0;font-size:.86rem;}
+  .flow .step{background:var(--accent-tint);color:var(--accent);border-radius:8px;padding:8px 12px;font-weight:600;white-space:nowrap;}
+  .flow .arrow{color:var(--sub);font-weight:700;}
+  .template{background:#fbf6ea;border:1px dashed #d8c896;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.87rem;line-height:1.85;color:#6b5a2a;}
+  .qa{background:#eef6f0;border-radius:10px;padding:10px 14px;margin:8px 0;font-size:.86rem;line-height:1.75;}
+  .case-box{background:#fbf9f5;border:1px solid #e8dfd0;border-radius:12px;padding:16px 18px;margin:12px 0;}
+  .case-box h4{margin:0 0 8px;color:var(--accent);}
+  mark{background:#ffe9a8;padding:0 2px;border-radius:3px;}
+  .hidden{display:none !important;}
+</style>
+</head>
+<body>
+<div style="position:fixed;top:10px;right:14px;z-index:9999;font-size:.72rem;color:#a09d95;background:rgba(255,255,255,.85);padding:3px 10px;border-radius:999px;border:1px solid #e5e2da;">柯醒翰製作</div>
+
+<nav id="sidebar">
+  <input id="search" type="text" placeholder="搜尋關鍵字...">
+  <a class="backlink" href="index.html">← 回筆記入口</a>
+
+  <h3>①答題架構</h3>
+  <a class="nav" href="#answer-tpl">選圖／6W2H1E／結論公式</a>
+  <h3>②解題流程骨幹</h3>
+  <a class="nav" href="#flow">兩大路線流程圖</a>
+  <h3>③10大工具速記</h3>
+  <a class="nav" href="#tools">工具骨幹與下筆重點</a>
+  <h3>④歷屆真實考法</h3>
+  <a class="nav" href="#fishbone-past">魚骨圖（109/113年）</a>
+  <a class="nav" href="#swot-past">SWOT/TOWS（111/114年）</a>
+  <a class="nav" href="#6w-past">6W2H1E（108/109/110/112年）</a>
+</nav>
+
+<main>
+  <h1 class="title">方案管理｜考場抄寫骨幹</h1>
+  <div class="subtitle">115年佐升正訓練・Q1・30分・實務寫作題</div>
+  <div class="toolbar">用途：先套①的選圖／6W2H1E／結論公式組裝答案骨架，再用②的流程圖判斷「走魚骨圖還是SWOT/TOWS路線」，套③的工具骨幹展開論述，最後用6W2H1E九宮格完整呈現。完整工具舉例請見 <a href="方案分析工具-舉例教學.html">10大工具舉例教學</a>；學理脈絡請見 <a href="textbook-notes.html">教材筆記</a>；可搜尋句庫請見 <a href="方案分析工具-萬用題庫.html">萬用題庫920項</a>。</div>
+
+  <section class="chapter" id="ch0">
+    <div class="chapter-head"><div class="chapter-num">①</div><h2>答題架構與萬用起結句型</h2></div>
+    <div class="card" id="answer-tpl">
+      <p><b>核心公式：定性選圖（前言）→ 工具展開＋6W2H1E（涵攝）→ 結論</b>（與其他3科的「大前提→涵攝→結論」三段論法邏輯相同，只是方案管理不是套法條，而是套「分析工具」──前言講清楚要用哪個工具、為什麼，涵攝把情境事實逐格套進工具，結論收斂成一句話，三塊分開寫、層次分明，才拿得到閱卷老師的印象分數。）</p>
+
+      <h3 class="sec" style="margin-top:20px;">一、定性（前言）── 選圖判斷公式</h3>
+      <p>拿到題目先問一句話：「這是既存問題找因找策，還是新方案該不該推動？」，依答案選擇對應路線，再接起手句帶入涵攝：</p>
+      <div class="template">
+        ①判斷句：題目問「為什麼會發生／原因是什麼」→ 走<b>向右魚骨圖</b>找因；接著問「後續怎麼改善／策略是什麼」→ 走<b>向左魚骨圖</b>找策（兩者常一起出，一右一左）。題目給的是「新方案、新設備、新政策該不該推動」→ 走<b>SWOT</b>盤點內外部優劣勢機會威脅，再用<b>TOWS</b>交叉配對策略。<br>
+        ②起手式：「身為OO機關本案承辦人，運用『方案規劃』課程所學，以【工具名稱】系統分析【情境核心問題】，並提出具體可行之【對策／策略】，以回應【題目給的疑慮／目標】。」<br>
+        ③過渡句：「茲以【工具名稱】逐一分析如下，並以6W2H1E完整呈現本方案／計畫各要項。」
+      </div>
+
+      <h4 style="margin:16px 0 8px;color:var(--accent);">10大工具速查（可直接默寫套用骨幹）</h4>
+      <table>
+        <tr><th style="width:14%">工具</th><th>骨幹</th><th>下筆重點</th></tr>
+        <tr><td><b>向右魚骨圖</b></td><td>問題癥結(頭・右) ← 大要因 ← 小要因</td><td>頭＝肯定句＋呼應情境關鍵字；大要因用<mark>形容詞</mark>(不足/過長/複雜)</td></tr>
+        <tr><td><b>向左魚骨圖</b></td><td>目標(頭・左) ← 對策方案 ← 具體做法</td><td>對應向右每個大要因；用<mark>動詞</mark>(提高/簡化/增加)</td></tr>
+        <tr><td><b>SWOT</b></td><td>內部S優勢/W劣勢　外部O機會/T威脅(TEMPLES)</td><td>形容詞語句；內外部不要混</td></tr>
+        <tr><td><b>TOWS</b></td><td>SO進攻(優勢×機會) ST補強(優勢×威脅)<br>WO轉型(劣勢×機會) WT防禦(劣勢×威脅)</td><td>動詞語句；4格盡量都寫到</td></tr>
+        <tr><td><b>決策矩陣</b></td><td>方案×指標(權重合計=1)×評分→加權總分→排序</td><td>寫一句話說明贏在哪個指標</td></tr>
+        <tr><td><b>可行性分析</b></td><td>政治／經濟技術／行政法律／社會環境　4面向</td><td>卡關要接因應措施(調整方案/替代方案/協商/逐步實施/日出落條款)</td></tr>
+        <tr><td><b>成本效益/效果</b></td><td>能貨幣化→CBA(益本比/淨現值)　不能→CEA(比效果)</td><td>益本比&gt;1或淨現值&gt;0才可行</td></tr>
+        <tr><td><b>決策樹</b></td><td>期望值＝Σ(機率×報酬)，選最高者</td><td>只有題目給機率/報酬才用；要畫樹＋列算式</td></tr>
+        <tr><td><b>甘特圖/查核點</b></td><td>橫軸時間×縱軸工作項目；查核點10%/50%/90%等</td><td>查核結果只用固定5類詞：通過/有條件通過/已完成改善/待改善/不通過</td></tr>
+        <tr><td><b>6W2H1E</b></td><td>Why/What/How/Who/Whom/Where/When/How much/Effect</td><td>不論走哪條路線，最終都要收攏進這9項完整呈現，見下方詳表</td></tr>
+      </table>
+      <p style="color:var(--sub);font-size:.85rem;">背不出完整定義也沒關係，至少要寫出<mark>工具名稱＋骨幹結構＋一句下筆重點</mark>三個關鍵座標；切忌前言只寫「本題採方案規劃分析」就跳去涵攝，這樣拿不到基本分。</p>
+
+      <h3 class="sec" style="margin-top:24px;">二、工具展開＋6W2H1E（涵攝三層）</h3>
+      <div class="template">
+        <b>1. 要因／優劣勢層：</b>依所選路線，向右魚骨圖列出6面向要因（人員／環境／資訊／量能／整合／制度，依情境調整面向名稱），或SWOT列出S/W/O/T各項，逐一比對情境事實。<br><br>
+        <b>2. 對策／策略層：</b>向左魚骨圖對應每個大要因列出具體對策，或以TOWS交叉配對SO/WO/ST/WT策略；務必逐一展開情境內容，不要只默寫工具名稱。<br><br>
+        <b>3. 6W2H1E收攏層：</b>將上面兩層的要因與對策，依Why(緣由)／What(內容)／How(方式)／Who(主辦協辦)／Whom(利害關係人)／Where(地點)／When(期程)／How much(資源)／Effect(KPI/CPI)九項完整攤開，逐項照填空句抄，再把【　】換成情境內容：
+      </div>
+      <table>
+        <tr><th style="width:14%">項目</th><th>填空骨幹（抄這句，換情境內容）</th></tr>
+        <tr><td><b>Why</b><br>緣由依據</td><td>因【情境問題/現況】，為避免/防止【負面後果】，依據【相關法令】辦理</td></tr>
+        <tr><td><b>What</b><br>目標內容</td><td>目標為【具體目標】；重要內容包含①【　】②【　】③【　】</td></tr>
+        <tr><td><b>How</b><br>執行方式</td><td>由【主辦單位】採取下列作法：①【　】②【　】③【　】④【　】</td></tr>
+        <tr><td><b>Who</b><br>主辦協辦機關</td><td>主辦機關：【　】；協辦機關：【　】、【　】</td></tr>
+        <tr><td><b>Whom</b><br>利害關係人</td><td>標的人口／利害關係人：【受影響對象，如使用者、協力廠商、第一線人員】</td></tr>
+        <tr><td><b>Where</b><br>地點</td><td>執行地點／範圍：【　】</td></tr>
+        <tr><td><b>When</b><br>執行期程</td><td>自【日期/年月】起至【日期/年月】止，共計【期間長度】</td></tr>
+        <tr><td><b>How much</b><br>資源需求</td><td>經費約【金額】，由【預算來源】支應；人力配置：【　】</td></tr>
+        <tr><td><b>Effect</b><br>效果KPI/CPI</td><td>KPI：①【指標1】達OO%　②【指標2】達OO%。CPI：計畫進度如期完成、經費執行率達OO%以上</td></tr>
+      </table>
+      <div class="qa"><b>抄寫技巧</b>：考場上先把9個英文字母直式寫在答案卷左側當骨架，再逐項填情境內容——即使時間不夠，把9項名稱＋每項1句話寫滿，也比長篇大論漏寫項目拿分高。</div>
+
+      <h3 class="sec" style="margin-top:24px;">三、結論</h3>
+      <div class="template">
+        綜上，透過【工具1】與【工具2，如：魚骨圖與6W2H1E／SWOT-TOWS與6W2H1E】之交互運用，除可【解決核心問題】外，亦能兼顧【效率/可行性/民眾需求】，爰建議依上開方案／計畫辦理。
+      </div>
+      <p style="color:var(--sub);font-size:.85rem;">結論的黃金結構＝<mark>工具交互運用一句話</mark>（不用重複前面列過的每一格）＋<mark>核心效益</mark>＋<mark>建議辦理</mark>。三段寫完，一題的骨架就完整了。<b>官方教材版6W2H1E用Whom/Effect</b>，但108/109/110/112年這4份非官方參考解析用的是Which/Evaluation變體（見④歷屆真實考法的版本落差提醒）——<b>考場一律以官方9項為準下筆</b>。</p>
+
+      <h3 class="sec" style="margin-top:24px;">四、套用範例（定性＋涵攝節錄＋結論一次寫完）</h3>
+      <div class="case-box">
+        <h4>範例・向右／向左魚骨圖＋結論（仿113年山域搜救情境）</h4>
+        <p><b>定性：</b>本題情境為「山林解禁後死亡失蹤人數增加、搜索逾24小時占20%」，屬既存問題找因找策之情境，應以向右魚骨圖找因、向左魚骨圖找策，並以6W2H1E完整呈現後續執行計畫。</p>
+        <p><b>涵攝（節錄）：</b>①要因層：向右魚骨圖列出人員面(自主管理意識不足未報備)、環境面(地形複雜植被茂密)、資訊面(報案延遲逾24小時)、量能面(各縣市搜救量能不均)、整合面(三方資源缺整合機制)、制度面(高風險山域缺差異化管制)6大要因。②對策層：向左魚骨圖逐一對應提出強化預防(線上登山計畫書)、科技救災(即時定位監控平台)、提升量能(山岳搜救認證制度)、整合資源(統一指揮協調平台)4大方向對策。③6W2H1E收攏：Why(死亡失蹤攀升，依登山活動管理自治條例強化管理)、What(降低搜救困難度)、How(上述4大對策逐項落實)、Who(主辦機關為消防局，協辦為林務單位、警政單位)、Whom(登山民眾及搜救人員)、Where(高風險山域)、When(半年內分階段推動)、How much(科技設備採購及人力增補預算)、Effect(平均搜救時效縮短OO%、報案後24小時內尋獲率達OO%)。</p>
+        <p><b>結論：</b>綜上，透過向右／向左魚骨圖找出癥結並對應提出對策，再以6W2H1E完整呈現執行計畫，除可有效降低山域搜救困境外，亦能兼顧預防與科技救災之可行性，爰建議依上開方案辦理。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch1">
+    <div class="chapter-head"><div class="chapter-num">②</div><h2>解題流程骨幹</h2></div>
+    <div class="card" id="flow">
+      <p>看到題目先判斷：<b>既存問題找因找策</b>（走魚骨圖路線）還是<b>新方案該不該推動</b>（走SWOT/TOWS路線），再套對應流程：</p>
+      <div class="flow">
+        <div class="step">問題辨識</div><div class="arrow">→</div>
+        <div class="step">蒐集因子<br>右魚骨圖(找因)</div><div class="arrow">→</div>
+        <div class="step">訂定目標<br>左魚骨圖(找策)</div><div class="arrow">→</div>
+        <div class="step">對策評估<br>可行性/決策矩陣/決策樹</div><div class="arrow">→</div>
+        <div class="step">呈現計畫書<br>6W2H1E</div><div class="arrow">→</div>
+        <div class="step">甘特圖查核點<br>(如題目問執行管控)</div><div class="arrow">→</div>
+        <div class="step">結論</div>
+      </div>
+      <div class="flow">
+        <div class="step">情境分析<br>(新方案/新設備)</div><div class="arrow">→</div>
+        <div class="step">SWOT<br>內部S/W外部O/T</div><div class="arrow">→</div>
+        <div class="step">TOWS<br>SO/ST/WO/WT交叉策略</div><div class="arrow">→</div>
+        <div class="step">可行性分析<br>或成本效益分析</div><div class="arrow">→</div>
+        <div class="step">結論</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch2">
+    <div class="chapter-head"><div class="chapter-num">③</div><h2>10大工具速記</h2></div>
+    <div class="card" id="tools">
+      <table>
+        <tr><th>工具</th><th>骨幹</th><th>下筆重點</th></tr>
+        <tr><td><b>向右魚骨圖</b></td><td>問題癥結(頭・右) ← 大要因 ← 小要因</td><td>頭＝肯定句＋呼應情境關鍵字；大要因用<mark>形容詞</mark>(不足/過長/複雜)</td></tr>
+        <tr><td><b>向左魚骨圖</b></td><td>目標(頭・左) ← 對策方案 ← 具體做法</td><td>對應向右每個大要因；用<mark>動詞</mark>(提高/簡化/增加)</td></tr>
+        <tr><td><b>SWOT</b></td><td>內部S優勢/W劣勢　外部O機會/T威脅(TEMPLES)</td><td>形容詞語句；內外部不要混</td></tr>
+        <tr><td><b>TOWS</b></td><td>SO進攻(優勢×機會) ST補強(優勢×威脅)<br>WO轉型(劣勢×機會) WT防禦(劣勢×威脅)</td><td>動詞語句；4格盡量都寫到</td></tr>
+        <tr><td><b>決策矩陣</b></td><td>方案×指標(權重合計=1)×評分→加權總分→排序</td><td>寫一句話說明贏在哪個指標</td></tr>
+        <tr><td><b>可行性分析</b></td><td>政治／經濟技術／行政法律／社會環境　4面向</td><td>卡關要接因應措施(調整方案/替代方案/協商/逐步實施/日出落條款)</td></tr>
+        <tr><td><b>成本效益/效果</b></td><td>能貨幣化→CBA(益本比/淨現值)　不能→CEA(比效果)</td><td>益本比&gt;1或淨現值&gt;0才可行</td></tr>
+        <tr><td><b>決策樹</b></td><td>期望值＝Σ(機率×報酬)，選最高者</td><td>只有題目給機率/報酬才用；要畫樹＋列算式</td></tr>
+        <tr><td><b>甘特圖/查核點</b></td><td>橫軸時間×縱軸工作項目；查核點10%/50%/90%等</td><td>查核結果只用固定5類詞：通過/有條件通過/已完成改善/待改善/不通過</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch3">
+    <div class="chapter-head"><div class="chapter-num">④</div><h2>歷屆真實考法</h2></div>
+
+    <h3 class="sec" id="fishbone-past">魚骨圖歷屆真實考法（109/113年）</h3>
+    <div class="card">
+      <table>
+        <tr><th colspan="2" style="background:var(--accent-tint);">109年・向左魚骨圖找原因—山域搜救困難分析（25分）</th></tr>
+      </table>
+      <p style="color:var(--sub);font-size:.83rem;margin:4px 0 8px;">⚠ 這年原題把「向左魚骨圖」定義為找原因（魚頭在左、找原因），跟我們現在教的標準版本（向右＝找因、向左＝找策，見③10大工具速記）用詞相反，如實照抄原題架構，考場上仍以題目自己的指定用詞為準。</p>
+      <table>
+        <tr><td style="width:18%"><b>環境面</b></td><td>地形複雜路線受限、氣候多變、GPS訊號遮蔽、日照短夜間危險</td></tr>
+        <tr><td><b>人員面</b></td><td>專業訓練不足、人力配置不足、體能消耗易疲勞、跨縣市協調慢</td></tr>
+        <tr><td><b>設備面</b></td><td>專用裝備不足、直升機受天候場地限制、深山通訊不穩、擔架繩索攜帶難</td></tr>
+        <tr><td><b>情資面</b></td><td>位置不明仰賴手機定位、入山登記未落實、缺完整地圖、報案延遲</td></tr>
+        <tr><td><b>制度面</b></td><td>救援責任歸屬不明、費用負擔爭議、志工隊整合不完善、缺統一指揮中心</td></tr>
+        <tr><td><b>民眾面</b></td><td>準備不足未告知行程、自救能力差、手機電量耗盡、輕忽入山申請風險</td></tr>
+      </table>
+
+      <table style="margin-top:14px;">
+        <tr><th colspan="2" style="background:var(--accent-tint);">113年・向右魚骨圖(找因)＋向左魚骨圖(找策)—山域事故救援困境（30分）</th></tr>
+      </table>
+      <p style="color:var(--sub);font-size:.83rem;margin:4px 0 8px;">情境：山林解禁後死亡失蹤人數增加，搜索逾24小時占20%，核心癥結「難找・難到・難救」。這年用的才是標準版本（向右找因、向左找策）。</p>
+      <table>
+        <tr><td style="width:18%"><b>向右－人員面</b></td><td>自主管理意識不足未報備、未帶定位器、獨自登山、高估體能</td></tr>
+        <tr><td><b>向右－環境面</b></td><td>幅員廣大搜索難縮小、地形複雜植被茂密、天候多變、各縣市難易懸殊</td></tr>
+        <tr><td><b>向右－資訊面</b></td><td>失聯資訊不明確、報案延遲逾24小時、缺即時回報系統、座標難精確定位</td></tr>
+        <tr><td><b>向右－量能面</b></td><td>各縣市搜救量能不均、專業認證人員不足、科技工具配置不足、高山醫療不足</td></tr>
+        <tr><td><b>向右－整合面</b></td><td>三方資源缺整合機制、SOP不一致協作摩擦高、跨縣市調度指揮不完整</td></tr>
+        <tr><td><b>向右－制度面</b></td><td>管制機制未完備、高風險山域缺差異化管制、救難費全額公費缺誘因</td></tr>
+        <tr><td><b>向左－對策一</b></td><td>強化預防：線上登山計畫書、鼓勵攜帶定位器、安全教育、分級認證限制入山</td></tr>
+        <tr><td><b>向左－對策二</b></td><td>科技救災：即時定位監控平台、無人機搜索、3D地圖資料庫、SOS衛星求救推廣</td></tr>
+        <tr><td><b>向左－對策三</b></td><td>提升量能：山岳搜救認證制度、充實繩索及高山醫療裝備、量能分級補強計畫</td></tr>
+        <tr><td><b>向左－對策四</b></td><td>整合資源：統一指揮協調平台、整合三方資源、統一SOP、跨縣市調度機制</td></tr>
+        <tr><td><b>向左－對策五</b></td><td>資訊共享：建立事故資料庫（依原題可再補一項對策六視情境延伸）</td></tr>
+      </table>
+    </div>
+
+    <h3 class="sec" id="swot-past">SWOT/TOWS歷屆真實考法（111/114年）</h3>
+    <div class="card">
+      <table>
+        <tr><th colspan="2" style="background:var(--accent-tint);">111年・SWOT分析＋策略配對—甲機關廳舍活化案（30分）</th></tr>
+      </table>
+      <p style="color:var(--sub);font-size:.83rem;margin:4px 0 8px;">情境：廳舍使用率偏低，規劃活化為休憩小棧。同年用語為「策略配對」，114年同架構改稱「TOWS分析」，本質相同，可視題目用詞照抄。</p>
+      <table>
+        <tr><td style="width:14%"><b>S優勢</b></td><td>同仁支持願導覽、設備良好稍裝修可用、工作特色具吸引力</td></tr>
+        <tr><td><b>W劣勢</b></td><td>人力有限調度困難、經費拮据缺裝修費、法令限制須民間認養程序繁瑣</td></tr>
+        <tr><td><b>O機會</b></td><td>商家學校願提供經費志工、位處觀光要道、民間認養(CSR)趨勢盛行</td></tr>
+        <tr><td><b>T威脅</b></td><td>位置偏遠交通不便、使用率低既有印象影響合作、認養受主管機關審查限制</td></tr>
+        <tr><td><b>SO策略</b></td><td>多元導覽體驗(同仁意願+志工資源)、觀光要道常設展覽</td></tr>
+        <tr><td><b>WO策略</b></td><td>民間認養解決經費(商家贊助裝修)、志工補人力不足</td></tr>
+        <tr><td><b>ST策略</b></td><td>預約巴士制度解決交通、特色展覽扭轉低使用率印象</td></tr>
+        <tr><td><b>WT策略</b></td><td>低成本小規模試行、提前完成法令審查再對外公告</td></tr>
+      </table>
+      <p style="font-size:.85rem;color:var(--sub);">結論主軸：以WO策略為主（引入民間經費志工），輔以SO策略（多元導覽）。</p>
+
+      <table style="margin-top:14px;">
+        <tr><th colspan="2" style="background:var(--accent-tint);">114年・SWOT分析＋TOWS分析—消防救災機器人方案（30分）</th></tr>
+      </table>
+      <p style="color:var(--sub);font-size:.83rem;margin:4px 0 8px;">情境：市長三疑慮①符合需求？②經費高昂？③操控訓練不足？</p>
+      <table>
+        <tr><td style="width:14%"><b>S優勢</b></td><td>射水滅火深入火場、毒氣偵測降低中毒風險、熱顯像強化夜間偵察、物聯網影像回傳強化指揮</td></tr>
+        <tr><td><b>W劣勢</b></td><td>購置成本高昂(疑慮②)、操控訓練不足(疑慮③)、工廠地形複雜機動性受限、能否符合需求待驗證(疑慮①)</td></tr>
+        <tr><td><b>O機會</b></td><td>AI機器人技術快速進步、工業區火災頻率升需求殷切、中央智慧消防政策可爭取補助、國際實戰案例可借鏡</td></tr>
+        <tr><td><b>T威脅</b></td><td>市長議會存疑推動阻力大、技術迭代快速快速折舊、法規未明確規範責任歸屬</td></tr>
+        <tr><td><b>SO策略</b></td><td>爭取中央智慧消防補助、借鏡國際案例引進機型(回應疑慮①)</td></tr>
+        <tr><td><b>WO策略</b></td><td>分期採購降低財政衝擊(試驗→評估→擴充)、產學合作訓練補足技能(回應疑慮③)</td></tr>
+        <tr><td><b>ST策略</b></td><td>公開效能驗證化解議會疑慮、訂操作SOP+故障應急並行方案</td></tr>
+        <tr><td><b>WT策略</b></td><td>要求廠商附訓練維保套裝、配合法規研修責任歸屬規範</td></tr>
+      </table>
+      <p style="font-size:.85rem;color:var(--sub);">結論主軸：以WO策略為主（分期採購＋產學訓練），輔以SO策略（爭取補助）、ST策略（驗證機制）。</p>
+    </div>
+
+    <h3 class="sec" id="6w-past">6W2H1E 骨幹速記與歷屆4次實際考法（考古最大宗，108/109/110/112年考過）</h3>
+    <div class="card">
+      <div class="qa" style="background:#fbf6ea;">
+        <b>⚠ 版本落差提醒</b>：官方教材（textbook-notes.html與slides-notes.html兩份都一致）採用9項為 <b>Why/What/How/Who/Whom/Where/When/How much/Effect</b>。但108、109、110、112年這4份<b>非官方參考解析</b>寫的時候，用的是另一個常見變體：<b>Why/What/Who/When/Where/<mark>Which</mark>(法規依據或方式)/How/How Much/<mark>Evaluation</mark></b>（把「Whom對象」併入Who一起寫，多出一項Which，Evaluation跟Effect是同義詞只是換了英文單字）。<br>
+        <b>考場建議：以①答題架構的官方9項（Whom/Effect版本）為準來寫答案</b>，因為那是這門課教材實際教的版本、閱卷者會對照的依據；下面4組歷史內容我已經按官方9項的順序與命名重新對照排列，「法規依據」這類原答案獨立列出、但官方9項沒有的內容，併入Why或How對應行內，不再單獨佔一列，方便你直接比對抄寫邏輯。
+      </div>
+
+      <table>
+        <tr><th colspan="2" style="background:var(--accent-tint);">108年・夏夜歡樂派對安全維護計畫（50分）</th></tr>
+        <tr><td style="width:18%"><b>Why</b></td><td>大型活動預計吸引民眾5萬人，人潮密集度高，踩踏、火災及緊急傷病風險顯著提升；依消防法§13及大型活動安全管理相關規定，主辦機關應落實消防安全管理；目標為活動期間零死亡、零重傷</td></tr>
+        <tr><td><b>What</b></td><td>①場地消防安全查核(滅火器、逃生出口、電路安全) ②人流管制動線規劃(入口出口分流、單向通道) ③現場水線架設待命 ④緊急廣播疏散系統就位 ⑤活動結束離場安全管控(防踩踏) ⑥救護站設置</td></tr>
+        <tr><td><b>How</b></td><td>①事前召開跨機關協調會議(消防、警察、衛生、主辦) ②製作疏散計畫圖張貼現場並告知工作人員 ③辦理1次安全演練(含廣播疏散模擬) ④建立通訊群組每30分鐘回報安全狀況 ⑤人流採柵欄分流並保留應急通道，預先架設水線因應舞台特效引發之火災風險 ⑥通訊採無線電＋LINE群組雙重備援，就近協調3家指定醫院後送 ⑦設置現場志工20名協助引導 ⑧與主辦單位簽訂消防安全協議書明確責任歸屬</td></tr>
+        <tr><td><b>Who</b></td><td>指揮官為消防局長(或指定代理人)，現場指揮為分隊長×2(分區負責)，消防隊員×12名(分3組輪替)，救護員×6名(2救護站+機動組)，協力單位為警察局(人流管制)、衛生局(醫療支援)、主辦單位保全</td></tr>
+        <tr><td><b>Whom</b></td><td>活動當日參與之民眾(預估5萬人)，及主辦單位工作人員</td></tr>
+        <tr><td><b>Where</b></td><td>①主舞台前方高密度人群區(消防員×4、救護員×2) ②主要出入口×4處 ③救護站×2處(東西側各1) ④消防車停放位置(距主場地不超過50公尺確保出水距離) ⑤指揮所(指揮官、無線電通訊中心)</td></tr>
+        <tr><td><b>When</b></td><td>【事前準備】活動前2週場地安全勘查、計畫核備；活動前1週人員訓練、器材備妥、跨機關協調會 【活動當日】開放前2小時人員進駐、救護站開設 【活動期間】18:00-23:00全程待命(三班輪替) 【活動結束】23:00-00:30離場管控、場地安全確認</td></tr>
+        <tr><td><b>How much</b></td><td>人力：消防員12名、救護員6名。車輛：消防車×2、救護車×2、指揮車×1。設備：滅火器備用20具、AED×4台、救護包×6套。經費依「大型活動消防安全維護費用收費標準」由主辦單位負擔</td></tr>
+        <tr><td><b>Effect</b></td><td>緊急事件響應時間目標接報後3分鐘內到達；救護案件處理完成率100%；活動期間零火災、零重大傷亡；現場人員滿意度問卷(主辦、民眾、參與機關)；活動結束後3日內提交執行成效報告，檢討缺失作為下次改善依據</td></tr>
+      </table>
+
+      <table>
+        <tr><th colspan="2" style="background:var(--accent-tint);">109年・住宅火災警報器安裝推廣計畫（25分）</th></tr>
+        <tr><td style="width:18%"><b>Why</b></td><td>住宅火災造成人員傷亡多因逃生不及，住警器可於火災發生初期發出警報，大幅提升逃生機率；依消防法§6強制規定，推廣住警器安裝率為消防主管機關之法定職責</td></tr>
+        <tr><td><b>What</b></td><td>①調查轄區住宅住警器安裝現況(建立資料庫) ②補助弱勢家庭免費安裝住警器 ③辦理里鄰宣導活動 ④結合物業管理公司推廣集合住宅安裝 ⑤建立住警器維護更換提醒機制</td></tr>
+        <tr><td><b>How</b></td><td>①製作QR code宣導單，掃描可線上申請補助 ②結合里民大會辦理現場示範安裝 ③與便利超商合作設置住警器購買點 ④社群媒體(Facebook、Line)宣傳影片 ⑤學校防火教育同步推廣(帶回家概念) ⑥安裝管道採主動訪視(消防員入戶)、申請補助(弱勢戶)、自行購買(一般住戶+廠商優惠)、集體採購(大樓管委會)四種方式並行</td></tr>
+        <tr><td><b>Who</b></td><td>主責為消防分隊(預防課)，協辦為社政局(弱勢補助)、里長(社區動員)，合作對象為住警器廠商(團購優惠)、物業管理公司</td></tr>
+        <tr><td><b>Whom</b></td><td>住宅所有權人及居住人，尤其為弱勢家庭(低收入戶、獨居老人)及集合住宅住戶等未裝設住警器之高風險族群</td></tr>
+        <tr><td><b>Where</b></td><td>老舊建築(30年以上)密集區、弱勢家庭聚集地區、集合住宅(公寓大樓)、違建及簡易住宅</td></tr>
+        <tr><td><b>When</b></td><td>第1-2月現況調查+建立資料庫；第3-4月宣導活動+補助申請受理；第5-6月安裝執行+稽查追蹤；重點時間為防火宣導月(11月)同步加強</td></tr>
+        <tr><td><b>How much</b></td><td>人力：每週投入預防課人員3-4名進行訪視。經費：弱勢補助款(縣市社福預算)+消防局宣導預算。設備：住警器庫存(補助用)、宣傳物品</td></tr>
+        <tr><td><b>Effect</b></td><td>【量化】安裝率提升目標(如從60%提升至80%)、補助戶數達成率。【質化】住宅火災初期警報觸發率、民眾滿意度調查</td></tr>
+      </table>
+
+      <table>
+        <tr><th colspan="2" style="background:var(--accent-tint);">110年・強化防制性騷擾專案執行計畫（30分・6個月）</th></tr>
+        <tr><td style="width:18%"><b>Why</b></td><td>近年性騷擾案件持續增加，被害人報案比例偏低，社會治安形象受損；本計畫旨在強化執法效能、提升民眾安全感、落實性騷擾防制法之執行</td></tr>
+        <tr><td><b>What</b></td><td>①加強巡邏重點場所(夜間娛樂場所、大眾運輸、學校周邊) ②建立性騷擾案件快速通報機制 ③辦理員警性騷擾防制教育訓練 ④設置被害人一站式服務窗口 ⑤強化被害人保護與隱私保障措施</td></tr>
+        <tr><td><b>How</b></td><td>①增派便衣警力於高風險場所執行蒐證 ②設立專線電話(110加設性騷擾專項轉接) ③與場所業者簽訂合作備忘錄(安全場所認證) ④辦理社區宣導活動(學校、社區) ⑤強化數位證據蒐集能力(調閱監視器SOP) ⑥策略上採主動巡邏(增加見警率)、情資蒐集(分析熱點時段)、被害人保護(陪同就診、心理輔導轉介)、社區宣導(LINE社群、宣傳單、說明會)四策略並行</td></tr>
+        <tr><td><b>Who</b></td><td>主責單位為刑事警察大隊(婦幼小組)，協辦單位為各分局勤務指揮中心、社區警政中心，外部合作單位為社會局、衛生局、家防中心、被害人保護協會</td></tr>
+        <tr><td><b>Whom</b></td><td>性騷擾案件被害人，以及夜間場所、大眾運輸、校園周邊出入之民眾</td></tr>
+        <tr><td><b>Where</b></td><td>夜間娛樂場所及周邊(KTV、酒吧、夜市)、大眾運輸系統(捷運、公車站牌)、學校補習班周邊、社區公園停車場等公共場所</td></tr>
+        <tr><td><b>When</b></td><td>期程6個月(第1-2月宣導籌備、第3-4月全面執行、第5-6月追蹤評估)；重點時段為夜間22:00-02:00、連假週末；定期會議每月召開協調會議1次</td></tr>
+        <tr><td><b>How much</b></td><td>人力：每週加派巡邏人力3組(各分局輪值)。經費：申請性騷擾防制計畫補助款(衛福部、縣市補助)。設備：行動蒐證裝置、警察宣導物品、被害人服務包</td></tr>
+        <tr><td><b>Effect</b></td><td>【量化】性騷擾報案件數目標(較去年增幅反映報案意願提升)、破獲案件比率提升30%、熱點時段見警率提升(GPS統計)。【質化】被害人滿意度調查(一站式服務滿意度≥80%)、員警教育訓練考核通過率≥90%。【回饋機制】每月提交執行檢討報告→局長核閱→滾動修正策略</td></tr>
+      </table>
+
+      <table>
+        <tr><th colspan="2" style="background:var(--accent-tint);">112年・防範燃氣熱水器一氧化碳中毒執行計畫（30分・3個月）</th></tr>
+        <tr><td style="width:18%"><b>Why</b></td><td>106-110年全國燃氣熱水器一氧化碳中毒161件、死亡28人，甲市曾發生重大死亡案例；77%因安裝於通風不良處、75.8%集中冬季，顯示可預防性高；依消防法§15-3燃氣熱水器安裝應由合格人員為之、§41違反者處1萬至5萬元罰鍰；目標3個月內降低甲市一氧化碳中毒發生率達20%以上</td></tr>
+        <tr><td><b>What</b></td><td>①強化燃氣熱水器安裝合法性稽查 ②補助或協助遷移不當安裝熱水器 ③結合相關單位進行多元宣導 ④推動專技人員合法安裝制度</td></tr>
+        <tr><td><b>How</b></td><td>①稽查：組成稽查小組逐戶稽查出租住宅熱水器安裝位置及型式，不合格者限期改善逾期依法裁罰 ②補助遷移：協助低收入戶及弱勢家庭遷移或更換不當安裝熱水器 ③宣導：製作短影音、文宣品、里長協助入戶宣傳，結合媒體及社群平台擴散 ④專技推廣：建立合格安裝業者名冊供民眾查詢，鼓勵委託專技人員安裝</td></tr>
+        <tr><td><b>Who</b></td><td>主責為甲市消防局(業務承辦科室)，協辦為都發局(建管)、社會局(弱勢補助)、衛生局(醫療救護)</td></tr>
+        <tr><td><b>Whom</b></td><td>出租住宅、老舊公寓、套房密集區域住戶，及燃氣熱水器安裝業者</td></tr>
+        <tr><td><b>Where</b></td><td>全市優先出租住宅密集區、老舊社區；重點場所為套房出租、旅宿業、浴室通風不良建物；宣導場域為社區活動中心、里辦公處、傳統市場、學校</td></tr>
+        <tr><td><b>When</b></td><td>第一個月(準備期)建置稽查清冊、採購宣傳品、辦理人員訓練；第二個月(執行期)全面展開稽查、補助申請受理、辦理宣導活動；第三個月(強化期)複查未改善案件、追蹤補助進度、辦理成果評估；執行季節涵蓋12月至翌年2月冬季高發期</td></tr>
+        <tr><td><b>How much</b></td><td>稽查人力費用(加班費及交通費)；補助遷移費(每戶補助上限、預計補助戶數)；宣導費用(文宣品印製、媒體廣告、短影音製作)；合計預算申請市府112年度第四季追加預算</td></tr>
+        <tr><td><b>Effect</b></td><td>過程指標為稽查戶數、宣導場次、補助件數；結果指標為計畫期間中毒件數較前年同期降低比例；每月召開工作檢討會議追蹤KPI進度，計畫結束後提出成果報告送市政會議；並對稽查限期改善案件複查確認改善落實率</td></tr>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  document.getElementById('search').addEventListener('input', function(e){
+    var q = e.target.value.trim().toLowerCase();
+    var cards = document.querySelectorAll('section.chapter');
+    cards.forEach(function(sec){
+      if(!q){ sec.style.display=''; return; }
+      var text = sec.innerText.toLowerCase();
+      sec.style.display = text.indexOf(q) !== -1 ? '' : 'none';
+    });
+  });
+</script>
+</body>
+</html>
