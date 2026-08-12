@@ -42,6 +42,13 @@
   .hint{font-size:.75rem;color:#a09d95;margin-top:2px;}
   .q-card.revealed .hint{display:none;}
 
+  .pagination{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;margin:20px 0 8px;}
+  .pagination button{font-size:.8rem;min-width:34px;padding:6px 9px;border-radius:8px;border:1px solid var(--line);background:#fff;cursor:pointer;color:var(--ink);}
+  .pagination button:hover:not(:disabled){background:var(--line);}
+  .pagination button.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700;}
+  .pagination button:disabled{opacity:.4;cursor:default;}
+  #pane-corrupt .pagination button.active{background:var(--accent2);border-color:var(--accent2);}
+
   footer{margin-top:40px;text-align:center;color:#b3b0a8;font-size:.76rem;}
 </style>
 </head>
@@ -49,7 +56,7 @@
 <div class="wrap">
   <h1>法條速判練習｜看情境、判法條</h1>
   <div class="subtitle">行政程序法202題＋貪污治罪條例與刑法100題，共302題。每次開啟頁面題序皆隨機打亂，其中約20%為複合式情境（單題需列出2條以上法條）。點卡片展開答案，僅列條號、不附解釋。</div>
-  <div class="note">出題方式：僅使用課本／講義實際教授之條文（已逐條核對範圍），反推設計情境，並參考歷屆考題之情境敘述風格撰寫。此頁為獨立練習頁面，未與其餘筆記頁面互相連結。</div>
+  <div class="note">出題方式：僅使用課本／講義實際教授之條文（已逐條核對範圍），反推設計情境，並參考歷屆考題之情境敘述風格撰寫。每頁顯示20題，可切換分頁。</div>
 
   <div class="tabs">
     <button class="tab-btn active" data-tab="admin">行政程序法（202題）</button>
@@ -63,8 +70,14 @@
     <span class="progress" id="progressText"></span>
   </div>
 
-  <div class="tab-pane active" id="pane-admin"></div>
-  <div class="tab-pane" id="pane-corrupt"></div>
+  <div class="tab-pane active" id="pane-admin">
+    <div id="pane-admin-list"></div>
+    <div class="pagination" id="pane-admin-pagination"></div>
+  </div>
+  <div class="tab-pane" id="pane-corrupt">
+    <div id="pane-corrupt-list"></div>
+    <div class="pagination" id="pane-corrupt-pagination"></div>
+  </div>
 
   <footer>柯醒翰製作・考前衝刺練習用</footer>
 </div>
@@ -378,12 +391,30 @@ const CORRUPT = [
   {a:"刑法§132Ⅰ、貪污治罪條例§6Ⅰ④、刑法§213", q:"某機關辦理公共工程採購案之承辦人員A，明知本案預算底價屬其職務上知悉、應秘密之消息，為使私交甚篤之廠商負責人B得以精準備標、順利得標，於開標前一日以通訊軟體私訊告知B底價金額。開標當日，A復利用其為本案採購承辦人之權限，明知B所屬公司投標文件之保證金繳納方式不符招標文件規定、應屬不合格標，仍違反採購規定逕行認定為合格標，使B所屬公司得以些微差距險勝其餘競標廠商順利得標。為掩飾前開違法認定之情事，A並於其職務上所掌之採購評選紀錄表上，登載該公司「保證金繳納方式核與招標文件規定相符」之不實內容。B所屬公司因而順利取得工程承攬權，獲利達220萬元。"}
 ];
 
-function render(paneId, data){
-  const pane = document.getElementById(paneId);
-  pane.innerHTML = data.map((item, i) => `
-    <div class="q-card" data-idx="${i}">
+const PAGE_SIZE = 20;
+const state = {
+  admin: { data: ADMIN, page: 1 },
+  corrupt: { data: CORRUPT, page: 1 }
+};
+
+function totalPages(data){
+  return Math.max(1, Math.ceil(data.length / PAGE_SIZE));
+}
+
+function render(key){
+  const s = state[key];
+  const paneId = "pane-" + key;
+  const total = totalPages(s.data);
+  if(s.page > total) s.page = total;
+  if(s.page < 1) s.page = 1;
+  const start = (s.page - 1) * PAGE_SIZE;
+  const pageItems = s.data.slice(start, start + PAGE_SIZE);
+
+  const list = document.getElementById(paneId + "-list");
+  list.innerHTML = pageItems.map((item, i) => `
+    <div class="q-card" data-idx="${start + i}">
       <div class="q-head">
-        <div class="q-num">${i+1}</div>
+        <div class="q-num">${start + i + 1}</div>
         <div style="flex:1;">
           <div class="q-text">${item.q}</div>
           <div class="hint">點擊查看適用法條</div>
@@ -392,10 +423,31 @@ function render(paneId, data){
       </div>
     </div>
   `).join("");
-  pane.querySelectorAll(".q-card").forEach(card => {
+  list.querySelectorAll(".q-card").forEach(card => {
     card.addEventListener("click", () => {
       card.classList.toggle("revealed");
       updateProgress();
+    });
+  });
+
+  renderPagination(key, total);
+  updateProgress();
+}
+
+function renderPagination(key, total){
+  const wrap = document.getElementById("pane-" + key + "-pagination");
+  const page = state[key].page;
+  let html = `<button data-page="${page-1}" ${page<=1?"disabled":""}>‹ 上一頁</button>`;
+  for(let p = 1; p <= total; p++){
+    html += `<button data-page="${p}" class="${p===page?"active":""}">${p}</button>`;
+  }
+  html += `<button data-page="${page+1}" ${page>=total?"disabled":""}>下一頁 ›</button>`;
+  wrap.innerHTML = html;
+  wrap.querySelectorAll("button[data-page]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      state[key].page = parseInt(btn.dataset.page, 10);
+      render(key);
+      document.querySelector(".tabs").scrollIntoView({behavior:"smooth", block:"start"});
     });
   });
 }
@@ -410,8 +462,8 @@ function shuffleArr(arr){
 
 shuffleArr(ADMIN);
 shuffleArr(CORRUPT);
-render("pane-admin", ADMIN);
-render("pane-corrupt", CORRUPT);
+render("admin");
+render("corrupt");
 
 document.querySelectorAll(".tab-btn").forEach(btn => {
   btn.addEventListener("click", () => {
@@ -423,30 +475,30 @@ document.querySelectorAll(".tab-btn").forEach(btn => {
   });
 });
 
-function activePane(){
-  return document.querySelector(".tab-pane.active");
+function activeKey(){
+  return document.getElementById("pane-admin").classList.contains("active") ? "admin" : "corrupt";
 }
 function updateProgress(){
-  const pane = activePane();
+  const pane = document.querySelector(".tab-pane.active");
   const total = pane.querySelectorAll(".q-card").length;
   const done = pane.querySelectorAll(".q-card.revealed").length;
-  document.getElementById("progressText").textContent = `已顯示 ${done} / ${total} 題`;
+  const key = activeKey();
+  document.getElementById("progressText").textContent = `本頁已顯示 ${done} / ${total} 題（第 ${state[key].page} / ${totalPages(state[key].data)} 頁）`;
 }
 
 document.getElementById("revealAll").addEventListener("click", () => {
-  activePane().querySelectorAll(".q-card").forEach(c => c.classList.add("revealed"));
+  document.querySelector(".tab-pane.active").querySelectorAll(".q-card").forEach(c => c.classList.add("revealed"));
   updateProgress();
 });
 document.getElementById("hideAll").addEventListener("click", () => {
-  activePane().querySelectorAll(".q-card").forEach(c => c.classList.remove("revealed"));
+  document.querySelector(".tab-pane.active").querySelectorAll(".q-card").forEach(c => c.classList.remove("revealed"));
   updateProgress();
 });
 document.getElementById("shuffleBtn").addEventListener("click", () => {
-  const isAdmin = document.getElementById("pane-admin").classList.contains("active");
-  const arr = isAdmin ? ADMIN : CORRUPT;
-  shuffleArr(arr);
-  render(isAdmin ? "pane-admin" : "pane-corrupt", arr);
-  updateProgress();
+  const key = activeKey();
+  shuffleArr(state[key].data);
+  state[key].page = 1;
+  render(key);
 });
 
 updateProgress();
