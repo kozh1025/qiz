@@ -52,16 +52,28 @@
   @media(max-width:760px){ol.item-list{column-count:1;}}
 
   details.cat.no-match{display:none;}
+
+  #sidebarToggle{position:fixed;top:10px;left:14px;z-index:10000;width:34px;height:34px;border-radius:8px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.05rem;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.1);}
+  #sidebarToggle:hover{background:var(--line);}
+  #sidebar{transition:margin-left .25s ease;}
+  body.sidebar-toggled #sidebar{margin-left:calc(-1 * var(--side-w));}
+  @media (max-width:768px){
+    #sidebar{position:fixed;left:0;top:0;z-index:9999;margin-left:calc(-1 * var(--side-w));box-shadow:2px 0 14px rgba(0,0,0,.18);}
+    body.sidebar-toggled #sidebar{margin-left:0 !important;}
+    main{padding-left:16px;padding-right:16px;max-width:100%;}
+    body.sidebar-toggled::after{content:'';position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:9998;}
+  }
 </style>
 </head>
 <body>
+<button id="sidebarToggle" onclick="document.body.classList.toggle('sidebar-toggled')" aria-label="切換選單" title="切換選單">☰</button>
+<script>document.addEventListener('click',function(e){if(e.target.closest('#sidebar a.nav')&&window.matchMedia('(max-width:768px)').matches){document.body.classList.remove('sidebar-toggled');}});</script>
 <div style="position:fixed;top:10px;right:14px;z-index:9999;font-size:.72rem;color:#a09d95;background:rgba(255,255,255,.85);padding:3px 10px;border-radius:999px;border:1px solid #e5e2da;">柯醒翰製作</div>
 
 <nav id="sidebar">
   <input id="search" type="text" placeholder="搜尋關鍵字（如：人力、法規、機會）...">
   <div id="searchStatus"></div>
-  <a class="backlink" href="index.html">← 回筆記入口</a>
-  <a class="backlink" href="方案分析工具-舉例教學.html" style="margin-bottom:14px;">← 回方案分析工具舉例教學</a>
+  <a class="backlink" href="index.html">← 返回主頁面</a>
 
   <h3>① 向右魚骨圖・要因庫</h3>
   <a class="nav sub" href="#bc-manpower">🧍 人力／人員面（50）</a>

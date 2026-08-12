@@ -85,14 +85,28 @@
   .orig-answer h3{ margin:0 0 10px; font-size:.92em; color:var(--sub); font-weight:700; }
   .orig-answer p{ margin:0 0 10px; font-size:.9em; line-height:1.9; color:var(--ink); white-space:pre-wrap; }
   .orig-answer p:last-child{ margin-bottom:0; }
+
+  #sidebarToggle{position:fixed;top:10px;left:14px;z-index:10000;width:34px;height:34px;border-radius:8px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.05rem;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.1);}
+  #sidebarToggle:hover{background:var(--line);}
+  #sidebar{transition:margin-left .25s ease;}
+  body.sidebar-toggled #sidebar{margin-left:calc(-1 * var(--side-w));}
+  @media (max-width:768px){
+    #sidebar{position:fixed;left:0;top:0;z-index:9999;margin-left:calc(-1 * var(--side-w));box-shadow:2px 0 14px rgba(0,0,0,.18);}
+    body.sidebar-toggled #sidebar{margin-left:0 !important;}
+    main{padding-left:16px;padding-right:16px;max-width:100%;}
+    body.sidebar-toggled::after{content:'';position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:9998;}
+  }
 </style>
 </head>
 <body>
+<button id="sidebarToggle" onclick="document.body.classList.toggle('sidebar-toggled')" aria-label="切換選單" title="切換選單">☰</button>
+<script>document.addEventListener('click',function(e){if(e.target.closest('#sidebar a.nav')&&window.matchMedia('(max-width:768px)').matches){document.body.classList.remove('sidebar-toggled');}});</script>
 <div style="position:fixed;top:8px;right:12px;z-index:9999;font-size:12px;color:#9a978d;background:rgba(255,255,255,.85);padding:2px 10px;border-radius:999px;pointer-events:none;">柯醒翰製作</div>
 
 <nav id="sidebar">
   <div class="side-title">危機處理作業<br>批改與教材分析</div>
   <div class="side-sub">RP204小組彙整・107-114年共8題（6題有作答）</div>
+  <a class="backlink" href="index.html">← 返回主頁面</a>
 
   <button class="tab-btn active" data-tab="t0">
     <span class="t-num">總</span><span class="t-name">總覽比較</span>

@@ -82,17 +82,28 @@
   .cram-note b{ color:#8a6416; }
   .cram-note ol{ margin:6px 0 0; padding-left:20px; }
   .cram-note li{ margin-bottom:4px; }
+
+  #sidebarToggle{position:fixed;top:10px;left:14px;z-index:10000;width:34px;height:34px;border-radius:8px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.05rem;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.1);}
+  #sidebarToggle:hover{background:var(--line);}
+  #sidebar{transition:margin-left .25s ease;}
+  body.sidebar-toggled #sidebar{margin-left:calc(-1 * var(--side-w));}
+  @media (max-width:768px){
+    #sidebar{position:fixed;left:0;top:0;z-index:9999;margin-left:calc(-1 * var(--side-w));box-shadow:2px 0 14px rgba(0,0,0,.18);}
+    body.sidebar-toggled #sidebar{margin-left:0 !important;}
+    main{padding-left:16px;padding-right:16px;max-width:100%;}
+    body.sidebar-toggled::after{content:'';position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:9998;}
+  }
 </style>
 </head>
 <body>
+<button id="sidebarToggle" onclick="document.body.classList.toggle('sidebar-toggled')" aria-label="切換選單" title="切換選單">☰</button>
+<script>document.addEventListener('click',function(e){if(e.target.closest('#sidebar a.nav')&&window.matchMedia('(max-width:768px)').matches){document.body.classList.remove('sidebar-toggled');}});</script>
 <div style="position:fixed;top:8px;right:12px;z-index:9999;font-size:12px;color:#9a978d;background:rgba(255,255,255,.85);padding:2px 10px;border-radius:999px;pointer-events:none;">柯醒翰製作</div>
 
 <nav id="sidebar">
   <div class="side-title">行政程序法作業<br>批改與教材分析</div>
   <div class="side-sub">個人彙整・消防業務案例50題（46題有作答）・已核對全法175條</div>
-  <a class="backlink" href="index.html">← 回筆記入口</a>
-  <a class="backlink" href="admin-procedure-law.html">← 完整法條對照</a>
-  <a class="backlink" href="行政程序法-考場抄寫骨幹.html">← 考場抄寫骨幹</a>
+  <a class="backlink" href="index.html">← 返回主頁面</a>
 
   <button class="tab-btn active" data-tab="t0"><span class="t-name">📊 總覽比較</span><span class="t-sub">50題完整度一覽</span></button>
   <button class="tab-btn" data-tab="g1"><span class="t-name">1｜迴避・當事人・程序調查</span><span class="t-sub">案例1,25,27,28,29,42</span></button>

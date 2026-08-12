@@ -141,16 +141,28 @@ li strong{color: var(--subj);}
   main{flex:1;min-width:0;height:100vh;overflow-y:auto;padding:20px 28px 90px;}
   .tab-pane{display:none;max-width:980px;margin:0 auto;}
   .tab-pane.active{display:block;}
+
+  #sidebarToggle{position:fixed;top:10px;left:14px;z-index:10000;width:34px;height:34px;border-radius:8px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.05rem;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.1);}
+  #sidebarToggle:hover{background:var(--line);}
+  #sidebar{transition:margin-left .25s ease;}
+  body.sidebar-toggled #sidebar{margin-left:calc(-1 * 230px);}
+  @media (max-width:768px){
+    #sidebar{position:fixed;left:0;top:0;z-index:9999;margin-left:calc(-1 * 230px);box-shadow:2px 0 14px rgba(0,0,0,.18);}
+    body.sidebar-toggled #sidebar{margin-left:0 !important;}
+    main{padding-left:16px;padding-right:16px;max-width:100%;}
+    body.sidebar-toggled::after{content:'';position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:9998;}
+  }
 </style>
 </head>
 <body>
+<button id="sidebarToggle" onclick="document.body.classList.toggle('sidebar-toggled')" aria-label="切換選單" title="切換選單">☰</button>
+<script>document.addEventListener('click',function(e){if(e.target.closest('#sidebar a.nav')&&window.matchMedia('(max-width:768px)').matches){document.body.classList.remove('sidebar-toggled');}});</script>
 <div style="position:fixed;top:8px;right:12px;z-index:9999;font-size:12px;color:#9a978d;background:rgba(255,255,255,.85);padding:2px 10px;border-radius:999px;pointer-events:none;">柯醒翰製作</div>
 
 <nav id="sidebar">
   <div class="side-title">歷屆考題<br>108-114年申論題解析</div>
   <div class="side-sub">警佐警察人員晉升警正官等訓練・消防人員・7個年度完整合輯</div>
-  <a class="backlink" href="index.html">← 回筆記入口</a>
-  <a class="backlink" href="exam-forecast.html">← 考前預測分析</a>
+  <a class="backlink" href="index.html">← 返回主頁面</a>
   <button class="tab-btn active" data-tab="y108"><span class="t-name">108年</span><span class="t-sub">考試年度：108年｜題型：兩大題（各50分）｜總分：…</span></button>
 <button class="tab-btn" data-tab="y109"><span class="t-name">109年</span><span class="t-sub">考試年度：109年｜題型：四大題｜總分：100分｜深…</span></button>
 <button class="tab-btn" data-tab="y110"><span class="t-name">110年</span><span class="t-sub">考試年度：110年｜題型：三大題（含小題）｜總分：1…</span></button>
