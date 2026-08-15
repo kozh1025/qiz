@@ -39,6 +39,14 @@
   .subject-group{margin-bottom:44px;scroll-margin-top:20px;}
   .subject-group h2.subject-title{font-size:1.1rem;margin:0 0 14px;padding-bottom:8px;border-bottom:2px solid var(--line);display:flex;align-items:center;gap:10px;}
   .status-dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex-shrink:0;}
+
+  a.feedback-banner{display:flex;align-items:center;gap:18px;margin-bottom:40px;padding:22px 26px;background:linear-gradient(135deg,#fff8ec,#fbfaf7);border:1px solid #e8d9c0;border-radius:14px;text-decoration:none;color:inherit;box-shadow:0 1px 3px rgba(0,0,0,.04);transition:transform .15s, box-shadow .15s;}
+  a.feedback-banner:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.1);}
+  .feedback-banner .fb-icon{font-size:2rem;flex-shrink:0;}
+  .feedback-banner h2{margin:0 0 4px;font-size:1.2rem;color:#8a5a3b;}
+  .feedback-banner p{margin:0;color:var(--sub);font-size:.85rem;}
+  .feedback-banner .fb-arrow{margin-left:auto;font-size:1.4rem;color:#8a5a3b;flex-shrink:0;}
+  @media(max-width:520px){a.feedback-banner{flex-wrap:wrap;} .feedback-banner .fb-arrow{display:none;}}
 </style>
 </head>
 <body>
@@ -54,7 +62,17 @@
     <a href="#pg-corruption"><span class="dot" style="background:#8a3b3b"></span>貪污治罪條例與刑法</a>
     <a href="exam-forecast.html"><span class="dot" style="background:#8a6d1f"></span>考前衝刺與方向預測</a>
     <a href="schedule.html"><span class="dot" style="background:#8a6d1f"></span>課程表</a>
+    <a href="exam-forecast.html#ch6"><span class="dot" style="background:#6b6a66"></span>歷屆試題</a>
   </nav>
+
+  <a class="feedback-banner" href="https://docs.google.com/forms/d/e/1FAIpQLSezbbZPbyc8uZXjGo7KgVgp8a7paGEUnm6HW4iGlgwk3DlVdw/viewform?usp=publish-editor" target="_blank" rel="noopener">
+    <div class="fb-icon">💬</div>
+    <div>
+      <h2>意見回覆，謝謝大家指教</h2>
+      <p>使用心得、錯誤回報、內容建議都歡迎留言，填表人＋意見兩欄，一分鐘填完。</p>
+    </div>
+    <div class="fb-arrow">→</div>
+  </a>
 
   <div class="subject-group" id="pg-admin">
     <h2 class="subject-title"><span class="status-dot" style="background:#6a4a8a"></span>行政程序法</h2>
