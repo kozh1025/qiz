@@ -43,7 +43,7 @@
   .ans-law{padding:10px 14px;background:var(--good-bg);border-radius:8px;font-size:.9rem;color:var(--good);font-weight:700;letter-spacing:.02em;}
   .ans-premise{margin-top:18px;font-size:.88rem;line-height:1.9;color:#3a3833;white-space:pre-wrap;}
   .ans-body{margin-top:18px;font-size:.88rem;line-height:1.9;color:#3a3833;white-space:pre-wrap;}
-  .ans-extra{color:#a8a49a;font-style:italic;}
+  .ans-extra{color:#a8a49a;}
   .ans-note{display:inline-block;margin-left:6px;padding:2px 8px;background:#fdf2e3;color:#9a6a2a;border-radius:999px;font-size:.72rem;font-weight:600;vertical-align:middle;}
   .hint{font-size:.75rem;color:#a09d95;margin-top:2px;}
   .q-card.revealed .hint{display:none;}
@@ -451,7 +451,7 @@ function markExtra(text){
   }).join("");
 }
 
-const PREMISE_ELAB_MARKERS = ["，本款所稱", "，本罪所稱", "，本條所稱", "。所謂", "，所謂"];
+const PREMISE_ELAB_MARKERS = ["，本款所稱", "，本罪所稱", "，本條所稱", "。所謂", "，所謂", "，蓋"];
 function extractPremiseExtra(premise){
   let bestIdx = -1;
   for(const m of PREMISE_ELAB_MARKERS){
