@@ -432,6 +432,17 @@ function markExtra(text){
   }).join("");
 }
 
+const PREMISE_ELAB_MARKERS = ["，本款所稱", "，本罪所稱", "，本條所稱", "。所謂", "，所謂"];
+function extractPremiseExtra(premise){
+  let bestIdx = -1;
+  for(const m of PREMISE_ELAB_MARKERS){
+    const idx = premise.indexOf(m);
+    if(idx !== -1 && (bestIdx === -1 || idx < bestIdx)) bestIdx = idx;
+  }
+  if(bestIdx === -1) return { core: premise, extra: null };
+  return { core: premise.slice(0, bestIdx) + "。", extra: premise.slice(bestIdx + 1) };
+}
+
 function formatKanshe(text){
   const idx = text.indexOf("\n\n結語");
   if(idx === -1) return markExtra(text);
@@ -449,7 +460,7 @@ function hasExtraContent(rest){
   });
 }
 
-function skipExtraLength(premise, rest){
+function skipExtraLength(premiseCore, rest){
   const sentences = kansheSentences(rest);
   let coreLen = 0;
   for(const s of sentences){
@@ -458,7 +469,7 @@ function skipExtraLength(premise, rest){
   }
   const jieyuIdx = rest.indexOf("\n\n結語");
   const jieyuLen = jieyuIdx === -1 ? 0 : rest.slice(jieyuIdx).replace("\n\n結語：", "").trim().length;
-  return premise.length + coreLen + jieyuLen;
+  return premiseCore.length + coreLen + jieyuLen;
 }
 
 function render(key){
@@ -477,10 +488,14 @@ function render(key){
       const split = splitPremise(item.body);
       const premise = split ? split.premise : "";
       const rest = split ? split.rest : item.body;
-      const sensitive = hasExtraContent(rest) && skipExtraLength(premise, rest) < 450;
+      const premiseSplit = extractPremiseExtra(premise);
+      const premiseHtml = premiseSplit.extra
+        ? `${premiseSplit.core}<span class="ans-extra">${premiseSplit.extra}</span>`
+        : premise;
+      const sensitive = (hasExtraContent(rest) || premiseSplit.extra) && skipExtraLength(premiseSplit.core, rest) < 450;
       const note = sensitive ? `<span class="ans-note">建議完整書寫</span>` : "";
       answerHtml = split
-        ? `<div class="ans-premise">大前提：${split.premise}</div><div class="ans-body">涵攝：${note}${formatKanshe(split.rest)}</div>`
+        ? `<div class="ans-premise">大前提：${premiseHtml}</div><div class="ans-body">涵攝：${note}${formatKanshe(split.rest)}</div>`
         : `<div class="ans-body">${note}${formatKanshe(item.body)}</div>`;
     }
     return `
